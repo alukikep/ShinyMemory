@@ -1,0 +1,40 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build
+dist/
+dist-ssr/
+*.local
+
+# env
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# test / coverage
+coverage/
+playwright-report/
+test-results/
+
+# game saves / local exports
+*.smem
+saves/
+
+# NOTE:
+# workshop/ is intentionally committed while this repository is private.
+# Before making the repository public, move workshop/ to a private repo
+# or add it to .gitignore. See workshop/README.md.

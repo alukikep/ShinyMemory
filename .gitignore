@@ -34,6 +34,9 @@ test-results/
 *.smem
 saves/
 
+# local visual checks
+screenshots/
+
 # NOTE:
 # workshop/ is intentionally committed while this repository is private.
 # Before making the repository public, move workshop/ to a private repo

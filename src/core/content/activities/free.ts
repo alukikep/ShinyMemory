@@ -7,6 +7,7 @@ const card: ActivityDef = {
   "kind": "bond",
   "locations": ["office", "practice_room", "studio", "home"],
   "durationMinutes": 120,
+  "timeWindows": [{ "fromMinute": 480, "toMinute": 1320 }],
   "cost": {
     "stamina": 10
   },

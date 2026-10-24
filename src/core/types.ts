@@ -75,6 +75,11 @@ export type Cost = {
   stamina?: number;
 };
 
+export type TimeWindow = {
+  fromMinute: number;
+  toMinute: number;
+};
+
 export type ActivityKind =
   | 'training'
   | 'work'
@@ -90,6 +95,7 @@ export type ActivityDef = {
   kind: ActivityKind;
   locations?: string[];
   durationMinutes: number;
+  timeWindows?: TimeWindow[];
   cost: Cost;
   effects: Effect[];
   requires?: Condition[];

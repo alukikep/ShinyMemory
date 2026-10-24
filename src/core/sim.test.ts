@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { buildScene } from './scene';
 import {
   MID_EXAM_DAY,
   MID_EXAM_MINUTE,
@@ -109,12 +110,28 @@ describe('raising sim core', () => {
     expect(advanced.pendingExam).toBe('mid');
   });
 
+  it('blocks training outside its time window', () => {
+    const state = advanceTime(moveTo(newGame(1), 'practice_room'), 13 * 60);
+    const activity = getActivity('vocal')!;
+    const availability = activityAvailability(state, activity);
+    expect(availability.ok).toBe(false);
+    expect(availability.reason).toBe('现在不能做');
+  });
+
+  it('hides actions outside their time windows', () => {
+    const state = advanceTime(moveTo(newGame(1), 'practice_room'), 13 * 60);
+    const labels = buildScene(state).actions.map((action) => action.label);
+    expect(labels).not.toContain('声乐课');
+    expect(labels).toContain('自由时间');
+    expect(labels).toContain('环顾四周');
+  });
+
   it('blocks sleep during the day and allows it at night', () => {
     const state = moveTo(newGame(1), 'home');
     const sleep = getActivity('sleep')!;
     const blocked = activityAvailability(state, sleep);
     expect(blocked.ok).toBe(false);
-    expect(blocked.reason).toBe('现在还不想睡');
+    expect(blocked.reason).toBe('现在还不能睡');
 
     const evening = advanceTime(state, 12 * 60);
     expect(activityAvailability(evening, sleep).ok).toBe(true);

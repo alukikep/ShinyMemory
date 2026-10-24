@@ -7,11 +7,9 @@ const card: ActivityDef = {
   kind: 'sleep',
   locations: ['home'],
   durationMinutes: 0,
+  timeWindows: [{ fromMinute: 20 * 60, toMinute: 8 * 60 }],
   cost: {},
   effects: [],
-  requires: [
-    { kind: 'timeWindow', fromMinute: 20 * 60, toMinute: 6 * 60 },
-  ],
   resultTexts: ['你睡到早上 8 点。'],
 };
 

@@ -6,6 +6,7 @@ const card: ActivityDef = {
   description: '花一点时间看看这个地方。也许会发现什么。',
   kind: 'explore',
   durationMinutes: 30,
+  timeWindows: [{ fromMinute: 8 * 60, toMinute: 22 * 60 }],
   cost: { stamina: 5 },
   effects: [{ kind: 'stat', stat: 'stress', delta: -2 }],
   resultTexts: ['你环顾四周，没发现什么特别的。'],

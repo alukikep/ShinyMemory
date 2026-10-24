@@ -85,6 +85,17 @@ describe('content integrity', () => {
     expect(CONTENT_INDEX.locations.has('home')).toBe(true);
   });
 
+  it('keeps activity time windows in range', () => {
+    for (const activity of ACTIVITIES) {
+      for (const window of activity.timeWindows ?? []) {
+        expect(window.fromMinute).toBeGreaterThanOrEqual(0);
+        expect(window.fromMinute).toBeLessThan(24 * 60);
+        expect(window.toMinute).toBeGreaterThanOrEqual(0);
+        expect(window.toMinute).toBeLessThan(24 * 60);
+      }
+    }
+  });
+
   it('references existing locations from activities', () => {
     const locationIds = new Set(LOCATIONS.map((location) => location.id));
     for (const activity of ACTIVITIES) {

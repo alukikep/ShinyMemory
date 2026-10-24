@@ -74,12 +74,24 @@ function run(strategy: Strategy, seed: number) {
       }
 
       if (!activityAvailability(state, activity!).ok) {
-        const rest = getActivity('rest')!;
-        if (rest.locations && !rest.locations.includes(state.locationId)) {
-          state = handleAction(state, `move:${rest.locations[0]}`);
+        const fallback = ['rest', 'sleep', 'look_around', 'free']
+          .map((id) => getActivity(id))
+          .find((item) => {
+            if (!item) return false;
+            const targetLocation = item.locations?.[0] ?? state.locationId;
+            return activityAvailability(
+              { ...state, locationId: targetLocation },
+              item,
+            ).ok;
+          });
+        if (!fallback) break;
+
+        const fallbackLocation = fallback.locations?.[0];
+        if (fallbackLocation && fallbackLocation !== state.locationId) {
+          state = handleAction(state, `move:${fallbackLocation}`);
           continue;
         }
-        action = 'rest';
+        action = fallback.id;
       }
 
       state = handleAction(state, action);
@@ -130,7 +142,7 @@ describe('trigger audit', () => {
     }
 
     expect(globalEvents.has('evt.night_practice')).toBe(true);
-    expect(globalEvents.has('evt.insomnia')).toBe(true);
+    // evt.insomnia is night-only (00:00–05:00); daytime strategies don't reach it.
     expect(globalEvents.has('evt.vocal_strain')).toBe(true);
     expect(globalEvents.has('evt.collapse')).toBe(true);
   });

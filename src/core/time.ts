@@ -1,4 +1,5 @@
 import { MINUTES_PER_DAY } from './config';
+import type { TimeWindow } from './types';
 
 export function getDay(absoluteMinutes: number): number {
   return Math.floor(absoluteMinutes / MINUTES_PER_DAY) + 1;
@@ -25,4 +26,23 @@ export function formatDuration(minutes: number): string {
   if (minutes < 60) return `${minutes} 分钟`;
   const hours = minutes / 60;
   return Number.isInteger(hours) ? `${hours} 小时` : `${hours.toFixed(1)} 小时`;
+}
+
+export function isMinuteInWindow(
+  absoluteMinutes: number,
+  window: TimeWindow,
+): boolean {
+  const minuteOfDay = getMinuteOfDay(absoluteMinutes);
+  const { fromMinute, toMinute } = window;
+  if (fromMinute === toMinute) return true;
+  return fromMinute < toMinute
+    ? minuteOfDay >= fromMinute && minuteOfDay < toMinute
+    : minuteOfDay >= fromMinute || minuteOfDay < toMinute;
+}
+
+export function formatTimeWindows(windows?: TimeWindow[]): string | undefined {
+  if (!windows || windows.length === 0) return undefined;
+  return windows
+    .map((window) => `${formatClock(window.fromMinute)}–${formatClock(window.toMinute)}`)
+    .join(' / ');
 }

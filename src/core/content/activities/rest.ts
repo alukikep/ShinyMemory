@@ -7,6 +7,7 @@ const card: ActivityDef = {
   "kind": "rest",
   "locations": ["office"],
   "durationMinutes": 120,
+  "timeWindows": [{ "fromMinute": 480, "toMinute": 1320 }],
   "cost": {},
   "effects": [
     {

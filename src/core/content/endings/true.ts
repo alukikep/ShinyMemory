@@ -7,7 +7,7 @@ const card: EndingDef = {
   "when": [
     {
       "kind": "scoreAtLeast",
-      "value": 65
+      "value": 60
     },
     {
       "kind": "statAtLeast",

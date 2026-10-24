@@ -1,7 +1,12 @@
 import { DAY_FLAVOR, FINAL_EXAM, MID_EXAM } from './content/weeks';
 import { LOCATIONS } from './content';
 import { CONTENT_INDEX } from './contentIndex';
-import { formatClock, formatDuration, getDay } from './time';
+import {
+  formatClock,
+  formatDuration,
+  formatTimeWindows,
+  getDay,
+} from './time';
 import {
   activityAvailability,
   checkCondition,
@@ -52,22 +57,33 @@ function buildPlan(state: GameState): SceneView {
   }
 
   const activities = CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? [];
-  const actions: ActionView[] = activities.map((activity) => {
-    const availability = activityAvailability(state, activity);
-    const duration =
-      activity.kind === 'sleep'
-        ? '睡到早上 8 点'
-        : formatDuration(activity.durationMinutes);
-    const effects = effectSummary(activity.effects, activity.cost);
-    return {
-      id: activity.id,
-      label: activity.name,
-      hint: effects ? `${duration} · ${effects}` : duration,
-      disabled: !availability.ok,
-      disabledReason: availability.reason,
-      tone: activity.kind,
-    };
-  });
+  const actions: ActionView[] = activities
+    .map((activity) => {
+      const availability = activityAvailability(state, activity);
+      const duration =
+        activity.kind === 'sleep'
+          ? '睡到早上 8 点'
+          : formatDuration(activity.durationMinutes);
+      const effects = effectSummary(activity.effects, activity.cost);
+      const timeLabel = formatTimeWindows(activity.timeWindows);
+      const hint = [timeLabel, duration, effects].filter(Boolean).join(' · ');
+      return {
+        id: activity.id,
+        label: activity.name,
+        hint,
+        disabled: !availability.ok,
+        disabledReason: availability.reason,
+        tone: activity.kind,
+      };
+    })
+    .filter((action) => !action.disabled);
+
+  if (actions.length === 0) {
+    blocks.push({
+      kind: 'system',
+      text: '这个时间没有可做的行动。去别的地点看看，或者回家睡觉。',
+    });
+  }
 
   return {
     id: sceneId(state),

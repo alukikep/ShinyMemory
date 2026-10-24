@@ -13,7 +13,7 @@ import { CONTENT_INDEX } from './contentIndex';
 import { MID_EXAM } from './content/weeks';
 import { STAT_LABELS, STAT_MAX } from './labels';
 import { Rng } from './rng';
-import { getDay, getMinuteOfDay } from './time';
+import { getDay, getMinuteOfDay, isMinuteInWindow } from './time';
 import type {
   ActivityDef,
   Condition,
@@ -211,6 +211,17 @@ export function activityAvailability(
   }
   if (activity.locations && !activity.locations.includes(state.locationId)) {
     return { ok: false, reason: '不在此地点' };
+  }
+  if (
+    activity.timeWindows &&
+    !activity.timeWindows.some((window) =>
+      isMinuteInWindow(state.clock.absoluteMinutes, window),
+    )
+  ) {
+    return {
+      ok: false,
+      reason: activity.kind === 'sleep' ? '现在还不能睡' : '现在不能做',
+    };
   }
   if (activity.cost.money && state.money < activity.cost.money) {
     return { ok: false, reason: '金钱不足' };

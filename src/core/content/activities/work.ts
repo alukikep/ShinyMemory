@@ -7,6 +7,7 @@ const card: ActivityDef = {
   "kind": "work",
   "locations": ["studio"],
   "durationMinutes": 240,
+  "timeWindows": [{ "fromMinute": 600, "toMinute": 1439 }],
   "cost": {
     "stamina": 20
   },

@@ -7,6 +7,7 @@ const card: ActivityDef = {
   "kind": "training",
   "locations": ["practice_room"],
   "durationMinutes": 120,
+  "timeWindows": [{ "fromMinute": 480, "toMinute": 1200 }],
   "cost": {
     "money": 500,
     "stamina": 15

@@ -2,7 +2,7 @@ import { renderToString } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import App from '../App';
 import { buildScene } from '../core/scene';
-import { advanceTime, enterNpc, moveTo, newGame } from '../core/sim';
+import { advanceTime, enterNpc, handleCommand, moveTo, newGame } from '../core/sim';
 import { DebugPanel } from './components/DebugPanel';
 import { ScenePanel } from './components/ScenePanel';
 
@@ -24,9 +24,13 @@ describe('app shell', () => {
   it('shows resource-blocked actions as disabled with a reason', () => {
     const state = moveTo(newGame(1), 'practice_room');
     state.money = 100;
+    const idolPage = handleCommand(state, {
+      type: 'enterIdol',
+      idolId: 'mano',
+    });
 
     const html = renderToString(
-      <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
+      <ScenePanel scene={buildScene(idolPage)} onAction={() => {}} />,
     );
     expect(html).toContain('金钱不足（需要 ¥500）');
     expect(html).toContain('disabled');
@@ -61,6 +65,23 @@ describe('app shell', () => {
     expect(html).toContain('七草叶月');
     expect(html).toContain('打招呼');
     expect(html).toContain('问时间安排');
+    expect(html).toContain('离开');
+  });
+
+  it('renders Mano training page at the practice room', () => {
+    const practice = moveTo(newGame(1), 'practice_room');
+    const state = handleCommand(practice, {
+      type: 'enterIdol',
+      idolId: 'mano',
+    });
+    const html = renderToString(
+      <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
+    );
+    expect(html).toContain('樱木真乃');
+    expect(html).toContain('illumination STARS');
+    expect(html).toContain('声乐课');
+    expect(html).toContain('舞蹈课');
+    expect(html).toContain('表现课');
     expect(html).toContain('离开');
   });
 

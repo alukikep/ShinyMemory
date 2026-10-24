@@ -493,6 +493,30 @@ button {
   line-height: 1.7;
 }
 
+.idol-stat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.idol-stat {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 5px 9px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.idol-stat strong {
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
 .blocks {
   flex: 0 0 auto;
   padding: 22px 2px 8px;

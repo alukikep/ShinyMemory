@@ -86,8 +86,12 @@ describe('content integrity', () => {
   });
 
   it('has valid actors with schedules and topics', () => {
-    expect(ACTORS).toHaveLength(2);
-    expect(ACTORS.map((actor) => actor.id)).toEqual(['hazuki', 'tsutomu']);
+    expect(ACTORS).toHaveLength(3);
+    expect(ACTORS.map((actor) => actor.id)).toEqual([
+      'hazuki',
+      'tsutomu',
+      'mano',
+    ]);
     expect(CONTENT_INDEX.actors.size).toBe(ACTORS.length);
 
     for (const actor of ACTORS) {

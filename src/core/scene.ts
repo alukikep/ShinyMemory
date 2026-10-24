@@ -17,6 +17,7 @@ import {
   getActor,
   getEnding,
   getEvent,
+  isActorPresent,
   isLocationOpen,
   midScore,
   presentActors,
@@ -25,6 +26,7 @@ import {
 import type {
   ActionView,
   ActorView,
+  ActivityDef,
   GameState,
   SceneView,
   TextBlock,
@@ -37,6 +39,7 @@ const PHASE_LABEL = {
   eventResult: '事件结果',
   npc: '交谈',
   npcResult: '对话',
+  idol: '训练',
   examMid: '中期考核',
   examFinal: '最终考核',
   ending: '结局',
@@ -49,16 +52,47 @@ function sceneId(state: GameState): string {
 function buildActorViews(state: GameState): ActorView[] {
   return presentActors(state).map((actor) => {
     const actorState = state.actors[actor.id];
+    const isIdol = actor.role === 'idol';
     return {
       id: actor.id,
       name: actor.name,
       role: actor.role,
       description: actor.description,
       color: actor.color,
-      affinity: actorState?.affinity ?? 0,
-      enterCommand: { type: 'enterNpc', actorId: actor.id },
+      affinity: isIdol
+        ? (state.idols[actor.id]?.stats.trust ?? 0)
+        : (actorState?.affinity ?? 0),
+      relationshipLabel: isIdol ? '信任' : '好感',
+      entryLabel: isIdol ? '训练' : '交谈',
+      enterCommand: isIdol
+        ? { type: 'enterIdol', idolId: actor.id }
+        : { type: 'enterNpc', actorId: actor.id },
     };
   });
+}
+
+function activityActionView(
+  state: GameState,
+  activity: ActivityDef,
+): ActionView {
+  const availability = activityAvailability(state, activity);
+  const duration =
+    activity.kind === 'sleep'
+      ? '睡到早上 8 点'
+      : formatDuration(activity.durationMinutes);
+  const effects = effectSummary(activity.effects, activity.cost);
+  const timeLabel = formatTimeWindows(activity.timeWindows);
+  const hint = [timeLabel, duration, effects].filter(Boolean).join(' · ');
+
+  return {
+    id: activity.id,
+    command: { type: 'activity', activityId: activity.id },
+    label: activity.name,
+    hint,
+    disabled: !availability.ok,
+    disabledReason: availability.ok ? undefined : availability.reason,
+    tone: activity.kind,
+  };
 }
 
 function buildPlan(state: GameState): SceneView {
@@ -79,8 +113,10 @@ function buildPlan(state: GameState): SceneView {
     });
   }
 
-  const activities = CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? [];
+  const activities = (CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? [])
+    .filter((activity) => activity.kind !== 'training');
   const locationOpen = isLocationOpen(state, state.locationId);
+  const actors = buildActorViews(state);
   if (!locationOpen) {
     blocks.push({
       kind: 'system',
@@ -89,32 +125,17 @@ function buildPlan(state: GameState): SceneView {
   }
 
   const actions: ActionView[] = activities
-    .map((activity) => {
-      const availability = activityAvailability(state, activity);
-      const duration =
-        activity.kind === 'sleep'
-          ? '睡到早上 8 点'
-          : formatDuration(activity.durationMinutes);
-      const effects = effectSummary(activity.effects, activity.cost);
-      const timeLabel = formatTimeWindows(activity.timeWindows);
-      const hint = [timeLabel, duration, effects].filter(Boolean).join(' · ');
-      return { activity, availability, hint };
-    })
+    .map((activity) => ({
+      activity,
+      availability: activityAvailability(state, activity),
+    }))
     .filter(
       ({ availability }) =>
         availability.ok || availability.display === 'disable',
     )
-    .map(({ activity, availability, hint }) => ({
-      id: activity.id,
-      command: { type: 'activity', activityId: activity.id },
-      label: activity.name,
-      hint,
-      disabled: !availability.ok,
-      disabledReason: availability.ok ? undefined : availability.reason,
-      tone: activity.kind,
-    }));
+    .map(({ activity }) => activityActionView(state, activity));
 
-  if (actions.length === 0 && locationOpen) {
+  if (actions.length === 0 && actors.length === 0 && locationOpen) {
     blocks.push({
       kind: 'system',
       text: '这个时间没有可做的行动。去别的地点看看，或者回家睡觉。',
@@ -134,7 +155,7 @@ function buildPlan(state: GameState): SceneView {
       current: item.id === state.locationId,
       open: isLocationOpen(state, item.id),
     })),
-    actors: buildActorViews(state),
+    actors,
     blocks,
     actions,
     layout: 'grid',
@@ -327,6 +348,92 @@ function buildNpcResult(state: GameState): SceneView {
   };
 }
 
+function buildIdolPage(state: GameState): SceneView {
+  const idolId = state.pendingIdolId;
+  const actor = idolId ? getActor(idolId) : undefined;
+  const idolDef = idolId ? CONTENT_INDEX.idols.get(idolId) : undefined;
+  const idolState = idolId ? state.idols[idolId] : undefined;
+
+  if (
+    !idolId ||
+    !actor ||
+    actor.role !== 'idol' ||
+    !isActorPresent(state, actor) ||
+    !idolDef ||
+    !idolState
+  ) {
+    return {
+      id: sceneId(state),
+      phase: state.phase,
+      phaseLabel: PHASE_LABEL[state.phase],
+      title: '训练',
+      blocks: [{ kind: 'system', text: '她不在这里。' }],
+      actions: [
+        {
+          id: 'leave_idol',
+          command: { type: 'leaveIdol' },
+          label: '离开',
+          hint: '返回地点页面',
+          tone: 'secondary',
+        },
+      ],
+      layout: 'grid',
+    };
+  }
+
+  const trainings: ActionView[] = (
+    CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? []
+  )
+    .filter((activity) => activity.kind === 'training')
+    .map((activity) => ({
+      activity,
+      availability: activityAvailability(state, activity),
+    }))
+    .filter(
+      ({ availability }) =>
+        availability.ok || availability.display === 'disable',
+    )
+    .map(({ activity }) => {
+      const action = activityActionView(state, activity);
+      return {
+        ...action,
+        command: {
+          type: 'train',
+          idolId,
+          activityId: activity.id,
+        },
+      };
+    });
+
+  return {
+    id: sceneId(state),
+    phase: state.phase,
+    phaseLabel: PHASE_LABEL[state.phase],
+    title: idolDef.name,
+    subtitle: `${idolDef.unit} · 训练`,
+    blocks: [],
+    idol: {
+      id: idolId,
+      name: idolDef.name,
+      unit: idolDef.unit,
+      description: idolDef.profile,
+      color: idolDef.color,
+      stats: idolState.stats,
+    },
+    actions: [
+      ...trainings,
+      {
+        id: 'leave_idol',
+        command: { type: 'leaveIdol' },
+        label: '离开',
+        hint: '返回地点页面',
+        tone: 'secondary',
+      },
+    ],
+    layout: 'grid',
+  };
+}
+
 function buildExam(state: GameState, kind: 'mid' | 'final'): SceneView {
   const exam = kind === 'mid' ? MID_EXAM : FINAL_EXAM;
   const computed = kind === 'mid' ? midScore(state) : finalScore(state);
@@ -428,6 +535,8 @@ export function buildScene(state: GameState): SceneView {
       return buildNpcPage(state);
     case 'npcResult':
       return buildNpcResult(state);
+    case 'idol':
+      return buildIdolPage(state);
     case 'examMid':
       return buildExam(state, 'mid');
     case 'examFinal':

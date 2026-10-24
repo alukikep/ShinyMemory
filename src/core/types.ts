@@ -36,6 +36,7 @@ export type Phase =
   | 'eventResult'
   | 'npc'
   | 'npcResult'
+  | 'idol'
   | 'examMid'
   | 'examFinal'
   | 'ending';
@@ -58,6 +59,7 @@ export type GameState = {
   pendingActivityId?: string;
   pendingEventId?: string;
   pendingActorId?: string;
+  pendingIdolId?: string;
   pendingTopicId?: string;
   pendingExam?: 'mid' | 'final';
   lastResult?: string;
@@ -267,7 +269,10 @@ export type ActionCommand =
   | { type: 'activity'; activityId: string }
   | { type: 'enterNpc'; actorId: string }
   | { type: 'talk'; actorId: string; topicId: string }
+  | { type: 'enterIdol'; idolId: string }
+  | { type: 'train'; idolId: string; activityId: string }
   | { type: 'leaveNpc' }
+  | { type: 'leaveIdol' }
   | { type: 'eventChoice'; index: number }
   | { type: 'continue' }
   | { type: 'restart' };
@@ -289,6 +294,8 @@ export type ActorView = {
   description: string;
   color?: string;
   affinity: number;
+  relationshipLabel: string;
+  entryLabel: string;
   enterCommand: ActionCommand;
 };
 
@@ -301,6 +308,15 @@ export type NpcPageView = {
   affinity: number;
 };
 
+export type IdolPageView = {
+  id: string;
+  name: string;
+  unit: string;
+  description: string;
+  color?: string;
+  stats: IdolStats;
+};
+
 export type SceneView = {
   id: string;
   phase: Phase;
@@ -311,6 +327,7 @@ export type SceneView = {
   locations?: LocationView[];
   actors?: ActorView[];
   npc?: NpcPageView;
+  idol?: IdolPageView;
   blocks: TextBlock[];
   actions: ActionView[];
   layout: 'grid' | 'list';

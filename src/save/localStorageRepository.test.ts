@@ -14,11 +14,12 @@ describe('LocalStorageRepository', () => {
 
     const loaded = repo.load();
     expect(loaded).not.toBeNull();
-    expect(loaded?.schemaVersion).toBe(6);
+    expect(loaded?.schemaVersion).toBe(7);
     expect(loaded?.state.idols.mano?.stats.vocal).toBe(20);
     expect(loaded?.state.shared.stamina).toBe(100);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
+    expect(loaded?.state.actors.mano?.affinity).toBe(0);
   });
 
   it('migrates a v1 save to the time system', () => {
@@ -40,11 +41,12 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(6);
+    expect(loaded?.schemaVersion).toBe(7);
     expect(loaded?.state.locationId).toBe('office');
     expect(loaded?.state.clock.absoluteMinutes).toBe(8 * 60);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
+    expect(loaded?.state.actors.mano?.affinity).toBe(0);
   });
 
   it('migrates a v3 save by adding actors', () => {
@@ -62,9 +64,10 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(6);
+    expect(loaded?.schemaVersion).toBe(7);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
+    expect(loaded?.state.actors.mano?.affinity).toBe(0);
   });
 
   it('migrates a v4 save by adding actors and splitting idol stats', () => {
@@ -95,13 +98,34 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(6);
+    expect(loaded?.schemaVersion).toBe(7);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(3);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
+    expect(loaded?.state.actors.mano?.affinity).toBe(0);
     expect(loaded?.state.shared.stamina).toBe(88);
     expect(loaded?.state.shared.stress).toBe(12);
     expect(loaded?.state.idols.mano?.stats.vocal).toBe(24);
     expect(loaded?.state.idols.mano?.stats.trust).toBe(7);
+  });
+
+  it('migrates a v6 save by adding the idol actor', () => {
+    const storage = new MemoryStorage();
+    const state = newGame(1) as unknown as Record<string, unknown>;
+    const actors = state.actors as Record<string, { affinity: number }>;
+    delete actors.mano;
+    storage.setItem(
+      SAVE_KEY,
+      JSON.stringify({
+        schemaVersion: 6,
+        gameVersion: '0.7.0',
+        createdAt: '2026-10-24T00:00:00.000Z',
+        state,
+      }),
+    );
+
+    const loaded = new LocalStorageRepository(storage).load();
+    expect(loaded?.schemaVersion).toBe(7);
+    expect(loaded?.state.actors.mano?.affinity).toBe(0);
   });
 
   it('returns null for invalid JSON', () => {
@@ -129,3 +153,4 @@ describe('LocalStorageRepository', () => {
     expect(repo.load()).toBeNull();
   });
 });
+

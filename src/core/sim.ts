@@ -415,6 +415,59 @@ export function leaveNpc(state: GameState): GameState {
   return next;
 }
 
+export function enterIdol(state: GameState, idolId: string): GameState {
+  if (state.phase !== 'plan') return state;
+  const actor = getActor(idolId);
+  if (!actor || actor.role !== 'idol' || !isActorPresent(state, actor)) {
+    return state;
+  }
+
+  const next = clone(state);
+  next.phase = 'idol';
+  next.activeIdolId = idolId;
+  next.pendingIdolId = idolId;
+  next.pendingActorId = undefined;
+  next.pendingTopicId = undefined;
+  next.pendingActivityId = undefined;
+  next.lastResult = undefined;
+  return next;
+}
+
+export function leaveIdol(state: GameState): GameState {
+  if (state.phase !== 'idol') return state;
+  const next = clone(state);
+  next.pendingIdolId = undefined;
+  next.pendingActivityId = undefined;
+  next.phase = 'plan';
+  return next;
+}
+
+export function train(
+  state: GameState,
+  idolId: string,
+  activityId: string,
+): GameState {
+  if (state.phase !== 'idol' || state.pendingIdolId !== idolId) return state;
+
+  const actor = getActor(idolId);
+  const activity = getActivity(activityId);
+  if (
+    !actor ||
+    actor.role !== 'idol' ||
+    !isActorPresent(state, actor) ||
+    !activity ||
+    activity.kind !== 'training' ||
+    !activityAvailability(state, activity).ok
+  ) {
+    return state;
+  }
+
+  const next = applyActivity(state, activityId, idolId);
+  if (next.phase !== 'activityResult') return state;
+  next.pendingIdolId = idolId;
+  return next;
+}
+
 export function talkTo(
   state: GameState,
   actorId: string,
@@ -477,12 +530,17 @@ function pickActivityResult(
   return variant?.text ?? rng.pick(activity.resultTexts);
 }
 
-export function applyActivity(state: GameState, activityId: string): GameState {
+export function applyActivity(
+  state: GameState,
+  activityId: string,
+  idolId: string = state.activeIdolId,
+): GameState {
   const activity = getActivity(activityId);
   if (!activity) return state;
   if (!activityAvailability(state, activity).ok) return state;
 
   const next = clone(state);
+  next.activeIdolId = idolId;
   const rng = new Rng(next.rng.seed, next.rng.counter);
   const stressed = next.shared.stress >= 70;
 
@@ -837,6 +895,15 @@ function continueFromActivity(state: GameState): GameState {
   });
   if (result.event) return result.state;
 
+  if (next.pendingIdolId) {
+    const idolActor = getActor(next.pendingIdolId);
+    if (idolActor && isActorPresent(next, idolActor)) {
+      next.phase = 'idol';
+      return next;
+    }
+    next.pendingIdolId = undefined;
+  }
+
   next.phase = 'plan';
   return next;
 }
@@ -848,6 +915,15 @@ function continueFromEvent(state: GameState): GameState {
   next.pendingTopicId = undefined;
 
   if (next.pendingExam) return beginPendingExam(next);
+
+  if (next.pendingIdolId) {
+    const idolActor = getActor(next.pendingIdolId);
+    if (idolActor && isActorPresent(next, idolActor)) {
+      next.phase = 'idol';
+      return next;
+    }
+    next.pendingIdolId = undefined;
+  }
 
   const actor = next.pendingActorId ? getActor(next.pendingActorId) : undefined;
   if (actor && isActorPresent(next, actor)) {
@@ -899,6 +975,7 @@ export function handleCommand(
     case 'plan':
       if (command.type === 'move') return moveTo(state, command.locationId);
       if (command.type === 'enterNpc') return enterNpc(state, command.actorId);
+      if (command.type === 'enterIdol') return enterIdol(state, command.idolId);
       if (command.type === 'activity') return applyActivity(state, command.activityId);
       return state;
 
@@ -906,6 +983,13 @@ export function handleCommand(
       if (command.type === 'leaveNpc') return leaveNpc(state);
       if (command.type === 'talk') {
         return talkTo(state, command.actorId, command.topicId);
+      }
+      return state;
+
+    case 'idol':
+      if (command.type === 'leaveIdol') return leaveIdol(state);
+      if (command.type === 'train') {
+        return train(state, command.idolId, command.activityId);
       }
       return state;
 
@@ -947,6 +1031,11 @@ export function handleAction(state: GameState, actionId: string): GameState {
           type: 'enterNpc',
           actorId: actionId.slice('enter:'.length),
         };
+      } else if (actionId.startsWith('idol:')) {
+        command = {
+          type: 'enterIdol',
+          idolId: actionId.slice('idol:'.length),
+        };
       } else {
         command = { type: 'activity', activityId: actionId };
       }
@@ -959,6 +1048,17 @@ export function handleAction(state: GameState, actionId: string): GameState {
         const [, actorId, topicId] = actionId.split(':');
         if (actorId && topicId) {
           command = { type: 'talk', actorId, topicId };
+        }
+      }
+      break;
+
+    case 'idol':
+      if (actionId === 'leave_idol') {
+        command = { type: 'leaveIdol' };
+      } else if (actionId.startsWith('train:')) {
+        const [, idolId, activityId] = actionId.split(':');
+        if (idolId && activityId) {
+          command = { type: 'train', idolId, activityId };
         }
       }
       break;

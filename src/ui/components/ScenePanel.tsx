@@ -1,4 +1,10 @@
-import type { ActionCommand, ActorRole, SceneView } from '../../core/types';
+import type {
+  ActionCommand,
+  ActorRole,
+  IdolStatKey,
+  SceneView,
+} from '../../core/types';
+import { STAT_LABELS } from '../../core/labels';
 
 const ACTOR_ROLE_LABEL: Record<ActorRole, string> = {
   staff: '事务员',
@@ -6,6 +12,13 @@ const ACTOR_ROLE_LABEL: Record<ActorRole, string> = {
   idol: '偶像',
   rival: '对手',
 };
+
+const IDOL_STAT_ORDER: IdolStatKey[] = [
+  'vocal',
+  'dance',
+  'expression',
+  'trust',
+];
 
 type ScenePanelProps = {
   scene: SceneView;
@@ -58,7 +71,7 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
               type="button"
               className="actor-entry"
               key={actor.id}
-              aria-label={`和${actor.name}交谈`}
+              aria-label={`和${actor.name}${actor.entryLabel}`}
               style={
                 actor.color
                   ? { borderLeft: `3px solid ${actor.color}` }
@@ -72,14 +85,35 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
                   {ACTOR_ROLE_LABEL[actor.role]}
                 </span>
               </span>
-              <span className="actor-affinity">好感 {actor.affinity}</span>
-              <span className="actor-entry-action">交谈</span>
+              <span className="actor-affinity">
+                {actor.relationshipLabel} {actor.affinity}
+              </span>
+              <span className="actor-entry-action">{actor.entryLabel}</span>
               <span className="actor-entry-arrow" aria-hidden="true">
                 →
               </span>
             </button>
           ))}
         </div>
+      ) : null}
+
+      {scene.idol ? (
+        <section className="actor-card npc-page">
+          <div className="actor-head">
+            <span className="actor-name">{scene.idol.name}</span>
+            <span className="actor-role">偶像</span>
+            <span className="actor-affinity">{scene.idol.unit}</span>
+          </div>
+          <p className="actor-description">{scene.idol.description}</p>
+          <div className="idol-stat-strip">
+            {IDOL_STAT_ORDER.map((key) => (
+              <span className={`idol-stat idol-stat-${key}`} key={key}>
+                <span>{STAT_LABELS[key]}</span>
+                <strong>{Math.round(scene.idol!.stats[key])}</strong>
+              </span>
+            ))}
+          </div>
+        </section>
       ) : null}
 
       {scene.npc ? (

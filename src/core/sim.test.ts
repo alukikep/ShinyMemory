@@ -76,7 +76,11 @@ describe('raising sim core', () => {
   it('shows resource-blocked actions as disabled with a reason', () => {
     const state = moveTo(newGame(1), 'practice_room');
     state.money = 100;
-    const vocal = buildScene(state).actions.find(
+    const idolPage = handleCommand(state, {
+      type: 'enterIdol',
+      idolId: 'mano',
+    });
+    const vocal = buildScene(idolPage).actions.find(
       (action) => action.id === 'vocal',
     );
     expect(vocal).toBeTruthy();
@@ -243,6 +247,31 @@ describe('raising sim core', () => {
 
     state = handleCommand(state, { type: 'leaveNpc' });
     expect(state.phase).toBe('plan');
+  });
+
+  it('enters Mano at the practice room and trains her', () => {
+    const state = moveTo(newGame(1), 'practice_room');
+    expect(presentActors(state).map((actor) => actor.id)).toEqual(['mano']);
+
+    const entered = handleCommand(state, {
+      type: 'enterIdol',
+      idolId: 'mano',
+    });
+    expect(entered.phase).toBe('idol');
+    expect(entered.pendingIdolId).toBe('mano');
+
+    const trained = handleCommand(entered, {
+      type: 'train',
+      idolId: 'mano',
+      activityId: 'vocal',
+    });
+    expect(trained.phase).toBe('activityResult');
+    expect(trained.idols.mano?.stats.vocal).toBe(26);
+    expect(trained.shared.stamina).toBe(85);
+    expect(trained.pendingIdolId).toBe('mano');
+
+    const left = handleCommand(entered, { type: 'leaveIdol' });
+    expect(left.phase).toBe('plan');
   });
 
   it('shows Hazuki and Tsutomu on their office schedules', () => {

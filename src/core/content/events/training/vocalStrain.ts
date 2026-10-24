@@ -5,7 +5,7 @@ const card: EventDef = {
   title: '嗓子的警告',
   when: [
     { kind: 'statAtMost', stat: 'stamina', value: 30 },
-    { kind: 'statAtLeast', stat: 'stress', value: 50 },
+    { kind: 'statAtLeast', stat: 'stress', value: 20 },
   ],
   after: { ids: ['vocal'] },
   chance: 0.5,

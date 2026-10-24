@@ -181,6 +181,10 @@ export function checkCondition(condition: Condition, state: GameState): boolean 
       return state.stats[condition.stat] >= condition.value;
     case 'statAtMost':
       return state.stats[condition.stat] <= condition.value;
+    case 'npcAffinityAtLeast':
+      return (state.actors[condition.actorId]?.affinity ?? 0) >= condition.value;
+    case 'npcAffinityAtMost':
+      return (state.actors[condition.actorId]?.affinity ?? 0) <= condition.value;
     case 'moneyAtMost':
       return state.money <= condition.value;
     case 'atLocation':
@@ -347,12 +351,34 @@ export function moveTo(state: GameState, locationId: string): GameState {
   return advanced;
 }
 
+export function enterNpc(state: GameState, actorId: string): GameState {
+  if (state.phase !== 'plan') return state;
+  const actor = getActor(actorId);
+  if (!actor || !isActorPresent(state, actor)) return state;
+
+  const next = clone(state);
+  next.phase = 'npc';
+  next.pendingActorId = actor.id;
+  next.pendingTopicId = undefined;
+  next.lastResult = undefined;
+  return next;
+}
+
+export function leaveNpc(state: GameState): GameState {
+  if (state.phase !== 'npc') return state;
+  const next = clone(state);
+  next.pendingActorId = undefined;
+  next.pendingTopicId = undefined;
+  next.phase = 'plan';
+  return next;
+}
+
 export function talkTo(
   state: GameState,
   actorId: string,
   topicId: string,
 ): GameState {
-  if (state.phase !== 'plan') return state;
+  if (state.phase !== 'npc' || state.pendingActorId !== actorId) return state;
   const actor = getActor(actorId);
   if (!actor || !isActorPresent(state, actor)) return state;
 
@@ -488,6 +514,14 @@ function matchesAfter(
   return !!ctx.lastActivityKind && selector.kinds.includes(ctx.lastActivityKind);
 }
 
+function matchesAfterNpc(
+  selector: EventDef['afterNpc'],
+  ctx: EventContext,
+): boolean {
+  if (!selector) return true;
+  return !!ctx.npcId && selector.ids.includes(ctx.npcId);
+}
+
 function cooldownReady(event: EventDef, state: GameState): boolean {
   const cooldown = event.cooldownActions ?? 0;
   if (cooldown <= 0) return true;
@@ -502,6 +536,7 @@ function isEligible(
   ctx: EventContext,
 ): boolean {
   if (!matchesAfter(event.after, ctx)) return false;
+  if (!matchesAfterNpc(event.afterNpc, ctx)) return false;
   if (!event.when.every((condition) => checkCondition(condition, state))) {
     return false;
   }
@@ -597,12 +632,28 @@ export function checkForEvent(
   return checkEventCandidates(state, buildPool(context), context);
 }
 
+export function checkNpcEvent(
+  state: GameState,
+  npcId: string,
+  topicId: string,
+): EventCheckResult {
+  const candidates = CONTENT_INDEX.eventsByNpcId.get(npcId) ?? [];
+  return checkEventCandidates(state, candidates, {
+    npcId,
+    topicId,
+    locationId: state.locationId,
+  });
+}
+
 export function getTriggerReport(
   state: GameState,
   ctx: EventContext = {},
 ): TriggerReport[] {
   return EVENTS.map((event) => {
     if (!matchesAfter(event.after, ctx)) {
+      return { eventId: event.id, eligible: false, reason: 'after' };
+    }
+    if (!matchesAfterNpc(event.afterNpc, ctx)) {
       return { eventId: event.id, eligible: false, reason: 'after' };
     }
     if (!event.when.every((condition) => checkCondition(condition, state))) {
@@ -750,18 +801,38 @@ function continueFromEvent(state: GameState): GameState {
   const next = clone(state);
   next.pendingEventId = undefined;
   next.pendingActivityId = undefined;
+  next.pendingTopicId = undefined;
 
   if (next.pendingExam) return beginPendingExam(next);
 
+  const actor = next.pendingActorId ? getActor(next.pendingActorId) : undefined;
+  if (actor && isActorPresent(next, actor)) {
+    next.phase = 'npc';
+    return next;
+  }
+
+  next.pendingActorId = undefined;
   next.phase = 'plan';
   return next;
 }
 
 function continueFromNpc(state: GameState): GameState {
   const next = clone(state);
-  next.pendingActorId = undefined;
+  const actorId = next.pendingActorId;
+  const topicId = next.pendingTopicId;
   next.pendingTopicId = undefined;
-  next.phase = 'plan';
+
+  const actor = actorId ? getActor(actorId) : undefined;
+  if (!actor || !isActorPresent(next, actor)) {
+    next.pendingActorId = undefined;
+    next.phase = 'plan';
+    return next;
+  }
+
+  const result = checkNpcEvent(next, actor.id, topicId ?? '');
+  if (result.event) return result.state;
+
+  next.phase = 'npc';
   return next;
 }
 
@@ -782,12 +853,17 @@ export function handleAction(state: GameState, actionId: string): GameState {
       if (actionId.startsWith('move:')) {
         return moveTo(state, actionId.slice('move:'.length));
       }
+      if (actionId.startsWith('enter:')) {
+        return enterNpc(state, actionId.slice('enter:'.length));
+      }
+      return applyActivity(state, actionId);
+    case 'npc':
+      if (actionId === 'leave_npc') return leaveNpc(state);
       if (actionId.startsWith('talk:')) {
         const [, actorId, topicId] = actionId.split(':');
         if (actorId && topicId) return talkTo(state, actorId, topicId);
-        return state;
       }
-      return applyActivity(state, actionId);
+      return state;
     case 'activityResult':
       return actionId === 'continue' ? continueFromActivity(state) : state;
     case 'event': {
@@ -797,6 +873,13 @@ export function handleAction(state: GameState, actionId: string): GameState {
     }
     case 'eventResult':
       return actionId === 'continue' ? continueFromEvent(state) : state;
+    case 'npc':
+      if (actionId === 'leave_npc') return leaveNpc(state);
+      if (actionId.startsWith('talk:')) {
+        const [, actorId, topicId] = actionId.split(':');
+        if (actorId && topicId) return talkTo(state, actorId, topicId);
+      }
+      return state;
     case 'npcResult':
       return actionId === 'continue' ? continueFromNpc(state) : state;
     case 'examMid':

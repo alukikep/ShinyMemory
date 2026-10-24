@@ -2,7 +2,7 @@ import { renderToString } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import App from '../App';
 import { buildScene } from '../core/scene';
-import { advanceTime, moveTo, newGame } from '../core/sim';
+import { advanceTime, enterNpc, moveTo, newGame } from '../core/sim';
 import { DebugPanel } from './components/DebugPanel';
 import { ScenePanel } from './components/ScenePanel';
 
@@ -39,8 +39,18 @@ describe('app shell', () => {
     );
     expect(html).toContain('七草叶月');
     expect(html).toContain('事务员');
+    expect(html).toContain('交谈');
+  });
+
+  it('renders the dedicated Hazuki interaction page', () => {
+    const state = enterNpc(advanceTime(newGame(1), 60), 'hazuki');
+    const html = renderToString(
+      <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
+    );
+    expect(html).toContain('七草叶月');
     expect(html).toContain('打招呼');
     expect(html).toContain('问时间安排');
+    expect(html).toContain('离开');
   });
 
   it('renders the debug panel without crashing', () => {

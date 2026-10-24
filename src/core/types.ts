@@ -21,6 +21,7 @@ export type Phase =
   | 'activityResult'
   | 'event'
   | 'eventResult'
+  | 'npc'
   | 'npcResult'
   | 'examMid'
   | 'examFinal'
@@ -66,6 +67,8 @@ export type Condition =
   | { kind: 'timeWindow'; fromMinute: number; toMinute: number }
   | { kind: 'statAtLeast'; stat: StatKey; value: number }
   | { kind: 'statAtMost'; stat: StatKey; value: number }
+  | { kind: 'npcAffinityAtLeast'; actorId: string; value: number }
+  | { kind: 'npcAffinityAtMost'; actorId: string; value: number }
   | { kind: 'moneyAtMost'; value: number }
   | { kind: 'atLocation'; locationId: string }
   | { kind: 'flag'; key: string; value?: boolean }
@@ -169,6 +172,7 @@ export type EventDef = {
   title: string;
   when: Condition[];
   after?: ActivitySelector;
+  afterNpc?: { ids: string[] };
   chance?: number;
   priority?: number;
   cooldownActions?: number;
@@ -197,6 +201,8 @@ export type EventContext = {
   lastActivityId?: string;
   lastActivityKind?: ActivityKind;
   locationId?: string;
+  npcId?: string;
+  topicId?: string;
 };
 
 export type TriggerReport = {
@@ -256,7 +262,18 @@ export type ActorView = {
   description: string;
   color?: string;
   affinity: number;
+  enterActionId: string;
+};
+
+export type NpcPageView = {
+  id: string;
+  name: string;
+  role: ActorRole;
+  description: string;
+  color?: string;
+  affinity: number;
   topics: ActionView[];
+  leaveActionId: string;
 };
 
 export type SceneView = {
@@ -268,6 +285,7 @@ export type SceneView = {
   locationName?: string;
   locations?: LocationView[];
   actors?: ActorView[];
+  npc?: NpcPageView;
   blocks: TextBlock[];
   actions: ActionView[];
   layout: 'grid' | 'list';

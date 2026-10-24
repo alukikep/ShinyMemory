@@ -369,6 +369,10 @@ button {
   padding: 13px 15px;
 }
 
+.npc-page {
+  margin-top: 18px;
+}
+
 .actor-head {
   display: flex;
   align-items: baseline;
@@ -434,6 +438,20 @@ button {
 .actor-topic small {
   color: var(--muted);
   font-size: 10px;
+}
+
+.actor-leave {
+  margin-top: 11px;
+  border: 0;
+  background: transparent;
+  padding: 2px 0;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.actor-leave:hover {
+  color: var(--accent-strong);
 }
 
 .blocks {

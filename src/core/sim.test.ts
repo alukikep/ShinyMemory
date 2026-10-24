@@ -228,6 +228,9 @@ describe('raising sim core', () => {
     const greeting = actor.topics.find((topic) => topic.id === 'greeting')!;
     let state = advanceTime(newGame(1), 60);
 
+    state = handleAction(state, 'enter:hazuki');
+    expect(state.phase).toBe('npc');
+
     state = handleAction(state, 'talk:hazuki:greeting');
     expect(state.phase).toBe('npcResult');
     expect(state.actors.hazuki?.affinity).toBe(1);
@@ -235,6 +238,9 @@ describe('raising sim core', () => {
     expect(topicAvailability(state, actor, greeting).ok).toBe(false);
 
     state = handleAction(state, 'continue');
+    expect(state.phase).toBe('npc');
+
+    state = handleAction(state, 'leave_npc');
     expect(state.phase).toBe('plan');
   });
 
@@ -244,6 +250,7 @@ describe('raising sim core', () => {
     let state = advanceTime(newGame(1), 60);
     state.stats.stamina = 50;
     state.stats.stress = 50;
+    state = handleAction(state, 'enter:hazuki');
 
     state = talkTo(state, 'hazuki', 'coffee');
     expect(state.phase).toBe('npcResult');
@@ -252,6 +259,7 @@ describe('raising sim core', () => {
     expect(state.stats.stress).toBe(45);
 
     state = handleAction(state, 'continue');
+    expect(state.phase).toBe('npc');
     expect(topicAvailability(state, actor, coffee).ok).toBe(false);
     expect(
       topicAvailability(advanceTime(state, 12 * 60), actor, coffee).ok,
@@ -261,8 +269,24 @@ describe('raising sim core', () => {
   it('does not talk to Hazuki outside the office', () => {
     let state = advanceTime(newGame(1), 60);
     state = moveTo(state, 'practice_room');
-    const next = handleAction(state, 'talk:hazuki:greeting');
-    expect(next.phase).toBe('plan');
+    const entered = handleAction(state, 'enter:hazuki');
+    expect(entered.phase).toBe('plan');
+    const talked = handleAction(entered, 'talk:hazuki:greeting');
+    expect(talked.phase).toBe('plan');
+  });
+
+  it('triggers a Hazuki event after a topic and returns to the NPC page', () => {
+    let state = advanceTime(newGame(1), 4 * 60);
+    state = handleAction(state, 'enter:hazuki');
+    state = handleAction(state, 'talk:hazuki:greeting');
+    state = handleAction(state, 'continue');
+
+    expect(state.phase).toBe('event');
+    expect(state.pendingEventId).toBe('evt.hazuki_nap');
+
+    state = handleAction(state, 'choice:0');
+    state = handleAction(state, 'continue');
+    expect(state.phase).toBe('npc');
   });
 
   it('hides actions and closed tabs after hours', () => {

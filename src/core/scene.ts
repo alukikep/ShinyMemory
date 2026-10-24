@@ -34,6 +34,7 @@ const PHASE_LABEL = {
   activityResult: '行动结果',
   event: '事件',
   eventResult: '事件结果',
+  npc: '交谈',
   npcResult: '对话',
   examMid: '中期考核',
   examFinal: '最终考核',
@@ -47,17 +48,6 @@ function sceneId(state: GameState): string {
 function buildActorViews(state: GameState): ActorView[] {
   return presentActors(state).map((actor) => {
     const actorState = state.actors[actor.id];
-    const topics: ActionView[] = actor.topics.map((topic) => {
-      const availability = topicAvailability(state, actor, topic);
-      return {
-        id: `talk:${actor.id}:${topic.id}`,
-        label: topic.label,
-        disabled: !availability.ok,
-        disabledReason: availability.ok ? undefined : availability.reason,
-        tone: 'bond',
-      };
-    });
-
     return {
       id: actor.id,
       name: actor.name,
@@ -65,7 +55,7 @@ function buildActorViews(state: GameState): ActorView[] {
       description: actor.description,
       color: actor.color,
       affinity: actorState?.affinity ?? 0,
-      topics,
+      enterActionId: `enter:${actor.id}`,
     };
   });
 }
@@ -245,6 +235,61 @@ function buildEventResult(state: GameState): SceneView {
   };
 }
 
+const ACTOR_ROLE_LABEL: Record<ActorView['role'], string> = {
+  staff: '事务员',
+  idol: '偶像',
+  rival: '对手',
+};
+
+function buildNpcPage(state: GameState): SceneView {
+  const actor = state.pendingActorId ? getActor(state.pendingActorId) : undefined;
+  if (!actor) {
+    return {
+      id: sceneId(state),
+      phase: state.phase,
+      phaseLabel: PHASE_LABEL[state.phase],
+      title: '对话',
+      blocks: [{ kind: 'system', text: '她不在这里。' }],
+      actions: [{ id: 'leave_npc', label: '离开', tone: 'secondary' }],
+      layout: 'list',
+    };
+  }
+
+  const actorState = state.actors[actor.id];
+  const affinity = actorState?.affinity ?? 0;
+  const topics: ActionView[] = actor.topics.map((topic) => {
+    const availability = topicAvailability(state, actor, topic);
+    return {
+      id: `talk:${actor.id}:${topic.id}`,
+      label: topic.label,
+      disabled: !availability.ok,
+      disabledReason: availability.ok ? undefined : availability.reason,
+      tone: 'bond',
+    };
+  });
+
+  return {
+    id: sceneId(state),
+    phase: state.phase,
+    phaseLabel: PHASE_LABEL[state.phase],
+    title: actor.name,
+    subtitle: `${ACTOR_ROLE_LABEL[actor.role]} · 好感 ${affinity} / 20`,
+    blocks: [],
+    npc: {
+      id: actor.id,
+      name: actor.name,
+      role: actor.role,
+      description: actor.description,
+      color: actor.color,
+      affinity,
+      topics,
+      leaveActionId: 'leave_npc',
+    },
+    actions: [],
+    layout: 'list',
+  };
+}
+
 function buildNpcResult(state: GameState): SceneView {
   const actor = state.pendingActorId ? getActor(state.pendingActorId) : undefined;
 
@@ -348,6 +393,8 @@ export function buildScene(state: GameState): SceneView {
       return buildEvent(state);
     case 'eventResult':
       return buildEventResult(state);
+    case 'npc':
+      return buildNpcPage(state);
     case 'npcResult':
       return buildNpcResult(state);
     case 'examMid':

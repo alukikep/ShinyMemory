@@ -232,8 +232,8 @@ describe('content integrity', () => {
     }
   });
 
-  it('has 24 events and 3 endings', () => {
-    expect(EVENTS).toHaveLength(24);
+  it('has 25 events and 3 endings', () => {
+    expect(EVENTS).toHaveLength(25);
     expect(ENDINGS).toHaveLength(3);
   });
 
@@ -336,6 +336,14 @@ describe('content integrity', () => {
         expect.objectContaining({ id: 'evt.home_note' }),
       ]),
     );
+    expect(CONTENT_INDEX.eventsByNpcId.get('hazuki')).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: 'evt.hazuki_nap' }),
+      ]),
+    );
+    expect(
+      CONTENT_INDEX.globalEvents.some((event) => event.id === 'evt.hazuki_nap'),
+    ).toBe(false);
     expect(
       CONTENT_INDEX.globalEvents.some((event) => event.id === 'evt.bento'),
     ).toBe(false);

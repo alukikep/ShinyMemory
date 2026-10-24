@@ -47,7 +47,15 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
       {scene.actors && scene.actors.length > 0 ? (
         <div className="actors">
           {scene.actors.map((actor) => (
-            <section className="actor-card" key={actor.id}>
+            <section
+              className="actor-card"
+              key={actor.id}
+              style={
+                actor.color
+                  ? { borderLeft: `3px solid ${actor.color}` }
+                  : undefined
+              }
+            >
               <div className="actor-head">
                 <span className="actor-name">{actor.name}</span>
                 <span className="actor-role">
@@ -60,15 +68,17 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
                 <span className="actor-affinity">好感 {actor.affinity} / 20</span>
               </div>
               <p className="actor-description">{actor.description}</p>
-              <div className="actor-topics">
-                <button
-                  type="button"
-                  className="actor-topic"
-                  onClick={() => onAction(actor.enterActionId)}
-                >
-                  交谈
-                </button>
-              </div>
+              <button
+                type="button"
+                className="actor-enter"
+                onClick={() => onAction(actor.enterActionId)}
+              >
+                <span className="actor-enter-label">{`和${actor.name}聊聊`}</span>
+                <span className="actor-enter-hint">选择话题</span>
+                <span className="actor-enter-arrow" aria-hidden="true">
+                  →
+                </span>
+              </button>
             </section>
           ))}
         </div>

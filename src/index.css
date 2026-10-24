@@ -406,52 +406,43 @@ button {
   line-height: 1.7;
 }
 
-.actor-topics {
+.actor-enter {
   display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.actor-topic {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 5px;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 10px;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 10px;
   background: #fff;
-  padding: 5px 12px;
+  padding: 8px 12px;
   color: var(--ink);
-  font-size: 12px;
+  text-align: left;
   cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
-.actor-topic:hover:not(:disabled) {
+.actor-enter:hover {
   border-color: #6f9d9f;
-  color: #4f7c7e;
+  background: #fbfdfc;
 }
 
-.actor-topic:disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
+.actor-enter-label {
+  font-size: 13px;
+  letter-spacing: 0.04em;
 }
 
-.actor-topic small {
+.actor-enter-hint {
   color: var(--muted);
   font-size: 10px;
 }
 
-.actor-leave {
-  margin-top: 11px;
-  border: 0;
-  background: transparent;
-  padding: 2px 0;
+.actor-enter-arrow {
+  margin-left: auto;
   color: var(--muted);
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.actor-leave:hover {
-  color: var(--accent-strong);
+  font-size: 15px;
 }
 
 .npc-leave {

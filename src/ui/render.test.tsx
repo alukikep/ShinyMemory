@@ -39,7 +39,8 @@ describe('app shell', () => {
     );
     expect(html).toContain('七草叶月');
     expect(html).toContain('事务员');
-    expect(html).toContain('交谈');
+    expect(html).toContain('和七草叶月聊聊');
+    expect(html).toContain('选择话题');
   });
 
   it('renders the dedicated Hazuki interaction page', () => {

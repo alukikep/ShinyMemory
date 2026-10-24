@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { MAX_DAYS, MINUTES_PER_DAY, START_MINUTE } from '../core/config';
+import { MAX_DEBUG_DAY, MINUTES_PER_DAY, START_MINUTE } from '../core/config';
 import { handleCommand, newGame } from '../core/sim';
 import type { ActionCommand, GameState } from '../core/types';
 import { LocalStorageRepository } from '../save/localStorageRepository';
@@ -55,7 +55,7 @@ export const useGameStore = create<GameStore>((set) => ({
   debugJumpDay: (day) =>
     set((previous) => {
       const next = structuredClone(previous.state);
-      const safeDay = Math.max(1, Math.min(MAX_DAYS, Math.round(day)));
+      const safeDay = Math.max(1, Math.min(MAX_DEBUG_DAY, Math.round(day)));
       next.clock.absoluteMinutes = (safeDay - 1) * MINUTES_PER_DAY + START_MINUTE;
       next.phase = 'plan';
       next.pendingActivityId = undefined;

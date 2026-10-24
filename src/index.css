@@ -413,32 +413,6 @@ button {
   gap: 10px;
 }
 
-.week-track {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  margin-top: 22px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-
-.week-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #e6d8cb;
-  transition: background 0.3s ease;
-}
-
-.week-dot.done {
-  background: var(--accent);
-}
-
-.week-dot.current {
-  outline: 2px solid rgba(201, 107, 126, 0.28);
-  outline-offset: 2px;
-}
-
 .status-alert {
   margin: 16px 0 0;
   padding: 9px 12px;

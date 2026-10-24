@@ -8,6 +8,7 @@ import {
   newGame,
 } from './sim';
 import type { GameState } from './types';
+import { getDay } from './time';
 
 type Strategy = (state: GameState) => string;
 
@@ -76,7 +77,7 @@ function run(strategy: Strategy, seed: number) {
     return null;
   };
 
-  while (state.phase !== 'ending' && guard < 600) {
+  while (getDay(state.clock.absoluteMinutes) <= 7 && guard < 600) {
     guard += 1;
     if (state.phase === 'event') {
       maxStress = Math.max(maxStress, getStatValue(state, 'stress'));

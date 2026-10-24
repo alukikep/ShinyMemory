@@ -1,4 +1,3 @@
-import { MAX_DAYS } from '../../core/config';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { getActiveIdol } from '../../core/sim';
 import { STAT_LABELS, STAT_MAX } from '../../core/labels';
@@ -50,7 +49,7 @@ export function StatsPanel({
       <div className="panel-head">
         <h2>状态</h2>
         <span className="panel-note">
-          第 {Math.min(day, MAX_DAYS)} 天 · {formatClock(state.clock.absoluteMinutes)}
+          第 {day} 天 · {formatClock(state.clock.absoluteMinutes)}
         </span>
       </div>
 
@@ -79,16 +78,6 @@ export function StatsPanel({
         <span>偶像名册</span>
         <span aria-hidden="true">→</span>
       </button>
-
-      <div className="week-track" aria-label="天进度">
-        {Array.from({ length: MAX_DAYS }, (_, index) => (
-          <span
-            key={index}
-            className={`week-dot ${index < day ? 'done' : ''} ${index === day - 1 ? 'current' : ''}`}
-            title={`第 ${index + 1} 天`}
-          />
-        ))}
-      </div>
 
       {state.flags.forced_rest ? (
         <p className="status-alert">她需要休息。</p>

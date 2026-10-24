@@ -14,7 +14,7 @@ describe('LocalStorageRepository', () => {
 
     const loaded = repo.load();
     expect(loaded).not.toBeNull();
-    expect(loaded?.schemaVersion).toBe(8);
+    expect(loaded?.schemaVersion).toBe(9);
     expect(loaded?.state.idols.mano?.stats.vocal).toBe(20);
     expect(loaded?.state.idols.hiori?.stats.vocal).toBe(20);
     expect(loaded?.state.shared.stamina).toBe(100);
@@ -43,7 +43,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(8);
+    expect(loaded?.schemaVersion).toBe(9);
     expect(loaded?.state.locationId).toBe('office');
     expect(loaded?.state.clock.absoluteMinutes).toBe(8 * 60);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
@@ -66,7 +66,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(8);
+    expect(loaded?.schemaVersion).toBe(9);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
     expect(loaded?.state.actors.mano?.affinity).toBe(0);
@@ -100,7 +100,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(8);
+    expect(loaded?.schemaVersion).toBe(9);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(3);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
     expect(loaded?.state.actors.mano?.affinity).toBe(0);
@@ -126,7 +126,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(8);
+    expect(loaded?.schemaVersion).toBe(9);
     expect(loaded?.state.actors.mano?.affinity).toBe(0);
   });
 
@@ -148,9 +148,30 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(8);
+    expect(loaded?.schemaVersion).toBe(9);
     expect(loaded?.state.actors.hiori?.affinity).toBe(0);
     expect(loaded?.state.idols.hiori?.stats.vocal).toBe(20);
+  });
+
+  it('migrates a v8 ending save into the open loop', () => {
+    const storage = new MemoryStorage();
+    const state = newGame(1) as unknown as Record<string, unknown>;
+    state.phase = 'ending';
+    state.endingId = 'end.normal';
+    storage.setItem(
+      SAVE_KEY,
+      JSON.stringify({
+        schemaVersion: 8,
+        gameVersion: '0.9.0',
+        createdAt: '2026-10-24T00:00:00.000Z',
+        state,
+      }),
+    );
+
+    const loaded = new LocalStorageRepository(storage).load();
+    expect(loaded?.schemaVersion).toBe(9);
+    expect(loaded?.state.phase).toBe('plan');
+    expect(loaded?.state.endingId).toBeUndefined();
   });
 
   it('returns null for invalid JSON', () => {
@@ -178,5 +199,6 @@ describe('LocalStorageRepository', () => {
     expect(repo.load()).toBeNull();
   });
 });
+
 
 

@@ -23,7 +23,7 @@ function run(seed: number): {
     actionsByDay.set(day, (actionsByDay.get(day) ?? 0) + 1);
   };
 
-  while (state.phase !== 'ending' && guard < 500) {
+  while (getDay(state.clock.absoluteMinutes) <= 7 && guard < 500) {
     guard += 1;
 
     if (state.phase === 'plan') {
@@ -106,20 +106,17 @@ function run(seed: number): {
 }
 
 describe('time balance audit', () => {
-  it('reports actions per day and endings', () => {
+  it('reports actions per day across an open week', () => {
     const runs = 20;
-    const endings = new Map<string, number>();
     const dayTotals = new Map<number, number>();
     let totalActions = 0;
-    let totalScore = 0;
     let totalTrust = 0;
     let totalStress = 0;
+    let totalDay = 0;
 
     for (let seed = 1; seed <= runs; seed += 1) {
       const result = run(seed);
-      const ending = result.state.endingId ?? 'none';
-      endings.set(ending, (endings.get(ending) ?? 0) + 1);
-      totalScore += result.state.examScore ?? 0;
+      totalDay += getDay(result.state.clock.absoluteMinutes);
       totalTrust += getStatValue(result.state, 'trust');
       totalStress += getStatValue(result.state, 'stress');
 
@@ -136,14 +133,13 @@ describe('time balance audit', () => {
       ]),
     );
 
-    console.log('time endings', Object.fromEntries(endings));
+    console.log('avg day', (totalDay / runs).toFixed(1));
     console.log('avg actions per day', averages);
     console.log('avg actions total', (totalActions / runs).toFixed(1));
-    console.log('avg score', (totalScore / runs).toFixed(1));
     console.log('avg trust', (totalTrust / runs).toFixed(1));
     console.log('avg stress', (totalStress / runs).toFixed(1));
 
-    expect(endings.has('none')).toBe(false);
+    expect(totalDay / runs).toBeGreaterThan(7);
     expect(totalActions / runs).toBeGreaterThan(8);
   });
 });

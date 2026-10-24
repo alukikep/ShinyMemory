@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, it } from 'vitest';
 import {
   activityAvailability,
   getActivity,
@@ -8,6 +8,7 @@ import {
   newGame,
 } from './sim';
 import type { GameState } from './types';
+import { getDay } from './time';
 
 type Strategy = (state: GameState) => string;
 
@@ -68,7 +69,7 @@ function run(strategy: Strategy, seed: number): GameState {
     return null;
   };
 
-  while (state.phase !== 'ending' && guard < 600) {
+  while (getDay(state.clock.absoluteMinutes) <= 7 && guard < 600) {
     guard += 1;
     if (state.phase === 'plan') {
       let action = state.flags.forced_rest ? 'rest' : strategy(state);
@@ -108,37 +109,27 @@ function run(strategy: Strategy, seed: number): GameState {
 }
 
 describe('balance smoke', () => {
-  it('reports ending distribution', () => {
-    const allEndings = new Set<string>();
+  it('reports open-ended progression', () => {
     for (const [name, strategy] of Object.entries(strategies)) {
-      const endings = new Map<string, number>();
-      let scoreTotal = 0;
+      let dayTotal = 0;
       let stressTotal = 0;
       let trustTotal = 0;
       const runs = 30;
       for (let seed = 1; seed <= runs; seed += 1) {
         const state = run(strategy, seed);
-        const ending = state.endingId ?? 'none';
-        expect(ending).not.toBe('none');
-        allEndings.add(ending);
-        endings.set(ending, (endings.get(ending) ?? 0) + 1);
-        scoreTotal += state.examScore ?? 0;
+        dayTotal += getDay(state.clock.absoluteMinutes);
         stressTotal += getStatValue(state, 'stress');
         trustTotal += getStatValue(state, 'trust');
       }
       console.log(
         name,
-        Object.fromEntries(endings),
-        'avg score',
-        Math.round(scoreTotal / runs),
+        'avg day',
+        Math.round(dayTotal / runs),
         'avg stress',
         Math.round(stressTotal / runs),
         'avg trust',
         Math.round(trustTotal / runs),
       );
     }
-    expect(allEndings.has('end.true')).toBe(true);
-    expect(allEndings.has('end.normal')).toBe(true);
-    expect(allEndings.has('end.bad')).toBe(true);
   });
 });

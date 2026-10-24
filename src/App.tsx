@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { buildScene } from './core/scene';
-import { MAX_DAYS } from './core/config';
 import { formatClock, getDay } from './core/time';
 import { useGameStore } from './app/store';
 import { DebugPanel } from './ui/components/DebugPanel';
@@ -27,12 +26,12 @@ export default function App() {
       <header className="topbar">
         <div className="brand-block">
           <p className="brand">ShinyMemory</p>
-          <p className="tagline">3 天时间原型</p>
+          <p className="tagline">开放时间原型</p>
         </div>
         <div className="topbar-meta">
           <div className="meta-item">
             <span>天</span>
-            <strong>{Math.min(day, MAX_DAYS)} / {MAX_DAYS}</strong>
+            <strong>第 {day} 天</strong>
           </div>
           <div className="meta-item">
             <span>时间</span>

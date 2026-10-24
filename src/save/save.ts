@@ -134,5 +134,19 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     next.gameVersion = GAME_VERSION;
   }
 
+  if (next.schemaVersion === 8) {
+    if (
+      next.state.phase === 'examMid' ||
+      next.state.phase === 'examFinal' ||
+      next.state.phase === 'ending'
+    ) {
+      next.state.phase = 'plan';
+      next.state.pendingExam = undefined;
+      next.state.endingId = undefined;
+    }
+    next.schemaVersion = 9;
+    next.gameVersion = GAME_VERSION;
+  }
+
   return next;
 }

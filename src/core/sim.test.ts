@@ -1,10 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildScene } from './scene';
 import {
-  MID_EXAM_DAY,
-  MID_EXAM_MINUTE,
   MINUTES_PER_DAY,
-  START_MINUTE,
 } from './config';
 import {
   activityAvailability,
@@ -157,11 +154,11 @@ describe('raising sim core', () => {
     expect(slept.phase).toBe('activityResult');
   });
 
-  it('marks the mid exam pending when time crosses day 2 20:00', () => {
+  it('keeps time advancing without fixed exam triggers', () => {
     const state = newGame(1);
-    const midAt = (MID_EXAM_DAY - 1) * MINUTES_PER_DAY + MID_EXAM_MINUTE;
-    const advanced = advanceTime(state, midAt - START_MINUTE + 1);
-    expect(advanced.pendingExam).toBe('mid');
+    const advanced = advanceTime(state, 10 * MINUTES_PER_DAY);
+    expect(advanced.pendingExam).toBeUndefined();
+    expect(getDay(advanced.clock.absoluteMinutes)).toBe(11);
   });
 
   it('advances time for timed event choices', () => {

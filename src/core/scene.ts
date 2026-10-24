@@ -128,7 +128,7 @@ function buildPlan(state: GameState): SceneView {
   }
   blocks.push({
     kind: 'system',
-    text: DAY_FLAVOR[day - 1] ?? '新的一天。',
+    text: DAY_FLAVOR[(day - 1) % DAY_FLAVOR.length] ?? '新的一天。',
   });
   if (state.flags.forced_rest) {
     blocks.push({

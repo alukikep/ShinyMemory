@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MAX_DAYS } from '../../core/config';
+import { MAX_DEBUG_DAY } from '../../core/config';
 import { ACTIVITIES, LOCATIONS } from '../../core/content';
 import { getActivity, getEvent, getTriggerReport, isLocationOpen } from '../../core/sim';
 import { formatClock, getDay } from '../../core/time';
@@ -74,7 +74,7 @@ export function DebugPanel({
           <input
             type="number"
             min={1}
-            max={MAX_DAYS}
+            max={MAX_DEBUG_DAY}
             value={dayInput}
             onChange={(event) => setDayInput(event.target.value)}
           />

@@ -1,9 +1,5 @@
 import {
   ACTOR_AFFINITY_MAX,
-  FINAL_EXAM_DAY,
-  FINAL_EXAM_MINUTE,
-  MID_EXAM_DAY,
-  MID_EXAM_MINUTE,
   MINUTES_PER_DAY,
   MOVE_MINUTES,
   SLEEP_UNTIL_MINUTE,
@@ -543,24 +539,9 @@ export function talkTo(
   return next;
 }
 
-const MID_EXAM_AT =
-  (MID_EXAM_DAY - 1) * MINUTES_PER_DAY + MID_EXAM_MINUTE;
-const FINAL_EXAM_AT =
-  (FINAL_EXAM_DAY - 1) * MINUTES_PER_DAY + FINAL_EXAM_MINUTE;
-
 export function advanceTime(state: GameState, minutes: number): GameState {
   const next = clone(state);
-  const from = next.clock.absoluteMinutes;
-  const to = from + Math.max(0, minutes);
-  next.clock.absoluteMinutes = to;
-
-  if (!next.midExamDone && from <= MID_EXAM_AT && to >= MID_EXAM_AT) {
-    next.pendingExam = 'mid';
-  }
-  if (!next.finalExamDone && from <= FINAL_EXAM_AT && to >= FINAL_EXAM_AT) {
-    next.pendingExam = 'final';
-  }
-
+  next.clock.absoluteMinutes += Math.max(0, minutes);
   return next;
 }
 

@@ -1,6 +1,6 @@
 export const MINUTES_PER_DAY = 1440;
 export const START_MINUTE = 8 * 60;
-export const MAX_DAYS = 3;
+export const MAX_DEBUG_DAY = 30;
 
 export const MID_EXAM_DAY = 2;
 export const MID_EXAM_MINUTE = 20 * 60;

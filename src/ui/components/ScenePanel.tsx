@@ -114,16 +114,6 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
           </button>
         ))}
       </div>
-
-      {scene.npc ? (
-        <button
-          type="button"
-          className="npc-leave"
-          onClick={() => onAction(scene.npc!.leaveCommand)}
-        >
-          离开
-        </button>
-      ) : null}
     </section>
   );
 }

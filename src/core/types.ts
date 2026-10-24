@@ -284,7 +284,6 @@ export type NpcPageView = {
   description: string;
   color?: string;
   affinity: number;
-  leaveCommand: ActionCommand;
 };
 
 export type SceneView = {

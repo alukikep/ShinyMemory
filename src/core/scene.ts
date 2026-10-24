@@ -258,10 +258,11 @@ function buildNpcPage(state: GameState): SceneView {
           id: 'leave_npc',
           command: { type: 'leaveNpc' },
           label: '离开',
+          hint: '返回地点页面',
           tone: 'secondary',
         },
       ],
-      layout: 'list',
+      layout: 'grid',
     };
   }
 
@@ -294,9 +295,17 @@ function buildNpcPage(state: GameState): SceneView {
       description: actor.description,
       color: actor.color,
       affinity,
-      leaveCommand: { type: 'leaveNpc' },
     },
-    actions: topics,
+    actions: [
+      ...topics,
+      {
+        id: 'leave_npc',
+        command: { type: 'leaveNpc' },
+        label: '离开',
+        hint: '返回地点页面',
+        tone: 'secondary',
+      },
+    ],
     layout: 'grid',
   };
 }

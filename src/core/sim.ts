@@ -16,6 +16,7 @@ import { Rng } from './rng';
 import { getDay, getMinuteOfDay, isMinuteInWindow } from './time';
 import type {
   ActivityDef,
+  Availability,
   Condition,
   Cost,
   Effect,
@@ -198,19 +199,34 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
   return parts.join(' · ');
 }
 
+export function isLocationOpen(
+  state: GameState,
+  locationId: string,
+): boolean {
+  const location = CONTENT_INDEX.locations.get(locationId);
+  if (!location) return false;
+  if (!location.openHours || location.openHours.length === 0) return true;
+  return location.openHours.some((window) =>
+    isMinuteInWindow(state.clock.absoluteMinutes, window),
+  );
+}
+
 export function activityAvailability(
   state: GameState,
   activity: ActivityDef,
-): { ok: boolean; reason?: string } {
+): Availability {
   if (
     state.flags.forced_rest &&
     activity.kind !== 'rest' &&
     activity.kind !== 'sleep'
   ) {
-    return { ok: false, reason: '她需要休息' };
+    return { ok: false, display: 'hide', reason: '她需要休息' };
   }
   if (activity.locations && !activity.locations.includes(state.locationId)) {
-    return { ok: false, reason: '不在此地点' };
+    return { ok: false, display: 'hide', reason: '不在此地点' };
+  }
+  if (!isLocationOpen(state, state.locationId)) {
+    return { ok: false, display: 'hide', reason: '地点已关门' };
   }
   if (
     activity.timeWindows &&
@@ -218,22 +234,22 @@ export function activityAvailability(
       isMinuteInWindow(state.clock.absoluteMinutes, window),
     )
   ) {
-    return {
-      ok: false,
-      reason: activity.kind === 'sleep' ? '现在还不能睡' : '现在不能做',
-    };
+    return { ok: false, display: 'hide', reason: '现在不能做' };
   }
+
+  const reasons: string[] = [];
   if (activity.cost.money && state.money < activity.cost.money) {
-    return { ok: false, reason: '金钱不足' };
+    reasons.push(`金钱不足（需要 ¥${activity.cost.money}）`);
   }
   if (activity.cost.stamina && state.stats.stamina < activity.cost.stamina) {
-    return { ok: false, reason: '体力不足' };
+    reasons.push(`体力不足（需要 ${activity.cost.stamina}）`);
   }
+  if (reasons.length > 0) {
+    return { ok: false, display: 'disable', reason: reasons.join('；') };
+  }
+
   if (activity.requires && !activity.requires.every((c) => checkCondition(c, state))) {
-    return {
-      ok: false,
-      reason: activity.kind === 'sleep' ? '现在还不想睡' : '条件未满足',
-    };
+    return { ok: false, display: 'disable', reason: '条件未满足' };
   }
   return { ok: true };
 }
@@ -242,6 +258,7 @@ export function moveTo(state: GameState, locationId: string): GameState {
   if (state.phase !== 'plan') return state;
   const location = CONTENT_INDEX.locations.get(locationId);
   if (!location || state.locationId === locationId) return state;
+  if (!isLocationOpen(state, locationId)) return state;
 
   const next = clone(state);
   next.locationId = locationId;

@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { activityAvailability, getActivity, handleAction, newGame } from './sim';
+import {
+  activityAvailability,
+  getActivity,
+  handleAction,
+  isLocationOpen,
+  newGame,
+} from './sim';
 import type { GameState } from './types';
 
 type Strategy = (state: GameState) => string;
@@ -36,43 +42,49 @@ const strategies: Record<string, Strategy> = {
 function run(strategy: Strategy, seed: number): GameState {
   let state = newGame(seed);
   let guard = 0;
+
+  const findFallback = () => {
+    for (const id of ['rest', 'sleep', 'look_around', 'free']) {
+      const item = getActivity(id);
+      if (!item) continue;
+      const target = item.locations?.[0] ?? state.locationId;
+      if (!isLocationOpen(state, target)) continue;
+      if (
+        activityAvailability({ ...state, locationId: target }, item).ok
+      ) {
+        return { activity: item, target };
+      }
+    }
+    return null;
+  };
+
   while (state.phase !== 'ending' && guard < 600) {
     guard += 1;
     if (state.phase === 'plan') {
       let action = state.flags.forced_rest ? 'rest' : strategy(state);
-      let activity = getActivity(action);
-      if (!activity) {
-        action = 'rest';
-        activity = getActivity('rest');
-      }
+      let activity = getActivity(action) ?? getActivity('rest')!;
+      action = activity.id;
 
-      if (
-        activity?.locations &&
-        !activity.locations.includes(state.locationId)
-      ) {
-        state = handleAction(state, `move:${activity.locations[0]}`);
-        continue;
-      }
-
-      if (!activityAvailability(state, activity!).ok) {
-        const fallback = ['rest', 'sleep', 'look_around', 'free']
-          .map((id) => getActivity(id))
-          .find((item) => {
-            if (!item) return false;
-            const targetLocation = item.locations?.[0] ?? state.locationId;
-            return activityAvailability(
-              { ...state, locationId: targetLocation },
-              item,
-            ).ok;
-          });
+      const target = activity.locations?.[0] ?? state.locationId;
+      if (!isLocationOpen(state, target)) {
+        const fallback = findFallback();
         if (!fallback) break;
-
-        const fallbackLocation = fallback.locations?.[0];
-        if (fallbackLocation && fallbackLocation !== state.locationId) {
-          state = handleAction(state, `move:${fallbackLocation}`);
+        if (fallback.target !== state.locationId) {
+          state = handleAction(state, `move:${fallback.target}`);
           continue;
         }
-        action = fallback.id;
+        action = fallback.activity.id;
+      } else if (target !== state.locationId) {
+        state = handleAction(state, `move:${target}`);
+        continue;
+      } else if (!activityAvailability(state, activity).ok) {
+        const fallback = findFallback();
+        if (!fallback) break;
+        if (fallback.target !== state.locationId) {
+          state = handleAction(state, `move:${fallback.target}`);
+          continue;
+        }
+        action = fallback.activity.id;
       }
 
       state = handleAction(state, action);

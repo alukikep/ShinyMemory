@@ -88,6 +88,14 @@ export type ActivityKind =
   | 'explore'
   | 'sleep';
 
+export type Availability =
+  | { ok: true }
+  | {
+      ok: false;
+      display: 'hide' | 'disable';
+      reason: string;
+    };
+
 export type ActivityDef = {
   id: string;
   name: string;
@@ -134,12 +142,14 @@ export type LocationDef = {
   name: string;
   description: string;
   isStart?: boolean;
+  openHours?: TimeWindow[];
 };
 
 export type LocationView = {
   id: string;
   name: string;
   current: boolean;
+  open: boolean;
 };
 
 export type EventContext = {

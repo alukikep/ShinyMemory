@@ -15,6 +15,7 @@ import {
   getActivity,
   getEnding,
   getEvent,
+  isLocationOpen,
   midScore,
 } from './sim';
 import type {
@@ -57,6 +58,14 @@ function buildPlan(state: GameState): SceneView {
   }
 
   const activities = CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? [];
+  const locationOpen = isLocationOpen(state, state.locationId);
+  if (!locationOpen) {
+    blocks.push({
+      kind: 'system',
+      text: '这里已经关门了，先回家吧。',
+    });
+  }
+
   const actions: ActionView[] = activities
     .map((activity) => {
       const availability = activityAvailability(state, activity);
@@ -67,18 +76,22 @@ function buildPlan(state: GameState): SceneView {
       const effects = effectSummary(activity.effects, activity.cost);
       const timeLabel = formatTimeWindows(activity.timeWindows);
       const hint = [timeLabel, duration, effects].filter(Boolean).join(' · ');
-      return {
-        id: activity.id,
-        label: activity.name,
-        hint,
-        disabled: !availability.ok,
-        disabledReason: availability.reason,
-        tone: activity.kind,
-      };
+      return { activity, availability, hint };
     })
-    .filter((action) => !action.disabled);
+    .filter(
+      ({ availability }) =>
+        availability.ok || availability.display === 'disable',
+    )
+    .map(({ activity, availability, hint }) => ({
+      id: activity.id,
+      label: activity.name,
+      hint,
+      disabled: !availability.ok,
+      disabledReason: availability.ok ? undefined : availability.reason,
+      tone: activity.kind,
+    }));
 
-  if (actions.length === 0) {
+  if (actions.length === 0 && locationOpen) {
     blocks.push({
       kind: 'system',
       text: '这个时间没有可做的行动。去别的地点看看，或者回家睡觉。',
@@ -96,6 +109,7 @@ function buildPlan(state: GameState): SceneView {
       id: item.id,
       name: item.name,
       current: item.id === state.locationId,
+      open: isLocationOpen(state, item.id),
     })),
     blocks,
     actions,

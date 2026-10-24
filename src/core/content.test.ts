@@ -96,6 +96,17 @@ describe('content integrity', () => {
     }
   });
 
+  it('keeps location open hours in range', () => {
+    for (const location of LOCATIONS) {
+      for (const window of location.openHours ?? []) {
+        expect(window.fromMinute).toBeGreaterThanOrEqual(0);
+        expect(window.fromMinute).toBeLessThan(24 * 60);
+        expect(window.toMinute).toBeGreaterThanOrEqual(0);
+        expect(window.toMinute).toBeLessThan(24 * 60);
+      }
+    }
+  });
+
   it('references existing locations from activities', () => {
     const locationIds = new Set(LOCATIONS.map((location) => location.id));
     for (const activity of ACTIVITIES) {

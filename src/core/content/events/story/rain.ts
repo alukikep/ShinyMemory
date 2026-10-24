@@ -5,8 +5,8 @@ const card: EventDef = {
   "title": "雨天",
   "when": [
     {
-      "kind": "weekAtLeast",
-      "week": 4
+      "kind": "dayAtLeast",
+      "day": 1
     }
   ],
   "once": true,

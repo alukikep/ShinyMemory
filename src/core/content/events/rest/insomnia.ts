@@ -8,6 +8,11 @@ const card: EventDef = {
       "kind": "statAtLeast",
       "stat": "stress",
       "value": 40
+    },
+    {
+      "kind": "timeWindow",
+      "fromMinute": 0,
+      "toMinute": 300
     }
   ],
   "once": false,

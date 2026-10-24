@@ -5,8 +5,8 @@ const card: EventDef = {
   "title": "深夜的练习室",
   "when": [
     {
-      "kind": "weekAtLeast",
-      "week": 2
+      "kind": "dayAtLeast",
+      "day": 1
     },
     {
       "kind": "statAtLeast",
@@ -16,6 +16,11 @@ const card: EventDef = {
     {
       "kind": "atLocation",
       "locationId": "practice_room"
+    },
+    {
+      "kind": "timeWindow",
+      "fromMinute": 1080,
+      "toMinute": 1380
     }
   ],
   "once": true,

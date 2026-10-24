@@ -5,6 +5,7 @@ const card: ActivityDef = {
   name: '环顾四周',
   description: '花一点时间看看这个地方。也许会发现什么。',
   kind: 'explore',
+  durationMinutes: 30,
   cost: { stamina: 5 },
   effects: [{ kind: 'stat', stat: 'stress', delta: -2 }],
   resultTexts: ['你环顾四周，没发现什么特别的。'],
@@ -20,6 +21,10 @@ const card: ActivityDef = {
     {
       when: [{ kind: 'atLocation', locationId: 'studio' }],
       text: '录音棚的隔音门半掩着，里面传来设备冷却的风声。',
+    },
+    {
+      when: [{ kind: 'atLocation', locationId: 'home' }],
+      text: '家里很安静，窗外偶尔有电车经过。你看见桌上摊着没写完的日程。',
     },
   ],
 };

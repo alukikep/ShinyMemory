@@ -9,6 +9,7 @@ const ACTIVITY_KINDS: ActivityKind[] = [
   'rest',
   'bond',
   'explore',
+  'sleep',
 ];
 
 function locationsInConditions(conditions: Condition[]): string[] {
@@ -73,14 +74,15 @@ describe('content integrity', () => {
     expect(new Set(endingIds).size).toBe(endingIds.length);
   });
 
-  it('has three unique locations and a starting location', () => {
+  it('has four unique locations and a starting location', () => {
     const ids = LOCATIONS.map((location) => location.id);
-    expect(ids).toHaveLength(3);
+    expect(ids).toHaveLength(4);
     expect(new Set(ids).size).toBe(ids.length);
     expect(CONTENT_INDEX.startingLocationId).toBe('office');
     expect(CONTENT_INDEX.locations.has('office')).toBe(true);
     expect(CONTENT_INDEX.locations.has('practice_room')).toBe(true);
     expect(CONTENT_INDEX.locations.has('studio')).toBe(true);
+    expect(CONTENT_INDEX.locations.has('home')).toBe(true);
   });
 
   it('references existing locations from activities', () => {
@@ -178,8 +180,8 @@ describe('content integrity', () => {
     }
   });
 
-  it('has 23 events and 3 endings', () => {
-    expect(EVENTS).toHaveLength(23);
+  it('has 24 events and 3 endings', () => {
+    expect(EVENTS).toHaveLength(24);
     expect(ENDINGS).toHaveLength(3);
   });
 
@@ -258,6 +260,11 @@ describe('content integrity', () => {
     expect(CONTENT_INDEX.eventsByLocation.get('studio')).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ id: 'evt.before_live' }),
+      ]),
+    );
+    expect(CONTENT_INDEX.eventsByLocation.get('home')).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: 'evt.home_note' }),
       ]),
     );
     expect(

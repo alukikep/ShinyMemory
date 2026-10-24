@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { MAX_WEEKS } from '../core/config';
+import { MAX_DAYS, MINUTES_PER_DAY, START_MINUTE } from '../core/config';
 import { handleAction, newGame } from '../core/sim';
 import type { GameState } from '../core/types';
 import { LocalStorageRepository } from '../save/localStorageRepository';
@@ -11,7 +11,7 @@ type GameStore = {
   act: (actionId: string) => void;
   restart: () => void;
   debugForceEvent: (eventId: string) => void;
-  debugJumpWeek: (week: number) => void;
+  debugJumpDay: (day: number) => void;
 };
 
 const repository: SaveRepository = new LocalStorageRepository();
@@ -52,14 +52,15 @@ export const useGameStore = create<GameStore>((set) => ({
       repository.save(createSaveEnvelope(next));
       return { state: next };
     }),
-  debugJumpWeek: (week) =>
+  debugJumpDay: (day) =>
     set((previous) => {
       const next = structuredClone(previous.state);
-      next.week = Math.max(1, Math.min(MAX_WEEKS, Math.round(week)));
-      next.slot = 0;
+      const safeDay = Math.max(1, Math.min(MAX_DAYS, Math.round(day)));
+      next.clock.absoluteMinutes = (safeDay - 1) * MINUTES_PER_DAY + START_MINUTE;
       next.phase = 'plan';
       next.pendingActivityId = undefined;
       next.pendingEventId = undefined;
+      next.pendingExam = undefined;
       repository.save(createSaveEnvelope(next));
       return { state: next };
     }),

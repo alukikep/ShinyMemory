@@ -10,8 +10,8 @@ export type LogTone = 'info' | 'good' | 'bad';
 
 export type LogEntry = {
   id: number;
-  week: number;
-  slot: number;
+  day: number;
+  minuteOfDay: number;
   text: string;
   tone: LogTone;
 };
@@ -26,8 +26,7 @@ export type Phase =
   | 'ending';
 
 export type GameState = {
-  week: number;
-  slot: 0 | 1;
+  clock: { absoluteMinutes: number };
   locationId: string;
   stats: Record<StatKey, number>;
   money: number;
@@ -40,6 +39,7 @@ export type GameState = {
   rng: { seed: number; counter: number };
   pendingActivityId?: string;
   pendingEventId?: string;
+  pendingExam?: 'mid' | 'final';
   lastResult?: string;
   examScore?: number;
   examPassed?: boolean;
@@ -56,7 +56,9 @@ export type Effect =
   | { kind: 'log'; text: string; tone?: LogTone };
 
 export type Condition =
+  | { kind: 'dayAtLeast'; day: number }
   | { kind: 'weekAtLeast'; week: number }
+  | { kind: 'timeWindow'; fromMinute: number; toMinute: number }
   | { kind: 'statAtLeast'; stat: StatKey; value: number }
   | { kind: 'statAtMost'; stat: StatKey; value: number }
   | { kind: 'moneyAtMost'; value: number }
@@ -73,7 +75,13 @@ export type Cost = {
   stamina?: number;
 };
 
-export type ActivityKind = 'training' | 'work' | 'rest' | 'bond' | 'explore';
+export type ActivityKind =
+  | 'training'
+  | 'work'
+  | 'rest'
+  | 'bond'
+  | 'explore'
+  | 'sleep';
 
 export type ActivityDef = {
   id: string;
@@ -81,6 +89,7 @@ export type ActivityDef = {
   description: string;
   kind: ActivityKind;
   locations?: string[];
+  durationMinutes: number;
   cost: Cost;
   effects: Effect[];
   requires?: Condition[];
@@ -171,7 +180,8 @@ export type ActionTone =
   | 'work'
   | 'rest'
   | 'bond'
-  | 'explore';
+  | 'explore'
+  | 'sleep';
 
 export type ActionView = {
   id: string;

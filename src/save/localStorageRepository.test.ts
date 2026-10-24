@@ -14,14 +14,18 @@ describe('LocalStorageRepository', () => {
 
     const loaded = repo.load();
     expect(loaded).not.toBeNull();
-    expect(loaded?.schemaVersion).toBe(2);
+    expect(loaded?.schemaVersion).toBe(3);
     expect(loaded?.state.stats.vocal).toBe(20);
   });
 
-  it('migrates a v1 save by adding a location', () => {
+  it('migrates a v1 save to the time system', () => {
     const storage = new MemoryStorage();
     const legacyState = newGame(1) as unknown as Record<string, unknown>;
     delete legacyState.locationId;
+    delete legacyState.clock;
+    legacyState.week = 3;
+    legacyState.slot = 1;
+    legacyState.log = [];
     storage.setItem(
       SAVE_KEY,
       JSON.stringify({
@@ -33,8 +37,9 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(2);
+    expect(loaded?.schemaVersion).toBe(3);
     expect(loaded?.state.locationId).toBe('office');
+    expect(loaded?.state.clock.absoluteMinutes).toBe(8 * 60);
   });
 
   it('returns null for invalid JSON', () => {

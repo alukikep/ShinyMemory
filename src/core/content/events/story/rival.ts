@@ -3,7 +3,7 @@ import type { EventDef } from '../../../types';
 const card: EventDef = {
   id: 'evt.rival',
   title: '竞争对手',
-  when: [{ kind: 'weekAtLeast', week: 7 }],
+  when: [{ kind: 'dayAtLeast', day: 2 }],
   once: true,
   text: '另一个事务所的新人上了同一档节目。她在后台看了很久对方的彩排。',
   choices: [

@@ -479,6 +479,10 @@ button {
   --tone: #4f8a8b;
 }
 
+.tone-sleep {
+  --tone: #7d6aa8;
+}
+
 .tone-secondary {
   --tone: #b9a99b;
 }

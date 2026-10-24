@@ -6,6 +6,7 @@ const card: ActivityDef = {
   "description": "镜头、眼神、把一句话说进别人心里。",
   "kind": "training",
   "locations": ["practice_room"],
+  "durationMinutes": 120,
   "cost": {
     "money": 500,
     "stamina": 12

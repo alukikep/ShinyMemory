@@ -5,8 +5,8 @@ const card: EventDef = {
   "title": "评论区",
   "when": [
     {
-      "kind": "weekAtLeast",
-      "week": 6
+      "kind": "dayAtLeast",
+      "day": 2
     },
     {
       "kind": "statAtLeast",

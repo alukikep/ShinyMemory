@@ -1,7 +1,7 @@
-import { TOTAL_ACTIONS } from './config';
+import { DAY_FLAVOR, FINAL_EXAM, MID_EXAM } from './content/weeks';
 import { LOCATIONS } from './content';
 import { CONTENT_INDEX } from './contentIndex';
-import { FINAL_EXAM, MID_EXAM, WEEK_FLAVOR } from './content/weeks';
+import { formatClock, formatDuration, getDay } from './time';
 import {
   activityAvailability,
   checkCondition,
@@ -19,10 +19,8 @@ import type {
   TextBlock,
 } from './types';
 
-const SLOT_LABEL = ['平日', '周末'] as const;
-
 const PHASE_LABEL = {
-  plan: '本周安排',
+  plan: '当前安排',
   activityResult: '行动结果',
   event: '事件',
   eventResult: '事件结果',
@@ -32,33 +30,39 @@ const PHASE_LABEL = {
 } as const;
 
 function sceneId(state: GameState): string {
-  return `${state.phase}:${state.week}:${state.slot}:${state.actionsTaken}`;
+  return `${state.phase}:${state.clock.absoluteMinutes}:${state.actionsTaken}`;
 }
 
 function buildPlan(state: GameState): SceneView {
   const location = CONTENT_INDEX.locations.get(state.locationId);
+  const day = getDay(state.clock.absoluteMinutes);
   const blocks: TextBlock[] = [];
   if (location?.description) {
     blocks.push({ kind: 'p', text: location.description });
   }
   blocks.push({
     kind: 'system',
-    text: WEEK_FLAVOR[state.week - 1] ?? '新的一周。',
+    text: DAY_FLAVOR[day - 1] ?? '新的一天。',
   });
   if (state.flags.forced_rest) {
     blocks.push({
       kind: 'system',
-      text: '她需要休息。这一次只能选择「休息」。',
+      text: '她需要休息。只能选择「休息」或「睡觉」。',
     });
   }
 
   const activities = CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? [];
   const actions: ActionView[] = activities.map((activity) => {
     const availability = activityAvailability(state, activity);
+    const duration =
+      activity.kind === 'sleep'
+        ? '睡到早上 8 点'
+        : formatDuration(activity.durationMinutes);
+    const effects = effectSummary(activity.effects, activity.cost);
     return {
       id: activity.id,
       label: activity.name,
-      hint: effectSummary(activity.effects, activity.cost),
+      hint: effects ? `${duration} · ${effects}` : duration,
       disabled: !availability.ok,
       disabledReason: availability.reason,
       tone: activity.kind,
@@ -69,8 +73,8 @@ function buildPlan(state: GameState): SceneView {
     id: sceneId(state),
     phase: state.phase,
     phaseLabel: PHASE_LABEL[state.phase],
-    title: `第 ${state.week} 周 · ${SLOT_LABEL[state.slot]}`,
-    subtitle: `第 ${state.actionsTaken + 1} 次行动 / ${TOTAL_ACTIONS}`,
+    title: `第 ${day} 天 · ${formatClock(state.clock.absoluteMinutes)}`,
+    subtitle: `已行动 ${state.actionsTaken} 次`,
     locationName: location?.name,
     locations: LOCATIONS.map((item) => ({
       id: item.id,
@@ -90,10 +94,23 @@ function buildActivityResult(state: GameState): SceneView {
   const blocks: TextBlock[] = [];
   if (state.lastResult) blocks.push({ kind: 'p', text: state.lastResult });
   if (activity) {
-    blocks.push({
-      kind: 'system',
-      text: effectSummary(activity.effects, activity.cost),
-    });
+    if (activity.kind === 'sleep') {
+      blocks.push({
+        kind: 'system',
+        text: `现在是 ${formatClock(state.clock.absoluteMinutes)}。`,
+      });
+    } else {
+      blocks.push({
+        kind: 'system',
+        text: `${formatDuration(activity.durationMinutes)}后，现在是 ${formatClock(
+          state.clock.absoluteMinutes,
+        )}。`,
+      });
+    }
+    const effects = effectSummary(activity.effects, activity.cost);
+    if (effects) {
+      blocks.push({ kind: 'system', text: effects });
+    }
   }
   if (state.flags.forced_rest) {
     blocks.push({

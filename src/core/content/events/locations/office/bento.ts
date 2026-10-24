@@ -5,8 +5,8 @@ const card: EventDef = {
   "title": "便当",
   "when": [
     {
-      "kind": "weekAtLeast",
-      "week": 3
+      "kind": "dayAtLeast",
+      "day": 1
     },
     {
       "kind": "statAtLeast",

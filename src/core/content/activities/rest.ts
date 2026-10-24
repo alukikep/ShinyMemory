@@ -6,6 +6,7 @@ const card: ActivityDef = {
   "description": "什么都不做，也是一种安排。",
   "kind": "rest",
   "locations": ["office"],
+  "durationMinutes": 120,
   "cost": {},
   "effects": [
     {

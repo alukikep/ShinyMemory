@@ -6,6 +6,7 @@ const card: ActivityDef = {
   "description": "有钱，有曝光，也有半夜回家的电车。",
   "kind": "work",
   "locations": ["studio"],
+  "durationMinutes": 240,
   "cost": {
     "stamina": 20
   },

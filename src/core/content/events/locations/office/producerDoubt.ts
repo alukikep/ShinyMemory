@@ -4,7 +4,7 @@ const card: EventDef = {
   id: 'evt.producer_doubt',
   title: '制作人的怀疑',
   when: [
-    { kind: 'weekAtLeast', week: 8 },
+    { kind: 'dayAtLeast', day: 2 },
     { kind: 'atLocation', locationId: 'office' },
   ],
   once: true,

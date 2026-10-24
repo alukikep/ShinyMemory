@@ -81,6 +81,28 @@ describe('event trigger v2', () => {
     );
   });
 
+  it('respects day and time-window conditions', () => {
+    const state = newGame(1);
+    const event = makeEvent({
+      id: 'evt.night',
+      when: [
+        { kind: 'dayAtLeast', day: 2 },
+        { kind: 'timeWindow', fromMinute: 18 * 60, toMinute: 23 * 60 },
+      ],
+      chance: 1,
+    });
+
+    expect(checkEventCandidates(state, [event], {}).event).toBeNull();
+
+    const dayTwoEvening = {
+      ...state,
+      clock: { absoluteMinutes: 24 * 60 + 18 * 60 },
+    };
+    expect(checkEventCandidates(dayTwoEvening, [event], {}).event?.id).toBe(
+      'evt.night',
+    );
+  });
+
   it('does not mark once when chance fails', () => {
     const state = newGame(1);
     const event = makeEvent({ id: 'evt.once', chance: 0, once: true });

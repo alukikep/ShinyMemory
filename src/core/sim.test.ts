@@ -1,18 +1,26 @@
 import { describe, expect, it } from 'vitest';
 import {
+  MID_EXAM_DAY,
+  MID_EXAM_MINUTE,
+  MINUTES_PER_DAY,
+  START_MINUTE,
+} from './config';
+import {
   activityAvailability,
+  advanceTime,
   applyActivity,
   getActivity,
   handleAction,
   moveTo,
   newGame,
 } from './sim';
+import { formatClock, getDay } from './time';
 
 describe('raising sim core', () => {
-  it('starts at week 1 with the expected numbers', () => {
+  it('starts on day 1 at 08:00 with the expected numbers', () => {
     const state = newGame(1);
-    expect(state.week).toBe(1);
-    expect(state.slot).toBe(0);
+    expect(getDay(state.clock.absoluteMinutes)).toBe(1);
+    expect(formatClock(state.clock.absoluteMinutes)).toBe('08:00');
     expect(state.locationId).toBe('office');
     expect(state.phase).toBe('plan');
     expect(state.stats.vocal).toBe(20);
@@ -20,7 +28,7 @@ describe('raising sim core', () => {
     expect(state.actionsTaken).toBe(0);
   });
 
-  it('applies activity costs and effects', () => {
+  it('applies activity costs, effects and duration', () => {
     const state = moveTo(newGame(1), 'practice_room');
     const next = applyActivity(state, 'vocal');
     expect(next.stats.vocal).toBe(26);
@@ -29,6 +37,7 @@ describe('raising sim core', () => {
     expect(next.stats.stress).toBe(8);
     expect(next.phase).toBe('activityResult');
     expect(next.actionsTaken).toBe(1);
+    expect(formatClock(next.clock.absoluteMinutes)).toBe('10:15');
   });
 
   it('disables a lesson when money is not enough', () => {
@@ -49,15 +58,16 @@ describe('raising sim core', () => {
     expect(availability.reason).toBe('不在此地点');
   });
 
-  it('moves for free and keeps the action count', () => {
+  it('takes 15 minutes to move and keeps the action count', () => {
     const state = newGame(1);
     const next = moveTo(state, 'practice_room');
     expect(next.locationId).toBe('practice_room');
     expect(next.actionsTaken).toBe(state.actionsTaken);
+    expect(next.clock.absoluteMinutes - state.clock.absoluteMinutes).toBe(15);
 
     const back = moveTo(next, 'office');
     expect(back.locationId).toBe('office');
-    expect(back.actionsTaken).toBe(state.actionsTaken);
+    expect(back.clock.absoluteMinutes - next.clock.absoluteMinutes).toBe(15);
   });
 
   it('looks around and triggers each location event', () => {
@@ -78,39 +88,43 @@ describe('raising sim core', () => {
     }
   });
 
-  it('reaches the mid exam after 10 actions', () => {
-    let state = newGame(1);
-    let guard = 0;
-    while (state.phase !== 'examMid' && guard < 60) {
-      guard += 1;
-      if (state.phase === 'plan') {
-        state = handleAction(state, 'rest');
-      } else if (state.phase === 'event') {
-        state = handleAction(state, 'choice:0');
-      } else {
-        state = handleAction(state, 'continue');
-      }
-    }
-    expect(state.phase).toBe('examMid');
-    expect(state.week).toBe(6);
-    expect(state.actionsTaken).toBe(10);
+  it('sleeps until 08:00 and restores stamina by hours slept', () => {
+    let state = moveTo(newGame(1), 'home');
+    state = advanceTime(state, 14 * 60);
+    state.stats.stamina = 20;
+    state.stats.stress = 50;
+
+    const slept = applyActivity(state, 'sleep');
+    expect(formatClock(slept.clock.absoluteMinutes)).toBe('08:00');
+    expect(getDay(slept.clock.absoluteMinutes)).toBe(2);
+    expect(slept.stats.stamina).toBe(100);
+    expect(slept.stats.stress).toBeLessThan(50);
+    expect(slept.phase).toBe('activityResult');
   });
 
-  it('can finish a full 24-action run and reach an ending', () => {
-    let state = newGame(1);
+  it('marks the mid exam pending when time crosses day 2 20:00', () => {
+    const state = newGame(1);
+    const midAt = (MID_EXAM_DAY - 1) * MINUTES_PER_DAY + MID_EXAM_MINUTE;
+    const advanced = advanceTime(state, midAt - START_MINUTE + 1);
+    expect(advanced.pendingExam).toBe('mid');
+  });
+
+  it('can finish a full time run and reach an ending', () => {
+    let state = moveTo(newGame(1), 'home');
     let guard = 0;
-    while (state.phase !== 'ending' && guard < 80) {
+
+    while (state.phase !== 'ending' && guard < 60) {
       guard += 1;
       if (state.phase === 'plan') {
-        state = handleAction(state, 'rest');
+        state = handleAction(state, 'sleep');
       } else if (state.phase === 'event') {
         state = handleAction(state, 'choice:0');
       } else {
         state = handleAction(state, 'continue');
       }
     }
+
     expect(state.phase).toBe('ending');
     expect(state.endingId).toBeTruthy();
-    expect(state.actionsTaken).toBe(24);
   });
 });

@@ -1,9 +1,19 @@
-import { MAX_WEEKS, MID_EXAM_WEEK } from './config';
+import {
+  FINAL_EXAM_DAY,
+  FINAL_EXAM_MINUTE,
+  MID_EXAM_DAY,
+  MID_EXAM_MINUTE,
+  MINUTES_PER_DAY,
+  MOVE_MINUTES,
+  SLEEP_UNTIL_MINUTE,
+  START_MINUTE,
+} from './config';
 import { EVENTS, ENDINGS } from './content';
 import { CONTENT_INDEX } from './contentIndex';
 import { MID_EXAM } from './content/weeks';
 import { STAT_LABELS, STAT_MAX } from './labels';
 import { Rng } from './rng';
+import { getDay, getMinuteOfDay } from './time';
 import type {
   ActivityDef,
   Condition,
@@ -32,8 +42,8 @@ function clampState(state: GameState): void {
 function addLog(state: GameState, text: string, tone: LogTone = 'info'): void {
   state.log.unshift({
     id: state.nextLogId,
-    week: state.week,
-    slot: state.slot,
+    day: getDay(state.clock.absoluteMinutes),
+    minuteOfDay: getMinuteOfDay(state.clock.absoluteMinutes),
     text,
     tone,
   });
@@ -43,8 +53,7 @@ function addLog(state: GameState, text: string, tone: LogTone = 'info'): void {
 
 export function newGame(seed: number = Date.now()): GameState {
   const state: GameState = {
-    week: 1,
-    slot: 0,
+    clock: { absoluteMinutes: START_MINUTE },
     locationId: CONTENT_INDEX.startingLocationId,
     stats: {
       vocal: 20,
@@ -65,7 +74,7 @@ export function newGame(seed: number = Date.now()): GameState {
     midExamDone: false,
     finalExamDone: false,
   };
-  addLog(state, '第 1 周。新的十二周开始了。', 'info');
+  addLog(state, '第 1 天。新的三天开始了。', 'info');
   return state;
 }
 
@@ -82,9 +91,21 @@ export function getEnding(id: string): EndingDef | undefined {
 }
 
 export function checkCondition(condition: Condition, state: GameState): boolean {
+  const day = getDay(state.clock.absoluteMinutes);
+  const minuteOfDay = getMinuteOfDay(state.clock.absoluteMinutes);
+
   switch (condition.kind) {
+    case 'dayAtLeast':
+      return day >= condition.day;
     case 'weekAtLeast':
-      return state.week >= condition.week;
+      return Math.floor((day - 1) / 7) + 1 >= condition.week;
+    case 'timeWindow': {
+      const { fromMinute, toMinute } = condition;
+      if (fromMinute === toMinute) return true;
+      return fromMinute < toMinute
+        ? minuteOfDay >= fromMinute && minuteOfDay < toMinute
+        : minuteOfDay >= fromMinute || minuteOfDay < toMinute;
+    }
     case 'statAtLeast':
       return state.stats[condition.stat] >= condition.value;
     case 'statAtMost':
@@ -181,7 +202,11 @@ export function activityAvailability(
   state: GameState,
   activity: ActivityDef,
 ): { ok: boolean; reason?: string } {
-  if (state.flags.forced_rest && activity.kind !== 'rest') {
+  if (
+    state.flags.forced_rest &&
+    activity.kind !== 'rest' &&
+    activity.kind !== 'sleep'
+  ) {
     return { ok: false, reason: '她需要休息' };
   }
   if (activity.locations && !activity.locations.includes(state.locationId)) {
@@ -209,6 +234,31 @@ export function moveTo(state: GameState, locationId: string): GameState {
   next.pendingActivityId = undefined;
   next.pendingEventId = undefined;
   addLog(next, `移动到了${location.name}。`, 'info');
+
+  const advanced = advanceTime(next, MOVE_MINUTES);
+  if (advanced.pendingExam) return beginPendingExam(advanced);
+  advanced.phase = 'plan';
+  return advanced;
+}
+
+const MID_EXAM_AT =
+  (MID_EXAM_DAY - 1) * MINUTES_PER_DAY + MID_EXAM_MINUTE;
+const FINAL_EXAM_AT =
+  (FINAL_EXAM_DAY - 1) * MINUTES_PER_DAY + FINAL_EXAM_MINUTE;
+
+export function advanceTime(state: GameState, minutes: number): GameState {
+  const next = clone(state);
+  const from = next.clock.absoluteMinutes;
+  const to = from + Math.max(0, minutes);
+  next.clock.absoluteMinutes = to;
+
+  if (!next.midExamDone && from <= MID_EXAM_AT && to >= MID_EXAM_AT) {
+    next.pendingExam = 'mid';
+  }
+  if (!next.finalExamDone && from <= FINAL_EXAM_AT && to >= FINAL_EXAM_AT) {
+    next.pendingExam = 'final';
+  }
+
   return next;
 }
 
@@ -232,6 +282,38 @@ export function applyActivity(state: GameState, activityId: string): GameState {
   const rng = new Rng(next.rng.seed, next.rng.counter);
   const stressed = next.stats.stress >= 70;
 
+  if (activity.kind === 'sleep') {
+    const current = next.clock.absoluteMinutes;
+    const dayStart = Math.floor(current / MINUTES_PER_DAY) * MINUTES_PER_DAY;
+    let target = dayStart + SLEEP_UNTIL_MINUTE;
+    if (target <= current) target += MINUTES_PER_DAY;
+
+    const minutes = target - current;
+    const hours = minutes / 60;
+    const staminaGain = Math.min(
+      STAT_MAX.stamina - next.stats.stamina,
+      Math.round(hours * 10),
+    );
+
+    next.stats.stamina += staminaGain;
+    next.stats.stress = Math.max(
+      0,
+      next.stats.stress - Math.round(hours * 2),
+    );
+    next.flags.forced_rest = false;
+    next.actionsTaken += 1;
+    next.pendingActivityId = activity.id;
+    next.phase = 'activityResult';
+    next.lastResult =
+      staminaGain > 0
+        ? `你睡到早上 8 点，恢复了 ${staminaGain} 点体力。`
+        : '你睡到早上 8 点。体力已经是满的。';
+
+    const slept = advanceTime(next, minutes);
+    addLog(slept, `${activity.name}：${slept.lastResult}`, 'good');
+    return slept;
+  }
+
   next.money -= activity.cost.money ?? 0;
   next.stats.stamina -= activity.cost.stamina ?? 0;
   applyEffects(next, activity.effects, {
@@ -243,8 +325,10 @@ export function applyActivity(state: GameState, activityId: string): GameState {
   next.actionsTaken += 1;
   next.pendingActivityId = activity.id;
   next.phase = 'activityResult';
-  next.lastResult = pickActivityResult(next, activity, rng);
-  next.rng.counter = rng.counter;
+
+  const advanced = advanceTime(next, activity.durationMinutes);
+  advanced.lastResult = pickActivityResult(advanced, activity, rng);
+  advanced.rng.counter = rng.counter;
 
   const tone: LogTone =
     activity.kind === 'rest' ||
@@ -252,9 +336,9 @@ export function applyActivity(state: GameState, activityId: string): GameState {
     activity.kind === 'explore'
       ? 'good'
       : 'info';
-  addLog(next, `${activity.name}：${next.lastResult}`, tone);
+  addLog(advanced, `${activity.name}：${advanced.lastResult}`, tone);
 
-  return next;
+  return advanced;
 }
 
 function matchesAfter(
@@ -452,6 +536,7 @@ export function finalScore(state: GameState): ScoreBreakdown {
 
 function resolveMidExam(state: GameState): GameState {
   const next = clone(state);
+  next.pendingExam = undefined;
   const score = midScore(next);
   next.examScore = score.total;
   next.examParts = score.parts;
@@ -475,6 +560,7 @@ function resolveMidExam(state: GameState): GameState {
 
 function resolveFinalExam(state: GameState): GameState {
   const next = clone(state);
+  next.pendingExam = undefined;
   const score = finalScore(next);
   next.examScore = score.total;
   next.examParts = score.parts;
@@ -490,39 +576,13 @@ function resolveFinalExam(state: GameState): GameState {
   return next;
 }
 
-function addWeeklyReport(state: GameState): void {
-  const { vocal, dance, expression, stress } = state.stats;
-  addLog(
-    state,
-    `第 ${state.week} 周：歌唱 ${Math.round(vocal)} / 舞蹈 ${Math.round(dance)} / 表现 ${Math.round(expression)}；压力 ${Math.round(stress)}。`,
-    'info',
-  );
-}
-
-export function advanceSlot(state: GameState): GameState {
+function beginPendingExam(state: GameState): GameState {
+  const pending = state.pendingExam;
   const next = clone(state);
-  next.pendingActivityId = undefined;
-  next.pendingEventId = undefined;
+  next.pendingExam = undefined;
 
-  if (next.slot === 0) {
-    next.slot = 1;
-    next.phase = 'plan';
-    return next;
-  }
-
-  if (next.week === MAX_WEEKS) {
-    return resolveFinalExam(next);
-  }
-
-  next.slot = 0;
-  next.week += 1;
-
-  if (next.week === MID_EXAM_WEEK && !next.midExamDone) {
-    return resolveMidExam(next);
-  }
-
-  next.phase = 'plan';
-  addWeeklyReport(next);
+  if (pending === 'mid') return resolveMidExam(next);
+  if (pending === 'final') return resolveFinalExam(next);
   return next;
 }
 
@@ -532,24 +592,33 @@ function continueFromActivity(state: GameState): GameState {
   const next = clone(state);
   next.pendingActivityId = undefined;
 
+  if (next.pendingExam) return beginPendingExam(next);
+
   const result = checkForEvent(next, {
     lastActivityId: activityId,
     lastActivityKind: activityKind,
     locationId: next.locationId,
   });
   if (result.event) return result.state;
-  return advanceSlot(result.state);
+
+  next.phase = 'plan';
+  return next;
 }
 
 function continueFromEvent(state: GameState): GameState {
   const next = clone(state);
   next.pendingEventId = undefined;
   next.pendingActivityId = undefined;
-  return advanceSlot(next);
+
+  if (next.pendingExam) return beginPendingExam(next);
+
+  next.phase = 'plan';
+  return next;
 }
 
 function continueFromExam(state: GameState): GameState {
   const next = clone(state);
+  next.pendingExam = undefined;
   if (next.phase === 'examMid') {
     next.phase = 'plan';
   } else if (next.phase === 'examFinal') {

@@ -1,3 +1,4 @@
+import { formatClock } from '../../core/time';
 import type { GameState } from '../../core/types';
 
 export function LogPanel({ state }: { state: GameState }) {
@@ -17,7 +18,7 @@ export function LogPanel({ state }: { state: GameState }) {
           {entries.map((entry) => (
             <li className={`log-entry log-${entry.tone}`} key={entry.id}>
               <span className="log-meta">
-                第 {entry.week} 周 · {entry.slot === 0 ? '平日' : '周末'}
+                第 {entry.day} 天 · {formatClock(entry.minuteOfDay)}
               </span>
               <span className="log-text">{entry.text}</span>
             </li>

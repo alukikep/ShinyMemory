@@ -3,7 +3,7 @@ import type { EventDef } from '../../../types';
 const card: EventDef = {
   id: 'evt.birthday',
   title: '生日',
-  when: [{ kind: 'weekAtLeast', week: 7 }],
+  when: [{ kind: 'dayAtLeast', day: 2 }],
   once: true,
   text: '日程表上写着今天是她的生日。她本人一次也没提。',
   choices: [

@@ -6,6 +6,7 @@ const card: ActivityDef = {
   "description": "气息、音准、把一句歌唱完整。",
   "kind": "training",
   "locations": ["practice_room"],
+  "durationMinutes": 120,
   "cost": {
     "money": 500,
     "stamina": 15

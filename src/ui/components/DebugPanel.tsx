@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { MAX_WEEKS } from '../../core/config';
+import { MAX_DAYS } from '../../core/config';
 import { ACTIVITIES, LOCATIONS } from '../../core/content';
 import { getActivity, getEvent, getTriggerReport } from '../../core/sim';
+import { formatClock, getDay } from '../../core/time';
 import type { GameState, TriggerReport } from '../../core/types';
 
 type DebugPanelProps = {
   state: GameState;
   onForceEvent: (eventId: string) => void;
-  onJumpWeek: (week: number) => void;
+  onJumpDay: (day: number) => void;
 };
 
 const REASON_LABEL: Record<NonNullable<TriggerReport['reason']>, string> = {
@@ -20,10 +21,10 @@ const REASON_LABEL: Record<NonNullable<TriggerReport['reason']>, string> = {
 export function DebugPanel({
   state,
   onForceEvent,
-  onJumpWeek,
+  onJumpDay,
 }: DebugPanelProps) {
   const [activityId, setActivityId] = useState('');
-  const [weekInput, setWeekInput] = useState(String(state.week));
+  const [dayInput, setDayInput] = useState(String(getDay(state.clock.absoluteMinutes)));
 
   const activity = activityId ? getActivity(activityId) : undefined;
   const context = activityId
@@ -43,8 +44,9 @@ export function DebugPanel({
       </div>
 
       <div className="debug-meta">
-        第 {state.week} 周 · {state.slot === 0 ? '平日' : '周末'} ·{' '}
-        {state.phase} · 地点 {locationName} · 行动 {state.actionsTaken} · ¥
+        第 {getDay(state.clock.absoluteMinutes)} 天 ·{' '}
+        {formatClock(state.clock.absoluteMinutes)} · {state.phase} · 地点{' '}
+        {locationName} · 行动 {state.actionsTaken} · ¥
         {state.money.toLocaleString('zh-CN')} · 冷却记录{' '}
         {Object.keys(state.eventCooldowns).length}
       </div>
@@ -70,17 +72,17 @@ export function DebugPanel({
           <input
             type="number"
             min={1}
-            max={MAX_WEEKS}
-            value={weekInput}
-            onChange={(event) => setWeekInput(event.target.value)}
+            max={MAX_DAYS}
+            value={dayInput}
+            onChange={(event) => setDayInput(event.target.value)}
           />
-          周
+          天
           <button
             type="button"
             className="ghost-button"
             onClick={() => {
-              const week = Number(weekInput);
-              if (Number.isFinite(week)) onJumpWeek(week);
+              const day = Number(dayInput);
+              if (Number.isFinite(day)) onJumpDay(day);
             }}
           >
             跳转

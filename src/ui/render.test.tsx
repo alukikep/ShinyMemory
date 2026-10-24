@@ -5,10 +5,11 @@ import { newGame } from '../core/sim';
 import { DebugPanel } from './components/DebugPanel';
 
 describe('app shell', () => {
-  it('renders the first week without crashing', () => {
+  it('renders the first day without crashing', () => {
     const html = renderToString(<App />);
     expect(html).toContain('ShinyMemory');
-    expect(html).toContain('第 1 周');
+    expect(html).toContain('第 1 天');
+    expect(html).toContain('08:00');
     expect(html).toContain('事务所');
     expect(html).toContain('练习室');
     expect(html).toContain('休息');
@@ -21,7 +22,7 @@ describe('app shell', () => {
       <DebugPanel
         state={newGame(1)}
         onForceEvent={() => {}}
-        onJumpWeek={() => {}}
+        onJumpDay={() => {}}
       />,
     );
     expect(html).toContain('调试');

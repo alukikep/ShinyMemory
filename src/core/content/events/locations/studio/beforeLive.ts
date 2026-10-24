@@ -5,12 +5,17 @@ const card: EventDef = {
   "title": "Live 前夜",
   "when": [
     {
-      "kind": "weekAtLeast",
-      "week": 11
+      "kind": "dayAtLeast",
+      "day": 3
     },
     {
       "kind": "atLocation",
       "locationId": "studio"
+    },
+    {
+      "kind": "timeWindow",
+      "fromMinute": 1080,
+      "toMinute": 1380
     }
   ],
   "once": true,

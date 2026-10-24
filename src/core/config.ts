@@ -9,3 +9,4 @@ export const FINAL_EXAM_MINUTE = 20 * 60;
 
 export const MOVE_MINUTES = 15;
 export const SLEEP_UNTIL_MINUTE = 8 * 60;
+export const ACTOR_AFFINITY_MAX = 20;

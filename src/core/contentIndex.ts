@@ -1,7 +1,9 @@
-import { ACTIVITIES, ENDINGS, EVENTS, LOCATIONS } from './content';
+import { ACTORS, ACTIVITIES, ENDINGS, EVENTS, LOCATIONS } from './content';
 import type {
   ActivityDef,
   ActivityKind,
+  ActorDef,
+  ActorState,
   EndingDef,
   EventDef,
   LocationDef,
@@ -9,6 +11,7 @@ import type {
 
 export type ContentIndex = {
   activities: Map<string, ActivityDef>;
+  actors: Map<string, ActorDef>;
   events: Map<string, EventDef>;
   endings: Map<string, EndingDef>;
   locations: Map<string, LocationDef>;
@@ -22,6 +25,7 @@ export type ContentIndex = {
 
 function buildIndex(): ContentIndex {
   const activities = new Map(ACTIVITIES.map((activity) => [activity.id, activity]));
+  const actors = new Map(ACTORS.map((actor) => [actor.id, actor]));
   const events = new Map(EVENTS.map((event) => [event.id, event]));
   const endings = new Map(ENDINGS.map((ending) => [ending.id, ending]));
   const locations = new Map(LOCATIONS.map((location) => [location.id, location]));
@@ -82,6 +86,7 @@ function buildIndex(): ContentIndex {
 
   return {
     activities,
+    actors,
     events,
     endings,
     locations,
@@ -92,6 +97,20 @@ function buildIndex(): ContentIndex {
     globalEvents,
     startingLocationId,
   };
+}
+
+export function createInitialActorStates(): Record<string, ActorState> {
+  return Object.fromEntries(
+    ACTORS.map((actor) => [
+      actor.id,
+      {
+        id: actor.id,
+        affinity: 0,
+        flags: {},
+        topicCooldowns: {},
+      } satisfies ActorState,
+    ]),
+  );
 }
 
 export const CONTENT_INDEX: ContentIndex = buildIndex();

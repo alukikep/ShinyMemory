@@ -14,8 +14,9 @@ describe('LocalStorageRepository', () => {
 
     const loaded = repo.load();
     expect(loaded).not.toBeNull();
-    expect(loaded?.schemaVersion).toBe(3);
+    expect(loaded?.schemaVersion).toBe(4);
     expect(loaded?.state.stats.vocal).toBe(20);
+    expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
   });
 
   it('migrates a v1 save to the time system', () => {
@@ -37,9 +38,29 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(3);
+    expect(loaded?.schemaVersion).toBe(4);
     expect(loaded?.state.locationId).toBe('office');
     expect(loaded?.state.clock.absoluteMinutes).toBe(8 * 60);
+    expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
+  });
+
+  it('migrates a v3 save by adding actors', () => {
+    const storage = new MemoryStorage();
+    const state = newGame(1) as unknown as Record<string, unknown>;
+    delete state.actors;
+    storage.setItem(
+      SAVE_KEY,
+      JSON.stringify({
+        schemaVersion: 3,
+        gameVersion: '0.4.0',
+        createdAt: '2026-10-24T00:00:00.000Z',
+        state,
+      }),
+    );
+
+    const loaded = new LocalStorageRepository(storage).load();
+    expect(loaded?.schemaVersion).toBe(4);
+    expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
   });
 
   it('returns null for invalid JSON', () => {

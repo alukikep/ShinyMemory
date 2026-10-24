@@ -12,10 +12,14 @@ import {
   applyActivity,
   applyEventChoice,
   getActivity,
+  getActor,
   handleAction,
   isLocationOpen,
   moveTo,
   newGame,
+  presentActors,
+  talkTo,
+  topicAvailability,
 } from './sim';
 import { formatClock, getDay } from './time';
 
@@ -202,6 +206,63 @@ describe('raising sim core', () => {
     const ten = advanceTime(morning, 2 * 60);
     expect(isLocationOpen(ten, 'studio')).toBe(true);
     expect(moveTo(ten, 'studio').locationId).toBe('studio');
+  });
+
+  it('shows Hazuki at the office from 09:00 to 18:00', () => {
+    const morning = newGame(1);
+    expect(presentActors(morning).map((actor) => actor.id)).not.toContain(
+      'hazuki',
+    );
+
+    const nine = advanceTime(morning, 60);
+    expect(presentActors(nine).map((actor) => actor.id)).toContain('hazuki');
+
+    const evening = advanceTime(morning, 10 * 60);
+    expect(presentActors(evening).map((actor) => actor.id)).not.toContain(
+      'hazuki',
+    );
+  });
+
+  it('talks to Hazuki and applies affinity once', () => {
+    const actor = getActor('hazuki')!;
+    const greeting = actor.topics.find((topic) => topic.id === 'greeting')!;
+    let state = advanceTime(newGame(1), 60);
+
+    state = handleAction(state, 'talk:hazuki:greeting');
+    expect(state.phase).toBe('npcResult');
+    expect(state.actors.hazuki?.affinity).toBe(1);
+    expect(state.actors.hazuki?.flags['seen:greeting']).toBe(true);
+    expect(topicAvailability(state, actor, greeting).ok).toBe(false);
+
+    state = handleAction(state, 'continue');
+    expect(state.phase).toBe('plan');
+  });
+
+  it('applies coffee effects and cooldown', () => {
+    const actor = getActor('hazuki')!;
+    const coffee = actor.topics.find((topic) => topic.id === 'coffee')!;
+    let state = advanceTime(newGame(1), 60);
+    state.stats.stamina = 50;
+    state.stats.stress = 50;
+
+    state = talkTo(state, 'hazuki', 'coffee');
+    expect(state.phase).toBe('npcResult');
+    expect(state.actors.hazuki?.affinity).toBe(1);
+    expect(state.stats.stamina).toBe(60);
+    expect(state.stats.stress).toBe(45);
+
+    state = handleAction(state, 'continue');
+    expect(topicAvailability(state, actor, coffee).ok).toBe(false);
+    expect(
+      topicAvailability(advanceTime(state, 12 * 60), actor, coffee).ok,
+    ).toBe(true);
+  });
+
+  it('does not talk to Hazuki outside the office', () => {
+    let state = advanceTime(newGame(1), 60);
+    state = moveTo(state, 'practice_room');
+    const next = handleAction(state, 'talk:hazuki:greeting');
+    expect(next.phase).toBe('plan');
   });
 
   it('hides actions and closed tabs after hours', () => {

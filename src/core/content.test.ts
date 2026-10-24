@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACTIVITIES, ENDINGS, EVENTS, LOCATIONS } from './content';
+import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, LOCATIONS } from './content';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityKind, Condition, EventDef } from './types';
 
@@ -83,6 +83,36 @@ describe('content integrity', () => {
     expect(CONTENT_INDEX.locations.has('practice_room')).toBe(true);
     expect(CONTENT_INDEX.locations.has('studio')).toBe(true);
     expect(CONTENT_INDEX.locations.has('home')).toBe(true);
+  });
+
+  it('has a valid first actor with schedule and topics', () => {
+    expect(ACTORS).toHaveLength(1);
+    const actor = ACTORS[0]!;
+    expect(actor.id).toBe('hazuki');
+    expect(CONTENT_INDEX.actors.size).toBe(ACTORS.length);
+
+    for (const entry of actor.schedule) {
+      expect(entry.fromMinute).toBeGreaterThanOrEqual(0);
+      expect(entry.fromMinute).toBeLessThan(24 * 60);
+      expect(entry.toMinute).toBeGreaterThanOrEqual(0);
+      expect(entry.toMinute).toBeLessThan(24 * 60);
+      expect(CONTENT_INDEX.locations.has(entry.locationId)).toBe(true);
+    }
+
+    const topicIds = actor.topics.map((topic) => topic.id);
+    expect(new Set(topicIds).size).toBe(topicIds.length);
+    for (const topic of actor.topics) {
+      expect(topic.label.length).toBeGreaterThan(0);
+      expect(topic.text.length).toBeGreaterThan(0);
+      if (topic.cooldownMinutes !== undefined) {
+        expect(topic.cooldownMinutes).toBeGreaterThan(0);
+      }
+      for (const effect of topic.effects) {
+        if (effect.kind === 'actorAffinity') {
+          expect(effect.actorId).toBe(actor.id);
+        }
+      }
+    }
   });
 
   it('keeps activity time windows in range', () => {

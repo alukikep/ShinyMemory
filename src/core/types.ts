@@ -21,6 +21,7 @@ export type Phase =
   | 'activityResult'
   | 'event'
   | 'eventResult'
+  | 'npcResult'
   | 'examMid'
   | 'examFinal'
   | 'ending';
@@ -28,6 +29,7 @@ export type Phase =
 export type GameState = {
   clock: { absoluteMinutes: number };
   locationId: string;
+  actors: Record<string, ActorState>;
   stats: Record<StatKey, number>;
   money: number;
   flags: Record<string, boolean>;
@@ -39,6 +41,8 @@ export type GameState = {
   rng: { seed: number; counter: number };
   pendingActivityId?: string;
   pendingEventId?: string;
+  pendingActorId?: string;
+  pendingTopicId?: string;
   pendingExam?: 'mid' | 'final';
   lastResult?: string;
   examScore?: number;
@@ -53,6 +57,7 @@ export type Effect =
   | { kind: 'stat'; stat: StatKey; delta: number }
   | { kind: 'money'; delta: number }
   | { kind: 'flag'; key: string; value: boolean }
+  | { kind: 'actorAffinity'; actorId: string; delta: number }
   | { kind: 'log'; text: string; tone?: LogTone };
 
 export type Condition =
@@ -78,6 +83,41 @@ export type Cost = {
 export type TimeWindow = {
   fromMinute: number;
   toMinute: number;
+};
+
+export type ActorRole = 'staff' | 'idol' | 'rival';
+
+export type ActorSchedule = {
+  fromMinute: number;
+  toMinute: number;
+  locationId: string;
+};
+
+export type ActorTopic = {
+  id: string;
+  label: string;
+  text: string;
+  when?: Condition[];
+  once?: boolean;
+  cooldownMinutes?: number;
+  effects: Effect[];
+};
+
+export type ActorDef = {
+  id: string;
+  name: string;
+  role: ActorRole;
+  description: string;
+  color?: string;
+  schedule: ActorSchedule[];
+  topics: ActorTopic[];
+};
+
+export type ActorState = {
+  id: string;
+  affinity: number;
+  flags: Record<string, boolean>;
+  topicCooldowns: Record<string, number>;
 };
 
 export type ActivityKind =
@@ -209,6 +249,16 @@ export type ActionView = {
   tone?: ActionTone;
 };
 
+export type ActorView = {
+  id: string;
+  name: string;
+  role: ActorRole;
+  description: string;
+  color?: string;
+  affinity: number;
+  topics: ActionView[];
+};
+
 export type SceneView = {
   id: string;
   phase: Phase;
@@ -217,6 +267,7 @@ export type SceneView = {
   subtitle?: string;
   locationName?: string;
   locations?: LocationView[];
+  actors?: ActorView[];
   blocks: TextBlock[];
   actions: ActionView[];
   layout: 'grid' | 'list';

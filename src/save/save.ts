@@ -1,4 +1,5 @@
 import { START_MINUTE } from '../core/config';
+import { createInitialActorStates } from '../core/contentIndex';
 import type { GameState, SaveEnvelope } from '../core/types';
 import { GAME_VERSION, SAVE_VERSION } from './version';
 
@@ -52,6 +53,12 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     delete state.slot;
 
     next.schemaVersion = 3;
+    next.gameVersion = GAME_VERSION;
+  }
+
+  if (next.schemaVersion === 3) {
+    next.state.actors = next.state.actors ?? createInitialActorStates();
+    next.schemaVersion = 4;
     next.gameVersion = GAME_VERSION;
   }
 

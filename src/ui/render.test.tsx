@@ -2,7 +2,7 @@ import { renderToString } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import App from '../App';
 import { buildScene } from '../core/scene';
-import { moveTo, newGame } from '../core/sim';
+import { advanceTime, moveTo, newGame } from '../core/sim';
 import { DebugPanel } from './components/DebugPanel';
 import { ScenePanel } from './components/ScenePanel';
 
@@ -30,6 +30,17 @@ describe('app shell', () => {
     );
     expect(html).toContain('金钱不足（需要 ¥500）');
     expect(html).toContain('disabled');
+  });
+
+  it('shows Hazuki at the office from 09:00', () => {
+    const state = advanceTime(newGame(1), 60);
+    const html = renderToString(
+      <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
+    );
+    expect(html).toContain('七草叶月');
+    expect(html).toContain('事务员');
+    expect(html).toContain('打招呼');
+    expect(html).toContain('问时间安排');
   });
 
   it('renders the debug panel without crashing', () => {

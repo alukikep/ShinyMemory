@@ -1,4 +1,5 @@
 import {
+  ACTOR_AFFINITY_MAX,
   FINAL_EXAM_DAY,
   FINAL_EXAM_MINUTE,
   MID_EXAM_DAY,
@@ -9,13 +10,15 @@ import {
   START_MINUTE,
 } from './config';
 import { EVENTS, ENDINGS } from './content';
-import { CONTENT_INDEX } from './contentIndex';
+import { CONTENT_INDEX, createInitialActorStates } from './contentIndex';
 import { MID_EXAM } from './content/weeks';
 import { STAT_LABELS, STAT_MAX } from './labels';
 import { Rng } from './rng';
 import { getDay, getMinuteOfDay, isMinuteInWindow } from './time';
 import type {
   ActivityDef,
+  ActorDef,
+  ActorTopic,
   Availability,
   Condition,
   Cost,
@@ -38,6 +41,12 @@ function clampState(state: GameState): void {
     state.stats[key] = Math.max(0, Math.min(STAT_MAX[key], state.stats[key]));
   }
   state.money = Math.max(0, state.money);
+  for (const actor of Object.values(state.actors ?? {})) {
+    actor.affinity = Math.max(
+      0,
+      Math.min(ACTOR_AFFINITY_MAX, actor.affinity),
+    );
+  }
 }
 
 function addLog(state: GameState, text: string, tone: LogTone = 'info'): void {
@@ -56,6 +65,7 @@ export function newGame(seed: number = Date.now()): GameState {
   const state: GameState = {
     clock: { absoluteMinutes: START_MINUTE },
     locationId: CONTENT_INDEX.startingLocationId,
+    actors: createInitialActorStates(),
     stats: {
       vocal: 20,
       dance: 20,
@@ -89,6 +99,66 @@ export function getEvent(id: string): EventDef | undefined {
 
 export function getEnding(id: string): EndingDef | undefined {
   return CONTENT_INDEX.endings.get(id);
+}
+
+export function getActor(id: string): ActorDef | undefined {
+  return CONTENT_INDEX.actors.get(id);
+}
+
+export function getActorLocation(
+  actor: ActorDef,
+  absoluteMinutes: number,
+): string | undefined {
+  return actor.schedule.find((entry) =>
+    isMinuteInWindow(absoluteMinutes, entry),
+  )?.locationId;
+}
+
+export function isActorPresent(state: GameState, actor: ActorDef): boolean {
+  const locationId = getActorLocation(actor, state.clock.absoluteMinutes);
+  return (
+    locationId === state.locationId &&
+    isLocationOpen(state, state.locationId)
+  );
+}
+
+export function presentActors(state: GameState): ActorDef[] {
+  return [...CONTENT_INDEX.actors.values()].filter((actor) =>
+    isActorPresent(state, actor),
+  );
+}
+
+export type TopicAvailability =
+  | { ok: true }
+  | { ok: false; reason: string };
+
+export function topicAvailability(
+  state: GameState,
+  actor: ActorDef,
+  topic: ActorTopic,
+): TopicAvailability {
+  const actorState = state.actors[actor.id];
+  if (!actorState) return { ok: false, reason: '还不认识' };
+
+  if (topic.once && actorState.flags[`seen:${topic.id}`]) {
+    return { ok: false, reason: '已经聊过了' };
+  }
+
+  if (topic.cooldownMinutes) {
+    const last = actorState.topicCooldowns[topic.id];
+    if (
+      last !== undefined &&
+      state.clock.absoluteMinutes - last < topic.cooldownMinutes
+    ) {
+      return { ok: false, reason: '还需要等一会儿' };
+    }
+  }
+
+  if (topic.when && !topic.when.every((condition) => checkCondition(condition, state))) {
+    return { ok: false, reason: '条件未满足' };
+  }
+
+  return { ok: true };
 }
 
 export function checkCondition(condition: Condition, state: GameState): boolean {
@@ -157,6 +227,11 @@ function applyEffects(
       case 'flag':
         state.flags[effect.key] = effect.value;
         break;
+      case 'actorAffinity': {
+        const actor = state.actors[effect.actorId];
+        if (actor) actor.affinity += effect.delta;
+        break;
+      }
       case 'log':
         addLog(state, effect.text, effect.tone ?? 'info');
         break;
@@ -270,6 +345,36 @@ export function moveTo(state: GameState, locationId: string): GameState {
   if (advanced.pendingExam) return beginPendingExam(advanced);
   advanced.phase = 'plan';
   return advanced;
+}
+
+export function talkTo(
+  state: GameState,
+  actorId: string,
+  topicId: string,
+): GameState {
+  if (state.phase !== 'plan') return state;
+  const actor = getActor(actorId);
+  if (!actor || !isActorPresent(state, actor)) return state;
+
+  const topic = actor.topics.find((item) => item.id === topicId);
+  if (!topic || !topicAvailability(state, actor, topic).ok) return state;
+
+  const next = clone(state);
+  applyEffects(next, topic.effects);
+  clampState(next);
+
+  const actorState = next.actors[actor.id]!;
+  if (topic.once) actorState.flags[`seen:${topic.id}`] = true;
+  if (topic.cooldownMinutes) {
+    actorState.topicCooldowns[topic.id] = next.clock.absoluteMinutes;
+  }
+
+  next.pendingActorId = actor.id;
+  next.pendingTopicId = topic.id;
+  next.phase = 'npcResult';
+  next.lastResult = topic.text;
+  addLog(next, `${actor.name}：${topic.text}`, 'info');
+  return next;
 }
 
 const MID_EXAM_AT =
@@ -652,6 +757,14 @@ function continueFromEvent(state: GameState): GameState {
   return next;
 }
 
+function continueFromNpc(state: GameState): GameState {
+  const next = clone(state);
+  next.pendingActorId = undefined;
+  next.pendingTopicId = undefined;
+  next.phase = 'plan';
+  return next;
+}
+
 function continueFromExam(state: GameState): GameState {
   const next = clone(state);
   next.pendingExam = undefined;
@@ -669,6 +782,11 @@ export function handleAction(state: GameState, actionId: string): GameState {
       if (actionId.startsWith('move:')) {
         return moveTo(state, actionId.slice('move:'.length));
       }
+      if (actionId.startsWith('talk:')) {
+        const [, actorId, topicId] = actionId.split(':');
+        if (actorId && topicId) return talkTo(state, actorId, topicId);
+        return state;
+      }
       return applyActivity(state, actionId);
     case 'activityResult':
       return actionId === 'continue' ? continueFromActivity(state) : state;
@@ -679,6 +797,8 @@ export function handleAction(state: GameState, actionId: string): GameState {
     }
     case 'eventResult':
       return actionId === 'continue' ? continueFromEvent(state) : state;
+    case 'npcResult':
+      return actionId === 'continue' ? continueFromNpc(state) : state;
     case 'examMid':
     case 'examFinal':
       return actionId === 'continue' ? continueFromExam(state) : state;

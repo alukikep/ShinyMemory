@@ -44,6 +44,43 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
         ))}
       </div>
 
+      {scene.actors && scene.actors.length > 0 ? (
+        <div className="actors">
+          {scene.actors.map((actor) => (
+            <section className="actor-card" key={actor.id}>
+              <div className="actor-head">
+                <span className="actor-name">{actor.name}</span>
+                <span className="actor-role">
+                  {actor.role === 'staff'
+                    ? '事务员'
+                    : actor.role === 'idol'
+                      ? '偶像'
+                      : '对手'}
+                </span>
+                <span className="actor-affinity">好感 {actor.affinity} / 20</span>
+              </div>
+              <p className="actor-description">{actor.description}</p>
+              <div className="actor-topics">
+                {actor.topics.map((topic) => (
+                  <button
+                    key={topic.id}
+                    type="button"
+                    className="actor-topic"
+                    disabled={topic.disabled}
+                    onClick={() => onAction(topic.id)}
+                  >
+                    <span>{topic.label}</span>
+                    {topic.disabled && topic.disabledReason ? (
+                      <small>{topic.disabledReason}</small>
+                    ) : null}
+                  </button>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      ) : null}
+
       <div className={`actions actions-${scene.layout}`}>
         {scene.actions.map((action) => (
           <button

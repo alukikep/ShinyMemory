@@ -177,7 +177,7 @@ export function activityAvailability(
   state: GameState,
   activity: ActivityDef,
 ): { ok: boolean; reason?: string } {
-  if (state.flags.forced_rest && activity.id !== 'rest') {
+  if (state.flags.forced_rest && activity.kind !== 'rest') {
     return { ok: false, reason: '她需要休息' };
   }
   if (activity.cost.money && state.money < activity.cost.money) {

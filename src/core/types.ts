@@ -247,8 +247,19 @@ export type ActionTone =
   | 'explore'
   | 'sleep';
 
+export type ActionCommand =
+  | { type: 'move'; locationId: string }
+  | { type: 'activity'; activityId: string }
+  | { type: 'enterNpc'; actorId: string }
+  | { type: 'talk'; actorId: string; topicId: string }
+  | { type: 'leaveNpc' }
+  | { type: 'eventChoice'; index: number }
+  | { type: 'continue' }
+  | { type: 'restart' };
+
 export type ActionView = {
   id: string;
+  command: ActionCommand;
   label: string;
   hint?: string;
   disabled?: boolean;
@@ -263,7 +274,7 @@ export type ActorView = {
   description: string;
   color?: string;
   affinity: number;
-  enterActionId: string;
+  enterCommand: ActionCommand;
 };
 
 export type NpcPageView = {
@@ -273,7 +284,7 @@ export type NpcPageView = {
   description: string;
   color?: string;
   affinity: number;
-  leaveActionId: string;
+  leaveCommand: ActionCommand;
 };
 
 export type SceneView = {

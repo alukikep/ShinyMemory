@@ -14,6 +14,7 @@ import {
   getActivity,
   getActor,
   handleAction,
+  handleCommand,
   isLocationOpen,
   moveTo,
   newGame,
@@ -206,6 +207,40 @@ describe('raising sim core', () => {
     const ten = advanceTime(morning, 2 * 60);
     expect(isLocationOpen(ten, 'studio')).toBe(true);
     expect(moveTo(ten, 'studio').locationId).toBe('studio');
+  });
+
+  it('accepts typed action commands', () => {
+    let state = newGame(1);
+    state = handleCommand(state, {
+      type: 'move',
+      locationId: 'practice_room',
+    });
+    expect(state.locationId).toBe('practice_room');
+
+    state = handleCommand(state, {
+      type: 'activity',
+      activityId: 'vocal',
+    });
+    expect(state.phase).toBe('activityResult');
+  });
+
+  it('navigates NPC interaction with typed commands', () => {
+    let state = advanceTime(newGame(1), 60);
+    state = handleCommand(state, { type: 'enterNpc', actorId: 'hazuki' });
+    expect(state.phase).toBe('npc');
+
+    state = handleCommand(state, {
+      type: 'talk',
+      actorId: 'hazuki',
+      topicId: 'greeting',
+    });
+    expect(state.phase).toBe('npcResult');
+
+    state = handleCommand(state, { type: 'continue' });
+    expect(state.phase).toBe('npc');
+
+    state = handleCommand(state, { type: 'leaveNpc' });
+    expect(state.phase).toBe('plan');
   });
 
   it('shows Hazuki at the office from 09:00 to 18:00', () => {

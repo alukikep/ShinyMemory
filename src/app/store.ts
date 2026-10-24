@@ -1,14 +1,14 @@
 import { create } from 'zustand';
 import { MAX_DAYS, MINUTES_PER_DAY, START_MINUTE } from '../core/config';
-import { handleAction, newGame } from '../core/sim';
-import type { GameState } from '../core/types';
+import { handleCommand, newGame } from '../core/sim';
+import type { ActionCommand, GameState } from '../core/types';
 import { LocalStorageRepository } from '../save/localStorageRepository';
 import type { SaveRepository } from '../save/repository';
 import { createSaveEnvelope } from '../save/save';
 
 type GameStore = {
   state: GameState;
-  act: (actionId: string) => void;
+  act: (command: ActionCommand) => void;
   restart: () => void;
   debugForceEvent: (eventId: string) => void;
   debugJumpDay: (day: number) => void;
@@ -29,12 +29,12 @@ function initialState(): GameState {
 
 export const useGameStore = create<GameStore>((set) => ({
   state: initialState(),
-  act: (actionId) =>
+  act: (command) =>
     set((previous) => {
       const next =
-        actionId === 'restart'
+        command.type === 'restart'
           ? newGame(makeSeed())
-          : handleAction(previous.state, actionId);
+          : handleCommand(previous.state, command);
       repository.save(createSaveEnvelope(next));
       return { state: next };
     }),

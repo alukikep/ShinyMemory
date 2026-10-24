@@ -1,8 +1,8 @@
-import type { SceneView } from '../../core/types';
+import type { ActionCommand, SceneView } from '../../core/types';
 
 type ScenePanelProps = {
   scene: SceneView;
-  onAction: (actionId: string) => void;
+  onAction: (command: ActionCommand) => void;
   onMove?: (locationId: string) => void;
 };
 
@@ -71,7 +71,7 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
               <button
                 type="button"
                 className="actor-enter"
-                onClick={() => onAction(actor.enterActionId)}
+                onClick={() => onAction(actor.enterCommand)}
               >
                 <span className="actor-enter-label">{`和${actor.name}聊聊`}</span>
                 <span className="actor-enter-hint">选择话题</span>
@@ -110,7 +110,7 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
             type="button"
             className={`action tone-${action.tone ?? 'secondary'}`}
             disabled={action.disabled}
-            onClick={() => onAction(action.id)}
+            onClick={() => onAction(action.command)}
           >
             <span className="action-label">{action.label}</span>
             {action.hint ? <span className="action-hint">{action.hint}</span> : null}
@@ -125,7 +125,7 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
         <button
           type="button"
           className="npc-leave"
-          onClick={() => onAction(scene.npc!.leaveActionId)}
+          onClick={() => onAction(scene.npc!.leaveCommand)}
         >
           离开
         </button>

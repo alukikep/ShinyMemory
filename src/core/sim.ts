@@ -16,6 +16,7 @@ import { STAT_LABELS, STAT_MAX } from './labels';
 import { Rng } from './rng';
 import { getDay, getMinuteOfDay, isMinuteInWindow } from './time';
 import type {
+  ActionCommand,
   ActivityDef,
   ActorDef,
   ActorTopic,
@@ -847,47 +848,98 @@ function continueFromExam(state: GameState): GameState {
   return next;
 }
 
-export function handleAction(state: GameState, actionId: string): GameState {
+export function handleCommand(
+  state: GameState,
+  command: ActionCommand,
+): GameState {
   switch (state.phase) {
     case 'plan':
-      if (actionId.startsWith('move:')) {
-        return moveTo(state, actionId.slice('move:'.length));
-      }
-      if (actionId.startsWith('enter:')) {
-        return enterNpc(state, actionId.slice('enter:'.length));
-      }
-      return applyActivity(state, actionId);
+      if (command.type === 'move') return moveTo(state, command.locationId);
+      if (command.type === 'enterNpc') return enterNpc(state, command.actorId);
+      if (command.type === 'activity') return applyActivity(state, command.activityId);
+      return state;
+
     case 'npc':
-      if (actionId === 'leave_npc') return leaveNpc(state);
-      if (actionId.startsWith('talk:')) {
-        const [, actorId, topicId] = actionId.split(':');
-        if (actorId && topicId) return talkTo(state, actorId, topicId);
+      if (command.type === 'leaveNpc') return leaveNpc(state);
+      if (command.type === 'talk') {
+        return talkTo(state, command.actorId, command.topicId);
       }
       return state;
+
     case 'activityResult':
-      return actionId === 'continue' ? continueFromActivity(state) : state;
-    case 'event': {
-      if (!actionId.startsWith('choice:')) return state;
-      const index = Number(actionId.slice('choice:'.length));
-      return applyEventChoice(state, index);
-    }
+      return command.type === 'continue' ? continueFromActivity(state) : state;
+
+    case 'event':
+      return command.type === 'eventChoice'
+        ? applyEventChoice(state, command.index)
+        : state;
+
     case 'eventResult':
-      return actionId === 'continue' ? continueFromEvent(state) : state;
-    case 'npc':
-      if (actionId === 'leave_npc') return leaveNpc(state);
-      if (actionId.startsWith('talk:')) {
-        const [, actorId, topicId] = actionId.split(':');
-        if (actorId && topicId) return talkTo(state, actorId, topicId);
-      }
-      return state;
+      return command.type === 'continue' ? continueFromEvent(state) : state;
+
     case 'npcResult':
-      return actionId === 'continue' ? continueFromNpc(state) : state;
+      return command.type === 'continue' ? continueFromNpc(state) : state;
+
     case 'examMid':
     case 'examFinal':
-      return actionId === 'continue' ? continueFromExam(state) : state;
+      return command.type === 'continue' ? continueFromExam(state) : state;
+
     case 'ending':
       return state;
+
     default:
       return state;
   }
+}
+
+export function handleAction(state: GameState, actionId: string): GameState {
+  let command: ActionCommand | null = null;
+
+  switch (state.phase) {
+    case 'plan':
+      if (actionId.startsWith('move:')) {
+        command = { type: 'move', locationId: actionId.slice('move:'.length) };
+      } else if (actionId.startsWith('enter:')) {
+        command = {
+          type: 'enterNpc',
+          actorId: actionId.slice('enter:'.length),
+        };
+      } else {
+        command = { type: 'activity', activityId: actionId };
+      }
+      break;
+
+    case 'npc':
+      if (actionId === 'leave_npc') {
+        command = { type: 'leaveNpc' };
+      } else if (actionId.startsWith('talk:')) {
+        const [, actorId, topicId] = actionId.split(':');
+        if (actorId && topicId) {
+          command = { type: 'talk', actorId, topicId };
+        }
+      }
+      break;
+
+    case 'activityResult':
+    case 'eventResult':
+    case 'npcResult':
+    case 'examMid':
+    case 'examFinal':
+      if (actionId === 'continue') command = { type: 'continue' };
+      break;
+
+    case 'event':
+      if (actionId.startsWith('choice:')) {
+        const index = Number(actionId.slice('choice:'.length));
+        if (Number.isFinite(index)) {
+          command = { type: 'eventChoice', index };
+        }
+      }
+      break;
+
+    case 'ending':
+      break;
+  }
+
+  return command ? handleCommand(state, command) : state;
 }

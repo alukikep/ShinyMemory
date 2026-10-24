@@ -55,7 +55,7 @@ function buildActorViews(state: GameState): ActorView[] {
       description: actor.description,
       color: actor.color,
       affinity: actorState?.affinity ?? 0,
-      enterActionId: `enter:${actor.id}`,
+      enterCommand: { type: 'enterNpc', actorId: actor.id },
     };
   });
 }
@@ -105,6 +105,7 @@ function buildPlan(state: GameState): SceneView {
     )
     .map(({ activity, availability, hint }) => ({
       id: activity.id,
+      command: { type: 'activity', activityId: activity.id },
       label: activity.name,
       hint,
       disabled: !availability.ok,
@@ -177,7 +178,7 @@ function buildActivityResult(state: GameState): SceneView {
     phaseLabel: PHASE_LABEL[state.phase],
     title: activity?.name ?? '结果',
     blocks,
-    actions: [{ id: 'continue', label: '继续', tone: 'primary' }],
+    actions: [{ id: 'continue', command: { type: 'continue' }, label: '继续', tone: 'primary' }],
     layout: 'list',
   };
 }
@@ -191,7 +192,7 @@ function buildEvent(state: GameState): SceneView {
       phaseLabel: PHASE_LABEL[state.phase],
       title: '事件',
       blocks: [{ kind: 'system', text: '事件数据缺失。' }],
-      actions: [{ id: 'continue', label: '继续', tone: 'primary' }],
+      actions: [{ id: 'continue', command: { type: 'continue' }, label: '继续', tone: 'primary' }],
       layout: 'list',
     };
   }
@@ -202,6 +203,7 @@ function buildEvent(state: GameState): SceneView {
       : true;
     return {
       id: `choice:${index}`,
+      command: { type: 'eventChoice', index },
       label: choice.label,
       hint: choice.hint,
       disabled: !allowed,
@@ -230,7 +232,7 @@ function buildEventResult(state: GameState): SceneView {
     blocks: state.lastResult
       ? [{ kind: 'p', text: state.lastResult }]
       : [{ kind: 'system', text: '……' }],
-    actions: [{ id: 'continue', label: '继续', tone: 'primary' }],
+    actions: [{ id: 'continue', command: { type: 'continue' }, label: '继续', tone: 'primary' }],
     layout: 'list',
   };
 }
@@ -250,7 +252,14 @@ function buildNpcPage(state: GameState): SceneView {
       phaseLabel: PHASE_LABEL[state.phase],
       title: '对话',
       blocks: [{ kind: 'system', text: '她不在这里。' }],
-      actions: [{ id: 'leave_npc', label: '离开', tone: 'secondary' }],
+      actions: [
+        {
+          id: 'leave_npc',
+          command: { type: 'leaveNpc' },
+          label: '离开',
+          tone: 'secondary',
+        },
+      ],
       layout: 'list',
     };
   }
@@ -261,6 +270,7 @@ function buildNpcPage(state: GameState): SceneView {
     const availability = topicAvailability(state, actor, topic);
     return {
       id: `talk:${actor.id}:${topic.id}`,
+      command: { type: 'talk', actorId: actor.id, topicId: topic.id },
       label: topic.label,
       hint: topic.hint,
       disabled: !availability.ok,
@@ -283,7 +293,7 @@ function buildNpcPage(state: GameState): SceneView {
       description: actor.description,
       color: actor.color,
       affinity,
-      leaveActionId: 'leave_npc',
+      leaveCommand: { type: 'leaveNpc' },
     },
     actions: topics,
     layout: 'grid',
@@ -301,7 +311,7 @@ function buildNpcResult(state: GameState): SceneView {
     blocks: state.lastResult
       ? [{ kind: 'p', text: state.lastResult }]
       : [{ kind: 'system', text: '……' }],
-    actions: [{ id: 'continue', label: '继续', tone: 'primary' }],
+    actions: [{ id: 'continue', command: { type: 'continue' }, label: '继续', tone: 'primary' }],
     layout: 'list',
   };
 }
@@ -339,6 +349,7 @@ function buildExam(state: GameState, kind: 'mid' | 'final'): SceneView {
     actions: [
       {
         id: 'continue',
+        command: { type: 'continue' },
         label: kind === 'final' ? '查看结局' : '继续',
         tone: 'primary',
       },
@@ -378,7 +389,14 @@ function buildEnding(state: GameState): SceneView {
     title: ending.title,
     subtitle: endLabel,
     blocks,
-    actions: [{ id: 'restart', label: '再玩一次', tone: 'primary' }],
+    actions: [
+      {
+        id: 'restart',
+        command: { type: 'restart' },
+        label: '再玩一次',
+        tone: 'primary',
+      },
+    ],
     layout: 'list',
   };
 }

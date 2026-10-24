@@ -12,22 +12,42 @@ const card: EventDef = {
     {
       label: '听完',
       effects: [
-        { kind: 'stat', stat: 'expression', delta: 2 },
-        { kind: 'stat', stat: 'stress', delta: -2 },
+        {
+        "kind": "idolExp",
+        "attribute": "expression",
+        "tier": 3
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -2
+      },
       ],
       result: '副歌有一句和声，像是她之前哼过的。',
     },
     {
       label: '叫录音师来问',
       effects: [
-        { kind: 'stat', stat: 'expression', delta: 1 },
-        { kind: 'stat', stat: 'stress', delta: 1 },
+        {
+        "kind": "idolExp",
+        "attribute": "expression",
+        "tier": 1
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 1
+      },
       ],
       result: '录音师说，那是一个没选上的候选曲。',
     },
     {
       label: '关掉',
-      effects: [{ kind: 'stat', stat: 'stress', delta: -1 }],
+      effects: [{
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -1
+      }],
       result: '你把耳机放回原处，demo 还在继续。',
     },
   ],

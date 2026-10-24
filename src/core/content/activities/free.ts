@@ -13,20 +13,20 @@ const card: ActivityDef = {
   },
   "effects": [
     {
-      "kind": "stat",
-      "stat": "trust",
-      "delta": 2
-    },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
     {
-      "kind": "stat",
-      "stat": "stress",
-      "delta": -10
-    },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -10
+      },
     {
-      "kind": "stat",
-      "stat": "stamina",
-      "delta": 5
-    }
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": 5
+      }
   ],
   "resultTexts": [
     "你们在便利店门口分了一盒关东煮。她挑了最便宜的那个。",
@@ -37,20 +37,20 @@ const card: ActivityDef = {
     {
       "when": [
         {
-          "kind": "statAtLeast",
-          "stat": "trust",
-          "value": 12
-        }
+        "kind": "rankAtLeast",
+        "attribute": "trust",
+        "rank": "D"
+      }
       ],
       "text": "她开始主动跟你说些无关紧要的事。比如今天早上梦见什么，比如她其实不太喜欢甜的。"
     },
     {
       "when": [
         {
-          "kind": "statAtMost",
-          "stat": "stamina",
-          "value": 25
-        }
+        "kind": "sharedStatAtMost",
+        "stat": "stamina",
+        "value": 25
+      }
       ],
       "text": "她没什么精神，但还是陪你走了一段。回去的路上，她走得很慢。"
     }

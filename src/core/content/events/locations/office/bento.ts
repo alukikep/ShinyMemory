@@ -9,10 +9,10 @@ const card: EventDef = {
       "day": 1
     },
     {
-      "kind": "statAtLeast",
-      "stat": "trust",
-      "value": 8
-    },
+        "kind": "rankAtLeast",
+        "attribute": "trust",
+        "rank": "C"
+      },
     {
       "kind": "atLocation",
       "locationId": "office"
@@ -31,15 +31,15 @@ const card: EventDef = {
       "label": "收下，认真吃完",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 2
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": 10
-        }
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": 10
+      }
       ],
       "result": "她假装在看手机，耳朵却红了。"
     },
@@ -47,10 +47,11 @@ const card: EventDef = {
       "label": "说已经吃过了",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": -1
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1,
+        "direction": "loss"
+      }
       ],
       "result": "她把便当盒收回去，动作比平时快。"
     },
@@ -58,15 +59,15 @@ const card: EventDef = {
       "label": "分她一半",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 1
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -3
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -3
+      }
       ],
       "result": "你们在练习室的地板上吃完了那份便当。"
     }

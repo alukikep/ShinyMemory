@@ -109,7 +109,7 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
             {IDOL_STAT_ORDER.map((key) => (
               <span className={`idol-stat idol-stat-${key}`} key={key}>
                 <span>{STAT_LABELS[key]}</span>
-                <strong>{Math.round(scene.idol!.stats[key])}</strong>
+                <strong>{scene.idol!.stats[key].rank}</strong>
               </span>
             ))}
           </div>

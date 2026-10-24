@@ -6,6 +6,12 @@ const idol: IdolDef = {
   unit: 'illumination STARS',
   color: '#8fa8d8',
   profile: 'illumination STARS 的成员。冷静、认真，对自己要求很高。',
+  growth: {
+    vocal: { initial: 'F', max: 'B' },
+    dance: { initial: 'D', max: 'S' },
+    expression: { initial: 'E', max: 'A' },
+    trust: { initial: 'E', max: 'S' },
+  },
 };
 
 export default idol;

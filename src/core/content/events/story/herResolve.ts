@@ -9,10 +9,10 @@ const card: EventDef = {
       "day": 2
     },
     {
-      "kind": "statAtLeast",
-      "stat": "trust",
-      "value": 10
-    }
+        "kind": "rankAtLeast",
+        "attribute": "trust",
+        "rank": "C"
+      }
   ],
   "once": true,
   "weight": 10,
@@ -22,15 +22,15 @@ const card: EventDef = {
       "label": "告诉她你会一直在",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 3
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -5
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
       ],
       "result": "她看着你，像是想确认这句话的重量。"
     },
@@ -38,15 +38,15 @@ const card: EventDef = {
       "label": "提醒她这条路很难",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 1
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": 3
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 3
+      }
       ],
       "result": "她点头，说“我知道”，语气比你想的平静。"
     },
@@ -54,10 +54,10 @@ const card: EventDef = {
       "label": "问她想要什么",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 2
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      }
       ],
       "result": "她想了很久，说“想站在有人等着我的地方”。"
     }

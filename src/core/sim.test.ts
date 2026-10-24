@@ -8,6 +8,7 @@ import {
   advanceTime,
   applyActivity,
   applyEventChoice,
+  applyIdolExp,
   checkCondition,
   formatIdolText,
   getActivity,
@@ -31,7 +32,8 @@ describe('raising sim core', () => {
     expect(state.locationId).toBe('office');
     expect(state.phase).toBe('plan');
     expect(state.activeIdolId).toBe('mano');
-    expect(state.idols.mano?.stats.vocal).toBe(20);
+    expect(state.idols.mano?.stats.vocal.rank).toBe('D');
+    expect(state.idols.mano?.stats.vocal.exp).toBe(0);
     expect(state.shared.stamina).toBe(100);
     expect(state.money).toBe(3000);
     expect(state.actionsTaken).toBe(0);
@@ -40,7 +42,8 @@ describe('raising sim core', () => {
   it('applies activity costs, effects and duration', () => {
     const state = moveTo(newGame(1), 'practice_room');
     const next = applyActivity(state, 'vocal');
-    expect(next.idols.mano?.stats.vocal).toBe(26);
+    expect(next.idols.mano?.stats.vocal.rank).toBe('D');
+    expect(next.idols.mano?.stats.vocal.exp).toBe(3);
     expect(next.money).toBe(2500);
     expect(next.shared.stamina).toBe(85);
     expect(next.shared.stress).toBe(8);
@@ -265,7 +268,7 @@ describe('raising sim core', () => {
       activityId: 'vocal',
     });
     expect(trained.phase).toBe('activityResult');
-    expect(trained.idols.mano?.stats.vocal).toBe(26);
+    expect(trained.idols.mano?.stats.vocal.exp).toBe(3);
     expect(trained.shared.stamina).toBe(85);
     expect(trained.pendingIdolId).toBe('mano');
 
@@ -291,8 +294,8 @@ describe('raising sim core', () => {
     });
 
     expect(trained.activeIdolId).toBe('hiori');
-    expect(trained.idols.hiori?.stats.vocal).toBe(26);
-    expect(trained.idols.mano?.stats.vocal).toBe(20);
+    expect(trained.idols.hiori?.stats.vocal.exp).toBe(3);
+    expect(trained.idols.mano?.stats.vocal.exp).toBe(0);
   });
 
   it('applies event effects to the context idol', () => {
@@ -308,20 +311,35 @@ describe('raising sim core', () => {
     state.phase = 'event';
 
     const next = applyEventChoice(state, 0);
-    expect(next.idols.mano?.stats.vocal).toBe(28);
-    expect(next.idols.mano?.stats.trust).toBe(6);
-    expect(next.idols.hiori?.stats.vocal).toBe(20);
+    expect(next.idols.mano?.stats.vocal.rank).toBe('D');
+    expect(next.idols.mano?.stats.vocal.exp).toBe(6);
+    expect(next.idols.mano?.stats.trust.exp).toBe(1);
+    expect(next.idols.hiori?.stats.vocal.exp).toBe(0);
     expect(next.lastResult).toContain('樱木真乃');
+  });
+
+  it('levels up and freezes at the idol cap', () => {
+    const state = newGame(1);
+    state.idols.mano!.stats.vocal.exp = 59;
+    applyIdolExp(state, 'vocal', 3);
+    expect(state.idols.mano?.stats.vocal.rank).toBe('C');
+    expect(state.idols.mano?.stats.vocal.exp).toBe(2);
+
+    state.idols.hiori!.stats.vocal.rank = 'B';
+    state.idols.hiori!.stats.vocal.exp = 0;
+    applyIdolExp(state, 'vocal', 20, 'gain', 'hiori');
+    expect(state.idols.hiori?.stats.vocal.rank).toBe('B');
+    expect(state.idols.hiori?.stats.vocal.exp).toBe(0);
   });
 
   it('checks event conditions against the target idol', () => {
     const state = newGame(1);
-    state.idols.mano!.stats.trust = 5;
-    state.idols.hiori!.stats.trust = 15;
+    state.idols.mano!.stats.trust.rank = 'E';
+    state.idols.hiori!.stats.trust.rank = 'C';
     const condition = {
-      kind: 'statAtLeast',
-      stat: 'trust',
-      value: 10,
+      kind: 'rankAtLeast',
+      attribute: 'trust',
+      rank: 'C',
     } as const;
 
     expect(checkCondition(condition, state)).toBe(false);
@@ -356,7 +374,7 @@ describe('raising sim core', () => {
     expect(worked.money).toBe(4500);
     expect(worked.shared.stamina).toBe(80);
     expect(worked.shared.stress).toBe(14);
-    expect(worked.idols.hiori?.stats.trust).toBe(5);
+    expect(worked.idols.hiori?.stats.trust.rank).toBe('E');
   });
 
   it('shows Hazuki and Tsutomu on their office schedules', () => {

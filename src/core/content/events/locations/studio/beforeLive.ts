@@ -26,15 +26,15 @@ const card: EventDef = {
       "label": "陪她坐一会儿",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 2
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -8
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -8
+      }
       ],
       "result": "你们谁也没说话。远处的灯一盏一盏亮起来。"
     },
@@ -42,20 +42,20 @@ const card: EventDef = {
       "label": "再对一遍流程",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "vocal",
-          "delta": 2
-        },
+        "kind": "idolExp",
+        "attribute": "vocal",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "dance",
-          "delta": 2
-        },
+        "kind": "idolExp",
+        "attribute": "dance",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": 5
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 5
+      }
       ],
       "result": "她跟着你过了一遍，声音慢慢稳下来。"
     },
@@ -63,15 +63,16 @@ const card: EventDef = {
       "label": "让她一个人待着",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -3
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -3
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": -1
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1,
+        "direction": "loss"
+      }
       ],
       "result": "你走开时，听见她轻轻哼起了第一句。"
     }

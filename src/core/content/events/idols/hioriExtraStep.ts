@@ -15,9 +15,21 @@ const event: EventDef = {
       label: '指出脚步的问题',
       hint: '灯织 +舞蹈、+信任，共享压力 +3',
       effects: [
-        { kind: 'stat', stat: 'dance', delta: 2 },
-        { kind: 'stat', stat: 'trust', delta: 1 },
-        { kind: 'stat', stat: 'stress', delta: 3 },
+        {
+        "kind": "idolExp",
+        "attribute": "dance",
+        "tier": 3
+      },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 3
+      },
       ],
       result: '她照着你的话重做了一次，脚步终于落在拍子上。',
     },
@@ -25,8 +37,16 @@ const event: EventDef = {
       label: '先让她喘口气',
       hint: '灯织 +信任，共享压力 -5',
       effects: [
-        { kind: 'stat', stat: 'trust', delta: 1 },
-        { kind: 'stat', stat: 'stress', delta: -5 },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      },
       ],
       result: '灯织接过水，沉默了一会儿，说下次会跳得更好。',
     },

@@ -150,12 +150,16 @@ export function createInitialIdolStates(): Record<string, IdolState> {
       idol.id,
       {
         id: idol.id,
-        stats: {
-          vocal: 20,
-          dance: 20,
-          expression: 20,
-          trust: 5,
-        },
+        stats: Object.fromEntries(
+          Object.entries(idol.growth).map(([key, growth]) => [
+            key,
+            {
+              rank: growth.initial,
+              exp: 0,
+              maxRank: growth.max,
+            },
+          ]),
+        ) as IdolState['stats'],
       } satisfies IdolState,
     ]),
   );

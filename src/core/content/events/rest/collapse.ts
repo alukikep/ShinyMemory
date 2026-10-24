@@ -5,10 +5,10 @@ const card: EventDef = {
   "title": "过劳",
   "when": [
     {
-      "kind": "statAtLeast",
-      "stat": "stress",
-      "value": 55
-    }
+        "kind": "sharedStatAtLeast",
+        "stat": "stress",
+        "value": 55
+      }
   ],
   "once": true,
   "priority": 100,
@@ -18,20 +18,20 @@ const card: EventDef = {
       "label": "扶她去休息",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -30
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -30
+      },
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": 20
-        },
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": 20
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 1
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
         {
           "kind": "flag",
           "key": "forced_rest",
@@ -44,20 +44,21 @@ const card: EventDef = {
       "label": "让她再坚持一下",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": 5
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 5
+      },
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": -10
-        },
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": -10
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": -2
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3,
+        "direction": "loss"
+      }
       ],
       "result": "她站起来，但之后每个动作都慢半拍。"
     }

@@ -13,10 +13,10 @@ const card: EndingDef = {
           "value": 54
         },
         {
-          "kind": "statAtLeast",
-          "stat": "stress",
-          "value": 80
-        }
+        "kind": "sharedStatAtLeast",
+        "stat": "stress",
+        "value": 80
+      }
       ]
     }
   ],

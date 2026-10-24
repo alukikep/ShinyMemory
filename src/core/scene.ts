@@ -78,7 +78,7 @@ function buildActorViews(state: GameState): ActorView[] {
       description: actor.description,
       color: actor.color,
       affinity: isIdol
-        ? (state.idols[actor.id]?.stats.trust ?? 0)
+        ? (state.idols[actor.id]?.stats.trust.rank ?? 'F')
         : (actorState?.affinity ?? 0),
       relationshipLabel: isIdol ? '信任' : '好感',
       entryLabel: isIdol
@@ -539,9 +539,9 @@ function buildEnding(state: GameState): SceneView {
     .map((text) => ({ kind: 'p' as const, text }));
   blocks.push({
     kind: 'system',
-    text: `最终得分 ${state.examScore ?? 0} · 信任 ${Math.round(
-      getActiveIdol(state).stats.trust,
-    )} / 20 · 压力 ${Math.round(state.shared.stress)} / 100`,
+    text: `最终得分 ${state.examScore ?? 0} · 信任 ${
+      getActiveIdol(state).stats.trust.rank
+    } · 压力 ${Math.round(state.shared.stress)} / 100`,
   });
 
   const endLabel =

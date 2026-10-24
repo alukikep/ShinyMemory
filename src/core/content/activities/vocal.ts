@@ -14,15 +14,15 @@ const card: ActivityDef = {
   },
   "effects": [
     {
-      "kind": "stat",
-      "stat": "vocal",
-      "delta": 6
-    },
+        "kind": "idolExp",
+        "attribute": "vocal",
+        "tier": 3
+      },
     {
-      "kind": "stat",
-      "stat": "stress",
-      "delta": 8
-    }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 8
+      }
   ],
   "resultTexts": [
     "她跟着钢琴重复同一句，第三次终于准了。",
@@ -33,20 +33,20 @@ const card: ActivityDef = {
     {
       "when": [
         {
-          "kind": "statAtLeast",
-          "stat": "stress",
-          "value": 70
-        }
+        "kind": "sharedStatAtLeast",
+        "stat": "stress",
+        "value": 70
+      }
       ],
       "text": "她唱到一半停下来，说“再来一次”，但声音已经有点哑。"
     },
     {
       "when": [
         {
-          "kind": "statAtMost",
-          "stat": "stamina",
-          "value": 30
-        }
+        "kind": "sharedStatAtMost",
+        "stat": "stamina",
+        "value": 30
+      }
       ],
       "text": "她靠在墙边，气息不太稳，但还是把整段唱完了。"
     }

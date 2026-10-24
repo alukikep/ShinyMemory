@@ -10,25 +10,53 @@ const card: EventDef = {
     {
       label: '正面竞争',
       effects: [
-        { kind: 'stat', stat: 'stress', delta: 8 },
-        { kind: 'stat', stat: 'vocal', delta: 2 },
-        { kind: 'stat', stat: 'dance', delta: 2 },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 8
+      },
+        {
+        "kind": "idolExp",
+        "attribute": "vocal",
+        "tier": 3
+      },
+        {
+        "kind": "idolExp",
+        "attribute": "dance",
+        "tier": 3
+      },
       ],
       result: '她把自己的 part 又练了一遍。',
     },
     {
       label: '专注自己',
       effects: [
-        { kind: 'stat', stat: 'stress', delta: -3 },
-        { kind: 'stat', stat: 'trust', delta: 1 },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -3
+      },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
       ],
       result: '她关掉手机，说“不看就好了”。',
     },
     {
       label: '去打招呼',
       effects: [
-        { kind: 'stat', stat: 'trust', delta: 2 },
-        { kind: 'stat', stat: 'stress', delta: 2 },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 2
+      },
       ],
       result: '她回来的时候，手里多了一颗糖。',
     },

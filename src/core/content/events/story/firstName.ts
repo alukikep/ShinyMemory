@@ -9,10 +9,10 @@ const card: EventDef = {
       "day": 2
     },
     {
-      "kind": "statAtLeast",
-      "stat": "trust",
-      "value": 12
-    }
+        "kind": "rankAtLeast",
+        "attribute": "trust",
+        "rank": "C"
+      }
   ],
   "once": true,
   "weight": 10,
@@ -22,10 +22,10 @@ const card: EventDef = {
       "label": "应一声",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 2
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      }
       ],
       "result": "她低下头，假装在整理谱子。"
     },
@@ -33,15 +33,16 @@ const card: EventDef = {
       "label": "开玩笑说她没大没小",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": -1
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1,
+        "direction": "loss"
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": 2
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 2
+      }
       ],
       "result": "她立刻改口叫“制作人”，之后一整天都没再叫错。"
     },
@@ -49,15 +50,15 @@ const card: EventDef = {
       "label": "也叫她的名字",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 3
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -5
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
       ],
       "result": "她“嗯”了一声，声音小得几乎听不见。"
     }

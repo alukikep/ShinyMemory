@@ -12,22 +12,42 @@ const card: EventDef = {
     {
       label: '帮她买回来',
       effects: [
-        { kind: 'stat', stat: 'trust', delta: 2 },
-        { kind: 'stat', stat: 'stamina', delta: -3 },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": -3
+      },
       ],
       result: '你拎着鸡蛋回来时，她已经趴在桌上睡着了。',
     },
     {
       label: '念给她听',
       effects: [
-        { kind: 'stat', stat: 'trust', delta: 1 },
-        { kind: 'stat', stat: 'stress', delta: -2 },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -2
+      },
       ],
       result: '她愣了一下，然后笑了：“我昨天写的，忘了。”',
     },
     {
       label: '当作没看见',
-      effects: [{ kind: 'stat', stat: 'stress', delta: 1 }],
+      effects: [{
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 1
+      }],
       result: '便签继续贴在冰箱上，鸡蛋始终没买。',
     },
   ],

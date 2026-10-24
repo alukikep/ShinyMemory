@@ -18,7 +18,11 @@ const card: EventDef = {
       label: '帮她盖外套',
       effects: [
         { kind: 'actorAffinity', actorId: 'hazuki', delta: 1 },
-        { kind: 'stat', stat: 'stress', delta: -2 },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -2
+      },
       ],
       result: '她没有醒，只是把外套往上拉了拉。',
     },

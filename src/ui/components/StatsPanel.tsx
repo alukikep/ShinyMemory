@@ -1,8 +1,14 @@
 import { CONTENT_INDEX } from '../../core/contentIndex';
+import { RANK_CURVE } from '../../core/growth';
 import { getActiveIdol } from '../../core/sim';
 import { STAT_LABELS, STAT_MAX } from '../../core/labels';
 import { formatClock, getDay } from '../../core/time';
-import type { GameState, IdolStatKey, SharedStatKey } from '../../core/types';
+import type {
+  GameState,
+  IdolAttribute,
+  IdolStatKey,
+  SharedStatKey,
+} from '../../core/types';
 
 const SHARED_ORDER: SharedStatKey[] = ['stamina', 'stress'];
 const IDOL_ORDER: IdolStatKey[] = ['vocal', 'dance', 'expression', 'trust'];
@@ -11,7 +17,7 @@ function StatRow({
   statKey,
   value,
 }: {
-  statKey: SharedStatKey | IdolStatKey;
+  statKey: SharedStatKey;
   value: number;
 }) {
   const max = STAT_MAX[statKey];
@@ -21,9 +27,35 @@ function StatRow({
     <div className={`stat-row stat-${statKey}`}>
       <div className="stat-line">
         <span className="stat-name">{STAT_LABELS[statKey]}</span>
+        <span className="stat-value">{Math.round(value)}</span>
+      </div>
+      <div className="bar">
+        <div className="bar-fill" style={{ width: `${percent}%` }} />
+      </div>
+    </div>
+  );
+}
+
+function RankRow({
+  statKey,
+  attribute,
+}: {
+  statKey: IdolStatKey;
+  attribute: IdolAttribute;
+}) {
+  const max = attribute.rank === attribute.maxRank;
+  const needed = RANK_CURVE[attribute.rank];
+  const percent = max
+    ? 100
+    : Math.max(0, Math.min(100, (attribute.exp / needed) * 100));
+
+  return (
+    <div className={`stat-row stat-${statKey}`}>
+      <div className="stat-line">
+        <span className="stat-name">{STAT_LABELS[statKey]}</span>
         <span className="stat-value">
-          {Math.round(value)}
-          {statKey === 'trust' ? <small> / {max}</small> : null}
+          {attribute.rank}
+          {max ? <small> MAX</small> : <small> · {attribute.exp} / {needed}</small>}
         </span>
       </div>
       <div className="bar">
@@ -66,7 +98,7 @@ export function StatsPanel({
       </div>
       <div className="stat-list">
         {IDOL_ORDER.map((key) => (
-          <StatRow key={key} statKey={key} value={idol.stats[key]} />
+          <RankRow key={key} statKey={key} attribute={idol.stats[key]} />
         ))}
       </div>
 

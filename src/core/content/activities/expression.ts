@@ -14,15 +14,15 @@ const card: ActivityDef = {
   },
   "effects": [
     {
-      "kind": "stat",
-      "stat": "expression",
-      "delta": 6
-    },
+        "kind": "idolExp",
+        "attribute": "expression",
+        "tier": 3
+      },
     {
-      "kind": "stat",
-      "stat": "stress",
-      "delta": 7
-    }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 7
+      }
   ],
   "resultTexts": [
     "她对着镜头说了一句很普通的问候，却让人想再看一遍。",
@@ -33,10 +33,10 @@ const card: ActivityDef = {
     {
       "when": [
         {
-          "kind": "statAtLeast",
-          "stat": "stress",
-          "value": 70
-        }
+        "kind": "sharedStatAtLeast",
+        "stat": "stress",
+        "value": 70
+      }
       ],
       "text": "她笑着说完那段话，导演喊卡之后，笑容立刻掉了下来。"
     }

@@ -11,15 +11,15 @@ const card: ActivityDef = {
   "cost": {},
   "effects": [
     {
-      "kind": "stat",
-      "stat": "stamina",
-      "delta": 30
-    },
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": 30
+      },
     {
-      "kind": "stat",
-      "stat": "stress",
-      "delta": -20
-    },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -20
+      },
     {
       "kind": "flag",
       "key": "forced_rest",
@@ -35,10 +35,10 @@ const card: ActivityDef = {
     {
       "when": [
         {
-          "kind": "statAtLeast",
-          "stat": "stress",
-          "value": 80
-        }
+        "kind": "sharedStatAtLeast",
+        "stat": "stress",
+        "value": 80
+      }
       ],
       "text": "她几乎是一坐下就睡着了。你替她把灯调暗了一点。"
     }

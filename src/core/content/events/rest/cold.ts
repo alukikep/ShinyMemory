@@ -5,10 +5,10 @@ const card: EventDef = {
   "title": "鼻音",
   "when": [
     {
-      "kind": "statAtMost",
-      "stat": "stamina",
-      "value": 30
-    }
+        "kind": "sharedStatAtMost",
+        "stat": "stamina",
+        "value": 30
+      }
   ],
   "once": true,
   "weight": 20,
@@ -18,20 +18,20 @@ const card: EventDef = {
       "label": "让她今天休息",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": 20
-        },
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": 20
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -10
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -10
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 1
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
         {
           "kind": "flag",
           "key": "forced_rest",
@@ -44,20 +44,21 @@ const card: EventDef = {
       "label": "再坚持一下",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": -10
-        },
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": -10
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": 10
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 10
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": -2
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3,
+        "direction": "loss"
+      }
       ],
       "result": "她点点头，但下一句歌词没有唱上去。"
     },
@@ -69,15 +70,15 @@ const card: EventDef = {
           "delta": -800
         },
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": 30
-        },
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": 30
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -5
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
       ],
       "result": "医生说只是感冒，她一路上都在说“太夸张了”。"
     }

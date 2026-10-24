@@ -14,22 +14,42 @@ const card: EventDef = {
     {
       label: '说当然',
       effects: [
-        { kind: 'stat', stat: 'trust', delta: 1 },
-        { kind: 'stat', stat: 'stress', delta: 3 },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 3
+      },
       ],
       result: '你说得很肯定，自己却有点不确定。',
     },
     {
       label: '说需要时间',
       effects: [
-        { kind: 'stat', stat: 'trust', delta: 2 },
-        { kind: 'stat', stat: 'stress', delta: -2 },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -2
+      },
       ],
       result: '对方点了点头，说“那你最好别浪费时间”。',
     },
     {
       label: '反问对方',
-      effects: [{ kind: 'stat', stat: 'stress', delta: 5 }],
+      effects: [{
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 5
+      }],
       result: '会议室安静了几秒。',
     },
   ],

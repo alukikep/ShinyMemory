@@ -4,8 +4,16 @@ const card: EventDef = {
   id: 'evt.vocal_strain',
   title: '嗓子的警告',
   when: [
-    { kind: 'statAtMost', stat: 'stamina', value: 50 },
-    { kind: 'statAtLeast', stat: 'stress', value: 20 },
+    {
+        "kind": "sharedStatAtMost",
+        "stat": "stamina",
+        "value": 50
+      },
+    {
+        "kind": "sharedStatAtLeast",
+        "stat": "stress",
+        "value": 20
+      },
   ],
   after: { ids: ['vocal'] },
   chance: 0.5,
@@ -16,19 +24,48 @@ const card: EventDef = {
     {
       label: '让她今天别再唱了',
       effects: [
-        { kind: 'stat', stat: 'stress', delta: -8 },
-        { kind: 'stat', stat: 'stamina', delta: 10 },
-        { kind: 'stat', stat: 'trust', delta: 1 },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -8
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": 10
+      },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
       ],
       result: '她抿了抿嘴，说“好吧”，但把谱子收得很慢。',
     },
     {
       label: '再试一次，确认一下',
       effects: [
-        { kind: 'stat', stat: 'vocal', delta: 2 },
-        { kind: 'stat', stat: 'stress', delta: 8 },
-        { kind: 'stat', stat: 'stamina', delta: -5 },
-        { kind: 'stat', stat: 'trust', delta: -1 },
+        {
+        "kind": "idolExp",
+        "attribute": "vocal",
+        "tier": 3
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 8
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": -5
+      },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1,
+        "direction": "loss"
+      },
       ],
       result: '她唱到高音时皱了一下眉，但还是唱完了。',
     },
@@ -36,8 +73,16 @@ const card: EventDef = {
       label: '去买点润喉的',
       effects: [
         { kind: 'money', delta: -200 },
-        { kind: 'stat', stat: 'stress', delta: -5 },
-        { kind: 'stat', stat: 'trust', delta: 2 },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
       ],
       result: '她捧着热饮，说“太甜了”，但还是喝完了。',
     },

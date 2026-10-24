@@ -4,8 +4,43 @@ import {
   createInitialActorStates,
   createInitialIdolStates,
 } from '../core/contentIndex';
-import type { GameState, SaveEnvelope, StatKey } from '../core/types';
+import type {
+  GameState,
+  IdolAttribute,
+  Rank,
+  SaveEnvelope,
+  StatKey,
+} from '../core/types';
 import { GAME_VERSION, SAVE_VERSION } from './version';
+
+const RANK_FROM_VALUE: Rank[] = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
+
+function legacyRank(value: number): Rank {
+  if (value >= 100) return 'S';
+  if (value >= 85) return 'A';
+  if (value >= 70) return 'B';
+  if (value >= 55) return 'C';
+  if (value >= 40) return 'D';
+  if (value >= 25) return 'E';
+  return 'F';
+}
+
+function legacyAttribute(
+  value: number,
+  initial: Rank,
+  maxRank: Rank,
+): IdolAttribute {
+  const start = Math.max(
+    RANK_FROM_VALUE.indexOf(initial),
+    RANK_FROM_VALUE.indexOf(legacyRank(value)),
+  );
+  const cap = RANK_FROM_VALUE.indexOf(maxRank);
+  return {
+    rank: RANK_FROM_VALUE[Math.min(start, cap)]!,
+    exp: 0,
+    maxRank,
+  };
+}
 
 export function createSaveEnvelope(state: GameState): SaveEnvelope {
   return {
@@ -85,15 +120,32 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     const legacy = state.stats;
     const idolId = CONTENT_INDEX.startingIdolId;
     const idols = createInitialIdolStates();
+    const profile = CONTENT_INDEX.idols.get(idolId)?.growth;
 
-    if (legacy) {
+    if (legacy && profile) {
       idols[idolId] = {
         id: idolId,
         stats: {
-          vocal: legacy.vocal,
-          dance: legacy.dance,
-          expression: legacy.expression,
-          trust: legacy.trust,
+          vocal: legacyAttribute(
+            legacy.vocal,
+            profile.vocal.initial,
+            profile.vocal.max,
+          ),
+          dance: legacyAttribute(
+            legacy.dance,
+            profile.dance.initial,
+            profile.dance.max,
+          ),
+          expression: legacyAttribute(
+            legacy.expression,
+            profile.expression.initial,
+            profile.expression.max,
+          ),
+          trust: legacyAttribute(
+            legacy.trust,
+            profile.trust.initial,
+            profile.trust.max,
+          ),
         },
       };
     }
@@ -145,6 +197,37 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
       next.state.endingId = undefined;
     }
     next.schemaVersion = 9;
+    next.gameVersion = GAME_VERSION;
+  }
+
+  if (next.schemaVersion === 9) {
+    const state = next.state as GameState & {
+      idols?: Record<
+        string,
+        {
+          id: string;
+          stats: Record<string, number | IdolAttribute>;
+        }
+      >;
+    };
+
+    for (const [idolId, idol] of Object.entries(state.idols ?? {})) {
+      const profile = CONTENT_INDEX.idols.get(idolId)?.growth;
+      if (!profile) continue;
+      for (const key of Object.keys(idol.stats)) {
+        const raw = idol.stats[key];
+        if (typeof raw !== 'number') continue;
+        const attribute = key as keyof typeof profile;
+        const growth = profile[attribute];
+        idol.stats[key] = legacyAttribute(
+          raw,
+          growth.initial,
+          growth.max,
+        );
+      }
+    }
+
+    next.schemaVersion = 10;
     next.gameVersion = GAME_VERSION;
   }
 

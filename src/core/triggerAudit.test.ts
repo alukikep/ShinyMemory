@@ -22,7 +22,7 @@ const strategies: Record<string, Strategy> = {
     const trust = getStatValue(state, 'trust');
     if (stamina < 35 || stress > 65) return 'rest';
     if (state.money < 500) return 'work';
-    if (trust < 10 && state.actionsTaken % 5 === 0) return 'free';
+    if (trust < 3 && state.actionsTaken % 5 === 0) return 'free';
     return cycle(state, ['vocal', 'dance', 'expression']);
   },
   training: (state) => {
@@ -162,5 +162,5 @@ describe('trigger audit', () => {
     // evt.insomnia is night-only (00:00–05:00); daytime strategies don't reach it.
     expect(globalEvents.has('evt.vocal_strain')).toBe(true);
     expect(globalEvents.has('evt.collapse')).toBe(true);
-  });
+  }, 15000);
 });

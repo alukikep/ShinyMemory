@@ -9,10 +9,10 @@ const card: EventDef = {
       "day": 1
     },
     {
-      "kind": "statAtLeast",
-      "stat": "stress",
-      "value": 25
-    },
+        "kind": "sharedStatAtLeast",
+        "stat": "stress",
+        "value": 25
+      },
     {
       "kind": "atLocation",
       "locationId": "practice_room"
@@ -31,20 +31,20 @@ const card: EventDef = {
       "label": "陪她练一会儿",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 2
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": -10
-        },
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": -10
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -5
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
       ],
       "result": "她没说话，但把音乐的拍子调慢了一点。"
     },
@@ -52,15 +52,16 @@ const card: EventDef = {
       "label": "劝她回去休息",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -10
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -10
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": -1
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1,
+        "direction": "loss"
+      }
       ],
       "result": "她关了灯，但在门口站了很久。"
     },
@@ -68,10 +69,10 @@ const card: EventDef = {
       "label": "什么也不说，先走",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": 3
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 3
+      }
       ],
       "result": "你听见身后又响起了音乐。"
     }

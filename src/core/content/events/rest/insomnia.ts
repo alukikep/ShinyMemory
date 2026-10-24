@@ -5,10 +5,10 @@ const card: EventDef = {
   "title": "凌晨一点",
   "when": [
     {
-      "kind": "statAtLeast",
-      "stat": "stress",
-      "value": 40
-    },
+        "kind": "sharedStatAtLeast",
+        "stat": "stress",
+        "value": 40
+      },
     {
       "kind": "timeWindow",
       "fromMinute": 0,
@@ -23,20 +23,20 @@ const card: EventDef = {
       "label": "陪她聊到睡着",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": -10
-        },
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": -10
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -8
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -8
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 1
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      }
       ],
       "result": "她最后一条消息是“晚安”，后面跟了一个很笨的颜文字。"
     },
@@ -44,10 +44,10 @@ const card: EventDef = {
       "label": "让她数羊",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -2
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -2
+      }
       ],
       "result": "她回了个“好”，你也不知道她有没有真的数。"
     },
@@ -55,15 +55,16 @@ const card: EventDef = {
       "label": "第二天再问",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": 2
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 2
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": -1
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1,
+        "direction": "loss"
+      }
       ],
       "result": "第二天她看起来没事，但你注意到她眼下有点青。"
     }

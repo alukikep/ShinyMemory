@@ -17,10 +17,10 @@ const card: ActivityDef = {
       "delta": 1500
     },
     {
-      "kind": "stat",
-      "stat": "stress",
-      "delta": 14
-    }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 14
+      }
   ],
   "resultTexts": [
     "录制比预想中顺利。她在休息间隙偷偷打了个哈欠。",
@@ -31,10 +31,10 @@ const card: ActivityDef = {
     {
       "when": [
         {
-          "kind": "statAtLeast",
-          "stat": "stress",
-          "value": 70
-        }
+        "kind": "sharedStatAtLeast",
+        "stat": "stress",
+        "value": 70
+      }
       ],
       "text": "她在镜头前笑得很标准。只有你知道，她今天几乎没怎么吃东西。"
     }

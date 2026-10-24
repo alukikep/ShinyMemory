@@ -12,6 +12,14 @@ import {
   createInitialIdolStates,
 } from './contentIndex';
 import { MID_EXAM } from './content/weeks';
+import {
+  EXP_TIER_VALUES,
+  RANK_CURVE,
+  nextRank,
+  rankIndex,
+  reduceExpTier,
+  sameOrHigherRank,
+} from './growth';
 import { STAT_LABELS, STAT_MAX } from './labels';
 import { Rng } from './rng';
 import { getDay, getMinuteOfDay, isMinuteInWindow } from './time';
@@ -28,10 +36,14 @@ import type {
   EndingDef,
   EventContext,
   EventDef,
+  ExpTier,
   GameState,
+  IdolAttribute,
   IdolStatKey,
   IdolState,
   LogTone,
+  Rank,
+  SharedStatKey,
   StatKey,
   TriggerReport,
 } from './types';
@@ -50,11 +62,8 @@ function clampState(state: GameState): void {
     Math.min(STAT_MAX.stress, state.shared.stress),
   );
   for (const idol of Object.values(state.idols ?? {})) {
-    for (const key of Object.keys(idol.stats) as IdolStatKey[]) {
-      idol.stats[key] = Math.max(
-        0,
-        Math.min(STAT_MAX[key], idol.stats[key]),
-      );
+    for (const attribute of Object.values(idol.stats)) {
+      attribute.exp = Math.max(0, attribute.exp);
     }
   }
   state.money = Math.max(0, state.money);
@@ -89,6 +98,62 @@ export function formatIdolText(
   return text.replace(/她(?!们)/g, name);
 }
 
+export function getIdolAttribute(
+  state: GameState,
+  attribute: IdolStatKey,
+  idolId: string = state.activeIdolId,
+): IdolAttribute {
+  return getIdol(state, idolId).stats[attribute];
+}
+
+export function getRank(
+  state: GameState,
+  attribute: IdolStatKey,
+  idolId: string = state.activeIdolId,
+): Rank {
+  return getIdolAttribute(state, attribute, idolId).rank;
+}
+
+export function applyIdolExp(
+  state: GameState,
+  attribute: IdolStatKey,
+  tier: ExpTier,
+  direction: 'gain' | 'loss' = 'gain',
+  idolId: string = state.activeIdolId,
+): void {
+  const target = getIdolAttribute(state, attribute, idolId);
+  const amount = EXP_TIER_VALUES[tier];
+
+  if (direction === 'loss') {
+    target.exp = Math.max(0, target.exp - amount);
+    return;
+  }
+
+  if (target.rank === target.maxRank) return;
+
+  target.exp += amount;
+  let leveled = false;
+  while (target.rank !== target.maxRank) {
+    const needed = RANK_CURVE[target.rank];
+    if (needed <= 0 || target.exp < needed) break;
+    const next = nextRank(target.rank);
+    if (!next) break;
+    target.exp -= needed;
+    target.rank = next;
+    leveled = true;
+  }
+  if (target.rank === target.maxRank) target.exp = 0;
+
+  if (leveled) {
+    const name = CONTENT_INDEX.idols.get(idolId)?.name ?? idolId;
+    addLog(
+      state,
+      `${name} ${STAT_LABELS[attribute]}提升到 ${target.rank}。`,
+      'good',
+    );
+  }
+}
+
 export function getStatValue(
   state: GameState,
   stat: StatKey,
@@ -97,7 +162,7 @@ export function getStatValue(
   if (stat === 'stamina' || stat === 'stress') {
     return state.shared[stat];
   }
-  return getIdol(state, idolId).stats[stat];
+  return rankIndex(getRank(state, stat, idolId));
 }
 
 function addLog(state: GameState, text: string, tone: LogTone = 'info'): void {
@@ -230,10 +295,20 @@ export function checkCondition(
         ? minuteOfDay >= fromMinute && minuteOfDay < toMinute
         : minuteOfDay >= fromMinute || minuteOfDay < toMinute;
     }
-    case 'statAtLeast':
-      return getStatValue(state, condition.stat, ctx.idolId) >= condition.value;
-    case 'statAtMost':
-      return getStatValue(state, condition.stat, ctx.idolId) <= condition.value;
+    case 'sharedStatAtLeast':
+      return state.shared[condition.stat] >= condition.value;
+    case 'sharedStatAtMost':
+      return state.shared[condition.stat] <= condition.value;
+    case 'rankAtLeast':
+      return sameOrHigherRank(
+        getRank(state, condition.attribute, ctx.idolId),
+        condition.rank,
+      );
+    case 'rankAtMost':
+      return (
+        rankIndex(getRank(state, condition.attribute, ctx.idolId)) <=
+        rankIndex(condition.rank)
+      );
     case 'npcAffinityAtLeast':
       return (state.actors[condition.actorId]?.affinity ?? 0) >= condition.value;
     case 'npcAffinityAtMost':
@@ -266,20 +341,28 @@ function applyEffects(
 ): void {
   for (const effect of effects) {
     switch (effect.kind) {
-      case 'stat': {
-        let delta = effect.delta;
-        const isPerformanceStat =
-          effect.stat === 'vocal' ||
-          effect.stat === 'dance' ||
-          effect.stat === 'expression';
-        if (options?.training && options.stressed && isPerformanceStat && delta > 0) {
-          delta = Math.max(1, Math.floor(delta / 2));
-        }
-        if (effect.stat === 'stamina' || effect.stat === 'stress') {
-          state.shared[effect.stat] += delta;
-        } else {
-          getIdol(state, options?.idolId).stats[effect.stat] += delta;
-        }
+      case 'sharedStat':
+        state.shared[effect.stat] += effect.delta;
+        break;
+      case 'idolExp': {
+        const isPerformance =
+          effect.attribute === 'vocal' ||
+          effect.attribute === 'dance' ||
+          effect.attribute === 'expression';
+        const tier =
+          options?.training &&
+          options.stressed &&
+          isPerformance &&
+          (effect.direction ?? 'gain') === 'gain'
+            ? reduceExpTier(effect.tier)
+            : effect.tier;
+        applyIdolExp(
+          state,
+          effect.attribute,
+          tier,
+          effect.direction ?? 'gain',
+          options?.idolId,
+        );
         break;
       }
       case 'money':
@@ -301,14 +384,20 @@ function applyEffects(
 }
 
 export function effectSummary(effects: Effect[], cost?: Cost): string {
-  const stats: Partial<Record<StatKey, number>> = {
+  const shared: Partial<Record<SharedStatKey, number>> = {
     stamina: -(cost?.stamina ?? 0),
   };
+  const exp: Partial<Record<IdolStatKey, number>> = {};
   let money = -(cost?.money ?? 0);
 
   for (const effect of effects) {
-    if (effect.kind === 'stat') {
-      stats[effect.stat] = (stats[effect.stat] ?? 0) + effect.delta;
+    if (effect.kind === 'sharedStat') {
+      shared[effect.stat] = (shared[effect.stat] ?? 0) + effect.delta;
+    } else if (effect.kind === 'idolExp') {
+      const value =
+        EXP_TIER_VALUES[effect.tier] *
+        (effect.direction === 'loss' ? -1 : 1);
+      exp[effect.attribute] = (exp[effect.attribute] ?? 0) + value;
     } else if (effect.kind === 'money') {
       money += effect.delta;
     }
@@ -318,16 +407,25 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
   if (money !== 0) {
     parts.push(`金钱 ${money > 0 ? '+' : ''}${money}`);
   }
-  const order: StatKey[] = [
+
+  const expOrder: IdolStatKey[] = [
     'vocal',
     'dance',
     'expression',
-    'stamina',
-    'stress',
     'trust',
   ];
-  for (const stat of order) {
-    const delta = stats[stat] ?? 0;
+  for (const attribute of expOrder) {
+    const delta = exp[attribute] ?? 0;
+    if (delta !== 0) {
+      parts.push(
+        `${STAT_LABELS[attribute]} EXP ${delta > 0 ? '+' : ''}${delta}`,
+      );
+    }
+  }
+
+  const sharedOrder: SharedStatKey[] = ['stamina', 'stress'];
+  for (const stat of sharedOrder) {
+    const delta = shared[stat] ?? 0;
     if (delta !== 0) {
       parts.push(`${STAT_LABELS[stat]} ${delta > 0 ? '+' : ''}${delta}`);
     }
@@ -861,10 +959,13 @@ function buildTotal(parts: ScorePart[]): number {
 export function midScore(state: GameState): ScoreBreakdown {
   const idol = getActiveIdol(state);
   const performance =
-    (idol.stats.vocal + idol.stats.dance + idol.stats.expression) / 3;
+    (rankIndex(idol.stats.vocal.rank) +
+      rankIndex(idol.stats.dance.rank) +
+      rankIndex(idol.stats.expression.rank)) /
+    3;
   const parts: ScorePart[] = [
-    { label: '能力均值 ×0.65', value: performance * 0.65 },
-    { label: '信任 ×1', value: idol.stats.trust },
+    { label: '能力均值 ×0.65', value: performance * 10 },
+    { label: '信任 ×1', value: rankIndex(idol.stats.trust.rank) * 2 },
     { label: '压力余量 ×0.15', value: (100 - state.shared.stress) * 0.15 },
   ];
   return { total: buildTotal(parts), parts };
@@ -873,10 +974,13 @@ export function midScore(state: GameState): ScoreBreakdown {
 export function finalScore(state: GameState): ScoreBreakdown {
   const idol = getActiveIdol(state);
   const performance =
-    (idol.stats.vocal + idol.stats.dance + idol.stats.expression) / 3;
+    (rankIndex(idol.stats.vocal.rank) +
+      rankIndex(idol.stats.dance.rank) +
+      rankIndex(idol.stats.expression.rank)) /
+    3;
   const parts: ScorePart[] = [
-    { label: '能力均值 ×0.75', value: performance * 0.75 },
-    { label: '信任 ×1', value: idol.stats.trust },
+    { label: '能力均值 ×0.75', value: performance * 10 },
+    { label: '信任 ×1', value: rankIndex(idol.stats.trust.rank) * 2 },
     { label: '压力余量 ×0.05', value: (100 - state.shared.stress) * 0.05 },
   ];
   return { total: buildTotal(parts), parts };
@@ -894,7 +998,7 @@ function resolveMidExam(state: GameState): GameState {
 
   if (next.examPassed) {
     next.money += 1000;
-    getIdol(next).stats.trust += 2;
+    applyIdolExp(next, 'trust', 3);
     next.flags.mid_passed = true;
     addLog(next, `中期试镜通过（${score.total} 分）。`, 'good');
   } else {

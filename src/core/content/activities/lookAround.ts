@@ -8,7 +8,11 @@ const card: ActivityDef = {
   durationMinutes: 30,
   timeWindows: [{ fromMinute: 8 * 60, toMinute: 22 * 60 }],
   cost: { stamina: 5 },
-  effects: [{ kind: 'stat', stat: 'stress', delta: -2 }],
+  effects: [{
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -2
+      }],
   resultTexts: ['你环顾四周，没发现什么特别的。'],
   resultVariants: [
     {

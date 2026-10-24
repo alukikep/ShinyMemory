@@ -35,15 +35,15 @@ const card: EventDef = {
           "delta": 1800
         },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": 15
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 15
+      },
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": -15
-        }
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": -15
+      }
       ],
       "result": "录制结束时已经过了零点。她在车上睡着了。"
     },
@@ -51,15 +51,15 @@ const card: EventDef = {
       "label": "拒绝",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -3
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -3
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 1
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      }
       ],
       "result": "她听说你推掉了，愣了一下，说“其实我可以的”。"
     },
@@ -67,15 +67,15 @@ const card: EventDef = {
       "label": "问她自己的意思",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 2
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": 2
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 2
+      }
       ],
       "result": "她想了很久，说“我想试试”。"
     }

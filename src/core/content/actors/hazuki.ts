@@ -35,8 +35,16 @@ const actor: ActorDef = {
       cooldownMinutes: 12 * 60,
       effects: [
         { kind: 'actorAffinity', actorId: 'hazuki', delta: 1 },
-        { kind: 'stat', stat: 'stamina', delta: 10 },
-        { kind: 'stat', stat: 'stress', delta: -5 },
+        {
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": 10
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      },
       ],
     },
   ],

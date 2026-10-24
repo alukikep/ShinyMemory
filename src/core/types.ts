@@ -2,8 +2,23 @@ export type SharedStatKey = 'stamina' | 'stress';
 export type IdolStatKey = 'vocal' | 'dance' | 'expression' | 'trust';
 export type StatKey = SharedStatKey | IdolStatKey;
 
+export type Rank = 'F' | 'E' | 'D' | 'C' | 'B' | 'A' | 'S';
+export type ExpTier = 1 | 3 | 5 | 10 | 20;
+
 export type SharedStats = Record<SharedStatKey, number>;
-export type IdolStats = Record<IdolStatKey, number>;
+
+export type IdolAttribute = {
+  rank: Rank;
+  exp: number;
+  maxRank: Rank;
+};
+
+export type IdolStats = Record<IdolStatKey, IdolAttribute>;
+
+export type GrowthProfile = Record<
+  IdolStatKey,
+  { initial: Rank; max: Rank }
+>;
 
 export type IdolDef = {
   id: string;
@@ -12,6 +27,7 @@ export type IdolDef = {
   color?: string;
   profile: string;
   isStart?: boolean;
+  growth: GrowthProfile;
 };
 
 export type IdolState = {
@@ -73,7 +89,13 @@ export type GameState = {
 };
 
 export type Effect =
-  | { kind: 'stat'; stat: StatKey; delta: number }
+  | { kind: 'sharedStat'; stat: SharedStatKey; delta: number }
+  | {
+      kind: 'idolExp';
+      attribute: IdolStatKey;
+      tier: ExpTier;
+      direction?: 'gain' | 'loss';
+    }
   | { kind: 'money'; delta: number }
   | { kind: 'flag'; key: string; value: boolean }
   | { kind: 'actorAffinity'; actorId: string; delta: number }
@@ -83,8 +105,10 @@ export type Condition =
   | { kind: 'dayAtLeast'; day: number }
   | { kind: 'weekAtLeast'; week: number }
   | { kind: 'timeWindow'; fromMinute: number; toMinute: number }
-  | { kind: 'statAtLeast'; stat: StatKey; value: number }
-  | { kind: 'statAtMost'; stat: StatKey; value: number }
+  | { kind: 'sharedStatAtLeast'; stat: SharedStatKey; value: number }
+  | { kind: 'sharedStatAtMost'; stat: SharedStatKey; value: number }
+  | { kind: 'rankAtLeast'; attribute: IdolStatKey; rank: Rank }
+  | { kind: 'rankAtMost'; attribute: IdolStatKey; rank: Rank }
   | { kind: 'npcAffinityAtLeast'; actorId: string; value: number }
   | { kind: 'npcAffinityAtMost'; actorId: string; value: number }
   | { kind: 'moneyAtMost'; value: number }
@@ -301,7 +325,7 @@ export type ActorView = {
   role: ActorRole;
   description: string;
   color?: string;
-  affinity: number;
+  affinity: number | string;
   relationshipLabel: string;
   entryLabel: string;
   enterCommand: ActionCommand;

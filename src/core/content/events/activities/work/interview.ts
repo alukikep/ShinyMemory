@@ -15,9 +15,21 @@ const card: EventDef = {
       label: '让她自己回答',
       durationMinutes: 60,
       effects: [
-        { kind: 'stat', stat: 'trust', delta: 2 },
-        { kind: 'stat', stat: 'expression', delta: 2 },
-        { kind: 'stat', stat: 'stress', delta: 5 },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
+        {
+        "kind": "idolExp",
+        "attribute": "expression",
+        "tier": 3
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 5
+      },
       ],
       result: '她说“太容易放弃”，然后笑了一下。',
     },
@@ -25,8 +37,17 @@ const card: EventDef = {
       label: '帮她换一个问题',
       durationMinutes: 60,
       effects: [
-        { kind: 'stat', stat: 'trust', delta: -1 },
-        { kind: 'stat', stat: 'stress', delta: -3 },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1,
+        "direction": "loss"
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -3
+      },
       ],
       result: '她没说什么，但采访结束后问你为什么。',
     },
@@ -34,9 +55,21 @@ const card: EventDef = {
       label: '提前对一遍答案',
       durationMinutes: 60,
       effects: [
-        { kind: 'stat', stat: 'expression', delta: 3 },
-        { kind: 'stat', stat: 'stress', delta: 3 },
-        { kind: 'stat', stat: 'trust', delta: 1 },
+        {
+        "kind": "idolExp",
+        "attribute": "expression",
+        "tier": 3
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 3
+      },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
       ],
       result: '她照着你写的说了，听起来很标准。',
     },

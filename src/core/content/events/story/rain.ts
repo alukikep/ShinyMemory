@@ -22,15 +22,15 @@ const card: EventDef = {
       "label": "把伞给她，自己跑回去",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 2
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": -10
-        }
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": -10
+      }
       ],
       "result": "第二天她把伞还给你，伞柄上缠了一圈新的胶带。"
     },
@@ -42,10 +42,10 @@ const card: EventDef = {
           "delta": -500
         },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 1
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      }
       ],
       "result": "车开走前，她摇下车窗说了句“明天见”。"
     },
@@ -53,20 +53,20 @@ const card: EventDef = {
       "label": "一起等雨停",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -3
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -3
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 1
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      },
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": -5
-        }
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": -5
+      }
       ],
       "result": "雨停了，你们谁也没提刚才那半小时。"
     }

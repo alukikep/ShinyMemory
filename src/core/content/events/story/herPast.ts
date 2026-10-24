@@ -9,10 +9,10 @@ const card: EventDef = {
       "day": 2
     },
     {
-      "kind": "statAtLeast",
-      "stat": "trust",
-      "value": 10
-    }
+        "kind": "rankAtLeast",
+        "attribute": "trust",
+        "rank": "C"
+      }
   ],
   "once": true,
   "weight": 10,
@@ -22,15 +22,15 @@ const card: EventDef = {
       "label": "安静地听她说完",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 3
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -5
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
       ],
       "result": "她说完，长长地呼了一口气，说“好像也没那么重了”。"
     },
@@ -38,10 +38,11 @@ const card: EventDef = {
       "label": "转移话题",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": -1
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1,
+        "direction": "loss"
+      }
       ],
       "result": "她笑了一下，说“也是，没什么好说的”。"
     },
@@ -49,15 +50,15 @@ const card: EventDef = {
       "label": "告诉她你自己的事",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 2
-        },
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -4
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -4
+      }
       ],
       "result": "她听得很认真，中途一次也没有打断你。"
     }

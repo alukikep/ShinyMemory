@@ -1,7 +1,12 @@
 import { useEffect } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
-import { STAT_LABELS, STAT_MAX } from '../../core/labels';
-import type { GameState, IdolStatKey } from '../../core/types';
+import { RANK_CURVE } from '../../core/growth';
+import { STAT_LABELS } from '../../core/labels';
+import type {
+  GameState,
+  IdolAttribute,
+  IdolStatKey,
+} from '../../core/types';
 
 const IDOL_STAT_ORDER: IdolStatKey[] = [
   'vocal',
@@ -10,17 +15,30 @@ const IDOL_STAT_ORDER: IdolStatKey[] = [
   'trust',
 ];
 
-function StatRow({ statKey, value }: { statKey: IdolStatKey; value: number }) {
-  const max = STAT_MAX[statKey];
-  const percent = Math.max(0, Math.min(100, (value / max) * 100));
+function RankRow({
+  statKey,
+  attribute,
+}: {
+  statKey: IdolStatKey;
+  attribute: IdolAttribute;
+}) {
+  const max = attribute.rank === attribute.maxRank;
+  const needed = RANK_CURVE[attribute.rank];
+  const percent = max
+    ? 100
+    : Math.max(0, Math.min(100, (attribute.exp / needed) * 100));
 
   return (
     <div className={`stat-row stat-${statKey}`}>
       <div className="stat-line">
         <span className="stat-name">{STAT_LABELS[statKey]}</span>
         <span className="stat-value">
-          {Math.round(value)}
-          {statKey === 'trust' ? <small> / {max}</small> : null}
+          {attribute.rank}
+          {max ? (
+            <small> / MAX</small>
+          ) : (
+            <small> · {attribute.exp} / {needed}</small>
+          )}
         </span>
       </div>
       <div className="bar">
@@ -98,7 +116,11 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
                 ) : null}
                 <div className="roster-stats">
                   {IDOL_STAT_ORDER.map((key) => (
-                    <StatRow key={key} statKey={key} value={idol.stats[key]} />
+                    <RankRow
+                      key={key}
+                      statKey={key}
+                      attribute={idol.stats[key]}
+                    />
                   ))}
                 </div>
               </article>

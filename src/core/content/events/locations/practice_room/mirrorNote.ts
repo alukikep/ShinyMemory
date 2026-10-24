@@ -12,19 +12,35 @@ const card: EventDef = {
     {
       label: '读出来',
       effects: [
-        { kind: 'stat', stat: 'trust', delta: 2 },
-        { kind: 'stat', stat: 'stress', delta: -3 },
+        {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      },
+        {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -3
+      },
       ],
       result: '上面写着“今天也要笑”。她站在门口，没进来。',
     },
     {
       label: '撕下来收好',
-      effects: [{ kind: 'stat', stat: 'trust', delta: 1 }],
+      effects: [{
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      }],
       result: '你把便签夹进台本里。',
     },
     {
       label: '留在原处',
-      effects: [{ kind: 'stat', stat: 'stress', delta: 1 }],
+      effects: [{
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 1
+      }],
       result: '你们谁也没有提那张便签。',
     },
   ],

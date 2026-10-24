@@ -5,10 +5,10 @@ const card: EventDef = {
   "title": "再来一遍",
   "when": [
     {
-      "kind": "statAtMost",
-      "stat": "stamina",
-      "value": 50
-    },
+        "kind": "sharedStatAtMost",
+        "stat": "stamina",
+        "value": 50
+      },
     {
       "kind": "timeWindow",
       "fromMinute": 960,
@@ -26,25 +26,25 @@ const card: EventDef = {
       "durationMinutes": 60,
       "effects": [
         {
-          "kind": "stat",
-          "stat": "vocal",
-          "delta": 3
-        },
+        "kind": "idolExp",
+        "attribute": "vocal",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "dance",
-          "delta": 3
-        },
+        "kind": "idolExp",
+        "attribute": "dance",
+        "tier": 3
+      },
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": -15
-        },
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": -15
+      },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": 10
-        }
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 10
+      }
       ],
       "result": "你们把那段副歌练到保安来催。"
     },
@@ -52,20 +52,20 @@ const card: EventDef = {
       "label": "今天到此为止",
       "effects": [
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -5
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      },
         {
-          "kind": "stat",
-          "stat": "stamina",
-          "delta": 5
-        },
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": 5
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 1
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      }
       ],
       "result": "她有点不甘心，但还是收拾了东西。"
     },
@@ -77,15 +77,15 @@ const card: EventDef = {
           "delta": -300
         },
         {
-          "kind": "stat",
-          "stat": "stress",
-          "delta": -8
-        },
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -8
+      },
         {
-          "kind": "stat",
-          "stat": "trust",
-          "delta": 2
-        }
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 3
+      }
       ],
       "result": "她在便利店挑了很久，最后选了一个最便宜的饭团。"
     }

@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { buildScene } from './core/scene';
 import { MAX_DAYS } from './core/config';
 import { formatClock, getDay } from './core/time';
 import { useGameStore } from './app/store';
 import { DebugPanel } from './ui/components/DebugPanel';
+import { IdolRoster } from './ui/components/IdolRoster';
 import { LogPanel } from './ui/components/LogPanel';
 import { ScenePanel } from './ui/components/ScenePanel';
 import { StatsPanel } from './ui/components/StatsPanel';
@@ -13,6 +15,7 @@ export default function App() {
   const restart = useGameStore((store) => store.restart);
   const debugForceEvent = useGameStore((store) => store.debugForceEvent);
   const debugJumpDay = useGameStore((store) => store.debugJumpDay);
+  const [rosterOpen, setRosterOpen] = useState(false);
   const debug =
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).has('debug');
@@ -56,7 +59,7 @@ export default function App() {
       </header>
 
       <main className="layout">
-        <StatsPanel state={state} />
+        <StatsPanel state={state} onOpenRoster={() => setRosterOpen(true)} />
         <ScenePanel
           scene={scene}
           onAction={act}
@@ -64,6 +67,10 @@ export default function App() {
         />
         <LogPanel state={state} />
       </main>
+
+      {rosterOpen ? (
+        <IdolRoster state={state} onClose={() => setRosterOpen(false)} />
+      ) : null}
 
       {debug ? (
         <DebugPanel

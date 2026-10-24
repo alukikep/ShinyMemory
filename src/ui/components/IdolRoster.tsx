@@ -1,0 +1,111 @@
+import { useEffect } from 'react';
+import { CONTENT_INDEX } from '../../core/contentIndex';
+import { STAT_LABELS, STAT_MAX } from '../../core/labels';
+import type { GameState, IdolStatKey } from '../../core/types';
+
+const IDOL_STAT_ORDER: IdolStatKey[] = [
+  'vocal',
+  'dance',
+  'expression',
+  'trust',
+];
+
+function StatRow({ statKey, value }: { statKey: IdolStatKey; value: number }) {
+  const max = STAT_MAX[statKey];
+  const percent = Math.max(0, Math.min(100, (value / max) * 100));
+
+  return (
+    <div className={`stat-row stat-${statKey}`}>
+      <div className="stat-line">
+        <span className="stat-name">{STAT_LABELS[statKey]}</span>
+        <span className="stat-value">
+          {Math.round(value)}
+          {statKey === 'trust' ? <small> / {max}</small> : null}
+        </span>
+      </div>
+      <div className="bar">
+        <div className="bar-fill" style={{ width: `${percent}%` }} />
+      </div>
+    </div>
+  );
+}
+
+type IdolRosterProps = {
+  state: GameState;
+  onClose: () => void;
+};
+
+export function IdolRoster({ state, onClose }: IdolRosterProps) {
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [onClose]);
+
+  const idols = Object.values(state.idols);
+
+  return (
+    <div
+      className="roster-backdrop"
+      role="presentation"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <section
+        className="roster-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="偶像名册"
+      >
+        <header className="roster-head">
+          <div>
+            <p className="eyebrow">IDOL ROSTER</p>
+            <h2>偶像名册</h2>
+          </div>
+          <button
+            type="button"
+            className="roster-close"
+            onClick={onClose}
+            aria-label="关闭偶像名册"
+          >
+            关闭
+          </button>
+        </header>
+
+        <div className="roster-shared">
+          <span>共享体力 {Math.round(state.shared.stamina)}</span>
+          <span>共享压力 {Math.round(state.shared.stress)}</span>
+        </div>
+
+        <div className="roster-grid">
+          {idols.map((idol) => {
+            const def = CONTENT_INDEX.idols.get(idol.id);
+            const active = idol.id === state.activeIdolId;
+            return (
+              <article className="roster-card" key={idol.id}>
+                <div className="roster-card-head">
+                  <div>
+                    <h3>{def?.name ?? idol.id}</h3>
+                    <p>{def?.unit ?? ''}</p>
+                  </div>
+                  {active ? <span className="roster-current">当前</span> : null}
+                </div>
+                {def?.profile ? (
+                  <p className="roster-profile">{def.profile}</p>
+                ) : null}
+                <div className="roster-stats">
+                  {IDOL_STAT_ORDER.map((key) => (
+                    <StatRow key={key} statKey={key} value={idol.stats[key]} />
+                  ))}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    </div>
+  );
+}

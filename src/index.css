@@ -277,6 +277,142 @@ button {
   background: linear-gradient(90deg, #8d6fa8, #b9a2cf);
 }
 
+.roster-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 8px 11px;
+  color: var(--ink);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.roster-button:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+.roster-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(47, 42, 38, 0.32);
+  backdrop-filter: blur(2px);
+}
+
+.roster-panel {
+  width: min(680px, 100%);
+  max-height: min(82vh, 760px);
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--panel-solid);
+  box-shadow: 0 30px 80px rgba(47, 34, 25, 0.22);
+  padding: 24px;
+}
+
+.roster-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.roster-head h2 {
+  margin: 3px 0 0;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+}
+
+.roster-close {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  padding: 5px 12px;
+  color: var(--muted);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.roster-close:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent);
+}
+
+.roster-shared {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.roster-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 15px;
+}
+
+.roster-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.roster-card-head h3 {
+  margin: 0;
+  font-size: 17px;
+  letter-spacing: 0.04em;
+}
+
+.roster-card-head p {
+  margin: 2px 0 0;
+  color: var(--faint);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.roster-current {
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 2px 7px;
+  color: var(--accent-strong);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.roster-profile {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.roster-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .week-track {
   display: flex;
   gap: 5px;

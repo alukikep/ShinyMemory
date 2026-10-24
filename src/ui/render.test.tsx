@@ -4,7 +4,9 @@ import App from '../App';
 import { buildScene } from '../core/scene';
 import { advanceTime, enterNpc, handleCommand, moveTo, newGame } from '../core/sim';
 import { DebugPanel } from './components/DebugPanel';
+import { IdolRoster } from './components/IdolRoster';
 import { ScenePanel } from './components/ScenePanel';
+import { StatsPanel } from './components/StatsPanel';
 
 describe('app shell', () => {
   it('renders the first day without crashing', () => {
@@ -83,6 +85,24 @@ describe('app shell', () => {
     expect(html).toContain('舞蹈课');
     expect(html).toContain('表现课');
     expect(html).toContain('离开');
+  });
+
+  it('renders the idol roster overlay', () => {
+    const html = renderToString(
+      <IdolRoster state={newGame(1)} onClose={() => {}} />,
+    );
+    expect(html).toContain('偶像名册');
+    expect(html).toContain('樱木真乃');
+    expect(html).toContain('歌唱');
+    expect(html).toContain('当前');
+  });
+
+  it('shows the roster button in the sidebar', () => {
+    const html = renderToString(
+      <StatsPanel state={newGame(1)} onOpenRoster={() => {}} />,
+    );
+    expect(html).toContain('偶像名册');
+    expect(html).toContain('樱木真乃');
   });
 
   it('renders the debug panel without crashing', () => {

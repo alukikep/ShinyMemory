@@ -34,7 +34,13 @@ function StatRow({
   );
 }
 
-export function StatsPanel({ state }: { state: GameState }) {
+export function StatsPanel({
+  state,
+  onOpenRoster,
+}: {
+  state: GameState;
+  onOpenRoster: () => void;
+}) {
   const day = getDay(state.clock.absoluteMinutes);
   const idol = getActiveIdol(state);
   const idolDef = CONTENT_INDEX.idols.get(state.activeIdolId);
@@ -64,6 +70,15 @@ export function StatsPanel({ state }: { state: GameState }) {
           <StatRow key={key} statKey={key} value={idol.stats[key]} />
         ))}
       </div>
+
+      <button
+        type="button"
+        className="roster-button"
+        onClick={onOpenRoster}
+      >
+        <span>偶像名册</span>
+        <span aria-hidden="true">→</span>
+      </button>
 
       <div className="week-track" aria-label="天进度">
         {Array.from({ length: MAX_DAYS }, (_, index) => (

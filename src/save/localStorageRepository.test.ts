@@ -14,9 +14,10 @@ describe('LocalStorageRepository', () => {
 
     const loaded = repo.load();
     expect(loaded).not.toBeNull();
-    expect(loaded?.schemaVersion).toBe(4);
+    expect(loaded?.schemaVersion).toBe(5);
     expect(loaded?.state.stats.vocal).toBe(20);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
+    expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
   });
 
   it('migrates a v1 save to the time system', () => {
@@ -38,10 +39,11 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(4);
+    expect(loaded?.schemaVersion).toBe(5);
     expect(loaded?.state.locationId).toBe('office');
     expect(loaded?.state.clock.absoluteMinutes).toBe(8 * 60);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
+    expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
   });
 
   it('migrates a v3 save by adding actors', () => {
@@ -59,8 +61,31 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(4);
+    expect(loaded?.schemaVersion).toBe(5);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
+    expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
+  });
+
+  it('migrates a v4 save by adding the new actor', () => {
+    const storage = new MemoryStorage();
+    const state = newGame(1) as unknown as Record<string, unknown>;
+    const actors = state.actors as Record<string, { affinity: number }>;
+    actors.hazuki.affinity = 3;
+    delete actors.tsutomu;
+    storage.setItem(
+      SAVE_KEY,
+      JSON.stringify({
+        schemaVersion: 4,
+        gameVersion: '0.5.0',
+        createdAt: '2026-10-24T00:00:00.000Z',
+        state,
+      }),
+    );
+
+    const loaded = new LocalStorageRepository(storage).load();
+    expect(loaded?.schemaVersion).toBe(5);
+    expect(loaded?.state.actors.hazuki?.affinity).toBe(3);
+    expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
   });
 
   it('returns null for invalid JSON', () => {

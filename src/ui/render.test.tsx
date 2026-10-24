@@ -43,6 +43,18 @@ describe('app shell', () => {
     expect(html).toContain('选择话题');
   });
 
+  it('renders multiple actors at the office', () => {
+    const state = advanceTime(newGame(1), 2 * 60);
+    const html = renderToString(
+      <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
+    );
+    expect(html).toContain('七草叶月');
+    expect(html).toContain('天井努');
+    expect(html).toContain('社长');
+    expect(html).toContain('和七草叶月聊聊');
+    expect(html).toContain('和天井努聊聊');
+  });
+
   it('renders the dedicated Hazuki interaction page', () => {
     const state = enterNpc(advanceTime(newGame(1), 60), 'hazuki');
     const html = renderToString(

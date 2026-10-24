@@ -239,6 +239,7 @@ function buildEventResult(state: GameState): SceneView {
 
 const ACTOR_ROLE_LABEL: Record<ActorView['role'], string> = {
   staff: '事务员',
+  president: '社长',
   idol: '偶像',
   rival: '对手',
 };

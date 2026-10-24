@@ -243,19 +243,26 @@ describe('raising sim core', () => {
     expect(state.phase).toBe('plan');
   });
 
-  it('shows Hazuki at the office from 09:00 to 18:00', () => {
+  it('shows Hazuki and Tsutomu on their office schedules', () => {
     const morning = newGame(1);
-    expect(presentActors(morning).map((actor) => actor.id)).not.toContain(
-      'hazuki',
-    );
+    expect(presentActors(morning).map((actor) => actor.id)).toEqual([]);
 
     const nine = advanceTime(morning, 60);
-    expect(presentActors(nine).map((actor) => actor.id)).toContain('hazuki');
+    expect(presentActors(nine).map((actor) => actor.id)).toEqual(['hazuki']);
+
+    const ten = advanceTime(morning, 2 * 60);
+    expect(presentActors(ten).map((actor) => actor.id)).toEqual([
+      'hazuki',
+      'tsutomu',
+    ]);
+
+    const seventeen = advanceTime(morning, 9 * 60);
+    expect(presentActors(seventeen).map((actor) => actor.id)).toEqual([
+      'hazuki',
+    ]);
 
     const evening = advanceTime(morning, 10 * 60);
-    expect(presentActors(evening).map((actor) => actor.id)).not.toContain(
-      'hazuki',
-    );
+    expect(presentActors(evening).map((actor) => actor.id)).toEqual([]);
   });
 
   it('talks to Hazuki and applies affinity once', () => {

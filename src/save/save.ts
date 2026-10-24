@@ -62,5 +62,14 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     next.gameVersion = GAME_VERSION;
   }
 
+  if (next.schemaVersion === 4) {
+    next.state.actors = {
+      ...createInitialActorStates(),
+      ...(next.state.actors ?? {}),
+    };
+    next.schemaVersion = 5;
+    next.gameVersion = GAME_VERSION;
+  }
+
   return next;
 }

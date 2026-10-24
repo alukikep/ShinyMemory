@@ -1,4 +1,11 @@
-import type { ActionCommand, SceneView } from '../../core/types';
+import type { ActionCommand, ActorRole, SceneView } from '../../core/types';
+
+const ACTOR_ROLE_LABEL: Record<ActorRole, string> = {
+  staff: '事务员',
+  president: '社长',
+  idol: '偶像',
+  rival: '对手',
+};
 
 type ScenePanelProps = {
   scene: SceneView;
@@ -59,11 +66,7 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
               <div className="actor-head">
                 <span className="actor-name">{actor.name}</span>
                 <span className="actor-role">
-                  {actor.role === 'staff'
-                    ? '事务员'
-                    : actor.role === 'idol'
-                      ? '偶像'
-                      : '对手'}
+                  {ACTOR_ROLE_LABEL[actor.role]}
                 </span>
                 <span className="actor-affinity">好感 {actor.affinity} / 20</span>
               </div>
@@ -89,11 +92,7 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
           <div className="actor-head">
             <span className="actor-name">{scene.npc.name}</span>
             <span className="actor-role">
-              {scene.npc.role === 'staff'
-                ? '事务员'
-                : scene.npc.role === 'idol'
-                  ? '偶像'
-                  : '对手'}
+              {ACTOR_ROLE_LABEL[scene.npc.role]}
             </span>
             <span className="actor-affinity">
               好感 {scene.npc.affinity} / 20

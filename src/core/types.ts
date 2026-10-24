@@ -88,7 +88,7 @@ export type TimeWindow = {
   toMinute: number;
 };
 
-export type ActorRole = 'staff' | 'idol' | 'rival';
+export type ActorRole = 'staff' | 'president' | 'idol' | 'rival';
 
 export type ActorSchedule = {
   fromMinute: number;

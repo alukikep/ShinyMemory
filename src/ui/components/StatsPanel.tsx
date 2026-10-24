@@ -1,3 +1,4 @@
+import { MAX_WEEKS } from '../../core/config';
 import { STAT_LABELS, STAT_MAX } from '../../core/labels';
 import type { GameState, StatKey } from '../../core/types';
 
@@ -15,7 +16,7 @@ export function StatsPanel({ state }: { state: GameState }) {
     <aside className="panel stats-panel">
       <div className="panel-head">
         <h2>状态</h2>
-        <span className="panel-note">第 {Math.min(state.week, 12)} 周</span>
+        <span className="panel-note">第 {Math.min(state.week, MAX_WEEKS)} 周</span>
       </div>
 
       <div className="stat-list">
@@ -41,7 +42,7 @@ export function StatsPanel({ state }: { state: GameState }) {
       </div>
 
       <div className="week-track" aria-label="周进度">
-        {Array.from({ length: 12 }, (_, index) => (
+        {Array.from({ length: MAX_WEEKS }, (_, index) => (
           <span
             key={index}
             className={`week-dot ${index < state.week ? 'done' : ''} ${index === state.week - 1 ? 'current' : ''}`}

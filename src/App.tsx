@@ -1,5 +1,7 @@
 import { buildScene } from './core/scene';
+import { MAX_WEEKS, TOTAL_ACTIONS } from './core/config';
 import { useGameStore } from './app/store';
+import { DebugPanel } from './ui/components/DebugPanel';
 import { LogPanel } from './ui/components/LogPanel';
 import { ScenePanel } from './ui/components/ScenePanel';
 import { StatsPanel } from './ui/components/StatsPanel';
@@ -8,6 +10,11 @@ export default function App() {
   const state = useGameStore((store) => store.state);
   const act = useGameStore((store) => store.act);
   const restart = useGameStore((store) => store.restart);
+  const debugForceEvent = useGameStore((store) => store.debugForceEvent);
+  const debugJumpWeek = useGameStore((store) => store.debugJumpWeek);
+  const debug =
+    typeof window !== 'undefined' &&
+    new URLSearchParams(window.location.search).has('debug');
   const scene = buildScene(state);
 
   return (
@@ -20,7 +27,7 @@ export default function App() {
         <div className="topbar-meta">
           <div className="meta-item">
             <span>周</span>
-            <strong>{Math.min(state.week, 12)} / 12</strong>
+            <strong>{Math.min(state.week, MAX_WEEKS)} / {MAX_WEEKS}</strong>
           </div>
           <div className="meta-item">
             <span>金钱</span>
@@ -28,7 +35,7 @@ export default function App() {
           </div>
           <div className="meta-item">
             <span>行动</span>
-            <strong>{state.actionsTaken} / 24</strong>
+            <strong>{state.actionsTaken} / {TOTAL_ACTIONS}</strong>
           </div>
           <button
             type="button"
@@ -47,6 +54,14 @@ export default function App() {
         <ScenePanel scene={scene} onAction={act} />
         <LogPanel state={state} />
       </main>
+
+      {debug ? (
+        <DebugPanel
+          state={state}
+          onForceEvent={debugForceEvent}
+          onJumpWeek={debugJumpWeek}
+        />
+      ) : null}
 
       <footer className="footer">
         数据驱动原型 · 活动、事件、结局都来自内容数据，UI 不写死任何节点

@@ -31,6 +31,7 @@ export type GameState = {
   stats: Record<StatKey, number>;
   money: number;
   flags: Record<string, boolean>;
+  eventCooldowns: Record<string, number>;
   log: LogEntry[];
   phase: Phase;
   actionsTaken: number;
@@ -92,14 +93,44 @@ export type EventChoice = {
   result: string;
 };
 
+export type ActivitySelector =
+  | { ids: string[] }
+  | { kinds: ActivityKind[] };
+
 export type EventDef = {
   id: string;
   title: string;
   when: Condition[];
+  after?: ActivitySelector;
+  chance?: number;
+  priority?: number;
+  cooldownActions?: number;
   once?: boolean;
   weight?: number;
   text: string;
   choices: EventChoice[];
+};
+
+export type EventContext = {
+  lastActivityId?: string;
+  lastActivityKind?: ActivityKind;
+};
+
+export type TriggerReport = {
+  eventId: string;
+  eligible: boolean;
+  reason?: 'condition' | 'after' | 'once' | 'cooldown';
+  chanceRoll?: number;
+  passedChance?: boolean;
+  priority?: number;
+  selected?: boolean;
+};
+
+export type SaveEnvelope = {
+  schemaVersion: number;
+  gameVersion: string;
+  createdAt: string;
+  state: GameState;
 };
 
 export type EndingDef = {

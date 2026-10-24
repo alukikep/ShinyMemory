@@ -1,4 +1,5 @@
-import { ACTIVITIES } from './content/activities';
+import { ACTIVITIES } from './content';
+import { TOTAL_ACTIONS } from './config';
 import { FINAL_EXAM, MID_EXAM, WEEK_FLAVOR } from './content/weeks';
 import {
   activityAvailability,
@@ -61,7 +62,7 @@ function buildPlan(state: GameState): SceneView {
     phase: state.phase,
     phaseLabel: PHASE_LABEL[state.phase],
     title: `第 ${state.week} 周 · ${SLOT_LABEL[state.slot]}`,
-    subtitle: `第 ${state.actionsTaken + 1} 次行动 / 24`,
+    subtitle: `第 ${state.actionsTaken + 1} 次行动 / ${TOTAL_ACTIONS}`,
     blocks,
     actions,
     layout: 'grid',

@@ -1,6 +1,6 @@
-import { ACTIVITIES } from './content/activities';
-import { EVENTS } from './content/events';
-import { ENDINGS } from './content/endings';
+import { MAX_WEEKS, MID_EXAM_WEEK } from './config';
+import { EVENTS, ENDINGS } from './content';
+import { CONTENT_INDEX } from './contentIndex';
 import { MID_EXAM } from './content/weeks';
 import { STAT_LABELS, STAT_MAX } from './labels';
 import { Rng } from './rng';
@@ -10,13 +10,13 @@ import type {
   Cost,
   Effect,
   EndingDef,
+  EventContext,
   EventDef,
   GameState,
   LogTone,
   StatKey,
+  TriggerReport,
 } from './types';
-
-const MAX_WEEKS = 12;
 
 function clone(state: GameState): GameState {
   return structuredClone(state);
@@ -55,6 +55,7 @@ export function newGame(seed: number = Date.now()): GameState {
     },
     money: 3000,
     flags: {},
+    eventCooldowns: {},
     log: [],
     phase: 'plan',
     actionsTaken: 0,
@@ -68,15 +69,15 @@ export function newGame(seed: number = Date.now()): GameState {
 }
 
 export function getActivity(id: string): ActivityDef | undefined {
-  return ACTIVITIES.find((activity) => activity.id === id);
+  return CONTENT_INDEX.activities.get(id);
 }
 
 export function getEvent(id: string): EventDef | undefined {
-  return EVENTS.find((event) => event.id === id);
+  return CONTENT_INDEX.events.get(id);
 }
 
 export function getEnding(id: string): EndingDef | undefined {
-  return ENDINGS.find((ending) => ending.id === id);
+  return CONTENT_INDEX.endings.get(id);
 }
 
 export function checkCondition(condition: Condition, state: GameState): boolean {
@@ -233,36 +234,140 @@ export function applyActivity(state: GameState, activityId: string): GameState {
   return next;
 }
 
-function checkForEvent(state: GameState): GameState | null {
-  const candidates = EVENTS.filter(
-    (event) =>
-      event.when.every((condition) => checkCondition(condition, state)) &&
-      !(event.once && state.flags[`seen:${event.id}`]),
-  );
-  if (candidates.length === 0) return null;
+function matchesAfter(
+  selector: EventDef['after'],
+  ctx: EventContext,
+): boolean {
+  if (!selector) return true;
+  if ('ids' in selector) {
+    return !!ctx.lastActivityId && selector.ids.includes(ctx.lastActivityId);
+  }
+  return !!ctx.lastActivityKind && selector.kinds.includes(ctx.lastActivityKind);
+}
 
-  const next = clone(state);
-  const rng = new Rng(next.rng.seed, next.rng.counter);
-  const totalWeight = candidates.reduce(
-    (sum, event) => sum + (event.weight ?? 1),
-    0,
-  );
-  let roll = rng.next() * totalWeight;
-  let picked = candidates[candidates.length - 1]!;
-  for (const event of candidates) {
+function cooldownReady(event: EventDef, state: GameState): boolean {
+  const cooldown = event.cooldownActions ?? 0;
+  if (cooldown <= 0) return true;
+  const last = state.eventCooldowns[event.id];
+  if (last === undefined) return true;
+  return state.actionsTaken - last >= cooldown;
+}
+
+function isEligible(
+  event: EventDef,
+  state: GameState,
+  ctx: EventContext,
+): boolean {
+  if (!matchesAfter(event.after, ctx)) return false;
+  if (!event.when.every((condition) => checkCondition(condition, state))) {
+    return false;
+  }
+  if (event.once && state.flags[`seen:${event.id}`]) return false;
+  if (!cooldownReady(event, state)) return false;
+  return true;
+}
+
+function buildPool(ctx: EventContext): EventDef[] {
+  const pool = new Set<EventDef>(CONTENT_INDEX.globalEvents);
+
+  if (ctx.lastActivityId) {
+    for (const event of CONTENT_INDEX.eventsByActivityId.get(ctx.lastActivityId) ?? []) {
+      pool.add(event);
+    }
+  }
+  if (ctx.lastActivityKind) {
+    for (const event of CONTENT_INDEX.eventsByKind.get(ctx.lastActivityKind) ?? []) {
+      pool.add(event);
+    }
+  }
+
+  return [...pool];
+}
+
+function weightedPick(events: EventDef[], rng: Rng): EventDef {
+  const total = events.reduce((sum, event) => sum + (event.weight ?? 1), 0);
+  let roll = rng.next() * total;
+  let picked = events[events.length - 1]!;
+  for (const event of events) {
     roll -= event.weight ?? 1;
     if (roll <= 0) {
       picked = event;
       break;
     }
   }
+  return picked;
+}
 
+export type EventCheckResult = {
+  state: GameState;
+  event: EventDef | null;
+};
+
+export function checkEventCandidates(
+  state: GameState,
+  candidates: EventDef[],
+  ctx: EventContext = {},
+): EventCheckResult {
+  const eligible = candidates.filter((event) => isEligible(event, state, ctx));
+  if (eligible.length === 0) {
+    return { state, event: null };
+  }
+
+  const next = clone(state);
+  const rng = new Rng(next.rng.seed, next.rng.counter);
+  const passed = eligible.filter((event) => {
+    if (event.chance === undefined) return true;
+    return rng.next() < event.chance;
+  });
+
+  if (passed.length === 0) {
+    next.rng.counter = rng.counter;
+    return { state: next, event: null };
+  }
+
+  const topPriority = Math.max(...passed.map((event) => event.priority ?? 0));
+  const top = passed.filter((event) => (event.priority ?? 0) === topPriority);
+  const picked = weightedPick(top, rng);
+
+  next.rng.counter = rng.counter;
   if (picked.once) next.flags[`seen:${picked.id}`] = true;
+  next.eventCooldowns[picked.id] = next.actionsTaken;
   next.pendingEventId = picked.id;
   next.phase = 'event';
-  next.rng.counter = rng.counter;
   addLog(next, `事件：${picked.title}`, 'info');
-  return next;
+  return { state: next, event: picked };
+}
+
+export function checkForEvent(
+  state: GameState,
+  ctx: EventContext = {},
+): EventCheckResult {
+  return checkEventCandidates(state, buildPool(ctx), ctx);
+}
+
+export function getTriggerReport(
+  state: GameState,
+  ctx: EventContext = {},
+): TriggerReport[] {
+  return EVENTS.map((event) => {
+    if (!matchesAfter(event.after, ctx)) {
+      return { eventId: event.id, eligible: false, reason: 'after' };
+    }
+    if (!event.when.every((condition) => checkCondition(condition, state))) {
+      return { eventId: event.id, eligible: false, reason: 'condition' };
+    }
+    if (event.once && state.flags[`seen:${event.id}`]) {
+      return { eventId: event.id, eligible: false, reason: 'once' };
+    }
+    if (!cooldownReady(event, state)) {
+      return { eventId: event.id, eligible: false, reason: 'cooldown' };
+    }
+    return {
+      eventId: event.id,
+      eligible: true,
+      priority: event.priority ?? 0,
+    };
+  });
 }
 
 export function applyEventChoice(state: GameState, index: number): GameState {
@@ -380,7 +485,7 @@ export function advanceSlot(state: GameState): GameState {
   next.slot = 0;
   next.week += 1;
 
-  if (next.week === 6 && !next.midExamDone) {
+  if (next.week === MID_EXAM_WEEK && !next.midExamDone) {
     return resolveMidExam(next);
   }
 
@@ -390,11 +495,17 @@ export function advanceSlot(state: GameState): GameState {
 }
 
 function continueFromActivity(state: GameState): GameState {
+  const activityId = state.pendingActivityId;
+  const activityKind = activityId ? getActivity(activityId)?.kind : undefined;
   const next = clone(state);
   next.pendingActivityId = undefined;
-  const eventState = checkForEvent(next);
-  if (eventState) return eventState;
-  return advanceSlot(next);
+
+  const result = checkForEvent(next, {
+    lastActivityId: activityId,
+    lastActivityKind: activityKind,
+  });
+  if (result.event) return result.state;
+  return advanceSlot(result.state);
 }
 
 function continueFromEvent(state: GameState): GameState {

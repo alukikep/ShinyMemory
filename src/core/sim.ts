@@ -247,7 +247,7 @@ export function checkCondition(condition: Condition, state: GameState): boolean 
 function applyEffects(
   state: GameState,
   effects: Effect[],
-  options?: { training?: boolean; stressed?: boolean },
+  options?: { training?: boolean; stressed?: boolean; idolId?: string },
 ): void {
   for (const effect of effects) {
     switch (effect.kind) {
@@ -263,7 +263,7 @@ function applyEffects(
         if (effect.stat === 'stamina' || effect.stat === 'stress') {
           state.shared[effect.stat] += delta;
         } else {
-          getIdol(state).stats[effect.stat] += delta;
+          getIdol(state, options?.idolId).stats[effect.stat] += delta;
         }
         break;
       }
@@ -622,6 +622,14 @@ function matchesAfterNpc(
   return !!ctx.npcId && selector.ids.includes(ctx.npcId);
 }
 
+function matchesAfterIdol(
+  selector: EventDef['afterIdol'],
+  ctx: EventContext,
+): boolean {
+  if (!selector) return true;
+  return !!ctx.idolId && selector.ids.includes(ctx.idolId);
+}
+
 function cooldownReady(event: EventDef, state: GameState): boolean {
   const cooldown = event.cooldownActions ?? 0;
   if (cooldown <= 0) return true;
@@ -637,6 +645,7 @@ function isEligible(
 ): boolean {
   if (!matchesAfter(event.after, ctx)) return false;
   if (!matchesAfterNpc(event.afterNpc, ctx)) return false;
+  if (!matchesAfterIdol(event.afterIdol, ctx)) return false;
   if (!event.when.every((condition) => checkCondition(condition, state))) {
     return false;
   }
@@ -660,6 +669,11 @@ function buildPool(ctx: EventContext): EventDef[] {
   }
   if (ctx.locationId) {
     for (const event of CONTENT_INDEX.eventsByLocation.get(ctx.locationId) ?? []) {
+      pool.add(event);
+    }
+  }
+  if (ctx.idolId) {
+    for (const event of CONTENT_INDEX.eventsByIdolId.get(ctx.idolId) ?? []) {
       pool.add(event);
     }
   }
@@ -716,6 +730,7 @@ export function checkEventCandidates(
   if (picked.once) next.flags[`seen:${picked.id}`] = true;
   next.eventCooldowns[picked.id] = next.actionsTaken;
   next.pendingEventId = picked.id;
+  next.pendingEventIdolId = ctx.idolId;
   next.phase = 'event';
   addLog(next, `事件：${picked.title}`, 'info');
   return { state: next, event: picked };
@@ -756,6 +771,9 @@ export function getTriggerReport(
     if (!matchesAfterNpc(event.afterNpc, ctx)) {
       return { eventId: event.id, eligible: false, reason: 'after' };
     }
+    if (!matchesAfterIdol(event.afterIdol, ctx)) {
+      return { eventId: event.id, eligible: false, reason: 'after' };
+    }
     if (!event.when.every((condition) => checkCondition(condition, state))) {
       return { eventId: event.id, eligible: false, reason: 'condition' };
     }
@@ -784,7 +802,9 @@ export function applyEventChoice(state: GameState, index: number): GameState {
   }
 
   const next = clone(state);
-  applyEffects(next, choice.effects);
+  applyEffects(next, choice.effects, {
+    idolId: state.pendingEventIdolId,
+  });
   clampState(next);
 
   const advanced =
@@ -892,6 +912,7 @@ function continueFromActivity(state: GameState): GameState {
     lastActivityId: activityId,
     lastActivityKind: activityKind,
     locationId: next.locationId,
+    idolId: next.pendingIdolId,
   });
   if (result.event) return result.state;
 
@@ -911,6 +932,7 @@ function continueFromActivity(state: GameState): GameState {
 function continueFromEvent(state: GameState): GameState {
   const next = clone(state);
   next.pendingEventId = undefined;
+  next.pendingEventIdolId = undefined;
   next.pendingActivityId = undefined;
   next.pendingTopicId = undefined;
 

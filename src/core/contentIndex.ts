@@ -23,6 +23,7 @@ export type ContentIndex = {
   eventsByActivityId: Map<string, EventDef[]>;
   eventsByKind: Map<ActivityKind, EventDef[]>;
   eventsByNpcId: Map<string, EventDef[]>;
+  eventsByIdolId: Map<string, EventDef[]>;
   globalEvents: EventDef[];
   startingLocationId: string;
   startingIdolId: string;
@@ -56,6 +57,7 @@ function buildIndex(): ContentIndex {
   const eventsByActivityId = new Map<string, EventDef[]>();
   const eventsByKind = new Map<ActivityKind, EventDef[]>();
   const eventsByNpcId = new Map<string, EventDef[]>();
+  const eventsByIdolId = new Map<string, EventDef[]>();
   const globalEvents: EventDef[] = [];
 
   for (const event of EVENTS) {
@@ -90,13 +92,21 @@ function buildIndex(): ContentIndex {
       }
     }
 
+    if (event.afterIdol) {
+      for (const id of event.afterIdol.ids) {
+        const list = eventsByIdolId.get(id) ?? [];
+        list.push(event);
+        eventsByIdolId.set(id, list);
+      }
+    }
+
     if (locationIds.length > 0) {
       for (const locationId of locationIds) {
         const list = eventsByLocation.get(locationId) ?? [];
         list.push(event);
         eventsByLocation.set(locationId, list);
       }
-    } else if (!event.after && !event.afterNpc) {
+    } else if (!event.after && !event.afterNpc && !event.afterIdol) {
       globalEvents.push(event);
     }
   }
@@ -113,6 +123,7 @@ function buildIndex(): ContentIndex {
     eventsByActivityId,
     eventsByKind,
     eventsByNpcId,
+    eventsByIdolId,
     globalEvents,
     startingLocationId,
     startingIdolId,

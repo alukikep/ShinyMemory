@@ -31,6 +31,8 @@ import rival from './events/story/rival';
 import birthday from './events/story/birthday';
 import producerDoubt from './events/locations/office/producerDoubt';
 import hazukiNap from './events/locations/office/hazukiNap';
+import manoSoftVoice from './events/idols/manoSoftVoice';
+import hioriExtraStep from './events/idols/hioriExtraStep';
 import deskScript from './events/locations/office/deskScript';
 import mirrorNote from './events/locations/practice_room/mirrorNote';
 import headphones from './events/locations/studio/headphones';
@@ -41,7 +43,7 @@ import badEnding from './endings/bad';
 
 export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, rest, free, lookAround, sleep];
 
-export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, hazukiNap];
+export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, hazukiNap, manoSoftVoice, hioriExtraStep];
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 

@@ -247,8 +247,8 @@ describe('content integrity', () => {
     }
   });
 
-  it('has 25 events and 3 endings', () => {
-    expect(EVENTS).toHaveLength(25);
+  it('has 27 events and 3 endings', () => {
+    expect(EVENTS).toHaveLength(27);
     expect(ENDINGS).toHaveLength(3);
   });
 
@@ -354,6 +354,16 @@ describe('content integrity', () => {
     expect(CONTENT_INDEX.eventsByNpcId.get('hazuki')).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ id: 'evt.hazuki_nap' }),
+      ]),
+    );
+    expect(CONTENT_INDEX.eventsByIdolId.get('mano')).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: 'evt.mano_soft_voice' }),
+      ]),
+    );
+    expect(CONTENT_INDEX.eventsByIdolId.get('hiori')).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: 'evt.hiori_extra_step' }),
       ]),
     );
     expect(

@@ -296,6 +296,24 @@ describe('raising sim core', () => {
     expect(trained.idols.mano?.stats.vocal).toBe(20);
   });
 
+  it('applies event effects to the context idol', () => {
+    let state = moveTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    state = handleCommand(state, { type: 'enterIdol', idolId: 'mano' });
+    state = handleCommand(state, {
+      type: 'train',
+      idolId: 'mano',
+      activityId: 'vocal',
+    });
+    state.pendingEventId = 'evt.mano_soft_voice';
+    state.pendingEventIdolId = 'mano';
+    state.phase = 'event';
+
+    const next = applyEventChoice(state, 0);
+    expect(next.idols.mano?.stats.vocal).toBe(28);
+    expect(next.idols.mano?.stats.trust).toBe(6);
+    expect(next.idols.hiori?.stats.vocal).toBe(20);
+  });
+
   it('shows Hazuki and Tsutomu on their office schedules', () => {
     const morning = newGame(1);
     expect(presentActors(morning).map((actor) => actor.id)).toEqual([]);

@@ -58,6 +58,7 @@ export type GameState = {
   rng: { seed: number; counter: number };
   pendingActivityId?: string;
   pendingEventId?: string;
+  pendingEventIdolId?: string;
   pendingActorId?: string;
   pendingIdolId?: string;
   pendingTopicId?: string;
@@ -191,6 +192,7 @@ export type EventDef = {
   when: Condition[];
   after?: ActivitySelector;
   afterNpc?: { ids: string[] };
+  afterIdol?: { ids: string[] };
   chance?: number;
   priority?: number;
   cooldownActions?: number;
@@ -221,6 +223,7 @@ export type EventContext = {
   locationId?: string;
   npcId?: string;
   topicId?: string;
+  idolId?: string;
 };
 
 export type TriggerReport = {

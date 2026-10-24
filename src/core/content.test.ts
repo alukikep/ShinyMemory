@@ -3,7 +3,13 @@ import { ACTIVITIES, ENDINGS, EVENTS, LOCATIONS } from './content';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityKind, Condition, EventDef } from './types';
 
-const ACTIVITY_KINDS: ActivityKind[] = ['training', 'work', 'rest', 'bond'];
+const ACTIVITY_KINDS: ActivityKind[] = [
+  'training',
+  'work',
+  'rest',
+  'bond',
+  'explore',
+];
 
 function locationsInConditions(conditions: Condition[]): string[] {
   const found: string[] = [];
@@ -95,6 +101,18 @@ describe('content integrity', () => {
     }
   });
 
+  it('makes look_around available in every location', () => {
+    const lookAround = ACTIVITIES.find((activity) => activity.id === 'look_around');
+    expect(lookAround?.kind).toBe('explore');
+    for (const location of LOCATIONS) {
+      expect(
+        CONTENT_INDEX.activitiesByLocation
+          .get(location.id)
+          ?.some((activity) => activity.id === 'look_around'),
+      ).toBe(true);
+    }
+  });
+
   it('references existing locations from event conditions', () => {
     const locationIds = new Set(LOCATIONS.map((location) => location.id));
     for (const event of EVENTS) {
@@ -110,6 +128,19 @@ describe('content integrity', () => {
     for (const location of LOCATIONS) {
       const events = CONTENT_INDEX.eventsByLocation.get(location.id);
       expect(events?.length ?? 0).toBeGreaterThan(0);
+    }
+  });
+
+  it('gives every location a look_around event', () => {
+    for (const location of LOCATIONS) {
+      const found = EVENTS.some(
+        (event) =>
+          topLevelLocations(event).includes(location.id) &&
+          event.after !== undefined &&
+          'ids' in event.after &&
+          event.after.ids.includes('look_around'),
+      );
+      expect(found).toBe(true);
     }
   });
 
@@ -147,8 +178,8 @@ describe('content integrity', () => {
     }
   });
 
-  it('has 20 events and 3 endings', () => {
-    expect(EVENTS).toHaveLength(20);
+  it('has 23 events and 3 endings', () => {
+    expect(EVENTS).toHaveLength(23);
     expect(ENDINGS).toHaveLength(3);
   });
 

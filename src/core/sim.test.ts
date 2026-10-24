@@ -60,6 +60,24 @@ describe('raising sim core', () => {
     expect(back.actionsTaken).toBe(state.actionsTaken);
   });
 
+  it('looks around and triggers each location event', () => {
+    const cases: Array<[string, string]> = [
+      ['office', 'evt.office_desk'],
+      ['practice_room', 'evt.practice_note'],
+      ['studio', 'evt.studio_headphones'],
+    ];
+
+    for (const [locationId, eventId] of cases) {
+      let state = moveTo(newGame(1), locationId);
+      state = handleAction(state, 'look_around');
+      expect(state.phase).toBe('activityResult');
+
+      state = handleAction(state, 'continue');
+      expect(state.phase).toBe('event');
+      expect(state.pendingEventId).toBe(eventId);
+    }
+  });
+
   it('reaches the mid exam after 10 actions', () => {
     let state = newGame(1);
     let guard = 0;

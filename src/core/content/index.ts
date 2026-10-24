@@ -6,6 +6,7 @@ import expression from './activities/expression';
 import work from './activities/work';
 import rest from './activities/rest';
 import free from './activities/free';
+import lookAround from './activities/lookAround';
 import nightPractice from './events/locations/practice_room/nightPractice';
 import extraLesson from './events/training/extraLesson';
 import vocalStrain from './events/activities/training/vocalStrain';
@@ -26,13 +27,16 @@ import beforeLive from './events/locations/studio/beforeLive';
 import rival from './events/story/rival';
 import birthday from './events/story/birthday';
 import producerDoubt from './events/locations/office/producerDoubt';
+import deskScript from './events/locations/office/deskScript';
+import mirrorNote from './events/locations/practice_room/mirrorNote';
+import headphones from './events/locations/studio/headphones';
 import trueEnding from './endings/true';
 import normalEnding from './endings/normal';
 import badEnding from './endings/bad';
 
-export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, rest, free];
+export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, rest, free, lookAround];
 
-export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt];
+export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones];
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 

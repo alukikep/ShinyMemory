@@ -73,7 +73,7 @@ export type Cost = {
   stamina?: number;
 };
 
-export type ActivityKind = 'training' | 'work' | 'rest' | 'bond';
+export type ActivityKind = 'training' | 'work' | 'rest' | 'bond' | 'explore';
 
 export type ActivityDef = {
   id: string;
@@ -170,7 +170,8 @@ export type ActionTone =
   | 'training'
   | 'work'
   | 'rest'
-  | 'bond';
+  | 'bond'
+  | 'explore';
 
 export type ActionView = {
   id: string;

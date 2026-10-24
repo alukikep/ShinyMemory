@@ -247,7 +247,11 @@ export function applyActivity(state: GameState, activityId: string): GameState {
   next.rng.counter = rng.counter;
 
   const tone: LogTone =
-    activity.kind === 'rest' || activity.kind === 'bond' ? 'good' : 'info';
+    activity.kind === 'rest' ||
+    activity.kind === 'bond' ||
+    activity.kind === 'explore'
+      ? 'good'
+      : 'info';
   addLog(next, `${activity.name}：${next.lastResult}`, tone);
 
   return next;

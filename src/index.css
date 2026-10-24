@@ -475,6 +475,10 @@ button {
   --tone: var(--blue);
 }
 
+.tone-explore {
+  --tone: #4f8a8b;
+}
+
 .tone-secondary {
   --tone: #b9a99b;
 }

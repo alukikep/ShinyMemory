@@ -1,6 +1,10 @@
 import { START_MINUTE } from '../core/config';
-import { createInitialActorStates } from '../core/contentIndex';
-import type { GameState, SaveEnvelope } from '../core/types';
+import {
+  CONTENT_INDEX,
+  createInitialActorStates,
+  createInitialIdolStates,
+} from '../core/contentIndex';
+import type { GameState, SaveEnvelope, StatKey } from '../core/types';
 import { GAME_VERSION, SAVE_VERSION } from './version';
 
 export function createSaveEnvelope(state: GameState): SaveEnvelope {
@@ -68,6 +72,41 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
       ...(next.state.actors ?? {}),
     };
     next.schemaVersion = 5;
+    next.gameVersion = GAME_VERSION;
+  }
+
+  if (next.schemaVersion === 5) {
+    const state = next.state as GameState & {
+      stats?: Record<StatKey, number>;
+      shared?: GameState['shared'];
+      idols?: GameState['idols'];
+      activeIdolId?: string;
+    };
+    const legacy = state.stats;
+    const idolId = CONTENT_INDEX.startingIdolId;
+    const idols = createInitialIdolStates();
+
+    if (legacy) {
+      idols[idolId] = {
+        id: idolId,
+        stats: {
+          vocal: legacy.vocal,
+          dance: legacy.dance,
+          expression: legacy.expression,
+          trust: legacy.trust,
+        },
+      };
+    }
+
+    state.shared = {
+      stamina: legacy?.stamina ?? 100,
+      stress: legacy?.stress ?? 0,
+    };
+    state.idols = idols;
+    state.activeIdolId = idolId;
+    delete state.stats;
+
+    next.schemaVersion = 6;
     next.gameVersion = GAME_VERSION;
   }
 

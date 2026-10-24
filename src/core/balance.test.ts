@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   activityAvailability,
   getActivity,
+  getStatValue,
   handleAction,
   isLocationOpen,
   newGame,
@@ -15,28 +16,37 @@ const cycle = (state: GameState, ids: string[]) =>
 
 const strategies: Record<string, Strategy> = {
   balanced: (state) => {
-    const { stamina, stress, trust } = state.stats;
+    const stamina = getStatValue(state, 'stamina');
+    const stress = getStatValue(state, 'stress');
+    const trust = getStatValue(state, 'trust');
     if (stamina < 35 || stress > 65) return 'rest';
     if (state.money < 500) return 'work';
     if (trust < 10 && state.actionsTaken % 5 === 0) return 'free';
     return cycle(state, ['vocal', 'dance', 'expression']);
   },
   training: (state) => {
-    const { stamina, stress } = state.stats;
+    const stamina = getStatValue(state, 'stamina');
+    const stress = getStatValue(state, 'stress');
     if (stamina < 25 || stress > 75) return 'rest';
     if (state.money < 500) return 'work';
     return cycle(state, ['vocal', 'dance', 'expression']);
   },
   work: (state) => {
-    if (state.stats.stamina < 30) return 'rest';
+    if (getStatValue(state, 'stamina') < 30) return 'rest';
     return 'work';
   },
   singleStat: (state) => {
-    if (state.stats.stamina < 30 || state.stats.stress > 70) return 'rest';
+    if (
+      getStatValue(state, 'stamina') < 30 ||
+      getStatValue(state, 'stress') > 70
+    ) {
+      return 'rest';
+    }
     if (state.money < 500) return 'work';
     return 'vocal';
   },
-  lazy: (state) => (state.stats.stress > 20 ? 'rest' : 'free'),
+  lazy: (state) =>
+    getStatValue(state, 'stress') > 20 ? 'rest' : 'free',
 };
 
 function run(strategy: Strategy, seed: number): GameState {
@@ -113,8 +123,8 @@ describe('balance smoke', () => {
         allEndings.add(ending);
         endings.set(ending, (endings.get(ending) ?? 0) + 1);
         scoreTotal += state.examScore ?? 0;
-        stressTotal += state.stats.stress;
-        trustTotal += state.stats.trust;
+        stressTotal += getStatValue(state, 'stress');
+        trustTotal += getStatValue(state, 'trust');
       }
       console.log(
         name,

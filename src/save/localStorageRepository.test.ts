@@ -14,8 +14,9 @@ describe('LocalStorageRepository', () => {
 
     const loaded = repo.load();
     expect(loaded).not.toBeNull();
-    expect(loaded?.schemaVersion).toBe(5);
-    expect(loaded?.state.stats.vocal).toBe(20);
+    expect(loaded?.schemaVersion).toBe(6);
+    expect(loaded?.state.idols.mano?.stats.vocal).toBe(20);
+    expect(loaded?.state.shared.stamina).toBe(100);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
   });
@@ -39,7 +40,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(5);
+    expect(loaded?.schemaVersion).toBe(6);
     expect(loaded?.state.locationId).toBe('office');
     expect(loaded?.state.clock.absoluteMinutes).toBe(8 * 60);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
@@ -61,17 +62,28 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(5);
+    expect(loaded?.schemaVersion).toBe(6);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
   });
 
-  it('migrates a v4 save by adding the new actor', () => {
+  it('migrates a v4 save by adding actors and splitting idol stats', () => {
     const storage = new MemoryStorage();
     const state = newGame(1) as unknown as Record<string, unknown>;
     const actors = state.actors as Record<string, { affinity: number }>;
     actors.hazuki.affinity = 3;
     delete actors.tsutomu;
+    delete state.shared;
+    delete state.idols;
+    delete state.activeIdolId;
+    state.stats = {
+      vocal: 24,
+      dance: 25,
+      expression: 26,
+      stamina: 88,
+      stress: 12,
+      trust: 7,
+    };
     storage.setItem(
       SAVE_KEY,
       JSON.stringify({
@@ -83,9 +95,13 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(5);
+    expect(loaded?.schemaVersion).toBe(6);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(3);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
+    expect(loaded?.state.shared.stamina).toBe(88);
+    expect(loaded?.state.shared.stress).toBe(12);
+    expect(loaded?.state.idols.mano?.stats.vocal).toBe(24);
+    expect(loaded?.state.idols.mano?.stats.trust).toBe(7);
   });
 
   it('returns null for invalid JSON', () => {

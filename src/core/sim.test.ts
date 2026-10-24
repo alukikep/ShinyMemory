@@ -31,7 +31,9 @@ describe('raising sim core', () => {
     expect(formatClock(state.clock.absoluteMinutes)).toBe('08:00');
     expect(state.locationId).toBe('office');
     expect(state.phase).toBe('plan');
-    expect(state.stats.vocal).toBe(20);
+    expect(state.activeIdolId).toBe('mano');
+    expect(state.idols.mano?.stats.vocal).toBe(20);
+    expect(state.shared.stamina).toBe(100);
     expect(state.money).toBe(3000);
     expect(state.actionsTaken).toBe(0);
   });
@@ -39,10 +41,10 @@ describe('raising sim core', () => {
   it('applies activity costs, effects and duration', () => {
     const state = moveTo(newGame(1), 'practice_room');
     const next = applyActivity(state, 'vocal');
-    expect(next.stats.vocal).toBe(26);
+    expect(next.idols.mano?.stats.vocal).toBe(26);
     expect(next.money).toBe(2500);
-    expect(next.stats.stamina).toBe(85);
-    expect(next.stats.stress).toBe(8);
+    expect(next.shared.stamina).toBe(85);
+    expect(next.shared.stress).toBe(8);
     expect(next.phase).toBe('activityResult');
     expect(next.actionsTaken).toBe(1);
     expect(formatClock(next.clock.absoluteMinutes)).toBe('10:15');
@@ -62,7 +64,7 @@ describe('raising sim core', () => {
 
   it('disables a lesson when stamina is not enough', () => {
     const state = moveTo(newGame(1), 'practice_room');
-    state.stats.stamina = 5;
+    state.shared.stamina = 5;
     const activity = getActivity('vocal')!;
     const availability = activityAvailability(state, activity);
     expect(availability.ok).toBe(false);
@@ -138,14 +140,14 @@ describe('raising sim core', () => {
   it('sleeps until 08:00 and restores stamina by hours slept', () => {
     let state = moveTo(newGame(1), 'home');
     state = advanceTime(state, 14 * 60);
-    state.stats.stamina = 20;
-    state.stats.stress = 50;
+    state.shared.stamina = 20;
+    state.shared.stress = 50;
 
     const slept = applyActivity(state, 'sleep');
     expect(formatClock(slept.clock.absoluteMinutes)).toBe('08:00');
     expect(getDay(slept.clock.absoluteMinutes)).toBe(2);
-    expect(slept.stats.stamina).toBe(100);
-    expect(slept.stats.stress).toBeLessThan(50);
+    expect(slept.shared.stamina).toBe(100);
+    expect(slept.shared.stress).toBeLessThan(50);
     expect(slept.phase).toBe('activityResult');
   });
 
@@ -290,15 +292,15 @@ describe('raising sim core', () => {
     const actor = getActor('hazuki')!;
     const coffee = actor.topics.find((topic) => topic.id === 'coffee')!;
     let state = advanceTime(newGame(1), 60);
-    state.stats.stamina = 50;
-    state.stats.stress = 50;
+    state.shared.stamina = 50;
+    state.shared.stress = 50;
     state = handleAction(state, 'enter:hazuki');
 
     state = talkTo(state, 'hazuki', 'coffee');
     expect(state.phase).toBe('npcResult');
     expect(state.actors.hazuki?.affinity).toBe(1);
-    expect(state.stats.stamina).toBe(60);
-    expect(state.stats.stress).toBe(45);
+    expect(state.shared.stamina).toBe(60);
+    expect(state.shared.stress).toBe(45);
 
     state = handleAction(state, 'continue');
     expect(state.phase).toBe('npc');

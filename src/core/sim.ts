@@ -10,7 +10,11 @@ import {
   START_MINUTE,
 } from './config';
 import { EVENTS, ENDINGS } from './content';
-import { CONTENT_INDEX, createInitialActorStates } from './contentIndex';
+import {
+  CONTENT_INDEX,
+  createInitialActorStates,
+  createInitialIdolStates,
+} from './contentIndex';
 import { MID_EXAM } from './content/weeks';
 import { STAT_LABELS, STAT_MAX } from './labels';
 import { Rng } from './rng';
@@ -28,6 +32,8 @@ import type {
   EventContext,
   EventDef,
   GameState,
+  IdolStatKey,
+  IdolState,
   LogTone,
   StatKey,
   TriggerReport,
@@ -38,8 +44,21 @@ function clone(state: GameState): GameState {
 }
 
 function clampState(state: GameState): void {
-  for (const key of Object.keys(state.stats) as StatKey[]) {
-    state.stats[key] = Math.max(0, Math.min(STAT_MAX[key], state.stats[key]));
+  state.shared.stamina = Math.max(
+    0,
+    Math.min(STAT_MAX.stamina, state.shared.stamina),
+  );
+  state.shared.stress = Math.max(
+    0,
+    Math.min(STAT_MAX.stress, state.shared.stress),
+  );
+  for (const idol of Object.values(state.idols ?? {})) {
+    for (const key of Object.keys(idol.stats) as IdolStatKey[]) {
+      idol.stats[key] = Math.max(
+        0,
+        Math.min(STAT_MAX[key], idol.stats[key]),
+      );
+    }
   }
   state.money = Math.max(0, state.money);
   for (const actor of Object.values(state.actors ?? {})) {
@@ -48,6 +67,26 @@ function clampState(state: GameState): void {
       Math.min(ACTOR_AFFINITY_MAX, actor.affinity),
     );
   }
+}
+
+export function getIdol(
+  state: GameState,
+  idolId: string = state.activeIdolId,
+): IdolState {
+  const idol = state.idols[idolId] ?? Object.values(state.idols)[0];
+  if (!idol) throw new Error('no idol state');
+  return idol;
+}
+
+export function getActiveIdol(state: GameState): IdolState {
+  return getIdol(state);
+}
+
+export function getStatValue(state: GameState, stat: StatKey): number {
+  if (stat === 'stamina' || stat === 'stress') {
+    return state.shared[stat];
+  }
+  return getIdol(state).stats[stat];
 }
 
 function addLog(state: GameState, text: string, tone: LogTone = 'info'): void {
@@ -67,14 +106,12 @@ export function newGame(seed: number = Date.now()): GameState {
     clock: { absoluteMinutes: START_MINUTE },
     locationId: CONTENT_INDEX.startingLocationId,
     actors: createInitialActorStates(),
-    stats: {
-      vocal: 20,
-      dance: 20,
-      expression: 20,
+    shared: {
       stamina: 100,
       stress: 0,
-      trust: 5,
     },
+    idols: createInitialIdolStates(),
+    activeIdolId: CONTENT_INDEX.startingIdolId,
     money: 3000,
     flags: {},
     eventCooldowns: {},
@@ -179,9 +216,9 @@ export function checkCondition(condition: Condition, state: GameState): boolean 
         : minuteOfDay >= fromMinute || minuteOfDay < toMinute;
     }
     case 'statAtLeast':
-      return state.stats[condition.stat] >= condition.value;
+      return getStatValue(state, condition.stat) >= condition.value;
     case 'statAtMost':
-      return state.stats[condition.stat] <= condition.value;
+      return getStatValue(state, condition.stat) <= condition.value;
     case 'npcAffinityAtLeast':
       return (state.actors[condition.actorId]?.affinity ?? 0) >= condition.value;
     case 'npcAffinityAtMost':
@@ -223,7 +260,11 @@ function applyEffects(
         if (options?.training && options.stressed && isPerformanceStat && delta > 0) {
           delta = Math.max(1, Math.floor(delta / 2));
         }
-        state.stats[effect.stat] += delta;
+        if (effect.stat === 'stamina' || effect.stat === 'stress') {
+          state.shared[effect.stat] += delta;
+        } else {
+          getIdol(state).stats[effect.stat] += delta;
+        }
         break;
       }
       case 'money':
@@ -321,7 +362,7 @@ export function activityAvailability(
   if (activity.cost.money && state.money < activity.cost.money) {
     reasons.push(`金钱不足（需要 ¥${activity.cost.money}）`);
   }
-  if (activity.cost.stamina && state.stats.stamina < activity.cost.stamina) {
+  if (activity.cost.stamina && state.shared.stamina < activity.cost.stamina) {
     reasons.push(`体力不足（需要 ${activity.cost.stamina}）`);
   }
   if (reasons.length > 0) {
@@ -443,7 +484,7 @@ export function applyActivity(state: GameState, activityId: string): GameState {
 
   const next = clone(state);
   const rng = new Rng(next.rng.seed, next.rng.counter);
-  const stressed = next.stats.stress >= 70;
+  const stressed = next.shared.stress >= 70;
 
   if (activity.kind === 'sleep') {
     const current = next.clock.absoluteMinutes;
@@ -454,14 +495,14 @@ export function applyActivity(state: GameState, activityId: string): GameState {
     const minutes = target - current;
     const hours = minutes / 60;
     const staminaGain = Math.min(
-      STAT_MAX.stamina - next.stats.stamina,
+      STAT_MAX.stamina - next.shared.stamina,
       Math.round(hours * 10),
     );
 
-    next.stats.stamina += staminaGain;
-    next.stats.stress = Math.max(
+    next.shared.stamina += staminaGain;
+    next.shared.stress = Math.max(
       0,
-      next.stats.stress - Math.round(hours * 2),
+      next.shared.stress - Math.round(hours * 2),
     );
     next.flags.forced_rest = false;
     next.actionsTaken += 1;
@@ -478,7 +519,7 @@ export function applyActivity(state: GameState, activityId: string): GameState {
   }
 
   next.money -= activity.cost.money ?? 0;
-  next.stats.stamina -= activity.cost.stamina ?? 0;
+  next.shared.stamina -= activity.cost.stamina ?? 0;
   applyEffects(next, activity.effects, {
     training: activity.kind === 'training',
     stressed,
@@ -706,23 +747,25 @@ function buildTotal(parts: ScorePart[]): number {
 }
 
 export function midScore(state: GameState): ScoreBreakdown {
+  const idol = getActiveIdol(state);
   const performance =
-    (state.stats.vocal + state.stats.dance + state.stats.expression) / 3;
+    (idol.stats.vocal + idol.stats.dance + idol.stats.expression) / 3;
   const parts: ScorePart[] = [
     { label: '能力均值 ×0.65', value: performance * 0.65 },
-    { label: '信任 ×1', value: state.stats.trust },
-    { label: '压力余量 ×0.15', value: (100 - state.stats.stress) * 0.15 },
+    { label: '信任 ×1', value: idol.stats.trust },
+    { label: '压力余量 ×0.15', value: (100 - state.shared.stress) * 0.15 },
   ];
   return { total: buildTotal(parts), parts };
 }
 
 export function finalScore(state: GameState): ScoreBreakdown {
+  const idol = getActiveIdol(state);
   const performance =
-    (state.stats.vocal + state.stats.dance + state.stats.expression) / 3;
+    (idol.stats.vocal + idol.stats.dance + idol.stats.expression) / 3;
   const parts: ScorePart[] = [
     { label: '能力均值 ×0.75', value: performance * 0.75 },
-    { label: '信任 ×1', value: state.stats.trust },
-    { label: '压力余量 ×0.05', value: (100 - state.stats.stress) * 0.05 },
+    { label: '信任 ×1', value: idol.stats.trust },
+    { label: '压力余量 ×0.05', value: (100 - state.shared.stress) * 0.05 },
   ];
   return { total: buildTotal(parts), parts };
 }
@@ -739,11 +782,11 @@ function resolveMidExam(state: GameState): GameState {
 
   if (next.examPassed) {
     next.money += 1000;
-    next.stats.trust += 2;
+    getIdol(next).stats.trust += 2;
     next.flags.mid_passed = true;
     addLog(next, `中期试镜通过（${score.total} 分）。`, 'good');
   } else {
-    next.stats.stress += 10;
+    next.shared.stress += 10;
     next.flags.failed_mid = true;
     addLog(next, `中期试镜未通过（${score.total} 分）。`, 'bad');
   }

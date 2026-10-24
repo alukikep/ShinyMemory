@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, LOCATIONS } from './content';
+import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, IDOLS, LOCATIONS } from './content';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityKind, Condition, EventDef } from './types';
 
@@ -114,6 +114,14 @@ describe('content integrity', () => {
         }
       }
     }
+  });
+
+  it('has a starting idol', () => {
+    expect(IDOLS).toHaveLength(1);
+    expect(IDOLS[0]?.id).toBe('mano');
+    expect(IDOLS[0]?.name).toBe('樱木真乃');
+    expect(CONTENT_INDEX.startingIdolId).toBe('mano');
+    expect(CONTENT_INDEX.idols.size).toBe(IDOLS.length);
   });
 
   it('keeps activity time windows in range', () => {

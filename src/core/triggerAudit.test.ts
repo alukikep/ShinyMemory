@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   activityAvailability,
   getActivity,
+  getStatValue,
   handleAction,
   isLocationOpen,
   newGame,
@@ -15,33 +16,41 @@ const cycle = (state: GameState, ids: string[]) =>
 
 const strategies: Record<string, Strategy> = {
   balanced: (state) => {
-    const { stamina, stress, trust } = state.stats;
+    const stamina = getStatValue(state, 'stamina');
+    const stress = getStatValue(state, 'stress');
+    const trust = getStatValue(state, 'trust');
     if (stamina < 35 || stress > 65) return 'rest';
     if (state.money < 500) return 'work';
     if (trust < 10 && state.actionsTaken % 5 === 0) return 'free';
     return cycle(state, ['vocal', 'dance', 'expression']);
   },
   training: (state) => {
-    const { stamina, stress } = state.stats;
+    const stamina = getStatValue(state, 'stamina');
+    const stress = getStatValue(state, 'stress');
     if (stamina < 25 || stress > 75) return 'rest';
     if (state.money < 500) return 'work';
     return cycle(state, ['vocal', 'dance', 'expression']);
   },
   work: (state) => {
-    if (state.stats.stamina < 30) return 'rest';
+    if (getStatValue(state, 'stamina') < 30) return 'rest';
     return 'work';
   },
   vocalOnly: (state) => {
-    if (state.money < 500 || state.stats.stamina < 15) return 'rest';
+    if (
+      state.money < 500 ||
+      getStatValue(state, 'stamina') < 15
+    ) {
+      return 'rest';
+    }
     return 'vocal';
   },
   stressBuild: (state) => {
-    if (state.stats.stamina < 20) return 'rest';
+    if (getStatValue(state, 'stamina') < 20) return 'rest';
     if (state.money < 500) return 'work';
     return 'dance';
   },
   grind: (state) => {
-    if (state.stats.stamina < 20) return 'rest';
+    if (getStatValue(state, 'stamina') < 20) return 'rest';
     return 'work';
   },
 };
@@ -70,7 +79,7 @@ function run(strategy: Strategy, seed: number) {
   while (state.phase !== 'ending' && guard < 600) {
     guard += 1;
     if (state.phase === 'event') {
-      maxStress = Math.max(maxStress, state.stats.stress);
+      maxStress = Math.max(maxStress, getStatValue(state, 'stress'));
       const id = state.pendingEventId ?? 'unknown';
       events.set(id, (events.get(id) ?? 0) + 1);
       state = handleAction(state, 'choice:0');
@@ -105,7 +114,7 @@ function run(strategy: Strategy, seed: number) {
     } else {
       state = handleAction(state, 'continue');
     }
-    maxStress = Math.max(maxStress, state.stats.stress);
+    maxStress = Math.max(maxStress, getStatValue(state, 'stress'));
   }
   return { state, maxStress, events };
 }

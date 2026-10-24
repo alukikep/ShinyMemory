@@ -1,10 +1,23 @@
-export type StatKey =
-  | 'vocal'
-  | 'dance'
-  | 'expression'
-  | 'stamina'
-  | 'stress'
-  | 'trust';
+export type SharedStatKey = 'stamina' | 'stress';
+export type IdolStatKey = 'vocal' | 'dance' | 'expression' | 'trust';
+export type StatKey = SharedStatKey | IdolStatKey;
+
+export type SharedStats = Record<SharedStatKey, number>;
+export type IdolStats = Record<IdolStatKey, number>;
+
+export type IdolDef = {
+  id: string;
+  name: string;
+  unit: string;
+  color?: string;
+  profile: string;
+  isStart?: boolean;
+};
+
+export type IdolState = {
+  id: string;
+  stats: IdolStats;
+};
 
 export type LogTone = 'info' | 'good' | 'bad';
 
@@ -31,7 +44,9 @@ export type GameState = {
   clock: { absoluteMinutes: number };
   locationId: string;
   actors: Record<string, ActorState>;
-  stats: Record<StatKey, number>;
+  shared: SharedStats;
+  idols: Record<string, IdolState>;
+  activeIdolId: string;
   money: number;
   flags: Record<string, boolean>;
   eventCooldowns: Record<string, number>;

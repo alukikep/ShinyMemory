@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   activityAvailability,
   getActivity,
+  getStatValue,
   handleAction,
   isLocationOpen,
   newGame,
@@ -56,7 +57,7 @@ function run(seed: number): {
       }
 
       let target = 'vocal';
-      if (state.stats.stamina < 35) target = 'rest';
+      if (getStatValue(state, 'stamina') < 35) target = 'rest';
       else if (state.money < 500) target = 'work';
       else target = ['vocal', 'dance', 'expression'][state.actionsTaken % 3]!;
 
@@ -119,8 +120,8 @@ describe('time balance audit', () => {
       const ending = result.state.endingId ?? 'none';
       endings.set(ending, (endings.get(ending) ?? 0) + 1);
       totalScore += result.state.examScore ?? 0;
-      totalTrust += result.state.stats.trust;
-      totalStress += result.state.stats.stress;
+      totalTrust += getStatValue(result.state, 'trust');
+      totalStress += getStatValue(result.state, 'stress');
 
       for (const [day, count] of result.actionsByDay) {
         dayTotals.set(day, (dayTotals.get(day) ?? 0) + count);

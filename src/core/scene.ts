@@ -13,6 +13,7 @@ import {
   effectSummary,
   finalScore,
   getActivity,
+  getActiveIdol,
   getActor,
   getEnding,
   getEvent,
@@ -382,7 +383,9 @@ function buildEnding(state: GameState): SceneView {
     .map((text) => ({ kind: 'p' as const, text }));
   blocks.push({
     kind: 'system',
-    text: `最终得分 ${state.examScore ?? 0} · 信任 ${Math.round(state.stats.trust)} / 20 · 压力 ${Math.round(state.stats.stress)} / 100`,
+    text: `最终得分 ${state.examScore ?? 0} · 信任 ${Math.round(
+      getActiveIdol(state).stats.trust,
+    )} / 20 · 压力 ${Math.round(state.shared.stress)} / 100`,
   });
 
   const endLabel =

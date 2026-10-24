@@ -1,2 +1,2 @@
-export const SAVE_VERSION = 7;
-export const GAME_VERSION = '0.8.0';
+export const SAVE_VERSION = 8;
+export const GAME_VERSION = '0.9.0';

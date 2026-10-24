@@ -119,5 +119,20 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     next.gameVersion = GAME_VERSION;
   }
 
+  if (next.schemaVersion === 7) {
+    next.state.actors = {
+      ...createInitialActorStates(),
+      ...(next.state.actors ?? {}),
+    };
+    next.state.idols = {
+      ...createInitialIdolStates(),
+      ...(next.state.idols ?? {}),
+    };
+    next.state.activeIdolId =
+      next.state.activeIdolId ?? CONTENT_INDEX.startingIdolId;
+    next.schemaVersion = 8;
+    next.gameVersion = GAME_VERSION;
+  }
+
   return next;
 }

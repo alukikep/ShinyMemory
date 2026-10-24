@@ -274,6 +274,28 @@ describe('raising sim core', () => {
     expect(left.phase).toBe('plan');
   });
 
+  it('trains a specific idol without changing the other', () => {
+    const state = moveTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    expect(presentActors(state).map((actor) => actor.id)).toEqual([
+      'mano',
+      'hiori',
+    ]);
+
+    const entered = handleCommand(state, {
+      type: 'enterIdol',
+      idolId: 'hiori',
+    });
+    const trained = handleCommand(entered, {
+      type: 'train',
+      idolId: 'hiori',
+      activityId: 'vocal',
+    });
+
+    expect(trained.activeIdolId).toBe('hiori');
+    expect(trained.idols.hiori?.stats.vocal).toBe(26);
+    expect(trained.idols.mano?.stats.vocal).toBe(20);
+  });
+
   it('shows Hazuki and Tsutomu on their office schedules', () => {
     const morning = newGame(1);
     expect(presentActors(morning).map((actor) => actor.id)).toEqual([]);

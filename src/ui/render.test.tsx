@@ -93,8 +93,19 @@ describe('app shell', () => {
     );
     expect(html).toContain('偶像名册');
     expect(html).toContain('樱木真乃');
+    expect(html).toContain('风野灯织');
     expect(html).toContain('歌唱');
     expect(html).toContain('当前');
+  });
+
+  it('shows both idols at the practice room at 10:00', () => {
+    const state = moveTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    const html = renderToString(
+      <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
+    );
+    expect(html).toContain('樱木真乃');
+    expect(html).toContain('风野灯织');
+    expect(html).toContain('训练');
   });
 
   it('shows the roster button in the sidebar', () => {

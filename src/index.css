@@ -454,6 +454,21 @@ button {
   color: var(--accent-strong);
 }
 
+.npc-leave {
+  display: block;
+  margin-top: 12px;
+  border: 0;
+  background: transparent;
+  padding: 2px 0;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.npc-leave:hover {
+  color: var(--accent-strong);
+}
+
 .blocks {
   flex: 0 0 auto;
   padding: 22px 2px 8px;

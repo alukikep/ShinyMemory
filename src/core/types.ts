@@ -99,6 +99,7 @@ export type ActorSchedule = {
 export type ActorTopic = {
   id: string;
   label: string;
+  hint?: string;
   text: string;
   when?: Condition[];
   once?: boolean;
@@ -272,7 +273,6 @@ export type NpcPageView = {
   description: string;
   color?: string;
   affinity: number;
-  topics: ActionView[];
   leaveActionId: string;
 };
 

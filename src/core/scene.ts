@@ -262,6 +262,7 @@ function buildNpcPage(state: GameState): SceneView {
     return {
       id: `talk:${actor.id}:${topic.id}`,
       label: topic.label,
+      hint: topic.hint,
       disabled: !availability.ok,
       disabledReason: availability.ok ? undefined : availability.reason,
       tone: 'bond',
@@ -282,11 +283,10 @@ function buildNpcPage(state: GameState): SceneView {
       description: actor.description,
       color: actor.color,
       affinity,
-      topics,
       leaveActionId: 'leave_npc',
     },
-    actions: [],
-    layout: 'list',
+    actions: topics,
+    layout: 'grid',
   };
 }
 

@@ -90,29 +90,6 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
             </span>
           </div>
           <p className="actor-description">{scene.npc.description}</p>
-          <div className="actor-topics">
-            {scene.npc.topics.map((topic) => (
-              <button
-                key={topic.id}
-                type="button"
-                className="actor-topic"
-                disabled={topic.disabled}
-                onClick={() => onAction(topic.id)}
-              >
-                <span>{topic.label}</span>
-                {topic.disabled && topic.disabledReason ? (
-                  <small>{topic.disabledReason}</small>
-                ) : null}
-              </button>
-            ))}
-          </div>
-          <button
-            type="button"
-            className="actor-leave"
-            onClick={() => onAction(scene.npc!.leaveActionId)}
-          >
-            离开
-          </button>
         </section>
       ) : null}
 
@@ -133,6 +110,16 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
           </button>
         ))}
       </div>
+
+      {scene.npc ? (
+        <button
+          type="button"
+          className="npc-leave"
+          onClick={() => onAction(scene.npc!.leaveActionId)}
+        >
+          离开
+        </button>
+      ) : null}
     </section>
   );
 }

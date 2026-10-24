@@ -25,6 +25,7 @@ import type {
   ActorDef,
   ActorTopic,
   Availability,
+  CheckContext,
   Condition,
   Cost,
   Effect,
@@ -82,11 +83,25 @@ export function getActiveIdol(state: GameState): IdolState {
   return getIdol(state);
 }
 
-export function getStatValue(state: GameState, stat: StatKey): number {
+export function formatIdolText(
+  text: string,
+  idolId?: string,
+): string {
+  if (!idolId) return text;
+  const name = CONTENT_INDEX.idols.get(idolId)?.name;
+  if (!name) return text;
+  return text.replace(/她(?!们)/g, name);
+}
+
+export function getStatValue(
+  state: GameState,
+  stat: StatKey,
+  idolId: string = state.activeIdolId,
+): number {
   if (stat === 'stamina' || stat === 'stress') {
     return state.shared[stat];
   }
-  return getIdol(state).stats[stat];
+  return getIdol(state, idolId).stats[stat];
 }
 
 function addLog(state: GameState, text: string, tone: LogTone = 'info'): void {
@@ -199,7 +214,11 @@ export function topicAvailability(
   return { ok: true };
 }
 
-export function checkCondition(condition: Condition, state: GameState): boolean {
+export function checkCondition(
+  condition: Condition,
+  state: GameState,
+  ctx: CheckContext = {},
+): boolean {
   const day = getDay(state.clock.absoluteMinutes);
   const minuteOfDay = getMinuteOfDay(state.clock.absoluteMinutes);
 
@@ -216,9 +235,9 @@ export function checkCondition(condition: Condition, state: GameState): boolean 
         : minuteOfDay >= fromMinute || minuteOfDay < toMinute;
     }
     case 'statAtLeast':
-      return getStatValue(state, condition.stat) >= condition.value;
+      return getStatValue(state, condition.stat, ctx.idolId) >= condition.value;
     case 'statAtMost':
-      return getStatValue(state, condition.stat) <= condition.value;
+      return getStatValue(state, condition.stat, ctx.idolId) <= condition.value;
     case 'npcAffinityAtLeast':
       return (state.actors[condition.actorId]?.affinity ?? 0) >= condition.value;
     case 'npcAffinityAtMost':
@@ -234,11 +253,11 @@ export function checkCondition(condition: Condition, state: GameState): boolean 
     case 'scoreAtMost':
       return (state.examScore ?? 0) <= condition.value;
     case 'all':
-      return condition.of.every((child) => checkCondition(child, state));
+      return condition.of.every((child) => checkCondition(child, state, ctx));
     case 'any':
-      return condition.of.some((child) => checkCondition(child, state));
+      return condition.of.some((child) => checkCondition(child, state, ctx));
     case 'not':
-      return !checkCondition(condition.of, state);
+      return !checkCondition(condition.of, state, ctx);
     default:
       return false;
   }
@@ -646,7 +665,7 @@ function isEligible(
   if (!matchesAfter(event.after, ctx)) return false;
   if (!matchesAfterNpc(event.afterNpc, ctx)) return false;
   if (!matchesAfterIdol(event.afterIdol, ctx)) return false;
-  if (!event.when.every((condition) => checkCondition(condition, state))) {
+  if (!event.when.every((condition) => checkCondition(condition, state, ctx))) {
     return false;
   }
   if (event.once && state.flags[`seen:${event.id}`]) return false;
@@ -774,7 +793,7 @@ export function getTriggerReport(
     if (!matchesAfterIdol(event.afterIdol, ctx)) {
       return { eventId: event.id, eligible: false, reason: 'after' };
     }
-    if (!event.when.every((condition) => checkCondition(condition, state))) {
+    if (!event.when.every((condition) => checkCondition(condition, state, ctx))) {
       return { eventId: event.id, eligible: false, reason: 'condition' };
     }
     if (event.once && state.flags[`seen:${event.id}`]) {
@@ -797,7 +816,12 @@ export function applyEventChoice(state: GameState, index: number): GameState {
   if (!event) return state;
   const choice = event.choices[index];
   if (!choice) return state;
-  if (choice.requires && !choice.requires.every((c) => checkCondition(c, state))) {
+  if (
+    choice.requires &&
+    !choice.requires.every((c) =>
+      checkCondition(c, state, { idolId: state.pendingEventIdolId }),
+    )
+  ) {
     return state;
   }
 
@@ -812,8 +836,11 @@ export function applyEventChoice(state: GameState, index: number): GameState {
       ? advanceTime(next, choice.durationMinutes)
       : next;
   advanced.phase = 'eventResult';
-  advanced.lastResult = choice.result;
-  addLog(advanced, choice.result, 'info');
+  advanced.lastResult = formatIdolText(
+    choice.result,
+    state.pendingEventIdolId,
+  );
+  addLog(advanced, advanced.lastResult, 'info');
   return advanced;
 }
 

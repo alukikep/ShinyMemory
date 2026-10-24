@@ -11,6 +11,8 @@ import {
   advanceTime,
   applyActivity,
   applyEventChoice,
+  checkCondition,
+  formatIdolText,
   getActivity,
   getActor,
   handleAction,
@@ -312,6 +314,28 @@ describe('raising sim core', () => {
     expect(next.idols.mano?.stats.vocal).toBe(28);
     expect(next.idols.mano?.stats.trust).toBe(6);
     expect(next.idols.hiori?.stats.vocal).toBe(20);
+    expect(next.lastResult).toContain('樱木真乃');
+  });
+
+  it('checks event conditions against the target idol', () => {
+    const state = newGame(1);
+    state.idols.mano!.stats.trust = 5;
+    state.idols.hiori!.stats.trust = 15;
+    const condition = {
+      kind: 'statAtLeast',
+      stat: 'trust',
+      value: 10,
+    } as const;
+
+    expect(checkCondition(condition, state)).toBe(false);
+    expect(checkCondition(condition, state, { idolId: 'hiori' })).toBe(true);
+  });
+
+  it('formats pronouns with the target idol name', () => {
+    expect(formatIdolText('她又唱了一遍。', 'mano')).toBe(
+      '樱木真乃又唱了一遍。',
+    );
+    expect(formatIdolText('她又唱了一遍。')).toBe('她又唱了一遍。');
   });
 
   it('shows Hazuki and Tsutomu on their office schedules', () => {

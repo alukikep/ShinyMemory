@@ -12,6 +12,7 @@ import {
   checkCondition,
   effectSummary,
   finalScore,
+  formatIdolText,
   getActivity,
   getActiveIdol,
   getActor,
@@ -221,13 +222,19 @@ function buildEvent(state: GameState): SceneView {
 
   const actions: ActionView[] = event.choices.map((choice, index) => {
     const allowed = choice.requires
-      ? choice.requires.every((condition) => checkCondition(condition, state))
+      ? choice.requires.every((condition) =>
+          checkCondition(condition, state, {
+            idolId: state.pendingEventIdolId,
+          }),
+        )
       : true;
     return {
       id: `choice:${index}`,
       command: { type: 'eventChoice', index },
-      label: choice.label,
-      hint: choice.hint,
+      label: formatIdolText(choice.label, state.pendingEventIdolId),
+      hint: choice.hint
+        ? formatIdolText(choice.hint, state.pendingEventIdolId)
+        : undefined,
       disabled: !allowed,
       disabledReason: allowed ? undefined : '条件未满足',
       tone: index === 0 ? 'primary' : 'secondary',
@@ -239,7 +246,12 @@ function buildEvent(state: GameState): SceneView {
     phase: state.phase,
     phaseLabel: PHASE_LABEL[state.phase],
     title: event.title,
-    blocks: [{ kind: 'p', text: event.text }],
+    blocks: [
+      {
+        kind: 'p',
+        text: formatIdolText(event.text, state.pendingEventIdolId),
+      },
+    ],
     actions,
     layout: 'list',
   };

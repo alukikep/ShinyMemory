@@ -226,6 +226,10 @@ export type EventContext = {
   idolId?: string;
 };
 
+export type CheckContext = {
+  idolId?: string;
+};
+
 export type TriggerReport = {
   eventId: string;
   eligible: boolean;

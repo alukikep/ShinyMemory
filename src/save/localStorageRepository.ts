@@ -22,7 +22,8 @@ export class LocalStorageRepository implements SaveRepository {
     try {
       const parsed = JSON.parse(raw) as Partial<SaveEnvelope>;
       if (!parsed || typeof parsed !== 'object') return null;
-      if (parsed.schemaVersion !== SAVE_VERSION) return null;
+      if (typeof parsed.schemaVersion !== 'number') return null;
+      if (parsed.schemaVersion > SAVE_VERSION) return null;
       if (!parsed.state) return null;
       return migrateSave(parsed as SaveEnvelope);
     } catch {

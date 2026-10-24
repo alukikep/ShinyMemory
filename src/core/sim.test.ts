@@ -4,6 +4,7 @@ import {
   applyActivity,
   getActivity,
   handleAction,
+  moveTo,
   newGame,
 } from './sim';
 
@@ -12,6 +13,7 @@ describe('raising sim core', () => {
     const state = newGame(1);
     expect(state.week).toBe(1);
     expect(state.slot).toBe(0);
+    expect(state.locationId).toBe('office');
     expect(state.phase).toBe('plan');
     expect(state.stats.vocal).toBe(20);
     expect(state.money).toBe(3000);
@@ -19,7 +21,7 @@ describe('raising sim core', () => {
   });
 
   it('applies activity costs and effects', () => {
-    const state = newGame(1);
+    const state = moveTo(newGame(1), 'practice_room');
     const next = applyActivity(state, 'vocal');
     expect(next.stats.vocal).toBe(26);
     expect(next.money).toBe(2500);
@@ -30,13 +32,32 @@ describe('raising sim core', () => {
   });
 
   it('disables a lesson when money is not enough', () => {
-    const state = newGame(1);
+    const state = moveTo(newGame(1), 'practice_room');
     state.money = 100;
     const activity = getActivity('vocal');
     expect(activity).toBeTruthy();
     const availability = activityAvailability(state, activity!);
     expect(availability.ok).toBe(false);
     expect(availability.reason).toBe('金钱不足');
+  });
+
+  it('blocks an activity outside its location', () => {
+    const state = newGame(1);
+    const activity = getActivity('vocal');
+    const availability = activityAvailability(state, activity!);
+    expect(availability.ok).toBe(false);
+    expect(availability.reason).toBe('不在此地点');
+  });
+
+  it('moves for free and keeps the action count', () => {
+    const state = newGame(1);
+    const next = moveTo(state, 'practice_room');
+    expect(next.locationId).toBe('practice_room');
+    expect(next.actionsTaken).toBe(state.actionsTaken);
+
+    const back = moveTo(next, 'office');
+    expect(back.locationId).toBe('office');
+    expect(back.actionsTaken).toBe(state.actionsTaken);
   });
 
   it('reaches the mid exam after 10 actions', () => {

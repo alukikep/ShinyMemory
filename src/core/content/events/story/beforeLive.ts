@@ -7,6 +7,10 @@ const card: EventDef = {
     {
       "kind": "weekAtLeast",
       "week": 11
+    },
+    {
+      "kind": "atLocation",
+      "locationId": "studio"
     }
   ],
   "once": true,

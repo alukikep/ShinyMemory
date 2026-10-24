@@ -1,5 +1,6 @@
-import { ACTIVITIES } from './content';
 import { TOTAL_ACTIONS } from './config';
+import { LOCATIONS } from './content';
+import { CONTENT_INDEX } from './contentIndex';
 import { FINAL_EXAM, MID_EXAM, WEEK_FLAVOR } from './content/weeks';
 import {
   activityAvailability,
@@ -35,9 +36,15 @@ function sceneId(state: GameState): string {
 }
 
 function buildPlan(state: GameState): SceneView {
-  const blocks: TextBlock[] = [
-    { kind: 'system', text: WEEK_FLAVOR[state.week - 1] ?? '新的一周。' },
-  ];
+  const location = CONTENT_INDEX.locations.get(state.locationId);
+  const blocks: TextBlock[] = [];
+  if (location?.description) {
+    blocks.push({ kind: 'p', text: location.description });
+  }
+  blocks.push({
+    kind: 'system',
+    text: WEEK_FLAVOR[state.week - 1] ?? '新的一周。',
+  });
   if (state.flags.forced_rest) {
     blocks.push({
       kind: 'system',
@@ -45,7 +52,8 @@ function buildPlan(state: GameState): SceneView {
     });
   }
 
-  const actions: ActionView[] = ACTIVITIES.map((activity) => {
+  const activities = CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? [];
+  const actions: ActionView[] = activities.map((activity) => {
     const availability = activityAvailability(state, activity);
     return {
       id: activity.id,
@@ -63,6 +71,12 @@ function buildPlan(state: GameState): SceneView {
     phaseLabel: PHASE_LABEL[state.phase],
     title: `第 ${state.week} 周 · ${SLOT_LABEL[state.slot]}`,
     subtitle: `第 ${state.actionsTaken + 1} 次行动 / ${TOTAL_ACTIONS}`,
+    locationName: location?.name,
+    locations: LOCATIONS.map((item) => ({
+      id: item.id,
+      name: item.name,
+      current: item.id === state.locationId,
+    })),
     blocks,
     actions,
     layout: 'grid',

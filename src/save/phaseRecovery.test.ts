@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildScene } from '../core/scene';
-import { applyActivity, newGame } from '../core/sim';
+import { applyActivity, moveTo, newGame } from '../core/sim';
 import type { GameState } from '../core/types';
 import { LocalStorageRepository } from './localStorageRepository';
 import { MemoryStorage } from './memoryStorage';
@@ -16,7 +16,7 @@ function roundtrip(state: GameState): GameState {
 
 describe('phase recovery', () => {
   it('restores activityResult', () => {
-    const state = applyActivity(newGame(1), 'vocal');
+    const state = applyActivity(moveTo(newGame(1), 'practice_room'), 'vocal');
     const scene = buildScene(roundtrip(state));
     expect(scene.phase).toBe('activityResult');
     expect(scene.title).toBe('声乐课');

@@ -322,6 +322,40 @@ button {
   letter-spacing: 0.06em;
 }
 
+.location-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.location-tab {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  padding: 5px 13px;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.location-tab:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  background: #fff;
+}
+
+.location-tab.current {
+  border-color: var(--accent);
+  background: rgba(201, 107, 126, 0.12);
+  color: var(--accent-strong);
+  cursor: default;
+}
+
 .blocks {
   flex: 0 0 auto;
   padding: 22px 2px 8px;

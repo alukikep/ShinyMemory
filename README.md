@@ -8,10 +8,11 @@
 ## 当前原型
 
 - 12 周 × 24 次行动，一局 10–15 分钟
-- 6 个活动：声乐、舞蹈、表现、节目收录、休息、自由时间
+- 3 个地点：事务所、练习室、录音棚；免费移动
+- 6 个活动：声乐、舞蹈、表现只在练习室；节目收录在录音棚；休息在事务所；自由时间到处都行
 - 20 个事件、2 次考核、3 个结局
 - 事件触发 v2：`after` / `chance` / `priority` / `cooldownActions`
-- 自动存档（localStorage），刷新页面可继续
+- 自动存档（localStorage），刷新页面可继续；存档 v2 自动迁移 v1
 - 调试面板：`?debug=1`，可看触发判定、强制事件、跳周
 - 无 AI、无美术；先验证“选择 → 结算 → 事件 → 考核”的循环
 
@@ -28,11 +29,11 @@ npm test         # 核心模拟测试 + 平衡烟测
 
 ```
 src/core/            纯 TypeScript 模拟，不依赖 React
-  content/           活动、事件、结局、周文本（一个内容一个文件）
-  contentIndex.ts    静态内容索引（Map 查询 / after 分桶）
+  content/           活动、事件、结局、地点、周文本（一个内容一个文件）
+  contentIndex.ts    静态内容索引（Map 查询 / after 分桶 / 地点活动）
   config.ts          周数、行动数、考核周
-  types.ts           GameState / Effect / Condition / EventDef / SaveEnvelope
-  sim.ts             纯函数：活动、事件、考核、结局
+  types.ts           GameState / Effect / Condition / LocationDef / EventDef / SaveEnvelope
+  sim.ts             纯函数：活动、移动、事件、考核、结局
   scene.ts           把 GameState 派生为 SceneView / ActionView
 src/save/            SaveRepository + localStorage 实现
 src/ui/              React 视图，只渲染 SceneView 和状态
@@ -60,13 +61,14 @@ src/app/store.ts     Zustand 薄壳 + 自动存档
 
 已确认：TypeScript · Vite · React · Zustand · Zod · IndexedDB (Dexie) · Tailwind CSS。
 
-当前 v0.2 原型使用 TypeScript + Vite + React + Zustand + 手写 CSS + localStorage；
+当前原型使用 TypeScript + Vite + React + Zustand + 手写 CSS + localStorage；
 Zod、Dexie、Tailwind CSS 按技术选型在后续接入。
 
 ## 状态
 
 v0.2 单页原型可运行：存档、事件触发 v2、20 个事件、内容索引与校验、调试面板。
-下一步 v0.3：YAML + Zod、审核页、AI 草稿。
+地点系统已接入：3 个地点、免费移动、地点限制活动、事件 `atLocation`、存档 v2 迁移。
+下一步：地点专属内容，或 v0.3 内容管线（YAML + Zod、审核页、AI 草稿）。
 DoL 式开放世界设计保留为后续目标，不丢弃。
 
 ## 仓库

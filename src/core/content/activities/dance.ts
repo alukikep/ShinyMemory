@@ -5,6 +5,7 @@ const card: ActivityDef = {
   "name": "舞蹈课",
   "description": "同一个转身，练到不用想为止。",
   "kind": "training",
+  "locations": ["practice_room"],
   "cost": {
     "money": 500,
     "stamina": 18

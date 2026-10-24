@@ -3,7 +3,10 @@ import type { EventDef } from '../../../types';
 const card: EventDef = {
   id: 'evt.producer_doubt',
   title: '制作人的怀疑',
-  when: [{ kind: 'weekAtLeast', week: 8 }],
+  when: [
+    { kind: 'weekAtLeast', week: 8 },
+    { kind: 'atLocation', locationId: 'office' },
+  ],
   once: true,
   text: '事务所的人问你：“你真的觉得她能走到那一步吗？” 你想起她今天早上练习时的样子。',
   choices: [

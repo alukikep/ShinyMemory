@@ -11,6 +11,12 @@ export function createSaveEnvelope(state: GameState): SaveEnvelope {
 }
 
 export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
-  // v0.2 only has schema version 1. Future migrations go here.
-  return envelope;
+  const next = structuredClone(envelope);
+
+  if (next.schemaVersion === 1) {
+    if (!next.state.locationId) next.state.locationId = 'office';
+    next.schemaVersion = 2;
+  }
+
+  return next;
 }

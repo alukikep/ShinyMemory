@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MAX_WEEKS } from '../../core/config';
-import { ACTIVITIES } from '../../core/content';
+import { ACTIVITIES, LOCATIONS } from '../../core/content';
 import { getActivity, getEvent, getTriggerReport } from '../../core/sim';
 import type { GameState, TriggerReport } from '../../core/types';
 
@@ -29,6 +29,9 @@ export function DebugPanel({
   const context = activityId
     ? { lastActivityId: activityId, lastActivityKind: activity?.kind }
     : {};
+  const locationName =
+    LOCATIONS.find((location) => location.id === state.locationId)?.name ??
+    state.locationId;
 
   const reports = getTriggerReport(state, context);
 
@@ -41,7 +44,7 @@ export function DebugPanel({
 
       <div className="debug-meta">
         第 {state.week} 周 · {state.slot === 0 ? '平日' : '周末'} ·{' '}
-        {state.phase} · 行动 {state.actionsTaken} · ¥
+        {state.phase} · 地点 {locationName} · 行动 {state.actionsTaken} · ¥
         {state.money.toLocaleString('zh-CN')} · 冷却记录{' '}
         {Object.keys(state.eventCooldowns).length}
       </div>

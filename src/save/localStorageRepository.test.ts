@@ -14,8 +14,27 @@ describe('LocalStorageRepository', () => {
 
     const loaded = repo.load();
     expect(loaded).not.toBeNull();
-    expect(loaded?.schemaVersion).toBe(1);
+    expect(loaded?.schemaVersion).toBe(2);
     expect(loaded?.state.stats.vocal).toBe(20);
+  });
+
+  it('migrates a v1 save by adding a location', () => {
+    const storage = new MemoryStorage();
+    const legacyState = newGame(1) as unknown as Record<string, unknown>;
+    delete legacyState.locationId;
+    storage.setItem(
+      SAVE_KEY,
+      JSON.stringify({
+        schemaVersion: 1,
+        gameVersion: '0.2.0',
+        createdAt: '2026-10-24T00:00:00.000Z',
+        state: legacyState,
+      }),
+    );
+
+    const loaded = new LocalStorageRepository(storage).load();
+    expect(loaded?.schemaVersion).toBe(2);
+    expect(loaded?.state.locationId).toBe('office');
   });
 
   it('returns null for invalid JSON', () => {

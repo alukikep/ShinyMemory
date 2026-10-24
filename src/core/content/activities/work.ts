@@ -5,6 +5,7 @@ const card: ActivityDef = {
   "name": "节目收录",
   "description": "有钱，有曝光，也有半夜回家的电车。",
   "kind": "work",
+  "locations": ["studio"],
   "cost": {
     "stamina": 20
   },

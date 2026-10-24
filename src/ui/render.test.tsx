@@ -9,8 +9,10 @@ describe('app shell', () => {
     const html = renderToString(<App />);
     expect(html).toContain('ShinyMemory');
     expect(html).toContain('第 1 周');
-    expect(html).toContain('声乐课');
+    expect(html).toContain('事务所');
+    expect(html).toContain('练习室');
     expect(html).toContain('休息');
+    expect(html).not.toContain('声乐课');
   });
 
   it('renders the debug panel without crashing', () => {

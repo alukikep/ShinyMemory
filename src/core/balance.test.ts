@@ -10,20 +10,25 @@ const cycle = (state: GameState, ids: string[]) =>
 const strategies: Record<string, Strategy> = {
   balanced: (state) => {
     const { stamina, stress, trust } = state.stats;
-    if (state.money < 500) return 'work';
     if (stamina < 35 || stress > 65) return 'rest';
+    if (state.money < 500) return 'work';
     if (trust < 10 && state.actionsTaken % 5 === 0) return 'free';
     return cycle(state, ['vocal', 'dance', 'expression']);
   },
   training: (state) => {
     const { stamina, stress } = state.stats;
-    if (state.money < 500) return 'work';
     if (stamina < 25 || stress > 75) return 'rest';
+    if (state.money < 500) return 'work';
     return cycle(state, ['vocal', 'dance', 'expression']);
   },
   work: (state) => {
     if (state.stats.stamina < 30) return 'rest';
     return 'work';
+  },
+  singleStat: (state) => {
+    if (state.stats.stamina < 30 || state.stats.stress > 70) return 'rest';
+    if (state.money < 500) return 'work';
+    return 'vocal';
   },
   lazy: (state) => (state.stats.stress > 20 ? 'rest' : 'free'),
 };
@@ -31,14 +36,33 @@ const strategies: Record<string, Strategy> = {
 function run(strategy: Strategy, seed: number): GameState {
   let state = newGame(seed);
   let guard = 0;
-  while (state.phase !== 'ending' && guard < 300) {
+  while (state.phase !== 'ending' && guard < 600) {
     guard += 1;
     if (state.phase === 'plan') {
       let action = state.flags.forced_rest ? 'rest' : strategy(state);
-      const activity = getActivity(action);
-      if (!activity || !activityAvailability(state, activity).ok) {
+      let activity = getActivity(action);
+      if (!activity) {
+        action = 'rest';
+        activity = getActivity('rest');
+      }
+
+      if (
+        activity?.locations &&
+        !activity.locations.includes(state.locationId)
+      ) {
+        state = handleAction(state, `move:${activity.locations[0]}`);
+        continue;
+      }
+
+      if (!activityAvailability(state, activity!).ok) {
+        const rest = getActivity('rest')!;
+        if (rest.locations && !rest.locations.includes(state.locationId)) {
+          state = handleAction(state, `move:${rest.locations[0]}`);
+          continue;
+        }
         action = 'rest';
       }
+
       state = handleAction(state, action);
     } else if (state.phase === 'event') {
       state = handleAction(state, 'choice:0');

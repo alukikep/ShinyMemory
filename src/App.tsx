@@ -51,7 +51,11 @@ export default function App() {
 
       <main className="layout">
         <StatsPanel state={state} />
-        <ScenePanel scene={scene} onAction={act} />
+        <ScenePanel
+          scene={scene}
+          onAction={act}
+          onMove={(locationId) => act(`move:${locationId}`)}
+        />
         <LogPanel state={state} />
       </main>
 

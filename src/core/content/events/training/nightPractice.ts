@@ -12,6 +12,10 @@ const card: EventDef = {
       "kind": "statAtLeast",
       "stat": "stress",
       "value": 25
+    },
+    {
+      "kind": "atLocation",
+      "locationId": "practice_room"
     }
   ],
   "once": true,

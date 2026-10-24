@@ -3,16 +3,36 @@ import type { SceneView } from '../../core/types';
 type ScenePanelProps = {
   scene: SceneView;
   onAction: (actionId: string) => void;
+  onMove?: (locationId: string) => void;
 };
 
-export function ScenePanel({ scene, onAction }: ScenePanelProps) {
+export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
   return (
     <section className="panel scene-panel">
       <div className="scene-head">
-        <p className="eyebrow">{scene.phaseLabel}</p>
+        <p className="eyebrow">
+          {scene.phaseLabel}
+          {scene.locationName ? ` · ${scene.locationName}` : ''}
+        </p>
         <h1>{scene.title}</h1>
         {scene.subtitle ? <p className="scene-subtitle">{scene.subtitle}</p> : null}
       </div>
+
+      {scene.locations && scene.locations.length > 0 ? (
+        <div className="location-tabs">
+          {scene.locations.map((location) => (
+            <button
+              key={location.id}
+              type="button"
+              className={`location-tab ${location.current ? 'current' : ''}`}
+              disabled={location.current}
+              onClick={() => onMove?.(location.id)}
+            >
+              {location.name}
+            </button>
+          ))}
+        </div>
+      ) : null}
 
       <div className="blocks">
         {scene.blocks.map((block, index) => (

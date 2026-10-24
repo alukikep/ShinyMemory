@@ -65,6 +65,22 @@ describe('event trigger v2', () => {
     expect(result.event?.id).toBe('evt.training');
   });
 
+  it('respects atLocation', () => {
+    const state = newGame(1);
+    const event = makeEvent({
+      id: 'evt.location',
+      when: [{ kind: 'atLocation', locationId: 'practice_room' }],
+      chance: 1,
+    });
+
+    expect(checkEventCandidates(state, [event], {}).event).toBeNull();
+
+    const atPractice = { ...state, locationId: 'practice_room' };
+    expect(checkEventCandidates(atPractice, [event], {}).event?.id).toBe(
+      'evt.location',
+    );
+  });
+
   it('does not mark once when chance fails', () => {
     const state = newGame(1);
     const event = makeEvent({ id: 'evt.once', chance: 0, once: true });

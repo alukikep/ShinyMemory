@@ -45,6 +45,7 @@ export function newGame(seed: number = Date.now()): GameState {
   const state: GameState = {
     week: 1,
     slot: 0,
+    locationId: CONTENT_INDEX.startingLocationId,
     stats: {
       vocal: 20,
       dance: 20,
@@ -64,7 +65,7 @@ export function newGame(seed: number = Date.now()): GameState {
     midExamDone: false,
     finalExamDone: false,
   };
-  addLog(state, '第 1 周。练习室的镜子擦得很干净，她站在中间，等你开口。', 'info');
+  addLog(state, '第 1 周。新的十二周开始了。', 'info');
   return state;
 }
 
@@ -90,6 +91,8 @@ export function checkCondition(condition: Condition, state: GameState): boolean 
       return state.stats[condition.stat] <= condition.value;
     case 'moneyAtMost':
       return state.money <= condition.value;
+    case 'atLocation':
+      return state.locationId === condition.locationId;
     case 'flag':
       return (state.flags[condition.key] ?? false) === (condition.value ?? true);
     case 'scoreAtLeast':
@@ -181,6 +184,9 @@ export function activityAvailability(
   if (state.flags.forced_rest && activity.kind !== 'rest') {
     return { ok: false, reason: '她需要休息' };
   }
+  if (activity.locations && !activity.locations.includes(state.locationId)) {
+    return { ok: false, reason: '不在此地点' };
+  }
   if (activity.cost.money && state.money < activity.cost.money) {
     return { ok: false, reason: '金钱不足' };
   }
@@ -191,6 +197,19 @@ export function activityAvailability(
     return { ok: false, reason: '条件未满足' };
   }
   return { ok: true };
+}
+
+export function moveTo(state: GameState, locationId: string): GameState {
+  if (state.phase !== 'plan') return state;
+  const location = CONTENT_INDEX.locations.get(locationId);
+  if (!location || state.locationId === locationId) return state;
+
+  const next = clone(state);
+  next.locationId = locationId;
+  next.pendingActivityId = undefined;
+  next.pendingEventId = undefined;
+  addLog(next, `移动到了${location.name}。`, 'info');
+  return next;
 }
 
 function pickActivityResult(
@@ -503,6 +522,7 @@ function continueFromActivity(state: GameState): GameState {
   const result = checkForEvent(next, {
     lastActivityId: activityId,
     lastActivityKind: activityKind,
+    locationId: next.locationId,
   });
   if (result.event) return result.state;
   return advanceSlot(result.state);
@@ -528,6 +548,9 @@ function continueFromExam(state: GameState): GameState {
 export function handleAction(state: GameState, actionId: string): GameState {
   switch (state.phase) {
     case 'plan':
+      if (actionId.startsWith('move:')) {
+        return moveTo(state, actionId.slice('move:'.length));
+      }
       return applyActivity(state, actionId);
     case 'activityResult':
       return actionId === 'continue' ? continueFromActivity(state) : state;

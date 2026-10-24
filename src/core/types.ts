@@ -28,6 +28,7 @@ export type Phase =
 export type GameState = {
   week: number;
   slot: 0 | 1;
+  locationId: string;
   stats: Record<StatKey, number>;
   money: number;
   flags: Record<string, boolean>;
@@ -59,6 +60,7 @@ export type Condition =
   | { kind: 'statAtLeast'; stat: StatKey; value: number }
   | { kind: 'statAtMost'; stat: StatKey; value: number }
   | { kind: 'moneyAtMost'; value: number }
+  | { kind: 'atLocation'; locationId: string }
   | { kind: 'flag'; key: string; value?: boolean }
   | { kind: 'scoreAtLeast'; value: number }
   | { kind: 'scoreAtMost'; value: number }
@@ -78,6 +80,7 @@ export type ActivityDef = {
   name: string;
   description: string;
   kind: ActivityKind;
+  locations?: string[];
   cost: Cost;
   effects: Effect[];
   requires?: Condition[];
@@ -111,9 +114,23 @@ export type EventDef = {
   choices: EventChoice[];
 };
 
+export type LocationDef = {
+  id: string;
+  name: string;
+  description: string;
+  isStart?: boolean;
+};
+
+export type LocationView = {
+  id: string;
+  name: string;
+  current: boolean;
+};
+
 export type EventContext = {
   lastActivityId?: string;
   lastActivityKind?: ActivityKind;
+  locationId?: string;
 };
 
 export type TriggerReport = {
@@ -170,6 +187,8 @@ export type SceneView = {
   phaseLabel: string;
   title: string;
   subtitle?: string;
+  locationName?: string;
+  locations?: LocationView[];
   blocks: TextBlock[];
   actions: ActionView[];
   layout: 'grid' | 'list';

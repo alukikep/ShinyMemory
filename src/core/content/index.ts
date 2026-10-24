@@ -1,4 +1,5 @@
 import type { ActivityDef, EventDef, EndingDef } from '../types';
+import { LOCATIONS } from './locations';
 import vocal from './activities/vocal';
 import dance from './activities/dance';
 import expression from './activities/expression';
@@ -34,3 +35,5 @@ export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, rest, 
 export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt];
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
+
+export { LOCATIONS };

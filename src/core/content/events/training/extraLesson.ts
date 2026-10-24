@@ -12,6 +12,7 @@ const card: EventDef = {
   ],
   "once": false,
   "weight": 6,
+  "cooldownActions": 4,
   "text": "今天的课程结束了。她站在练习室门口，回头看你：“要不要再来一遍？”",
   "choices": [
     {

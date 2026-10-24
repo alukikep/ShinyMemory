@@ -12,6 +12,10 @@ const card: EventDef = {
       "kind": "statAtLeast",
       "stat": "trust",
       "value": 8
+    },
+    {
+      "kind": "atLocation",
+      "locationId": "office"
     }
   ],
   "once": true,

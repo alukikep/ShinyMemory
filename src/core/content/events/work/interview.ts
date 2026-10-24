@@ -3,7 +3,10 @@ import type { EventDef } from '../../../types';
 const card: EventDef = {
   id: 'evt.interview',
   title: '杂志采访',
-  when: [{ kind: 'weekAtLeast', week: 5 }],
+  when: [
+    { kind: 'weekAtLeast', week: 5 },
+    { kind: 'atLocation', locationId: 'studio' },
+  ],
   after: { ids: ['work'] },
   once: true,
   text: '采访提纲上有一个问题：“你觉得自己最大的缺点是什么？”她看了很久。',

@@ -487,6 +487,32 @@ export function train(
   return next;
 }
 
+export function work(
+  state: GameState,
+  idolId: string,
+  activityId: string,
+): GameState {
+  if (state.phase !== 'idol' || state.pendingIdolId !== idolId) return state;
+
+  const actor = getActor(idolId);
+  const activity = getActivity(activityId);
+  if (
+    !actor ||
+    actor.role !== 'idol' ||
+    !isActorPresent(state, actor) ||
+    !activity ||
+    activity.kind !== 'work' ||
+    !activityAvailability(state, activity).ok
+  ) {
+    return state;
+  }
+
+  const next = applyActivity(state, activityId, idolId);
+  if (next.phase !== 'activityResult') return state;
+  next.pendingIdolId = idolId;
+  return next;
+}
+
 export function talkTo(
   state: GameState,
   actorId: string,
@@ -1040,6 +1066,9 @@ export function handleCommand(
       if (command.type === 'train') {
         return train(state, command.idolId, command.activityId);
       }
+      if (command.type === 'work') {
+        return work(state, command.idolId, command.activityId);
+      }
       return state;
 
     case 'activityResult':
@@ -1108,6 +1137,11 @@ export function handleAction(state: GameState, actionId: string): GameState {
         const [, idolId, activityId] = actionId.split(':');
         if (idolId && activityId) {
           command = { type: 'train', idolId, activityId };
+        }
+      } else if (actionId.startsWith('work:')) {
+        const [, idolId, activityId] = actionId.split(':');
+        if (idolId && activityId) {
+          command = { type: 'work', idolId, activityId };
         }
       }
       break;

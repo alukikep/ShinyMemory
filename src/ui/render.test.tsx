@@ -87,6 +87,21 @@ describe('app shell', () => {
     expect(html).toContain('离开');
   });
 
+  it('renders the idol work page at the studio', () => {
+    const studio = moveTo(advanceTime(newGame(1), 7 * 60), 'studio');
+    const state = handleCommand(studio, {
+      type: 'enterIdol',
+      idolId: 'mano',
+    });
+    const html = renderToString(
+      <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
+    );
+    expect(html).toContain('工作');
+    expect(html).toContain('节目收录');
+    expect(html).toContain('离开');
+    expect(html).not.toContain('声乐课');
+  });
+
   it('renders the idol roster overlay', () => {
     const html = renderToString(
       <IdolRoster state={newGame(1)} onClose={() => {}} />,

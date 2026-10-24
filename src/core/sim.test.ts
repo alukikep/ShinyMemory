@@ -338,6 +338,30 @@ describe('raising sim core', () => {
     expect(formatIdolText('她又唱了一遍。')).toBe('她又唱了一遍。');
   });
 
+  it('works with an idol at the studio', () => {
+    const state = moveTo(advanceTime(newGame(1), 7 * 60), 'studio');
+    expect(presentActors(state).map((actor) => actor.id)).toEqual(['mano']);
+
+    const entered = handleCommand(state, {
+      type: 'enterIdol',
+      idolId: 'mano',
+    });
+    const scene = buildScene(entered);
+    expect(scene.actions.map((action) => action.id)).toContain('work');
+    expect(scene.actions.map((action) => action.id)).not.toContain('vocal');
+
+    const worked = handleCommand(entered, {
+      type: 'work',
+      idolId: 'mano',
+      activityId: 'work',
+    });
+    expect(worked.phase).toBe('activityResult');
+    expect(worked.money).toBe(4500);
+    expect(worked.shared.stamina).toBe(80);
+    expect(worked.shared.stress).toBe(14);
+    expect(worked.idols.hiori?.stats.trust).toBe(5);
+  });
+
   it('shows Hazuki and Tsutomu on their office schedules', () => {
     const morning = newGame(1);
     expect(presentActors(morning).map((actor) => actor.id)).toEqual([]);

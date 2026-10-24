@@ -40,7 +40,7 @@ const PHASE_LABEL = {
   eventResult: '事件结果',
   npc: '交谈',
   npcResult: '对话',
-  idol: '训练',
+  idol: '互动',
   examMid: '中期考核',
   examFinal: '最终考核',
   ending: '结局',
@@ -50,10 +50,27 @@ function sceneId(state: GameState): string {
   return `${state.phase}:${state.clock.absoluteMinutes}:${state.actionsTaken}`;
 }
 
+function idolActivityKindAt(
+  state: GameState,
+): 'training' | 'work' | undefined {
+  const kinds = new Set(
+    (CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? [])
+      .filter(
+        (activity) =>
+          activity.kind === 'training' || activity.kind === 'work',
+      )
+      .map((activity) => activity.kind),
+  );
+  if (kinds.has('work')) return 'work';
+  if (kinds.has('training')) return 'training';
+  return undefined;
+}
+
 function buildActorViews(state: GameState): ActorView[] {
   return presentActors(state).map((actor) => {
     const actorState = state.actors[actor.id];
     const isIdol = actor.role === 'idol';
+    const idolMode = isIdol ? idolActivityKindAt(state) : undefined;
     return {
       id: actor.id,
       name: actor.name,
@@ -64,7 +81,13 @@ function buildActorViews(state: GameState): ActorView[] {
         ? (state.idols[actor.id]?.stats.trust ?? 0)
         : (actorState?.affinity ?? 0),
       relationshipLabel: isIdol ? '信任' : '好感',
-      entryLabel: isIdol ? '训练' : '交谈',
+      entryLabel: isIdol
+        ? idolMode === 'work'
+          ? '工作'
+          : idolMode === 'training'
+            ? '训练'
+            : '互动'
+        : '交谈',
       enterCommand: isIdol
         ? { type: 'enterIdol', idolId: actor.id }
         : { type: 'enterNpc', actorId: actor.id },
@@ -115,7 +138,10 @@ function buildPlan(state: GameState): SceneView {
   }
 
   const activities = (CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? [])
-    .filter((activity) => activity.kind !== 'training');
+    .filter(
+      (activity) =>
+        activity.kind !== 'training' && activity.kind !== 'work',
+    );
   const locationOpen = isLocationOpen(state, state.locationId);
   const actors = buildActorViews(state);
   if (!locationOpen) {
@@ -378,7 +404,7 @@ function buildIdolPage(state: GameState): SceneView {
       id: sceneId(state),
       phase: state.phase,
       phaseLabel: PHASE_LABEL[state.phase],
-      title: '训练',
+      title: '互动',
       blocks: [{ kind: 'system', text: '她不在这里。' }],
       actions: [
         {
@@ -393,10 +419,13 @@ function buildIdolPage(state: GameState): SceneView {
     };
   }
 
-  const trainings: ActionView[] = (
+  const activities: ActionView[] = (
     CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? []
   )
-    .filter((activity) => activity.kind === 'training')
+    .filter(
+      (activity) =>
+        activity.kind === 'training' || activity.kind === 'work',
+    )
     .map((activity) => ({
       activity,
       availability: activityAvailability(state, activity),
@@ -409,20 +438,28 @@ function buildIdolPage(state: GameState): SceneView {
       const action = activityActionView(state, activity);
       return {
         ...action,
-        command: {
-          type: 'train',
-          idolId,
-          activityId: activity.id,
-        },
+        command:
+          activity.kind === 'work'
+            ? {
+                type: 'work',
+                idolId,
+                activityId: activity.id,
+              }
+            : {
+                type: 'train',
+                idolId,
+                activityId: activity.id,
+              },
       };
     });
+  const mode = idolActivityKindAt(state);
 
   return {
     id: sceneId(state),
     phase: state.phase,
-    phaseLabel: PHASE_LABEL[state.phase],
+    phaseLabel: mode === 'work' ? '工作' : '训练',
     title: idolDef.name,
-    subtitle: `${idolDef.unit} · 训练`,
+    subtitle: `${idolDef.unit} · ${mode === 'work' ? '工作' : '训练'}`,
     blocks: [],
     idol: {
       id: idolId,
@@ -433,7 +470,7 @@ function buildIdolPage(state: GameState): SceneView {
       stats: idolState.stats,
     },
     actions: [
-      ...trainings,
+      ...activities,
       {
         id: 'leave_idol',
         command: { type: 'leaveIdol' },

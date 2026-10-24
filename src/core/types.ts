@@ -278,6 +278,7 @@ export type ActionCommand =
   | { type: 'talk'; actorId: string; topicId: string }
   | { type: 'enterIdol'; idolId: string }
   | { type: 'train'; idolId: string; activityId: string }
+  | { type: 'work'; idolId: string; activityId: string }
   | { type: 'leaveNpc' }
   | { type: 'leaveIdol' }
   | { type: 'eventChoice'; index: number }

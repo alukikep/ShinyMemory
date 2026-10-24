@@ -11,7 +11,7 @@ const card: EventDef = {
     {
       "kind": "statAtLeast",
       "stat": "stress",
-      "value": 40
+      "value": 25
     }
   ],
   "once": true,

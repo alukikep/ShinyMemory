@@ -4,12 +4,13 @@ const card: EventDef = {
   id: 'evt.vocal_strain',
   title: '嗓子的警告',
   when: [
-    { kind: 'statAtMost', stat: 'stamina', value: 30 },
+    { kind: 'statAtMost', stat: 'stamina', value: 50 },
     { kind: 'statAtLeast', stat: 'stress', value: 20 },
   ],
   after: { ids: ['vocal'] },
   chance: 0.5,
   cooldownActions: 4,
+  weight: 20,
   text: '声乐课结束后，她清了好几次嗓子，声音有点发虚。“没事，可能是今天话说多了。”',
   choices: [
     {

@@ -3,7 +3,7 @@ import type { EventDef } from '../../../types';
 const card: EventDef = {
   id: 'evt.escape',
   title: '逃走的下午',
-  when: [{ kind: 'statAtLeast', stat: 'stress', value: 65 }],
+  when: [{ kind: 'statAtLeast', stat: 'stress', value: 45 }],
   chance: 0.4,
   cooldownActions: 3,
   text: '练习开始前，她发来一条消息：“我今天可以请假吗？” 你打过去，她没有接。',

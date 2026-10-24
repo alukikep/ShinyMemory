@@ -16,6 +16,11 @@ const card: EventDef = {
     {
       "kind": "atLocation",
       "locationId": "office"
+    },
+    {
+      "kind": "timeWindow",
+      "fromMinute": 660,
+      "toMinute": 840
     }
   ],
   "once": true,

@@ -3,6 +3,7 @@ import {
   activityAvailability,
   getActivity,
   handleAction,
+  isLocationOpen,
   newGame,
 } from './sim';
 import { getDay, getMinuteOfDay } from './time';
@@ -61,6 +62,17 @@ function run(seed: number): {
 
       let activity = getActivity(target)!;
       const locationId = activity.locations?.[0];
+      if (locationId && !isLocationOpen(state, locationId)) {
+        const wait = ['look_around', 'free']
+          .map((id) => getActivity(id))
+          .find((item) => item && activityAvailability(state, item).ok);
+        if (wait) {
+          state = handleAction(state, wait.id);
+          count(day);
+          continue;
+        }
+      }
+
       if (locationId && state.locationId !== locationId) {
         state = handleAction(state, `move:${locationId}`);
         continue;

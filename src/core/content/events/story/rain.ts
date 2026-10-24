@@ -7,6 +7,11 @@ const card: EventDef = {
     {
       "kind": "dayAtLeast",
       "day": 1
+    },
+    {
+      "kind": "timeWindow",
+      "fromMinute": 960,
+      "toMinute": 1200
     }
   ],
   "once": true,

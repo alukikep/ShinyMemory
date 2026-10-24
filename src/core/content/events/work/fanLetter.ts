@@ -3,8 +3,11 @@ import type { EventDef } from '../../../types';
 const card: EventDef = {
   id: 'evt.fan_letter',
   title: '粉丝来信',
-  when: [{ kind: 'dayAtLeast', day: 1 }],
-  after: { ids: ['work'] },
+  when: [
+    { kind: 'dayAtLeast', day: 1 },
+    { kind: 'atLocation', locationId: 'office' },
+    { kind: 'timeWindow', fromMinute: 10 * 60, toMinute: 18 * 60 },
+  ],
   chance: 0.7,
   cooldownActions: 6,
   text: '事务所转来一封信。信封上画着一个歪歪扭扭的星星。',

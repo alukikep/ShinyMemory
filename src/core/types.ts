@@ -115,6 +115,7 @@ export type EventChoice = {
   label: string;
   hint?: string;
   requires?: Condition[];
+  durationMinutes?: number;
   effects: Effect[];
   result: string;
 };

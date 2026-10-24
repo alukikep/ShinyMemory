@@ -253,8 +253,25 @@ describe('content integrity', () => {
       for (const choice of event.choices) {
         expect(choice.label.length).toBeGreaterThan(0);
         expect(choice.result.length).toBeGreaterThan(0);
+        if (choice.durationMinutes !== undefined) {
+          expect(choice.durationMinutes).toBeGreaterThan(0);
+        }
       }
     }
+  });
+
+  it('gates the late-night TV offer by place and time', () => {
+    const offer = EVENTS.find((event) => event.id === 'evt.tv_offer');
+    expect(offer?.when).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          kind: 'atLocation',
+          locationId: 'studio',
+        }),
+        expect.objectContaining({ kind: 'timeWindow' }),
+      ]),
+    );
+    expect(offer?.choices[0]?.durationMinutes).toBe(240);
   });
 
   it('builds the content index', () => {

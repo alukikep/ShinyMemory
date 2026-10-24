@@ -3,13 +3,17 @@ import type { EventDef } from '../../../../types';
 const card: EventDef = {
   id: 'evt.interview',
   title: '杂志采访',
-  when: [{ kind: 'dayAtLeast', day: 1 }],
+  when: [
+    { kind: 'dayAtLeast', day: 1 },
+    { kind: 'timeWindow', fromMinute: 10 * 60, toMinute: 22 * 60 },
+  ],
   after: { ids: ['work'] },
   once: true,
   text: '采访提纲上有一个问题：“你觉得自己最大的缺点是什么？”她看了很久。',
   choices: [
     {
       label: '让她自己回答',
+      durationMinutes: 60,
       effects: [
         { kind: 'stat', stat: 'trust', delta: 2 },
         { kind: 'stat', stat: 'expression', delta: 2 },
@@ -19,6 +23,7 @@ const card: EventDef = {
     },
     {
       label: '帮她换一个问题',
+      durationMinutes: 60,
       effects: [
         { kind: 'stat', stat: 'trust', delta: -1 },
         { kind: 'stat', stat: 'stress', delta: -3 },
@@ -27,6 +32,7 @@ const card: EventDef = {
     },
     {
       label: '提前对一遍答案',
+      durationMinutes: 60,
       effects: [
         { kind: 'stat', stat: 'expression', delta: 3 },
         { kind: 'stat', stat: 'stress', delta: 3 },

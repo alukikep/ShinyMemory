@@ -10,6 +10,7 @@ import {
   activityAvailability,
   advanceTime,
   applyActivity,
+  applyEventChoice,
   getActivity,
   handleAction,
   isLocationOpen,
@@ -148,6 +149,18 @@ describe('raising sim core', () => {
     const midAt = (MID_EXAM_DAY - 1) * MINUTES_PER_DAY + MID_EXAM_MINUTE;
     const advanced = advanceTime(state, midAt - START_MINUTE + 1);
     expect(advanced.pendingExam).toBe('mid');
+  });
+
+  it('advances time for timed event choices', () => {
+    const state = newGame(1);
+    state.clock.absoluteMinutes = 22 * 60;
+    state.phase = 'event';
+    state.pendingEventId = 'evt.tv_offer';
+
+    const next = applyEventChoice(state, 0);
+    expect(next.phase).toBe('eventResult');
+    expect(formatClock(next.clock.absoluteMinutes)).toBe('02:00');
+    expect(getDay(next.clock.absoluteMinutes)).toBe(2);
   });
 
   it('blocks training outside its time window', () => {

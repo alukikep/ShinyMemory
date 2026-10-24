@@ -8,8 +8,14 @@ const card: EventDef = {
       "kind": "statAtMost",
       "stat": "stamina",
       "value": 50
+    },
+    {
+      "kind": "timeWindow",
+      "fromMinute": 960,
+      "toMinute": 1320
     }
   ],
+  "after": { "kinds": ["training"] },
   "once": false,
   "weight": 6,
   "cooldownActions": 4,
@@ -17,6 +23,7 @@ const card: EventDef = {
   "choices": [
     {
       "label": "加练",
+      "durationMinutes": 60,
       "effects": [
         {
           "kind": "stat",

@@ -11,6 +11,15 @@ const card: EventDef = {
     {
       "kind": "moneyAtMost",
       "value": 2000
+    },
+    {
+      "kind": "atLocation",
+      "locationId": "studio"
+    },
+    {
+      "kind": "timeWindow",
+      "fromMinute": 1200,
+      "toMinute": 1380
     }
   ],
   "once": true,
@@ -19,6 +28,7 @@ const card: EventDef = {
   "choices": [
     {
       "label": "接下",
+      "durationMinutes": 240,
       "effects": [
         {
           "kind": "money",

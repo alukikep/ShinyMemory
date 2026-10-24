@@ -6,6 +6,7 @@ const card: EventDef = {
   when: [
     { kind: 'dayAtLeast', day: 2 },
     { kind: 'atLocation', locationId: 'office' },
+    { kind: 'timeWindow', fromMinute: 10 * 60, toMinute: 18 * 60 },
   ],
   once: true,
   text: '事务所的人问你：“你真的觉得她能走到那一步吗？” 你想起她今天早上练习时的样子。',

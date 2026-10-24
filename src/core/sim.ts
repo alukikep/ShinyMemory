@@ -530,10 +530,15 @@ export function applyEventChoice(state: GameState, index: number): GameState {
   const next = clone(state);
   applyEffects(next, choice.effects);
   clampState(next);
-  next.phase = 'eventResult';
-  next.lastResult = choice.result;
-  addLog(next, choice.result, 'info');
-  return next;
+
+  const advanced =
+    choice.durationMinutes && choice.durationMinutes > 0
+      ? advanceTime(next, choice.durationMinutes)
+      : next;
+  advanced.phase = 'eventResult';
+  advanced.lastResult = choice.result;
+  addLog(advanced, choice.result, 'info');
+  return advanced;
 }
 
 export type ScorePart = { label: string; value: number };

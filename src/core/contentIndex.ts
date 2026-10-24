@@ -13,6 +13,7 @@ export type ContentIndex = {
   endings: Map<string, EndingDef>;
   locations: Map<string, LocationDef>;
   activitiesByLocation: Map<string, ActivityDef[]>;
+  eventsByLocation: Map<string, EventDef[]>;
   eventsByActivityId: Map<string, EventDef[]>;
   eventsByKind: Map<ActivityKind, EventDef[]>;
   globalEvents: EventDef[];
@@ -39,28 +40,43 @@ function buildIndex(): ContentIndex {
   const startingLocationId =
     LOCATIONS.find((location) => location.isStart)?.id ?? LOCATIONS[0]?.id ?? '';
 
+  const eventsByLocation = new Map<string, EventDef[]>();
   const eventsByActivityId = new Map<string, EventDef[]>();
   const eventsByKind = new Map<ActivityKind, EventDef[]>();
   const globalEvents: EventDef[] = [];
 
   for (const event of EVENTS) {
-    if (!event.after) {
-      globalEvents.push(event);
-      continue;
+    const locationIds: string[] = [];
+    for (const condition of event.when) {
+      if (condition.kind === 'atLocation') {
+        locationIds.push(condition.locationId);
+      }
     }
 
-    if ('ids' in event.after) {
-      for (const id of event.after.ids) {
-        const list = eventsByActivityId.get(id) ?? [];
-        list.push(event);
-        eventsByActivityId.set(id, list);
+    if (event.after) {
+      if ('ids' in event.after) {
+        for (const id of event.after.ids) {
+          const list = eventsByActivityId.get(id) ?? [];
+          list.push(event);
+          eventsByActivityId.set(id, list);
+        }
+      } else {
+        for (const kind of event.after.kinds) {
+          const list = eventsByKind.get(kind) ?? [];
+          list.push(event);
+          eventsByKind.set(kind, list);
+        }
       }
-    } else {
-      for (const kind of event.after.kinds) {
-        const list = eventsByKind.get(kind) ?? [];
+    }
+
+    if (locationIds.length > 0) {
+      for (const locationId of locationIds) {
+        const list = eventsByLocation.get(locationId) ?? [];
         list.push(event);
-        eventsByKind.set(kind, list);
+        eventsByLocation.set(locationId, list);
       }
+    } else if (!event.after) {
+      globalEvents.push(event);
     }
   }
 
@@ -70,6 +86,7 @@ function buildIndex(): ContentIndex {
     endings,
     locations,
     activitiesByLocation,
+    eventsByLocation,
     eventsByActivityId,
     eventsByKind,
     globalEvents,

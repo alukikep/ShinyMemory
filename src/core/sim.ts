@@ -299,6 +299,11 @@ function buildPool(ctx: EventContext): EventDef[] {
       pool.add(event);
     }
   }
+  if (ctx.locationId) {
+    for (const event of CONTENT_INDEX.eventsByLocation.get(ctx.locationId) ?? []) {
+      pool.add(event);
+    }
+  }
 
   return [...pool];
 }
@@ -361,7 +366,11 @@ export function checkForEvent(
   state: GameState,
   ctx: EventContext = {},
 ): EventCheckResult {
-  return checkEventCandidates(state, buildPool(ctx), ctx);
+  const context: EventContext = {
+    ...ctx,
+    locationId: ctx.locationId ?? state.locationId,
+  };
+  return checkEventCandidates(state, buildPool(context), context);
 }
 
 export function getTriggerReport(

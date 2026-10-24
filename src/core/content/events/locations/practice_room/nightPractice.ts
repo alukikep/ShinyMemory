@@ -1,4 +1,4 @@
-import type { EventDef } from '../../../types';
+import type { EventDef } from '../../../../types';
 
 const card: EventDef = {
   "id": "evt.night_practice",

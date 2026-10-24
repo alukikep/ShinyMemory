@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { ACTIVITIES, ENDINGS, EVENTS, LOCATIONS } from './content';
 import { CONTENT_INDEX } from './contentIndex';
-import type { ActivityKind, Condition } from './types';
+import type { ActivityKind, Condition, EventDef } from './types';
 
 const ACTIVITY_KINDS: ActivityKind[] = ['training', 'work', 'rest', 'bond'];
 
@@ -17,6 +17,44 @@ function locationsInConditions(conditions: Condition[]): string[] {
     }
   }
   return found;
+}
+
+function topLevelLocations(event: EventDef): string[] {
+  const found: string[] = [];
+  for (const condition of event.when) {
+    if (condition.kind === 'atLocation') found.push(condition.locationId);
+  }
+  return found;
+}
+
+function afterLocations(event: EventDef): Set<string> | null {
+  if (!event.after) return null;
+
+  const locations = new Set<string>();
+  let unrestricted = false;
+
+  const addActivity = (activity: (typeof ACTIVITIES)[number] | undefined) => {
+    if (!activity) return;
+    if (!activity.locations) {
+      unrestricted = true;
+      return;
+    }
+    for (const locationId of activity.locations) locations.add(locationId);
+  };
+
+  if ('ids' in event.after) {
+    for (const id of event.after.ids) {
+      addActivity(ACTIVITIES.find((activity) => activity.id === id));
+    }
+  } else {
+    for (const kind of event.after.kinds) {
+      for (const activity of ACTIVITIES.filter((item) => item.kind === kind)) {
+        addActivity(activity);
+      }
+    }
+  }
+
+  return unrestricted || locations.size === 0 ? null : locations;
 }
 
 describe('content integrity', () => {
@@ -65,6 +103,47 @@ describe('content integrity', () => {
           true,
         );
       }
+    }
+  });
+
+  it('has at least one location-owned event per location', () => {
+    for (const location of LOCATIONS) {
+      const events = CONTENT_INDEX.eventsByLocation.get(location.id);
+      expect(events?.length ?? 0).toBeGreaterThan(0);
+    }
+  });
+
+  it('does not conflict or duplicate after with atLocation', () => {
+    const problems: string[] = [];
+
+    for (const event of EVENTS) {
+      const eventLocations = topLevelLocations(event);
+      const possibleLocations = afterLocations(event);
+      if (eventLocations.length === 0 || !possibleLocations) continue;
+
+      const overlaps = [...possibleLocations].some((locationId) =>
+        eventLocations.includes(locationId),
+      );
+      if (!overlaps) {
+        problems.push(
+          `${event.id}: after never happens at ${eventLocations.join(', ')}`,
+        );
+      }
+
+      const redundant = [...possibleLocations].every((locationId) =>
+        eventLocations.includes(locationId),
+      );
+      if (redundant) {
+        problems.push(`${event.id}: atLocation is already implied by after`);
+      }
+    }
+
+    expect(problems).toEqual([]);
+  });
+
+  it('uses at most one top-level atLocation per event', () => {
+    for (const event of EVENTS) {
+      expect(topLevelLocations(event).length).toBeLessThanOrEqual(1);
     }
   });
 
@@ -137,6 +216,22 @@ describe('content integrity', () => {
     expect(CONTENT_INDEX.activitiesByLocation.get('office')).toEqual(
       expect.arrayContaining([expect.objectContaining({ id: 'rest' })]),
     );
+    expect(CONTENT_INDEX.eventsByLocation.get('office')).toEqual(
+      expect.arrayContaining([expect.objectContaining({ id: 'evt.bento' })]),
+    );
+    expect(CONTENT_INDEX.eventsByLocation.get('practice_room')).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: 'evt.night_practice' }),
+      ]),
+    );
+    expect(CONTENT_INDEX.eventsByLocation.get('studio')).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: 'evt.before_live' }),
+      ]),
+    );
+    expect(
+      CONTENT_INDEX.globalEvents.some((event) => event.id === 'evt.bento'),
+    ).toBe(false);
   });
 
   it('demonstrates the v0.2 trigger features', () => {

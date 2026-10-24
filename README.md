@@ -44,7 +44,8 @@ src/app/store.ts     Zustand 薄壳 + 自动存档
 `SceneView` 和 `ActionView`。活动、事件、选项、结局全部来自数据。
 
 **事件不写死：** 触发用 `after` / `chance` / `priority` / `cooldownActions`
-组合，内容放在 `src/core/content/events/` 下，按训练、工作、休息、剧情分文件夹。
+组合，地点用 `atLocation`。地点专属事件放 `events/locations/<id>/`，
+活动专属事件放 `events/activities/`，跨地点/跨活动的放各自领域文件夹。
 
 ## 文档
 

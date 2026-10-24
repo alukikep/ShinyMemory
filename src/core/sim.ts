@@ -219,7 +219,10 @@ export function activityAvailability(
     return { ok: false, reason: '体力不足' };
   }
   if (activity.requires && !activity.requires.every((c) => checkCondition(c, state))) {
-    return { ok: false, reason: '条件未满足' };
+    return {
+      ok: false,
+      reason: activity.kind === 'sleep' ? '现在还不想睡' : '条件未满足',
+    };
   }
   return { ok: true };
 }

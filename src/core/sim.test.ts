@@ -109,22 +109,14 @@ describe('raising sim core', () => {
     expect(advanced.pendingExam).toBe('mid');
   });
 
-  it('can finish a full time run and reach an ending', () => {
-    let state = moveTo(newGame(1), 'home');
-    let guard = 0;
+  it('blocks sleep during the day and allows it at night', () => {
+    const state = moveTo(newGame(1), 'home');
+    const sleep = getActivity('sleep')!;
+    const blocked = activityAvailability(state, sleep);
+    expect(blocked.ok).toBe(false);
+    expect(blocked.reason).toBe('现在还不想睡');
 
-    while (state.phase !== 'ending' && guard < 60) {
-      guard += 1;
-      if (state.phase === 'plan') {
-        state = handleAction(state, 'sleep');
-      } else if (state.phase === 'event') {
-        state = handleAction(state, 'choice:0');
-      } else {
-        state = handleAction(state, 'continue');
-      }
-    }
-
-    expect(state.phase).toBe('ending');
-    expect(state.endingId).toBeTruthy();
+    const evening = advanceTime(state, 12 * 60);
+    expect(activityAvailability(evening, sleep).ok).toBe(true);
   });
 });

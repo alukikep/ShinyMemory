@@ -39,8 +39,7 @@ describe('app shell', () => {
     );
     expect(html).toContain('七草叶月');
     expect(html).toContain('事务员');
-    expect(html).toContain('和七草叶月聊聊');
-    expect(html).toContain('选择话题');
+    expect(html).toContain('交谈');
   });
 
   it('renders multiple actors at the office', () => {
@@ -51,8 +50,7 @@ describe('app shell', () => {
     expect(html).toContain('七草叶月');
     expect(html).toContain('天井努');
     expect(html).toContain('社长');
-    expect(html).toContain('和七草叶月聊聊');
-    expect(html).toContain('和天井努聊聊');
+    expect(html).toContain('交谈');
   });
 
   it('renders the dedicated Hazuki interaction page', () => {

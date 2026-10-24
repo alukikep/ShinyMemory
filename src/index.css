@@ -358,8 +358,66 @@ button {
 
 .actors {
   display: grid;
-  gap: 10px;
-  margin-top: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.actor-entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+  padding: 9px 11px;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.actor-entry:hover {
+  border-color: #6f9d9f;
+  background: #fbfdfc;
+}
+
+.actor-entry-main {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.actor-entry .actor-name {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.actor-entry .actor-role {
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.actor-entry .actor-affinity {
+  margin-left: auto;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.actor-entry-action {
+  color: var(--muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.actor-entry-arrow {
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .actor-card {
@@ -404,45 +462,6 @@ button {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.7;
-}
-
-.actor-enter {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  margin-top: 10px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #fff;
-  padding: 8px 12px;
-  color: var(--ink);
-  text-align: left;
-  cursor: pointer;
-  transition:
-    border-color 0.18s ease,
-    background 0.18s ease;
-}
-
-.actor-enter:hover {
-  border-color: #6f9d9f;
-  background: #fbfdfc;
-}
-
-.actor-enter-label {
-  font-size: 13px;
-  letter-spacing: 0.04em;
-}
-
-.actor-enter-hint {
-  color: var(--muted);
-  font-size: 10px;
-}
-
-.actor-enter-arrow {
-  margin-left: auto;
-  color: var(--muted);
-  font-size: 15px;
 }
 
 .npc-leave {

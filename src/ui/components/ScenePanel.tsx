@@ -54,35 +54,30 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
       {scene.actors && scene.actors.length > 0 ? (
         <div className="actors">
           {scene.actors.map((actor) => (
-            <section
-              className="actor-card"
+            <button
+              type="button"
+              className="actor-entry"
               key={actor.id}
+              aria-label={`和${actor.name}交谈`}
               style={
                 actor.color
                   ? { borderLeft: `3px solid ${actor.color}` }
                   : undefined
               }
+              onClick={() => onAction(actor.enterCommand)}
             >
-              <div className="actor-head">
+              <span className="actor-entry-main">
                 <span className="actor-name">{actor.name}</span>
                 <span className="actor-role">
                   {ACTOR_ROLE_LABEL[actor.role]}
                 </span>
-                <span className="actor-affinity">好感 {actor.affinity} / 20</span>
-              </div>
-              <p className="actor-description">{actor.description}</p>
-              <button
-                type="button"
-                className="actor-enter"
-                onClick={() => onAction(actor.enterCommand)}
-              >
-                <span className="actor-enter-label">{`和${actor.name}聊聊`}</span>
-                <span className="actor-enter-hint">选择话题</span>
-                <span className="actor-enter-arrow" aria-hidden="true">
-                  →
-                </span>
-              </button>
-            </section>
+              </span>
+              <span className="actor-affinity">好感 {actor.affinity}</span>
+              <span className="actor-entry-action">交谈</span>
+              <span className="actor-entry-arrow" aria-hidden="true">
+                →
+              </span>
+            </button>
           ))}
         </div>
       ) : null}

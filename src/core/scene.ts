@@ -3,9 +3,9 @@ import { neighborsOf } from './content/map';
 import { CONTENT_INDEX } from './contentIndex';
 import {
   formatClock,
+  formatCalendarDate,
   formatDuration,
   formatTimeWindows,
-  getDay,
 } from './time';
 import {
   activityAvailability,
@@ -184,7 +184,6 @@ function activityActionView(
 
 function buildPlan(state: GameState): SceneView {
   const location = CONTENT_INDEX.locations.get(state.locationId);
-  const day = getDay(state.clock.absoluteMinutes);
   const blocks: TextBlock[] = [];
   if (location?.description) {
     blocks.push({ kind: 'p', text: location.description });
@@ -238,7 +237,7 @@ function buildPlan(state: GameState): SceneView {
     id: sceneId(state),
     phase: state.phase,
     phaseLabel: PHASE_LABEL[state.phase],
-    title: `第 ${day} 天 · ${formatClock(state.clock.absoluteMinutes)}`,
+    title: formatCalendarDate(state.clock.absoluteMinutes, false),
     locationName: location?.name,
     hero: buildHero(state),
     locations,

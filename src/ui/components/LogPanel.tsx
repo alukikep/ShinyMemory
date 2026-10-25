@@ -1,4 +1,7 @@
-import { formatClock } from '../../core/time';
+import {
+  formatCalendarDateFromDay,
+  formatClock,
+} from '../../core/time';
 import type { GameState } from '../../core/types';
 
 export function LogPanel({ state }: { state: GameState }) {
@@ -17,7 +20,8 @@ export function LogPanel({ state }: { state: GameState }) {
           {entries.map((entry) => (
             <li className={`log-entry log-${entry.tone}`} key={entry.id}>
               <span className="log-meta">
-                第 {entry.day} 天 · {formatClock(entry.minuteOfDay)}
+                {formatCalendarDateFromDay(entry.day, false)} ·{' '}
+                {formatClock(entry.minuteOfDay)}
               </span>
               <span className="log-text">{entry.text}</span>
             </li>

@@ -1,8 +1,75 @@
-import { MINUTES_PER_DAY } from './config';
+import { CALENDAR_START, MINUTES_PER_DAY } from './config';
 import type { TimeWindow } from './types';
+
+export type CalendarDate = {
+  year: number;
+  month: number;
+  day: number;
+};
+
+export const WEEKDAY_LABELS = [
+  '星期日',
+  '星期一',
+  '星期二',
+  '星期三',
+  '星期四',
+  '星期五',
+  '星期六',
+] as const;
 
 export function getDay(absoluteMinutes: number): number {
   return Math.floor(absoluteMinutes / MINUTES_PER_DAY) + 1;
+}
+
+function utcDateForDay(day: number): Date {
+  return new Date(
+    Date.UTC(
+      CALENDAR_START.year,
+      CALENDAR_START.month - 1,
+      CALENDAR_START.day + day - 1,
+    ),
+  );
+}
+
+export function getCalendarDateFromDay(day: number): CalendarDate {
+  const date = utcDateForDay(day);
+  return {
+    year: date.getUTCFullYear(),
+    month: date.getUTCMonth() + 1,
+    day: date.getUTCDate(),
+  };
+}
+
+export function getCalendarDate(absoluteMinutes: number): CalendarDate {
+  return getCalendarDateFromDay(getDay(absoluteMinutes));
+}
+
+export function getWeekdayFromDay(day: number): number {
+  return utcDateForDay(day).getUTCDay();
+}
+
+export function getWeekday(absoluteMinutes: number): number {
+  return getWeekdayFromDay(getDay(absoluteMinutes));
+}
+
+export function formatWeekday(day: number): string {
+  return WEEKDAY_LABELS[getWeekdayFromDay(day)] ?? '';
+}
+
+export function formatCalendarDateFromDay(
+  day: number,
+  withYear = true,
+): string {
+  const date = getCalendarDateFromDay(day);
+  const year = withYear ? `${date.year}年` : '';
+  return `${year}${date.month}月${date.day}日 · ${formatWeekday(day)}`;
+}
+
+export function formatCalendarDate(
+  absoluteMinutes: number,
+  withYear = true,
+): string {
+  return formatCalendarDateFromDay(getDay(absoluteMinutes), withYear);
 }
 
 export function getMinuteOfDay(absoluteMinutes: number): number {
@@ -18,7 +85,7 @@ export function formatClock(absoluteMinutes: number): string {
 }
 
 export function formatDayTime(absoluteMinutes: number): string {
-  return `第 ${getDay(absoluteMinutes)} 天 · ${formatClock(absoluteMinutes)}`;
+  return `${formatCalendarDate(absoluteMinutes, false)} · ${formatClock(absoluteMinutes)}`;
 }
 
 export function formatDuration(minutes: number): string {

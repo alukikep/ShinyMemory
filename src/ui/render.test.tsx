@@ -17,7 +17,7 @@ describe('app shell', () => {
     expect(html).toContain('当前安排');
     expect(html).toContain('偶像名册');
     expect(html).toContain('地点地图');
-    expect(html).toContain('第 1 天');
+    expect(html).toContain('2026年4月6日');
     expect(html).toContain('08:00');
     expect(html).toContain('事务所');
     expect(html).toContain('车站');
@@ -166,7 +166,7 @@ describe('app shell', () => {
     );
     expect(html).toContain('sidebar-scene');
     expect(html).toContain('练习室');
-    expect(html).toMatch(/第.*1.*天/);
+    expect(html).toContain('2026年4月6日 · 星期一');
     expect(html).toMatch(/¥.*3,000/);
   });
 

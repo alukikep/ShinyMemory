@@ -1,0 +1,37 @@
+{
+  "id": "draft.job.radio_guest",
+  "kind": "job",
+  "title": "深夜电台嘉宾",
+  "createdAt": "2026-10-24T18:00:00.000Z",
+  "updatedAt": "2026-10-25T09:30:00.000Z",
+  "payload": {
+    "id": "job.radio_guest",
+    "name": "深夜电台嘉宾",
+    "description": "一档没有台本的深夜节目，主持人喜欢临时抛问题。",
+    "locationId": "studio",
+    "fromMinute": 1260,
+    "toMinute": 1380,
+    "pay": 1600,
+    "effects": [
+      { "kind": "idolExp", "attribute": "expression", "tier": 3 },
+      { "kind": "idolExp", "attribute": "trust", "tier": 1 }
+    ],
+    "eventId": "evt.job.radio_guest"
+  },
+  "annotations": [
+    {
+      "id": "note-2",
+      "field": "payload.description",
+      "text": "工作的语气可以更贴近广播节目，现在有点像普通收录。",
+      "createdAt": "2026-10-25T09:30:00.000Z",
+      "resolved": false
+    },
+    {
+      "id": "note-3",
+      "field": "payload.pay",
+      "text": "确认这个报酬是否覆盖深夜时段。",
+      "createdAt": "2026-10-25T09:32:00.000Z",
+      "resolved": false
+    }
+  ]
+}

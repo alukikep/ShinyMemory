@@ -1,0 +1,46 @@
+{
+  "id": "draft.event.night_bus",
+  "kind": "event",
+  "title": "末班车",
+  "createdAt": "2026-10-25T10:00:00.000Z",
+  "updatedAt": "2026-10-25T10:20:00.000Z",
+  "payload": {
+    "id": "evt.night_bus",
+    "title": "末班车",
+    "when": [
+      { "kind": "atLocation", "locationId": "station" },
+      { "kind": "timeWindow", "fromMinute": 1320, "toMinute": 1439 }
+    ],
+    "after": { "kinds": ["explore"] },
+    "chance": 0.35,
+    "priority": 5,
+    "text": "车站的广播已经停了。她站在站牌下，手里还拎着练习室的袋子。",
+    "choices": [
+      {
+        "label": "陪她等末班车",
+        "effects": [
+          { "kind": "idolExp", "attribute": "trust", "tier": 3 },
+          { "kind": "sharedStat", "stat": "stress", "delta": -2 }
+        ],
+        "result": "车来得很慢。她把袋子放在脚边，聊起了明天想吃什么。"
+      },
+      {
+        "label": "叫一辆出租车",
+        "effects": [
+          { "kind": "money", "delta": -400 },
+          { "kind": "sharedStat", "stat": "stamina", "delta": 2 }
+        ],
+        "result": "她报出地址，靠在后座上很快就睡着了。"
+      }
+    ]
+  },
+  "annotations": [
+    {
+      "id": "note-1",
+      "field": "payload.text",
+      "text": "这里可以再具体一点，比如站台的灯或末班车的时间。",
+      "createdAt": "2026-10-25T10:20:00.000Z",
+      "resolved": false
+    }
+  ]
+}

@@ -39,6 +39,7 @@
 - 自动存档（localStorage），刷新页面可继续；存档 v10 会把旧数值属性迁移到 Rank + EXP
 - 调试面板：`?debug=1`，可看触发判定、强制事件、跳天
 - 自动验收：`npm run acceptance` 跑 8 条浏览器流程（首日/日程/工作参与/不参与/刷新/响应式），状态桥仅在 `?debug=1` 挂载
+- 内容审查：`npm run review` 打开本地只读审查台，读取 `content-review/` 的草稿/待修改/已通过/废弃文件
 - 无 AI、无美术；先验证“选择 → 耗时 → 结算 → 事件”的开放循环
 
 ## 运行
@@ -49,6 +50,7 @@ npm run dev      # 本地开发
 npm run build    # 类型检查 + 生产构建
 npm test         # 核心模拟测试 + 平衡烟测
 npm run acceptance # 浏览器验收（Playwright + Edge）
+npm run review     # 本地内容审查台（http://127.0.0.1:5174/review.html）
 ```
 
 ## 结构

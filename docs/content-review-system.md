@@ -1,5 +1,29 @@
 # 内容审查系统评估
 
+## 当前阶段
+
+第一阶段骨架已实现：
+
+- `content-review/drafts|revisions|approved|discarded`；
+- `ReviewDraft` 类型；
+- `LocalReviewRepository`；
+- Vite 本地 `/api/review`；
+- `npm run review`；
+- 审查台队列；
+- 事件/工作只读预览；
+- 字段批注展示；
+- 示例草稿。
+
+尚未实现：
+
+- 新建草稿；
+- 页面内编辑；
+- 保存；
+- 通过/打回/废弃写入；
+- approved 内容加载；
+- schema 校验；
+- 重新送审。
+
 ## 已确认的产品决策
 
 1. 作者目前和游戏在同一台机器；未来分发时再拆出服务端。

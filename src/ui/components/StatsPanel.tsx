@@ -1,6 +1,5 @@
 import type { CSSProperties } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
-import { RANK_CURVE } from '../../core/growth';
 import { getActiveIdol } from '../../core/sim';
 import { STAT_LABELS, STAT_MAX } from '../../core/labels';
 import type {
@@ -52,7 +51,7 @@ function StatRow({
   );
 }
 
-function RankRow({
+function RankChip({
   statKey,
   attribute,
 }: {
@@ -60,26 +59,21 @@ function RankRow({
   attribute: IdolAttribute;
 }) {
   const max = attribute.rank === attribute.maxRank;
-  const needed = RANK_CURVE[attribute.rank];
-  const percent = max
-    ? 100
-    : Math.max(0, Math.min(100, (attribute.exp / needed) * 100));
+  const label = STAT_LABELS[statKey];
 
   return (
-    <div className={`stat-row stat-${statKey}`}>
-      <div className="stat-line">
-        <span className="stat-name">
-          <GameIcon name={IDOL_ICONS[statKey]} size={12} />
-          {STAT_LABELS[statKey]}
-        </span>
-        <span className="stat-value">
-          {attribute.rank}
-          {max ? <small> MAX</small> : <small> · {attribute.exp} / {needed}</small>}
-        </span>
-      </div>
-      <div className="bar">
-        <div className="bar-fill" style={{ width: `${percent}%` }} />
-      </div>
+    <div
+      className={`rank-chip stat-${statKey}`}
+      title={`${label} ${attribute.rank}${max ? ' MAX' : ` · ${attribute.exp}`}`}
+    >
+      <span className="stat-name rank-chip-name">
+        <GameIcon name={IDOL_ICONS[statKey]} size={11} />
+        {label}
+      </span>
+      <strong>
+        {attribute.rank}
+        {max ? <small>MAX</small> : null}
+      </strong>
     </div>
   );
 }
@@ -131,9 +125,9 @@ export function StatsPanel({
           <span className="idol-summary-unit">{idolDef?.unit ?? ''}</span>
         </div>
       </div>
-      <div className="stat-list idol-stat-list">
+      <div className="idol-rank-chips">
         {IDOL_ORDER.map((key) => (
-          <RankRow key={key} statKey={key} attribute={idol.stats[key]} />
+          <RankChip key={key} statKey={key} attribute={idol.stats[key]} />
         ))}
       </div>
 

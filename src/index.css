@@ -85,7 +85,7 @@ button:focus-visible,
 
 .app-sidebar {
   position: fixed;
-  inset: 0 auto 0 0;
+  inset: 0 auto 0 max(0px, calc((100vw - 1416px) / 2));
   z-index: 20;
   display: flex;
   flex-direction: column;
@@ -142,12 +142,12 @@ button:focus-visible,
 
 .workspace {
   min-height: 100vh;
-  margin-left: 236px;
+  margin-left: calc(236px + max(0px, (100vw - 1416px) / 2));
 }
 
 .workspace-inner {
-  width: min(1500px, 100%);
-  margin: 0 auto;
+  width: min(1180px, 100%);
+  margin: 0;
   padding: 22px 24px 40px;
 }
 
@@ -253,7 +253,7 @@ button:focus-visible,
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-columns: minmax(0, 1fr) 280px;
   gap: 18px;
   align-items: start;
 }
@@ -523,6 +523,46 @@ button:focus-visible,
   display: flex;
   flex-direction: column;
   gap: 13px;
+}
+
+.idol-rank-chips {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.rank-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fbfdfe;
+  padding: 5px 7px;
+}
+
+.rank-chip-name {
+  gap: 3px;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rank-chip strong {
+  color: var(--ink);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rank-chip strong small {
+  margin-left: 1px;
+  color: var(--faint);
+  font-size: 7px;
+  font-weight: 400;
 }
 
 .stat-line {
@@ -1069,8 +1109,10 @@ button:focus-visible,
 .map-svg {
   display: block;
   width: 100%;
+  max-width: 760px;
   height: auto;
   max-height: 340px;
+  margin: 0 auto;
 }
 
 .map-blocks rect {
@@ -2205,11 +2247,7 @@ button:focus-visible,
     padding-top: 10px;
   }
 
-  .idol-stat-list {
-    display: none;
-  }
-
-  .stat-list.idol-stat-list {
+  .idol-rank-chips {
     display: none;
   }
 

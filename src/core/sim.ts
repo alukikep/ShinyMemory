@@ -24,8 +24,8 @@ import {
 } from './growth';
 import { STAT_LABELS, STAT_MAX } from './labels';
 import { Rng } from './rng';
-import { getDay, getMinuteOfDay, isMinuteInWindow } from './time';
-import { getScheduleSlot } from './schedule';
+import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, isMinuteInWindow } from './time';
+import { canReplaceDay, getScheduleSlot } from './schedule';
 import type {
   ActionCommand,
   ActivityDef,
@@ -347,6 +347,53 @@ export function isActorPresent(state: GameState, actor: ActorDef): boolean {
     actorState?.scheduleOverrides,
   );
   return locationId === state.locationId;
+}
+
+export function acceptJob(
+  state: GameState,
+  jobId: string,
+  day: number,
+): GameState {
+  if (state.phase !== 'plan' || state.locationId !== 'office') {
+    return state;
+  }
+
+  const job = CONTENT_INDEX.jobs.get(jobId);
+  const actor = getActor(state.activeIdolId);
+  const actorState = state.actors[state.activeIdolId];
+  if (!job || !actor || !actorState) return state;
+
+  const currentDay = getDay(state.clock.absoluteMinutes);
+  if (!Number.isInteger(day) || day <= currentDay) return state;
+
+  const check = canReplaceDay(actor, day, actorState.scheduleOverrides);
+  if (!check.ok) return state;
+
+  const next = clone(state);
+  const nextActor = next.actors[actor.id];
+  if (!nextActor) return state;
+
+  nextActor.scheduleOverrides = [
+    ...(nextActor.scheduleOverrides ?? []),
+    {
+      id: `job:${job.id}:${actor.id}:${day}`,
+      day,
+      fromMinute: job.fromMinute,
+      toMinute: job.toMinute,
+      locationId: job.locationId,
+      label: job.name,
+      visibility: 'public',
+      mode: 'replace-day',
+    },
+  ];
+
+  addLog(
+    next,
+    `接下了《${job.name}》。${formatCalendarDateFromDay(day, false)}，${formatClock(job.fromMinute)}–${formatClock(job.toMinute)}。`,
+    'good',
+  );
+
+  return next;
 }
 
 export function presentActors(state: GameState): ActorDef[] {
@@ -1363,6 +1410,9 @@ export function handleCommand(
       }
       if (command.type === 'enterNpc') return enterNpc(state, command.actorId);
       if (command.type === 'enterIdol') return enterIdol(state, command.idolId);
+      if (command.type === 'acceptJob') {
+        return acceptJob(state, command.jobId, command.day);
+      }
       if (command.type === 'activity') return applyActivity(state, command.activityId);
       return state;
 
@@ -1431,6 +1481,12 @@ export function handleAction(state: GameState, actionId: string): GameState {
           type: 'enterIdol',
           idolId: actionId.slice('idol:'.length),
         };
+      } else if (actionId.startsWith('job:')) {
+        const [, jobId, dayText] = actionId.split(':');
+        const day = Number(dayText);
+        if (jobId && Number.isFinite(day)) {
+          command = { type: 'acceptJob', jobId, day };
+        }
       } else {
         command = { type: 'activity', activityId: actionId };
       }

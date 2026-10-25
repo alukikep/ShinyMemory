@@ -2,11 +2,15 @@ import { FINAL_EXAM, MID_EXAM } from './content/weeks';
 import { neighborsOf } from './content/map';
 import { CONTENT_INDEX } from './contentIndex';
 import {
+  formatCalendarDateFromDay,
   formatClock,
   formatCalendarDate,
   formatDuration,
   formatTimeWindows,
+  getDay,
+  getMinuteOfDay,
 } from './time';
+import { canReplaceDay } from './schedule';
 import {
   activityAvailability,
   checkCondition,
@@ -30,6 +34,7 @@ import type {
   ActorView,
   ActivityDef,
   GameState,
+  JobDef,
   SceneView,
   TextBlock,
 } from './types';
@@ -182,6 +187,57 @@ function activityActionView(
   };
 }
 
+function jobActionView(
+  state: GameState,
+  job: JobDef,
+): ActionView | undefined {
+  const actor = CONTENT_INDEX.actors.get(state.activeIdolId);
+  if (!actor) return undefined;
+  const overrides = state.actors[actor.id]?.scheduleOverrides;
+  const startDay = getDay(state.clock.absoluteMinutes) + 1;
+
+  for (let offset = 0; offset < 7; offset += 1) {
+    const day = startDay + offset;
+    if (!canReplaceDay(actor, day, overrides).ok) continue;
+    return {
+      id: `job:${job.id}:${day}`,
+      command: { type: 'acceptJob', jobId: job.id, day },
+      label: `接下：${job.name}`,
+      hint: `${formatCalendarDateFromDay(day, false)} · ${formatClock(job.fromMinute)}–${formatClock(job.toMinute)} · ¥${job.pay.toLocaleString('zh-CN')}`,
+      icon: 'star',
+      tone: 'primary',
+    };
+  }
+
+  return undefined;
+}
+
+function buildJobActions(state: GameState): ActionView[] {
+  if (state.locationId !== 'office') return [];
+  const minute = getMinuteOfDay(state.clock.absoluteMinutes);
+  if (minute < 8 * 60 || minute >= 20 * 60) return [];
+  const jobs = [...CONTENT_INDEX.jobs.values()];
+  if (jobs.length === 0) return [];
+
+  const actions = jobs
+    .map((job) => jobActionView(state, job))
+    .filter((action): action is ActionView => Boolean(action));
+
+  if (actions.length > 0) return actions;
+
+  return [
+    {
+      id: 'job:none',
+      command: { type: 'acceptJob', jobId: '', day: 0 },
+      label: '暂无工作邀约',
+      hint: '未来七天没有可改期的空档',
+      icon: 'calendar',
+      disabled: true,
+      disabledReason: '未来七天没有可改期的空档',
+    },
+  ];
+}
+
 function buildPlan(state: GameState): SceneView {
   const location = CONTENT_INDEX.locations.get(state.locationId);
   const blocks: TextBlock[] = [];
@@ -212,6 +268,10 @@ function buildPlan(state: GameState): SceneView {
         availability.ok || availability.display === 'disable',
     )
     .map(({ activity }) => activityActionView(state, activity));
+
+  if (!state.flags.forced_rest) {
+    actions.push(...buildJobActions(state));
+  }
 
   if (actions.length === 0 && actors.length === 0) {
     blocks.push({

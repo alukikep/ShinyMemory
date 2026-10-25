@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, IDOLS, LOCATIONS, TRANSIT_ROUTES, WALK_EDGES } from './content';
+import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, IDOLS, JOBS, LOCATIONS, TRANSIT_ROUTES, WALK_EDGES } from './content';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityKind, Condition, EventDef } from './types';
 
@@ -215,6 +215,19 @@ describe('content integrity', () => {
         expect(window.toMinute).toBeGreaterThanOrEqual(0);
         expect(window.toMinute).toBeLessThan(24 * 60);
       }
+    }
+  });
+
+  it('validates job offers', () => {
+    const locationIds = new Set(LOCATIONS.map((location) => location.id));
+    expect(JOBS.length).toBeGreaterThan(0);
+    for (const job of JOBS) {
+      expect(locationIds.has(job.locationId)).toBe(true);
+      expect(job.fromMinute).toBeGreaterThanOrEqual(0);
+      expect(job.toMinute).toBeLessThanOrEqual(24 * 60);
+      expect(job.toMinute).toBeGreaterThan(job.fromMinute);
+      expect(job.pay).toBeGreaterThan(0);
+      expect(CONTENT_INDEX.jobs.has(job.id)).toBe(true);
     }
   });
 

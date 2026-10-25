@@ -25,7 +25,7 @@ function slotKind(
     return 'free';
   }
   if (label === '休息') return 'rest';
-  if (label === '收录') return 'recording';
+  if (label === '收录' || locationId === 'studio') return 'recording';
   if (locationId === 'office') return 'office';
   return 'practice';
 }

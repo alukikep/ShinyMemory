@@ -1,4 +1,4 @@
-import { ACTORS, ACTIVITIES, ENDINGS, EVENTS, IDOLS, LOCATIONS, TRANSIT_ROUTES } from './content';
+import { ACTORS, ACTIVITIES, ENDINGS, EVENTS, IDOLS, JOBS, LOCATIONS, TRANSIT_ROUTES } from './content';
 import type {
   ActivityDef,
   ActivityKind,
@@ -8,6 +8,7 @@ import type {
   EventDef,
   IdolDef,
   IdolState,
+  JobDef,
   LocationDef,
   TransitRouteDef,
 } from './types';
@@ -17,6 +18,7 @@ export type ContentIndex = {
   actors: Map<string, ActorDef>;
   idols: Map<string, IdolDef>;
   events: Map<string, EventDef>;
+  jobs: Map<string, JobDef>;
   endings: Map<string, EndingDef>;
   locations: Map<string, LocationDef>;
   transitRoutes: Map<string, TransitRouteDef>;
@@ -37,6 +39,7 @@ function buildIndex(): ContentIndex {
   const actors = new Map(ACTORS.map((actor) => [actor.id, actor]));
   const idols = new Map(IDOLS.map((idol) => [idol.id, idol]));
   const events = new Map(EVENTS.map((event) => [event.id, event]));
+  const jobs = new Map(JOBS.map((job) => [job.id, job]));
   const endings = new Map(ENDINGS.map((ending) => [ending.id, ending]));
   const locations = new Map(LOCATIONS.map((location) => [location.id, location]));
   const transitRoutes = new Map(
@@ -134,6 +137,7 @@ function buildIndex(): ContentIndex {
     actors,
     idols,
     events,
+    jobs,
     endings,
     locations,
     transitRoutes,

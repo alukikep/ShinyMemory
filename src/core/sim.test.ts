@@ -169,6 +169,34 @@ describe('raising sim core', () => {
     expect(next.actors.mano.scheduleOverrides?.[0]?.id).toBe('day-2');
   });
 
+  it('accepts a job into a future free day', () => {
+    const state = newGame(1);
+    const scene = buildScene(state);
+    const jobAction = scene.actions.find(
+      (action) =>
+        action.command.type === 'acceptJob' &&
+        action.label.includes('杂志拍摄'),
+    );
+    expect(jobAction).toBeDefined();
+    if (!jobAction || jobAction.command.type !== 'acceptJob') return;
+
+    expect(jobAction.hint ?? '').toContain('4月12日');
+    const accepted = handleCommand(state, jobAction.command);
+    const override = accepted.actors.mano.scheduleOverrides?.[0];
+    expect(override?.day).toBe(7);
+    expect(override?.mode).toBe('replace-day');
+    expect(override?.locationId).toBe('studio');
+
+    const nextScene = buildScene(accepted);
+    expect(
+      nextScene.actions.some(
+        (action) =>
+          action.command.type === 'acceptJob' &&
+          action.label.includes('杂志拍摄'),
+      ),
+    ).toBe(false);
+  });
+
   it('sleeps until 08:00 and restores stamina by hours slept', () => {
     let state = travelTo(newGame(1), 'home');
     state = advanceTime(state, 14 * 60);

@@ -243,6 +243,17 @@ export type ActivityDef = {
   resultVariants?: { when: Condition[]; text: string }[];
 };
 
+export type JobDef = {
+  id: string;
+  name: string;
+  description: string;
+  locationId: string;
+  fromMinute: number;
+  toMinute: number;
+  pay: number;
+  label?: string;
+};
+
 export type EventChoice = {
   label: string;
   hint?: string;
@@ -383,6 +394,7 @@ export type ActionCommand =
   | { type: 'enterIdol'; idolId: string }
   | { type: 'train'; idolId: string; activityId: string }
   | { type: 'work'; idolId: string; activityId: string }
+  | { type: 'acceptJob'; jobId: string; day: number }
   | { type: 'leaveNpc' }
   | { type: 'leaveIdol' }
   | { type: 'eventChoice'; index: number }

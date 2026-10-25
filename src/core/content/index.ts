@@ -4,6 +4,7 @@ import { WALK_EDGES } from './map';
 import { TRANSIT_ROUTES } from './transit';
 import { ACTORS } from './actors';
 import { IDOLS } from './idols';
+import { JOBS } from './jobs';
 import vocal from './activities/vocal';
 import dance from './activities/dance';
 import expression from './activities/expression';
@@ -57,4 +58,4 @@ export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 
-export { ACTORS, IDOLS, LOCATIONS, TRANSIT_ROUTES, WALK_EDGES };
+export { ACTORS, IDOLS, JOBS, LOCATIONS, TRANSIT_ROUTES, WALK_EDGES };

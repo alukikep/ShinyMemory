@@ -164,6 +164,19 @@ describe('app shell', () => {
     expect(html).toMatch(/¥.*3,000/);
   });
 
+  it('hides the city map outside the location menu', () => {
+    const state = newGame(1);
+    state.phase = 'idol';
+    const html = renderToString(
+      <CityMap
+        state={state}
+        onMove={() => {}}
+        onTransit={() => {}}
+      />,
+    );
+    expect(html).toBe('');
+  });
+
   it('shows both idols at the practice room at 10:00', () => {
     const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
     const html = renderToString(

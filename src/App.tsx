@@ -52,11 +52,13 @@ export default function App() {
             onAction={act}
             onMove={(locationId) => act({ type: 'move', locationId })}
           />
-          <CityMap
-            state={state}
-            onMove={(locationId) => act({ type: 'move', locationId })}
-            onTransit={(routeId) => act({ type: 'transit', routeId })}
-          />
+          {scene.phase === 'plan' ? (
+            <CityMap
+              state={state}
+              onMove={(locationId) => act({ type: 'move', locationId })}
+              onTransit={(routeId) => act({ type: 'transit', routeId })}
+            />
+          ) : null}
         </div>
         <LogPanel state={state} />
       </main>

@@ -41,6 +41,8 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [transitKind]);
 
+  if (state.phase !== 'plan') return null;
+
   const moveTo = (locationId: string) => {
     if (!adjacent.has(locationId)) return;
     onMove(locationId);

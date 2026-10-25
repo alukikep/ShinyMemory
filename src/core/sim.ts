@@ -25,6 +25,7 @@ import {
 import { STAT_LABELS, STAT_MAX } from './labels';
 import { Rng } from './rng';
 import { getDay, getMinuteOfDay, isMinuteInWindow } from './time';
+import { getScheduleSlot } from './schedule';
 import type {
   ActionCommand,
   ActivityDef,
@@ -333,9 +334,7 @@ export function getActorLocation(
   actor: ActorDef,
   absoluteMinutes: number,
 ): string | undefined {
-  return actor.schedule.find((entry) =>
-    isMinuteInWindow(absoluteMinutes, entry),
-  )?.locationId;
+  return getScheduleSlot(actor, absoluteMinutes)?.locationId;
 }
 
 export function isActorPresent(state: GameState, actor: ActorDef): boolean {

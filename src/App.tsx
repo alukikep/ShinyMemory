@@ -6,6 +6,7 @@ import { DebugPanel } from './ui/components/DebugPanel';
 import { CityMap } from './ui/components/CityMap';
 import { GameIcon } from './ui/components/GameIcon';
 import { IdolRoster } from './ui/components/IdolRoster';
+import { IdolSchedule } from './ui/components/IdolSchedule';
 import { LogPanel } from './ui/components/LogPanel';
 import { ScenePanel } from './ui/components/ScenePanel';
 import { StatsPanel } from './ui/components/StatsPanel';
@@ -17,6 +18,7 @@ export default function App() {
   const debugForceEvent = useGameStore((store) => store.debugForceEvent);
   const debugJumpDay = useGameStore((store) => store.debugJumpDay);
   const [rosterOpen, setRosterOpen] = useState(false);
+  const [scheduleOpen, setScheduleOpen] = useState(false);
   const debug =
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).has('debug');
@@ -71,6 +73,14 @@ export default function App() {
           >
             <GameIcon name="people" size={17} />
             <span>偶像名册</span>
+          </button>
+          <button
+            type="button"
+            className="sidebar-nav-item"
+            onClick={() => setScheduleOpen(true)}
+          >
+            <GameIcon name="calendar" size={17} />
+            <span>日程表</span>
           </button>
           {scene.phase === 'plan' ? (
             <button
@@ -139,6 +149,13 @@ export default function App() {
 
       {rosterOpen ? (
         <IdolRoster state={state} onClose={() => setRosterOpen(false)} />
+      ) : null}
+
+      {scheduleOpen ? (
+        <IdolSchedule
+          state={state}
+          onClose={() => setScheduleOpen(false)}
+        />
       ) : null}
     </div>
   );

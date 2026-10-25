@@ -156,10 +156,23 @@ export type TimeWindow = {
 
 export type ActorRole = 'staff' | 'president' | 'idol' | 'rival';
 
+export type Weekday = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
 export type ActorSchedule = {
   fromMinute: number;
   toMinute: number;
   locationId: string;
+  weekdays?: Weekday[];
+  label?: string;
+  priority?: number;
+};
+
+export type ActorScheduleOverride = {
+  day: number;
+  locationId: string;
+  fromMinute?: number;
+  toMinute?: number;
+  label?: string;
 };
 
 export type ActorTopic = {
@@ -180,6 +193,7 @@ export type ActorDef = {
   description: string;
   color?: string;
   schedule: ActorSchedule[];
+  overrides?: ActorScheduleOverride[];
   topics: ActorTopic[];
 };
 

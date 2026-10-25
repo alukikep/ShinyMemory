@@ -5,6 +5,7 @@ import { buildScene } from '../core/scene';
 import { advanceTime, enterNpc, handleCommand, moveTo, newGame, travelTo } from '../core/sim';
 import { DebugPanel } from './components/DebugPanel';
 import { IdolRoster } from './components/IdolRoster';
+import { IdolSchedule } from './components/IdolSchedule';
 import { CityMap } from './components/CityMap';
 import { ScenePanel } from './components/ScenePanel';
 import { StatsPanel } from './components/StatsPanel';
@@ -16,6 +17,7 @@ describe('app shell', () => {
     expect(html).toContain('sidebar-nav');
     expect(html).toContain('当前安排');
     expect(html).toContain('偶像名册');
+    expect(html).toContain('日程表');
     expect(html).toContain('地点地图');
     expect(html).toContain('2026年4月6日');
     expect(html).toContain('08:00');
@@ -122,6 +124,18 @@ describe('app shell', () => {
     expect(html).toContain('q/hiori.png');
     expect(html).toContain('歌唱');
     expect(html).toContain('当前');
+  });
+
+  it('renders the weekly idol schedule', () => {
+    const html = renderToString(
+      <IdolSchedule state={newGame(1)} onClose={() => {}} />,
+    );
+    expect(html).toContain('偶像日程表');
+    expect(html).toContain('星期一');
+    expect(html).toContain('星期日');
+    expect(html).toContain('樱木真乃');
+    expect(html).toContain('风野灯织');
+    expect(html).toContain('练习');
   });
 
   it('shows the bus entry on the station map', () => {

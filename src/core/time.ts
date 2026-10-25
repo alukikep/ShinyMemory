@@ -1,5 +1,5 @@
 import { CALENDAR_START, MINUTES_PER_DAY } from './config';
-import type { TimeWindow } from './types';
+import type { TimeWindow, Weekday } from './types';
 
 export type CalendarDate = {
   year: number;
@@ -44,11 +44,11 @@ export function getCalendarDate(absoluteMinutes: number): CalendarDate {
   return getCalendarDateFromDay(getDay(absoluteMinutes));
 }
 
-export function getWeekdayFromDay(day: number): number {
-  return utcDateForDay(day).getUTCDay();
+export function getWeekdayFromDay(day: number): Weekday {
+  return utcDateForDay(day).getUTCDay() as Weekday;
 }
 
-export function getWeekday(absoluteMinutes: number): number {
+export function getWeekday(absoluteMinutes: number): Weekday {
   return getWeekdayFromDay(getDay(absoluteMinutes));
 }
 

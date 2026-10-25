@@ -606,6 +606,20 @@ describe('raising sim core', () => {
     expect(state.phase).toBe('npc');
   });
 
+  it('puts the active present idol into the scene hero', () => {
+    const office = buildScene(newGame(1));
+    expect(office.hero?.locationName).toBe('事务所');
+    expect(office.hero?.portrait).toBeUndefined();
+
+    const practice = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    const scene = buildScene(practice);
+    expect(scene.hero?.idolId).toBe('mano');
+    expect(scene.hero?.portrait).toBe('./assets/idols/mano-portrait.png');
+
+    practice.activeIdolId = 'hiori';
+    expect(buildScene(practice).hero?.idolId).toBe('hiori');
+  });
+
   it('keeps the location open after hours but hides timed actions', () => {
     const midnight = advanceTime(newGame(1), 16 * 60);
     const scene = buildScene(midnight);

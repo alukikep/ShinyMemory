@@ -144,6 +144,16 @@ describe('app shell', () => {
     expect(html).toContain('5 分钟');
   });
 
+  it('renders the idol hero at the practice room', () => {
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    const html = renderToString(
+      <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
+    );
+    expect(html).toContain('scene-hero');
+    expect(html).toContain('mano-portrait.png');
+    expect(html).toContain('制作人，今天也请多关照');
+  });
+
   it('shows both idols at the practice room at 10:00', () => {
     const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
     const html = renderToString(

@@ -6,6 +6,8 @@ const idol: IdolDef = {
   unit: 'illumination STARS',
   color: '#f1b7c5',
   profile: 'illumination STARS 的成员。温柔、认真，喜欢小动物。',
+  portrait: './assets/idols/mano-portrait.png',
+  quote: '制作人，今天也请多关照……',
   isStart: true,
   growth: {
     vocal: { initial: 'D', max: 'S' },

@@ -67,6 +67,28 @@ function idolActivityKindAt(
   return undefined;
 }
 
+function buildHero(state: GameState) {
+  const location = CONTENT_INDEX.locations.get(state.locationId);
+  const presentIdols = presentActors(state).filter((actor) =>
+    CONTENT_INDEX.idols.has(actor.id),
+  );
+  const focus =
+    presentIdols.find((actor) => actor.id === state.activeIdolId) ??
+    presentIdols[0];
+  const idol = focus ? CONTENT_INDEX.idols.get(focus.id) : undefined;
+
+  return {
+    locationId: state.locationId,
+    locationName: location?.name ?? state.locationId,
+    idolId: idol?.id,
+    idolName: idol?.name,
+    unit: idol?.unit,
+    color: idol?.color,
+    portrait: idol?.portrait,
+    quote: idol?.quote,
+  };
+}
+
 function buildActorViews(state: GameState): ActorView[] {
   return presentActors(state).map((actor) => {
     const actorState = state.actors[actor.id];
@@ -223,6 +245,7 @@ function buildPlan(state: GameState): SceneView {
     title: `第 ${day} 天 · ${formatClock(state.clock.absoluteMinutes)}`,
     subtitle: `已行动 ${state.actionsTaken} 次`,
     locationName: location?.name,
+    hero: buildHero(state),
     locations,
     actors,
     blocks,

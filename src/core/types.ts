@@ -46,6 +46,8 @@ export type IdolDef = {
   unit: string;
   color?: string;
   profile: string;
+  portrait?: string;
+  quote?: string;
   isStart?: boolean;
   growth: GrowthProfile;
 };
@@ -406,6 +408,17 @@ export type IdolPageView = {
   stats: IdolStats;
 };
 
+export type HeroView = {
+  locationId: string;
+  locationName: string;
+  idolId?: string;
+  idolName?: string;
+  unit?: string;
+  color?: string;
+  portrait?: string;
+  quote?: string;
+};
+
 export type SceneView = {
   id: string;
   phase: Phase;
@@ -414,6 +427,7 @@ export type SceneView = {
   subtitle?: string;
   locationName?: string;
   locations?: LocationView[];
+  hero?: HeroView;
   actors?: ActorView[];
   npc?: NpcPageView;
   idol?: IdolPageView;

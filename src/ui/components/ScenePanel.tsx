@@ -30,7 +30,7 @@ type ScenePanelProps = {
 
 export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
   return (
-    <section className="panel scene-panel">
+    <section className="panel scene-panel" id="scene-panel">
       <div className="scene-head">
         <p className="eyebrow">
           {scene.phaseLabel}

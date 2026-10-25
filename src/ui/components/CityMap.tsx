@@ -56,7 +56,7 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
   };
 
   return (
-    <section className="panel map-panel city-map-panel">
+    <section className="panel map-panel city-map-panel" id="city-map">
       <div className="map-head">
         <div>
           <p className="eyebrow">CITY MAP</p>

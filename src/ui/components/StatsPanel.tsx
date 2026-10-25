@@ -87,17 +87,15 @@ function RankRow({
 export function StatsPanel({
   state,
   hero,
-  onOpenRoster,
 }: {
   state: GameState;
   hero?: HeroView;
-  onOpenRoster: () => void;
 }) {
   const idol = getActiveIdol(state);
   const idolDef = CONTENT_INDEX.idols.get(state.activeIdolId);
 
   return (
-    <aside className="panel stats-panel">
+    <div className="panel stats-panel">
       <SidebarScene state={state} hero={hero} />
 
       <div className="panel-head">
@@ -139,21 +137,9 @@ export function StatsPanel({
         ))}
       </div>
 
-      <button
-        type="button"
-        className="roster-button"
-        onClick={onOpenRoster}
-      >
-        <span className="roster-button-label">
-          <GameIcon name="people" size={14} />
-          偶像名册
-        </span>
-        <span aria-hidden="true">→</span>
-      </button>
-
       {state.flags.forced_rest ? (
         <p className="status-alert">她需要休息。</p>
       ) : null}
-    </aside>
+    </div>
   );
 }

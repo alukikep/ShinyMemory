@@ -13,6 +13,10 @@ describe('app shell', () => {
   it('renders the first day without crashing', () => {
     const html = renderToString(<App />);
     expect(html).toContain('ShinyMemory');
+    expect(html).toContain('sidebar-nav');
+    expect(html).toContain('当前安排');
+    expect(html).toContain('偶像名册');
+    expect(html).toContain('地点地图');
     expect(html).toContain('第 1 天');
     expect(html).toContain('08:00');
     expect(html).toContain('事务所');
@@ -155,7 +159,6 @@ describe('app shell', () => {
       <StatsPanel
         state={state}
         hero={buildScene(state).hero}
-        onOpenRoster={() => {}}
       />,
     );
     expect(html).toContain('sidebar-scene');
@@ -187,14 +190,12 @@ describe('app shell', () => {
     expect(html).toContain('训练');
   });
 
-  it('shows the roster button in the sidebar', () => {
+  it('shows the current idol avatar in the sidebar', () => {
     const html = renderToString(
       <StatsPanel
         state={newGame(1)}
-        onOpenRoster={() => {}}
       />,
     );
-    expect(html).toContain('偶像名册');
     expect(html).toContain('樱木真乃');
     expect(html).toContain('idol-summary-avatar');
     expect(html).toContain('q/mano.png');

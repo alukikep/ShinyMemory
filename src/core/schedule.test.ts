@@ -22,8 +22,11 @@ describe('actor schedule resolver', () => {
     expect(saturday[1]?.fromMinute).toBe(10 * 60);
 
     const sunday = getSchedulesForDay(mano, 7);
-    expect(sunday).toHaveLength(1);
-    expect(sunday[0]?.locationId).toBe('home');
+    expect(sunday).toHaveLength(2);
+    expect(sunday[0]?.locationId).toBe('park');
+    expect(sunday[0]?.visibility).toBe('private');
+    expect(sunday[1]?.locationId).toBeUndefined();
+    expect(sunday[1]?.visibility).toBe('private');
   });
 
   it('renders the weekly table in chronological order', () => {
@@ -35,14 +38,28 @@ describe('actor schedule resolver', () => {
     ]);
   });
 
+  it('keeps school and private errands out of the public location flow', () => {
+    expect(getScheduleSlot(hiori, 1440 + 9 * 60)?.locationId).toBe('school');
+    expect(getScheduleSlot(mano, 6 * 1440 + 19 * 60)?.locationId).toBe(
+      'park',
+    );
+    expect(getScheduleSlot(mano, 6 * 1440 + 12 * 60)?.locationId).toBeUndefined();
+  });
+
   it('resolves hiori differently by weekday', () => {
     const tuesday = getSchedulesForDay(hiori, 2);
-    expect(tuesday).toHaveLength(1);
+    expect(tuesday.map((slot) => slot.locationId)).toEqual([
+      'practice_room',
+      'school',
+    ]);
     expect(tuesday[0]?.toMinute).toBe(18 * 60);
 
     const saturday = getSchedulesForDay(hiori, 6);
-    expect(saturday[0]?.locationId).toBe('studio');
-    expect(saturday[0]?.fromMinute).toBe(12 * 60);
+    expect(saturday.map((slot) => slot.locationId)).toEqual([
+      'shopping_street',
+      'studio',
+    ]);
+    expect(saturday[1]?.fromMinute).toBe(12 * 60);
   });
 
   it('lets a single-day override win over the weekly template', () => {

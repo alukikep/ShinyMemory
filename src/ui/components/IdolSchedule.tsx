@@ -11,8 +11,20 @@ type IdolScheduleProps = {
   onClose: () => void;
 };
 
-function slotKind(label: string | undefined, locationId: string): string {
-  if (locationId === 'home' || label === '休息') return 'rest';
+function slotKind(
+  label: string | undefined,
+  locationId: string | undefined,
+  visibility: 'public' | 'private' | undefined,
+): string {
+  if (
+    visibility === 'private' ||
+    !locationId ||
+    locationId === 'home' ||
+    label === '自由活动'
+  ) {
+    return 'free';
+  }
+  if (label === '休息') return 'rest';
   if (label === '收录') return 'recording';
   if (locationId === 'office') return 'office';
   return 'practice';
@@ -47,7 +59,7 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
             <p className="eyebrow">IDOL SCHEDULE</p>
             <h2>偶像日程表</h2>
             <p className="schedule-note">
-              每周固定模板；单日临时安排会覆盖当天。
+              每周固定模板；只显示工作/事务所安排，未列出或私人时间为自由活动。
             </p>
           </div>
           <button
@@ -91,12 +103,24 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
                     <p className="schedule-empty">—</p>
                   ) : (
                     day.slots.map((slot, index) => {
-                      const location = CONTENT_INDEX.locations.get(
-                        slot.locationId,
-                      );
+                      const location = slot.locationId
+                        ? CONTENT_INDEX.locations.get(slot.locationId)
+                        : undefined;
+                      const hidden =
+                        slot.visibility === 'private' || !slot.locationId;
+                      const name = hidden
+                        ? '自由活动'
+                        : location?.name ?? slot.locationId ?? '自由活动';
+                      const label = hidden
+                        ? '自由活动'
+                        : slot.label;
                       return (
                         <div
-                          className={`schedule-slot kind-${slotKind(slot.label, slot.locationId)}`}
+                          className={`schedule-slot kind-${slotKind(
+                            label,
+                            slot.locationId,
+                            slot.visibility,
+                          )}`}
                           key={`${day.weekday}-${index}`}
                         >
                           <span className="schedule-time">
@@ -105,8 +129,8 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
                               ? '24:00'
                               : formatClock(slot.toMinute)}
                           </span>
-                          <strong>{location?.name ?? slot.locationId}</strong>
-                          {slot.label ? <small>{slot.label}</small> : null}
+                          <strong>{name}</strong>
+                          {label ? <small>{label}</small> : null}
                         </div>
                       );
                     })

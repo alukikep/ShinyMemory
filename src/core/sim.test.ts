@@ -256,6 +256,7 @@ describe('raising sim core', () => {
       'home',
       'office',
       'practice_room',
+      'park',
     ]);
   });
 

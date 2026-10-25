@@ -4,11 +4,14 @@
 
 已实现：
 
-- `ActorSchedule.weekdays` / `priority` / `label`；
+- `ActorSchedule.weekdays` / `priority` / `label` / `visibility`；
 - `ActorDef.overrides` 单日覆盖；
 - 解析器：覆盖 → 星期模板 → 默认；
 - 真乃/灯织每周模板；
 - 只读七天日程表 overlay；
+- 日程表隐藏私人地点，显示“自由活动”；
+- 名册显示实际当前位置，包括地图不可达的学校；
+- 公园/商业街两个可步行地点，学校为 off-map 地点；
 - 移动端横向滚动。
 
 尚未实现：
@@ -117,9 +120,10 @@ type ActorSchedule = {
   weekdays?: Weekday[];   // 省略 = 每天
   fromMinute: number;
   toMinute: number;
-  locationId: string;
-  label?: string;         // 练习 / 收录 / 休息
+  locationId?: string;    // 省略 = 无固定地点
+  label?: string;         // 练习 / 收录 / 自由活动
   priority?: number;      // 数字越大越优先
+  visibility?: 'public' | 'private';
 };
 ```
 
@@ -127,7 +131,14 @@ type ActorSchedule = {
 
 - 旧数据没有 `weekdays`，视为每天；
 - 旧数据没有 `priority`，视为 0；
+- 旧数据没有 `visibility`，视为公开；
 - 不需要改存档，日程是内容数据。
+
+`visibility: 'private'` 只影响日程表：
+
+- 日程表显示“自由活动”；
+- 名册仍显示实际 `locationId`；
+- 没有 `locationId` 时，名册显示“自由活动”。
 
 ### 2. 单日覆盖
 
@@ -333,18 +344,19 @@ fromMinute > toMinute
     10:00–14:00 练习室
     14:00–18:00 录音棚
   周日
-    休息 / 家
+    自由活动
 
 灯织
   周一/三/五
     10:00–16:00 练习室
     16:00–22:00 录音棚
   周二/四
+    08:00–10:00 学校
     10:00–18:00 练习室
   周六
     12:00–18:00 录音棚
   周日
-    休息 / 家
+    自由活动
 ```
 
 具体休息日需要和玩法平衡一起定，不应先写死。

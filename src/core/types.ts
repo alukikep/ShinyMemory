@@ -161,15 +161,16 @@ export type Weekday = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 export type ActorSchedule = {
   fromMinute: number;
   toMinute: number;
-  locationId: string;
+  locationId?: string;
   weekdays?: Weekday[];
   label?: string;
   priority?: number;
+  visibility?: 'public' | 'private';
 };
 
 export type ActorScheduleOverride = {
   day: number;
-  locationId: string;
+  locationId?: string;
   fromMinute?: number;
   toMinute?: number;
   label?: string;
@@ -288,6 +289,7 @@ export type LocationDef = {
   kind?: LocationKind;
   mapX?: number;
   mapY?: number;
+  reachable?: boolean;
 };
 
 export type MapEdgeDef = {

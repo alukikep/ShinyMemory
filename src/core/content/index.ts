@@ -45,13 +45,15 @@ import deskScript from './events/locations/office/deskScript';
 import mirrorNote from './events/locations/practice_room/mirrorNote';
 import headphones from './events/locations/studio/headphones';
 import homeNote from './events/locations/home/homeNote';
+import parkPigeons from './events/locations/park/parkPigeons';
+import shoppingWindow from './events/locations/shoppingStreet/shoppingWindow';
 import trueEnding from './endings/true';
 import normalEnding from './endings/normal';
 import badEnding from './endings/bad';
 
 export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep];
 
-export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath];
+export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, parkPigeons, shoppingWindow, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath];
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 

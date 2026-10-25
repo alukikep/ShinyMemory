@@ -5,7 +5,14 @@ const card: ActivityDef = {
   name: '环顾四周',
   description: '花一点时间看看这个地方。也许会发现什么。',
   kind: 'explore',
-  locations: ['office', 'practice_room', 'studio', 'home'],
+  locations: [
+    'office',
+    'practice_room',
+    'studio',
+    'home',
+    'park',
+    'shopping_street',
+  ],
   durationMinutes: 30,
   timeWindows: [{ fromMinute: 8 * 60, toMinute: 22 * 60 }],
   cost: { stamina: 5 },
@@ -31,6 +38,14 @@ const card: ActivityDef = {
     {
       when: [{ kind: 'atLocation', locationId: 'home' }],
       text: '家里很安静，窗外偶尔有电车经过。你看见桌上摊着没写完的日程。',
+    },
+    {
+      when: [{ kind: 'atLocation', locationId: 'park' }],
+      text: '公园的长椅上晒着太阳，喷泉边有人喂鸽子。远处传来练习室方向的音乐声。',
+    },
+    {
+      when: [{ kind: 'atLocation', locationId: 'shopping_street' }],
+      text: '商业街的橱窗换了新海报。奶茶店门口排着队，街角有人抱着吉他试音。',
     },
   ],
 };

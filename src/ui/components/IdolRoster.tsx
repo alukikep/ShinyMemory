@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { RANK_CURVE } from '../../core/growth';
+import { getActorLocation } from '../../core/sim';
 import { STAT_LABELS } from '../../core/labels';
 import type {
   GameState,
@@ -108,6 +109,17 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
           {idols.map((idol) => {
             const def = CONTENT_INDEX.idols.get(idol.id);
             const active = idol.id === state.activeIdolId;
+            const actor = CONTENT_INDEX.actors.get(idol.id);
+            const locationId = actor
+              ? getActorLocation(actor, state.clock.absoluteMinutes)
+              : undefined;
+            const location = locationId
+              ? CONTENT_INDEX.locations.get(locationId)
+              : undefined;
+            const here = locationId === state.locationId;
+            const locationLabel = locationId
+              ? location?.name ?? locationId
+              : '自由活动';
             return (
               <article
                 className={`roster-card ${active ? 'current' : ''}`}
@@ -136,6 +148,9 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
                   {def?.profile ? (
                     <p className="roster-profile">{def.profile}</p>
                   ) : null}
+                  <p className={`roster-location ${here ? 'here' : ''}`}>
+                    {here ? '在这里' : `现在：${locationLabel}`}
+                  </p>
                 </div>
                 <div className="roster-stats">
                   {IDOL_STAT_ORDER.map((key) => (

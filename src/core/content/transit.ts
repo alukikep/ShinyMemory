@@ -1,7 +1,9 @@
 import type { TransitRouteDef } from '../types';
 import { LOCATIONS } from './locations';
 
-const LOCATION_IDS = LOCATIONS.map((location) => location.id);
+const PLAYER_LOCATION_IDS = LOCATIONS.filter(
+  (location) => location.reachable !== false,
+).map((location) => location.id);
 const nameOf = (id: string) =>
   LOCATIONS.find((location) => location.id === id)?.name ?? id;
 
@@ -10,7 +12,7 @@ const BUS_MINUTES = 5;
 const TAXI_FARE = 400;
 const TAXI_MINUTES = 3;
 
-const BUS_ROUTES: TransitRouteDef[] = LOCATION_IDS.filter(
+const BUS_ROUTES: TransitRouteDef[] = PLAYER_LOCATION_IDS.filter(
   (id) => id !== 'station',
 ).map((to) => ({
   id: `bus_station_${to}`,
@@ -22,8 +24,8 @@ const BUS_ROUTES: TransitRouteDef[] = LOCATION_IDS.filter(
   kind: 'bus',
 }));
 
-const TAXI_ROUTES: TransitRouteDef[] = LOCATION_IDS.flatMap((from) =>
-  LOCATION_IDS.filter((to) => to !== from).map((to) => ({
+const TAXI_ROUTES: TransitRouteDef[] = PLAYER_LOCATION_IDS.flatMap((from) =>
+  PLAYER_LOCATION_IDS.filter((to) => to !== from).map((to) => ({
     id: `taxi_${from}_${to}`,
     from,
     to,

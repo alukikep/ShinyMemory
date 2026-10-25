@@ -74,15 +74,18 @@ describe('content integrity', () => {
     expect(new Set(endingIds).size).toBe(endingIds.length);
   });
 
-  it('has five unique locations and a starting location', () => {
+  it('has eight unique locations and a starting location', () => {
     const ids = LOCATIONS.map((location) => location.id);
-    expect(ids).toHaveLength(5);
+    expect(ids).toHaveLength(8);
     expect(new Set(ids).size).toBe(ids.length);
     expect(CONTENT_INDEX.startingLocationId).toBe('office');
     expect(CONTENT_INDEX.locations.has('office')).toBe(true);
     expect(CONTENT_INDEX.locations.has('practice_room')).toBe(true);
     expect(CONTENT_INDEX.locations.has('studio')).toBe(true);
     expect(CONTENT_INDEX.locations.has('home')).toBe(true);
+    expect(CONTENT_INDEX.locations.has('park')).toBe(true);
+    expect(CONTENT_INDEX.locations.has('shopping_street')).toBe(true);
+    expect(CONTENT_INDEX.locations.get('school')?.reachable).toBe(false);
   });
 
   it('has valid actors with schedules and topics', () => {
@@ -101,7 +104,11 @@ describe('content integrity', () => {
         expect(entry.fromMinute).toBeLessThan(24 * 60);
         expect(entry.toMinute).toBeGreaterThanOrEqual(0);
         expect(entry.toMinute).toBeLessThan(24 * 60);
-        expect(CONTENT_INDEX.locations.has(entry.locationId)).toBe(true);
+        if (entry.locationId) {
+          expect(CONTENT_INDEX.locations.has(entry.locationId)).toBe(true);
+        } else {
+          expect(entry.visibility).toBe('private');
+        }
       }
 
       const topicIds = actor.topics.map((topic) => topic.id);
@@ -243,8 +250,9 @@ describe('content integrity', () => {
     }
   });
 
-  it('gives every place at least one activity and leaves the station bare', () => {
+  it('gives every playable place at least one activity and leaves the station bare', () => {
     for (const location of LOCATIONS) {
+      if (location.reachable === false) continue;
       const activities = CONTENT_INDEX.activitiesByLocation.get(location.id);
       if (location.kind === 'station') {
         expect(activities?.length ?? 0).toBe(0);
@@ -254,11 +262,11 @@ describe('content integrity', () => {
     }
   });
 
-  it('makes look_around available in every place', () => {
+  it('makes look_around available in every playable place', () => {
     const lookAround = ACTIVITIES.find((activity) => activity.id === 'look_around');
     expect(lookAround?.kind).toBe('explore');
     for (const location of LOCATIONS.filter(
-      (entry) => entry.kind !== 'station',
+      (entry) => entry.reachable !== false && entry.kind !== 'station',
     )) {
       expect(
         CONTENT_INDEX.activitiesByLocation
@@ -268,14 +276,16 @@ describe('content integrity', () => {
     }
   });
 
-  it('connects every map node with walk edges', () => {
+  it('connects every playable map node with walk edges', () => {
     const ids = new Set(LOCATIONS.map((location) => location.id));
     for (const edge of WALK_EDGES) {
       expect(ids.has(edge.from)).toBe(true);
       expect(ids.has(edge.to)).toBe(true);
       expect(edge.minutes).toBeGreaterThan(0);
     }
-    for (const location of LOCATIONS) {
+    for (const location of LOCATIONS.filter(
+      (entry) => entry.reachable !== false,
+    )) {
       expect(
         WALK_EDGES.some(
           (edge) =>
@@ -296,18 +306,18 @@ describe('content integrity', () => {
     }
   });
 
-  it('has at least one location-owned event per place', () => {
+  it('has at least one location-owned event per playable place', () => {
     for (const location of LOCATIONS.filter(
-      (entry) => entry.kind !== 'station',
+      (entry) => entry.reachable !== false && entry.kind !== 'station',
     )) {
       const events = CONTENT_INDEX.eventsByLocation.get(location.id);
       expect(events?.length ?? 0).toBeGreaterThan(0);
     }
   });
 
-  it('gives every place a look_around event', () => {
+  it('gives every playable place a look_around event', () => {
     for (const location of LOCATIONS.filter(
-      (entry) => entry.kind !== 'station',
+      (entry) => entry.reachable !== false && entry.kind !== 'station',
     )) {
       const found = EVENTS.some(
         (event) =>
@@ -354,8 +364,8 @@ describe('content integrity', () => {
     }
   });
 
-  it('has 31 events and 3 endings', () => {
-    expect(EVENTS).toHaveLength(31);
+  it('has 33 events and 3 endings', () => {
+    expect(EVENTS).toHaveLength(33);
     expect(ENDINGS).toHaveLength(3);
   });
 

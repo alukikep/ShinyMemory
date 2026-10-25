@@ -124,6 +124,16 @@ describe('app shell', () => {
     expect(html).toContain('q/hiori.png');
     expect(html).toContain('歌唱');
     expect(html).toContain('当前');
+    expect(html).toContain('现在：练习室');
+    expect(html).toContain('现在：自由活动');
+  });
+
+  it('shows an idol at an off-map school in the roster', () => {
+    const state = advanceTime(newGame(1), 1500);
+    const html = renderToString(
+      <IdolRoster state={state} onClose={() => {}} />,
+    );
+    expect(html).toContain('现在：学校');
   });
 
   it('renders the weekly idol schedule', () => {
@@ -136,6 +146,7 @@ describe('app shell', () => {
     expect(html).toContain('樱木真乃');
     expect(html).toContain('风野灯织');
     expect(html).toContain('练习');
+    expect(html).toContain('自由活动');
   });
 
   it('shows the bus entry on the station map', () => {
@@ -148,9 +159,9 @@ describe('app shell', () => {
       />,
     );
     expect(html).toContain('公交');
-    expect(html).toContain('4 条线路');
+    expect(html).toContain('6 条线路');
     expect(html).toContain('出租车');
-    expect(html).toContain('4 个目的地');
+    expect(html).toContain('6 个目的地');
   });
 
   it('renders the city map with adjacent destinations', () => {

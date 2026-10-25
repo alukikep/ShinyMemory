@@ -1,5 +1,43 @@
 # 自动验收研究
 
+## 当前状态
+
+已实现最小闭环：
+
+```bash
+npm run acceptance
+```
+
+- Playwright Test；
+- `?debug=1` 状态/操作桥；
+- 8 条浏览器流程；
+- 失败 trace / 截图；
+- HTML 报告；
+- 桌面与移动端布局断言。
+
+测试文件：
+
+```text
+tests/acceptance/job.spec.ts
+tests/acceptance/schedule.spec.ts
+tests/acceptance/responsive.spec.ts
+tests/acceptance/smoke.spec.ts
+```
+
+当前验收：
+
+```text
+8 passed
+```
+
+本地使用 Edge：
+
+```ts
+channel: 'msedge'
+```
+
+视频录制关闭，因为当前环境缺少 Playwright ffmpeg。
+
 ## 结论
 
 推荐：

@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { buildScene } from './core/scene';
 import { GAME_VERSION } from './save/version';
 import { useGameStore } from './app/store';
+import type { ActionCommand } from './core/types';
 import { DebugPanel } from './ui/components/DebugPanel';
 import { CityMap } from './ui/components/CityMap';
 import { GameIcon } from './ui/components/GameIcon';
@@ -10,6 +11,17 @@ import { IdolSchedule } from './ui/components/IdolSchedule';
 import { LogPanel } from './ui/components/LogPanel';
 import { ScenePanel } from './ui/components/ScenePanel';
 import { StatsPanel } from './ui/components/StatsPanel';
+
+type AcceptanceBridge = {
+  getState: () => ReturnType<typeof useGameStore.getState>['state'];
+  dispatch: (command: ActionCommand) => void;
+  jumpTo: (
+    day: number,
+    minuteOfDay: number,
+    locationId?: string,
+  ) => void;
+  reset: (seed?: number) => void;
+};
 
 export default function App() {
   const state = useGameStore((store) => store.state);
@@ -23,6 +35,26 @@ export default function App() {
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).has('debug');
   const scene = buildScene(state);
+
+  useEffect(() => {
+    if (!debug) return;
+
+    const bridge: AcceptanceBridge = {
+      getState: () => useGameStore.getState().state,
+      dispatch: (command) => useGameStore.getState().act(command),
+      jumpTo: (day, minuteOfDay, locationId) =>
+        useGameStore.getState().debugJumpTo(day, minuteOfDay, locationId),
+      reset: (seed) => useGameStore.getState().debugReset(seed),
+    };
+
+    (window as Window & { __SHINY_MEMORY__?: AcceptanceBridge })
+      .__SHINY_MEMORY__ = bridge;
+
+    return () => {
+      delete (window as Window & { __SHINY_MEMORY__?: AcceptanceBridge })
+        .__SHINY_MEMORY__;
+    };
+  }, [debug]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({

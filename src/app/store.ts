@@ -17,6 +17,12 @@ type GameStore = {
   restart: () => void;
   debugForceEvent: (eventId: string) => void;
   debugJumpDay: (day: number) => void;
+  debugJumpTo: (
+    day: number,
+    minuteOfDay: number,
+    locationId?: string,
+  ) => void;
+  debugReset: (seed?: number) => void;
 };
 
 const repository: SaveRepository = new LocalStorageRepository();
@@ -76,4 +82,30 @@ export const useGameStore = create<GameStore>((set) => ({
       repository.save(createSaveEnvelope(next));
       return { state: next };
     }),
+  debugJumpTo: (day, minuteOfDay, locationId) =>
+    set((previous) => {
+      const next = structuredClone(previous.state);
+      const safeDay = Math.max(1, Math.min(MAX_DEBUG_DAY, Math.round(day)));
+      const safeMinute = Math.max(
+        0,
+        Math.min(MINUTES_PER_DAY - 1, Math.round(minuteOfDay)),
+      );
+      next.clock.absoluteMinutes =
+        (safeDay - 1) * MINUTES_PER_DAY + safeMinute;
+      if (locationId) next.locationId = locationId;
+      pruneScheduleOverrides(next);
+      completeDueJobs(next);
+      next.phase = 'plan';
+      next.pendingActivityId = undefined;
+      next.pendingEventId = undefined;
+      next.pendingExam = undefined;
+      next.pendingIdolId = undefined;
+      repository.save(createSaveEnvelope(next));
+      return { state: next };
+    }),
+  debugReset: (seed) => {
+    const next = newGame(seed ?? makeSeed());
+    repository.save(createSaveEnvelope(next));
+    set({ state: next });
+  },
 }));

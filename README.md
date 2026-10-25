@@ -38,6 +38,7 @@
 - 事件目标：条件、效果和文本都读取 `idolId` 上下文；目标偶像的“她”会替换成名字，如“真乃”
 - 自动存档（localStorage），刷新页面可继续；存档 v10 会把旧数值属性迁移到 Rank + EXP
 - 调试面板：`?debug=1`，可看触发判定、强制事件、跳天
+- 自动验收：`npm run acceptance` 跑 8 条浏览器流程（首日/日程/工作参与/不参与/刷新/响应式），状态桥仅在 `?debug=1` 挂载
 - 无 AI、无美术；先验证“选择 → 耗时 → 结算 → 事件”的开放循环
 
 ## 运行
@@ -47,6 +48,7 @@ npm install
 npm run dev      # 本地开发
 npm run build    # 类型检查 + 生产构建
 npm test         # 核心模拟测试 + 平衡烟测
+npm run acceptance # 浏览器验收（Playwright + Edge）
 ```
 
 ## 结构

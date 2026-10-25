@@ -22,9 +22,11 @@ E:\game dev\闪耀色彩页游
 - [x] Phase B：Hero 场景 + 立绘
 - [x] Phase B 调整：主列大 Hero 移到侧边栏顶部场景卡；图中只留地点名；图下按日期/时间/金钱三行显示，日期行预留未来日历；行动数从玩家界面移除
 - [x] Phase C：名册头像与属性色（详细计划见 `docs/phase-c-plan.md`）
-- [ ] Phase D：地图与公交视觉
-- [ ] Phase E：固定侧边栏
+- [ ] C.1：地点角色条头像（可选）
+- [ ] Phase D：固定侧边栏 / App Shell（调整后的顺序）
+- [ ] Phase E：地图与公交视觉（原 D）
 - [ ] Phase F：响应式与可访问性收尾
+- 后续路线图见 `docs/post-phase-c-roadmap.md`
 
 ## 目标
 

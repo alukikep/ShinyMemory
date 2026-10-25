@@ -6,6 +6,8 @@ import vocal from './activities/vocal';
 import dance from './activities/dance';
 import expression from './activities/expression';
 import work from './activities/work';
+import tvWork from './activities/tvWork';
+import musicWork from './activities/musicWork';
 import rest from './activities/rest';
 import free from './activities/free';
 import lookAround from './activities/lookAround';
@@ -33,6 +35,7 @@ import producerDoubt from './events/locations/office/producerDoubt';
 import hazukiNap from './events/locations/office/hazukiNap';
 import manoSoftVoice from './events/idols/manoSoftVoice';
 import hioriExtraStep from './events/idols/hioriExtraStep';
+import workFailureTv from './events/work/workFailureTv';
 import deskScript from './events/locations/office/deskScript';
 import mirrorNote from './events/locations/practice_room/mirrorNote';
 import headphones from './events/locations/studio/headphones';
@@ -41,9 +44,9 @@ import trueEnding from './endings/true';
 import normalEnding from './endings/normal';
 import badEnding from './endings/bad';
 
-export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, rest, free, lookAround, sleep];
+export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep];
 
-export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, hazukiNap, manoSoftVoice, hioriExtraStep];
+export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv];
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 

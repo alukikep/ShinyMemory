@@ -388,6 +388,49 @@ describe('raising sim core', () => {
     expect(workRewardPreview(state, reward, 'mano').money).toBe(2250);
   });
 
+  it('enforces a hard work rank gate', () => {
+    const state = moveTo(advanceTime(newGame(1), 7 * 60), 'studio');
+    const music = getActivity('music_work')!;
+    expect(activityAvailability(state, music, 'mano').ok).toBe(false);
+
+    state.idols.mano!.stats.vocal.rank = 'B';
+    expect(activityAvailability(state, music, 'mano').ok).toBe(true);
+  });
+
+  it('routes a failed risky work into its failure event', () => {
+    const tv = getActivity('tv_work')!;
+    const original = tv.workRisk?.failureByGap;
+    tv.workRisk!.failureByGap = { 1: 1, 2: 1, 3: 1 };
+    try {
+      const state = moveTo(advanceTime(newGame(1), 12 * 60), 'studio');
+      state.idols.hiori!.stats.trust.exp = 10;
+      const entered = handleCommand(state, {
+        type: 'enterIdol',
+        idolId: 'hiori',
+      });
+      const worked = handleCommand(entered, {
+        type: 'work',
+        idolId: 'hiori',
+        activityId: 'tv_work',
+      });
+
+      expect(worked.phase).toBe('event');
+      expect(worked.pendingEventId).toBe('evt.work_failure_tv');
+      expect(worked.pendingEventIdolId).toBe('hiori');
+      expect(worked.money).toBe(3000);
+
+      const resolved = applyEventChoice(worked, 0);
+      expect(resolved.money).toBe(3000);
+      expect(resolved.idols.hiori?.stats.trust.exp).toBe(7);
+    } finally {
+      if (original) {
+        tv.workRisk!.failureByGap = original;
+      } else {
+        delete tv.workRisk!.failureByGap;
+      }
+    }
+  });
+
   it('shows Hazuki and Tsutomu on their office schedules', () => {
     const morning = newGame(1);
     expect(presentActors(morning).map((actor) => actor.id)).toEqual([]);

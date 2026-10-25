@@ -106,7 +106,12 @@ function buildIndex(): ContentIndex {
         list.push(event);
         eventsByLocation.set(locationId, list);
       }
-    } else if (!event.after && !event.afterNpc && !event.afterIdol) {
+    } else if (
+      !event.after &&
+      !event.afterNpc &&
+      !event.afterIdol &&
+      event.entry?.kind !== 'workFailure'
+    ) {
       globalEvents.push(event);
     }
   }

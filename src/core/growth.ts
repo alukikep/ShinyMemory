@@ -30,6 +30,13 @@ export const DEFAULT_REWARD_MULTIPLIERS: Record<Rank, number> = {
   S: 1.8,
 };
 
+export const DEFAULT_FAILURE_BY_GAP: Record<number, number> = {
+  1: 0.25,
+  2: 0.5,
+  3: 0.7,
+  4: 0.85,
+};
+
 export function nextRank(rank: Rank): Rank | undefined {
   const index = RANK_ORDER.indexOf(rank);
   return index >= 0 && index < RANK_ORDER.length - 1

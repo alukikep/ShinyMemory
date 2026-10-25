@@ -24,6 +24,7 @@ import {
   presentActors,
   topicAvailability,
   workRewardSummary,
+  workRiskSummary,
 } from './sim';
 import type {
   ActionView,
@@ -101,7 +102,7 @@ function activityActionView(
   activity: ActivityDef,
   idolId: string = state.activeIdolId,
 ): ActionView {
-  const availability = activityAvailability(state, activity);
+  const availability = activityAvailability(state, activity, idolId);
   const duration =
     activity.kind === 'sleep'
       ? '睡到早上 8 点'
@@ -110,8 +111,11 @@ function activityActionView(
   const reward = activity.workReward
     ? workRewardSummary(state, activity.workReward, idolId)
     : '';
+  const risk = activity.workRisk
+    ? workRiskSummary(state, activity.workRisk, idolId)
+    : '';
   const timeLabel = formatTimeWindows(activity.timeWindows);
-  const hint = [timeLabel, duration, reward, effects]
+  const hint = [timeLabel, duration, reward, risk, effects]
     .filter(Boolean)
     .join(' · ');
 

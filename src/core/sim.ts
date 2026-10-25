@@ -13,6 +13,7 @@ import {
 } from './contentIndex';
 import { MID_EXAM } from './content/weeks';
 import {
+  DEFAULT_FAILURE_BY_GAP,
   DEFAULT_REWARD_MULTIPLIERS,
   EXP_TIER_VALUES,
   RANK_CURVE,
@@ -48,6 +49,7 @@ import type {
   StatKey,
   TriggerReport,
   WorkReward,
+  WorkRisk,
 } from './types';
 
 function clone(state: GameState): GameState {
@@ -224,6 +226,54 @@ export function workRewardSummary(
     )
     .join(' + ');
   return `预计 ¥${preview.money} · ${detail}`;
+}
+
+export type WorkRiskPreview = {
+  rank: Rank;
+  safeRank: Rank;
+  minRank: Rank;
+  gap: number;
+  chance: number;
+  eligible: boolean;
+};
+
+export function workRiskPreview(
+  state: GameState,
+  risk: WorkRisk,
+  idolId: string = state.activeIdolId,
+): WorkRiskPreview {
+  const rank = getRank(state, risk.attribute, idolId);
+  const minRank = risk.minRank ?? 'F';
+  const gap = Math.max(0, rankIndex(risk.safeRank) - rankIndex(rank));
+  const table = {
+    ...DEFAULT_FAILURE_BY_GAP,
+    ...risk.failureByGap,
+  };
+  const chance =
+    gap <= 0 ? 0 : (table[Math.min(gap, 4)] ?? 0.85);
+  return {
+    rank,
+    safeRank: risk.safeRank,
+    minRank,
+    gap,
+    chance,
+    eligible: rankIndex(rank) >= rankIndex(minRank),
+  };
+}
+
+export function workRiskSummary(
+  state: GameState,
+  risk: WorkRisk,
+  idolId: string = state.activeIdolId,
+): string {
+  const preview = workRiskPreview(state, risk, idolId);
+  if (!preview.eligible) {
+    return `需要${STAT_LABELS[risk.attribute]} ${preview.minRank}`;
+  }
+  if (preview.chance <= 0) return '稳定成功';
+  return `成功率 ${Math.round((1 - preview.chance) * 100)}% · 推荐${
+    STAT_LABELS[risk.attribute]
+  } ${preview.safeRank}`;
 }
 
 function addLog(state: GameState, text: string, tone: LogTone = 'info'): void {
@@ -509,6 +559,7 @@ export function isLocationOpen(
 export function activityAvailability(
   state: GameState,
   activity: ActivityDef,
+  idolId: string = state.activeIdolId,
 ): Availability {
   if (
     state.flags.forced_rest &&
@@ -543,8 +594,24 @@ export function activityAvailability(
     return { ok: false, display: 'disable', reason: reasons.join('；') };
   }
 
-  if (activity.requires && !activity.requires.every((c) => checkCondition(c, state))) {
+  if (
+    activity.requires &&
+    !activity.requires.every((c) =>
+      checkCondition(c, state, { idolId }),
+    )
+  ) {
     return { ok: false, display: 'disable', reason: '条件未满足' };
+  }
+
+  if (activity.workRisk) {
+    const risk = workRiskPreview(state, activity.workRisk, idolId);
+    if (!risk.eligible) {
+      return {
+        ok: false,
+        display: 'disable',
+        reason: `需要${STAT_LABELS[activity.workRisk.attribute]} ${risk.minRank}`,
+      };
+    }
   }
   return { ok: true };
 }
@@ -631,13 +698,13 @@ export function train(
     !isActorPresent(state, actor) ||
     !activity ||
     activity.kind !== 'training' ||
-    !activityAvailability(state, activity).ok
+    !activityAvailability(state, activity, idolId).ok
   ) {
     return state;
   }
 
   const next = applyActivity(state, activityId, idolId);
-  if (next.phase !== 'activityResult') return state;
+  if (next.phase !== 'activityResult' && next.phase !== 'event') return state;
   next.pendingIdolId = idolId;
   return next;
 }
@@ -657,13 +724,13 @@ export function work(
     !isActorPresent(state, actor) ||
     !activity ||
     activity.kind !== 'work' ||
-    !activityAvailability(state, activity).ok
+    !activityAvailability(state, activity, idolId).ok
   ) {
     return state;
   }
 
   const next = applyActivity(state, activityId, idolId);
-  if (next.phase !== 'activityResult') return state;
+  if (next.phase !== 'activityResult' && next.phase !== 'event') return state;
   next.pendingIdolId = idolId;
   return next;
 }
@@ -722,7 +789,7 @@ export function applyActivity(
 ): GameState {
   const activity = getActivity(activityId);
   if (!activity) return state;
-  if (!activityAvailability(state, activity).ok) return state;
+  if (!activityAvailability(state, activity, idolId).ok) return state;
 
   const next = clone(state);
   next.activeIdolId = idolId;
@@ -763,14 +830,20 @@ export function applyActivity(
 
   next.money -= activity.cost.money ?? 0;
   next.shared.stamina -= activity.cost.stamina ?? 0;
+  const risk = activity.workRisk
+    ? workRiskPreview(next, activity.workRisk, idolId)
+    : undefined;
+  const failed =
+    !!risk && risk.chance > 0 && rng.next() < risk.chance;
   applyEffects(next, activity.effects, {
     training: activity.kind === 'training',
     stressed,
     idolId,
   });
-  const reward = activity.workReward
-    ? workRewardPreview(next, activity.workReward, idolId)
-    : undefined;
+  const reward =
+    !failed && activity.workReward
+      ? workRewardPreview(next, activity.workReward, idolId)
+      : undefined;
   if (reward) next.money += reward.money;
   clampState(next);
 
@@ -779,6 +852,27 @@ export function applyActivity(
   next.phase = 'activityResult';
 
   const advanced = advanceTime(next, activity.durationMinutes);
+  advanced.rng.counter = rng.counter;
+
+  if (failed) {
+    advanced.pendingActivityId = undefined;
+    advanced.pendingIdolId = idolId;
+    advanced.pendingEventIdolId = idolId;
+    const failureEventId = activity.workRisk?.failureEventId;
+    if (failureEventId) {
+      advanced.pendingEventId = failureEventId;
+      advanced.pendingEventIdolId = idolId;
+      advanced.phase = 'event';
+      advanced.lastResult = undefined;
+      addLog(advanced, `${activity.name}：工作失败。`, 'bad');
+      return advanced;
+    }
+    advanced.phase = 'activityResult';
+    advanced.lastResult = '工作失败了。';
+    addLog(advanced, `${activity.name}：工作失败。`, 'bad');
+    return advanced;
+  }
+
   const result = pickActivityResult(advanced, activity, rng);
   advanced.lastResult = reward
     ? `${result} 收入 ¥${reward.money}。`

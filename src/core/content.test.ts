@@ -152,6 +152,28 @@ describe('content integrity', () => {
     }
   });
 
+  it('validates work risk and failure event references', () => {
+    for (const activity of ACTIVITIES) {
+      if (!activity.workRisk) continue;
+      const risk = activity.workRisk;
+      if (risk.minRank && risk.safeRank === risk.minRank) {
+        expect(risk.failureEventId).toBeUndefined();
+        continue;
+      }
+      expect(risk.failureEventId).toBeTruthy();
+      const event = CONTENT_INDEX.events.get(risk.failureEventId!);
+      expect(event?.entry).toEqual({
+        kind: 'workFailure',
+        activityId: activity.id,
+      });
+      expect(
+        CONTENT_INDEX.globalEvents.some(
+          (entry) => entry.id === risk.failureEventId,
+        ),
+      ).toBe(false);
+    }
+  });
+
   it('keeps activity time windows in range', () => {
     for (const activity of ACTIVITIES) {
       for (const window of activity.timeWindows ?? []) {
@@ -269,8 +291,8 @@ describe('content integrity', () => {
     }
   });
 
-  it('has 27 events and 3 endings', () => {
-    expect(EVENTS).toHaveLength(27);
+  it('has 28 events and 3 endings', () => {
+    expect(EVENTS).toHaveLength(28);
     expect(ENDINGS).toHaveLength(3);
   });
 

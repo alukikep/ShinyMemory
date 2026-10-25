@@ -26,6 +26,14 @@ export type WorkReward = {
   checks: WorkCheck[];
 };
 
+export type WorkRisk = {
+  attribute: IdolStatKey;
+  minRank?: Rank;
+  safeRank: Rank;
+  failureEventId?: string;
+  failureByGap?: Partial<Record<number, number>>;
+};
+
 export type GrowthProfile = Record<
   IdolStatKey,
   { initial: Rank; max: Rank }
@@ -204,6 +212,7 @@ export type ActivityDef = {
   cost: Cost;
   effects: Effect[];
   workReward?: WorkReward;
+  workRisk?: WorkRisk;
   requires?: Condition[];
   resultTexts: string[];
   resultVariants?: { when: Condition[]; text: string }[];
@@ -222,10 +231,15 @@ export type ActivitySelector =
   | { ids: string[] }
   | { kinds: ActivityKind[] };
 
+export type EventEntry =
+  | { kind: 'random' }
+  | { kind: 'workFailure'; activityId: string };
+
 export type EventDef = {
   id: string;
   title: string;
   when: Condition[];
+  entry?: EventEntry;
   after?: ActivitySelector;
   afterNpc?: { ids: string[] };
   afterIdol?: { ids: string[] };

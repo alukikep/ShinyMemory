@@ -310,7 +310,6 @@ export function newGame(seed: number = Date.now()): GameState {
     midExamDone: false,
     finalExamDone: false,
   };
-  addLog(state, '第 1 天。新的三天开始了。', 'info');
   return state;
 }
 

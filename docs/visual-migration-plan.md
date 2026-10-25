@@ -25,7 +25,7 @@ E:\game dev\闪耀色彩页游
 - [ ] C.1：地点角色条头像（可选，暂不做）
 - [x] Phase D：固定侧边栏 / App Shell（调整后的顺序）
 - [x] Phase E：地图与公交视觉（原 D）
-- [ ] Phase F：响应式与可访问性收尾
+- [x] Phase F：响应式与可访问性收尾
 - 后续路线图见 `docs/post-phase-c-roadmap.md`
 
 ## 目标

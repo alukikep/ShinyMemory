@@ -1,4 +1,4 @@
-import { DAY_FLAVOR, FINAL_EXAM, MID_EXAM } from './content/weeks';
+import { FINAL_EXAM, MID_EXAM } from './content/weeks';
 import { neighborsOf } from './content/map';
 import { CONTENT_INDEX } from './contentIndex';
 import {
@@ -189,10 +189,6 @@ function buildPlan(state: GameState): SceneView {
   if (location?.description) {
     blocks.push({ kind: 'p', text: location.description });
   }
-  blocks.push({
-    kind: 'system',
-    text: DAY_FLAVOR[(day - 1) % DAY_FLAVOR.length] ?? '新的一天。',
-  });
   if (state.flags.forced_rest) {
     blocks.push({
       kind: 'system',

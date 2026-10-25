@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import type { CSSProperties } from 'react';
+import { useDialogFocus } from '../hooks/useDialogFocus';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { RANK_CURVE } from '../../core/growth';
 import { STAT_LABELS } from '../../core/labels';
@@ -55,6 +56,8 @@ type IdolRosterProps = {
 };
 
 export function IdolRoster({ state, onClose }: IdolRosterProps) {
+  const dialogRef = useDialogFocus<HTMLElement>();
+
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
@@ -78,6 +81,8 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
         role="dialog"
         aria-modal="true"
         aria-label="偶像名册"
+        ref={dialogRef}
+        tabIndex={-1}
       >
         <header className="roster-head">
           <div>

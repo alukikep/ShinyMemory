@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { WALK_EDGES, neighborsOf } from '../../core/content/map';
 import type { GameState } from '../../core/types';
+import { useDialogFocus } from '../hooks/useDialogFocus';
 import { GameIcon, getIconPaths } from './GameIcon';
 
 const LOCATION_ICONS: Record<string, string> = {
@@ -20,6 +21,7 @@ type CityMapProps = {
 
 export function CityMap({ state, onMove, onTransit }: CityMapProps) {
   const [transitKind, setTransitKind] = useState<'bus' | 'taxi' | null>(null);
+  const transitDialogRef = useDialogFocus<HTMLElement>(transitKind !== null);
   const current = state.locationId;
   const adjacent = new Map(
     neighborsOf(current).map((edge) => [
@@ -281,6 +283,8 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
             role="dialog"
             aria-modal="true"
             aria-label={transitLabel}
+            ref={transitDialogRef}
+            tabIndex={-1}
           >
             <header className="transit-dialog-head">
               <div>

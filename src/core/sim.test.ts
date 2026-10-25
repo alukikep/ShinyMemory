@@ -630,6 +630,17 @@ describe('raising sim core', () => {
     expect(scene.idol?.avatar).toBe('./assets/idols/q/mano.png');
   });
 
+  it('does not show day-flavor stage text on the plan page', () => {
+    const scene = buildScene(newGame(1));
+    expect(
+      scene.blocks.some(
+        (block) =>
+          block.text.includes('第一天。') ||
+          block.text.includes('第二天。她开始记住'),
+      ),
+    ).toBe(false);
+  });
+
   it('keeps the location open after hours but hides timed actions', () => {
     const midnight = advanceTime(newGame(1), 16 * 60);
     const scene = buildScene(midnight);

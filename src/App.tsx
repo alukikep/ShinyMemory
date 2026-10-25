@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <aside className="app-sidebar">
+      <aside className="app-sidebar" aria-label="游戏侧边栏">
         <div className="sidebar-brand">
           <div>
             <p className="brand">ShinyMemory</p>
@@ -59,6 +59,7 @@ export default function App() {
             type="button"
             className={`sidebar-nav-item ${scene.phase === 'plan' ? 'active' : ''}`}
             onClick={() => scrollTo('scene-panel')}
+            aria-current={scene.phase === 'plan' ? 'page' : undefined}
           >
             <GameIcon name="home" size={17} />
             <span>当前安排</span>

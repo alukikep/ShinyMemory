@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { WALK_EDGES, neighborsOf } from '../../core/content/map';
 import type { GameState } from '../../core/types';
+import { GameIcon } from './GameIcon';
 
 type CityMapProps = {
   state: GameState;
@@ -69,6 +70,7 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
               className="map-transit-trigger"
               onClick={() => setTransitKind('bus')}
             >
+              <GameIcon name="bus" size={14} />
               公交
               <small>{`${busRoutes.length} 条线路`}</small>
             </button>
@@ -79,6 +81,7 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
               className="map-transit-trigger taxi"
               onClick={() => setTransitKind('taxi')}
             >
+              <GameIcon name="taxi" size={14} />
               出租车
               <small>{`${taxiRoutes.length} 个目的地`}</small>
             </button>
@@ -257,6 +260,12 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
                     disabled={disabled}
                     onClick={() => ride(route.id)}
                   >
+                    <span className="transit-row-icon">
+                      <GameIcon
+                        name={transitKind === 'taxi' ? 'taxi' : 'bus'}
+                        size={18}
+                      />
+                    </span>
                     <span className="transit-row-main">
                       <span className="transit-destination">
                         {destination?.name ?? route.label}

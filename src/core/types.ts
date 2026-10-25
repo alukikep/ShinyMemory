@@ -370,6 +370,7 @@ export type ActionView = {
   command: ActionCommand;
   label: string;
   hint?: string;
+  icon?: string;
   disabled?: boolean;
   disabledReason?: string;
   tone?: ActionTone;

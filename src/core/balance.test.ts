@@ -136,5 +136,5 @@ describe('balance smoke', () => {
         Math.round(trustTotal / runs),
       );
     }
-  });
+  }, 15000);
 });

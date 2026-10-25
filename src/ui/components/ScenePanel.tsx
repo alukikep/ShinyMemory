@@ -5,6 +5,7 @@ import type {
   SceneView,
 } from '../../core/types';
 import { STAT_LABELS } from '../../core/labels';
+import { GameIcon } from './GameIcon';
 
 const ACTOR_ROLE_LABEL: Record<ActorRole, string> = {
   staff: '事务员',
@@ -139,6 +140,9 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
             disabled={action.disabled}
             onClick={() => onAction(action.command)}
           >
+            <span className="action-icon">
+              <GameIcon name={action.icon ?? 'sparkle'} size={19} />
+            </span>
             <span className="action-label">{action.label}</span>
             {action.hint ? <span className="action-hint">{action.hint}</span> : null}
             {action.disabled && action.disabledReason ? (

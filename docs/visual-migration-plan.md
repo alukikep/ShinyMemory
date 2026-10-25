@@ -16,6 +16,15 @@ E:\game dev\闪耀色彩页游
 - `src/components/GameIcon.vue`：线性 SVG 图标库
 - `public/assets/idols/*.png`：透明立绘
 
+## 进度
+
+- [x] Phase A：视觉 token、顶部三色线、图标系统、面板/按钮换肤
+- [ ] Phase B：Hero 场景 + 立绘
+- [ ] Phase C：名册头像与属性色
+- [ ] Phase D：地图与公交视觉
+- [ ] Phase E：固定侧边栏
+- [ ] Phase F：响应式与可访问性收尾
+
 ## 目标
 
 把参考项目的“闪耀色彩页游感”迁移到当前项目，同时保留 ShinyMemory 的开放模拟结构：

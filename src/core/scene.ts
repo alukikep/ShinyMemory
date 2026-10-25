@@ -96,6 +96,36 @@ function buildActorViews(state: GameState): ActorView[] {
   });
 }
 
+const ACTIVITY_ICONS: Record<string, string> = {
+  vocal: 'mic',
+  dance: 'music',
+  expression: 'sparkle',
+  work: 'mic',
+  tv_work: 'star',
+  music_work: 'star',
+  rest: 'coffee',
+  sleep: 'moon',
+  free: 'heart',
+  look_around: 'compass',
+};
+
+function activityIcon(activity: ActivityDef): string {
+  return (
+    ACTIVITY_ICONS[activity.id] ??
+    (activity.kind === 'training'
+      ? 'music'
+      : activity.kind === 'work'
+        ? 'mic'
+        : activity.kind === 'rest'
+          ? 'coffee'
+          : activity.kind === 'sleep'
+            ? 'moon'
+            : activity.kind === 'explore'
+              ? 'compass'
+              : 'sparkle')
+  );
+}
+
 function activityActionView(
   state: GameState,
   activity: ActivityDef,
@@ -123,6 +153,7 @@ function activityActionView(
     command: { type: 'activity', activityId: activity.id },
     label: activity.name,
     hint,
+    icon: activityIcon(activity),
     disabled: !availability.ok,
     disabledReason: availability.ok ? undefined : availability.reason,
     tone: activity.kind,

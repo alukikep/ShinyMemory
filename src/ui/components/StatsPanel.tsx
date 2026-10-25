@@ -9,9 +9,20 @@ import type {
   IdolStatKey,
   SharedStatKey,
 } from '../../core/types';
+import { GameIcon } from './GameIcon';
 
 const SHARED_ORDER: SharedStatKey[] = ['stamina', 'stress'];
 const IDOL_ORDER: IdolStatKey[] = ['vocal', 'dance', 'expression', 'trust'];
+const SHARED_ICONS: Record<SharedStatKey, string> = {
+  stamina: 'bolt',
+  stress: 'heart',
+};
+const IDOL_ICONS: Record<IdolStatKey, string> = {
+  vocal: 'mic',
+  dance: 'music',
+  expression: 'sparkle',
+  trust: 'heart',
+};
 
 function StatRow({
   statKey,
@@ -26,7 +37,10 @@ function StatRow({
   return (
     <div className={`stat-row stat-${statKey}`}>
       <div className="stat-line">
-        <span className="stat-name">{STAT_LABELS[statKey]}</span>
+        <span className="stat-name">
+          <GameIcon name={SHARED_ICONS[statKey]} size={12} />
+          {STAT_LABELS[statKey]}
+        </span>
         <span className="stat-value">{Math.round(value)}</span>
       </div>
       <div className="bar">
@@ -52,7 +66,10 @@ function RankRow({
   return (
     <div className={`stat-row stat-${statKey}`}>
       <div className="stat-line">
-        <span className="stat-name">{STAT_LABELS[statKey]}</span>
+        <span className="stat-name">
+          <GameIcon name={IDOL_ICONS[statKey]} size={12} />
+          {STAT_LABELS[statKey]}
+        </span>
         <span className="stat-value">
           {attribute.rank}
           {max ? <small> MAX</small> : <small> · {attribute.exp} / {needed}</small>}
@@ -107,7 +124,10 @@ export function StatsPanel({
         className="roster-button"
         onClick={onOpenRoster}
       >
-        <span>偶像名册</span>
+        <span className="roster-button-label">
+          <GameIcon name="people" size={14} />
+          偶像名册
+        </span>
         <span aria-hidden="true">→</span>
       </button>
 

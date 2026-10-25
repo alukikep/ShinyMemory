@@ -4,6 +4,7 @@ import { formatClock, getDay } from './core/time';
 import { useGameStore } from './app/store';
 import { DebugPanel } from './ui/components/DebugPanel';
 import { CityMap } from './ui/components/CityMap';
+import { GameIcon } from './ui/components/GameIcon';
 import { IdolRoster } from './ui/components/IdolRoster';
 import { LogPanel } from './ui/components/LogPanel';
 import { ScenePanel } from './ui/components/ScenePanel';
@@ -31,19 +32,19 @@ export default function App() {
         </div>
         <div className="topbar-meta">
           <div className="meta-item">
-            <span>天</span>
+            <span><GameIcon name="star" size={11} />天</span>
             <strong>第 {day} 天</strong>
           </div>
           <div className="meta-item">
-            <span>时间</span>
+            <span><GameIcon name="clock" size={11} />时间</span>
             <strong>{formatClock(state.clock.absoluteMinutes)}</strong>
           </div>
           <div className="meta-item">
-            <span>金钱</span>
+            <span><GameIcon name="coin" size={11} />金钱</span>
             <strong>¥{state.money.toLocaleString('zh-CN')}</strong>
           </div>
           <div className="meta-item">
-            <span>行动</span>
+            <span><GameIcon name="flag" size={11} />行动</span>
             <strong>{state.actionsTaken}</strong>
           </div>
           <button

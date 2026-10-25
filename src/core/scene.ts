@@ -13,6 +13,7 @@ import {
 import { canReplaceDay } from './schedule';
 import {
   activityAvailability,
+  activeJobFor,
   checkCondition,
   effectSummary,
   finalScore,
@@ -193,6 +194,13 @@ function jobActionView(
 ): ActionView | undefined {
   const actor = CONTENT_INDEX.actors.get(state.activeIdolId);
   if (!actor) return undefined;
+  if (
+    state.jobs?.some(
+      (entry) => entry.jobId === job.id && entry.idolId === actor.id,
+    )
+  ) {
+    return undefined;
+  }
   const overrides = state.actors[actor.id]?.scheduleOverrides;
   const startDay = getDay(state.clock.absoluteMinutes) + 1;
 
@@ -238,6 +246,22 @@ function buildJobActions(state: GameState): ActionView[] {
   ];
 }
 
+function buildJobOpportunity(state: GameState): ActionView | undefined {
+  const assignment = activeJobFor(state);
+  if (!assignment) return undefined;
+  const job = CONTENT_INDEX.jobs.get(assignment.jobId);
+  if (!job) return undefined;
+
+  return {
+    id: `attend-job:${assignment.id}`,
+    command: { type: 'attendJob', jobId: assignment.id },
+    label: `参与：${job.name}`,
+    hint: `${formatClock(assignment.fromMinute)}–${formatClock(assignment.toMinute)} · ¥${job.pay.toLocaleString('zh-CN')}`,
+    icon: 'star',
+    tone: 'primary',
+  };
+}
+
 function buildPlan(state: GameState): SceneView {
   const location = CONTENT_INDEX.locations.get(state.locationId);
   const blocks: TextBlock[] = [];
@@ -271,6 +295,8 @@ function buildPlan(state: GameState): SceneView {
 
   if (!state.flags.forced_rest) {
     actions.push(...buildJobActions(state));
+    const jobOpportunity = buildJobOpportunity(state);
+    if (jobOpportunity) actions.push(jobOpportunity);
   }
 
   if (actions.length === 0 && actors.length === 0) {

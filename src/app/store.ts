@@ -1,6 +1,11 @@
 import { create } from 'zustand';
 import { MAX_DEBUG_DAY, MINUTES_PER_DAY, START_MINUTE } from '../core/config';
-import { handleCommand, newGame, pruneScheduleOverrides } from '../core/sim';
+import {
+  completeDueJobs,
+  handleCommand,
+  newGame,
+  pruneScheduleOverrides,
+} from '../core/sim';
 import type { ActionCommand, GameState } from '../core/types';
 import { LocalStorageRepository } from '../save/localStorageRepository';
 import type { SaveRepository } from '../save/repository';
@@ -26,6 +31,7 @@ function initialState(): GameState {
   const saved = repository.load();
   if (saved) {
     pruneScheduleOverrides(saved.state);
+    completeDueJobs(saved.state);
     return saved.state;
   }
   return newGame(makeSeed());
@@ -62,6 +68,7 @@ export const useGameStore = create<GameStore>((set) => ({
       const safeDay = Math.max(1, Math.min(MAX_DEBUG_DAY, Math.round(day)));
       next.clock.absoluteMinutes = (safeDay - 1) * MINUTES_PER_DAY + START_MINUTE;
       pruneScheduleOverrides(next);
+      completeDueJobs(next);
       next.phase = 'plan';
       next.pendingActivityId = undefined;
       next.pendingEventId = undefined;

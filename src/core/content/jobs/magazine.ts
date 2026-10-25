@@ -9,6 +9,10 @@ const job: JobDef = {
   toMinute: 16 * 60,
   pay: 1200,
   label: '拍摄',
+  effects: [
+    { kind: 'idolExp', attribute: 'expression', tier: 3 },
+    { kind: 'idolExp', attribute: 'trust', tier: 1 },
+  ],
 };
 
 export default job;

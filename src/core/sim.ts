@@ -44,6 +44,7 @@ import type {
   GameState,
   IdolAttribute,
   IdolStatKey,
+  JobAssignment,
   IdolState,
   LogTone,
   Rank,
@@ -303,6 +304,7 @@ export function newGame(seed: number = Date.now()): GameState {
     activeIdolId: CONTENT_INDEX.startingIdolId,
     money: 3000,
     flags: {},
+    jobs: [],
     eventCooldowns: {},
     log: [],
     phase: 'plan',
@@ -362,6 +364,13 @@ export function acceptJob(
   const actor = getActor(state.activeIdolId);
   const actorState = state.actors[state.activeIdolId];
   if (!job || !actor || !actorState) return state;
+  if (
+    state.jobs?.some(
+      (entry) => entry.jobId === job.id && entry.idolId === actor.id,
+    )
+  ) {
+    return state;
+  }
 
   const currentDay = getDay(state.clock.absoluteMinutes);
   if (!Number.isInteger(day) || day <= currentDay) return state;
@@ -369,14 +378,28 @@ export function acceptJob(
   const check = canReplaceDay(actor, day, actorState.scheduleOverrides);
   if (!check.ok) return state;
 
+  const assignmentId = `job:${job.id}:${actor.id}:${day}`;
   const next = clone(state);
   const nextActor = next.actors[actor.id];
   if (!nextActor) return state;
 
+  next.jobs = [
+    ...(next.jobs ?? []),
+    {
+      id: assignmentId,
+      jobId: job.id,
+      idolId: actor.id,
+      day,
+      fromMinute: job.fromMinute,
+      toMinute: job.toMinute,
+      locationId: job.locationId,
+    },
+  ];
+
   nextActor.scheduleOverrides = [
     ...(nextActor.scheduleOverrides ?? []),
     {
-      id: `job:${job.id}:${actor.id}:${day}`,
+      id: assignmentId,
       day,
       fromMinute: job.fromMinute,
       toMinute: job.toMinute,
@@ -392,6 +415,60 @@ export function acceptJob(
     `接下了《${job.name}》。${formatCalendarDateFromDay(day, false)}，${formatClock(job.fromMinute)}–${formatClock(job.toMinute)}。`,
     'good',
   );
+
+  return next;
+}
+
+export function completeDueJobs(state: GameState): void {
+  if (!state.jobs || state.jobs.length === 0) return;
+  const currentMinutes = state.clock.absoluteMinutes;
+  state.jobs = state.jobs.filter(
+    (job) => currentMinutes < (job.day - 1) * MINUTES_PER_DAY + job.toMinute,
+  );
+}
+
+export function activeJobFor(state: GameState): JobAssignment | undefined {
+  const minute = getMinuteOfDay(state.clock.absoluteMinutes);
+  const day = getDay(state.clock.absoluteMinutes);
+  return state.jobs?.find(
+    (job) =>
+      job.idolId === state.activeIdolId &&
+      job.day === day &&
+      job.locationId === state.locationId &&
+      minute >= job.fromMinute &&
+      minute < job.toMinute,
+  );
+}
+
+export function attendJob(state: GameState, jobId: string): GameState {
+  if (state.phase !== 'plan') return state;
+  const assignment = state.jobs?.find((job) => job.id === jobId);
+  if (!assignment) return state;
+  if (assignment.idolId !== state.activeIdolId) return state;
+  if (assignment.locationId !== state.locationId) return state;
+
+  const minute = getMinuteOfDay(state.clock.absoluteMinutes);
+  if (
+    assignment.day !== getDay(state.clock.absoluteMinutes) ||
+    minute < assignment.fromMinute ||
+    minute >= assignment.toMinute
+  ) {
+    return state;
+  }
+
+  const job = CONTENT_INDEX.jobs.get(assignment.jobId);
+  if (!job) return state;
+
+  const next = clone(state);
+  next.activeIdolId = assignment.idolId;
+  next.money += job.pay;
+  applyEffects(next, job.effects ?? []);
+  next.clock.absoluteMinutes = Math.max(
+    next.clock.absoluteMinutes,
+    (assignment.day - 1) * MINUTES_PER_DAY + assignment.toMinute,
+  );
+  next.jobs = (next.jobs ?? []).filter((entry) => entry.id !== jobId);
+  addLog(next, `你参与了《${job.name}》。`, 'good');
 
   return next;
 }
@@ -841,6 +918,7 @@ export function advanceTime(state: GameState, minutes: number): GameState {
   const next = clone(state);
   next.clock.absoluteMinutes += Math.max(0, minutes);
   pruneScheduleOverrides(next);
+  completeDueJobs(next);
   return next;
 }
 
@@ -1412,6 +1490,9 @@ export function handleCommand(
       if (command.type === 'enterIdol') return enterIdol(state, command.idolId);
       if (command.type === 'acceptJob') {
         return acceptJob(state, command.jobId, command.day);
+      }
+      if (command.type === 'attendJob') {
+        return attendJob(state, command.jobId);
       }
       if (command.type === 'activity') return applyActivity(state, command.activityId);
       return state;

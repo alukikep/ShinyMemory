@@ -32,6 +32,24 @@ describe('phase recovery', () => {
     expect(scene.title).toBe('深夜的练习室');
   });
 
+  it('restores accepted jobs', () => {
+    const state = newGame(1);
+    state.jobs = [
+      {
+        id: 'job:job_magazine:mano:7',
+        jobId: 'job_magazine',
+        idolId: 'mano',
+        day: 7,
+        fromMinute: 10 * 60,
+        toMinute: 16 * 60,
+        locationId: 'studio',
+      },
+    ];
+
+    const restored = roundtrip(state);
+    expect(restored.jobs?.[0]?.id).toBe('job:job_magazine:mano:7');
+  });
+
   it('restores dynamic schedule overrides', () => {
     const state = newGame(1);
     state.actors.mano.scheduleOverrides = [

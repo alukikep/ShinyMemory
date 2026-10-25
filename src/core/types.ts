@@ -89,6 +89,7 @@ export type GameState = {
   activeIdolId: string;
   money: number;
   flags: Record<string, boolean>;
+  jobs?: JobAssignment[];
   eventCooldowns: Record<string, number>;
   log: LogEntry[];
   phase: Phase;
@@ -252,6 +253,17 @@ export type JobDef = {
   toMinute: number;
   pay: number;
   label?: string;
+  effects?: Effect[];
+};
+
+export type JobAssignment = {
+  id: string;
+  jobId: string;
+  idolId: string;
+  day: number;
+  fromMinute: number;
+  toMinute: number;
+  locationId: string;
 };
 
 export type EventChoice = {
@@ -395,6 +407,7 @@ export type ActionCommand =
   | { type: 'train'; idolId: string; activityId: string }
   | { type: 'work'; idolId: string; activityId: string }
   | { type: 'acceptJob'; jobId: string; day: number }
+  | { type: 'attendJob'; jobId: string }
   | { type: 'leaveNpc' }
   | { type: 'leaveIdol' }
   | { type: 'eventChoice'; index: number }

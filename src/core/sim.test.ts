@@ -186,6 +186,7 @@ describe('raising sim core', () => {
     expect(override?.day).toBe(7);
     expect(override?.mode).toBe('replace-day');
     expect(override?.locationId).toBe('studio');
+    expect(accepted.jobs).toHaveLength(1);
 
     const nextScene = buildScene(accepted);
     expect(
@@ -195,6 +196,65 @@ describe('raising sim core', () => {
           action.label.includes('杂志拍摄'),
       ),
     ).toBe(false);
+  });
+
+  it('completes an accepted job automatically without reward or log', () => {
+    const state = newGame(1);
+    const scene = buildScene(state);
+    const jobAction = scene.actions.find(
+      (action) =>
+        action.command.type === 'acceptJob' &&
+        action.label.includes('杂志拍摄'),
+    );
+    if (!jobAction || jobAction.command.type !== 'acceptJob') {
+      throw new Error('expected magazine offer');
+    }
+
+    const accepted = handleCommand(state, jobAction.command);
+    const logLength = accepted.log.length;
+    const after = advanceTime(accepted, 6 * 24 * 60 + 8 * 60);
+
+    expect(after.jobs).toHaveLength(0);
+    expect(after.money).toBe(3000);
+    expect(after.log.length).toBe(logLength);
+  });
+
+  it('participating in a job pays and advances to the end', () => {
+    const state = newGame(1);
+    const scene = buildScene(state);
+    const jobAction = scene.actions.find(
+      (action) =>
+        action.command.type === 'acceptJob' &&
+        action.label.includes('杂志拍摄'),
+    );
+    if (!jobAction || jobAction.command.type !== 'acceptJob') {
+      throw new Error('expected magazine offer');
+    }
+
+    const accepted = handleCommand(state, jobAction.command);
+    const assignment = accepted.jobs?.[0];
+    expect(assignment).toBeDefined();
+    if (!assignment) throw new Error('expected assignment');
+
+    const atStudio = advanceTime(accepted, 6 * 24 * 60 + 2 * 60);
+    atStudio.locationId = 'studio';
+    const jobScene = buildScene(atStudio);
+    expect(
+      jobScene.actions.some((action) => action.label.includes('参与：杂志拍摄')),
+    ).toBe(true);
+
+    const attended = handleCommand(atStudio, {
+      type: 'attendJob',
+      jobId: assignment.id,
+    });
+
+    expect(attended.jobs).toHaveLength(0);
+    expect(attended.money).toBe(4200);
+    expect(attended.log.some((entry) => entry.text.includes('参与了'))).toBe(
+      true,
+    );
+    expect(attended.idols.mano?.stats.expression.exp).toBeGreaterThan(0);
+    expect(formatClock(attended.clock.absoluteMinutes)).toBe('16:00');
   });
 
   it('sleeps until 08:00 and restores stamina by hours slept', () => {

@@ -1188,7 +1188,7 @@ button:focus-visible,
 }
 
 .map-node.current rect {
-  fill: rgba(49, 155, 197, 0.14);
+  fill: #eaf7fd;
   stroke: var(--accent);
 }
 

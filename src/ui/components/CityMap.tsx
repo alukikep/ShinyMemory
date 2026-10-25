@@ -105,7 +105,7 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
 
       <div className="map-canvas">
         <svg
-          viewBox="0 25 500 320"
+          viewBox="0 10 500 170"
           className="map-svg"
           role="img"
           aria-label="地点与步行路线"
@@ -120,32 +120,28 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
               <circle cx="1" cy="1" r="1" fill="#c9dfea" opacity=".72" />
             </pattern>
           </defs>
-          <rect x="0" y="25" width="500" height="320" fill="#f7fbfe" />
+          <rect x="0" y="10" width="500" height="170" fill="#f7fbfe" />
           <rect
             x="0"
-            y="25"
+            y="10"
             width="500"
-            height="320"
+            height="170"
             fill="url(#map-dot-grid)"
           />
           <g className="map-blocks">
-            <rect x="28" y="46" width="70" height="30" rx="4" />
-            <rect x="334" y="46" width="78" height="30" rx="4" />
-            <rect x="30" y="210" width="58" height="25" rx="4" />
-            <rect x="326" y="215" width="84" height="20" rx="4" />
-            <rect x="330" y="300" width="90" height="26" rx="4" />
-            <rect x="42" y="320" width="60" height="18" rx="4" />
+            <rect x="128" y="18" width="28" height="14" rx="3" />
+            <rect x="356" y="18" width="30" height="14" rx="3" />
+            <rect x="128" y="150" width="30" height="14" rx="3" />
+            <rect x="356" y="150" width="30" height="14" rx="3" />
           </g>
           <g className="map-parks">
-            <ellipse cx="452" cy="76" rx="25" ry="18" />
-            <ellipse cx="438" cy="216" rx="21" ry="14" />
-            <ellipse cx="58" cy="116" rx="18" ry="13" />
-            <ellipse cx="450" cy="330" rx="22" ry="12" />
+            <ellipse cx="470" cy="32" rx="16" ry="10" />
+            <ellipse cx="466" cy="148" rx="18" ry="11" />
           </g>
-          <text x="26" y="340" className="map-area-label">
+          <text x="22" y="168" className="map-area-label">
             283 PRODUCTION · ACTIVITY AREA
           </text>
-          <text x="468" y="49" className="map-north-label">
+          <text x="468" y="27" className="map-north-label">
             N ↑
           </text>
 

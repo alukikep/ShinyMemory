@@ -5,8 +5,8 @@ const location: LocationDef = {
   name: '公园',
   description: '车站旁的公园。长椅、喷泉和一群不怕人的鸽子。',
   kind: 'place',
-  mapX: 80,
-  mapY: 190,
+  mapX: 430,
+  mapY: 50,
 };
 
 export default location;

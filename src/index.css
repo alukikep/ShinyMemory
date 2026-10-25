@@ -1070,7 +1070,7 @@ button:focus-visible,
   display: block;
   width: 100%;
   height: auto;
-  max-height: 320px;
+  max-height: 340px;
 }
 
 .map-blocks rect {
@@ -2160,15 +2160,57 @@ button:focus-visible,
 
 @media (max-width: 760px) {
   .workspace-inner {
-    padding: 18px 14px 84px;
+    padding: 16px 14px 84px;
   }
 
   .app-sidebar {
-    padding: 18px 14px 8px;
+    padding: 16px 14px 8px;
   }
 
   .sidebar-brand {
+    margin-bottom: 10px;
+  }
+
+  .sidebar-brand .tagline {
+    display: none;
+  }
+
+  .sidebar-scene {
+    height: 78px;
+  }
+
+  .sidebar-scene-meta {
+    gap: 1px;
+    padding: 4px 8px 5px;
+  }
+
+  .sidebar-scene-block {
+    margin-bottom: 10px;
+  }
+
+  .panel-head {
     margin-bottom: 12px;
+  }
+
+  .stat-group-label {
+    margin: 2px 0 7px;
+  }
+
+  .stat-list {
+    gap: 10px;
+  }
+
+  .idol-summary {
+    margin: 12px 0 10px;
+    padding-top: 10px;
+  }
+
+  .idol-stat-list {
+    display: none;
+  }
+
+  .stat-list.idol-stat-list {
+    display: none;
   }
 
   .topbar {

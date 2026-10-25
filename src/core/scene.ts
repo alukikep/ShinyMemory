@@ -213,7 +213,7 @@ function jobActionView(
       label: `接下：${job.name}`,
       hint: `${formatCalendarDateFromDay(day, false)} · ${formatClock(job.fromMinute)}–${formatClock(job.toMinute)} · ¥${job.pay.toLocaleString('zh-CN')}`,
       icon: 'star',
-      tone: 'primary',
+      tone: 'work',
     };
   }
 

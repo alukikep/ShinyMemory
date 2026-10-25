@@ -3,10 +3,10 @@ import type { MapEdgeDef } from '../types';
 export const WALK_EDGES: MapEdgeDef[] = [
   { from: 'home', to: 'station', minutes: 10 },
   { from: 'station', to: 'office', minutes: 5 },
+  { from: 'office', to: 'park', minutes: 8 },
+  { from: 'home', to: 'shopping_street', minutes: 6 },
   { from: 'station', to: 'practice_room', minutes: 10 },
   { from: 'practice_room', to: 'studio', minutes: 4 },
-  { from: 'station', to: 'park', minutes: 12 },
-  { from: 'practice_room', to: 'shopping_street', minutes: 6 },
 ];
 
 export function neighborsOf(locationId: string): MapEdgeDef[] {

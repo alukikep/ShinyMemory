@@ -103,7 +103,7 @@ export function StatsPanel({
       </div>
 
       <p className="stat-group-label">共享状态</p>
-      <div className="stat-list">
+      <div className="stat-list shared-stat-list">
         {SHARED_ORDER.map((key) => (
           <StatRow key={key} statKey={key} value={state.shared[key]} />
         ))}
@@ -131,7 +131,7 @@ export function StatsPanel({
           <span className="idol-summary-unit">{idolDef?.unit ?? ''}</span>
         </div>
       </div>
-      <div className="stat-list">
+      <div className="stat-list idol-stat-list">
         {IDOL_ORDER.map((key) => (
           <RankRow key={key} statKey={key} attribute={idol.stats[key]} />
         ))}

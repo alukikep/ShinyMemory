@@ -368,7 +368,6 @@ describe('raising sim core', () => {
       'home',
       'office',
       'practice_room',
-      'park',
     ]);
   });
 
@@ -761,6 +760,7 @@ describe('raising sim core', () => {
     expect(scene.blocks.some((block) => block.text.includes('关门'))).toBe(false);
     expect(scene.locations?.map((location) => location.id)).toEqual([
       'station',
+      'park',
     ]);
   });
 });

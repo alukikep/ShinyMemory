@@ -63,6 +63,10 @@ const ICON_PATHS: Record<string, string[]> = {
     'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18',
     'M12 7v5l3 2',
   ],
+  calendar: [
+    'M4 5h16v16H4V5Z',
+    'M8 3v4m8-4v4M4 10h16',
+  ],
   map: [
     'm3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Z',
     'M9 3v16m6-14v16',

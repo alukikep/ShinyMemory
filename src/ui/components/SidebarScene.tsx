@@ -30,11 +30,14 @@ export function SidebarScene({ state, hero }: SidebarSceneProps) {
         </div>
       </div>
       <div className="sidebar-scene-meta">
-        <span>
-          <GameIcon name="clock" size={11} />第 {day} 天 ·{' '}
+        <span className="sidebar-scene-date">
+          <GameIcon name="calendar" size={11} />第 {day} 天
+        </span>
+        <span className="sidebar-scene-time">
+          <GameIcon name="clock" size={11} />
           {formatClock(state.clock.absoluteMinutes)}
         </span>
-        <span>
+        <span className="sidebar-scene-money">
           <GameIcon name="coin" size={11} />¥
           {state.money.toLocaleString('zh-CN')}
         </span>

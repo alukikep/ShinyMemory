@@ -40,9 +40,7 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
 
       {scene.locations && scene.locations.length > 0 ? (
         <div className="location-tabs">
-          {scene.locations
-            .filter((location) => location.current || location.open)
-            .map((location) => (
+          {scene.locations.map((location) => (
             <button
               key={location.id}
               type="button"
@@ -51,6 +49,7 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
               onClick={() => onMove?.(location.id)}
             >
               {location.name}
+              {!location.current ? <small>{location.minutes} 分</small> : null}
             </button>
           ))}
         </div>

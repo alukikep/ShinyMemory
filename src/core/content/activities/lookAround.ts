@@ -5,6 +5,7 @@ const card: ActivityDef = {
   name: '环顾四周',
   description: '花一点时间看看这个地方。也许会发现什么。',
   kind: 'explore',
+  locations: ['office', 'practice_room', 'studio', 'home'],
   durationMinutes: 30,
   timeWindows: [{ fromMinute: 8 * 60, toMinute: 22 * 60 }],
   cost: { stamina: 5 },

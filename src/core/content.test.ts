@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, IDOLS, LOCATIONS } from './content';
+import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, IDOLS, LOCATIONS, WALK_EDGES } from './content';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityKind, Condition, EventDef } from './types';
 
@@ -74,9 +74,9 @@ describe('content integrity', () => {
     expect(new Set(endingIds).size).toBe(endingIds.length);
   });
 
-  it('has four unique locations and a starting location', () => {
+  it('has five unique locations and a starting location', () => {
     const ids = LOCATIONS.map((location) => location.id);
-    expect(ids).toHaveLength(4);
+    expect(ids).toHaveLength(5);
     expect(new Set(ids).size).toBe(ids.length);
     expect(CONTENT_INDEX.startingLocationId).toBe('office');
     expect(CONTENT_INDEX.locations.has('office')).toBe(true);
@@ -211,17 +211,6 @@ describe('content integrity', () => {
     }
   });
 
-  it('keeps location open hours in range', () => {
-    for (const location of LOCATIONS) {
-      for (const window of location.openHours ?? []) {
-        expect(window.fromMinute).toBeGreaterThanOrEqual(0);
-        expect(window.fromMinute).toBeLessThan(24 * 60);
-        expect(window.toMinute).toBeGreaterThanOrEqual(0);
-        expect(window.toMinute).toBeLessThan(24 * 60);
-      }
-    }
-  });
-
   it('references existing locations from activities', () => {
     const locationIds = new Set(LOCATIONS.map((location) => location.id));
     for (const activity of ACTIVITIES) {
@@ -233,21 +222,44 @@ describe('content integrity', () => {
     }
   });
 
-  it('gives every location at least one activity', () => {
+  it('gives every place at least one activity and leaves the station bare', () => {
     for (const location of LOCATIONS) {
       const activities = CONTENT_INDEX.activitiesByLocation.get(location.id);
-      expect(activities?.length ?? 0).toBeGreaterThan(0);
+      if (location.kind === 'station') {
+        expect(activities?.length ?? 0).toBe(0);
+      } else {
+        expect(activities?.length ?? 0).toBeGreaterThan(0);
+      }
     }
   });
 
-  it('makes look_around available in every location', () => {
+  it('makes look_around available in every place', () => {
     const lookAround = ACTIVITIES.find((activity) => activity.id === 'look_around');
     expect(lookAround?.kind).toBe('explore');
-    for (const location of LOCATIONS) {
+    for (const location of LOCATIONS.filter(
+      (entry) => entry.kind !== 'station',
+    )) {
       expect(
         CONTENT_INDEX.activitiesByLocation
           .get(location.id)
           ?.some((activity) => activity.id === 'look_around'),
+      ).toBe(true);
+    }
+  });
+
+  it('connects every map node with walk edges', () => {
+    const ids = new Set(LOCATIONS.map((location) => location.id));
+    for (const edge of WALK_EDGES) {
+      expect(ids.has(edge.from)).toBe(true);
+      expect(ids.has(edge.to)).toBe(true);
+      expect(edge.minutes).toBeGreaterThan(0);
+    }
+    for (const location of LOCATIONS) {
+      expect(
+        WALK_EDGES.some(
+          (edge) =>
+            edge.from === location.id || edge.to === location.id,
+        ),
       ).toBe(true);
     }
   });
@@ -263,15 +275,19 @@ describe('content integrity', () => {
     }
   });
 
-  it('has at least one location-owned event per location', () => {
-    for (const location of LOCATIONS) {
+  it('has at least one location-owned event per place', () => {
+    for (const location of LOCATIONS.filter(
+      (entry) => entry.kind !== 'station',
+    )) {
       const events = CONTENT_INDEX.eventsByLocation.get(location.id);
       expect(events?.length ?? 0).toBeGreaterThan(0);
     }
   });
 
-  it('gives every location a look_around event', () => {
-    for (const location of LOCATIONS) {
+  it('gives every place a look_around event', () => {
+    for (const location of LOCATIONS.filter(
+      (entry) => entry.kind !== 'station',
+    )) {
       const found = EVENTS.some(
         (event) =>
           topLevelLocations(event).includes(location.id) &&

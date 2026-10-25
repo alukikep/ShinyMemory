@@ -261,19 +261,29 @@ export type EventDef = {
   choices: EventChoice[];
 };
 
+export type LocationKind = 'place' | 'station' | 'street';
+
 export type LocationDef = {
   id: string;
   name: string;
   description: string;
   isStart?: boolean;
-  openHours?: TimeWindow[];
+  kind?: LocationKind;
+  mapX?: number;
+  mapY?: number;
+};
+
+export type MapEdgeDef = {
+  from: string;
+  to: string;
+  minutes: number;
 };
 
 export type LocationView = {
   id: string;
   name: string;
   current: boolean;
-  open: boolean;
+  minutes: number;
 };
 
 export type EventContext = {

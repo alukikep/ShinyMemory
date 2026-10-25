@@ -1,5 +1,6 @@
 import type { ActivityDef, EventDef, EndingDef } from '../types';
 import { LOCATIONS } from './locations';
+import { WALK_EDGES } from './map';
 import { ACTORS } from './actors';
 import { IDOLS } from './idols';
 import vocal from './activities/vocal';
@@ -53,4 +54,4 @@ export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 
-export { ACTORS, IDOLS, LOCATIONS };
+export { ACTORS, IDOLS, LOCATIONS, WALK_EDGES };

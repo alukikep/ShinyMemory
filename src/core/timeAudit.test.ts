@@ -4,8 +4,8 @@ import {
   getActivity,
   getStatValue,
   handleAction,
-  isLocationOpen,
   newGame,
+  travelTo,
 } from './sim';
 import { getDay, getMinuteOfDay } from './time';
 import type { GameState } from './types';
@@ -36,19 +36,18 @@ function run(seed: number): {
         continue;
       }
 
-      if (minute >= 20 * 60) {
+      if (minute >= 20 * 60 || minute < 8 * 60) {
         if (state.locationId !== 'home') {
-          state = handleAction(state, 'move:home');
+          state = travelTo(state, 'home');
           continue;
         }
-        state = handleAction(state, 'look_around');
-        count(day);
+        state = handleAction(state, 'sleep');
         continue;
       }
 
       if (state.flags.forced_rest) {
         if (state.locationId !== 'office') {
-          state = handleAction(state, 'move:office');
+          state = travelTo(state, 'office');
           continue;
         }
         state = handleAction(state, 'rest');
@@ -63,19 +62,9 @@ function run(seed: number): {
 
       let activity = getActivity(target)!;
       const locationId = activity.locations?.[0];
-      if (locationId && !isLocationOpen(state, locationId)) {
-        const wait = ['look_around', 'free']
-          .map((id) => getActivity(id))
-          .find((item) => item && activityAvailability(state, item).ok);
-        if (wait) {
-          state = handleAction(state, wait.id);
-          count(day);
-          continue;
-        }
-      }
 
       if (locationId && state.locationId !== locationId) {
-        state = handleAction(state, `move:${locationId}`);
+        state = travelTo(state, locationId);
         continue;
       }
 
@@ -84,7 +73,7 @@ function run(seed: number): {
         activity = getActivity(target)!;
         const restLocation = activity.locations?.[0];
         if (restLocation && state.locationId !== restLocation) {
-          state = handleAction(state, `move:${restLocation}`);
+          state = travelTo(state, restLocation);
           continue;
         }
       }
@@ -104,7 +93,6 @@ function run(seed: number): {
 
   return { state, actionsByDay, guard };
 }
-
 describe('time balance audit', () => {
   it('reports actions per day across an open week', () => {
     const runs = 20;

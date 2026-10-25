@@ -4,11 +4,11 @@ import {
   getActivity,
   getStatValue,
   handleAction,
-  isLocationOpen,
   newGame,
+  travelTo,
 } from './sim';
 import type { GameState } from './types';
-import { getDay } from './time';
+import { getDay, getMinuteOfDay } from './time';
 
 type Strategy = (state: GameState) => string;
 
@@ -67,7 +67,6 @@ function run(strategy: Strategy, seed: number) {
       const item = getActivity(id);
       if (!item) continue;
       const target = item.locations?.[0] ?? state.locationId;
-      if (!isLocationOpen(state, target)) continue;
       if (
         activityAvailability({ ...state, locationId: target }, item).ok
       ) {
@@ -85,27 +84,33 @@ function run(strategy: Strategy, seed: number) {
       events.set(id, (events.get(id) ?? 0) + 1);
       state = handleAction(state, 'choice:0');
     } else if (state.phase === 'plan') {
+      const minute = getMinuteOfDay(state.clock.absoluteMinutes);
+      if (minute >= 20 * 60 || minute < 8 * 60) {
+        if (state.locationId !== 'home') {
+          state = travelTo(state, 'home');
+          continue;
+        }
+        state = handleAction(state, 'sleep');
+        continue;
+      }
+
       let action = state.flags.forced_rest ? 'rest' : strategy(state);
       let activity = getActivity(action) ?? getActivity('rest')!;
       action = activity.id;
 
       const target = activity.locations?.[0] ?? state.locationId;
-      if (!isLocationOpen(state, target)) {
-        const fallback = findFallback();
-        if (!fallback) break;
-        if (fallback.target !== state.locationId) {
-          state = handleAction(state, `move:${fallback.target}`);
-          continue;
-        }
-        action = fallback.activity.id;
-      } else if (target !== state.locationId) {
-        state = handleAction(state, `move:${target}`);
+      if (target !== state.locationId) {
+        const moved = travelTo(state, target);
+        if (moved.locationId !== target) break;
+        state = moved;
         continue;
       } else if (!activityAvailability(state, activity).ok) {
         const fallback = findFallback();
         if (!fallback) break;
         if (fallback.target !== state.locationId) {
-          state = handleAction(state, `move:${fallback.target}`);
+          const moved = travelTo(state, fallback.target);
+          if (moved.locationId !== fallback.target) break;
+          state = moved;
           continue;
         }
         action = fallback.activity.id;

@@ -15,12 +15,12 @@ import {
   getActor,
   handleAction,
   handleCommand,
-  isLocationOpen,
   moveTo,
   newGame,
   presentActors,
   talkTo,
   topicAvailability,
+  travelTo,
   workRewardPreview,
 } from './sim';
 import { formatClock, getDay } from './time';
@@ -41,7 +41,7 @@ describe('raising sim core', () => {
   });
 
   it('applies activity costs, effects and duration', () => {
-    const state = moveTo(newGame(1), 'practice_room');
+    const state = travelTo(newGame(1), 'practice_room');
     const next = applyActivity(state, 'vocal');
     expect(next.idols.mano?.stats.vocal.rank).toBe('D');
     expect(next.idols.mano?.stats.vocal.exp).toBe(3);
@@ -54,7 +54,7 @@ describe('raising sim core', () => {
   });
 
   it('disables a lesson when money is not enough', () => {
-    const state = moveTo(newGame(1), 'practice_room');
+    const state = travelTo(newGame(1), 'practice_room');
     state.money = 100;
     const activity = getActivity('vocal');
     expect(activity).toBeTruthy();
@@ -66,7 +66,7 @@ describe('raising sim core', () => {
   });
 
   it('disables a lesson when stamina is not enough', () => {
-    const state = moveTo(newGame(1), 'practice_room');
+    const state = travelTo(newGame(1), 'practice_room');
     state.shared.stamina = 5;
     const activity = getActivity('vocal')!;
     const availability = activityAvailability(state, activity);
@@ -77,7 +77,7 @@ describe('raising sim core', () => {
   });
 
   it('shows resource-blocked actions as disabled with a reason', () => {
-    const state = moveTo(newGame(1), 'practice_room');
+    const state = travelTo(newGame(1), 'practice_room');
     state.money = 100;
     const idolPage = handleCommand(state, {
       type: 'enterIdol',
@@ -112,12 +112,12 @@ describe('raising sim core', () => {
 
   it('takes 15 minutes to move and keeps the action count', () => {
     const state = newGame(1);
-    const next = moveTo(state, 'practice_room');
+    const next = travelTo(state, 'practice_room');
     expect(next.locationId).toBe('practice_room');
     expect(next.actionsTaken).toBe(state.actionsTaken);
     expect(next.clock.absoluteMinutes - state.clock.absoluteMinutes).toBe(15);
 
-    const back = moveTo(next, 'office');
+    const back = travelTo(next, 'office');
     expect(back.locationId).toBe('office');
     expect(back.clock.absoluteMinutes - next.clock.absoluteMinutes).toBe(15);
   });
@@ -134,7 +134,7 @@ describe('raising sim core', () => {
       if (locationId === 'studio') {
         state = advanceTime(state, 2 * 60);
       }
-      state = moveTo(state, locationId);
+      state = travelTo(state, locationId);
       state = handleAction(state, 'look_around');
       expect(state.phase).toBe('activityResult');
 
@@ -145,7 +145,7 @@ describe('raising sim core', () => {
   });
 
   it('sleeps until 08:00 and restores stamina by hours slept', () => {
-    let state = moveTo(newGame(1), 'home');
+    let state = travelTo(newGame(1), 'home');
     state = advanceTime(state, 14 * 60);
     state.shared.stamina = 20;
     state.shared.stress = 50;
@@ -178,7 +178,7 @@ describe('raising sim core', () => {
   });
 
   it('blocks training outside its time window', () => {
-    const state = advanceTime(moveTo(newGame(1), 'practice_room'), 13 * 60);
+    const state = advanceTime(travelTo(newGame(1), 'practice_room'), 13 * 60);
     const activity = getActivity('vocal')!;
     const availability = activityAvailability(state, activity);
     expect(availability.ok).toBe(false);
@@ -188,7 +188,7 @@ describe('raising sim core', () => {
   });
 
   it('hides actions outside their time windows', () => {
-    const state = advanceTime(moveTo(newGame(1), 'practice_room'), 13 * 60);
+    const state = advanceTime(travelTo(newGame(1), 'practice_room'), 13 * 60);
     const labels = buildScene(state).actions.map((action) => action.label);
     expect(labels).not.toContain('声乐课');
     expect(labels).toContain('自由时间');
@@ -196,7 +196,7 @@ describe('raising sim core', () => {
   });
 
   it('blocks sleep during the day and allows it at night', () => {
-    const state = moveTo(newGame(1), 'home');
+    const state = travelTo(newGame(1), 'home');
     const sleep = getActivity('sleep')!;
     const blocked = activityAvailability(state, sleep);
     expect(blocked.ok).toBe(false);
@@ -208,18 +208,23 @@ describe('raising sim core', () => {
     expect(activityAvailability(evening, sleep).ok).toBe(true);
   });
 
-  it('opens the studio at 10:00 and blocks moving there earlier', () => {
+  it('moves one adjacent node at a time', () => {
     const morning = newGame(1);
-    expect(isLocationOpen(morning, 'studio')).toBe(false);
-    expect(moveTo(morning, 'studio').locationId).toBe('office');
+    expect(moveTo(morning, 'practice_room').locationId).toBe('office');
 
-    const ten = advanceTime(morning, 2 * 60);
-    expect(isLocationOpen(ten, 'studio')).toBe(true);
-    expect(moveTo(ten, 'studio').locationId).toBe('studio');
+    const station = moveTo(morning, 'station');
+    expect(station.locationId).toBe('station');
+    const practice = moveTo(station, 'practice_room');
+    expect(practice.locationId).toBe('practice_room');
   });
 
   it('accepts typed action commands', () => {
     let state = newGame(1);
+    state = handleCommand(state, {
+      type: 'move',
+      locationId: 'station',
+    });
+    expect(state.locationId).toBe('station');
     state = handleCommand(state, {
       type: 'move',
       locationId: 'practice_room',
@@ -253,7 +258,7 @@ describe('raising sim core', () => {
   });
 
   it('enters Mano at the practice room and trains her', () => {
-    const state = moveTo(newGame(1), 'practice_room');
+    const state = travelTo(newGame(1), 'practice_room');
     expect(presentActors(state).map((actor) => actor.id)).toEqual(['mano']);
 
     const entered = handleCommand(state, {
@@ -278,7 +283,7 @@ describe('raising sim core', () => {
   });
 
   it('trains a specific idol without changing the other', () => {
-    const state = moveTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
     expect(presentActors(state).map((actor) => actor.id)).toEqual([
       'mano',
       'hiori',
@@ -300,7 +305,7 @@ describe('raising sim core', () => {
   });
 
   it('applies event effects to the context idol', () => {
-    let state = moveTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    let state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
     state = handleCommand(state, { type: 'enterIdol', idolId: 'mano' });
     state = handleCommand(state, {
       type: 'train',
@@ -355,7 +360,7 @@ describe('raising sim core', () => {
   });
 
   it('works with an idol at the studio', () => {
-    const state = moveTo(advanceTime(newGame(1), 7 * 60), 'studio');
+    const state = travelTo(advanceTime(newGame(1), 7 * 60), 'studio');
     expect(presentActors(state).map((actor) => actor.id)).toEqual(['mano']);
 
     const entered = handleCommand(state, {
@@ -389,7 +394,7 @@ describe('raising sim core', () => {
   });
 
   it('enforces a hard work rank gate', () => {
-    const state = moveTo(advanceTime(newGame(1), 7 * 60), 'studio');
+    const state = travelTo(advanceTime(newGame(1), 7 * 60), 'studio');
     const music = getActivity('music_work')!;
     expect(activityAvailability(state, music, 'mano').ok).toBe(false);
 
@@ -402,7 +407,7 @@ describe('raising sim core', () => {
     const original = tv.workRisk?.failureByGap;
     tv.workRisk!.failureByGap = { 1: 1, 2: 1, 3: 1 };
     try {
-      const state = moveTo(advanceTime(newGame(1), 12 * 60), 'studio');
+      const state = travelTo(advanceTime(newGame(1), 12 * 60), 'studio');
       state.idols.hiori!.stats.trust.exp = 10;
       const entered = handleCommand(state, {
         type: 'enterIdol',
@@ -439,7 +444,7 @@ describe('raising sim core', () => {
   });
 
   it('routes a successful risky work into its success chain', () => {
-    const state = moveTo(advanceTime(newGame(1), 12 * 60), 'studio');
+    const state = travelTo(advanceTime(newGame(1), 12 * 60), 'studio');
     state.idols.hiori!.stats.expression.rank = 'C';
     const entered = handleCommand(state, {
       type: 'enterIdol',
@@ -529,7 +534,7 @@ describe('raising sim core', () => {
 
   it('does not talk to Hazuki outside the office', () => {
     let state = advanceTime(newGame(1), 60);
-    state = moveTo(state, 'practice_room');
+    state = travelTo(state, 'practice_room');
     const entered = handleAction(state, 'enter:hazuki');
     expect(entered.phase).toBe('plan');
     const talked = handleAction(entered, 'talk:hazuki:greeting');
@@ -550,17 +555,13 @@ describe('raising sim core', () => {
     expect(state.phase).toBe('npc');
   });
 
-  it('hides actions and closed tabs after hours', () => {
+  it('keeps the location open after hours but hides timed actions', () => {
     const midnight = advanceTime(newGame(1), 16 * 60);
-    expect(isLocationOpen(midnight, 'office')).toBe(false);
-
     const scene = buildScene(midnight);
     expect(scene.actions).toHaveLength(0);
-    expect(scene.blocks.some((block) => block.text.includes('关门'))).toBe(true);
-    expect(
-      (scene.locations ?? [])
-        .filter((location) => location.current || location.open)
-        .map((location) => location.id),
-    ).toEqual(['office', 'home']);
+    expect(scene.blocks.some((block) => block.text.includes('关门'))).toBe(false);
+    expect(scene.locations?.map((location) => location.id)).toEqual([
+      'station',
+    ]);
   });
 });

@@ -1,7 +1,6 @@
 import {
   ACTOR_AFFINITY_MAX,
   MINUTES_PER_DAY,
-  MOVE_MINUTES,
   SLEEP_UNTIL_MINUTE,
   START_MINUTE,
 } from './config';
@@ -12,6 +11,7 @@ import {
   createInitialIdolStates,
 } from './contentIndex';
 import { MID_EXAM } from './content/weeks';
+import { walkEdge, walkPath } from './content/map';
 import {
   DEFAULT_FAILURE_BY_GAP,
   DEFAULT_REWARD_MULTIPLIERS,
@@ -341,10 +341,7 @@ export function getActorLocation(
 
 export function isActorPresent(state: GameState, actor: ActorDef): boolean {
   const locationId = getActorLocation(actor, state.clock.absoluteMinutes);
-  return (
-    locationId === state.locationId &&
-    isLocationOpen(state, state.locationId)
-  );
+  return locationId === state.locationId;
 }
 
 export function presentActors(state: GameState): ActorDef[] {
@@ -544,18 +541,6 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
   return parts.join(' · ');
 }
 
-export function isLocationOpen(
-  state: GameState,
-  locationId: string,
-): boolean {
-  const location = CONTENT_INDEX.locations.get(locationId);
-  if (!location) return false;
-  if (!location.openHours || location.openHours.length === 0) return true;
-  return location.openHours.some((window) =>
-    isMinuteInWindow(state.clock.absoluteMinutes, window),
-  );
-}
-
 export function activityAvailability(
   state: GameState,
   activity: ActivityDef,
@@ -570,9 +555,6 @@ export function activityAvailability(
   }
   if (activity.locations && !activity.locations.includes(state.locationId)) {
     return { ok: false, display: 'hide', reason: '不在此地点' };
-  }
-  if (!isLocationOpen(state, state.locationId)) {
-    return { ok: false, display: 'hide', reason: '地点已关门' };
   }
   if (
     activity.timeWindows &&
@@ -620,7 +602,8 @@ export function moveTo(state: GameState, locationId: string): GameState {
   if (state.phase !== 'plan') return state;
   const location = CONTENT_INDEX.locations.get(locationId);
   if (!location || state.locationId === locationId) return state;
-  if (!isLocationOpen(state, locationId)) return state;
+  const edge = walkEdge(state.locationId, locationId);
+  if (!edge) return state;
 
   const next = clone(state);
   next.locationId = locationId;
@@ -628,10 +611,21 @@ export function moveTo(state: GameState, locationId: string): GameState {
   next.pendingEventId = undefined;
   addLog(next, `移动到了${location.name}。`, 'info');
 
-  const advanced = advanceTime(next, MOVE_MINUTES);
+  const advanced = advanceTime(next, edge.minutes);
   if (advanced.pendingExam) return beginPendingExam(advanced);
   advanced.phase = 'plan';
   return advanced;
+}
+
+export function travelTo(state: GameState, locationId: string): GameState {
+  const path = walkPath(state.locationId, locationId);
+  if (path.length === 0) return state;
+  let current = state;
+  for (const step of path.slice(1)) {
+    current = moveTo(current, step);
+    if (current.locationId !== step) return state;
+  }
+  return current;
 }
 
 export function enterNpc(state: GameState, actorId: string): GameState {

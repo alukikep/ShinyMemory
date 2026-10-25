@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MAX_DEBUG_DAY } from '../../core/config';
 import { ACTIVITIES, LOCATIONS } from '../../core/content';
-import { getActivity, getEvent, getTriggerReport, isLocationOpen } from '../../core/sim';
+import { getActivity, getEvent, getTriggerReport } from '../../core/sim';
 import { formatClock, getDay } from '../../core/time';
 import type { GameState, TriggerReport } from '../../core/types';
 
@@ -33,7 +33,6 @@ export function DebugPanel({
   const locationName =
     LOCATIONS.find((location) => location.id === state.locationId)?.name ??
     state.locationId;
-  const locationOpen = isLocationOpen(state, state.locationId);
 
   const reports = getTriggerReport(state, context);
 
@@ -47,7 +46,7 @@ export function DebugPanel({
       <div className="debug-meta">
         第 {getDay(state.clock.absoluteMinutes)} 天 ·{' '}
         {formatClock(state.clock.absoluteMinutes)} · {state.phase} · 地点{' '}
-        {locationName}（{locationOpen ? '开放' : '已关门'}） · 行动{' '}
+        {locationName} · 行动{' '}
         {state.actionsTaken} · ¥
         {state.money.toLocaleString('zh-CN')} · 冷却记录{' '}
         {Object.keys(state.eventCooldowns).length}

@@ -1,5 +1,5 @@
 import { DAY_FLAVOR, FINAL_EXAM, MID_EXAM } from './content/weeks';
-import { LOCATIONS } from './content';
+import { neighborsOf } from './content/map';
 import { CONTENT_INDEX } from './contentIndex';
 import {
   formatClock,
@@ -19,7 +19,6 @@ import {
   getEnding,
   getEvent,
   isActorPresent,
-  isLocationOpen,
   midScore,
   presentActors,
   topicAvailability,
@@ -153,14 +152,7 @@ function buildPlan(state: GameState): SceneView {
       (activity) =>
         activity.kind !== 'training' && activity.kind !== 'work',
     );
-  const locationOpen = isLocationOpen(state, state.locationId);
   const actors = buildActorViews(state);
-  if (!locationOpen) {
-    blocks.push({
-      kind: 'system',
-      text: '这里已经关门了，先回家吧。',
-    });
-  }
 
   const actions: ActionView[] = activities
     .map((activity) => ({
@@ -173,12 +165,25 @@ function buildPlan(state: GameState): SceneView {
     )
     .map(({ activity }) => activityActionView(state, activity));
 
-  if (actions.length === 0 && actors.length === 0 && locationOpen) {
+  if (actions.length === 0 && actors.length === 0) {
     blocks.push({
       kind: 'system',
-      text: '这个时间没有可做的行动。去别的地点看看，或者回家睡觉。',
+      text:
+        location?.kind === 'station'
+          ? '车站没有可做的事。沿着线路前往其他地点吧。'
+          : '这个时间没有可做的行动。去别的地点看看，或者回家睡觉。',
     });
   }
+
+  const locations = neighborsOf(state.locationId).map((edge) => {
+    const id = edge.from === state.locationId ? edge.to : edge.from;
+    return {
+      id,
+      name: CONTENT_INDEX.locations.get(id)?.name ?? id,
+      current: false,
+      minutes: edge.minutes,
+    };
+  });
 
   return {
     id: sceneId(state),
@@ -187,12 +192,7 @@ function buildPlan(state: GameState): SceneView {
     title: `第 ${day} 天 · ${formatClock(state.clock.absoluteMinutes)}`,
     subtitle: `已行动 ${state.actionsTaken} 次`,
     locationName: location?.name,
-    locations: LOCATIONS.map((item) => ({
-      id: item.id,
-      name: item.name,
-      current: item.id === state.locationId,
-      open: isLocationOpen(state, item.id),
-    })),
+    locations,
     actors,
     blocks,
     actions,

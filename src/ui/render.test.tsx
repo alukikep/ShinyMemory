@@ -2,7 +2,7 @@ import { renderToString } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import App from '../App';
 import { buildScene } from '../core/scene';
-import { advanceTime, enterNpc, handleCommand, moveTo, newGame } from '../core/sim';
+import { advanceTime, enterNpc, handleCommand, newGame, travelTo } from '../core/sim';
 import { DebugPanel } from './components/DebugPanel';
 import { IdolRoster } from './components/IdolRoster';
 import { ScenePanel } from './components/ScenePanel';
@@ -15,7 +15,8 @@ describe('app shell', () => {
     expect(html).toContain('第 1 天');
     expect(html).toContain('08:00');
     expect(html).toContain('事务所');
-    expect(html).toContain('练习室');
+    expect(html).toContain('车站');
+    expect(html).not.toContain('练习室');
     expect(html).not.toContain('录音棚');
     expect(html).toContain('休息');
     expect(html).toContain('自由时间');
@@ -24,7 +25,7 @@ describe('app shell', () => {
   });
 
   it('shows resource-blocked actions as disabled with a reason', () => {
-    const state = moveTo(newGame(1), 'practice_room');
+    const state = travelTo(newGame(1), 'practice_room');
     state.money = 100;
     const idolPage = handleCommand(state, {
       type: 'enterIdol',
@@ -71,7 +72,7 @@ describe('app shell', () => {
   });
 
   it('renders Mano training page at the practice room', () => {
-    const practice = moveTo(newGame(1), 'practice_room');
+    const practice = travelTo(newGame(1), 'practice_room');
     const state = handleCommand(practice, {
       type: 'enterIdol',
       idolId: 'mano',
@@ -88,7 +89,7 @@ describe('app shell', () => {
   });
 
   it('renders the idol work page at the studio', () => {
-    const studio = moveTo(advanceTime(newGame(1), 7 * 60), 'studio');
+    const studio = travelTo(advanceTime(newGame(1), 7 * 60), 'studio');
     const state = handleCommand(studio, {
       type: 'enterIdol',
       idolId: 'mano',
@@ -114,7 +115,7 @@ describe('app shell', () => {
   });
 
   it('shows both idols at the practice room at 10:00', () => {
-    const state = moveTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
     const html = renderToString(
       <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
     );

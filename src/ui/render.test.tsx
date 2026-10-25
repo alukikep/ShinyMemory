@@ -86,6 +86,8 @@ describe('app shell', () => {
     expect(html).toContain('声乐课');
     expect(html).toContain('舞蹈课');
     expect(html).toContain('表现课');
+    expect(html).toContain('idol-page-avatar');
+    expect(html).toContain('q/mano.png');
     expect(html).toContain('离开');
   });
 
@@ -111,6 +113,9 @@ describe('app shell', () => {
     expect(html).toContain('偶像名册');
     expect(html).toContain('樱木真乃');
     expect(html).toContain('风野灯织');
+    expect(html).toContain('roster-avatar');
+    expect(html).toContain('q/mano.png');
+    expect(html).toContain('q/hiori.png');
     expect(html).toContain('歌唱');
     expect(html).toContain('当前');
   });
@@ -178,6 +183,8 @@ describe('app shell', () => {
     );
     expect(html).toContain('偶像名册');
     expect(html).toContain('樱木真乃');
+    expect(html).toContain('idol-summary-avatar');
+    expect(html).toContain('q/mano.png');
   });
 
   it('renders the debug panel without crashing', () => {

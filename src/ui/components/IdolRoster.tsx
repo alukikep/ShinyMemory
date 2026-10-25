@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import type { CSSProperties } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { RANK_CURVE } from '../../core/growth';
 import { STAT_LABELS } from '../../core/labels';
@@ -103,17 +104,34 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
             const def = CONTENT_INDEX.idols.get(idol.id);
             const active = idol.id === state.activeIdolId;
             return (
-              <article className="roster-card" key={idol.id}>
-                <div className="roster-card-head">
-                  <div>
-                    <h3>{def?.name ?? idol.id}</h3>
-                    <p>{def?.unit ?? ''}</p>
-                  </div>
-                  {active ? <span className="roster-current">当前</span> : null}
+              <article
+                className={`roster-card ${active ? 'current' : ''}`}
+                key={idol.id}
+                style={
+                  {
+                    '--idol-color': def?.color ?? 'var(--brand)',
+                  } as CSSProperties
+                }
+              >
+                <div className="roster-avatar">
+                  {def?.avatar ? (
+                    <img src={def.avatar} alt={`${def.name}Q版头像`} />
+                  ) : (
+                    <span>{def?.name.slice(0, 1) ?? '?'}</span>
+                  )}
                 </div>
-                {def?.profile ? (
-                  <p className="roster-profile">{def.profile}</p>
-                ) : null}
+                <div className="roster-card-main">
+                  <div className="roster-card-head">
+                    <div>
+                      <h3>{def?.name ?? idol.id}</h3>
+                      <p>{def?.unit ?? ''}</p>
+                    </div>
+                    {active ? <span className="roster-current">当前</span> : null}
+                  </div>
+                  {def?.profile ? (
+                    <p className="roster-profile">{def.profile}</p>
+                  ) : null}
+                </div>
                 <div className="roster-stats">
                   {IDOL_STAT_ORDER.map((key) => (
                     <RankRow

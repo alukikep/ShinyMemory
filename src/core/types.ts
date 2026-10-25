@@ -47,6 +47,7 @@ export type IdolDef = {
   color?: string;
   profile: string;
   portrait?: string;
+  avatar?: string;
   quote?: string;
   isStart?: boolean;
   growth: GrowthProfile;
@@ -405,6 +406,7 @@ export type IdolPageView = {
   unit: string;
   description: string;
   color?: string;
+  avatar?: string;
   stats: IdolStats;
 };
 

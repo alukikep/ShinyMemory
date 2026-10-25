@@ -4,6 +4,7 @@ import type {
   IdolStatKey,
   SceneView,
 } from '../../core/types';
+import type { CSSProperties } from 'react';
 import { STAT_LABELS } from '../../core/labels';
 import { GameIcon } from './GameIcon';
 
@@ -97,13 +98,34 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
       ) : null}
 
       {scene.idol ? (
-        <section className="actor-card npc-page">
-          <div className="actor-head">
-            <span className="actor-name">{scene.idol.name}</span>
-            <span className="actor-role">偶像</span>
-            <span className="actor-affinity">{scene.idol.unit}</span>
+        <section
+          className="actor-card npc-page idol-page-card"
+          style={
+            {
+              '--idol-color': scene.idol.color ?? 'var(--brand)',
+            } as CSSProperties
+          }
+        >
+          <div className="idol-page-head">
+            <div className="idol-page-avatar">
+              {scene.idol.avatar ? (
+                <img
+                  src={scene.idol.avatar}
+                  alt={`${scene.idol.name}Q版头像`}
+                />
+              ) : (
+                <span>{scene.idol.name.slice(0, 1)}</span>
+              )}
+            </div>
+            <div className="idol-page-copy">
+              <div className="actor-head">
+                <span className="actor-name">{scene.idol.name}</span>
+                <span className="actor-role">偶像</span>
+                <span className="actor-affinity">{scene.idol.unit}</span>
+              </div>
+              <p className="actor-description">{scene.idol.description}</p>
+            </div>
           </div>
-          <p className="actor-description">{scene.idol.description}</p>
           <div className="idol-stat-strip">
             {IDOL_STAT_ORDER.map((key) => (
               <span className={`idol-stat idol-stat-${key}`} key={key}>

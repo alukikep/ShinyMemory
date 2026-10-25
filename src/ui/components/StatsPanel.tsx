@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { RANK_CURVE } from '../../core/growth';
 import { getActiveIdol } from '../../core/sim';
@@ -110,9 +111,27 @@ export function StatsPanel({
         ))}
       </div>
 
-      <div className="idol-summary">
-        <span className="idol-summary-name">{idolDef?.name ?? state.activeIdolId}</span>
-        <span className="idol-summary-unit">{idolDef?.unit ?? ''}</span>
+      <div
+        className="idol-summary"
+        style={
+          {
+            '--idol-color': idolDef?.color ?? 'var(--brand)',
+          } as CSSProperties
+        }
+      >
+        <div className="idol-summary-avatar">
+          {idolDef?.avatar ? (
+            <img src={idolDef.avatar} alt={`${idolDef.name}Q版头像`} />
+          ) : (
+            <span>{idolDef?.name.slice(0, 1) ?? '?'}</span>
+          )}
+        </div>
+        <div className="idol-summary-copy">
+          <span className="idol-summary-name">
+            {idolDef?.name ?? state.activeIdolId}
+          </span>
+          <span className="idol-summary-unit">{idolDef?.unit ?? ''}</span>
+        </div>
       </div>
       <div className="stat-list">
         {IDOL_ORDER.map((key) => (

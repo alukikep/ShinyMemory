@@ -318,24 +318,58 @@ button {
 
 .idol-summary {
   display: flex;
-  align-items: baseline;
-  gap: 7px;
-  margin: 17px 0 10px;
+  align-items: center;
+  gap: 10px;
+  margin: 17px 0 12px;
   padding-top: 13px;
   border-top: 1px solid var(--line);
 }
 
+.idol-summary-avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 55px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 2px solid var(--idol-color, var(--brand));
+  border-radius: 8px;
+  background: #eef8fc;
+  color: var(--brand);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.idol-summary-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.idol-summary-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
 .idol-summary-name {
+  overflow: hidden;
   color: var(--ink);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .idol-summary-unit {
+  overflow: hidden;
   color: var(--faint);
   font-size: 9px;
   letter-spacing: 0.06em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .stat-list {
@@ -528,10 +562,57 @@ button {
 }
 
 .roster-card {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: start;
+  gap: 0 12px;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.55);
-  padding: 15px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 14px;
+}
+
+.roster-card.current {
+  border-color: var(--idol-color, var(--brand));
+  background: color-mix(
+    in srgb,
+    var(--idol-color, var(--brand)) 7%,
+    white
+  );
+}
+
+.roster-avatar {
+  display: grid;
+  place-items: center;
+  grid-row: 1;
+  width: 78px;
+  height: 96px;
+  overflow: hidden;
+  border: 2px solid var(--idol-color, var(--brand));
+  border-radius: 10px;
+  background: #eef8fc;
+  color: var(--brand);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.roster-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.roster-card-main {
+  min-width: 0;
+}
+
+.roster-stats {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 .roster-card-head {
@@ -569,12 +650,6 @@ button {
   color: var(--muted);
   font-size: 11px;
   line-height: 1.7;
-}
-
-.roster-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .map-panel {
@@ -1241,6 +1316,46 @@ button {
   margin-top: 18px;
 }
 
+.idol-page-card {
+  border-left: 3px solid var(--idol-color, var(--brand));
+}
+
+.idol-page-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.idol-page-avatar {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 70px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 2px solid var(--idol-color, var(--brand));
+  border-radius: 9px;
+  background: #eef8fc;
+  color: var(--brand);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.idol-page-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.idol-page-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.idol-page-copy .actor-description {
+  margin-bottom: 8px;
+}
+
 .actor-head {
   display: flex;
   align-items: baseline;
@@ -1590,6 +1705,26 @@ button {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 11px 16px;
+  }
+
+  .idol-summary-avatar {
+    width: 40px;
+    height: 50px;
+  }
+
+  .roster-card {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 0 10px;
+  }
+
+  .roster-avatar {
+    width: 64px;
+    height: 80px;
+  }
+
+  .idol-page-avatar {
+    width: 48px;
+    height: 60px;
   }
 }
 

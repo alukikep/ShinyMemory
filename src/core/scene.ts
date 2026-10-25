@@ -531,6 +531,7 @@ function buildIdolPage(state: GameState): SceneView {
       unit: idolDef.unit,
       description: idolDef.profile,
       color: idolDef.color,
+      avatar: idolDef.avatar,
       stats: idolState.stats,
     },
     actions: [

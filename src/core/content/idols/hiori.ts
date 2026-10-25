@@ -7,6 +7,7 @@ const idol: IdolDef = {
   color: '#8fa8d8',
   profile: 'illumination STARS 的成员。冷静、认真，对自己要求很高。',
   portrait: './assets/idols/hiori-portrait.png',
+  avatar: './assets/idols/q/hiori.png',
   quote: '……我会认真做的。',
   growth: {
     vocal: { initial: 'F', max: 'B' },

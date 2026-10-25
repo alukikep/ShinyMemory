@@ -620,6 +620,16 @@ describe('raising sim core', () => {
     expect(buildScene(practice).hero?.idolId).toBe('hiori');
   });
 
+  it('exposes the Q avatar on the idol page', () => {
+    const practice = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    const entered = handleCommand(practice, {
+      type: 'enterIdol',
+      idolId: 'mano',
+    });
+    const scene = buildScene(entered);
+    expect(scene.idol?.avatar).toBe('./assets/idols/q/mano.png');
+  });
+
   it('keeps the location open after hours but hides timed actions', () => {
     const midnight = advanceTime(newGame(1), 16 * 60);
     const scene = buildScene(midnight);

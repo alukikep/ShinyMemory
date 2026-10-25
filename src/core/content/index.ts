@@ -36,6 +36,9 @@ import hazukiNap from './events/locations/office/hazukiNap';
 import manoSoftVoice from './events/idols/manoSoftVoice';
 import hioriExtraStep from './events/idols/hioriExtraStep';
 import workFailureTv from './events/work/workFailureTv';
+import tvSuccess from './events/work/tvSuccess';
+import tvAfterglow from './events/work/tvAfterglow';
+import tvFailureAftermath from './events/work/tvFailureAftermath';
 import deskScript from './events/locations/office/deskScript';
 import mirrorNote from './events/locations/practice_room/mirrorNote';
 import headphones from './events/locations/studio/headphones';
@@ -46,7 +49,7 @@ import badEnding from './endings/bad';
 
 export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep];
 
-export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv];
+export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath];
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 

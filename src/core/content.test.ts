@@ -152,25 +152,51 @@ describe('content integrity', () => {
     }
   });
 
-  it('validates work risk and failure event references', () => {
+  it('validates work risk, outcome and chain event references', () => {
     for (const activity of ACTIVITIES) {
       if (!activity.workRisk) continue;
       const risk = activity.workRisk;
-      if (risk.minRank && risk.safeRank === risk.minRank) {
-        expect(risk.failureEventId).toBeUndefined();
-        continue;
+      if (risk.failureEventId) {
+        const event = CONTENT_INDEX.events.get(risk.failureEventId);
+        expect(event?.entry).toEqual({
+          kind: 'workOutcome',
+          activityId: activity.id,
+          outcome: 'failure',
+        });
+        expect(
+          CONTENT_INDEX.globalEvents.some(
+            (entry) => entry.id === risk.failureEventId,
+          ),
+        ).toBe(false);
       }
-      expect(risk.failureEventId).toBeTruthy();
-      const event = CONTENT_INDEX.events.get(risk.failureEventId!);
-      expect(event?.entry).toEqual({
-        kind: 'workFailure',
-        activityId: activity.id,
-      });
-      expect(
-        CONTENT_INDEX.globalEvents.some(
-          (entry) => entry.id === risk.failureEventId,
-        ),
-      ).toBe(false);
+      if (risk.successEventId) {
+        const event = CONTENT_INDEX.events.get(risk.successEventId);
+        expect(event?.entry).toEqual({
+          kind: 'workOutcome',
+          activityId: activity.id,
+          outcome: 'success',
+        });
+        expect(
+          CONTENT_INDEX.globalEvents.some(
+            (entry) => entry.id === risk.successEventId,
+          ),
+        ).toBe(false);
+      }
+    }
+
+    for (const event of EVENTS) {
+      const nextIds = [
+        event.nextEventId,
+        ...event.choices.map((choice) => choice.nextEventId),
+      ].filter(Boolean) as string[];
+      for (const nextId of nextIds) {
+        const next = CONTENT_INDEX.events.get(nextId);
+        expect(next, `${event.id} -> ${nextId}`).toBeTruthy();
+        expect(next?.entry?.kind).toBe('chain');
+        expect(
+          CONTENT_INDEX.globalEvents.some((entry) => entry.id === nextId),
+        ).toBe(false);
+      }
     }
   });
 
@@ -291,8 +317,8 @@ describe('content integrity', () => {
     }
   });
 
-  it('has 28 events and 3 endings', () => {
-    expect(EVENTS).toHaveLength(28);
+  it('has 31 events and 3 endings', () => {
+    expect(EVENTS).toHaveLength(31);
     expect(ENDINGS).toHaveLength(3);
   });
 

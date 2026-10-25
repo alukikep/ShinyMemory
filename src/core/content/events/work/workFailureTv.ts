@@ -3,7 +3,12 @@ import type { EventDef } from '../../../types';
 const event: EventDef = {
   id: 'evt.work_failure_tv',
   title: '录制事故',
-  entry: { kind: 'workFailure', activityId: 'tv_work' },
+  entry: {
+    kind: 'workOutcome',
+    activityId: 'tv_work',
+    outcome: 'failure',
+  },
+  nextEventId: 'evt.tv_failure_aftermath',
   when: [],
   text: '录制中途出了问题。现场安静下来，工作人员看向你们。',
   choices: [

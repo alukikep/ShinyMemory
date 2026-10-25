@@ -31,6 +31,7 @@ export type WorkRisk = {
   minRank?: Rank;
   safeRank: Rank;
   failureEventId?: string;
+  successEventId?: string;
   failureByGap?: Partial<Record<number, number>>;
 };
 
@@ -94,6 +95,7 @@ export type GameState = {
   pendingActivityId?: string;
   pendingEventId?: string;
   pendingEventIdolId?: string;
+  pendingChainEventId?: string;
   pendingActorId?: string;
   pendingIdolId?: string;
   pendingTopicId?: string;
@@ -225,6 +227,7 @@ export type EventChoice = {
   durationMinutes?: number;
   effects: Effect[];
   result: string;
+  nextEventId?: string;
 };
 
 export type ActivitySelector =
@@ -233,13 +236,19 @@ export type ActivitySelector =
 
 export type EventEntry =
   | { kind: 'random' }
-  | { kind: 'workFailure'; activityId: string };
+  | {
+      kind: 'workOutcome';
+      activityId: string;
+      outcome: 'success' | 'failure';
+    }
+  | { kind: 'chain' };
 
 export type EventDef = {
   id: string;
   title: string;
   when: Condition[];
   entry?: EventEntry;
+  nextEventId?: string;
   after?: ActivitySelector;
   afterNpc?: { ids: string[] };
   afterIdol?: { ids: string[] };

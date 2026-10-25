@@ -110,7 +110,7 @@ function buildIndex(): ContentIndex {
       !event.after &&
       !event.afterNpc &&
       !event.afterIdol &&
-      event.entry?.kind !== 'workFailure'
+      (!event.entry || event.entry.kind === 'random')
     ) {
       globalEvents.push(event);
     }

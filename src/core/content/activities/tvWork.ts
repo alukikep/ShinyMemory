@@ -23,6 +23,7 @@ const card: ActivityDef = {
     minRank: 'F',
     safeRank: 'C',
     failureEventId: 'evt.work_failure_tv',
+    successEventId: 'evt.tv_success',
     failureByGap: { 1: 0.35, 2: 0.6, 3: 0.8 },
   },
   resultTexts: [

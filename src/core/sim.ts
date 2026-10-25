@@ -873,6 +873,18 @@ export function applyActivity(
     return advanced;
   }
 
+  const successEventId = activity.workRisk?.successEventId;
+  if (successEventId && getEvent(successEventId)) {
+    advanced.pendingActivityId = undefined;
+    advanced.pendingIdolId = idolId;
+    advanced.pendingEventId = successEventId;
+    advanced.pendingEventIdolId = idolId;
+    advanced.phase = 'event';
+    advanced.lastResult = undefined;
+    addLog(advanced, `${activity.name}：工作成功。`, 'good');
+    return advanced;
+  }
+
   const result = pickActivityResult(advanced, activity, rng);
   advanced.lastResult = reward
     ? `${result} 收入 ¥${reward.money}。`
@@ -1018,6 +1030,7 @@ export function checkEventCandidates(
   next.eventCooldowns[picked.id] = next.actionsTaken;
   next.pendingEventId = picked.id;
   next.pendingEventIdolId = ctx.idolId;
+  next.pendingChainEventId = undefined;
   next.phase = 'event';
   addLog(next, `事件：${picked.title}`, 'info');
   return { state: next, event: picked };
@@ -1104,6 +1117,8 @@ export function applyEventChoice(state: GameState, index: number): GameState {
       ? advanceTime(next, choice.durationMinutes)
       : next;
   advanced.phase = 'eventResult';
+  advanced.pendingChainEventId =
+    choice.nextEventId ?? event.nextEventId;
   advanced.lastResult = formatIdolText(
     choice.result,
     state.pendingEventIdolId,
@@ -1232,10 +1247,20 @@ function continueFromActivity(state: GameState): GameState {
 
 function continueFromEvent(state: GameState): GameState {
   const next = clone(state);
-  next.pendingEventId = undefined;
-  next.pendingEventIdolId = undefined;
+  const chainEventId = next.pendingChainEventId;
+  next.pendingChainEventId = undefined;
   next.pendingActivityId = undefined;
   next.pendingTopicId = undefined;
+
+  if (chainEventId && getEvent(chainEventId)) {
+    next.pendingEventId = chainEventId;
+    next.phase = 'event';
+    next.lastResult = undefined;
+    return next;
+  }
+
+  next.pendingEventId = undefined;
+  next.pendingEventIdolId = undefined;
 
   if (next.pendingExam) return beginPendingExam(next);
 

@@ -422,6 +422,13 @@ describe('raising sim core', () => {
       const resolved = applyEventChoice(worked, 0);
       expect(resolved.money).toBe(3000);
       expect(resolved.idols.hiori?.stats.trust.exp).toBe(7);
+      expect(resolved.pendingChainEventId).toBe(
+        'evt.tv_failure_aftermath',
+      );
+
+      const chained = handleCommand(resolved, { type: 'continue' });
+      expect(chained.phase).toBe('event');
+      expect(chained.pendingEventId).toBe('evt.tv_failure_aftermath');
     } finally {
       if (original) {
         tv.workRisk!.failureByGap = original;
@@ -429,6 +436,30 @@ describe('raising sim core', () => {
         delete tv.workRisk!.failureByGap;
       }
     }
+  });
+
+  it('routes a successful risky work into its success chain', () => {
+    const state = moveTo(advanceTime(newGame(1), 12 * 60), 'studio');
+    state.idols.hiori!.stats.expression.rank = 'C';
+    const entered = handleCommand(state, {
+      type: 'enterIdol',
+      idolId: 'hiori',
+    });
+    const worked = handleCommand(entered, {
+      type: 'work',
+      idolId: 'hiori',
+      activityId: 'tv_work',
+    });
+
+    expect(worked.phase).toBe('event');
+    expect(worked.pendingEventId).toBe('evt.tv_success');
+    expect(worked.money).toBe(5760);
+
+    const resolved = applyEventChoice(worked, 0);
+    expect(resolved.pendingChainEventId).toBe('evt.tv_afterglow');
+    const chained = handleCommand(resolved, { type: 'continue' });
+    expect(chained.phase).toBe('event');
+    expect(chained.pendingEventId).toBe('evt.tv_afterglow');
   });
 
   it('shows Hazuki and Tsutomu on their office schedules', () => {

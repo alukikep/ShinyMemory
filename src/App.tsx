@@ -5,6 +5,7 @@ import { useGameStore } from './app/store';
 import { DebugPanel } from './ui/components/DebugPanel';
 import { IdolRoster } from './ui/components/IdolRoster';
 import { LogPanel } from './ui/components/LogPanel';
+import { MapOverlay } from './ui/components/MapOverlay';
 import { ScenePanel } from './ui/components/ScenePanel';
 import { StatsPanel } from './ui/components/StatsPanel';
 
@@ -15,6 +16,7 @@ export default function App() {
   const debugForceEvent = useGameStore((store) => store.debugForceEvent);
   const debugJumpDay = useGameStore((store) => store.debugJumpDay);
   const [rosterOpen, setRosterOpen] = useState(false);
+  const [mapOpen, setMapOpen] = useState(false);
   const debug =
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).has('debug');
@@ -58,7 +60,11 @@ export default function App() {
       </header>
 
       <main className="layout">
-        <StatsPanel state={state} onOpenRoster={() => setRosterOpen(true)} />
+        <StatsPanel
+          state={state}
+          onOpenRoster={() => setRosterOpen(true)}
+          onOpenMap={() => setMapOpen(true)}
+        />
         <ScenePanel
           scene={scene}
           onAction={act}
@@ -69,6 +75,14 @@ export default function App() {
 
       {rosterOpen ? (
         <IdolRoster state={state} onClose={() => setRosterOpen(false)} />
+      ) : null}
+
+      {mapOpen ? (
+        <MapOverlay
+          state={state}
+          onMove={(locationId) => act({ type: 'move', locationId })}
+          onClose={() => setMapOpen(false)}
+        />
       ) : null}
 
       {debug ? (

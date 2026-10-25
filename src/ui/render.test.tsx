@@ -5,6 +5,7 @@ import { buildScene } from '../core/scene';
 import { advanceTime, enterNpc, handleCommand, newGame, travelTo } from '../core/sim';
 import { DebugPanel } from './components/DebugPanel';
 import { IdolRoster } from './components/IdolRoster';
+import { MapOverlay } from './components/MapOverlay';
 import { ScenePanel } from './components/ScenePanel';
 import { StatsPanel } from './components/StatsPanel';
 
@@ -114,6 +115,20 @@ describe('app shell', () => {
     expect(html).toContain('当前');
   });
 
+  it('renders the city map with adjacent destinations', () => {
+    const html = renderToString(
+      <MapOverlay
+        state={newGame(1)}
+        onMove={() => {}}
+        onClose={() => {}}
+      />,
+    );
+    expect(html).toContain('城市地图');
+    expect(html).toContain('事务所');
+    expect(html).toContain('车站');
+    expect(html).toContain('5 分钟');
+  });
+
   it('shows both idols at the practice room at 10:00', () => {
     const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
     const html = renderToString(
@@ -124,11 +139,16 @@ describe('app shell', () => {
     expect(html).toContain('训练');
   });
 
-  it('shows the roster button in the sidebar', () => {
+  it('shows roster and map buttons in the sidebar', () => {
     const html = renderToString(
-      <StatsPanel state={newGame(1)} onOpenRoster={() => {}} />,
+      <StatsPanel
+        state={newGame(1)}
+        onOpenRoster={() => {}}
+        onOpenMap={() => {}}
+      />,
     );
     expect(html).toContain('偶像名册');
+    expect(html).toContain('城市地图');
     expect(html).toContain('樱木真乃');
   });
 

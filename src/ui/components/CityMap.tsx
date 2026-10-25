@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { WALK_EDGES, neighborsOf } from '../../core/content/map';
 import type { GameState } from '../../core/types';
@@ -5,9 +6,11 @@ import type { GameState } from '../../core/types';
 type CityMapProps = {
   state: GameState;
   onMove: (locationId: string) => void;
+  onTransit: (routeId: string) => void;
 };
 
-export function CityMap({ state, onMove }: CityMapProps) {
+export function CityMap({ state, onMove, onTransit }: CityMapProps) {
+  const [transitOpen, setTransitOpen] = useState(false);
   const current = state.locationId;
   const adjacent = new Map(
     neighborsOf(current).map((edge) => [
@@ -17,10 +20,29 @@ export function CityMap({ state, onMove }: CityMapProps) {
   );
   const locations = [...CONTENT_INDEX.locations.values()];
   const currentLocation = CONTENT_INDEX.locations.get(current);
+  const busRoutes = (
+    CONTENT_INDEX.transitRoutesByLocation.get(current) ?? []
+  ).filter((route) => route.kind === 'bus');
+
+  useEffect(() => {
+    if (!transitOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setTransitOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [transitOpen]);
 
   const moveTo = (locationId: string) => {
     if (!adjacent.has(locationId)) return;
     onMove(locationId);
+  };
+
+  const ride = (routeId: string) => {
+    const route = busRoutes.find((entry) => entry.id === routeId);
+    if (!route || state.money < route.fare) return;
+    onTransit(routeId);
+    setTransitOpen(false);
   };
 
   return (
@@ -33,6 +55,16 @@ export function CityMap({ state, onMove }: CityMapProps) {
             当前：{currentLocation?.name ?? current}
           </p>
         </div>
+        {busRoutes.length > 0 ? (
+          <button
+            type="button"
+            className="map-transit-trigger"
+            onClick={() => setTransitOpen(true)}
+          >
+            公交
+            <small>{`${busRoutes.length} 条线路`}</small>
+          </button>
+        ) : null}
       </div>
 
       <div className="map-canvas">
@@ -157,6 +189,73 @@ export function CityMap({ state, onMove }: CityMapProps) {
           </button>
         ))}
       </div>
+
+      {transitOpen ? (
+        <div
+          className="transit-backdrop"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setTransitOpen(false);
+          }}
+        >
+          <section
+            className="transit-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-label="公交"
+          >
+            <header className="transit-dialog-head">
+              <div>
+                <p className="eyebrow">BUS</p>
+                <h2>公交</h2>
+                <p className="transit-dialog-note">
+                  从{currentLocation?.name ?? current}出发 · 固定车费
+                </p>
+              </div>
+              <button
+                type="button"
+                className="transit-close"
+                onClick={() => setTransitOpen(false)}
+                aria-label="关闭公交"
+              >
+                关闭
+              </button>
+            </header>
+
+            <div className="transit-list">
+              {busRoutes.map((route) => {
+                const destination = CONTENT_INDEX.locations.get(route.to);
+                const disabled = state.money < route.fare;
+                return (
+                  <button
+                    key={route.id}
+                    type="button"
+                    className="transit-row"
+                    disabled={disabled}
+                    onClick={() => ride(route.id)}
+                  >
+                    <span className="transit-row-main">
+                      <span className="transit-destination">
+                        {destination?.name ?? route.label}
+                      </span>
+                      <span className="transit-row-meta">
+                        {`¥${route.fare} · ${route.minutes} 分钟`}
+                      </span>
+                    </span>
+                    <span className="transit-row-action">
+                      {disabled ? '金钱不足' : '乘车 →'}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <footer className="transit-dialog-foot">
+              现金 ¥{state.money.toLocaleString('zh-CN')}
+            </footer>
+          </section>
+        </div>
+      ) : null}
     </section>
   );
 }

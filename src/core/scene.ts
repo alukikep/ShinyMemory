@@ -153,27 +153,6 @@ function buildPlan(state: GameState): SceneView {
         activity.kind !== 'training' && activity.kind !== 'work',
     );
   const actors = buildActorViews(state);
-  const transitRoutes =
-    CONTENT_INDEX.transitRoutesByLocation.get(state.locationId) ?? [];
-  const transit =
-    transitRoutes.length > 0
-      ? {
-          label: '公交',
-          routes: transitRoutes.map((route) => {
-            const destination = CONTENT_INDEX.locations.get(route.to);
-            const disabled = state.money < route.fare;
-            return {
-              id: route.id,
-              toId: route.to,
-              toName: destination?.name ?? route.to,
-              fare: route.fare,
-              minutes: route.minutes,
-              disabled,
-              disabledReason: disabled ? '金钱不足' : undefined,
-            };
-          }),
-        }
-      : undefined;
 
   const actions: ActionView[] = activities
     .map((activity) => ({
@@ -186,12 +165,12 @@ function buildPlan(state: GameState): SceneView {
     )
     .map(({ activity }) => activityActionView(state, activity));
 
-  if (actions.length === 0 && actors.length === 0 && !transit) {
+  if (actions.length === 0 && actors.length === 0) {
     blocks.push({
       kind: 'system',
       text:
         location?.kind === 'station'
-          ? '车站没有可做的事。沿着线路前往其他地点吧。'
+          ? '车站没有可做的事。步行或乘公交前往其他地点吧。'
           : '这个时间没有可做的行动。去别的地点看看，或者回家睡觉。',
     });
   }
@@ -214,7 +193,6 @@ function buildPlan(state: GameState): SceneView {
     subtitle: `已行动 ${state.actionsTaken} 次`,
     locationName: location?.name,
     locations,
-    transit,
     actors,
     blocks,
     actions,

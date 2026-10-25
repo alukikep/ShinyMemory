@@ -672,71 +672,140 @@ button {
   font-size: 9px;
 }
 
-.transit-block {
-  margin-top: 14px;
-  border: 1px solid rgba(201, 107, 126, 0.28);
-  border-radius: 12px;
-  background: rgba(255, 250, 243, 0.7);
-  padding: 11px 12px;
-}
-
-.transit-head {
-  display: flex;
+.map-transit-trigger {
+  display: inline-flex;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.transit-head span {
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  padding: 5px 11px;
   color: var(--accent-strong);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  cursor: pointer;
 }
 
-.transit-head small {
+.map-transit-trigger:hover {
+  border-color: var(--accent);
+}
+
+.map-transit-trigger small {
   color: var(--faint);
   font-size: 9px;
 }
 
-.transit-routes {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px;
+.transit-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(47, 42, 38, 0.3);
+  backdrop-filter: blur(2px);
 }
 
-.transit-route {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 8px;
+.transit-dialog {
+  width: min(420px, 100%);
   border: 1px solid var(--line);
-  border-radius: 9px;
+  border-radius: 18px;
+  background: var(--panel-solid);
+  box-shadow: 0 24px 70px rgba(47, 34, 25, 0.22);
+  padding: 20px;
+}
+
+.transit-dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.transit-dialog-head h2 {
+  margin: 2px 0 0;
+  font-size: 20px;
+}
+
+.transit-dialog-note {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.transit-close {
+  border: 1px solid var(--line);
+  border-radius: 999px;
   background: #fff;
-  padding: 7px 9px;
+  padding: 4px 10px;
+  color: var(--muted);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.transit-close:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+.transit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.transit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 9px 11px;
   color: var(--ink);
   cursor: pointer;
   text-align: left;
 }
 
-.transit-route:hover:not(:disabled) {
+.transit-row:hover:not(:disabled) {
   border-color: var(--accent);
 }
 
-.transit-route:disabled {
+.transit-row:disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
 
-.transit-destination {
-  font-size: 12px;
+.transit-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.transit-meta {
+.transit-destination {
+  font-size: 13px;
+}
+
+.transit-row-meta {
   color: var(--faint);
   font-size: 9px;
+}
+
+.transit-row-action {
+  color: var(--accent-strong);
+  font-size: 10px;
   white-space: nowrap;
+}
+
+.transit-dialog-foot {
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
+  color: var(--faint);
+  font-size: 10px;
+  text-align: right;
 }
 
 .actors {

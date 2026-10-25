@@ -115,24 +115,26 @@ describe('app shell', () => {
     expect(html).toContain('当前');
   });
 
-  it('renders bus routes at the station', () => {
+  it('shows the bus entry on the station map', () => {
     const state = moveTo(newGame(1), 'station');
     const html = renderToString(
-      <ScenePanel
-        scene={buildScene(state)}
-        onAction={() => {}}
+      <CityMap
+        state={state}
+        onMove={() => {}}
         onTransit={() => {}}
       />,
     );
     expect(html).toContain('公交');
-    expect(html).toContain('录音棚');
-    expect(html).toMatch(/¥.*300/);
-    expect(html).toMatch(/12.*分钟/);
+    expect(html).toContain('4 条线路');
   });
 
   it('renders the city map with adjacent destinations', () => {
     const html = renderToString(
-      <CityMap state={newGame(1)} onMove={() => {}} />,
+      <CityMap
+        state={newGame(1)}
+        onMove={() => {}}
+        onTransit={() => {}}
+      />,
     );
     expect(html).toContain('城市地图');
     expect(html).toContain('事务所');

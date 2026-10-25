@@ -289,21 +289,6 @@ export type TransitRouteDef = {
   kind: 'bus' | 'taxi';
 };
 
-export type TransitRouteView = {
-  id: string;
-  toId: string;
-  toName: string;
-  fare: number;
-  minutes: number;
-  disabled?: boolean;
-  disabledReason?: string;
-};
-
-export type TransitView = {
-  label: string;
-  routes: TransitRouteView[];
-};
-
 export type LocationView = {
   id: string;
   name: string;
@@ -428,7 +413,6 @@ export type SceneView = {
   subtitle?: string;
   locationName?: string;
   locations?: LocationView[];
-  transit?: TransitView;
   actors?: ActorView[];
   npc?: NpcPageView;
   idol?: IdolPageView;

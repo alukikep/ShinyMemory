@@ -240,18 +240,16 @@ describe('raising sim core', () => {
     );
   });
 
-  it('shows bus routes at the station', () => {
+  it('points station players to walking or bus', () => {
     const scene = buildScene(moveTo(newGame(1), 'station'));
-    expect(scene.transit?.routes).toHaveLength(4);
-    expect(scene.transit?.routes.map((route) => route.toId)).toEqual([
+    expect(scene.blocks.some((block) => block.text.includes('乘公交'))).toBe(
+      true,
+    );
+    expect(scene.locations?.map((location) => location.id)).toEqual([
+      'home',
       'office',
       'practice_room',
-      'studio',
-      'home',
     ]);
-    expect(scene.blocks.some((block) => block.text.includes('没有可做'))).toBe(
-      false,
-    );
   });
 
   it('accepts typed transit commands', () => {

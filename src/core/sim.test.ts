@@ -145,6 +145,30 @@ describe('raising sim core', () => {
     }
   });
 
+  it('prunes expired schedule overrides when time advances', () => {
+    const state = newGame(1);
+    state.actors.mano.scheduleOverrides = [
+      {
+        id: 'day-1',
+        day: 1,
+        locationId: 'studio',
+        label: '收录',
+        mode: 'replace-day',
+      },
+      {
+        id: 'day-2',
+        day: 2,
+        locationId: 'studio',
+        label: '收录',
+        mode: 'replace-day',
+      },
+    ];
+
+    const next = advanceTime(state, 24 * 60);
+    expect(next.actors.mano.scheduleOverrides).toHaveLength(1);
+    expect(next.actors.mano.scheduleOverrides?.[0]?.id).toBe('day-2');
+  });
+
   it('sleeps until 08:00 and restores stamina by hours slept', () => {
     let state = travelTo(newGame(1), 'home');
     state = advanceTime(state, 14 * 60);

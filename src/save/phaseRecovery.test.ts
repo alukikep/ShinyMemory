@@ -32,6 +32,24 @@ describe('phase recovery', () => {
     expect(scene.title).toBe('深夜的练习室');
   });
 
+  it('restores dynamic schedule overrides', () => {
+    const state = newGame(1);
+    state.actors.mano.scheduleOverrides = [
+      {
+        id: 'job-1',
+        day: 2,
+        fromMinute: 10 * 60,
+        toMinute: 16 * 60,
+        locationId: 'studio',
+        label: '收录',
+        mode: 'replace-day',
+      },
+    ];
+
+    const restored = roundtrip(state);
+    expect(restored.actors.mano.scheduleOverrides?.[0]?.id).toBe('job-1');
+  });
+
   it('restores exam', () => {
     const state = newGame(1);
     state.phase = 'examMid';

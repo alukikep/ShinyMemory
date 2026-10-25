@@ -50,6 +50,7 @@ const actor: ActorDef = {
       weekdays: [6],
       label: '自由活动',
       visibility: 'private',
+      protected: false,
     },
     {
       fromMinute: 10 * 60,
@@ -57,6 +58,7 @@ const actor: ActorDef = {
       weekdays: [0],
       label: '自由活动',
       visibility: 'private',
+      protected: false,
     },
   ],
   topics: [],

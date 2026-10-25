@@ -159,6 +159,7 @@ export function createInitialActorStates(): Record<string, ActorState> {
         affinity: 0,
         flags: {},
         topicCooldowns: {},
+        scheduleOverrides: [],
       } satisfies ActorState,
     ]),
   );

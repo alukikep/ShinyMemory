@@ -888,11 +888,28 @@ button:focus-visible,
 }
 
 .schedule-day h3 {
-  margin: 0 0 8px;
-  color: var(--muted);
+  margin: 0;
+  color: var(--ink);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.04em;
+}
+
+.schedule-weekday {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 2px 0 8px;
+  color: var(--faint);
+  font-size: 9px;
+}
+
+.schedule-temp {
+  border-radius: 999px;
+  background: #fbf1e4;
+  padding: 1px 5px;
+  color: #a06b35;
+  font-size: 8px;
 }
 
 .schedule-day.today h3 {

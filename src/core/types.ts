@@ -166,14 +166,18 @@ export type ActorSchedule = {
   label?: string;
   priority?: number;
   visibility?: 'public' | 'private';
+  protected?: boolean;
 };
 
 export type ActorScheduleOverride = {
+  id?: string;
   day: number;
   locationId?: string;
   fromMinute?: number;
   toMinute?: number;
   label?: string;
+  visibility?: 'public' | 'private';
+  mode?: 'add' | 'replace-day';
 };
 
 export type ActorTopic = {
@@ -203,6 +207,7 @@ export type ActorState = {
   affinity: number;
   flags: Record<string, boolean>;
   topicCooldowns: Record<string, number>;
+  scheduleOverrides?: ActorScheduleOverride[];
 };
 
 export type ActivityKind =

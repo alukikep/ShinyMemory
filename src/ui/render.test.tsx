@@ -141,12 +141,35 @@ describe('app shell', () => {
       <IdolSchedule state={newGame(1)} onClose={() => {}} />,
     );
     expect(html).toContain('偶像日程表');
+    expect(html).toContain('今天');
+    expect(html).toContain('4月7日');
     expect(html).toContain('星期一');
     expect(html).toContain('星期日');
     expect(html).toContain('樱木真乃');
     expect(html).toContain('风野灯织');
     expect(html).toContain('练习');
     expect(html).toContain('自由活动');
+  });
+
+  it('shows a temporary work override in the date window', () => {
+    const state = newGame(1);
+    state.actors.mano.scheduleOverrides = [
+      {
+        id: 'job-1',
+        day: 1,
+        fromMinute: 10 * 60,
+        toMinute: 16 * 60,
+        locationId: 'studio',
+        label: '收录',
+        visibility: 'public',
+        mode: 'replace-day',
+      },
+    ];
+    const html = renderToString(
+      <IdolSchedule state={state} onClose={() => {}} />,
+    );
+    expect(html).toContain('临时');
+    expect(html).toMatch(/10:00.*16:00/);
   });
 
   it('shows the bus entry on the station map', () => {

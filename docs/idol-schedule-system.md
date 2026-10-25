@@ -8,10 +8,14 @@
 - `ActorDef.overrides` 单日覆盖；
 - 解析器：覆盖 → 星期模板 → 默认；
 - 真乃/灯织每周模板；
-- 只读七天日程表 overlay；
+- 日程表以“今天”为起点显示未来七天；
 - 日程表隐藏私人地点，显示“自由活动”；
 - 名册显示实际当前位置，包括地图不可达的学校；
 - 公园/商业街两个可步行地点，学校为 off-map 地点；
+- 动态覆盖存入 `ActorState.scheduleOverrides`；
+- `replace-day` 覆盖会替换当天模板；
+- `protected` 日程保护 + `canReplaceDay` 冲突检查；
+- 过期覆盖在时间推进时自动删除；
 - 移动端横向滚动。
 
 尚未实现：
@@ -181,6 +185,94 @@ UI 用来着色：
 - 事务所：金；
 - 休息：绿；
 - 特别：紫。
+
+## 日期窗口
+
+日程表不再固定周一到周日，而是：
+
+```ts
+getScheduleWindow(actor, startDay, 7, stateOverrides)
+```
+
+返回从今天开始的 7 天：
+
+```text
+今天 · 4月6日 星期一
+4月7日 星期二
+...
+4月12日 星期日
+```
+
+第一列是当前日期，跨月/跨年由日历函数处理。
+
+## 动态覆盖
+
+存档动态覆盖放在：
+
+```ts
+ActorState.scheduleOverrides?: ActorScheduleOverride[]
+```
+
+与内容预设 `ActorDef.overrides` 合并解析。
+
+```ts
+type ActorScheduleOverride = {
+  id?: string;
+  day: number;
+  fromMinute?: number;
+  toMinute?: number;
+  locationId?: string;
+  label?: string;
+  visibility?: 'public' | 'private';
+  mode?: 'add' | 'replace-day';
+};
+```
+
+- `replace-day`：当天只保留覆盖，周模板隐藏；
+- 没有 `mode`：叠加。
+
+接工作应写：
+
+```ts
+{
+  day,
+  fromMinute,
+  toMinute,
+  locationId,
+  label: '收录',
+  visibility: 'public',
+  mode: 'replace-day',
+}
+```
+
+## 档期冲突
+
+日程模板有：
+
+```ts
+protected?: boolean;
+```
+
+- 默认 `true`；
+- 自由活动/私人弹性时间设为 `false`；
+- `canReplaceDay(actor, day, overrides)` 在接工作前检查：
+  - 已有覆盖 → 拒绝；
+  - 有受保护的默认日程 → 拒绝；
+  - 只有自由活动或无日程 → 允许。
+
+这样只会保护原本会被工作覆盖的默认日程，不会让所有空闲日都无法接工作。
+
+## 自动清理
+
+`advanceTime` 和读档时调用：
+
+```ts
+pruneScheduleOverrides(state)
+```
+
+删除 `day < 当前天` 的动态覆盖。
+
+下一天自动回到默认周模板。
 
 ## 解析规则
 

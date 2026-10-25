@@ -110,8 +110,13 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
             const def = CONTENT_INDEX.idols.get(idol.id);
             const active = idol.id === state.activeIdolId;
             const actor = CONTENT_INDEX.actors.get(idol.id);
+            const actorState = state.actors[idol.id];
             const locationId = actor
-              ? getActorLocation(actor, state.clock.absoluteMinutes)
+              ? getActorLocation(
+                  actor,
+                  state.clock.absoluteMinutes,
+                  actorState?.scheduleOverrides,
+                )
               : undefined;
             const location = locationId
               ? CONTENT_INDEX.locations.get(locationId)

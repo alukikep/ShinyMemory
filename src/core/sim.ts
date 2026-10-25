@@ -30,6 +30,7 @@ import type {
   ActionCommand,
   ActivityDef,
   ActorDef,
+  ActorScheduleOverride,
   ActorTopic,
   Availability,
   CheckContext,
@@ -333,12 +334,18 @@ export function getActor(id: string): ActorDef | undefined {
 export function getActorLocation(
   actor: ActorDef,
   absoluteMinutes: number,
+  overrides: ActorScheduleOverride[] = [],
 ): string | undefined {
-  return getScheduleSlot(actor, absoluteMinutes)?.locationId;
+  return getScheduleSlot(actor, absoluteMinutes, overrides)?.locationId;
 }
 
 export function isActorPresent(state: GameState, actor: ActorDef): boolean {
-  const locationId = getActorLocation(actor, state.clock.absoluteMinutes);
+  const actorState = state.actors[actor.id];
+  const locationId = getActorLocation(
+    actor,
+    state.clock.absoluteMinutes,
+    actorState?.scheduleOverrides,
+  );
   return locationId === state.locationId;
 }
 
@@ -786,7 +793,18 @@ export function talkTo(
 export function advanceTime(state: GameState, minutes: number): GameState {
   const next = clone(state);
   next.clock.absoluteMinutes += Math.max(0, minutes);
+  pruneScheduleOverrides(next);
   return next;
+}
+
+export function pruneScheduleOverrides(state: GameState): void {
+  const currentDay = getDay(state.clock.absoluteMinutes);
+  for (const actorState of Object.values(state.actors)) {
+    if (!actorState.scheduleOverrides) continue;
+    actorState.scheduleOverrides = actorState.scheduleOverrides.filter(
+      (entry) => entry.day >= currentDay,
+    );
+  }
 }
 
 function pickActivityResult(

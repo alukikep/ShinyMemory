@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
-import { getWeeklySchedule } from '../../core/schedule';
+import { getScheduleWindow } from '../../core/schedule';
 import { getActor } from '../../core/sim';
-import { formatClock, getWeekday } from '../../core/time';
+import { formatClock, getDay } from '../../core/time';
 import type { GameState } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 
@@ -35,8 +35,15 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
   const [idolId, setIdolId] = useState(state.activeIdolId);
   const idol = CONTENT_INDEX.idols.get(idolId);
   const actor = getActor(idolId);
-  const days = actor ? getWeeklySchedule(actor) : [];
-  const currentWeekday = getWeekday(state.clock.absoluteMinutes);
+  const actorState = state.actors[idolId];
+  const days = actor
+    ? getScheduleWindow(
+        actor,
+        getDay(state.clock.absoluteMinutes),
+        7,
+        actorState?.scheduleOverrides,
+      )
+    : [];
 
   return (
     <div
@@ -59,7 +66,7 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
             <p className="eyebrow">IDOL SCHEDULE</p>
             <h2>偶像日程表</h2>
             <p className="schedule-note">
-              每周固定模板；只显示工作/事务所安排，未列出或私人时间为自由活动。
+              今天起七天；只显示工作/事务所安排，未列出或私人时间为自由活动。
             </p>
           </div>
           <button
@@ -95,10 +102,23 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
             <div className="schedule-grid">
               {days.map((day) => (
                 <section
-                  className={`schedule-day ${day.weekday === currentWeekday ? 'today' : ''}`}
-                  key={day.weekday}
+                  className={`schedule-day ${day.isToday ? 'today' : ''}`}
+                  key={day.day}
                 >
-                  <h3>{day.label}</h3>
+                  <h3>
+                    {day.isToday
+                      ? '今天'
+                      : `${day.date.month}月${day.date.day}日`}
+                  </h3>
+                  <p className="schedule-weekday">
+                    {day.isToday
+                      ? `${day.date.month}月${day.date.day}日 · `
+                      : ''}
+                    {day.weekdayLabel}
+                    {day.hasOverride ? (
+                      <span className="schedule-temp">临时</span>
+                    ) : null}
+                  </p>
                   {day.slots.length === 0 ? (
                     <p className="schedule-empty">—</p>
                   ) : (
@@ -121,7 +141,7 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
                             slot.locationId,
                             slot.visibility,
                           )}`}
-                          key={`${day.weekday}-${index}`}
+                          key={`${day.day}-${index}`}
                         >
                           <span className="schedule-time">
                             {formatClock(slot.fromMinute)}–
@@ -138,7 +158,7 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
                 </section>
               ))}
             </div>
-            <p className="schedule-scroll-hint">左右滑动查看完整一周</p>
+            <p className="schedule-scroll-hint">左右滑动查看未来七天</p>
           </div>
         ) : (
           <p className="schedule-empty">没有可显示的日程。</p>

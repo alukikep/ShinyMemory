@@ -21,7 +21,7 @@ E:\game dev\闪耀色彩页游
 - [x] Phase A：视觉 token、顶部三色线、图标系统、面板/按钮换肤
 - [x] Phase B：Hero 场景 + 立绘
 - [x] Phase B 调整：主列大 Hero 移到侧边栏顶部场景卡；图中只留地点名；图下按日期/时间/金钱三行显示，日期行预留未来日历；行动数从玩家界面移除
-- [ ] Phase C：名册头像与属性色
+- [ ] Phase C：名册头像与属性色（详细计划见 `docs/phase-c-plan.md`）
 - [ ] Phase D：地图与公交视觉
 - [ ] Phase E：固定侧边栏
 - [ ] Phase F：响应式与可访问性收尾

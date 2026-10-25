@@ -224,14 +224,21 @@ describe('raising sim core', () => {
     const studio = takeTransit(station, 'bus_station_studio');
 
     expect(studio.locationId).toBe('studio');
-    expect(studio.money).toBe(2700);
-    expect(formatClock(studio.clock.absoluteMinutes)).toBe('08:17');
-    expect(studio.log[0]?.text).toContain('车费 ¥300');
+    expect(studio.money).toBe(2900);
+    expect(formatClock(studio.clock.absoluteMinutes)).toBe('08:10');
+    expect(studio.log[0]?.text).toContain('车费 ¥100');
+  });
+
+  it('takes a taxi from any location with a flat fare', () => {
+    const studio = takeTransit(newGame(1), 'taxi_office_studio');
+    expect(studio.locationId).toBe('studio');
+    expect(studio.money).toBe(2600);
+    expect(formatClock(studio.clock.absoluteMinutes)).toBe('08:03');
   });
 
   it('rejects transit without money or from the wrong location', () => {
     const station = moveTo(newGame(1), 'station');
-    station.money = 100;
+    station.money = 99;
     expect(takeTransit(station, 'bus_station_studio').locationId).toBe(
       'station',
     );
@@ -258,8 +265,8 @@ describe('raising sim core', () => {
       routeId: 'bus_station_office',
     });
     expect(state.locationId).toBe('office');
-    expect(state.money).toBe(2800);
-    expect(formatClock(state.clock.absoluteMinutes)).toBe('08:13');
+    expect(state.money).toBe(2900);
+    expect(formatClock(state.clock.absoluteMinutes)).toBe('08:10');
   });
 
   it('accepts typed action commands', () => {

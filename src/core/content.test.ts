@@ -211,7 +211,7 @@ describe('content integrity', () => {
     }
   });
 
-  it('validates bus routes to existing locations', () => {
+  it('validates bus and taxi routes to existing locations', () => {
     const locationIds = new Set(LOCATIONS.map((location) => location.id));
     const routeIds = new Set<string>();
     for (const route of TRANSIT_ROUTES) {
@@ -221,7 +221,14 @@ describe('content integrity', () => {
       expect(locationIds.has(route.to)).toBe(true);
       expect(route.fare).toBeGreaterThan(0);
       expect(route.minutes).toBeGreaterThan(0);
-      expect(CONTENT_INDEX.locations.get(route.from)?.kind).toBe('station');
+      if (route.kind === 'bus') {
+        expect(CONTENT_INDEX.locations.get(route.from)?.kind).toBe('station');
+        expect(route.fare).toBe(100);
+        expect(route.minutes).toBe(5);
+      } else {
+        expect(route.fare).toBe(400);
+        expect(route.minutes).toBe(3);
+      }
     }
   });
 

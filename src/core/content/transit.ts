@@ -1,40 +1,40 @@
 import type { TransitRouteDef } from '../types';
+import { LOCATIONS } from './locations';
+
+const LOCATION_IDS = LOCATIONS.map((location) => location.id);
+const nameOf = (id: string) =>
+  LOCATIONS.find((location) => location.id === id)?.name ?? id;
+
+const BUS_FARE = 100;
+const BUS_MINUTES = 5;
+const TAXI_FARE = 400;
+const TAXI_MINUTES = 3;
+
+const BUS_ROUTES: TransitRouteDef[] = LOCATION_IDS.filter(
+  (id) => id !== 'station',
+).map((to) => ({
+  id: `bus_station_${to}`,
+  from: 'station',
+  to,
+  fare: BUS_FARE,
+  minutes: BUS_MINUTES,
+  label: nameOf(to),
+  kind: 'bus',
+}));
+
+const TAXI_ROUTES: TransitRouteDef[] = LOCATION_IDS.flatMap((from) =>
+  LOCATION_IDS.filter((to) => to !== from).map((to) => ({
+    id: `taxi_${from}_${to}`,
+    from,
+    to,
+    fare: TAXI_FARE,
+    minutes: TAXI_MINUTES,
+    label: nameOf(to),
+    kind: 'taxi' as const,
+  })),
+);
 
 export const TRANSIT_ROUTES: TransitRouteDef[] = [
-  {
-    id: 'bus_station_office',
-    from: 'station',
-    to: 'office',
-    fare: 200,
-    minutes: 8,
-    label: '事务所',
-    kind: 'bus',
-  },
-  {
-    id: 'bus_station_practice',
-    from: 'station',
-    to: 'practice_room',
-    fare: 200,
-    minutes: 10,
-    label: '练习室',
-    kind: 'bus',
-  },
-  {
-    id: 'bus_station_studio',
-    from: 'station',
-    to: 'studio',
-    fare: 300,
-    minutes: 12,
-    label: '录音棚',
-    kind: 'bus',
-  },
-  {
-    id: 'bus_station_home',
-    from: 'station',
-    to: 'home',
-    fare: 200,
-    minutes: 10,
-    label: '家',
-    kind: 'bus',
-  },
+  ...BUS_ROUTES,
+  ...TAXI_ROUTES,
 ];

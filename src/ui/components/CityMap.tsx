@@ -10,7 +10,7 @@ type CityMapProps = {
 };
 
 export function CityMap({ state, onMove, onTransit }: CityMapProps) {
-  const [transitOpen, setTransitOpen] = useState(false);
+  const [transitKind, setTransitKind] = useState<'bus' | 'taxi' | null>(null);
   const current = state.locationId;
   const adjacent = new Map(
     neighborsOf(current).map((edge) => [
@@ -20,18 +20,25 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
   );
   const locations = [...CONTENT_INDEX.locations.values()];
   const currentLocation = CONTENT_INDEX.locations.get(current);
-  const busRoutes = (
-    CONTENT_INDEX.transitRoutesByLocation.get(current) ?? []
-  ).filter((route) => route.kind === 'bus');
+  const routesHere = CONTENT_INDEX.transitRoutesByLocation.get(current) ?? [];
+  const busRoutes = routesHere.filter((route) => route.kind === 'bus');
+  const taxiRoutes = routesHere.filter((route) => route.kind === 'taxi');
+  const activeRoutes =
+    transitKind === 'bus'
+      ? busRoutes
+      : transitKind === 'taxi'
+        ? taxiRoutes
+        : [];
+  const transitLabel = transitKind === 'taxi' ? '出租车' : '公交';
 
   useEffect(() => {
-    if (!transitOpen) return;
+    if (!transitKind) return;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setTransitOpen(false);
+      if (event.key === 'Escape') setTransitKind(null);
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [transitOpen]);
+  }, [transitKind]);
 
   const moveTo = (locationId: string) => {
     if (!adjacent.has(locationId)) return;
@@ -39,10 +46,10 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
   };
 
   const ride = (routeId: string) => {
-    const route = busRoutes.find((entry) => entry.id === routeId);
+    const route = activeRoutes.find((entry) => entry.id === routeId);
     if (!route || state.money < route.fare) return;
     onTransit(routeId);
-    setTransitOpen(false);
+    setTransitKind(null);
   };
 
   return (
@@ -55,16 +62,28 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
             当前：{currentLocation?.name ?? current}
           </p>
         </div>
-        {busRoutes.length > 0 ? (
-          <button
-            type="button"
-            className="map-transit-trigger"
-            onClick={() => setTransitOpen(true)}
-          >
-            公交
-            <small>{`${busRoutes.length} 条线路`}</small>
-          </button>
-        ) : null}
+        <div className="map-transit-actions">
+          {busRoutes.length > 0 ? (
+            <button
+              type="button"
+              className="map-transit-trigger"
+              onClick={() => setTransitKind('bus')}
+            >
+              公交
+              <small>{`${busRoutes.length} 条线路`}</small>
+            </button>
+          ) : null}
+          {taxiRoutes.length > 0 ? (
+            <button
+              type="button"
+              className="map-transit-trigger taxi"
+              onClick={() => setTransitKind('taxi')}
+            >
+              出租车
+              <small>{`${taxiRoutes.length} 个目的地`}</small>
+            </button>
+          ) : null}
+        </div>
       </div>
 
       <div className="map-canvas">
@@ -190,40 +209,44 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
         ))}
       </div>
 
-      {transitOpen ? (
+      {transitKind ? (
         <div
           className="transit-backdrop"
           role="presentation"
           onMouseDown={(event) => {
-            if (event.target === event.currentTarget) setTransitOpen(false);
+            if (event.target === event.currentTarget) setTransitKind(null);
           }}
         >
           <section
             className="transit-dialog"
             role="dialog"
             aria-modal="true"
-            aria-label="公交"
+            aria-label={transitLabel}
           >
             <header className="transit-dialog-head">
               <div>
-                <p className="eyebrow">BUS</p>
-                <h2>公交</h2>
+                <p className="eyebrow">
+                  {transitKind === 'taxi' ? 'TAXI' : 'BUS'}
+                </p>
+                <h2>{transitLabel}</h2>
                 <p className="transit-dialog-note">
-                  从{currentLocation?.name ?? current}出发 · 固定车费
+                  {transitKind === 'taxi'
+                    ? '全城直达 · 固定车费'
+                    : `从${currentLocation?.name ?? current}出发 · 固定车费`}
                 </p>
               </div>
               <button
                 type="button"
                 className="transit-close"
-                onClick={() => setTransitOpen(false)}
-                aria-label="关闭公交"
+                onClick={() => setTransitKind(null)}
+                aria-label={`关闭${transitLabel}`}
               >
                 关闭
               </button>
             </header>
 
             <div className="transit-list">
-              {busRoutes.map((route) => {
+              {activeRoutes.map((route) => {
                 const destination = CONTENT_INDEX.locations.get(route.to);
                 const disabled = state.money < route.fare;
                 return (

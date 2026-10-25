@@ -126,6 +126,8 @@ describe('app shell', () => {
     );
     expect(html).toContain('公交');
     expect(html).toContain('4 条线路');
+    expect(html).toContain('出租车');
+    expect(html).toContain('4 个目的地');
   });
 
   it('renders the city map with adjacent destinations', () => {

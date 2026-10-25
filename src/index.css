@@ -672,6 +672,13 @@ button {
   font-size: 9px;
 }
 
+.map-transit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
 .map-transit-trigger {
   display: inline-flex;
   align-items: baseline;
@@ -683,6 +690,10 @@ button {
   color: var(--accent-strong);
   font-size: 11px;
   cursor: pointer;
+}
+
+.map-transit-trigger.taxi {
+  color: #6b7a9a;
 }
 
 .map-transit-trigger:hover {

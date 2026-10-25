@@ -23,6 +23,7 @@ import {
   midScore,
   presentActors,
   topicAvailability,
+  workRewardSummary,
 } from './sim';
 import type {
   ActionView,
@@ -98,6 +99,7 @@ function buildActorViews(state: GameState): ActorView[] {
 function activityActionView(
   state: GameState,
   activity: ActivityDef,
+  idolId: string = state.activeIdolId,
 ): ActionView {
   const availability = activityAvailability(state, activity);
   const duration =
@@ -105,8 +107,13 @@ function activityActionView(
       ? '睡到早上 8 点'
       : formatDuration(activity.durationMinutes);
   const effects = effectSummary(activity.effects, activity.cost);
+  const reward = activity.workReward
+    ? workRewardSummary(state, activity.workReward, idolId)
+    : '';
   const timeLabel = formatTimeWindows(activity.timeWindows);
-  const hint = [timeLabel, duration, effects].filter(Boolean).join(' · ');
+  const hint = [timeLabel, duration, reward, effects]
+    .filter(Boolean)
+    .join(' · ');
 
   return {
     id: activity.id,
@@ -435,7 +442,7 @@ function buildIdolPage(state: GameState): SceneView {
         availability.ok || availability.display === 'disable',
     )
     .map(({ activity }) => {
-      const action = activityActionView(state, activity);
+      const action = activityActionView(state, activity, idolId);
       return {
         ...action,
         command:

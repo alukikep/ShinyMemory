@@ -13,15 +13,20 @@ const card: ActivityDef = {
   },
   "effects": [
     {
-      "kind": "money",
-      "delta": 1500
-    },
-    {
         "kind": "sharedStat",
         "stat": "stress",
         "delta": 14
       }
   ],
+  "workReward": {
+    "baseMoney": 1500,
+    "checks": [
+      {
+        "attribute": "expression",
+        "weight": 1
+      }
+    ]
+  },
   "resultTexts": [
     "录制比预想中顺利。她在休息间隙偷偷打了个哈欠。",
     "工作人员夸她“比想象中稳”。她鞠躬的时候，耳朵有点红。",

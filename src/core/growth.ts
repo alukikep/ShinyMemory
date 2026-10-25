@@ -20,6 +20,16 @@ export const EXP_TIER_VALUES: Record<ExpTier, number> = {
   20: 20,
 };
 
+export const DEFAULT_REWARD_MULTIPLIERS: Record<Rank, number> = {
+  F: 0.8,
+  E: 0.9,
+  D: 1,
+  C: 1.15,
+  B: 1.3,
+  A: 1.5,
+  S: 1.8,
+};
+
 export function nextRank(rank: Rank): Rank | undefined {
   const index = RANK_ORDER.indexOf(rank);
   return index >= 0 && index < RANK_ORDER.length - 1

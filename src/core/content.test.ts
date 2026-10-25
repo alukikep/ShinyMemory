@@ -130,6 +130,28 @@ describe('content integrity', () => {
     expect(CONTENT_INDEX.idols.size).toBe(IDOLS.length);
   });
 
+  it('validates work reward checks and weights', () => {
+    const ranks = new Set(['F', 'E', 'D', 'C', 'B', 'A', 'S']);
+    const attributes = new Set(['vocal', 'dance', 'expression', 'trust']);
+    for (const activity of ACTIVITIES) {
+      if (!activity.workReward) continue;
+      expect(activity.workReward.baseMoney).toBeGreaterThan(0);
+      expect(activity.workReward.checks.length).toBeGreaterThan(0);
+      const weight = activity.workReward.checks.reduce(
+        (sum, check) => sum + check.weight,
+        0,
+      );
+      expect(weight).toBeCloseTo(1, 5);
+      for (const check of activity.workReward.checks) {
+        expect(attributes.has(check.attribute)).toBe(true);
+        expect(check.weight).toBeGreaterThan(0);
+        for (const rank of Object.keys(check.multipliers ?? {})) {
+          expect(ranks.has(rank)).toBe(true);
+        }
+      }
+    }
+  });
+
   it('keeps activity time windows in range', () => {
     for (const activity of ACTIVITIES) {
       for (const window of activity.timeWindows ?? []) {

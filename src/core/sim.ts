@@ -13,6 +13,7 @@ import {
 } from './contentIndex';
 import { MID_EXAM } from './content/weeks';
 import {
+  DEFAULT_REWARD_MULTIPLIERS,
   EXP_TIER_VALUES,
   RANK_CURVE,
   nextRank,
@@ -46,6 +47,7 @@ import type {
   SharedStatKey,
   StatKey,
   TriggerReport,
+  WorkReward,
 } from './types';
 
 function clone(state: GameState): GameState {
@@ -163,6 +165,65 @@ export function getStatValue(
     return state.shared[stat];
   }
   return rankIndex(getRank(state, stat, idolId));
+}
+
+export type WorkRewardPreview = {
+  money: number;
+  multiplier: number;
+  parts: {
+    attribute: IdolStatKey;
+    rank: Rank;
+    weight: number;
+    multiplier: number;
+  }[];
+};
+
+export function workRewardPreview(
+  state: GameState,
+  reward: WorkReward,
+  idolId: string = state.activeIdolId,
+): WorkRewardPreview {
+  const parts = reward.checks.map((check) => {
+    const rank = getRank(state, check.attribute, idolId);
+    const table = {
+      ...DEFAULT_REWARD_MULTIPLIERS,
+      ...check.multipliers,
+    };
+    return {
+      attribute: check.attribute,
+      rank,
+      weight: check.weight,
+      multiplier: table[rank],
+    };
+  });
+  const weightSum = parts.reduce((sum, part) => sum + part.weight, 0);
+  const multiplier =
+    weightSum > 0
+      ? parts.reduce(
+          (sum, part) => sum + part.weight * part.multiplier,
+          0,
+        ) / weightSum
+      : 1;
+  return {
+    money: Math.round(reward.baseMoney * multiplier),
+    multiplier,
+    parts,
+  };
+}
+
+export function workRewardSummary(
+  state: GameState,
+  reward: WorkReward,
+  idolId: string = state.activeIdolId,
+): string {
+  const preview = workRewardPreview(state, reward, idolId);
+  const detail = preview.parts
+    .map(
+      (part) =>
+        `${STAT_LABELS[part.attribute]} ${part.rank} ×${part.multiplier}`,
+    )
+    .join(' + ');
+  return `预计 ¥${preview.money} · ${detail}`;
 }
 
 function addLog(state: GameState, text: string, tone: LogTone = 'info'): void {
@@ -705,7 +766,12 @@ export function applyActivity(
   applyEffects(next, activity.effects, {
     training: activity.kind === 'training',
     stressed,
+    idolId,
   });
+  const reward = activity.workReward
+    ? workRewardPreview(next, activity.workReward, idolId)
+    : undefined;
+  if (reward) next.money += reward.money;
   clampState(next);
 
   next.actionsTaken += 1;
@@ -713,7 +779,10 @@ export function applyActivity(
   next.phase = 'activityResult';
 
   const advanced = advanceTime(next, activity.durationMinutes);
-  advanced.lastResult = pickActivityResult(advanced, activity, rng);
+  const result = pickActivityResult(advanced, activity, rng);
+  advanced.lastResult = reward
+    ? `${result} 收入 ¥${reward.money}。`
+    : result;
   advanced.rng.counter = rng.counter;
 
   const tone: LogTone =

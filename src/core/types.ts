@@ -15,6 +15,17 @@ export type IdolAttribute = {
 
 export type IdolStats = Record<IdolStatKey, IdolAttribute>;
 
+export type WorkCheck = {
+  attribute: IdolStatKey;
+  weight: number;
+  multipliers?: Partial<Record<Rank, number>>;
+};
+
+export type WorkReward = {
+  baseMoney: number;
+  checks: WorkCheck[];
+};
+
 export type GrowthProfile = Record<
   IdolStatKey,
   { initial: Rank; max: Rank }
@@ -192,6 +203,7 @@ export type ActivityDef = {
   timeWindows?: TimeWindow[];
   cost: Cost;
   effects: Effect[];
+  workReward?: WorkReward;
   requires?: Condition[];
   resultTexts: string[];
   resultVariants?: { when: Condition[]; text: string }[];

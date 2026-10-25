@@ -21,6 +21,7 @@ import {
   presentActors,
   talkTo,
   topicAvailability,
+  workRewardPreview,
 } from './sim';
 import { formatClock, getDay } from './time';
 
@@ -371,10 +372,20 @@ describe('raising sim core', () => {
       activityId: 'work',
     });
     expect(worked.phase).toBe('activityResult');
-    expect(worked.money).toBe(4500);
+    expect(worked.money).toBe(4350);
     expect(worked.shared.stamina).toBe(80);
     expect(worked.shared.stress).toBe(14);
     expect(worked.idols.hiori?.stats.trust.rank).toBe('E');
+  });
+
+  it('scales work reward by the target idol rank', () => {
+    const state = newGame(1);
+    const work = getActivity('work')!;
+    const reward = work.workReward!;
+    expect(workRewardPreview(state, reward, 'mano').money).toBe(1350);
+
+    state.idols.mano!.stats.expression.rank = 'A';
+    expect(workRewardPreview(state, reward, 'mano').money).toBe(2250);
   });
 
   it('shows Hazuki and Tsutomu on their office schedules', () => {

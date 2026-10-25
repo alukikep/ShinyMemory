@@ -2,7 +2,6 @@ import { CONTENT_INDEX } from '../../core/contentIndex';
 import { RANK_CURVE } from '../../core/growth';
 import { getActiveIdol } from '../../core/sim';
 import { STAT_LABELS, STAT_MAX } from '../../core/labels';
-import { formatClock, getDay } from '../../core/time';
 import type {
   GameState,
   HeroView,
@@ -93,7 +92,6 @@ export function StatsPanel({
   hero?: HeroView;
   onOpenRoster: () => void;
 }) {
-  const day = getDay(state.clock.absoluteMinutes);
   const idol = getActiveIdol(state);
   const idolDef = CONTENT_INDEX.idols.get(state.activeIdolId);
 
@@ -103,9 +101,6 @@ export function StatsPanel({
 
       <div className="panel-head">
         <h2>状态</h2>
-        <span className="panel-note">
-          第 {day} 天 · {formatClock(state.clock.absoluteMinutes)}
-        </span>
       </div>
 
       <p className="stat-group-label">共享状态</p>

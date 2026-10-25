@@ -36,7 +36,6 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
           {scene.locationName ? ` · ${scene.locationName}` : ''}
         </p>
         <h1>{scene.title}</h1>
-        {scene.subtitle ? <p className="scene-subtitle">{scene.subtitle}</p> : null}
       </div>
 
       {scene.locations && scene.locations.length > 0 ? (

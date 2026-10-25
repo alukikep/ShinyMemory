@@ -8,7 +8,6 @@ export function LogPanel({ state }: { state: GameState }) {
     <aside className="panel log-panel">
       <div className="panel-head">
         <h2>记录</h2>
-        <span className="panel-note">{state.actionsTaken} 次行动</span>
       </div>
 
       {entries.length === 0 ? (

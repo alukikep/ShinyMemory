@@ -243,7 +243,6 @@ function buildPlan(state: GameState): SceneView {
     phase: state.phase,
     phaseLabel: PHASE_LABEL[state.phase],
     title: `第 ${day} 天 · ${formatClock(state.clock.absoluteMinutes)}`,
-    subtitle: `已行动 ${state.actionsTaken} 次`,
     locationName: location?.name,
     hero: buildHero(state),
     locations,

@@ -5,7 +5,8 @@ import type {
   ReviewKind,
   ReviewStatus,
 } from './types';
-import { LocalReviewRepository } from './repository';
+import { LocalReviewRepository, ReviewApiError } from './repository';
+import { ReviewEditor } from './ReviewEditor';
 
 const STATUS_LABELS: Record<ReviewStatus, string> = {
   review: '待审查',
@@ -192,7 +193,27 @@ function Preview({ draft }: { draft: ReviewDraft }) {
   );
 }
 
-function Annotations({ annotations }: { annotations: ReviewAnnotation[] }) {
+function Annotations({
+  annotations,
+  locked,
+  busy,
+  text,
+  field,
+  onTextChange,
+  onFieldChange,
+  onAdd,
+  onResolve,
+}: {
+  annotations: ReviewAnnotation[];
+  locked: boolean;
+  busy: boolean;
+  text: string;
+  field: string;
+  onTextChange: (value: string) => void;
+  onFieldChange: (value: string) => void;
+  onAdd: () => void;
+  onResolve: (annotation: ReviewAnnotation, resolved: boolean) => void;
+}) {
   return (
     <aside className="review-notes">
       <header>
@@ -214,10 +235,50 @@ function Annotations({ annotations }: { annotations: ReviewAnnotation[] }) {
               </header>
               <p>{annotation.text}</p>
               <time>{formatDate(annotation.createdAt)}</time>
+              {!locked ? (
+                <button
+                  type="button"
+                  className="review-link"
+                  disabled={busy}
+                  onClick={() => onResolve(annotation, !annotation.resolved)}
+                >
+                  {annotation.resolved ? '重新打开' : '标记已处理'}
+                </button>
+              ) : null}
             </article>
           ))}
         </div>
       )}
+
+      {!locked ? (
+        <div className="review-note-add">
+          <label className="review-field">
+            <span>字段路径（可选）</span>
+            <input
+              value={field}
+              onChange={(event) => onFieldChange(event.target.value)}
+              placeholder="payload.text"
+            />
+          </label>
+          <label className="review-field">
+            <span>批注</span>
+            <textarea
+              className="review-textarea"
+              value={text}
+              onChange={(event) => onTextChange(event.target.value)}
+              placeholder="写下需要修改的地方"
+            />
+          </label>
+          <button
+            type="button"
+            className="review-button"
+            disabled={busy || !text.trim()}
+            onClick={onAdd}
+          >
+            添加批注
+          </button>
+        </div>
+      ) : null}
     </aside>
   );
 }
@@ -228,6 +289,15 @@ export function ReviewApp() {
   const [selectedId, setSelectedId] = useState<string | undefined>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | undefined>();
+  const [editing, setEditing] = useState(false);
+  const [newOpen, setNewOpen] = useState(false);
+  const [newKind, setNewKind] = useState<ReviewKind>('event');
+  const [newTitle, setNewTitle] = useState('');
+  const [statusNote, setStatusNote] = useState('');
+  const [annotationText, setAnnotationText] = useState('');
+  const [annotationField, setAnnotationField] = useState('');
+  const [actionError, setActionError] = useState<string | undefined>();
+  const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -277,6 +347,127 @@ export function ReviewApp() {
   );
   const selected = drafts.find((draft) => draft.id === selectedId);
 
+  const upsertDraft = (next: ReviewDraft) => {
+    setDrafts((current) => {
+      const index = current.findIndex((draft) => draft.id === next.id);
+      if (index === -1) return [next, ...current];
+      const copy = [...current];
+      copy[index] = next;
+      return copy;
+    });
+    setSelectedId(next.id);
+  };
+
+  const errorsOf = (reason: unknown): string[] => {
+    if (reason instanceof ReviewApiError) {
+      return reason.errors.length > 0 ? reason.errors : [reason.message];
+    }
+    return [reason instanceof Error ? reason.message : '操作失败'];
+  };
+
+  const saveDraft = async (
+    title: string,
+    payload: unknown,
+  ): Promise<string[]> => {
+    if (!selected) return ['没有选中的草稿'];
+    setActionError(undefined);
+    try {
+      const next = await repository.save(selected.id, { title, payload });
+      upsertDraft(next);
+      setEditing(false);
+      return [];
+    } catch (reason) {
+      const errors = errorsOf(reason);
+      setActionError(errors.join('；'));
+      return errors;
+    }
+  };
+
+  const changeStatus = async (nextStatus: ReviewStatus) => {
+    if (!selected) return;
+    if (nextStatus === 'discarded' && !window.confirm('确认废弃这条内容？')) {
+      return;
+    }
+    setBusy(true);
+    setActionError(undefined);
+    try {
+      const next = await repository.setStatus(
+        selected.id,
+        nextStatus,
+        statusNote.trim() || undefined,
+      );
+      upsertDraft(next);
+      setStatus(next.status);
+      setStatusNote('');
+      setEditing(false);
+    } catch (reason) {
+      setActionError(errorsOf(reason).join('；'));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const createDraft = async () => {
+    setBusy(true);
+    setActionError(undefined);
+    try {
+      const next = await repository.create(newKind, newTitle);
+      upsertDraft(next);
+      setNewOpen(false);
+      setNewTitle('');
+      setStatus('review');
+      setEditing(true);
+    } catch (reason) {
+      setActionError(errorsOf(reason).join('；'));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const addAnnotation = async () => {
+    if (!selected || !annotationText.trim()) return;
+    setBusy(true);
+    setActionError(undefined);
+    try {
+      const next = await repository.addAnnotation(
+        selected.id,
+        annotationText,
+        annotationField.trim() || undefined,
+      );
+      upsertDraft(next);
+      setAnnotationText('');
+      setAnnotationField('');
+    } catch (reason) {
+      setActionError(errorsOf(reason).join('；'));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const resolveAnnotation = async (
+    annotation: ReviewAnnotation,
+    resolved: boolean,
+  ) => {
+    if (!selected) return;
+    setBusy(true);
+    setActionError(undefined);
+    try {
+      const next = await repository.resolveAnnotation(
+        selected.id,
+        annotation.id,
+        resolved,
+      );
+      upsertDraft(next);
+    } catch (reason) {
+      setActionError(errorsOf(reason).join('；'));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const locked =
+    selected?.status === 'approved' || selected?.status === 'discarded';
+
   return (
     <div className="review-shell">
       <header className="review-topbar">
@@ -284,15 +475,65 @@ export function ReviewApp() {
           <p className="review-eyebrow">SHINYMEMORY · CONTENT REVIEW</p>
           <h1>内容审查台</h1>
           <p className="review-subtitle">
-            本地文件审查 · 只读预览 · 第二阶段接入编辑与批注
+            本地文件审查 · 编辑、批注、通过、打回、废弃
           </p>
         </div>
         <div className="review-topbar-actions">
-          <button type="button" className="review-button ghost" disabled>
-            新建草稿（第二阶段）
+          <button
+            type="button"
+            className="review-button primary"
+            onClick={() => setNewOpen(true)}
+          >
+            新建草稿
           </button>
         </div>
       </header>
+
+      {newOpen ? (
+        <div className="review-modal-backdrop">
+          <section className="review-modal" role="dialog" aria-modal="true">
+            <h2>新建草稿</h2>
+            <label className="review-field">
+              <span>类型</span>
+              <select
+                value={newKind}
+                onChange={(event) => setNewKind(event.target.value as ReviewKind)}
+              >
+                <option value="event">事件</option>
+                <option value="job">工作</option>
+              </select>
+            </label>
+            <label className="review-field">
+              <span>标题</span>
+              <input
+                autoFocus
+                value={newTitle}
+                onChange={(event) => setNewTitle(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') void createDraft();
+                }}
+              />
+            </label>
+            <div className="review-modal-actions">
+              <button
+                type="button"
+                className="review-button ghost"
+                onClick={() => setNewOpen(false)}
+              >
+                取消
+              </button>
+              <button
+                type="button"
+                className="review-button primary"
+                disabled={busy}
+                onClick={() => void createDraft()}
+              >
+                创建
+              </button>
+            </div>
+          </section>
+        </div>
+      ) : null}
 
       <main className="review-layout">
         <aside className="review-queue">
@@ -330,7 +571,10 @@ export function ReviewApp() {
                 type="button"
                 key={draft.id}
                 className={`review-queue-item ${draft.id === selectedId ? 'active' : ''}`}
-                onClick={() => setSelectedId(draft.id)}
+                onClick={() => {
+                  setSelectedId(draft.id);
+                  setEditing(false);
+                }}
               >
                 <span className={`review-status status-${draft.status}`}>
                   {STATUS_LABELS[draft.status]}
@@ -345,8 +589,97 @@ export function ReviewApp() {
         </aside>
 
         <section className="review-main">
+          {actionError ? <p className="review-error review-action-error">{actionError}</p> : null}
           {selected ? (
-            <Preview draft={selected} />
+            <>
+              <div className="review-toolbar">
+                <div className="review-toolbar-left">
+                  <span className={`review-status status-${selected.status}`}>
+                    {STATUS_LABELS[selected.status]}
+                  </span>
+                  {locked ? (
+                    <span className="review-locked-note">
+                      已锁定，不可编辑或流转
+                    </span>
+                  ) : null}
+                </div>
+                {!locked ? (
+                  editing ? (
+                    <span className="review-locked-note">
+                      编辑中，保存后返回预览再流转
+                    </span>
+                  ) : (
+                    <div className="review-toolbar-actions">
+                    {selected.status === 'review' || selected.status === 'revision' ? (
+                      <button
+                        type="button"
+                        className="review-button"
+                        disabled={busy}
+                        onClick={() => setEditing(true)}
+                      >
+                        编辑
+                      </button>
+                    ) : null}
+                    {selected.status === 'revision' ? (
+                      <button
+                        type="button"
+                        className="review-button"
+                        disabled={busy}
+                        onClick={() => void changeStatus('review')}
+                      >
+                        重新送审
+                      </button>
+                    ) : null}
+                    <button
+                      type="button"
+                      className="review-button approve"
+                      disabled={busy}
+                      onClick={() => void changeStatus('approved')}
+                    >
+                      通过
+                    </button>
+                    <button
+                      type="button"
+                      className="review-button reject"
+                      disabled={busy}
+                      onClick={() => void changeStatus('revision')}
+                    >
+                      打回
+                    </button>
+                    <button
+                      type="button"
+                      className="review-button ghost"
+                      disabled={busy}
+                      onClick={() => void changeStatus('discarded')}
+                    >
+                      废弃
+                    </button>
+                  </div>
+                  )
+                ) : null}
+              </div>
+              {!locked && !editing ? (
+                <label className="review-status-note">
+                  <span>打回批注（可选）</span>
+                  <input
+                    value={statusNote}
+                    onChange={(event) => setStatusNote(event.target.value)}
+                    placeholder="例如：正文需要更具体"
+                  />
+                </label>
+              ) : null}
+
+              {editing && !locked ? (
+                <ReviewEditor
+                  key={selected.id}
+                  draft={selected}
+                  onSave={saveDraft}
+                  onCancel={() => setEditing(false)}
+                />
+              ) : (
+                <Preview draft={selected} />
+              )}
+            </>
           ) : (
             <div className="review-placeholder">
               <h2>选择一条内容</h2>
@@ -355,7 +688,19 @@ export function ReviewApp() {
           )}
         </section>
 
-        {selected ? <Annotations annotations={selected.annotations} /> : null}
+        {selected ? (
+          <Annotations
+            annotations={selected.annotations}
+            locked={Boolean(locked)}
+            busy={busy}
+            text={annotationText}
+            field={annotationField}
+            onTextChange={setAnnotationText}
+            onFieldChange={setAnnotationField}
+            onAdd={addAnnotation}
+            onResolve={resolveAnnotation}
+          />
+        ) : null}
       </main>
     </div>
   );

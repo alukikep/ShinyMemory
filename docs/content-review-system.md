@@ -2,27 +2,30 @@
 
 ## 当前阶段
 
-第一阶段骨架已实现：
+第二阶段已实现：
 
 - `content-review/drafts|revisions|approved|discarded`；
 - `ReviewDraft` 类型；
 - `LocalReviewRepository`；
-- Vite 本地 `/api/review`；
+- Vite 本地 `/api/review`（读/写/状态/批注）；
 - `npm run review`；
 - 审查台队列；
 - 事件/工作只读预览；
-- 字段批注展示；
-- 示例草稿。
+- 从零新建事件/工作；
+- 事件表单 + 高级 JSON；
+- 工作表单 + 高级 JSON；
+- 字段批注添加/处理；
+- 通过/打回/废弃/重新送审；
+- approved JSON 进入游戏内容；
+- 通过前 schema/引用校验。
 
-尚未实现：
+仍未实现：
 
-- 新建草稿；
-- 页面内编辑；
-- 保存；
-- 通过/打回/废弃写入；
-- approved 内容加载；
-- schema 校验；
-- 重新送审。
+- 已通过内容的版本替换；
+- 远程审查服务；
+- 登录/权限；
+- 多人协作；
+- 自动修改。
 
 ## 已确认的产品决策
 

@@ -1,12 +1,12 @@
-import type { LocationDef } from '../../types';
-import office from './office';
-import station from './station';
-import practiceRoom from './practiceRoom';
-import studio from './studio';
-import home from './home';
-import park from './park';
-import shoppingStreet from './shoppingStreet';
-import school from './school';
+import type { LocationDef } from '../../types.js';
+import office from './office.js';
+import station from './station.js';
+import practiceRoom from './practiceRoom.js';
+import studio from './studio.js';
+import home from './home.js';
+import park from './park.js';
+import shoppingStreet from './shoppingStreet.js';
+import school from './school.js';
 
 export const LOCATIONS: LocationDef[] = [
   office,

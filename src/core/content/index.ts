@@ -4,7 +4,8 @@ import { WALK_EDGES } from './map';
 import { TRANSIT_ROUTES } from './transit';
 import { ACTORS } from './actors';
 import { IDOLS } from './idols';
-import { JOBS } from './jobs';
+import { JOBS as BASE_JOBS } from './jobs';
+import { APPROVED_EVENTS, APPROVED_JOBS } from './approved';
 import vocal from './activities/vocal';
 import dance from './activities/dance';
 import expression from './activities/expression';
@@ -54,8 +55,10 @@ import badEnding from './endings/bad';
 
 export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep];
 
-export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, parkPigeons, shoppingWindow, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath];
+export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, parkPigeons, shoppingWindow, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath, ...APPROVED_EVENTS];
+
+export const JOBS = [...BASE_JOBS, ...APPROVED_JOBS];
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 
-export { ACTORS, IDOLS, JOBS, LOCATIONS, TRANSIT_ROUTES, WALK_EDGES };
+export { ACTORS, IDOLS, LOCATIONS, TRANSIT_ROUTES, WALK_EDGES };

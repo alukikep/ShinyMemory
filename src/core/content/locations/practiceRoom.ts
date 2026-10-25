@@ -1,4 +1,4 @@
-import type { LocationDef } from '../../types';
+import type { LocationDef } from '../../types.js';
 
 const location: LocationDef = {
   id: 'practice_room',

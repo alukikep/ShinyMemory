@@ -221,6 +221,8 @@ completeDueJobs(state)
 
 ## 后续
 
+工作当天事件计划见 `docs/job-day-events-plan.md`。
+
 如果需要更丰富，但不想增加负担：
 
 ```text

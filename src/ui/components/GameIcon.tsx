@@ -88,6 +88,10 @@ const ICON_PATHS: Record<string, string[]> = {
   check: ['m5 12 4 4L19 6'],
 };
 
+export function getIconPaths(name: string): string[] {
+  return ICON_PATHS[name] ?? ICON_PATHS.compass;
+}
+
 export function GameIcon({
   name,
   size = 18,
@@ -110,7 +114,7 @@ export function GameIcon({
       className={className}
       aria-hidden="true"
     >
-      {(ICON_PATHS[name] ?? ICON_PATHS.compass).map((path, index) => (
+      {getIconPaths(name).map((path, index) => (
         <path key={index} d={path} />
       ))}
     </svg>

@@ -2,7 +2,15 @@ import { useEffect, useState } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { WALK_EDGES, neighborsOf } from '../../core/content/map';
 import type { GameState } from '../../core/types';
-import { GameIcon } from './GameIcon';
+import { GameIcon, getIconPaths } from './GameIcon';
+
+const LOCATION_ICONS: Record<string, string> = {
+  home: 'home',
+  station: 'train',
+  office: 'building',
+  practice_room: 'music',
+  studio: 'mic',
+};
 
 type CityMapProps = {
   state: GameState;
@@ -93,11 +101,47 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
 
       <div className="map-canvas">
         <svg
-          viewBox="0 40 500 200"
+          viewBox="0 30 500 220"
           className="map-svg"
           role="img"
           aria-label="地点与步行路线"
         >
+          <defs>
+            <pattern
+              id="map-dot-grid"
+              width="18"
+              height="18"
+              patternUnits="userSpaceOnUse"
+            >
+              <circle cx="1" cy="1" r="1" fill="#c9dfea" opacity=".72" />
+            </pattern>
+          </defs>
+          <rect x="0" y="30" width="500" height="220" fill="#f7fbfe" />
+          <rect
+            x="0"
+            y="30"
+            width="500"
+            height="220"
+            fill="url(#map-dot-grid)"
+          />
+          <g className="map-blocks">
+            <rect x="28" y="46" width="70" height="30" rx="4" />
+            <rect x="334" y="46" width="78" height="30" rx="4" />
+            <rect x="30" y="210" width="58" height="25" rx="4" />
+            <rect x="326" y="215" width="84" height="20" rx="4" />
+          </g>
+          <g className="map-parks">
+            <ellipse cx="452" cy="76" rx="25" ry="18" />
+            <ellipse cx="438" cy="216" rx="21" ry="14" />
+            <ellipse cx="58" cy="116" rx="18" ry="13" />
+          </g>
+          <text x="26" y="244" className="map-area-label">
+            283 PRODUCTION · ACTIVITY AREA
+          </text>
+          <text x="468" y="57" className="map-north-label">
+            N ↑
+          </text>
+
           {WALK_EDGES.map((edge) => {
             const from = CONTENT_INDEX.locations.get(edge.from);
             const to = CONTENT_INDEX.locations.get(edge.to);
@@ -172,8 +216,18 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
                   height={42}
                   rx={10}
                 />
+                <g
+                  className="map-node-icon"
+                  transform={`translate(${location.mapX - 41} ${location.mapY - 9}) scale(0.72)`}
+                >
+                  {getIconPaths(
+                    LOCATION_ICONS[location.id] ?? 'compass',
+                  ).map((path, index) => (
+                    <path key={index} d={path} />
+                  ))}
+                </g>
                 <text
-                  x={location.mapX}
+                  x={location.mapX + 8}
                   y={location.mapY + 4}
                   className="map-node-name"
                   textAnchor="middle"
@@ -285,7 +339,11 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
             </div>
 
             <footer className="transit-dialog-foot">
-              现金 ¥{state.money.toLocaleString('zh-CN')}
+              <span>
+                <GameIcon name="coin" size={12} />现金 ¥
+                {state.money.toLocaleString('zh-CN')}
+              </span>
+              <span>固定票价 · 不按距离计费</span>
             </footer>
           </section>
         </div>

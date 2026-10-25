@@ -821,9 +821,7 @@ button {
   margin: 10px 0 8px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(201, 107, 126, 0.05), transparent 55%),
-    #f7fbfe;
+  background: #f7fbfe;
   padding: 4px;
 }
 
@@ -831,17 +829,43 @@ button {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 210px;
+  max-height: 230px;
+}
+
+.map-blocks rect {
+  fill: #e7f2f7;
+  stroke: #d4e7ef;
+  opacity: 0.8;
+}
+
+.map-parks {
+  fill: #dcebd9;
+  opacity: 0.9;
+}
+
+.map-area-label {
+  fill: #b4c7d2;
+  font-size: 7px;
+  letter-spacing: 0.16em;
+}
+
+.map-north-label {
+  fill: #9fb9c8;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-anchor: end;
 }
 
 .map-edge {
   stroke: #c9dfea;
-  stroke-width: 2;
+  stroke-width: 2.4;
+  stroke-linecap: round;
   stroke-dasharray: 5 5;
 }
 
 .map-edge.active {
   stroke: var(--accent);
+  stroke-width: 3;
   stroke-dasharray: none;
 }
 
@@ -864,6 +888,15 @@ button {
     stroke 0.18s ease;
 }
 
+.map-node-icon {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
 .map-node-name {
   fill: var(--ink);
   font-size: 11px;
@@ -872,8 +905,12 @@ button {
 }
 
 .map-node.current rect {
-  fill: rgba(201, 107, 126, 0.16);
+  fill: rgba(49, 155, 197, 0.14);
   stroke: var(--accent);
+}
+
+.map-node.current .map-node-icon {
+  stroke: var(--accent-strong);
 }
 
 .map-node.adjacent {
@@ -1374,12 +1411,21 @@ button {
 }
 
 .transit-dialog-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   margin-top: 12px;
   border-top: 1px solid var(--line);
   padding-top: 9px;
   color: var(--faint);
   font-size: 10px;
-  text-align: right;
+}
+
+.transit-dialog-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .actors {

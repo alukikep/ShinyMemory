@@ -148,6 +148,9 @@ describe('app shell', () => {
       />,
     );
     expect(html).toContain('城市地图');
+    expect(html).toContain('map-dot-grid');
+    expect(html).toContain('map-node-icon');
+    expect(html).toContain('283 PRODUCTION · ACTIVITY AREA');
     expect(html).toContain('事务所');
     expect(html).toContain('车站');
     expect(html).toContain('5 分钟');

@@ -37,7 +37,7 @@ export function CityMap({ state, onMove }: CityMapProps) {
 
       <div className="map-canvas">
         <svg
-          viewBox="0 0 500 280"
+          viewBox="0 40 500 200"
           className="map-svg"
           role="img"
           aria-label="地点与步行路线"

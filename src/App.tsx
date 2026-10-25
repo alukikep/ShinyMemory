@@ -63,18 +63,19 @@ export default function App() {
           state={state}
           onOpenRoster={() => setRosterOpen(true)}
         />
-        <ScenePanel
-          scene={scene}
-          onAction={act}
-          onMove={(locationId) => act({ type: 'move', locationId })}
-        />
+        <div className="center-column">
+          <ScenePanel
+            scene={scene}
+            onAction={act}
+            onMove={(locationId) => act({ type: 'move', locationId })}
+          />
+          <CityMap
+            state={state}
+            onMove={(locationId) => act({ type: 'move', locationId })}
+          />
+        </div>
         <LogPanel state={state} />
       </main>
-
-      <CityMap
-        state={state}
-        onMove={(locationId) => act({ type: 'move', locationId })}
-      />
 
       {rosterOpen ? (
         <IdolRoster state={state} onClose={() => setRosterOpen(false)} />

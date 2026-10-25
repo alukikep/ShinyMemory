@@ -1,4 +1,4 @@
-import { ACTORS, ACTIVITIES, ENDINGS, EVENTS, IDOLS, LOCATIONS } from './content';
+import { ACTORS, ACTIVITIES, ENDINGS, EVENTS, IDOLS, LOCATIONS, TRANSIT_ROUTES } from './content';
 import type {
   ActivityDef,
   ActivityKind,
@@ -9,6 +9,7 @@ import type {
   IdolDef,
   IdolState,
   LocationDef,
+  TransitRouteDef,
 } from './types';
 
 export type ContentIndex = {
@@ -18,6 +19,8 @@ export type ContentIndex = {
   events: Map<string, EventDef>;
   endings: Map<string, EndingDef>;
   locations: Map<string, LocationDef>;
+  transitRoutes: Map<string, TransitRouteDef>;
+  transitRoutesByLocation: Map<string, TransitRouteDef[]>;
   activitiesByLocation: Map<string, ActivityDef[]>;
   eventsByLocation: Map<string, EventDef[]>;
   eventsByActivityId: Map<string, EventDef[]>;
@@ -36,6 +39,16 @@ function buildIndex(): ContentIndex {
   const events = new Map(EVENTS.map((event) => [event.id, event]));
   const endings = new Map(ENDINGS.map((ending) => [ending.id, ending]));
   const locations = new Map(LOCATIONS.map((location) => [location.id, location]));
+  const transitRoutes = new Map(
+    TRANSIT_ROUTES.map((route) => [route.id, route]),
+  );
+  const transitRoutesByLocation = new Map<string, TransitRouteDef[]>();
+  for (const location of LOCATIONS) {
+    transitRoutesByLocation.set(
+      location.id,
+      TRANSIT_ROUTES.filter((route) => route.from === location.id),
+    );
+  }
 
   const activitiesByLocation = new Map<string, ActivityDef[]>();
   for (const location of LOCATIONS) {
@@ -123,6 +136,8 @@ function buildIndex(): ContentIndex {
     events,
     endings,
     locations,
+    transitRoutes,
+    transitRoutesByLocation,
     activitiesByLocation,
     eventsByLocation,
     eventsByActivityId,

@@ -19,6 +19,7 @@ import {
   newGame,
   presentActors,
   talkTo,
+  takeTransit,
   topicAvailability,
   travelTo,
   workRewardPreview,
@@ -216,6 +217,51 @@ describe('raising sim core', () => {
     expect(station.locationId).toBe('station');
     const practice = moveTo(station, 'practice_room');
     expect(practice.locationId).toBe('practice_room');
+  });
+
+  it('takes the bus from the station for a fixed fare and time', () => {
+    const station = moveTo(newGame(1), 'station');
+    const studio = takeTransit(station, 'bus_station_studio');
+
+    expect(studio.locationId).toBe('studio');
+    expect(studio.money).toBe(2700);
+    expect(formatClock(studio.clock.absoluteMinutes)).toBe('08:17');
+    expect(studio.log[0]?.text).toContain('车费 ¥300');
+  });
+
+  it('rejects transit without money or from the wrong location', () => {
+    const station = moveTo(newGame(1), 'station');
+    station.money = 100;
+    expect(takeTransit(station, 'bus_station_studio').locationId).toBe(
+      'station',
+    );
+    expect(takeTransit(newGame(1), 'bus_station_studio').locationId).toBe(
+      'office',
+    );
+  });
+
+  it('shows bus routes at the station', () => {
+    const scene = buildScene(moveTo(newGame(1), 'station'));
+    expect(scene.transit?.routes).toHaveLength(4);
+    expect(scene.transit?.routes.map((route) => route.toId)).toEqual([
+      'office',
+      'practice_room',
+      'studio',
+      'home',
+    ]);
+    expect(scene.blocks.some((block) => block.text.includes('没有可做'))).toBe(
+      false,
+    );
+  });
+
+  it('accepts typed transit commands', () => {
+    const state = handleCommand(moveTo(newGame(1), 'station'), {
+      type: 'transit',
+      routeId: 'bus_station_office',
+    });
+    expect(state.locationId).toBe('office');
+    expect(state.money).toBe(2800);
+    expect(formatClock(state.clock.absoluteMinutes)).toBe('08:13');
   });
 
   it('accepts typed action commands', () => {

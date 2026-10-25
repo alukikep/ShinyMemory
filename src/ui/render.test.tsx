@@ -2,7 +2,7 @@ import { renderToString } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import App from '../App';
 import { buildScene } from '../core/scene';
-import { advanceTime, enterNpc, handleCommand, newGame, travelTo } from '../core/sim';
+import { advanceTime, enterNpc, handleCommand, moveTo, newGame, travelTo } from '../core/sim';
 import { DebugPanel } from './components/DebugPanel';
 import { IdolRoster } from './components/IdolRoster';
 import { CityMap } from './components/CityMap';
@@ -113,6 +113,21 @@ describe('app shell', () => {
     expect(html).toContain('风野灯织');
     expect(html).toContain('歌唱');
     expect(html).toContain('当前');
+  });
+
+  it('renders bus routes at the station', () => {
+    const state = moveTo(newGame(1), 'station');
+    const html = renderToString(
+      <ScenePanel
+        scene={buildScene(state)}
+        onAction={() => {}}
+        onTransit={() => {}}
+      />,
+    );
+    expect(html).toContain('公交');
+    expect(html).toContain('录音棚');
+    expect(html).toMatch(/¥.*300/);
+    expect(html).toMatch(/12.*分钟/);
   });
 
   it('renders the city map with adjacent destinations', () => {

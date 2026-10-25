@@ -68,6 +68,7 @@ export default function App() {
             scene={scene}
             onAction={act}
             onMove={(locationId) => act({ type: 'move', locationId })}
+            onTransit={(routeId) => act({ type: 'transit', routeId })}
           />
           <CityMap
             state={state}

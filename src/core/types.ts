@@ -279,6 +279,31 @@ export type MapEdgeDef = {
   minutes: number;
 };
 
+export type TransitRouteDef = {
+  id: string;
+  from: string;
+  to: string;
+  fare: number;
+  minutes: number;
+  label: string;
+  kind: 'bus' | 'taxi';
+};
+
+export type TransitRouteView = {
+  id: string;
+  toId: string;
+  toName: string;
+  fare: number;
+  minutes: number;
+  disabled?: boolean;
+  disabledReason?: string;
+};
+
+export type TransitView = {
+  label: string;
+  routes: TransitRouteView[];
+};
+
 export type LocationView = {
   id: string;
   name: string;
@@ -342,6 +367,7 @@ export type ActionTone =
 
 export type ActionCommand =
   | { type: 'move'; locationId: string }
+  | { type: 'transit'; routeId: string }
   | { type: 'activity'; activityId: string }
   | { type: 'enterNpc'; actorId: string }
   | { type: 'talk'; actorId: string; topicId: string }
@@ -402,6 +428,7 @@ export type SceneView = {
   subtitle?: string;
   locationName?: string;
   locations?: LocationView[];
+  transit?: TransitView;
   actors?: ActorView[];
   npc?: NpcPageView;
   idol?: IdolPageView;

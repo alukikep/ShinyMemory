@@ -24,9 +24,15 @@ type ScenePanelProps = {
   scene: SceneView;
   onAction: (command: ActionCommand) => void;
   onMove?: (locationId: string) => void;
+  onTransit?: (routeId: string) => void;
 };
 
-export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
+export function ScenePanel({
+  scene,
+  onAction,
+  onMove,
+  onTransit,
+}: ScenePanelProps) {
   return (
     <section className="panel scene-panel">
       <div className="scene-head">
@@ -52,6 +58,32 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
               {!location.current ? <small>{location.minutes} 分</small> : null}
             </button>
           ))}
+        </div>
+      ) : null}
+
+      {scene.transit ? (
+        <div className="transit-block">
+          <div className="transit-head">
+            <span>{scene.transit.label}</span>
+            <small>固定车费 · 固定时间</small>
+          </div>
+          <div className="transit-routes">
+            {scene.transit.routes.map((route) => (
+              <button
+                key={route.id}
+                type="button"
+                className="transit-route"
+                disabled={route.disabled}
+                title={route.disabledReason}
+                onClick={() => onTransit?.(route.id)}
+              >
+                <span className="transit-destination">{route.toName}</span>
+                <span className="transit-meta">
+                  {`¥${route.fare} · ${route.minutes} 分钟`}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       ) : null}
 

@@ -628,6 +628,32 @@ export function travelTo(state: GameState, locationId: string): GameState {
   return current;
 }
 
+export function takeTransit(state: GameState, routeId: string): GameState {
+  if (state.phase !== 'plan') return state;
+  const route = CONTENT_INDEX.transitRoutes.get(routeId);
+  if (!route || route.from !== state.locationId) return state;
+  if (state.money < route.fare) return state;
+
+  const destination = CONTENT_INDEX.locations.get(route.to);
+  if (!destination) return state;
+
+  const next = clone(state);
+  next.money -= route.fare;
+  next.locationId = route.to;
+  next.pendingActivityId = undefined;
+  next.pendingEventId = undefined;
+  addLog(
+    next,
+    `乘坐公交前往${destination.name}，车费 ¥${route.fare}。`,
+    'info',
+  );
+
+  const advanced = advanceTime(next, route.minutes);
+  if (advanced.pendingExam) return beginPendingExam(advanced);
+  advanced.phase = 'plan';
+  return advanced;
+}
+
 export function enterNpc(state: GameState, actorId: string): GameState {
   if (state.phase !== 'plan') return state;
   const actor = getActor(actorId);
@@ -1316,6 +1342,9 @@ export function handleCommand(
   switch (state.phase) {
     case 'plan':
       if (command.type === 'move') return moveTo(state, command.locationId);
+      if (command.type === 'transit') {
+        return takeTransit(state, command.routeId);
+      }
       if (command.type === 'enterNpc') return enterNpc(state, command.actorId);
       if (command.type === 'enterIdol') return enterIdol(state, command.idolId);
       if (command.type === 'activity') return applyActivity(state, command.activityId);
@@ -1371,6 +1400,11 @@ export function handleAction(state: GameState, actionId: string): GameState {
     case 'plan':
       if (actionId.startsWith('move:')) {
         command = { type: 'move', locationId: actionId.slice('move:'.length) };
+      } else if (actionId.startsWith('transit:')) {
+        command = {
+          type: 'transit',
+          routeId: actionId.slice('transit:'.length),
+        };
       } else if (actionId.startsWith('enter:')) {
         command = {
           type: 'enterNpc',

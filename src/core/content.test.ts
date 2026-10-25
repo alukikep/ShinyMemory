@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, IDOLS, LOCATIONS, WALK_EDGES } from './content';
+import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, IDOLS, LOCATIONS, TRANSIT_ROUTES, WALK_EDGES } from './content';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityKind, Condition, EventDef } from './types';
 
@@ -208,6 +208,20 @@ describe('content integrity', () => {
         expect(window.toMinute).toBeGreaterThanOrEqual(0);
         expect(window.toMinute).toBeLessThan(24 * 60);
       }
+    }
+  });
+
+  it('validates bus routes to existing locations', () => {
+    const locationIds = new Set(LOCATIONS.map((location) => location.id));
+    const routeIds = new Set<string>();
+    for (const route of TRANSIT_ROUTES) {
+      expect(routeIds.has(route.id)).toBe(false);
+      routeIds.add(route.id);
+      expect(locationIds.has(route.from)).toBe(true);
+      expect(locationIds.has(route.to)).toBe(true);
+      expect(route.fare).toBeGreaterThan(0);
+      expect(route.minutes).toBeGreaterThan(0);
+      expect(CONTENT_INDEX.locations.get(route.from)?.kind).toBe('station');
     }
   });
 

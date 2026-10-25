@@ -672,6 +672,73 @@ button {
   font-size: 9px;
 }
 
+.transit-block {
+  margin-top: 14px;
+  border: 1px solid rgba(201, 107, 126, 0.28);
+  border-radius: 12px;
+  background: rgba(255, 250, 243, 0.7);
+  padding: 11px 12px;
+}
+
+.transit-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.transit-head span {
+  color: var(--accent-strong);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.transit-head small {
+  color: var(--faint);
+  font-size: 9px;
+}
+
+.transit-routes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.transit-route {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  padding: 7px 9px;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.transit-route:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.transit-route:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.transit-destination {
+  font-size: 12px;
+}
+
+.transit-meta {
+  color: var(--faint);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
 .actors {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

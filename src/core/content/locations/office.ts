@@ -6,8 +6,8 @@ const location: LocationDef = {
   description: '事务所的会议室兼休息室。桌上堆着台本和没喝完的茶。',
   isStart: true,
   kind: 'place',
-  mapX: 160,
-  mapY: 90,
+  mapX: 400,
+  mapY: 80,
 };
 
 export default location;

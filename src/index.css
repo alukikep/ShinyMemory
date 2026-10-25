@@ -413,31 +413,10 @@ button {
   gap: 10px;
 }
 
-.map-button {
-  margin-top: 8px;
-}
-
-.map-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  background: rgba(47, 42, 38, 0.32);
-  backdrop-filter: blur(2px);
-}
-
 .map-panel {
-  width: min(760px, 100%);
-  max-height: min(88vh, 820px);
-  overflow: auto;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--panel-solid);
-  box-shadow: 0 30px 80px rgba(47, 34, 25, 0.22);
-  padding: 24px;
+  width: 100%;
+  margin-top: 16px;
+  padding: 20px 22px;
 }
 
 .map-head {
@@ -457,21 +436,6 @@ button {
   margin: 6px 0 0;
   color: var(--muted);
   font-size: 11px;
-}
-
-.map-close {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: #fff;
-  padding: 5px 12px;
-  color: var(--muted);
-  font-size: 11px;
-  cursor: pointer;
-}
-
-.map-close:hover {
-  border-color: var(--accent);
-  color: var(--accent-strong);
 }
 
 .map-canvas {
@@ -512,7 +476,7 @@ button {
   cursor: default;
 }
 
-.map-node circle {
+.map-node rect {
   fill: #fffaf3;
   stroke: #d9c9ba;
   stroke-width: 2;
@@ -523,12 +487,12 @@ button {
 
 .map-node-name {
   fill: var(--ink);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   pointer-events: none;
 }
 
-.map-node.current circle {
+.map-node.current rect {
   fill: rgba(201, 107, 126, 0.16);
   stroke: var(--accent);
 }
@@ -537,8 +501,8 @@ button {
   cursor: pointer;
 }
 
-.map-node.adjacent:hover circle,
-.map-node.adjacent:focus circle {
+.map-node.adjacent:hover rect,
+.map-node.adjacent:focus rect {
   fill: #fff;
   stroke: var(--accent-strong);
 }

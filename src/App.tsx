@@ -3,9 +3,9 @@ import { buildScene } from './core/scene';
 import { formatClock, getDay } from './core/time';
 import { useGameStore } from './app/store';
 import { DebugPanel } from './ui/components/DebugPanel';
+import { CityMap } from './ui/components/CityMap';
 import { IdolRoster } from './ui/components/IdolRoster';
 import { LogPanel } from './ui/components/LogPanel';
-import { MapOverlay } from './ui/components/MapOverlay';
 import { ScenePanel } from './ui/components/ScenePanel';
 import { StatsPanel } from './ui/components/StatsPanel';
 
@@ -16,7 +16,6 @@ export default function App() {
   const debugForceEvent = useGameStore((store) => store.debugForceEvent);
   const debugJumpDay = useGameStore((store) => store.debugJumpDay);
   const [rosterOpen, setRosterOpen] = useState(false);
-  const [mapOpen, setMapOpen] = useState(false);
   const debug =
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).has('debug');
@@ -63,7 +62,6 @@ export default function App() {
         <StatsPanel
           state={state}
           onOpenRoster={() => setRosterOpen(true)}
-          onOpenMap={() => setMapOpen(true)}
         />
         <ScenePanel
           scene={scene}
@@ -73,16 +71,13 @@ export default function App() {
         <LogPanel state={state} />
       </main>
 
+      <CityMap
+        state={state}
+        onMove={(locationId) => act({ type: 'move', locationId })}
+      />
+
       {rosterOpen ? (
         <IdolRoster state={state} onClose={() => setRosterOpen(false)} />
-      ) : null}
-
-      {mapOpen ? (
-        <MapOverlay
-          state={state}
-          onMove={(locationId) => act({ type: 'move', locationId })}
-          onClose={() => setMapOpen(false)}
-        />
       ) : null}
 
       {debug ? (

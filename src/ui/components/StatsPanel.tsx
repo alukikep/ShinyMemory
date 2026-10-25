@@ -68,11 +68,9 @@ function RankRow({
 export function StatsPanel({
   state,
   onOpenRoster,
-  onOpenMap,
 }: {
   state: GameState;
   onOpenRoster: () => void;
-  onOpenMap: () => void;
 }) {
   const day = getDay(state.clock.absoluteMinutes);
   const idol = getActiveIdol(state);
@@ -110,15 +108,6 @@ export function StatsPanel({
         onClick={onOpenRoster}
       >
         <span>偶像名册</span>
-        <span aria-hidden="true">→</span>
-      </button>
-
-      <button
-        type="button"
-        className="roster-button map-button"
-        onClick={onOpenMap}
-      >
-        <span>城市地图</span>
         <span aria-hidden="true">→</span>
       </button>
 

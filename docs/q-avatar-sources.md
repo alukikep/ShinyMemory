@@ -115,9 +115,9 @@
 | — | 铃木羽那 | 暂缺 |
 | — | 郁田阳希 | 暂缺 |
 
-## 建议下载结构
+## 已下载结构
 
-如果确认素材，下载为：
+26 张 Q 版头像已下载到：
 
 ```text
 public/assets/idols/q/
@@ -126,18 +126,32 @@ public/assets/idols/q/
   meguru.png
   kogane.png
   mamimi.png
-  ...
+  sakuya.png
+  yuika.png
+  kiriko.png
+  kaho.png
+  chiyoko.png
+  juri.png
+  rinze.png
+  natsuha.png
+  amana.png
+  tenka.png
+  chiyuki.png
+  asahi.png
+  fuyuko.png
+  mei.png
+  tooru.png
+  madoka.png
+  koito.png
+  hinana.png
+  nichika.png
+  mikoto.png
   luca.png
 ```
 
-当前游戏只使用：
+当前游戏只接入真乃和灯织；其他图片作为未来角色素材保留。
 
-```text
-mano.png
-hiori.png
-```
-
-其他角色先保留为未来扩展素材，不接入内容数据。
+铃木羽那、郁田阳希暂无 Q 版文件，未下载。
 
 ## 建议接入方式
 
@@ -148,13 +162,9 @@ hiori.png
 - 透明背景，不裁掉头部；
 - 不再使用全身立绘做小头像。
 
-## 待确认
+## 后续
 
-1. 是否确认这套 `Sc_sdportrait` 就是想要的 Q 版头像；
-2. 是否先下载全部 26 张；
-3. 铃木羽那、郁田阳希：
-   - 暂时留空；
-   - 用非 Q 版头像占位；
-   - 或另找来源。
-
-确认后再下载并接入，避免先搬错素材。
+- 已确认素材并下载 26 张；
+- 当前只接入真乃、灯织；
+- 铃木羽那、郁田阳希暂时没有 Q 版头像；
+- 后续接入时再补 `avatar` 数据与 UI，不在本轮改动代码。

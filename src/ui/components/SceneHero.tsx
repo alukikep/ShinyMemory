@@ -187,7 +187,7 @@ function StationScene() {
   );
 }
 
-function HeroBackdrop({ locationId }: { locationId: string }) {
+export function HeroBackdrop({ locationId }: { locationId: string }) {
   return (
     <svg
       className="hero-backdrop"

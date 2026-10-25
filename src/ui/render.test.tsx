@@ -144,14 +144,19 @@ describe('app shell', () => {
     expect(html).toContain('5 分钟');
   });
 
-  it('renders the idol hero at the practice room', () => {
+  it('renders the location scene in the sidebar', () => {
     const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
     const html = renderToString(
-      <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
+      <StatsPanel
+        state={state}
+        hero={buildScene(state).hero}
+        onOpenRoster={() => {}}
+      />,
     );
-    expect(html).toContain('scene-hero');
-    expect(html).toContain('mano-portrait.png');
-    expect(html).toContain('制作人，今天也请多关照');
+    expect(html).toContain('sidebar-scene');
+    expect(html).toContain('练习室');
+    expect(html).toMatch(/第.*1.*天/);
+    expect(html).toMatch(/¥.*3,000/);
   });
 
   it('shows both idols at the practice room at 10:00', () => {

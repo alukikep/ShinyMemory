@@ -5,11 +5,13 @@ import { STAT_LABELS, STAT_MAX } from '../../core/labels';
 import { formatClock, getDay } from '../../core/time';
 import type {
   GameState,
+  HeroView,
   IdolAttribute,
   IdolStatKey,
   SharedStatKey,
 } from '../../core/types';
 import { GameIcon } from './GameIcon';
+import { SidebarScene } from './SidebarScene';
 
 const SHARED_ORDER: SharedStatKey[] = ['stamina', 'stress'];
 const IDOL_ORDER: IdolStatKey[] = ['vocal', 'dance', 'expression', 'trust'];
@@ -84,9 +86,11 @@ function RankRow({
 
 export function StatsPanel({
   state,
+  hero,
   onOpenRoster,
 }: {
   state: GameState;
+  hero?: HeroView;
   onOpenRoster: () => void;
 }) {
   const day = getDay(state.clock.absoluteMinutes);
@@ -95,6 +99,8 @@ export function StatsPanel({
 
   return (
     <aside className="panel stats-panel">
+      <SidebarScene state={state} hero={hero} />
+
       <div className="panel-head">
         <h2>状态</h2>
         <span className="panel-note">

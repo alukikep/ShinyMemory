@@ -6,7 +6,6 @@ import type {
 } from '../../core/types';
 import { STAT_LABELS } from '../../core/labels';
 import { GameIcon } from './GameIcon';
-import { SceneHero } from './SceneHero';
 
 const ACTOR_ROLE_LABEL: Record<ActorRole, string> = {
   staff: '事务员',
@@ -39,8 +38,6 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
         <h1>{scene.title}</h1>
         {scene.subtitle ? <p className="scene-subtitle">{scene.subtitle}</p> : null}
       </div>
-
-      {scene.hero ? <SceneHero hero={scene.hero} /> : null}
 
       {scene.locations && scene.locations.length > 0 ? (
         <div className="location-tabs">

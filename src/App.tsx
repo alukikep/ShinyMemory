@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { buildScene } from './core/scene';
-import { formatClock, getDay } from './core/time';
 import { useGameStore } from './app/store';
 import { DebugPanel } from './ui/components/DebugPanel';
 import { CityMap } from './ui/components/CityMap';
-import { GameIcon } from './ui/components/GameIcon';
 import { IdolRoster } from './ui/components/IdolRoster';
 import { LogPanel } from './ui/components/LogPanel';
 import { ScenePanel } from './ui/components/ScenePanel';
@@ -21,7 +19,6 @@ export default function App() {
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).has('debug');
   const scene = buildScene(state);
-  const day = getDay(state.clock.absoluteMinutes);
 
   return (
     <div className="app">
@@ -31,22 +28,6 @@ export default function App() {
           <p className="tagline">开放时间原型</p>
         </div>
         <div className="topbar-meta">
-          <div className="meta-item">
-            <span><GameIcon name="star" size={11} />天</span>
-            <strong>第 {day} 天</strong>
-          </div>
-          <div className="meta-item">
-            <span><GameIcon name="clock" size={11} />时间</span>
-            <strong>{formatClock(state.clock.absoluteMinutes)}</strong>
-          </div>
-          <div className="meta-item">
-            <span><GameIcon name="coin" size={11} />金钱</span>
-            <strong>¥{state.money.toLocaleString('zh-CN')}</strong>
-          </div>
-          <div className="meta-item">
-            <span><GameIcon name="flag" size={11} />行动</span>
-            <strong>{state.actionsTaken}</strong>
-          </div>
           <button
             type="button"
             className="ghost-button"
@@ -62,6 +43,7 @@ export default function App() {
       <main className="layout">
         <StatsPanel
           state={state}
+          hero={scene.hero}
           onOpenRoster={() => setRosterOpen(true)}
         />
         <div className="center-column">

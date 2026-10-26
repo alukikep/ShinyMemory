@@ -49,7 +49,9 @@ npm install
 npm run dev      # 本地开发
 npm run build    # 类型检查 + 生产构建
 npm test         # 核心模拟测试 + 平衡烟测
+npm run content:validate # 校验 approved 内容
 npm run acceptance # 浏览器验收（Playwright + Edge）
+npm run acceptance:review # 审查流程验收
 npm run review     # 本地内容审查台（http://127.0.0.1:5174/review.html）
 ```
 

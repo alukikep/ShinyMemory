@@ -7,6 +7,7 @@ import {
   getReviewDraft,
   listReviewDrafts,
   moveReviewDraft,
+  reviseReviewDraft,
   saveReviewDraft,
 } from './reviewStore.js';
 
@@ -117,6 +118,21 @@ export function reviewApiPlugin(): Plugin {
             return;
           }
 
+          if (request.method === 'POST' && parts[2] === 'revise') {
+            const current = await getReviewDraft(id);
+            if (!current) {
+              sendJson(response, 404, { error: 'draft not found' });
+              return;
+            }
+            if (current.status !== 'approved') {
+              sendJson(response, 409, { error: 'only approved drafts can be revised' });
+              return;
+            }
+            const draft = await reviseReviewDraft(id);
+            sendJson(response, 201, { draft });
+            return;
+          }
+
           if (request.method === 'POST' && parts[2] === 'status') {
             const body = await readJson(request);
             if (!isRecord(body) || typeof body.status !== 'string') {
@@ -151,6 +167,16 @@ export function reviewApiPlugin(): Plugin {
               body.status as ReviewStatus,
               typeof body.note === 'string' ? body.note : undefined,
             );
+            if (body.status === 'approved' && current.supersedes) {
+              const previous = await getReviewDraft(current.supersedes);
+              if (previous?.status === 'approved') {
+                await moveReviewDraft(
+                  previous.id,
+                  'discarded',
+                  `已被 ${draft.id}（v${draft.version ?? 1}）替换`,
+                );
+              }
+            }
             sendJson(response, 200, { draft });
             return;
           }

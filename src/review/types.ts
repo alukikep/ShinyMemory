@@ -21,6 +21,9 @@ export type ReviewDraft = {
   kind: ReviewKind;
   title: string;
   status: ReviewStatus;
+  version?: number;
+  rootId?: string;
+  supersedes?: string;
   payload: unknown;
   annotations: ReviewAnnotation[];
   createdAt: string;

@@ -74,6 +74,9 @@ function normalizeDraft(
     kind: raw.kind ?? 'event',
     title,
     status,
+    version: raw.version ?? 1,
+    rootId: raw.rootId ?? raw.id ?? fallbackId,
+    supersedes: raw.supersedes,
     payload,
     annotations: raw.annotations ?? [],
     createdAt: raw.createdAt ?? fallbackDate,
@@ -188,6 +191,8 @@ export async function createReviewDraft(
     kind,
     title: title.trim() || (kind === 'event' ? '未命名事件' : '未命名工作'),
     status: 'review',
+    version: 1,
+    rootId: id,
     payload: defaultPayload(kind, title.trim()),
     annotations: [],
     createdAt: now,
@@ -197,6 +202,38 @@ export async function createReviewDraft(
   await fs.mkdir(path.dirname(fileFor('review', id)), { recursive: true });
   await writeJson(fileFor('review', id), draft);
   return draft;
+}
+
+export async function reviseReviewDraft(id: string): Promise<ReviewDraft> {
+  const located = await locateDraft(id);
+  if (!located) throw new Error('草稿不存在');
+  if (located.status !== 'approved') {
+    throw new Error('只有已通过内容可以修订为新版本');
+  }
+
+  const now = new Date().toISOString();
+  const nextId = `draft.${located.draft.kind}.${Date.now()}`;
+  const next: ReviewDraft = {
+    ...located.draft,
+    id: nextId,
+    status: 'review',
+    version: (located.draft.version ?? 1) + 1,
+    rootId: located.draft.rootId ?? located.draft.id,
+    supersedes: located.draft.id,
+    annotations: [],
+    createdAt: now,
+    updatedAt: now,
+    reviewedAt: undefined,
+    history: [
+      {
+        status: 'review',
+        at: now,
+        note: `由 ${located.draft.id} 修订而来`,
+      },
+    ],
+  };
+  await writeJson(fileFor('review', nextId), next);
+  return next;
 }
 
 export async function saveReviewDraft(

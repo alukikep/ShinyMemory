@@ -17,11 +17,13 @@
 - 字段批注添加/处理；
 - 通过/打回/废弃/重新送审；
 - approved JSON 进入游戏内容；
-- 通过前 schema/引用校验。
+- 通过前 schema/引用校验；
+- `npm run content:validate` 构建门；
+- approved 内容版本化：修订为新版本，旧版本移入 discarded；
+- 审查流程 Playwright E2E。
 
 仍未实现：
 
-- 已通过内容的版本替换；
 - 远程审查服务；
 - 登录/权限；
 - 多人协作；

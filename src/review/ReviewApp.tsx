@@ -172,6 +172,7 @@ function Preview({ draft }: { draft: ReviewDraft }) {
               {STATUS_LABELS[draft.status]}
             </span>
             <span className="review-kind">{KIND_LABELS[draft.kind]}</span>
+            <span className="review-kind">v{draft.version ?? 1}</span>
           </div>
           <h2>{draft.title}</h2>
           <p className="review-id">{draft.id}</p>
@@ -396,10 +397,30 @@ export function ReviewApp() {
         nextStatus,
         statusNote.trim() || undefined,
       );
+      const all = await repository.list();
+      setDrafts(all);
       upsertDraft(next);
       setStatus(next.status);
       setStatusNote('');
       setEditing(false);
+    } catch (reason) {
+      setActionError(errorsOf(reason).join('；'));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const reviseDraft = async () => {
+    if (!selected) return;
+    setBusy(true);
+    setActionError(undefined);
+    try {
+      const next = await repository.revise(selected.id);
+      const all = await repository.list();
+      setDrafts(all);
+      upsertDraft(next);
+      setStatus('review');
+      setEditing(true);
     } catch (reason) {
       setActionError(errorsOf(reason).join('；'));
     } finally {
@@ -656,6 +677,17 @@ export function ReviewApp() {
                     </button>
                   </div>
                   )
+                ) : selected.status === 'approved' ? (
+                  <div className="review-toolbar-actions">
+                    <button
+                      type="button"
+                      className="review-button"
+                      disabled={busy}
+                      onClick={() => void reviseDraft()}
+                    >
+                      修订为新版本
+                    </button>
+                  </div>
                 ) : null}
               </div>
               {!locked && !editing ? (

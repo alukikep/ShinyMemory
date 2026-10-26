@@ -41,3 +41,5 @@ screenshots/
 # workshop/ is intentionally committed while this repository is private.
 # Before making the repository public, move workshop/ to a private repo
 # or add it to .gitignore. See workshop/README.md.
+
+playwright-report-review/

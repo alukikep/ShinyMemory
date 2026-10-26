@@ -48,6 +48,7 @@ export interface ReviewRepository {
     status: ReviewStatus,
     note?: string,
   ): Promise<ReviewDraft>;
+  revise(id: string): Promise<ReviewDraft>;
   addAnnotation(
     id: string,
     text: string,
@@ -121,6 +122,16 @@ export class LocalReviewRepository implements ReviewRepository {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status, note }),
       },
+    );
+    if (!response.ok) throw await readError(response);
+    const body = (await response.json()) as { draft: ReviewDraft };
+    return body.draft;
+  }
+
+  async revise(id: string): Promise<ReviewDraft> {
+    const response = await fetch(
+      `/api/review/drafts/${encodeURIComponent(id)}/revise`,
+      { method: 'POST' },
     );
     if (!response.ok) throw await readError(response);
     const body = (await response.json()) as { draft: ReviewDraft };

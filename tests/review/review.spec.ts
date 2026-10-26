@@ -1,0 +1,118 @@
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
+import { expect, test } from '@playwright/test';
+
+const ROOT = process.cwd();
+const STATUS_DIRS = ['drafts', 'revisions', 'approved', 'discarded'];
+
+async function cleanup() {
+  for (const dir of STATUS_DIRS) {
+    const directory = path.join(ROOT, 'content-review', dir);
+    let names: string[] = [];
+    try {
+      names = await fs.readdir(directory);
+    } catch {
+      continue;
+    }
+    for (const name of names) {
+      if (!name.endsWith('.json')) continue;
+      const file = path.join(directory, name);
+      const text = await fs.readFile(file, 'utf8');
+      if (text.includes('E2E 审查事件')) {
+        await fs.rm(file, { force: true });
+      }
+    }
+  }
+}
+
+test.beforeEach(cleanup);
+test.afterEach(cleanup);
+
+test('creates, revises, resubmits and approves an event', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(String(error)));
+  page.on('console', (message) => {
+    if (message.type() === 'error') errors.push(message.text());
+  });
+
+  await page.goto('/review.html');
+  await page.getByRole('button', { name: '新建草稿' }).click();
+  await page.locator('.review-modal select').selectOption('event');
+  await page.locator('.review-modal input').fill('E2E 审查事件');
+  await page.getByRole('button', { name: '创建' }).click();
+  await expect(page.locator('.review-editor')).toBeVisible();
+
+  await page
+    .getByRole('textbox', { name: '标题', exact: true })
+    .fill('E2E 审查事件');
+  await page.getByRole('textbox', { name: '正文' }).fill('E2E 正文');
+  await page.getByRole('textbox', { name: '结果文本' }).fill('E2E 结果');
+  await page.getByRole('button', { name: '保存草稿' }).first().click();
+  await expect(page.locator('.review-editor')).toHaveCount(0);
+  await expect(page.locator('.review-toolbar .review-status')).toHaveText(
+    '待审查',
+  );
+
+  await page.locator('.review-note-add textarea').fill('E2E 批注');
+  await page.getByRole('button', { name: '添加批注' }).click();
+  await expect(page.locator('.review-note')).toHaveCount(1);
+
+  await page.getByRole('button', { name: '打回' }).click();
+  await expect(page.locator('.review-toolbar .review-status')).toHaveText(
+    '待修改',
+  );
+
+  await page.getByRole('button', { name: '重新送审' }).click();
+  await expect(page.locator('.review-toolbar .review-status')).toHaveText(
+    '待审查',
+  );
+
+  await page.getByRole('button', { name: '通过' }).click();
+  await expect(page.locator('.review-toolbar .review-status')).toHaveText(
+    '已通过',
+  );
+
+  const approved = await fs.readdir(
+    path.join(ROOT, 'content-review', 'approved'),
+  );
+  const approvedText = await Promise.all(
+    approved
+      .filter((name) => name.endsWith('.json'))
+      .map((name) =>
+        fs.readFile(
+          path.join(ROOT, 'content-review', 'approved', name),
+          'utf8',
+        ),
+      ),
+  );
+  expect(approvedText.some((text) => text.includes('E2E 审查事件'))).toBe(true);
+
+  await page.getByRole('button', { name: '修订为新版本' }).click();
+  await expect(page.locator('.review-editor')).toBeVisible();
+  await page.getByRole('button', { name: '保存草稿' }).first().click();
+  await expect(page.locator('.review-editor')).toHaveCount(0);
+  await page.getByRole('button', { name: '通过' }).click();
+  await expect(page.locator('.review-toolbar .review-status')).toHaveText(
+    '已通过',
+  );
+
+  const discarded = await fs.readdir(
+    path.join(ROOT, 'content-review', 'discarded'),
+  );
+  const discardedText = await Promise.all(
+    discarded
+      .filter((name) => name.endsWith('.json'))
+      .map((name) =>
+        fs.readFile(
+          path.join(ROOT, 'content-review', 'discarded', name),
+          'utf8',
+        ),
+      ),
+  );
+  expect(discardedText.some((text) => text.includes('E2E 审查事件'))).toBe(
+    true,
+  );
+  expect(errors).toEqual([]);
+
+  await page.screenshot({ path: 'screenshots/v47-review-approved.png' });
+});

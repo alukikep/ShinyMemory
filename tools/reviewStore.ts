@@ -103,19 +103,20 @@ async function readDraftFile(
 async function locateDraft(id: string): Promise<LocatedDraft | undefined> {
   assertSafeId(id);
   for (const entry of STATUS_DIRS) {
-    const filePath = fileFor(entry.status, id);
+    const directory = path.join(CONTENT_ROOT, entry.dir);
+    let names: string[] = [];
     try {
+      names = await fs.readdir(directory);
+    } catch {
+      continue;
+    }
+
+    for (const name of names.filter((file) => file.endsWith('.json'))) {
+      const filePath = path.join(directory, name);
       const draft = await readDraftFile(filePath, entry.status);
-      return { draft, filePath, status: entry.status };
-    } catch (error) {
-      if (
-        error instanceof Error &&
-        'code' in error &&
-        (error as NodeJS.ErrnoException).code === 'ENOENT'
-      ) {
-        continue;
+      if (draft.id === id) {
+        return { draft, filePath, status: entry.status };
       }
-      throw error;
     }
   }
   return undefined;

@@ -96,6 +96,17 @@ const ICON_PATHS: Record<string, string[]> = {
   chevron: ['m9 5 7 7-7 7'],
   close: ['m6 6 12 12M6 18 18 6'],
   check: ['m5 12 4 4L19 6'],
+  save: [
+    'M5 3h11l3 3v15H5V3Z',
+    'M8 3v6h7V3',
+    'M8 14h8v7H8Z',
+  ],
+  load: [
+    'M4 4h10l4 4v12H4V4Z',
+    'M14 4v5h5',
+    'm9 14 3 3 3-3',
+    'M12 10v7',
+  ],
 };
 
 export function getIconPaths(name: string): string[] {

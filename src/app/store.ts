@@ -13,8 +13,11 @@ import { createSaveEnvelope } from '../save/save';
 
 type GameStore = {
   state: GameState;
+  manualSavedAt?: string;
   act: (command: ActionCommand) => void;
   restart: () => void;
+  manualSave: () => string;
+  manualLoad: () => boolean;
   debugForceEvent: (eventId: string) => void;
   debugJumpDay: (day: number) => void;
   debugJumpTo: (
@@ -43,8 +46,9 @@ function initialState(): GameState {
   return newGame(makeSeed());
 }
 
-export const useGameStore = create<GameStore>((set) => ({
+export const useGameStore = create<GameStore>((set, get) => ({
   state: initialState(),
+  manualSavedAt: repository.loadManual()?.createdAt,
   act: (command) =>
     set((previous) => {
       const next = handleCommand(previous.state, command);
@@ -55,6 +59,21 @@ export const useGameStore = create<GameStore>((set) => ({
     const next = newGame(makeSeed());
     repository.save(createSaveEnvelope(next));
     set({ state: next });
+  },
+  manualSave: () => {
+    const envelope = createSaveEnvelope(get().state);
+    repository.saveManual(envelope);
+    set({ manualSavedAt: envelope.createdAt });
+    return envelope.createdAt;
+  },
+  manualLoad: () => {
+    const saved = repository.loadManual();
+    if (!saved) return false;
+    pruneScheduleOverrides(saved.state);
+    completeDueJobs(saved.state);
+    repository.save(createSaveEnvelope(saved.state));
+    set({ state: saved.state, manualSavedAt: saved.createdAt });
+    return true;
   },
   debugForceEvent: (eventId) =>
     set((previous) => {

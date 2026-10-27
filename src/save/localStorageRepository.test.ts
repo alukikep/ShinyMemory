@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { newGame } from '../core/sim';
 import {
   LocalStorageRepository,
+  MANUAL_SAVE_KEY,
   SAVE_KEY,
 } from './localStorageRepository';
 import { MemoryStorage } from './memoryStorage';
@@ -274,6 +275,40 @@ describe('LocalStorageRepository', () => {
     );
     const repo = new LocalStorageRepository(storage);
     expect(repo.load()).toBeNull();
+  });
+
+  it('keeps manual save separate from autosave', () => {
+    const storage = new MemoryStorage();
+    const repo = new LocalStorageRepository(storage);
+    const manual = createSaveEnvelope(newGame(2));
+    manual.state.clock.absoluteMinutes = 3 * 1440 + 12 * 60;
+    repo.saveManual(manual);
+    repo.save(createSaveEnvelope(newGame(3)));
+
+    expect(repo.load()?.state.clock.absoluteMinutes).toBe(8 * 60);
+    expect(repo.loadManual()?.state.clock.absoluteMinutes).toBe(
+      3 * 1440 + 12 * 60,
+    );
+  });
+
+  it('rejects a manual save from another content epoch', () => {
+    const storage = new MemoryStorage();
+    const envelope = createSaveEnvelope(newGame(1));
+    storage.setItem(
+      MANUAL_SAVE_KEY,
+      JSON.stringify({ ...envelope, contentEpoch: 99 }),
+    );
+    expect(new LocalStorageRepository(storage).loadManual()).toBeNull();
+  });
+
+  it('clears the manual save without touching autosave', () => {
+    const storage = new MemoryStorage();
+    const repo = new LocalStorageRepository(storage);
+    repo.save(createSaveEnvelope(newGame(1)));
+    repo.saveManual(createSaveEnvelope(newGame(2)));
+    repo.clearManual();
+    expect(repo.loadManual()).toBeNull();
+    expect(repo.load()).not.toBeNull();
   });
 
   it('clears the save', () => {

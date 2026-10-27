@@ -5,6 +5,7 @@ import type { StorageLike } from './storage';
 import { CONTENT_EPOCH, SAVE_VERSION } from './version';
 
 export const SAVE_KEY = 'shiny-memory.save.v1';
+export const MANUAL_SAVE_KEY = 'shiny-memory.save.manual.v1';
 
 function defaultStorage(): StorageLike | null {
   if (typeof localStorage === 'undefined') return null;
@@ -14,9 +15,9 @@ function defaultStorage(): StorageLike | null {
 export class LocalStorageRepository implements SaveRepository {
   constructor(private readonly storage: StorageLike | null = defaultStorage()) {}
 
-  load(): SaveEnvelope | null {
+  private read(key: string): SaveEnvelope | null {
     if (!this.storage) return null;
-    const raw = this.storage.getItem(SAVE_KEY);
+    const raw = this.storage.getItem(key);
     if (!raw) return null;
 
     try {
@@ -32,11 +33,27 @@ export class LocalStorageRepository implements SaveRepository {
     }
   }
 
+  load(): SaveEnvelope | null {
+    return this.read(SAVE_KEY);
+  }
+
+  loadManual(): SaveEnvelope | null {
+    return this.read(MANUAL_SAVE_KEY);
+  }
+
   save(envelope: SaveEnvelope): void {
     this.storage?.setItem(SAVE_KEY, JSON.stringify(envelope));
   }
 
+  saveManual(envelope: SaveEnvelope): void {
+    this.storage?.setItem(MANUAL_SAVE_KEY, JSON.stringify(envelope));
+  }
+
   clear(): void {
     this.storage?.removeItem(SAVE_KEY);
+  }
+
+  clearManual(): void {
+    this.storage?.removeItem(MANUAL_SAVE_KEY);
   }
 }

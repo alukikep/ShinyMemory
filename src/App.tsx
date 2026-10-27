@@ -27,16 +27,29 @@ type AcceptanceBridge = {
   reset: (seed?: number) => void;
 };
 
+function formatSaveTime(value: string): string {
+  return new Date(value).toLocaleString('zh-CN', {
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
 export default function App() {
   const state = useGameStore((store) => store.state);
   const act = useGameStore((store) => store.act);
   const restart = useGameStore((store) => store.restart);
+  const manualSavedAt = useGameStore((store) => store.manualSavedAt);
+  const manualSave = useGameStore((store) => store.manualSave);
+  const manualLoad = useGameStore((store) => store.manualLoad);
   const debugForceEvent = useGameStore((store) => store.debugForceEvent);
   const debugJumpDay = useGameStore((store) => store.debugJumpDay);
   const [rosterOpen, setRosterOpen] = useState(false);
   const [scheduleOpen, setScheduleOpen] = useState(false);
   const [backpackOpen, setBackpackOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
+  const [saveNotice, setSaveNotice] = useState<string | undefined>();
   const debug =
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).has('debug');
@@ -81,6 +94,30 @@ export default function App() {
 
   const requestRestart = () => {
     if (window.confirm('重新开始这一局？')) restart();
+  };
+
+  const handleManualSave = () => {
+    const savedAt = manualSave();
+    setSaveNotice(`已存档 · ${formatSaveTime(savedAt)}`);
+  };
+
+  const handleManualLoad = () => {
+    if (!manualSavedAt) {
+      setSaveNotice('还没有手动存档。');
+      return;
+    }
+    if (!window.confirm('读取手动存档？当前未保存的进度会被覆盖。')) {
+      return;
+    }
+    if (manualLoad()) {
+      setRosterOpen(false);
+      setScheduleOpen(false);
+      setBackpackOpen(false);
+      setShopOpen(false);
+      setSaveNotice('已读取手动存档。');
+    } else {
+      setSaveNotice('手动存档不可用或版本不兼容。');
+    }
   };
 
   return (
@@ -149,6 +186,39 @@ export default function App() {
             </button>
           ) : null}
         </nav>
+
+        <section className="sidebar-saves" aria-label="手动存档">
+          <div className="sidebar-saves-head">
+            <span>手动存档</span>
+            <small>
+              {manualSavedAt ? formatSaveTime(manualSavedAt) : '暂无'}
+            </small>
+          </div>
+          <div className="sidebar-saves-actions">
+            <button
+              type="button"
+              className="sidebar-save-button"
+              onClick={handleManualSave}
+            >
+              <GameIcon name="save" size={15} />
+              <span>存档</span>
+            </button>
+            <button
+              type="button"
+              className="sidebar-save-button"
+              onClick={handleManualLoad}
+              disabled={!manualSavedAt}
+            >
+              <GameIcon name="load" size={15} />
+              <span>读档</span>
+            </button>
+          </div>
+          {saveNotice ? (
+            <p className="sidebar-save-notice" role="status">
+              {saveNotice}
+            </p>
+          ) : null}
+        </section>
 
         <div className="sidebar-footer">
           <span>同人原型 · 非官方</span>

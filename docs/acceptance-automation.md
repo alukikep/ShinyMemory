@@ -10,7 +10,7 @@ npm run acceptance
 
 - Playwright Test；
 - `?debug=1` 状态/操作桥；
-- 9 条引擎浏览器流程；
+- 11 条引擎浏览器流程；
 - 3 条内容浏览器流程（冻结 fixture）；
 - 1 条正式序章流程（production build）；
 - 2 条审查流程 E2E；
@@ -26,6 +26,7 @@ tests/acceptance/schedule.spec.ts
 tests/acceptance/responsive.spec.ts
 tests/acceptance/shop.spec.ts
 tests/acceptance/smoke.spec.ts
+tests/acceptance/save.spec.ts
 tests/content/hiori.spec.ts
 tests/content/meguru.spec.ts
 tests/prologue/mano.spec.ts
@@ -35,7 +36,7 @@ tests/review/review.spec.ts
 当前验收：
 
 ```text
-引擎 9 passed
+引擎 11 passed
 内容 3 passed
 正式序章 1 passed
 审查 2 passed

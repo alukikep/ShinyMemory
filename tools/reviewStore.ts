@@ -163,6 +163,41 @@ function defaultPayload(kind: ReviewKind, title: string): Record<string, unknown
       effects: [],
     };
   }
+  if (kind === 'dialogue') {
+    return {
+      id: `dialogue.draft.${slug}`,
+      idolId: 'hiori',
+      startNodeId: 'n01',
+      nodes: {
+        n01: {
+          id: 'n01',
+          text: '',
+          nextNodeId: 'n02',
+        },
+        n02: {
+          id: 'n02',
+          text: '',
+        },
+      },
+    };
+  }
+  if (kind === 'story') {
+    return {
+      id: `story.draft.${slug}`,
+      idolId: 'hiori',
+      priority: 0,
+      steps: [
+        {
+          id: `step-${slug}`,
+          locationId: 'park',
+          timeWindow: { fromMinute: 10 * 60, toMinute: 18 * 60 },
+          dialogueId: `dialogue.draft.${slug}`,
+          actionLabel: title,
+          complete: { status: 'known' },
+        },
+      ],
+    };
+  }
   return {
     id: `evt.draft.${slug}`,
     title,
@@ -180,6 +215,13 @@ function defaultPayload(kind: ReviewKind, title: string): Record<string, unknown
   };
 }
 
+function defaultTitle(kind: ReviewKind): string {
+  if (kind === 'job') return '未命名工作';
+  if (kind === 'dialogue') return '未命名对话';
+  if (kind === 'story') return '未命名剧情链';
+  return '未命名事件';
+}
+
 export async function createReviewDraft(
   kind: ReviewKind,
   title: string,
@@ -189,7 +231,7 @@ export async function createReviewDraft(
   const draft: ReviewDraft = {
     id,
     kind,
-    title: title.trim() || (kind === 'event' ? '未命名事件' : '未命名工作'),
+    title: title.trim() || defaultTitle(kind),
     status: 'review',
     version: 1,
     rootId: id,

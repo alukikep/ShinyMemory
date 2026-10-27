@@ -36,6 +36,15 @@ async function sourceIds(directory: string): Promise<Set<string>> {
   return ids;
 }
 
+async function fileIds(file: string): Promise<Set<string>> {
+  const ids = new Set<string>();
+  const text = await fs.readFile(file, 'utf8');
+  for (const match of text.matchAll(/^\s*["']?id["']?\s*:\s*['"]([^'"]+)['"]/gm)) {
+    if (match[1]) ids.add(match[1]);
+  }
+  return ids;
+}
+
 function asDraft(raw: unknown, file: string): ReviewDraft {
   if (typeof raw !== 'object' || raw === null) {
     throw new Error(`${file}: approved 文件必须是对象`);
@@ -44,7 +53,10 @@ function asDraft(raw: unknown, file: string): ReviewDraft {
   return {
     id: typeof record.id === 'string' ? record.id : '',
     kind:
-      record.kind === 'event' || record.kind === 'job'
+      record.kind === 'event' ||
+      record.kind === 'job' ||
+      record.kind === 'dialogue' ||
+      record.kind === 'story'
         ? (record.kind as ReviewKind)
         : 'event',
     title: typeof record.title === 'string' ? record.title : '',
@@ -106,11 +118,23 @@ async function main(): Promise<void> {
   const baseJobs = await sourceIds(
     path.join(ROOT, 'src', 'core', 'content', 'jobs'),
   );
+  const baseDialogues = await sourceIds(
+    path.join(ROOT, 'src', 'core', 'content', 'dialogues'),
+  );
+  const baseStories = await fileIds(
+    path.join(ROOT, 'src', 'core', 'content', 'storyChains.ts'),
+  );
   const approvedEvents = approved
     .filter((entry) => entry.draft.kind === 'event')
     .map((entry) => entry.draft);
   const approvedJobs = approved
     .filter((entry) => entry.draft.kind === 'job')
+    .map((entry) => entry.draft);
+  const approvedDialogues = approved
+    .filter((entry) => entry.draft.kind === 'dialogue')
+    .map((entry) => entry.draft);
+  const approvedStories = approved
+    .filter((entry) => entry.draft.kind === 'story')
     .map((entry) => entry.draft);
 
   const eventIds = new Set(baseEvents);
@@ -167,6 +191,43 @@ async function main(): Promise<void> {
     }
   }
 
+  const dialogueIds = new Set(baseDialogues);
+  for (const draft of approvedDialogues) {
+    const payload = draft.payload as Record<string, unknown>;
+    const id = typeof payload.id === 'string' ? payload.id : '';
+    if (!id) continue;
+    if (dialogueIds.has(id)) {
+      errors.push(`${draft.id}: 对话 ID 重复：${id}`);
+    }
+    dialogueIds.add(id);
+  }
+
+  const storyIds = new Set(baseStories);
+  for (const draft of approvedStories) {
+    const payload = draft.payload as Record<string, unknown>;
+    const id = typeof payload.id === 'string' ? payload.id : '';
+    if (!id) continue;
+    if (storyIds.has(id)) {
+      errors.push(`${draft.id}: 剧情链 ID 重复：${id}`);
+    }
+    storyIds.add(id);
+    if (Array.isArray(payload.steps)) {
+      for (const step of payload.steps) {
+        if (
+          typeof step === 'object' &&
+          step !== null &&
+          typeof (step as Record<string, unknown>).dialogueId === 'string'
+        ) {
+          const dialogueId = (step as Record<string, unknown>)
+            .dialogueId as string;
+          if (!dialogueIds.has(dialogueId)) {
+            errors.push(`${draft.id}: 剧情链对话不存在：${dialogueId}`);
+          }
+        }
+      }
+    }
+  }
+
   if (errors.length > 0) {
     console.error('content validation failed:');
     for (const error of errors) console.error(`- ${error}`);
@@ -175,7 +236,7 @@ async function main(): Promise<void> {
   }
 
   console.log(
-    `content validation passed: ${approvedEvents.length} events, ${approvedJobs.length} jobs`,
+    `content validation passed: ${approvedEvents.length} events, ${approvedJobs.length} jobs, ${approvedDialogues.length} dialogues, ${approvedStories.length} stories`,
   );
 }
 

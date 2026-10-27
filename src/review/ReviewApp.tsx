@@ -18,6 +18,8 @@ const STATUS_LABELS: Record<ReviewStatus, string> = {
 const KIND_LABELS: Record<ReviewKind, string> = {
   event: '事件',
   job: '工作',
+  dialogue: '对话',
+  story: '剧情链',
 };
 
 const STATUS_TABS: Array<{ value: ReviewStatus | 'all'; label: string }> = [
@@ -157,6 +159,105 @@ function JobPreview({ payload }: { payload: Record<string, unknown> }) {
   );
 }
 
+function DialoguePreview({ payload }: { payload: Record<string, unknown> }) {
+  const nodes =
+    typeof payload.nodes === 'object' && payload.nodes !== null
+      ? (payload.nodes as Record<string, unknown>)
+      : {};
+  const nodeIds = Object.keys(nodes);
+  return (
+    <div className="review-content">
+      <div className="review-meta-grid">
+        <div>
+          <span>偶像</span>
+          <strong>{String(payload.idolId ?? '—')}</strong>
+        </div>
+        <div>
+          <span>起始节点</span>
+          <strong>{String(payload.startNodeId ?? '—')}</strong>
+        </div>
+        <div>
+          <span>节点数</span>
+          <strong>{nodeIds.length}</strong>
+        </div>
+      </div>
+      <h3>节点</h3>
+      {nodeIds.length === 0 ? (
+        <p className="review-empty">没有节点</p>
+      ) : (
+        nodeIds.map((id) => {
+          const node = nodes[id];
+          const record =
+            typeof node === 'object' && node !== null
+              ? (node as Record<string, unknown>)
+              : {};
+          return (
+            <article className="review-choice" key={id}>
+              <header>
+                <span>{id}</span>
+                <strong>{String(record.speakerId ?? '旁白')}</strong>
+              </header>
+              <p>{String(record.text ?? '（缺少文本）')}</p>
+              {Array.isArray(record.choices) && record.choices.length > 0 ? (
+                <p className="review-choice-hint">
+                  选项：{record.choices.length}
+                </p>
+              ) : null}
+            </article>
+          );
+        })
+      )}
+      <JsonBlock label="payload" value={payload} />
+    </div>
+  );
+}
+
+function StoryPreview({ payload }: { payload: Record<string, unknown> }) {
+  const steps = Array.isArray(payload.steps) ? payload.steps : [];
+  return (
+    <div className="review-content">
+      <div className="review-meta-grid">
+        <div>
+          <span>偶像</span>
+          <strong>{String(payload.idolId ?? '—')}</strong>
+        </div>
+        <div>
+          <span>优先级</span>
+          <strong>{String(payload.priority ?? 0)}</strong>
+        </div>
+        <div>
+          <span>步骤数</span>
+          <strong>{steps.length}</strong>
+        </div>
+      </div>
+      <h3>步骤</h3>
+      {steps.length === 0 ? (
+        <p className="review-empty">没有步骤</p>
+      ) : (
+        steps.map((step, index) => {
+          const record =
+            typeof step === 'object' && step !== null
+              ? (step as Record<string, unknown>)
+              : {};
+          return (
+            <article className="review-choice" key={index}>
+              <header>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <strong>{String(record.actionLabel ?? '未命名步骤')}</strong>
+              </header>
+              <p>
+                {String(record.locationId ?? '—')} ·{' '}
+                {String(record.dialogueId ?? '—')}
+              </p>
+            </article>
+          );
+        })
+      )}
+      <JsonBlock label="payload" value={payload} />
+    </div>
+  );
+}
+
 function Preview({ draft }: { draft: ReviewDraft }) {
   const payload =
     typeof draft.payload === 'object' && draft.payload !== null
@@ -182,8 +283,12 @@ function Preview({ draft }: { draft: ReviewDraft }) {
 
       {draft.kind === 'event' ? (
         <EventPreview payload={payload} />
-      ) : (
+      ) : draft.kind === 'job' ? (
         <JobPreview payload={payload} />
+      ) : draft.kind === 'dialogue' ? (
+        <DialoguePreview payload={payload} />
+      ) : (
+        <StoryPreview payload={payload} />
       )}
 
       <footer className="review-preview-foot">
@@ -522,6 +627,8 @@ export function ReviewApp() {
               >
                 <option value="event">事件</option>
                 <option value="job">工作</option>
+                <option value="dialogue">对话</option>
+                <option value="story">剧情链</option>
               </select>
             </label>
             <label className="review-field">

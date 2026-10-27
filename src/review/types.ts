@@ -1,6 +1,6 @@
 export type ReviewStatus = 'review' | 'revision' | 'approved' | 'discarded';
 
-export type ReviewKind = 'event' | 'job';
+export type ReviewKind = 'event' | 'job' | 'dialogue' | 'story';
 
 export type ReviewAnnotation = {
   id: string;

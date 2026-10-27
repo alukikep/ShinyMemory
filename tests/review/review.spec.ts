@@ -18,7 +18,7 @@ async function cleanup() {
       if (!name.endsWith('.json')) continue;
       const file = path.join(directory, name);
       const text = await fs.readFile(file, 'utf8');
-      if (text.includes('E2E 审查事件')) {
+      if (text.includes('E2E 审查')) {
         await fs.rm(file, { force: true });
       }
     }
@@ -115,4 +115,82 @@ test('creates, revises, resubmits and approves an event', async ({ page }) => {
   expect(errors).toEqual([]);
 
   await page.screenshot({ path: 'screenshots/v47-review-approved.png' });
+});
+
+test('creates and approves dialogue and story drafts', async ({ page }) => {
+  await page.goto('/review.html');
+
+  await page.getByRole('button', { name: '新建草稿' }).click();
+  await page.locator('.review-modal select').selectOption('dialogue');
+  await page.locator('.review-modal input').fill('E2E 审查对话');
+  await page.getByRole('button', { name: '创建' }).click();
+  await expect(page.locator('.review-json-editor')).toBeVisible();
+  await page.locator('.review-json-editor').fill(
+    JSON.stringify(
+      {
+        id: 'dialogue.e2e.review',
+        idolId: 'hiori',
+        startNodeId: 'n01',
+        nodes: {
+          n01: { id: 'n01', text: '第一句', nextNodeId: 'n02' },
+          n02: { id: 'n02', text: '第二句' },
+        },
+      },
+      null,
+      2,
+    ),
+  );
+  await page.getByRole('button', { name: '保存草稿' }).first().click();
+  await expect(page.locator('.review-editor')).toHaveCount(0);
+  await page.getByRole('button', { name: '通过' }).click();
+  await expect(page.locator('.review-toolbar .review-status')).toHaveText(
+    '已通过',
+  );
+
+  await page.getByRole('button', { name: '新建草稿' }).click();
+  await page.locator('.review-modal select').selectOption('story');
+  await page.locator('.review-modal input').fill('E2E 审查剧情链');
+  await page.getByRole('button', { name: '创建' }).click();
+  await expect(page.locator('.review-json-editor')).toBeVisible();
+  await page.locator('.review-json-editor').fill(
+    JSON.stringify(
+      {
+        id: 'story.e2e.review',
+        idolId: 'hiori',
+        steps: [
+          {
+            id: 'step-1',
+            locationId: 'park',
+            dialogueId: 'dialogue.e2e.review',
+            actionLabel: 'E2E 剧情步骤',
+            timeWindow: { fromMinute: 600, toMinute: 1080 },
+          },
+        ],
+      },
+      null,
+      2,
+    ),
+  );
+  await page.getByRole('button', { name: '保存草稿' }).first().click();
+  await expect(page.locator('.review-editor')).toHaveCount(0);
+  await page.getByRole('button', { name: '通过' }).click();
+  await expect(page.locator('.review-toolbar .review-status')).toHaveText(
+    '已通过',
+  );
+
+  const approved = await fs.readdir(
+    path.join(ROOT, 'content-review', 'approved'),
+  );
+  const texts = await Promise.all(
+    approved
+      .filter((name) => name.endsWith('.json'))
+      .map((name) =>
+        fs.readFile(
+          path.join(ROOT, 'content-review', 'approved', name),
+          'utf8',
+        ),
+      ),
+  );
+  expect(texts.some((text) => text.includes('E2E 审查对话'))).toBe(true);
+  expect(texts.some((text) => text.includes('E2E 审查剧情链'))).toBe(true);
 });

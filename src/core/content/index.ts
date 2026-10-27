@@ -10,7 +10,7 @@ import { HIORI_DIALOGUES } from './dialogues/hiori';
 import { MEGURU_DIALOGUES } from './dialogues/meguru';
 import { STORY_CHAINS } from './storyChains';
 import { STARTING_STATE } from './starting';
-import { APPROVED_EVENTS, APPROVED_JOBS } from './approved';
+import { APPROVED_DIALOGUES, APPROVED_EVENTS, APPROVED_JOBS, APPROVED_STORY_CHAINS } from './approved';
 import vocal from './activities/vocal';
 import dance from './activities/dance';
 import expression from './activities/expression';
@@ -64,9 +64,13 @@ export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia
 
 export const JOBS = [...BASE_JOBS, ...APPROVED_JOBS];
 
-export const DIALOGUES = [...HIORI_DIALOGUES, ...MEGURU_DIALOGUES];
+export const DIALOGUES = [
+  ...HIORI_DIALOGUES,
+  ...MEGURU_DIALOGUES,
+  ...APPROVED_DIALOGUES,
+];
 
-export const STORY_CHAIN_DEFS = STORY_CHAINS;
+export const STORY_CHAIN_DEFS = [...STORY_CHAINS, ...APPROVED_STORY_CHAINS];
 
 export { STARTING_STATE };
 

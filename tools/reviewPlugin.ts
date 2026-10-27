@@ -75,8 +75,15 @@ export function reviewApiPlugin(): Plugin {
               return;
             }
             const kind = body.kind;
-            if (kind !== 'event' && kind !== 'job') {
-              sendJson(response, 400, { error: 'kind must be event or job' });
+            if (
+              kind !== 'event' &&
+              kind !== 'job' &&
+              kind !== 'dialogue' &&
+              kind !== 'story'
+            ) {
+              sendJson(response, 400, {
+                error: 'kind must be event, job, dialogue, or story',
+              });
               return;
             }
             const title = typeof body.title === 'string' ? body.title : '';

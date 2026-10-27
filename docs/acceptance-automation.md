@@ -12,7 +12,7 @@ npm run acceptance
 - `?debug=1` 状态/操作桥；
 - 9 条引擎浏览器流程；
 - 3 条内容浏览器流程（冻结 fixture）；
-- 1 条审查流程 E2E；
+- 2 条审查流程 E2E；
 - 失败 trace / 截图；
 - HTML 报告；
 - 桌面与移动端布局断言。
@@ -35,7 +35,7 @@ tests/review/review.spec.ts
 ```text
 引擎 9 passed
 内容 3 passed
-审查 1 passed
+审查 2 passed
 ```
 
 引擎与内容验收都使用 fixture build：

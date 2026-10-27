@@ -28,6 +28,13 @@ function asRecord(value: unknown): Record<string, unknown> {
     : {};
 }
 
+const KIND_TITLE: Record<ReviewDraft['kind'], string> = {
+  event: '事件',
+  job: '工作',
+  dialogue: '对话',
+  story: '剧情链',
+};
+
 export function ReviewEditor({
   draft,
   disabled = false,
@@ -38,7 +45,9 @@ export function ReviewEditor({
   const [payload, setPayload] = useState<Record<string, unknown>>(
     asRecord(draft.payload),
   );
-  const [jsonMode, setJsonMode] = useState(false);
+  const [jsonMode, setJsonMode] = useState(
+    draft.kind === 'dialogue' || draft.kind === 'story',
+  );
   const [jsonText, setJsonText] = useState(
     JSON.stringify(draft.payload, null, 2),
   );
@@ -49,9 +58,9 @@ export function ReviewEditor({
     setTitle(draft.title);
     setPayload(asRecord(draft.payload));
     setJsonText(JSON.stringify(draft.payload, null, 2));
-    setJsonMode(false);
+    setJsonMode(draft.kind === 'dialogue' || draft.kind === 'story');
     setErrors([]);
-  }, [draft.id, draft.title, draft.payload]);
+  }, [draft.id, draft.title, draft.payload, draft.kind]);
 
   const update = (key: string, value: unknown) => {
     setPayload((current) => ({ ...current, [key]: value }));
@@ -103,7 +112,9 @@ export function ReviewEditor({
       const nextTitle =
         draft.kind === 'event'
           ? String(nextPayload.title ?? title)
-          : String(nextPayload.name ?? title);
+          : draft.kind === 'job'
+            ? String(nextPayload.name ?? title)
+            : title;
       const nextErrors = await onSave(nextTitle, nextPayload);
       setErrors(nextErrors);
     } finally {
@@ -129,19 +140,21 @@ export function ReviewEditor({
       <header className="review-editor-head">
         <div>
           <p className="review-eyebrow">EDITING</p>
-          <h2>编辑 {draft.kind === 'event' ? '事件' : '工作'}</h2>
+          <h2>编辑 {KIND_TITLE[draft.kind]}</h2>
         </div>
         <div className="review-editor-actions">
-          <button
-            type="button"
-            className="review-button"
-            onClick={() => {
-              setJsonMode((current) => !current);
-              if (!jsonMode) setJsonText(JSON.stringify(payload, null, 2));
-            }}
-          >
-            {jsonMode ? '表单编辑' : '高级 JSON'}
-          </button>
+          {draft.kind === 'event' || draft.kind === 'job' ? (
+            <button
+              type="button"
+              className="review-button"
+              onClick={() => {
+                setJsonMode((current) => !current);
+                if (!jsonMode) setJsonText(JSON.stringify(payload, null, 2));
+              }}
+            >
+              {jsonMode ? '表单编辑' : '高级 JSON'}
+            </button>
+          ) : null}
           <button type="button" className="review-button ghost" onClick={onCancel}>
             预览
           </button>
@@ -165,15 +178,26 @@ export function ReviewEditor({
       ) : null}
 
       {jsonMode ? (
-        <label className="review-field">
-          <span>payload JSON</span>
-          <textarea
-            className="review-textarea review-json-editor"
-            value={jsonText}
-            onChange={(event) => setJsonText(event.target.value)}
-            spellCheck={false}
-          />
-        </label>
+        <>
+          {draft.kind === 'dialogue' || draft.kind === 'story' ? (
+            <label className="review-field">
+              <span>标题</span>
+              <input
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+              />
+            </label>
+          ) : null}
+          <label className="review-field">
+            <span>payload JSON</span>
+            <textarea
+              className="review-textarea review-json-editor"
+              value={jsonText}
+              onChange={(event) => setJsonText(event.target.value)}
+              spellCheck={false}
+            />
+          </label>
+        </>
       ) : draft.kind === 'event' ? (
         <>
           <div className="review-form-grid">

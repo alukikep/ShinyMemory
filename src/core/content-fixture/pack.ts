@@ -30,3 +30,5 @@ export const FIXTURE_CONTENT_PACK: ContentPack = {
   transitRoutes: TRANSIT_ROUTES,
   starting: STARTING_STATE,
 };
+
+export const ACTIVE_CONTENT_PACK = FIXTURE_CONTENT_PACK;

@@ -10,7 +10,8 @@ npm run acceptance
 
 - Playwright Test；
 - `?debug=1` 状态/操作桥；
-- 11 条游戏浏览器流程；
+- 9 条引擎浏览器流程；
+- 2 条内容浏览器流程（冻结 fixture）；
 - 1 条审查流程 E2E；
 - 失败 trace / 截图；
 - HTML 报告；
@@ -23,16 +24,24 @@ tests/acceptance/job.spec.ts
 tests/acceptance/schedule.spec.ts
 tests/acceptance/responsive.spec.ts
 tests/acceptance/shop.spec.ts
-tests/acceptance/hiori.spec.ts
 tests/acceptance/smoke.spec.ts
+tests/content/hiori.spec.ts
 tests/review/review.spec.ts
 ```
 
 当前验收：
 
 ```text
-游戏 11 passed
+引擎 9 passed
+内容 2 passed
 审查 1 passed
+```
+
+引擎与内容验收都使用 fixture build：
+
+```bash
+npm run acceptance
+# = npm test + build:fixture + 引擎 acceptance + 内容 acceptance
 ```
 
 本地使用 Edge：

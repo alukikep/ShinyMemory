@@ -5,7 +5,7 @@ import {
   openGame,
   reset,
   watchConsole,
-} from './helpers';
+} from '../acceptance/helpers';
 
 async function finishDialogue(page: import('@playwright/test').Page) {
   for (let i = 0; i < 40; i += 1) {
@@ -110,3 +110,4 @@ test('Hiori dialogue fits a 390px viewport', async ({ page }) => {
     fullPage: true,
   });
 });
+

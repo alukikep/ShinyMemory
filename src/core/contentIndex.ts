@@ -1,17 +1,4 @@
-import {
-  ACTORS,
-  ACTIVITIES,
-  DIALOGUES,
-  EVENTS,
-  IDOLS,
-  ITEMS,
-  JOBS,
-  LOCATIONS,
-  SHOPS,
-  STARTING_STATE,
-  STORY_CHAIN_DEFS,
-  TRANSIT_ROUTES,
-} from './content';
+import { ACTIVE_CONTENT_PACK } from '#content-pack';
 import type {
   ActivityDef,
   ActivityKind,
@@ -261,19 +248,6 @@ export function createInitialIdolStates(): Record<string, IdolState> {
   );
 }
 
-export const PRODUCTION_PACK: ContentPack = {
-  activities: ACTIVITIES,
-  actors: ACTORS,
-  idols: IDOLS,
-  events: EVENTS,
-  jobs: JOBS,
-  items: ITEMS,
-  shops: SHOPS,
-  dialogues: DIALOGUES,
-  storyChains: STORY_CHAIN_DEFS,
-  locations: LOCATIONS,
-  transitRoutes: TRANSIT_ROUTES,
-  starting: STARTING_STATE,
-};
+export { PRODUCTION_PACK } from './productionPack';
 
-export const CONTENT_INDEX: ContentIndex = buildContentIndex(PRODUCTION_PACK);
+export const CONTENT_INDEX: ContentIndex = buildContentIndex(ACTIVE_CONTENT_PACK);

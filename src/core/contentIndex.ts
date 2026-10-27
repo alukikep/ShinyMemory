@@ -1,6 +1,7 @@
 import {
   ACTORS,
   ACTIVITIES,
+  DIALOGUES,
   ENDINGS,
   EVENTS,
   IDOLS,
@@ -8,6 +9,7 @@ import {
   JOBS,
   LOCATIONS,
   SHOPS,
+  STORY_CHAIN_DEFS,
   TRANSIT_ROUTES,
 } from './content';
 import type {
@@ -15,6 +17,7 @@ import type {
   ActivityKind,
   ActorDef,
   ActorState,
+  DialogueDef,
   EndingDef,
   EventDef,
   IdolDef,
@@ -23,6 +26,7 @@ import type {
   JobDef,
   LocationDef,
   ShopDef,
+  StoryChainDef,
   TransitRouteDef,
 } from './types';
 
@@ -35,6 +39,8 @@ export type ContentIndex = {
   items: Map<string, ItemDef>;
   shops: Map<string, ShopDef>;
   shopsByLocation: Map<string, ShopDef[]>;
+  dialogues: Map<string, DialogueDef>;
+  storyChains: Map<string, StoryChainDef>;
   endings: Map<string, EndingDef>;
   locations: Map<string, LocationDef>;
   transitRoutes: Map<string, TransitRouteDef>;
@@ -58,6 +64,10 @@ function buildIndex(): ContentIndex {
   const jobs = new Map(JOBS.map((job) => [job.id, job]));
   const items = new Map(ITEMS.map((item) => [item.id, item]));
   const shops = new Map(SHOPS.map((shop) => [shop.id, shop]));
+  const dialogues = new Map(DIALOGUES.map((dialogue) => [dialogue.id, dialogue]));
+  const storyChains = new Map(
+    STORY_CHAIN_DEFS.map((chain) => [chain.id, chain]),
+  );
   const shopsByLocation = new Map<string, ShopDef[]>();
   for (const shop of SHOPS) {
     const list = shopsByLocation.get(shop.locationId) ?? [];
@@ -165,6 +175,8 @@ function buildIndex(): ContentIndex {
     items,
     shops,
     shopsByLocation,
+    dialogues,
+    storyChains,
     endings,
     locations,
     transitRoutes,

@@ -70,6 +70,54 @@ export type StoryChainState = {
   completed?: boolean;
 };
 
+export type DialogueChoice = {
+  label: string;
+  nextNodeId: string;
+  effects?: Effect[];
+  requires?: Condition[];
+};
+
+export type DialogueTextVariant = {
+  when: Condition[];
+  text: string;
+};
+
+export type DialogueNode = {
+  id: string;
+  speakerId?: string;
+  text: string;
+  textVariants?: DialogueTextVariant[];
+  nextNodeId?: string;
+  choices?: DialogueChoice[];
+  effects?: Effect[];
+};
+
+export type DialogueDef = {
+  id: string;
+  idolId: string;
+  startNodeId: string;
+  nodes: Record<string, DialogueNode>;
+};
+
+export type StoryChainStep = {
+  id: string;
+  locationId: string;
+  timeWindow?: TimeWindow;
+  minDaysAfterPrevious?: number;
+  dialogueId: string;
+  actionLabel: string;
+  complete?: {
+    status?: IdolStatus;
+    nextStepDelayDays?: number;
+  };
+};
+
+export type StoryChainDef = {
+  id: string;
+  idolId: string;
+  steps: StoryChainStep[];
+};
+
 export type LogTone = 'info' | 'good' | 'bad';
 
 export type LogEntry = {

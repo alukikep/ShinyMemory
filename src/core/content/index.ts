@@ -6,6 +6,8 @@ import { ACTORS } from './actors';
 import { IDOLS } from './idols';
 import { JOBS as BASE_JOBS } from './jobs';
 import { ITEMS, SHOPS } from './items';
+import { HIORI_DIALOGUES } from './dialogues/hiori';
+import { STORY_CHAINS } from './storyChains';
 import { APPROVED_EVENTS, APPROVED_JOBS } from './approved';
 import vocal from './activities/vocal';
 import dance from './activities/dance';
@@ -62,6 +64,10 @@ export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork
 export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, parkPigeons, shoppingWindow, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath, ...APPROVED_EVENTS];
 
 export const JOBS = [...BASE_JOBS, ...APPROVED_JOBS];
+
+export const DIALOGUES = HIORI_DIALOGUES;
+
+export const STORY_CHAIN_DEFS = STORY_CHAINS;
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 

@@ -540,4 +540,30 @@ describe('content integrity', () => {
       }
     }
   });
+
+  it('has valid Hiori dialogue and story chain references', () => {
+    const first = CONTENT_INDEX.dialogues.get('dialogue.hiori.first');
+    const second = CONTENT_INDEX.dialogues.get('dialogue.hiori.second');
+    expect(first).toBeDefined();
+    expect(second).toBeDefined();
+    expect(first!.nodes[first!.startNodeId]).toBeDefined();
+    expect(second!.nodes[second!.startNodeId]).toBeDefined();
+
+    for (const dialogue of [first!, second!]) {
+      for (const node of Object.values(dialogue.nodes)) {
+        if (node.nextNodeId) {
+          expect(dialogue.nodes[node.nextNodeId], node.id).toBeDefined();
+        }
+        for (const choice of node.choices ?? []) {
+          expect(dialogue.nodes[choice.nextNodeId], node.id).toBeDefined();
+        }
+      }
+      expect(Object.keys(dialogue.nodes).length).toBeGreaterThanOrEqual(8);
+    }
+
+    const chain = CONTENT_INDEX.storyChains.get('hiori-encounter');
+    expect(chain?.steps).toHaveLength(2);
+    expect(chain?.steps[0]?.dialogueId).toBe('dialogue.hiori.first');
+    expect(chain?.steps[1]?.dialogueId).toBe('dialogue.hiori.second');
+  });
 });

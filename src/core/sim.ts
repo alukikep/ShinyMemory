@@ -958,6 +958,13 @@ export function activityAvailability(
   ) {
     return { ok: false, display: 'hide', reason: '现在不能做' };
   }
+  if (activity.kind === 'bond' && !isIdolRecruited(state, idolId)) {
+    return {
+      ok: false,
+      display: 'hide',
+      reason: '还没有可以共度自由时间的偶像',
+    };
+  }
 
   const reasons: string[] = [];
   if (activity.cost.money && state.money < activity.cost.money) {

@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { createInitialIdolStates } from './contentIndex';
-import { enterIdol, newGame, presentActors } from './sim';
+import {
+  activityAvailability,
+  enterIdol,
+  getActivity,
+  newGame,
+  presentActors,
+} from './sim';
 
 describe('idol status', () => {
   it('starts Mano recruited and the other idols unknown', () => {
@@ -35,5 +41,18 @@ describe('idol status', () => {
     state.locationId = 'practice_room';
     expect(enterIdol(state, 'hiori')).toBe(state);
     expect(enterIdol(state, 'meguru')).toBe(state);
+  });
+
+  it('hides free time when the active idol is not recruited', () => {
+    const state = newGame(1);
+    state.idols.mano!.status = 'unknown';
+    state.clock.absoluteMinutes = 12 * 60;
+    state.locationId = 'office';
+    expect(activityAvailability(state, getActivity('free')!, 'mano').ok).toBe(
+      false,
+    );
+    expect(
+      activityAvailability(state, getActivity('free')!, 'mano'),
+    ).toMatchObject({ display: 'hide' });
   });
 });

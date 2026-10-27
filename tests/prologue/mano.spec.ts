@@ -41,6 +41,9 @@ test('office prologue then Mano encounter', async ({ page }) => {
   await expect(
     page.getByText('还没有正式出道的偶像。'),
   ).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: '自由时间' }),
+  ).toHaveCount(0);
 
   await page.getByRole('button', { name: '偶像名册' }).click();
   await expect(

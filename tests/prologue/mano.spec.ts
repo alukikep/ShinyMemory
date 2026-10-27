@@ -28,7 +28,7 @@ test('office prologue then Mano encounter', async ({ page }) => {
 
   await expect(page.locator('.dialogue-panel')).toBeVisible();
   await page.getByRole('button', { name: '继续' }).click();
-  await expect(page.getByText('七草叶月')).toBeVisible();
+  await expect(page.locator('.dialogue-speaker-name')).toHaveText('七草叶月');
   await finishDialogue(page);
 
   expect((await getState(page)).pendingDialogueId).toBeUndefined();

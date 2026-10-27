@@ -12,13 +12,7 @@ export const prologueOffice: DialogueDef = {
     n02: {
       id: 'n02',
       speakerId: 'hazuki',
-      text: '啊……早上好。',
-      nextNodeId: 'n03',
-    },
-    n03: {
-      id: 'n03',
-      speakerId: 'hazuki',
-      text: '不好意思，我昨晚整理资料，稍微睡了一会儿。我是七草叶月，事务所的事务员。',
+      text: '啊……早上好。不好意思，我昨晚整理资料，稍微睡了一会儿。我是七草叶月，事务所的事务员。',
       nextNodeId: 'n04',
     },
     n04: {
@@ -82,13 +76,7 @@ export const prologueOffice: DialogueDef = {
     n11: {
       id: 'n11',
       speakerId: 'hazuki',
-      text: '事务所的钥匙、地图、日程和训练室的使用方法，我之后会带你熟悉。',
-      nextNodeId: 'n12',
-    },
-    n12: {
-      id: 'n12',
-      speakerId: 'hazuki',
-      text: '遇到不明白的事可以问我。虽然我可能会在奇怪的地方睡着。',
+      text: '事务所的钥匙、地图、日程和训练室的使用方法，我之后会带你熟悉。遇到不明白的事可以问我。虽然我可能会在奇怪的地方睡着。',
       nextNodeId: 'n13',
     },
     n13: {

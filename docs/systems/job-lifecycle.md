@@ -1,5 +1,7 @@
 # 工作完整生命周期
 
+> 系统保留，正式工作内容当前为空；测试内容只存在于 fixture。
+
 ## 当前状态
 
 已实现轻量生命周期：
@@ -221,7 +223,7 @@ completeDueJobs(state)
 
 ## 后续
 
-工作当天事件计划见 `docs/job-day-events-plan.md`。
+工作当天事件计划（历史方案）见 `docs/archive/job-day-events-plan.md`。
 
 如果需要更丰富，但不想增加负担：
 

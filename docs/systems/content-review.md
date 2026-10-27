@@ -1,8 +1,11 @@
-# 内容审查系统评估
+# 内容审查系统
+
+> 当前有效 · 2026-10-27
+> 支持 `event` / `job` / `dialogue` / `story`
 
 ## 当前阶段
 
-第二阶段已实现：
+已实现：
 
 - `content-review/drafts|revisions|approved|discarded`；
 - `ReviewDraft` 类型；
@@ -10,10 +13,10 @@
 - Vite 本地 `/api/review`（读/写/状态/批注）；
 - `npm run review`；
 - 审查台队列；
-- 事件/工作只读预览；
-- 从零新建事件/工作；
-- 事件表单 + 高级 JSON；
-- 工作表单 + 高级 JSON；
+- 事件/工作/对话/剧情链预览；
+- 从零新建四类内容；
+- 事件/工作表单 + 高级 JSON；
+- 对话/剧情链 JSON 编辑；
 - 字段批注添加/处理；
 - 通过/打回/废弃/重新送审；
 - approved JSON 进入游戏内容；

@@ -1,4 +1,6 @@
-# 自动验收研究
+# 自动验收
+
+> 当前有效 · 2026-10-27
 
 ## 当前状态
 
@@ -350,10 +352,12 @@ export default defineConfig({
 });
 ```
 
-`acceptance` 前先构建：
+`acceptance` 前先构建 fixture：
 
 ```json
-"acceptance": "npm run build && playwright test"
+"acceptance": "npm test && npm run build:fixture && playwright test && playwright test -c playwright.content.config.ts",
+"acceptance:prologue": "npm run build && playwright test -c playwright.prologue.config.ts",
+"acceptance:review": "npm run build && playwright test -c playwright.review.config.ts"
 ```
 
 ## 随机事件处理

@@ -36,7 +36,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 1,
-        contentEpoch: 1,
+        contentEpoch: 2,
         gameVersion: '0.2.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state: legacyState,
@@ -60,7 +60,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 3,
-        contentEpoch: 1,
+        contentEpoch: 2,
         gameVersion: '0.4.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -95,7 +95,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 4,
-        contentEpoch: 1,
+        contentEpoch: 2,
         gameVersion: '0.5.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -122,7 +122,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 6,
-        contentEpoch: 1,
+        contentEpoch: 2,
         gameVersion: '0.7.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -145,7 +145,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 7,
-        contentEpoch: 1,
+        contentEpoch: 2,
         gameVersion: '0.8.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -175,7 +175,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 9,
-        contentEpoch: 1,
+        contentEpoch: 2,
         gameVersion: '0.10.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -197,7 +197,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 10,
-        contentEpoch: 1,
+        contentEpoch: 2,
         gameVersion: '0.11.0',
         createdAt: '2026-10-26T00:00:00.000Z',
         state,
@@ -224,7 +224,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 11,
-        contentEpoch: 1,
+        contentEpoch: 2,
         gameVersion: '0.12.0',
         createdAt: '2026-10-27T00:00:00.000Z',
         state,
@@ -283,6 +283,7 @@ describe('LocalStorageRepository', () => {
     expect(repo.load()).toBeNull();
   });
 });
+
 
 
 

@@ -7,5 +7,6 @@ export const STARTING_STATE = {
   idolStatus: {
     mano: 'recruited',
     hiori: 'unknown',
+    meguru: 'unknown',
   } as Record<string, IdolStatus>,
 } as const;

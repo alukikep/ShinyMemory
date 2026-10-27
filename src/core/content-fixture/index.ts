@@ -7,6 +7,7 @@ import { IDOLS } from './idols';
 import { JOBS as BASE_JOBS } from './jobs';
 import { ITEMS, SHOPS } from './items';
 import { HIORI_DIALOGUES } from './dialogues/hiori';
+import { MEGURU_DIALOGUES } from './dialogues/meguru';
 import { STORY_CHAINS } from './storyChains';
 import { STARTING_STATE } from './starting';
 import { APPROVED_EVENTS, APPROVED_JOBS } from './approved';
@@ -63,7 +64,7 @@ export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia
 
 export const JOBS = [...BASE_JOBS, ...APPROVED_JOBS];
 
-export const DIALOGUES = HIORI_DIALOGUES;
+export const DIALOGUES = [...HIORI_DIALOGUES, ...MEGURU_DIALOGUES];
 
 export const STORY_CHAIN_DEFS = STORY_CHAINS;
 

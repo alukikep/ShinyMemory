@@ -87,12 +87,13 @@ describe('content integrity', () => {
   });
 
   it('has valid actors with schedules and topics', () => {
-    expect(ACTORS).toHaveLength(4);
+    expect(ACTORS).toHaveLength(5);
     expect(ACTORS.map((actor) => actor.id)).toEqual([
       'hazuki',
       'tsutomu',
       'mano',
       'hiori',
+      'meguru',
     ]);
     expect(CONTENT_INDEX.actors.size).toBe(ACTORS.length);
 
@@ -126,11 +127,16 @@ describe('content integrity', () => {
     }
   });
 
-  it('has a starting idol and a second idol', () => {
-    expect(IDOLS).toHaveLength(2);
-    expect(IDOLS.map((idol) => idol.id)).toEqual(['mano', 'hiori']);
+  it('has a starting idol and two unlockable idols', () => {
+    expect(IDOLS).toHaveLength(3);
+    expect(IDOLS.map((idol) => idol.id)).toEqual([
+      'mano',
+      'hiori',
+      'meguru',
+    ]);
     expect(IDOLS[0]?.name).toBe('樱木真乃');
     expect(IDOLS[1]?.name).toBe('风野灯织');
+    expect(IDOLS[2]?.name).toBe('八宫巡');
     expect(CONTENT_INDEX.startingIdolId).toBe('mano');
     expect(CONTENT_INDEX.idols.size).toBe(IDOLS.length);
   });

@@ -102,6 +102,27 @@ describe('Hiori story chain', () => {
     expect(state.activeIdolId).toBe('mano');
   });
 
+  it('unlocks Meguru through the second story chain', () => {
+    const first = newGame(1);
+    first.clock.absoluteMinutes = 12 * 60;
+    first.locationId = 'shopping_street';
+    expect(getEligibleStory(first)?.step.id).toBe('meguru-street-1');
+
+    const known = play(startStory(first, 'meguru-encounter'));
+    expect(known.idols.meguru?.status).toBe('known');
+    expect(known.storyChains['meguru-encounter']?.nextEligibleDay).toBe(3);
+
+    const second = structuredClone(known);
+    second.clock.absoluteMinutes = 2 * 1440 + 12 * 60;
+    second.locationId = 'park';
+    expect(getEligibleStory(second)?.step.id).toBe('meguru-park-2');
+
+    const recruited = play(startStory(second, 'meguru-encounter'));
+    expect(recruited.idols.meguru?.status).toBe('recruited');
+    expect(recruited.storyChains['meguru-encounter']?.completed).toBe(true);
+    expect(recruited.activeIdolId).toBe('mano');
+  });
+
   it('uses story priority and supports a second idol fixture', () => {
     registerFixture();
     try {

@@ -11,6 +11,7 @@
 - [物品与商店系统](item-economy.md)
 - [工作生命周期](job-lifecycle.md)
 - [自动验收](acceptance-automation.md)
+- [未来需求记录](future-requirements.md)
 - 旧的技术/视觉路线图：[post-phase-c-roadmap.md](post-phase-c-roadmap.md)
 
 ---
@@ -36,7 +37,7 @@
 - 内容审查台：事件、工作、对话、剧情链的新建、编辑、批注、通过、打回、废弃、版本化；
 - approved 内容加载和构建校验；
 - 存档 v12 + 内容纪元 3；
-- 175 个 Vitest 测试、11 条引擎 E2E、3 条内容 E2E、1 条正式序章 E2E、2 条审查 E2E。
+- 176 个 Vitest 测试、11 条引擎 E2E、3 条内容 E2E、1 条正式序章 E2E、2 条审查 E2E。
 
 ### 当前内容量
 
@@ -169,12 +170,14 @@
 - 对话/剧情结构、引用、可达性和 terminal 校验，并接入构建；
 - 审查台支持对话/剧情链草稿、审批和 approved 载入；
 - 多剧情链 priority；
+- 活动目标规则：地点页无对象行动，偶像页 present-idol 行动；
+- 自由时间已移到偶像互动页；
 - 初始偶像状态由内容配置驱动；
 - 冻结 `content-fixture` 内容包 + 全局测试 setup，单元测试不再依赖正式内容；
 - Playwright 引擎/内容套件拆分，fixture build；
 - 正式序章/真乃 E2E；
 - 招募后训练 E2E；
-- 175 个单元测试、Hiori/Meguru fixture 回归、移动端检查。
+- 176 个单元测试、Hiori/Meguru fixture 回归、移动端检查。
 
 仍未做：
 
@@ -637,7 +640,7 @@ job
 Hiori 验收结果：
 
 ```text
-175 个 Vitest 测试通过
+176 个 Vitest 测试通过
 11 条引擎 E2E + 3 条内容 E2E + 1 条正式序章 E2E 通过
 2 条审查 E2E 通过
 ```

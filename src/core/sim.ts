@@ -958,12 +958,20 @@ export function activityAvailability(
   ) {
     return { ok: false, display: 'hide', reason: '现在不能做' };
   }
-  if (activity.kind === 'bond' && !isIdolRecruited(state, idolId)) {
-    return {
-      ok: false,
-      display: 'hide',
-      reason: '还没有可以共度自由时间的偶像',
-    };
+  if (activity.target === 'present-idol') {
+    const actor = getActor(idolId);
+    if (
+      !actor ||
+      actor.role !== 'idol' ||
+      !isIdolRecruited(state, idolId) ||
+      !isActorPresent(state, actor)
+    ) {
+      return {
+        ok: false,
+        display: 'hide',
+        reason: '她不在这里',
+      };
+    }
   }
 
   const reasons: string[] = [];
@@ -1680,7 +1688,9 @@ export function handleCommand(
       if (command.type === 'giveGift') {
         return giveGift(state, command.itemId, command.idolId);
       }
-      if (command.type === 'activity') return applyActivity(state, command.activityId);
+      if (command.type === 'activity') {
+        return applyActivity(state, command.activityId, command.idolId);
+      }
       return state;
 
     case 'npc':
@@ -1697,6 +1707,13 @@ export function handleCommand(
       }
       if (command.type === 'work') {
         return work(state, command.idolId, command.activityId);
+      }
+      if (command.type === 'activity') {
+        return applyActivity(
+          state,
+          command.activityId,
+          command.idolId ?? state.activeIdolId,
+        );
       }
       return state;
 

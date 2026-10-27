@@ -271,7 +271,9 @@ function buildPlan(state: GameState): SceneView {
   const activities = (CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? [])
     .filter(
       (activity) =>
-        activity.kind !== 'training' && activity.kind !== 'work',
+        activity.kind !== 'training' &&
+        activity.kind !== 'work' &&
+        activity.target !== 'present-idol',
     );
   const actors = buildActorViews(state);
 
@@ -573,7 +575,9 @@ function buildIdolPage(state: GameState): SceneView {
   )
     .filter(
       (activity) =>
-        activity.kind === 'training' || activity.kind === 'work',
+        activity.kind === 'training' ||
+        activity.kind === 'work' ||
+        activity.kind === 'bond',
     )
     .map((activity) => ({
       activity,
@@ -594,21 +598,28 @@ function buildIdolPage(state: GameState): SceneView {
                 idolId,
                 activityId: activity.id,
               }
-            : {
-                type: 'train',
-                idolId,
-                activityId: activity.id,
-              },
+            : activity.kind === 'bond'
+              ? {
+                  type: 'activity',
+                  idolId,
+                  activityId: activity.id,
+                }
+              : {
+                  type: 'train',
+                  idolId,
+                  activityId: activity.id,
+                },
       };
     });
   const mode = idolActivityKindAt(state);
+  const modeLabel = mode === 'work' ? '工作' : mode === 'training' ? '训练' : '互动';
 
   return {
     id: sceneId(state),
     phase: state.phase,
-    phaseLabel: mode === 'work' ? '工作' : '训练',
+    phaseLabel: modeLabel,
     title: idolDef.name,
-    subtitle: `${idolDef.unit} · ${mode === 'work' ? '工作' : '训练'}`,
+    subtitle: `${idolDef.unit} · ${modeLabel}`,
     blocks: [],
     idol: {
       id: idolId,

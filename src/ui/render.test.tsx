@@ -27,7 +27,7 @@ describe('app shell', () => {
     expect(html).toContain('练习室');
     expect(html).toContain('录音棚');
     expect(html).toContain('休息');
-    expect(html).toContain('自由时间');
+    expect(html).not.toContain('自由时间');
     expect(html).toContain('环顾四周');
     expect(html).not.toContain('声乐课');
   });

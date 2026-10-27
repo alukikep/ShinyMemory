@@ -303,7 +303,7 @@ describe('raising sim core', () => {
     const state = advanceTime(travelTo(newGame(1), 'practice_room'), 13 * 60);
     const labels = buildScene(state).actions.map((action) => action.label);
     expect(labels).not.toContain('声乐课');
-    expect(labels).toContain('自由时间');
+    expect(labels).not.toContain('自由时间');
     expect(labels).toContain('环顾四周');
   });
 

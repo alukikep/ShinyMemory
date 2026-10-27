@@ -82,6 +82,7 @@ test('office prologue then Mano encounter', async ({ page }) => {
 
   await jumpTo(page, 4, 12 * 60, 'practice_room');
   await page.getByRole('button', { name: /樱木真乃/ }).click();
+  await expect(page.getByRole('button', { name: '自由时间' })).toBeVisible();
   await page.getByRole('button', { name: /^声乐课/ }).click();
   expect((await getState(page)).phase).toBe('activityResult');
 

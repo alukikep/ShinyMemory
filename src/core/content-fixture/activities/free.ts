@@ -5,6 +5,7 @@ const card: ActivityDef = {
   "name": "自由时间",
   "description": "不训练，也不工作。只是待在一起。",
   "kind": "bond",
+  "target": "present-idol",
   "locations": ["office", "practice_room", "studio", "home"],
   "durationMinutes": 120,
   "timeWindows": [{ "fromMinute": 480, "toMinute": 1320 }],

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createInitialIdolStates } from './contentIndex';
+import { buildScene } from './scene';
 import {
   activityAvailability,
   enterIdol,
@@ -54,5 +55,23 @@ describe('idol status', () => {
     expect(
       activityAvailability(state, getActivity('free')!, 'mano'),
     ).toMatchObject({ display: 'hide' });
+  });
+
+  it('moves free time from the plan page to the present idol page', () => {
+    const state = newGame(1);
+    state.clock.absoluteMinutes = 12 * 60;
+    state.locationId = 'office';
+    expect(activityAvailability(state, getActivity('free')!, 'mano').ok).toBe(
+      false,
+    );
+    expect(buildScene(state).actions.some((action) => action.id === 'free')).toBe(
+      false,
+    );
+
+    state.locationId = 'practice_room';
+    const idolPage = enterIdol(state, 'mano');
+    expect(buildScene(idolPage).actions.some((action) => action.id === 'free')).toBe(
+      true,
+    );
   });
 });

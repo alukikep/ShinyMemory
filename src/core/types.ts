@@ -283,11 +283,14 @@ export type Availability =
       reason: string;
     };
 
+export type ActivityTarget = 'none' | 'present-idol';
+
 export type ActivityDef = {
   id: string;
   name: string;
   description: string;
   kind: ActivityKind;
+  target?: ActivityTarget;
   locations?: string[];
   durationMinutes: number;
   timeWindows?: TimeWindow[];
@@ -480,7 +483,7 @@ export type ActionTone =
 export type ActionCommand =
   | { type: 'move'; locationId: string }
   | { type: 'transit'; routeId: string }
-  | { type: 'activity'; activityId: string }
+  | { type: 'activity'; activityId: string; idolId?: string }
   | { type: 'enterNpc'; actorId: string }
   | { type: 'talk'; actorId: string; topicId: string }
   | { type: 'enterIdol'; idolId: string }

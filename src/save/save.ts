@@ -242,5 +242,19 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     next.gameVersion = GAME_VERSION;
   }
 
+  if (next.schemaVersion === 11) {
+    const state = next.state as GameState;
+    for (const idol of Object.values(state.idols ?? {})) {
+      idol.status = 'recruited';
+      idol.recruitedAt = idol.recruitedAt ?? Date.now();
+    }
+    state.storyChains = {};
+    state.pendingDialogueId = undefined;
+    state.dialogueNodeId = undefined;
+    state.dialogueTargetIdolId = undefined;
+    next.schemaVersion = 12;
+    next.gameVersion = GAME_VERSION;
+  }
+
   return next;
 }

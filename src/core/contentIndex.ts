@@ -197,6 +197,7 @@ export function createInitialActorStates(): Record<string, ActorState> {
 }
 
 export function createInitialIdolStates(): Record<string, IdolState> {
+  const startingIdol = IDOLS.find((idol) => idol.isStart) ?? IDOLS[0];
   return Object.fromEntries(
     IDOLS.map((idol) => [
       idol.id,
@@ -212,6 +213,7 @@ export function createInitialIdolStates(): Record<string, IdolState> {
             },
           ]),
         ) as IdolState['stats'],
+        status: idol.id === startingIdol?.id ? 'recruited' : 'unknown',
       } satisfies IdolState,
     ]),
   );

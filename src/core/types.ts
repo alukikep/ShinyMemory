@@ -56,6 +56,18 @@ export type IdolDef = {
 export type IdolState = {
   id: string;
   stats: IdolStats;
+  status: IdolStatus;
+  knownAt?: number;
+  recruitedAt?: number;
+};
+
+export type IdolStatus = 'unknown' | 'known' | 'recruited';
+
+export type StoryChainState = {
+  chainId: string;
+  stepIndex: number;
+  nextEligibleDay?: number;
+  completed?: boolean;
 };
 
 export type LogTone = 'info' | 'good' | 'bad';
@@ -90,6 +102,10 @@ export type GameState = {
   money: number;
   inventory: Record<string, number>;
   shopPurchases: Record<string, number>;
+  storyChains: Record<string, StoryChainState>;
+  pendingDialogueId?: string;
+  dialogueNodeId?: string;
+  dialogueTargetIdolId?: string;
   flags: Record<string, boolean>;
   jobs?: JobAssignment[];
   eventCooldowns: Record<string, number>;

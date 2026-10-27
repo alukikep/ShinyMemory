@@ -95,6 +95,13 @@ export function getActiveIdol(state: GameState): IdolState {
   return getIdol(state);
 }
 
+export function isIdolRecruited(
+  state: GameState,
+  idolId: string,
+): boolean {
+  return state.idols[idolId]?.status === 'recruited';
+}
+
 export function formatIdolText(
   text: string,
   idolId?: string,
@@ -305,6 +312,7 @@ export function newGame(seed: number = Date.now()): GameState {
     money: 3000,
     inventory: {},
     shopPurchases: {},
+    storyChains: {},
     flags: {},
     jobs: [],
     eventCooldowns: {},

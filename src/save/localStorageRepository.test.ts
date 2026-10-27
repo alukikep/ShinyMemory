@@ -14,7 +14,7 @@ describe('LocalStorageRepository', () => {
 
     const loaded = repo.load();
     expect(loaded).not.toBeNull();
-    expect(loaded?.schemaVersion).toBe(11);
+    expect(loaded?.schemaVersion).toBe(12);
     expect(loaded?.state.idols.mano?.stats.vocal.rank).toBe('D');
     expect(loaded?.state.idols.hiori?.stats.vocal.rank).toBe('F');
     expect(loaded?.state.shared.stamina).toBe(100);
@@ -43,7 +43,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(11);
+    expect(loaded?.schemaVersion).toBe(12);
     expect(loaded?.state.locationId).toBe('office');
     expect(loaded?.state.clock.absoluteMinutes).toBe(8 * 60);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
@@ -66,7 +66,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(11);
+    expect(loaded?.schemaVersion).toBe(12);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
     expect(loaded?.state.actors.mano?.affinity).toBe(0);
@@ -100,7 +100,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(11);
+    expect(loaded?.schemaVersion).toBe(12);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(3);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
     expect(loaded?.state.actors.mano?.affinity).toBe(0);
@@ -126,7 +126,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(11);
+    expect(loaded?.schemaVersion).toBe(12);
     expect(loaded?.state.actors.mano?.affinity).toBe(0);
   });
 
@@ -148,7 +148,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(11);
+    expect(loaded?.schemaVersion).toBe(12);
     expect(loaded?.state.actors.hiori?.affinity).toBe(0);
     expect(loaded?.state.idols.hiori?.stats.vocal.rank).toBe('F');
   });
@@ -169,7 +169,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(11);
+    expect(loaded?.schemaVersion).toBe(12);
     expect(loaded?.state.phase).toBe('plan');
     expect(loaded?.state.endingId).toBeUndefined();
   });
@@ -198,7 +198,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(11);
+    expect(loaded?.schemaVersion).toBe(12);
     expect(loaded?.state.idols.mano?.stats.vocal.rank).toBe('D');
     expect(loaded?.state.idols.mano?.stats.trust.rank).toBe('E');
   });
@@ -219,11 +219,37 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(11);
+    expect(loaded?.schemaVersion).toBe(12);
     expect(loaded?.state.inventory).toEqual({});
     expect(loaded?.state.shopPurchases).toEqual({});
   });
 
+  it('migrates a v11 save by marking all existing idols recruited', () => {
+    const storage = new MemoryStorage();
+    const state = newGame(1) as unknown as Record<string, unknown>;
+    delete state.storyChains;
+    delete state.pendingDialogueId;
+    delete state.dialogueNodeId;
+    delete state.dialogueTargetIdolId;
+    const idols = state.idols as Record<string, Record<string, unknown>>;
+    delete idols.mano.status;
+    delete idols.hiori.status;
+    storage.setItem(
+      SAVE_KEY,
+      JSON.stringify({
+        schemaVersion: 11,
+        gameVersion: '0.12.0',
+        createdAt: '2026-10-27T00:00:00.000Z',
+        state,
+      }),
+    );
+
+    const loaded = new LocalStorageRepository(storage).load();
+    expect(loaded?.schemaVersion).toBe(12);
+    expect(loaded?.state.idols.mano?.status).toBe('recruited');
+    expect(loaded?.state.idols.hiori?.status).toBe('recruited');
+    expect(loaded?.state.storyChains).toEqual({});
+  });
   it('returns null for invalid JSON', () => {
     const storage = new MemoryStorage();
     storage.setItem(SAVE_KEY, '{');
@@ -249,4 +275,5 @@ describe('LocalStorageRepository', () => {
     expect(repo.load()).toBeNull();
   });
 });
+
 

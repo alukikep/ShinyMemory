@@ -12,6 +12,7 @@ npm run acceptance
 - `?debug=1` 状态/操作桥；
 - 9 条引擎浏览器流程；
 - 3 条内容浏览器流程（冻结 fixture）；
+- 1 条正式序章流程（production build）；
 - 2 条审查流程 E2E；
 - 失败 trace / 截图；
 - HTML 报告；
@@ -27,6 +28,7 @@ tests/acceptance/shop.spec.ts
 tests/acceptance/smoke.spec.ts
 tests/content/hiori.spec.ts
 tests/content/meguru.spec.ts
+tests/prologue/mano.spec.ts
 tests/review/review.spec.ts
 ```
 
@@ -35,8 +37,11 @@ tests/review/review.spec.ts
 ```text
 引擎 9 passed
 内容 3 passed
+正式序章 1 passed
 审查 2 passed
 ```
+
+`npm run acceptance:prologue` 使用 production build，验证事务所序章、无已招募偶像空状态和真乃两次相遇。
 
 引擎与内容验收都使用 fixture build：
 

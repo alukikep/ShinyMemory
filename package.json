@@ -13,6 +13,7 @@
     "test": "vitest run",
     "acceptance": "npm test && npm run build:fixture && playwright test && playwright test -c playwright.content.config.ts",
     "acceptance:content": "npm run build:fixture && playwright test -c playwright.content.config.ts",
+    "acceptance:prologue": "npm run build && playwright test -c playwright.prologue.config.ts",
     "acceptance:review": "npm run build && playwright test -c playwright.review.config.ts"
   },
   "dependencies": {

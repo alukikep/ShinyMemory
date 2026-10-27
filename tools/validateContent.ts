@@ -12,7 +12,12 @@ type ApprovedFile = {
 };
 
 async function listTsFiles(directory: string): Promise<string[]> {
-  const entries = await fs.readdir(directory, { withFileTypes: true });
+  let entries: Awaited<ReturnType<typeof fs.readdir>>;
+  try {
+    entries = await fs.readdir(directory, { withFileTypes: true });
+  } catch {
+    return [];
+  }
   const files: string[] = [];
   for (const entry of entries) {
     const full = path.join(directory, entry.name);

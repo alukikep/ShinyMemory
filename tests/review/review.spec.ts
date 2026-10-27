@@ -129,7 +129,7 @@ test('creates and approves dialogue and story drafts', async ({ page }) => {
     JSON.stringify(
       {
         id: 'dialogue.e2e.review',
-        idolId: 'hiori',
+        idolId: 'mano',
         startNodeId: 'n01',
         nodes: {
           n01: { id: 'n01', text: '第一句', nextNodeId: 'n02' },
@@ -156,7 +156,7 @@ test('creates and approves dialogue and story drafts', async ({ page }) => {
     JSON.stringify(
       {
         id: 'story.e2e.review',
-        idolId: 'hiori',
+        idolId: 'mano',
         steps: [
           {
             id: 'step-1',

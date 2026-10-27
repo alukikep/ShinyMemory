@@ -41,6 +41,7 @@ export type ContentIndex = {
   startingLocationId: string;
   startingIdolId: string;
   startingIdolStatus: Record<string, IdolStatus>;
+  startingDialogueId?: string;
 };
 
 export type ContentPack = {
@@ -58,6 +59,7 @@ export type ContentPack = {
   starting: {
     activeIdolId: string;
     idolStatus: Record<string, IdolStatus>;
+    dialogueId?: string;
   };
 };
 
@@ -208,6 +210,7 @@ export function buildContentIndex({
     startingLocationId,
     startingIdolId,
     startingIdolStatus: STARTING_STATE.idolStatus,
+    startingDialogueId: STARTING_STATE.dialogueId,
   };
 }
 

@@ -99,6 +99,14 @@ export function isIdolRecruited(
   return state.idols[idolId]?.status === 'recruited';
 }
 
+export function hasRecruitedIdol(state: GameState): boolean {
+  return Object.values(state.idols).some((idol) => idol.status === 'recruited');
+}
+
+export function isActiveIdolRecruited(state: GameState): boolean {
+  return isIdolRecruited(state, state.activeIdolId);
+}
+
 export function formatIdolText(
   text: string,
   idolId?: string,
@@ -319,6 +327,13 @@ export function newGame(seed: number = Date.now()): GameState {
     nextLogId: 1,
     rng: { seed: seed >>> 0, counter: 0 },
   };
+  const opening = CONTENT_INDEX.startingDialogueId
+    ? getDialogue(CONTENT_INDEX.startingDialogueId)
+    : undefined;
+  if (opening) {
+    state.pendingDialogueId = opening.id;
+    state.dialogueNodeId = opening.startNodeId;
+  }
   return state;
 }
 

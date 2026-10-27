@@ -94,7 +94,7 @@ export type DialogueNode = {
 
 export type DialogueDef = {
   id: string;
-  idolId: string;
+  idolId?: string;
   startNodeId: string;
   nodes: Record<string, DialogueNode>;
 };

@@ -30,7 +30,7 @@ export function validateDialogueDef(
   idols: Map<string, IdolDef>,
   errors: string[],
 ): void {
-  if (!idols.has(dialogue.idolId)) {
+  if (dialogue.idolId && !idols.has(dialogue.idolId)) {
     errors.push(`${dialogue.id}: 偶像不存在：${dialogue.idolId}`);
   }
   if (!dialogue.nodes[dialogue.startNodeId]) {

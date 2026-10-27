@@ -166,7 +166,7 @@ function defaultPayload(kind: ReviewKind, title: string): Record<string, unknown
   if (kind === 'dialogue') {
     return {
       id: `dialogue.draft.${slug}`,
-      idolId: 'hiori',
+      idolId: 'mano',
       startNodeId: 'n01',
       nodes: {
         n01: {
@@ -184,7 +184,7 @@ function defaultPayload(kind: ReviewKind, title: string): Record<string, unknown
   if (kind === 'story') {
     return {
       id: `story.draft.${slug}`,
-      idolId: 'hiori',
+      idolId: 'mano',
       priority: 0,
       steps: [
         {

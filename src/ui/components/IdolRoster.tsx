@@ -108,6 +108,9 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
         </div>
 
         <div className="roster-grid">
+          {idols.length === 0 ? (
+            <p className="roster-empty">还没有认识的偶像。</p>
+          ) : null}
           {idols.map((idol) => {
             const def = CONTENT_INDEX.idols.get(idol.id);
             const recruited = idol.status === 'recruited';

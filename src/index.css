@@ -2860,3 +2860,33 @@ button:focus-visible,
     line-height: 1.8;
   }
 }
+
+/* empty states before the first idol is recruited */
+.idol-empty {
+  margin-top: 14px;
+  border: 1px dashed var(--line-strong, #d5e7ef);
+  border-radius: 10px;
+  padding: 14px;
+  color: var(--muted, #6f8794);
+}
+
+.idol-empty p {
+  margin: 0 0 4px;
+  color: var(--ink, #2d4858);
+  font-size: 12px;
+}
+
+.idol-empty small {
+  font-size: 9px;
+}
+
+.roster-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 28px 18px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}

@@ -94,7 +94,7 @@ describe('review validation', () => {
     const valid = validateReviewDraft(
       draft('dialogue', {
         id: 'dialogue.test',
-        idolId: 'hiori',
+        idolId: 'mano',
         startNodeId: 'n01',
         nodes: {
           n01: {
@@ -134,7 +134,7 @@ describe('review validation', () => {
     const valid = validateReviewDraft(
       draft('story', {
         id: 'story.test',
-        idolId: 'meguru',
+        idolId: 'mano',
         steps: [
           {
             id: 'step-1',

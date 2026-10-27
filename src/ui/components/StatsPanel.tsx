@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
-import { getActiveIdol } from '../../core/sim';
+import { getActiveIdol, isActiveIdolRecruited } from '../../core/sim';
 import { STAT_LABELS, STAT_MAX } from '../../core/labels';
 import type {
   GameState,
@@ -85,8 +85,11 @@ export function StatsPanel({
   state: GameState;
   hero?: HeroView;
 }) {
-  const idol = getActiveIdol(state);
-  const idolDef = CONTENT_INDEX.idols.get(state.activeIdolId);
+  const recruited = isActiveIdolRecruited(state);
+  const idol = recruited ? getActiveIdol(state) : undefined;
+  const idolDef = recruited
+    ? CONTENT_INDEX.idols.get(state.activeIdolId)
+    : undefined;
 
   return (
     <div className="panel stats-panel">
@@ -103,33 +106,41 @@ export function StatsPanel({
         ))}
       </div>
 
-      <div
-        className="idol-summary"
-        style={
-          {
-            '--idol-color': idolDef?.color ?? 'var(--brand)',
-          } as CSSProperties
-        }
-      >
-        <div className="idol-summary-avatar">
-          {idolDef?.avatar ? (
-            <img src={idolDef.avatar} alt={`${idolDef.name}Q版头像`} />
-          ) : (
-            <span>{idolDef?.name.slice(0, 1) ?? '?'}</span>
-          )}
+      {recruited && idol ? (
+        <>
+          <div
+            className="idol-summary"
+            style={
+              {
+                '--idol-color': idolDef?.color ?? 'var(--brand)',
+              } as CSSProperties
+            }
+          >
+            <div className="idol-summary-avatar">
+              {idolDef?.avatar ? (
+                <img src={idolDef.avatar} alt={`${idolDef.name}Q版头像`} />
+              ) : (
+                <span>{idolDef?.name.slice(0, 1) ?? '?'}</span>
+              )}
+            </div>
+            <div className="idol-summary-copy">
+              <span className="idol-summary-name">
+                {idolDef?.name ?? state.activeIdolId}
+              </span>
+              <span className="idol-summary-unit">{idolDef?.unit ?? ''}</span>
+            </div>
+          </div>
+          <div className="idol-rank-chips">
+            {IDOL_ORDER.map((key) => (
+              <RankChip key={key} statKey={key} attribute={idol.stats[key]} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="idol-empty">
+          <p>还没有正式出道的偶像。</p>
         </div>
-        <div className="idol-summary-copy">
-          <span className="idol-summary-name">
-            {idolDef?.name ?? state.activeIdolId}
-          </span>
-          <span className="idol-summary-unit">{idolDef?.unit ?? ''}</span>
-        </div>
-      </div>
-      <div className="idol-rank-chips">
-        {IDOL_ORDER.map((key) => (
-          <RankChip key={key} statKey={key} attribute={idol.stats[key]} />
-        ))}
-      </div>
+      )}
 
       {state.flags.forced_rest ? (
         <p className="status-alert">她需要休息。</p>

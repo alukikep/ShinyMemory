@@ -644,6 +644,9 @@ export function getEligibleStory(
   if (state.pendingDialogueId || state.flags.forced_rest) return undefined;
   const day = getDay(state.clock.absoluteMinutes);
   const minute = getMinuteOfDay(state.clock.absoluteMinutes);
+  let best:
+    | { chain: StoryChainDef; step: StoryChainStep; stepIndex: number }
+    | undefined;
 
   for (const chain of CONTENT_INDEX.storyChains.values()) {
     const chainState = state.storyChains[chain.id] ?? {
@@ -662,9 +665,14 @@ export function getEligibleStory(
     ) {
       continue;
     }
-    return { chain, step, stepIndex: chainState.stepIndex };
+    if (
+      !best ||
+      (chain.priority ?? 0) > (best.chain.priority ?? 0)
+    ) {
+      best = { chain, step, stepIndex: chainState.stepIndex };
+    }
   }
-  return undefined;
+  return best;
 }
 
 export function startStory(state: GameState, chainId: string): GameState {

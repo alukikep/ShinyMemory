@@ -11,7 +11,9 @@ import type {
   SaveEnvelope,
   StatKey,
 } from '../core/types';
-import { GAME_VERSION, SAVE_VERSION } from './version';
+import { CONTENT_EPOCH, GAME_VERSION, SAVE_VERSION } from './version';
+
+
 
 const RANK_FROM_VALUE: Rank[] = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
 
@@ -45,6 +47,7 @@ function legacyAttribute(
 export function createSaveEnvelope(state: GameState): SaveEnvelope {
   return {
     schemaVersion: SAVE_VERSION,
+    contentEpoch: CONTENT_EPOCH,
     gameVersion: GAME_VERSION,
     createdAt: new Date().toISOString(),
     state,

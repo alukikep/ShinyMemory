@@ -9,6 +9,7 @@ import {
   JOBS,
   LOCATIONS,
   SHOPS,
+  STARTING_STATE,
   STORY_CHAIN_DEFS,
   TRANSIT_ROUTES,
 } from './content';
@@ -100,8 +101,9 @@ function buildIndex(): ContentIndex {
 
   const startingLocationId =
     LOCATIONS.find((location) => location.isStart)?.id ?? LOCATIONS[0]?.id ?? '';
-  const startingIdolId =
-    IDOLS.find((idol) => idol.isStart)?.id ?? IDOLS[0]?.id ?? '';
+  const startingIdolId = idols.has(STARTING_STATE.activeIdolId)
+    ? STARTING_STATE.activeIdolId
+    : (IDOLS.find((idol) => idol.isStart)?.id ?? IDOLS[0]?.id ?? '');
 
   const eventsByLocation = new Map<string, EventDef[]>();
   const eventsByActivityId = new Map<string, EventDef[]>();
@@ -209,7 +211,6 @@ export function createInitialActorStates(): Record<string, ActorState> {
 }
 
 export function createInitialIdolStates(): Record<string, IdolState> {
-  const startingIdol = IDOLS.find((idol) => idol.isStart) ?? IDOLS[0];
   return Object.fromEntries(
     IDOLS.map((idol) => [
       idol.id,
@@ -225,7 +226,7 @@ export function createInitialIdolStates(): Record<string, IdolState> {
             },
           ]),
         ) as IdolState['stats'],
-        status: idol.id === startingIdol?.id ? 'recruited' : 'unknown',
+        status: STARTING_STATE.idolStatus[idol.id] ?? 'unknown',
       } satisfies IdolState,
     ]),
   );

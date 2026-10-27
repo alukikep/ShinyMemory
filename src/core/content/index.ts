@@ -8,6 +8,7 @@ import { JOBS as BASE_JOBS } from './jobs';
 import { ITEMS, SHOPS } from './items';
 import { HIORI_DIALOGUES } from './dialogues/hiori';
 import { STORY_CHAINS } from './storyChains';
+import { STARTING_STATE } from './starting';
 import { APPROVED_EVENTS, APPROVED_JOBS } from './approved';
 import vocal from './activities/vocal';
 import dance from './activities/dance';
@@ -68,6 +69,8 @@ export const JOBS = [...BASE_JOBS, ...APPROVED_JOBS];
 export const DIALOGUES = HIORI_DIALOGUES;
 
 export const STORY_CHAIN_DEFS = STORY_CHAINS;
+
+export { STARTING_STATE };
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 

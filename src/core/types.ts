@@ -115,6 +115,7 @@ export type StoryChainStep = {
 export type StoryChainDef = {
   id: string;
   idolId: string;
+  priority?: number;
   steps: StoryChainStep[];
 };
 
@@ -466,6 +467,7 @@ export type TriggerReport = {
 
 export type SaveEnvelope = {
   schemaVersion: number;
+  contentEpoch: number;
   gameVersion: string;
   createdAt: string;
   state: GameState;

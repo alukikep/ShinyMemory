@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildScene } from './scene';
 import { CONTENT_INDEX } from './contentIndex';
+import { FIXTURE_CHAIN, FIXTURE_DIALOGUE } from './content/fixtures/secondEncounter';
 import {
   advanceDialogue,
   chooseDialogue,
@@ -15,6 +16,16 @@ function atPark(day = 1, minute = 12 * 60) {
   state.clock.absoluteMinutes = (day - 1) * 1440 + minute;
   state.locationId = 'park';
   return state;
+}
+
+function registerFixture() {
+  CONTENT_INDEX.dialogues.set(FIXTURE_DIALOGUE.id, FIXTURE_DIALOGUE);
+  CONTENT_INDEX.storyChains.set(FIXTURE_CHAIN.id, FIXTURE_CHAIN);
+}
+
+function unregisterFixture() {
+  CONTENT_INDEX.dialogues.delete(FIXTURE_DIALOGUE.id);
+  CONTENT_INDEX.storyChains.delete(FIXTURE_CHAIN.id);
 }
 
 function play(state: ReturnType<typeof newGame>) {
@@ -89,5 +100,24 @@ describe('Hiori story chain', () => {
     expect(state.idols.hiori?.status).toBe('recruited');
     expect(state.storyChains['hiori-encounter']?.completed).toBe(true);
     expect(state.activeIdolId).toBe('mano');
+  });
+
+  it('uses story priority and supports a second idol fixture', () => {
+    registerFixture();
+    try {
+      const state = atPark();
+      state.idols['fixture-idol'] = {
+        ...structuredClone(state.idols.hiori!),
+        id: 'fixture-idol',
+        status: 'unknown',
+      };
+      expect(getEligibleStory(state)?.chain.id).toBe(FIXTURE_CHAIN.id);
+
+      const next = play(startStory(state, FIXTURE_CHAIN.id));
+      expect(next.idols['fixture-idol']?.status).toBe('known');
+      expect(next.activeIdolId).toBe('mano');
+    } finally {
+      unregisterFixture();
+    }
   });
 });

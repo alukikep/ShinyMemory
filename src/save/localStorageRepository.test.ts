@@ -36,6 +36,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 1,
+        contentEpoch: 1,
         gameVersion: '0.2.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state: legacyState,
@@ -59,6 +60,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 3,
+        contentEpoch: 1,
         gameVersion: '0.4.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -93,6 +95,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 4,
+        contentEpoch: 1,
         gameVersion: '0.5.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -119,6 +122,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 6,
+        contentEpoch: 1,
         gameVersion: '0.7.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -141,6 +145,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 7,
+        contentEpoch: 1,
         gameVersion: '0.8.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -162,6 +167,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 8,
+        contentEpoch: 1,
         gameVersion: '0.9.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -191,6 +197,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 9,
+        contentEpoch: 1,
         gameVersion: '0.10.0',
         createdAt: '2026-10-24T00:00:00.000Z',
         state,
@@ -212,6 +219,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 10,
+        contentEpoch: 1,
         gameVersion: '0.11.0',
         createdAt: '2026-10-26T00:00:00.000Z',
         state,
@@ -238,6 +246,7 @@ describe('LocalStorageRepository', () => {
       SAVE_KEY,
       JSON.stringify({
         schemaVersion: 11,
+        contentEpoch: 1,
         gameVersion: '0.12.0',
         createdAt: '2026-10-27T00:00:00.000Z',
         state,
@@ -250,6 +259,27 @@ describe('LocalStorageRepository', () => {
     expect(loaded?.state.idols.hiori?.status).toBe('recruited');
     expect(loaded?.state.storyChains).toEqual({});
   });
+  it('rejects saves from another content epoch', () => {
+    const storage = new MemoryStorage();
+    const envelope = createSaveEnvelope(newGame(1));
+    storage.setItem(
+      SAVE_KEY,
+      JSON.stringify({ ...envelope, contentEpoch: 99 }),
+    );
+    expect(new LocalStorageRepository(storage).load()).toBeNull();
+  });
+
+  it('rejects saves without a content epoch', () => {
+    const storage = new MemoryStorage();
+    const envelope = createSaveEnvelope(newGame(1)) as unknown as Record<
+      string,
+      unknown
+    >;
+    delete envelope.contentEpoch;
+    storage.setItem(SAVE_KEY, JSON.stringify(envelope));
+    expect(new LocalStorageRepository(storage).load()).toBeNull();
+  });
+
   it('returns null for invalid JSON', () => {
     const storage = new MemoryStorage();
     storage.setItem(SAVE_KEY, '{');
@@ -275,5 +305,6 @@ describe('LocalStorageRepository', () => {
     expect(repo.load()).toBeNull();
   });
 });
+
 
 

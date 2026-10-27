@@ -4,6 +4,7 @@ import { CONTENT_INDEX } from './contentIndex';
 import {
   advanceDialogue,
   chooseDialogue,
+  getDialogueText,
   getEligibleStory,
   newGame,
   startStory,
@@ -52,6 +53,14 @@ describe('Hiori story chain', () => {
     expect(next.pendingDialogueId).toBe('dialogue.hiori.first');
     expect(next.dialogueNodeId).toBe('n01');
     expect(next.dialogueTargetIdolId).toBe('hiori');
+  });
+
+  it('uses the first-meeting flag for the second opening', () => {
+    const state = atPark(3);
+    state.dialogueTargetIdolId = 'hiori';
+    state.flags.hiori_helped_paper = true;
+    const dialogue = CONTENT_INDEX.dialogues.get('dialogue.hiori.second')!;
+    expect(getDialogueText(state, dialogue.nodes.n02!)).toContain('上次的纸');
   });
 
   it('marks Hiori known and schedules the second step two days later', () => {

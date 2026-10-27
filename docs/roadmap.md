@@ -627,7 +627,7 @@ job
 Hiori 验收结果：
 
 ```text
-163 个 Vitest 测试通过
+164 个 Vitest 测试通过
 11 条游戏 E2E 通过（含 Hiori 两步相遇 + 移动端）
 1 条审查 E2E 通过
 ```

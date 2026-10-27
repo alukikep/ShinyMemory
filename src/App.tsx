@@ -42,6 +42,14 @@ export default function App() {
   const scene = buildScene(state);
   const localShops = CONTENT_INDEX.shopsByLocation.get(state.locationId) ?? [];
   const shop = localShops[0];
+  const sceneShop =
+    shop && scene.phase === 'plan'
+      ? {
+          name: shop.name,
+          description: shop.description,
+          onOpen: () => setShopOpen(true),
+        }
+      : undefined;
 
   useEffect(() => {
     if (!debug) return;
@@ -129,16 +137,6 @@ export default function App() {
             <GameIcon name="bag" size={17} />
             <span>背包</span>
           </button>
-          {shop && scene.phase === 'plan' ? (
-            <button
-              type="button"
-              className="sidebar-nav-item"
-              onClick={() => setShopOpen(true)}
-            >
-              <GameIcon name="coin" size={17} />
-              <span>{shop.name}</span>
-            </button>
-          ) : null}
           {scene.phase === 'plan' ? (
             <button
               type="button"
@@ -180,6 +178,7 @@ export default function App() {
                 scene={scene}
                 onAction={act}
                 onMove={(locationId) => act({ type: 'move', locationId })}
+                shopEntry={sceneShop}
               />
               {scene.phase === 'plan' ? (
                 <CityMap

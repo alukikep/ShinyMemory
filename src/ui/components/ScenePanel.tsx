@@ -26,9 +26,19 @@ type ScenePanelProps = {
   scene: SceneView;
   onAction: (command: ActionCommand) => void;
   onMove?: (locationId: string) => void;
+  shopEntry?: {
+    name: string;
+    description: string;
+    onOpen: () => void;
+  };
 };
 
-export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
+export function ScenePanel({
+  scene,
+  onAction,
+  onMove,
+  shopEntry,
+}: ScenePanelProps) {
   return (
     <section className="panel scene-panel" id="scene-panel">
       <div className="scene-head">
@@ -172,6 +182,23 @@ export function ScenePanel({ scene, onAction, onMove }: ScenePanelProps) {
           </button>
         ))}
       </div>
+
+      {shopEntry ? (
+        <button
+          type="button"
+          className="scene-shop-entry"
+          onClick={shopEntry.onOpen}
+        >
+          <span className="scene-shop-icon">
+            <GameIcon name="bag" size={20} />
+          </span>
+          <span className="scene-shop-copy">
+            <strong>{shopEntry.name}</strong>
+            <small>{shopEntry.description}</small>
+          </span>
+          <span className="scene-shop-action">进入商店 →</span>
+        </button>
+      ) : null}
     </section>
   );
 }

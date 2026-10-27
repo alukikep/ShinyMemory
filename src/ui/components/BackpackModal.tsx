@@ -22,6 +22,9 @@ export function BackpackModal({
       ? state.activeIdolId
       : idols[0]?.id ?? '',
   );
+  const [giftFeedback, setGiftFeedback] = useState<string | undefined>();
+  const giftTargetName =
+    CONTENT_INDEX.idols.get(giftTarget)?.name ?? giftTarget;
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -41,6 +44,11 @@ export function BackpackModal({
       a.item.name.localeCompare(b.item.name, 'zh-CN'),
     );
   }, [state.inventory]);
+
+  const giveGift = (itemId: string, itemName: string) => {
+    onGift(itemId, giftTarget);
+    setGiftFeedback(`已把${itemName}送给${giftTargetName}。`);
+  };
 
   return (
     <div
@@ -78,6 +86,12 @@ export function BackpackModal({
           </div>
         </header>
 
+        {giftFeedback ? (
+          <p className="inventory-feedback" role="status">
+            {giftFeedback}
+          </p>
+        ) : null}
+
         {entries.length === 0 ? (
           <p className="inventory-empty">
             背包还是空的。去商业街的礼品店看看？
@@ -85,15 +99,19 @@ export function BackpackModal({
         ) : (
           <>
             <div className="inventory-target">
-              <span>赠送对象</span>
+              <span>赠送对象（默认当前偶像）</span>
               <select
                 value={giftTarget}
-                onChange={(event) => setGiftTarget(event.target.value)}
+                onChange={(event) => {
+                  setGiftTarget(event.target.value);
+                  setGiftFeedback(undefined);
+                }}
                 aria-label="赠送对象"
               >
                 {idols.map((idol) => (
                   <option key={idol.id} value={idol.id}>
                     {CONTENT_INDEX.idols.get(idol.id)?.name ?? idol.id}
+                    {idol.id === state.activeIdolId ? '（当前）' : ''}
                   </option>
                 ))}
               </select>
@@ -123,10 +141,12 @@ export function BackpackModal({
                     <button
                       type="button"
                       className="inventory-gift-button"
-                      onClick={() => onGift(item.id, giftTarget)}
+                      onClick={() => giveGift(item.id, item.name)}
                       disabled={!giftTarget || state.phase !== 'plan'}
                     >
-                      {state.phase === 'plan' ? '赠送' : '仅安排阶段'}
+                      {state.phase === 'plan'
+                        ? `赠送给${giftTargetName}`
+                        : '仅安排阶段'}
                     </button>
                   ) : (
                     <span className="inventory-locked">收藏品</span>

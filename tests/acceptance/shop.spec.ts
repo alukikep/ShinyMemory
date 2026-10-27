@@ -13,7 +13,7 @@ test('buys a gift, stores it, and gives it to an idol', async ({ page }) => {
   await reset(page, 1);
   await jumpTo(page, 1, 600, 'shopping_street');
 
-  await page.getByRole('button', { name: '街角礼品店' }).click();
+  await page.getByRole('button', { name: /街角礼品店/ }).click();
   await expect(page.locator('.shop-item')).toHaveCount(4);
   await page.getByRole('button', { name: '购买' }).first().click();
   await expect
@@ -29,10 +29,11 @@ test('buys a gift, stores it, and gives it to an idol', async ({ page }) => {
 
   await page.getByRole('button', { name: '背包' }).click();
   await page.locator('.inventory-target select').selectOption('hiori');
-  await page.getByRole('button', { name: '赠送' }).click();
+  await page.getByRole('button', { name: /赠送给/ }).click();
   await expect
     .poll(async () => (await getState(page)).inventory['gift.flower'])
     .toBeUndefined();
+  await expect(page.locator('.inventory-feedback')).toContainText('风野灯织');
   expect((await getState(page)).idols.hiori?.stats.trust.exp).toBeGreaterThan(0);
   expect(errors).toEqual([]);
 });

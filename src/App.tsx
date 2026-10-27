@@ -7,6 +7,7 @@ import type { ActionCommand } from './core/types';
 import { DebugPanel } from './ui/components/DebugPanel';
 import { CityMap } from './ui/components/CityMap';
 import { BackpackModal } from './ui/components/BackpackModal';
+import { DialogueOverlay } from './ui/components/DialogueOverlay';
 import { GameIcon } from './ui/components/GameIcon';
 import { IdolRoster } from './ui/components/IdolRoster';
 import { IdolSchedule } from './ui/components/IdolSchedule';
@@ -202,6 +203,14 @@ export default function App() {
           ) : null}
         </div>
       </div>
+
+      {state.pendingDialogueId ? (
+        <DialogueOverlay
+          state={state}
+          onAdvance={() => act({ type: 'dialogueAdvance' })}
+          onChoice={(index) => act({ type: 'dialogueChoice', index })}
+        />
+      ) : null}
 
       {rosterOpen ? (
         <IdolRoster state={state} onClose={() => setRosterOpen(false)} />

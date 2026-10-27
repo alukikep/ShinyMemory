@@ -4,6 +4,7 @@ import App from '../App';
 import { buildScene } from '../core/scene';
 import { advanceTime, enterNpc, handleCommand, moveTo, newGame, travelTo } from '../core/sim';
 import { DebugPanel } from './components/DebugPanel';
+import { DialogueOverlay } from './components/DialogueOverlay';
 import { IdolRoster } from './components/IdolRoster';
 import { IdolSchedule } from './components/IdolSchedule';
 import { CityMap } from './components/CityMap';
@@ -110,6 +111,33 @@ describe('app shell', () => {
     expect(html).toContain('节目收录');
     expect(html).toContain('离开');
     expect(html).not.toContain('声乐课');
+  });
+
+  it('renders dialogue text and choices', () => {
+    const state = newGame(1);
+    state.pendingDialogueId = 'dialogue.hiori.first';
+    state.dialogueChainId = 'hiori-encounter';
+    state.dialogueNodeId = 'n03';
+    state.dialogueTargetIdolId = 'hiori';
+    const html = renderToString(
+      <DialogueOverlay
+        state={state}
+        onAdvance={() => {}}
+        onChoice={() => {}}
+      />,
+    );
+    expect(html).toContain('风野灯织');
+    expect(html).toContain('帮她捡起被风吹散的纸');
+  });
+
+  it('renders the Hiori encounter action at the park', () => {
+    const state = newGame(1);
+    state.clock.absoluteMinutes = 12 * 60;
+    state.locationId = 'park';
+    const html = renderToString(
+      <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
+    );
+    expect(html).toContain('在长椅旁停下');
   });
 
   it('renders only recognized idols in the roster', () => {

@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import { buildScene } from './core/scene';
+import { CONTENT_INDEX } from './core/contentIndex';
 import { GAME_VERSION } from './save/version';
 import { useGameStore } from './app/store';
 import type { ActionCommand } from './core/types';
 import { DebugPanel } from './ui/components/DebugPanel';
 import { CityMap } from './ui/components/CityMap';
+import { BackpackModal } from './ui/components/BackpackModal';
 import { GameIcon } from './ui/components/GameIcon';
 import { IdolRoster } from './ui/components/IdolRoster';
 import { IdolSchedule } from './ui/components/IdolSchedule';
 import { LogPanel } from './ui/components/LogPanel';
 import { ScenePanel } from './ui/components/ScenePanel';
+import { ShopModal } from './ui/components/ShopModal';
 import { StatsPanel } from './ui/components/StatsPanel';
 
 type AcceptanceBridge = {
@@ -31,10 +34,14 @@ export default function App() {
   const debugJumpDay = useGameStore((store) => store.debugJumpDay);
   const [rosterOpen, setRosterOpen] = useState(false);
   const [scheduleOpen, setScheduleOpen] = useState(false);
+  const [backpackOpen, setBackpackOpen] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false);
   const debug =
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).has('debug');
   const scene = buildScene(state);
+  const localShops = CONTENT_INDEX.shopsByLocation.get(state.locationId) ?? [];
+  const shop = localShops[0];
 
   useEffect(() => {
     if (!debug) return;
@@ -114,6 +121,24 @@ export default function App() {
             <GameIcon name="calendar" size={17} />
             <span>日程表</span>
           </button>
+          <button
+            type="button"
+            className="sidebar-nav-item"
+            onClick={() => setBackpackOpen(true)}
+          >
+            <GameIcon name="bag" size={17} />
+            <span>背包</span>
+          </button>
+          {shop && scene.phase === 'plan' ? (
+            <button
+              type="button"
+              className="sidebar-nav-item"
+              onClick={() => setShopOpen(true)}
+            >
+              <GameIcon name="coin" size={17} />
+              <span>{shop.name}</span>
+            </button>
+          ) : null}
           {scene.phase === 'plan' ? (
             <button
               type="button"
@@ -187,6 +212,25 @@ export default function App() {
         <IdolSchedule
           state={state}
           onClose={() => setScheduleOpen(false)}
+        />
+      ) : null}
+
+      {backpackOpen ? (
+        <BackpackModal
+          state={state}
+          onClose={() => setBackpackOpen(false)}
+          onGift={(itemId, idolId) =>
+            act({ type: 'giveGift', itemId, idolId })
+          }
+        />
+      ) : null}
+
+      {shopOpen && shop ? (
+        <ShopModal
+          state={state}
+          shopId={shop.id}
+          onClose={() => setShopOpen(false)}
+          onBuy={(itemId) => act({ type: 'buyItem', itemId })}
         />
       ) : null}
     </div>

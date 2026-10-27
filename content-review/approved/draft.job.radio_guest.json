@@ -2,8 +2,9 @@
   "id": "draft.job.radio_guest",
   "kind": "job",
   "title": "深夜电台嘉宾",
-  "createdAt": "2026-10-24T18:00:00.000Z",
-  "updatedAt": "2026-10-26T04:15:00.000Z",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.job.radio_guest",
   "payload": {
     "id": "job.radio_guest",
     "name": "深夜电台嘉宾",
@@ -13,8 +14,16 @@
     "toMinute": 1380,
     "pay": 1800,
     "effects": [
-      { "kind": "idolExp", "attribute": "expression", "tier": 3 },
-      { "kind": "idolExp", "attribute": "trust", "tier": 1 }
+      {
+        "kind": "idolExp",
+        "attribute": "expression",
+        "tier": 3
+      },
+      {
+        "kind": "idolExp",
+        "attribute": "trust",
+        "tier": 1
+      }
     ]
   },
   "annotations": [
@@ -33,6 +42,9 @@
       "resolved": true
     }
   ],
+  "createdAt": "2026-10-24T18:00:00.000Z",
+  "updatedAt": "2026-10-26T04:24:15.182Z",
+  "reviewedAt": "2026-10-26T04:24:15.182Z",
   "history": [
     {
       "status": "review",
@@ -47,6 +59,10 @@
       "status": "review",
       "at": "2026-10-26T04:15:00.000Z",
       "note": "已按批注修改，重新送审"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-26T04:24:15.182Z"
     }
   ]
 }

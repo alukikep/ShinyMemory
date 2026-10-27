@@ -1,4 +1,15 @@
-import { ACTORS, ACTIVITIES, ENDINGS, EVENTS, IDOLS, JOBS, LOCATIONS, TRANSIT_ROUTES } from './content';
+import {
+  ACTORS,
+  ACTIVITIES,
+  ENDINGS,
+  EVENTS,
+  IDOLS,
+  ITEMS,
+  JOBS,
+  LOCATIONS,
+  SHOPS,
+  TRANSIT_ROUTES,
+} from './content';
 import type {
   ActivityDef,
   ActivityKind,
@@ -8,8 +19,10 @@ import type {
   EventDef,
   IdolDef,
   IdolState,
+  ItemDef,
   JobDef,
   LocationDef,
+  ShopDef,
   TransitRouteDef,
 } from './types';
 
@@ -19,6 +32,9 @@ export type ContentIndex = {
   idols: Map<string, IdolDef>;
   events: Map<string, EventDef>;
   jobs: Map<string, JobDef>;
+  items: Map<string, ItemDef>;
+  shops: Map<string, ShopDef>;
+  shopsByLocation: Map<string, ShopDef[]>;
   endings: Map<string, EndingDef>;
   locations: Map<string, LocationDef>;
   transitRoutes: Map<string, TransitRouteDef>;
@@ -40,6 +56,14 @@ function buildIndex(): ContentIndex {
   const idols = new Map(IDOLS.map((idol) => [idol.id, idol]));
   const events = new Map(EVENTS.map((event) => [event.id, event]));
   const jobs = new Map(JOBS.map((job) => [job.id, job]));
+  const items = new Map(ITEMS.map((item) => [item.id, item]));
+  const shops = new Map(SHOPS.map((shop) => [shop.id, shop]));
+  const shopsByLocation = new Map<string, ShopDef[]>();
+  for (const shop of SHOPS) {
+    const list = shopsByLocation.get(shop.locationId) ?? [];
+    list.push(shop);
+    shopsByLocation.set(shop.locationId, list);
+  }
   const endings = new Map(ENDINGS.map((ending) => [ending.id, ending]));
   const locations = new Map(LOCATIONS.map((location) => [location.id, location]));
   const transitRoutes = new Map(
@@ -138,6 +162,9 @@ function buildIndex(): ContentIndex {
     idols,
     events,
     jobs,
+    items,
+    shops,
+    shopsByLocation,
     endings,
     locations,
     transitRoutes,

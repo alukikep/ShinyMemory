@@ -303,6 +303,8 @@ export function newGame(seed: number = Date.now()): GameState {
     idols: createInitialIdolStates(),
     activeIdolId: CONTENT_INDEX.startingIdolId,
     money: 3000,
+    inventory: {},
+    shopPurchases: {},
     flags: {},
     jobs: [],
     eventCooldowns: {},
@@ -470,6 +472,63 @@ export function attendJob(state: GameState, jobId: string): GameState {
   next.jobs = (next.jobs ?? []).filter((entry) => entry.id !== jobId);
   addLog(next, `你参与了《${job.name}》。`, 'good');
 
+  return next;
+}
+
+export function buyItem(state: GameState, itemId: string): GameState {
+  if (state.phase !== 'plan') return state;
+  const item = CONTENT_INDEX.items.get(itemId);
+  if (!item) return state;
+
+  const shop = CONTENT_INDEX.shopsByLocation
+    .get(state.locationId)
+    ?.find((entry) => entry.itemIds.includes(itemId));
+  if (!shop) return state;
+
+  const purchased = state.shopPurchases[itemId] ?? 0;
+  if (item.maxPurchases !== undefined && purchased >= item.maxPurchases) {
+    return state;
+  }
+  if (state.money < item.price) return state;
+
+  const next = clone(state);
+  next.money -= item.price;
+  next.inventory[itemId] = (next.inventory[itemId] ?? 0) + 1;
+  next.shopPurchases[itemId] = purchased + 1;
+  addLog(next, `你在${shop.name}买了${item.name}。`, 'info');
+  return next;
+}
+
+export function giveGift(
+  state: GameState,
+  itemId: string,
+  idolId: string,
+): GameState {
+  if (state.phase !== 'plan') return state;
+  const item = CONTENT_INDEX.items.get(itemId);
+  if (!item?.gift) return state;
+  if ((state.inventory[itemId] ?? 0) <= 0) return state;
+  if (!state.idols[idolId]) return state;
+
+  const idol = CONTENT_INDEX.idols.get(idolId);
+  if (!idol) return state;
+
+  const preference = item.gift.preferences?.find(
+    (entry) => entry.idolId === idolId,
+  );
+  const tier = preference?.trustTier ?? item.gift.defaultTrustTier;
+  const reaction =
+    preference?.reaction ?? `${idol.name}收下了${item.name}，向你道了谢。`;
+
+  const next = clone(state);
+  const remaining = (next.inventory[itemId] ?? 0) - 1;
+  if (remaining <= 0) {
+    delete next.inventory[itemId];
+  } else {
+    next.inventory[itemId] = remaining;
+  }
+  applyIdolExp(next, 'trust', tier, 'gain', idolId);
+  addLog(next, `你把${item.name}送给了${idol.name}。${reaction}`, 'good');
   return next;
 }
 
@@ -1493,6 +1552,12 @@ export function handleCommand(
       }
       if (command.type === 'attendJob') {
         return attendJob(state, command.jobId);
+      }
+      if (command.type === 'buyItem') {
+        return buyItem(state, command.itemId);
+      }
+      if (command.type === 'giveGift') {
+        return giveGift(state, command.itemId, command.idolId);
       }
       if (command.type === 'activity') return applyActivity(state, command.activityId);
       return state;

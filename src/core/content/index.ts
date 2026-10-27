@@ -5,6 +5,7 @@ import { TRANSIT_ROUTES } from './transit';
 import { ACTORS } from './actors';
 import { IDOLS } from './idols';
 import { JOBS as BASE_JOBS } from './jobs';
+import { ITEMS, SHOPS } from './items';
 import { APPROVED_EVENTS, APPROVED_JOBS } from './approved';
 import vocal from './activities/vocal';
 import dance from './activities/dance';
@@ -16,6 +17,9 @@ import rest from './activities/rest';
 import free from './activities/free';
 import lookAround from './activities/lookAround';
 import sleep from './activities/sleep';
+import advancedVocal from './activities/advancedVocal';
+import advancedDance from './activities/advancedDance';
+import cafeLunch from './activities/cafeLunch';
 import nightPractice from './events/locations/practice_room/nightPractice';
 import extraLesson from './events/training/extraLesson';
 import vocalStrain from './events/activities/training/vocalStrain';
@@ -53,7 +57,7 @@ import trueEnding from './endings/true';
 import normalEnding from './endings/normal';
 import badEnding from './endings/bad';
 
-export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep];
+export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, advancedVocal, advancedDance, cafeLunch];
 
 export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, parkPigeons, shoppingWindow, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath, ...APPROVED_EVENTS];
 
@@ -61,4 +65,4 @@ export const JOBS = [...BASE_JOBS, ...APPROVED_JOBS];
 
 export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 
-export { ACTORS, IDOLS, LOCATIONS, TRANSIT_ROUTES, WALK_EDGES };
+export { ACTORS, IDOLS, ITEMS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES };

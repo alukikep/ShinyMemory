@@ -88,6 +88,8 @@ export type GameState = {
   idols: Record<string, IdolState>;
   activeIdolId: string;
   money: number;
+  inventory: Record<string, number>;
+  shopPurchases: Record<string, number>;
   flags: Record<string, boolean>;
   jobs?: JobAssignment[];
   eventCooldowns: Record<string, number>;
@@ -266,6 +268,37 @@ export type JobAssignment = {
   locationId: string;
 };
 
+export type ItemCategory = 'gift' | 'keepsake' | 'consumable';
+
+export type GiftPreference = {
+  idolId: string;
+  trustTier: ExpTier;
+  reaction?: string;
+};
+
+export type ItemDef = {
+  id: string;
+  name: string;
+  description: string;
+  category: ItemCategory;
+  price: number;
+  icon?: string;
+  shopId?: string;
+  maxPurchases?: number;
+  gift?: {
+    defaultTrustTier: ExpTier;
+    preferences?: GiftPreference[];
+  };
+};
+
+export type ShopDef = {
+  id: string;
+  name: string;
+  description: string;
+  locationId: string;
+  itemIds: string[];
+};
+
 export type EventChoice = {
   label: string;
   hint?: string;
@@ -408,6 +441,8 @@ export type ActionCommand =
   | { type: 'work'; idolId: string; activityId: string }
   | { type: 'acceptJob'; jobId: string; day: number }
   | { type: 'attendJob'; jobId: string }
+  | { type: 'buyItem'; itemId: string }
+  | { type: 'giveGift'; itemId: string; idolId: string }
   | { type: 'leaveNpc' }
   | { type: 'leaveIdol' }
   | { type: 'eventChoice'; index: number }

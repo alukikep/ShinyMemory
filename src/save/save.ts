@@ -231,5 +231,16 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     next.gameVersion = GAME_VERSION;
   }
 
+  if (next.schemaVersion === 10) {
+    const state = next.state as GameState & {
+      inventory?: Record<string, number>;
+      shopPurchases?: Record<string, number>;
+    };
+    state.inventory = state.inventory ?? {};
+    state.shopPurchases = state.shopPurchases ?? {};
+    next.schemaVersion = 11;
+    next.gameVersion = GAME_VERSION;
+  }
+
   return next;
 }

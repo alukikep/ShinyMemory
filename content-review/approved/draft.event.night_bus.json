@@ -2,7 +2,9 @@
   "id": "draft.event.night_bus",
   "kind": "event",
   "title": "末班车",
-  "status": "review",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.event.night_bus",
   "payload": {
     "id": "evt.night_bus",
     "title": "末班车",
@@ -69,7 +71,8 @@
     }
   ],
   "createdAt": "2026-10-25T10:00:00.000Z",
-  "updatedAt": "2026-10-26T04:20:00.000Z",
+  "updatedAt": "2026-10-26T04:24:12.244Z",
+  "reviewedAt": "2026-10-26T04:24:12.244Z",
   "history": [
     {
       "status": "revision",
@@ -80,6 +83,10 @@
       "status": "review",
       "at": "2026-10-26T04:20:00.000Z",
       "note": "已补充站台灯光和末班车时间，重新送审"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-26T04:24:12.244Z"
     }
   ]
 }

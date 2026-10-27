@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, IDOLS, JOBS, LOCATIONS, TRANSIT_ROUTES, WALK_EDGES } from './content';
+import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, IDOLS, ITEMS, JOBS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES } from './content';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityKind, Condition, EventDef } from './types';
 
@@ -377,8 +377,8 @@ describe('content integrity', () => {
     }
   });
 
-  it('has 33 events and 3 endings', () => {
-    expect(EVENTS).toHaveLength(33);
+  it('has the base event set and three endings', () => {
+    expect(EVENTS.length).toBeGreaterThanOrEqual(33);
     expect(ENDINGS).toHaveLength(3);
   });
 
@@ -512,5 +512,32 @@ describe('content integrity', () => {
 
     const collapse = EVENTS.find((event) => event.id === 'evt.collapse');
     expect(collapse?.priority).toBe(100);
+  });
+
+  it('keeps item and shop references valid', () => {
+    expect(ITEMS.length).toBeGreaterThan(0);
+    expect(SHOPS.length).toBeGreaterThan(0);
+    expect(new Set(ITEMS.map((item) => item.id)).size).toBe(ITEMS.length);
+    expect(new Set(SHOPS.map((shop) => shop.id)).size).toBe(SHOPS.length);
+
+    for (const item of ITEMS) {
+      expect(item.price).toBeGreaterThanOrEqual(0);
+      expect(item.maxPurchases ?? 1).toBeGreaterThan(0);
+      if (item.category === 'gift') {
+        expect(item.gift, `${item.id} should define gift settings`).toBeDefined();
+        expect(item.gift!.defaultTrustTier).toBeGreaterThan(0);
+      } else {
+        expect(item.gift).toBeUndefined();
+      }
+    }
+
+    for (const shop of SHOPS) {
+      expect(CONTENT_INDEX.locations.has(shop.locationId)).toBe(true);
+      for (const itemId of shop.itemIds) {
+        expect(CONTENT_INDEX.items.has(itemId), `${shop.id} -> ${itemId}`).toBe(
+          true,
+        );
+      }
+    }
   });
 });

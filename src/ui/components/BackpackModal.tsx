@@ -16,7 +16,9 @@ export function BackpackModal({
   onGift,
 }: BackpackModalProps) {
   const dialogRef = useDialogFocus<HTMLElement>();
-  const idols = Object.values(state.idols);
+  const idols = Object.values(state.idols).filter(
+    (idol) => idol.status === 'recruited',
+  );
   const [giftTarget, setGiftTarget] = useState(
     idols.some((idol) => idol.id === state.activeIdolId)
       ? state.activeIdolId

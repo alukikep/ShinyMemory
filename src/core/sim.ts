@@ -541,9 +541,12 @@ export function giveGift(
 }
 
 export function presentActors(state: GameState): ActorDef[] {
-  return [...CONTENT_INDEX.actors.values()].filter((actor) =>
-    isActorPresent(state, actor),
-  );
+  return [...CONTENT_INDEX.actors.values()].filter((actor) => {
+    if (actor.role === 'idol' && !isIdolRecruited(state, actor.id)) {
+      return false;
+    }
+    return isActorPresent(state, actor);
+  });
 }
 
 export type TopicAvailability =
@@ -874,6 +877,7 @@ export function leaveNpc(state: GameState): GameState {
 
 export function enterIdol(state: GameState, idolId: string): GameState {
   if (state.phase !== 'plan') return state;
+  if (!isIdolRecruited(state, idolId)) return state;
   const actor = getActor(idolId);
   if (!actor || actor.role !== 'idol' || !isActorPresent(state, actor)) {
     return state;
@@ -905,6 +909,7 @@ export function train(
   activityId: string,
 ): GameState {
   if (state.phase !== 'idol' || state.pendingIdolId !== idolId) return state;
+  if (!isIdolRecruited(state, idolId)) return state;
 
   const actor = getActor(idolId);
   const activity = getActivity(activityId);
@@ -931,6 +936,7 @@ export function work(
   activityId: string,
 ): GameState {
   if (state.phase !== 'idol' || state.pendingIdolId !== idolId) return state;
+  if (!isIdolRecruited(state, idolId)) return state;
 
   const actor = getActor(idolId);
   const activity = getActivity(activityId);

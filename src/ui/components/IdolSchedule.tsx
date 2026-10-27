@@ -32,9 +32,18 @@ function slotKind(
 
 export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
   const dialogRef = useDialogFocus<HTMLElement>();
-  const [idolId, setIdolId] = useState(state.activeIdolId);
-  const idol = CONTENT_INDEX.idols.get(idolId);
-  const actor = getActor(idolId);
+  const recruitedIds = Object.keys(state.idols).filter(
+    (id) => state.idols[id]?.status === 'recruited',
+  );
+  const [idolId, setIdolId] = useState(
+    recruitedIds.includes(state.activeIdolId)
+      ? state.activeIdolId
+      : (recruitedIds[0] ?? state.activeIdolId),
+  );
+  const idol = recruitedIds.includes(idolId)
+    ? CONTENT_INDEX.idols.get(idolId)
+    : undefined;
+  const actor = recruitedIds.includes(idolId) ? getActor(idolId) : undefined;
   const actorState = state.actors[idolId];
   const days = actor
     ? getScheduleWindow(
@@ -80,7 +89,7 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
         </header>
 
         <div className="schedule-tabs" role="tablist" aria-label="选择偶像">
-          {Object.keys(state.idols).map((id) => {
+          {recruitedIds.map((id) => {
             const def = CONTENT_INDEX.idols.get(id);
             return (
               <button

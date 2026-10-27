@@ -112,33 +112,43 @@ describe('app shell', () => {
     expect(html).not.toContain('声乐课');
   });
 
-  it('renders the idol roster overlay', () => {
+  it('renders only recognized idols in the roster', () => {
     const html = renderToString(
       <IdolRoster state={newGame(1)} onClose={() => {}} />,
     );
     expect(html).toContain('偶像名册');
     expect(html).toContain('樱木真乃');
-    expect(html).toContain('风野灯织');
+    expect(html).not.toContain('风野灯织');
     expect(html).toContain('roster-avatar');
     expect(html).toContain('q/mano.png');
-    expect(html).toContain('q/hiori.png');
     expect(html).toContain('歌唱');
     expect(html).toContain('当前');
-    expect(html).toContain('现在：练习室');
-    expect(html).toContain('现在：自由活动');
+  });
+
+  it('shows a known idol without stats or schedule', () => {
+    const state = newGame(1);
+    state.idols.hiori!.status = 'known';
+    const html = renderToString(
+      <IdolRoster state={state} onClose={() => {}} />,
+    );
+    expect(html).toContain('风野灯织');
+    expect(html).toContain('尚未招募');
   });
 
   it('shows an idol at an off-map school in the roster', () => {
-    const state = advanceTime(newGame(1), 1500);
+    const state = newGame(1);
+    state.idols.hiori!.status = 'recruited';
     const html = renderToString(
-      <IdolRoster state={state} onClose={() => {}} />,
+      <IdolRoster state={advanceTime(state, 1500)} onClose={() => {}} />,
     );
     expect(html).toContain('现在：学校');
   });
 
-  it('renders the weekly idol schedule', () => {
+  it('renders the weekly idol schedule only for recruited idols', () => {
+    const state = newGame(1);
+    state.idols.hiori!.status = 'recruited';
     const html = renderToString(
-      <IdolSchedule state={newGame(1)} onClose={() => {}} />,
+      <IdolSchedule state={state} onClose={() => {}} />,
     );
     expect(html).toContain('偶像日程表');
     expect(html).toContain('今天');
@@ -149,6 +159,16 @@ describe('app shell', () => {
     expect(html).toContain('风野灯织');
     expect(html).toContain('练习');
     expect(html).toContain('自由活动');
+  });
+
+  it('hides known idols from the schedule', () => {
+    const state = newGame(1);
+    state.idols.hiori!.status = 'known';
+    const html = renderToString(
+      <IdolSchedule state={state} onClose={() => {}} />,
+    );
+    expect(html).toContain('樱木真乃');
+    expect(html).not.toContain('风野灯织');
   });
 
   it('shows a temporary work override in the date window', () => {
@@ -231,8 +251,9 @@ describe('app shell', () => {
     expect(html).toBe('');
   });
 
-  it('shows both idols at the practice room at 10:00', () => {
+  it('shows both recruited idols at the practice room at 10:00', () => {
     const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    state.idols.hiori!.status = 'recruited';
     const html = renderToString(
       <ScenePanel scene={buildScene(state)} onAction={() => {}} />,
     );

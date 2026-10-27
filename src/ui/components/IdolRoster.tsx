@@ -67,7 +67,9 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [onClose]);
 
-  const idols = Object.values(state.idols);
+  const idols = Object.values(state.idols).filter(
+    (idol) => idol.status !== 'unknown',
+  );
 
   return (
     <div
@@ -108,8 +110,9 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
         <div className="roster-grid">
           {idols.map((idol) => {
             const def = CONTENT_INDEX.idols.get(idol.id);
-            const active = idol.id === state.activeIdolId;
-            const actor = CONTENT_INDEX.actors.get(idol.id);
+            const recruited = idol.status === 'recruited';
+            const active = recruited && idol.id === state.activeIdolId;
+            const actor = recruited ? CONTENT_INDEX.actors.get(idol.id) : undefined;
             const actorState = state.actors[idol.id];
             const locationId = actor
               ? getActorLocation(
@@ -127,7 +130,7 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
               : '自由活动';
             return (
               <article
-                className={`roster-card ${active ? 'current' : ''}`}
+                className={`roster-card ${active ? 'current' : ''} ${recruited ? '' : 'known'}`}
                 key={idol.id}
                 style={
                   {
@@ -153,19 +156,27 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
                   {def?.profile ? (
                     <p className="roster-profile">{def.profile}</p>
                   ) : null}
-                  <p className={`roster-location ${here ? 'here' : ''}`}>
-                    {here ? '在这里' : `现在：${locationLabel}`}
-                  </p>
+                  {recruited ? (
+                    <p className={`roster-location ${here ? 'here' : ''}`}>
+                      {here ? '在这里' : `现在：${locationLabel}`}
+                    </p>
+                  ) : (
+                    <p className="roster-location roster-unrecruited">
+                      尚未招募
+                    </p>
+                  )}
                 </div>
-                <div className="roster-stats">
-                  {IDOL_STAT_ORDER.map((key) => (
-                    <RankRow
-                      key={key}
-                      statKey={key}
-                      attribute={idol.stats[key]}
-                    />
-                  ))}
-                </div>
+                {recruited ? (
+                  <div className="roster-stats">
+                    {IDOL_STAT_ORDER.map((key) => (
+                      <RankRow
+                        key={key}
+                        statKey={key}
+                        attribute={idol.stats[key]}
+                      />
+                    ))}
+                  </div>
+                ) : null}
               </article>
             );
           })}

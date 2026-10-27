@@ -521,6 +521,7 @@ export function giveGift(
   if (!item?.gift) return state;
   if ((state.inventory[itemId] ?? 0) <= 0) return state;
   if (!state.idols[idolId]) return state;
+  if (!isIdolRecruited(state, idolId)) return state;
 
   const idol = CONTENT_INDEX.idols.get(idolId);
   if (!idol) return state;

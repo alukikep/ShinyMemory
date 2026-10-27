@@ -39,6 +39,7 @@ describe('item economy', () => {
 
   it('gives a gift to the selected idol and consumes it', () => {
     const state = atShop();
+    state.idols.hiori!.status = 'recruited';
     state.inventory['gift.flower'] = 1;
     const before = state.idols.hiori!.stats.trust.exp;
 
@@ -56,6 +57,10 @@ describe('item economy', () => {
 
     state.inventory['gift.flower'] = 1;
     expect(giveGift(state, 'gift.flower', 'missing')).toBe(state);
+
+    state.inventory['gift.flower'] = 1;
+    state.idols.hiori!.status = 'unknown';
+    expect(giveGift(state, 'gift.flower', 'hiori')).toBe(state);
   });
 
   it('charges for a one-time advanced lesson', () => {

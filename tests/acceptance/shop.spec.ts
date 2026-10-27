@@ -28,12 +28,12 @@ test('buys a gift, stores it, and gives it to an idol', async ({ page }) => {
   expect((await getState(page)).inventory['gift.flower']).toBe(1);
 
   await page.getByRole('button', { name: '背包' }).click();
-  await page.locator('.inventory-target select').selectOption('hiori');
+  await page.locator('.inventory-target select').selectOption('mano');
   await page.getByRole('button', { name: /赠送给/ }).click();
   await expect
     .poll(async () => (await getState(page)).inventory['gift.flower'])
     .toBeUndefined();
-  await expect(page.locator('.inventory-feedback')).toContainText('风野灯织');
-  expect((await getState(page)).idols.hiori?.stats.trust.exp).toBeGreaterThan(0);
+  await expect(page.locator('.inventory-feedback')).toContainText('樱木真乃');
+  expect((await getState(page)).idols.mano?.stats.trust.exp).toBeGreaterThan(0);
   expect(errors).toEqual([]);
 });

@@ -125,6 +125,7 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     if (legacy && profile) {
       idols[idolId] = {
         id: idolId,
+        status: 'recruited',
         stats: {
           vocal: legacyAttribute(
             legacy.vocal,

@@ -10,7 +10,7 @@ npm run acceptance
 
 - Playwright Test；
 - `?debug=1` 状态/操作桥；
-- 9 条游戏浏览器流程；
+- 11 条游戏浏览器流程；
 - 1 条审查流程 E2E；
 - 失败 trace / 截图；
 - HTML 报告；
@@ -23,6 +23,7 @@ tests/acceptance/job.spec.ts
 tests/acceptance/schedule.spec.ts
 tests/acceptance/responsive.spec.ts
 tests/acceptance/shop.spec.ts
+tests/acceptance/hiori.spec.ts
 tests/acceptance/smoke.spec.ts
 tests/review/review.spec.ts
 ```
@@ -30,7 +31,7 @@ tests/review/review.spec.ts
 当前验收：
 
 ```text
-游戏 9 passed
+游戏 11 passed
 审查 1 passed
 ```
 

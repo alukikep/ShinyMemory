@@ -86,3 +86,20 @@ test('Hiori encounter: unknown -> known -> recruited', async ({ page }) => {
 
   expect(errors).toEqual([]);
 });
+
+test('Hiori dialogue fits a 390px viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openGame(page);
+  await reset(page, 1);
+  await jumpTo(page, 1, 12 * 60, 'park');
+  await page.getByRole('button', { name: '在长椅旁停下' }).click();
+  await expect(page.locator('.dialogue-panel')).toBeVisible();
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+  expect(overflow).toBe(0);
+  await page.screenshot({
+    path: 'screenshots/v50-hiori-dialogue-mobile.png',
+    fullPage: true,
+  });
+});

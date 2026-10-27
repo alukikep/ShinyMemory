@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MAX_DEBUG_DAY } from '../../core/config';
-import { ACTIVITIES, LOCATIONS } from '../../core/content';
+import { CONTENT_INDEX } from '../../core/contentIndex';
 import { getActivity, getEvent, getTriggerReport } from '../../core/sim';
 import { formatClock, getDay } from '../../core/time';
 import type { GameState, TriggerReport } from '../../core/types';
@@ -31,7 +31,7 @@ export function DebugPanel({
     ? { lastActivityId: activityId, lastActivityKind: activity?.kind }
     : {};
   const locationName =
-    LOCATIONS.find((location) => location.id === state.locationId)?.name ??
+    CONTENT_INDEX.locations.get(state.locationId)?.name ??
     state.locationId;
 
   const reports = getTriggerReport(state, context);
@@ -60,7 +60,7 @@ export function DebugPanel({
             onChange={(event) => setActivityId(event.target.value)}
           >
             <option value="">（无）</option>
-            {ACTIVITIES.map((item) => (
+            {[...CONTENT_INDEX.activities.values()].map((item) => (
               <option key={item.id} value={item.id}>
                 {item.name}
               </option>

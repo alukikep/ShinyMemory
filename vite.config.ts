@@ -8,5 +8,6 @@ export default defineConfig({
   test: {
     include: ['src/**/*.test.{ts,tsx}'],
     exclude: ['tests/acceptance/**', 'tests/review/**', 'node_modules/**'],
+    setupFiles: ['./src/test/setupContent.ts'],
   },
 });

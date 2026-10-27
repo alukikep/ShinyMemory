@@ -4,12 +4,7 @@ import {
   SLEEP_UNTIL_MINUTE,
   START_MINUTE,
 } from './config';
-import { EVENTS } from './content';
-import {
-  CONTENT_INDEX,
-  createInitialActorStates,
-  createInitialIdolStates,
-} from './contentIndex';
+import { CONTENT_INDEX, createInitialActorStates, createInitialIdolStates } from './contentIndex';
 import { walkEdge, walkPath } from './content/map';
 import {
   DEFAULT_FAILURE_BY_GAP,
@@ -1481,7 +1476,7 @@ export function getTriggerReport(
   state: GameState,
   ctx: EventContext = {},
 ): TriggerReport[] {
-  return EVENTS.map((event) => {
+  return [...CONTENT_INDEX.events.values()].map((event) => {
     if (!matchesAfter(event.after, ctx)) {
       return { eventId: event.id, eligible: false, reason: 'after' };
     }

@@ -21,6 +21,7 @@ import type {
   EventDef,
   IdolDef,
   IdolState,
+  IdolStatus,
   ItemDef,
   JobDef,
   LocationDef,
@@ -52,9 +53,41 @@ export type ContentIndex = {
   globalEvents: EventDef[];
   startingLocationId: string;
   startingIdolId: string;
+  startingIdolStatus: Record<string, IdolStatus>;
 };
 
-function buildIndex(): ContentIndex {
+export type ContentPack = {
+  activities: ActivityDef[];
+  actors: ActorDef[];
+  idols: IdolDef[];
+  events: EventDef[];
+  jobs: JobDef[];
+  items: ItemDef[];
+  shops: ShopDef[];
+  dialogues: DialogueDef[];
+  storyChains: StoryChainDef[];
+  locations: LocationDef[];
+  transitRoutes: TransitRouteDef[];
+  starting: {
+    activeIdolId: string;
+    idolStatus: Record<string, IdolStatus>;
+  };
+};
+
+export function buildContentIndex({
+  activities: ACTIVITIES,
+  actors: ACTORS,
+  idols: IDOLS,
+  events: EVENTS,
+  jobs: JOBS,
+  items: ITEMS,
+  shops: SHOPS,
+  dialogues: DIALOGUES,
+  storyChains: STORY_CHAIN_DEFS,
+  locations: LOCATIONS,
+  transitRoutes: TRANSIT_ROUTES,
+  starting: STARTING_STATE,
+}: ContentPack): ContentIndex {
   const activities = new Map(ACTIVITIES.map((activity) => [activity.id, activity]));
   const actors = new Map(ACTORS.map((actor) => [actor.id, actor]));
   const idols = new Map(IDOLS.map((idol) => [idol.id, idol]));
@@ -187,12 +220,13 @@ function buildIndex(): ContentIndex {
     globalEvents,
     startingLocationId,
     startingIdolId,
+    startingIdolStatus: STARTING_STATE.idolStatus,
   };
 }
 
 export function createInitialActorStates(): Record<string, ActorState> {
   return Object.fromEntries(
-    ACTORS.map((actor) => [
+    [...CONTENT_INDEX.actors.values()].map((actor) => [
       actor.id,
       {
         id: actor.id,
@@ -207,7 +241,7 @@ export function createInitialActorStates(): Record<string, ActorState> {
 
 export function createInitialIdolStates(): Record<string, IdolState> {
   return Object.fromEntries(
-    IDOLS.map((idol) => [
+    [...CONTENT_INDEX.idols.values()].map((idol) => [
       idol.id,
       {
         id: idol.id,
@@ -221,10 +255,25 @@ export function createInitialIdolStates(): Record<string, IdolState> {
             },
           ]),
         ) as IdolState['stats'],
-        status: STARTING_STATE.idolStatus[idol.id] ?? 'unknown',
+        status: CONTENT_INDEX.startingIdolStatus[idol.id] ?? 'unknown',
       } satisfies IdolState,
     ]),
   );
 }
 
-export const CONTENT_INDEX: ContentIndex = buildIndex();
+export const PRODUCTION_PACK: ContentPack = {
+  activities: ACTIVITIES,
+  actors: ACTORS,
+  idols: IDOLS,
+  events: EVENTS,
+  jobs: JOBS,
+  items: ITEMS,
+  shops: SHOPS,
+  dialogues: DIALOGUES,
+  storyChains: STORY_CHAIN_DEFS,
+  locations: LOCATIONS,
+  transitRoutes: TRANSIT_ROUTES,
+  starting: STARTING_STATE,
+};
+
+export const CONTENT_INDEX: ContentIndex = buildContentIndex(PRODUCTION_PACK);

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "review": "vite --open /review.html --port 5174",
-    "content:validate": "tsx tools/validateContent.ts && vitest run src/core/storyValidation.test.ts",
+    "content:validate": "tsx tools/validateContent.ts && vitest run src/core/storyValidation.test.ts src/core/productionStoryValidation.test.ts",
     "build": "tsc --noEmit && npm run content:validate && vite build",
     "preview": "vite preview",
     "test": "vitest run",

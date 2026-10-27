@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACTIVITIES, ACTORS, EVENTS, IDOLS, ITEMS, JOBS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES } from './content';
+import { ACTIVITIES, ACTORS, EVENTS, IDOLS, ITEMS, JOBS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES } from './content-fixture';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityKind, Condition, EventDef } from './types';
 

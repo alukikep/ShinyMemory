@@ -21,6 +21,7 @@ import {
   getActivity,
   getActiveIdol,
   getActor,
+  getEligibleStory,
   getEnding,
   getEvent,
   isActorPresent,
@@ -297,6 +298,17 @@ function buildPlan(state: GameState): SceneView {
     actions.push(...buildJobActions(state));
     const jobOpportunity = buildJobOpportunity(state);
     if (jobOpportunity) actions.push(jobOpportunity);
+    const story = getEligibleStory(state);
+    if (story) {
+      actions.push({
+        id: `story:${story.chain.id}`,
+        command: { type: 'startStory', chainId: story.chain.id },
+        label: story.step.actionLabel,
+        hint: '剧情',
+        icon: 'sparkle',
+        tone: 'primary',
+      });
+    }
   }
 
   if (actions.length === 0 && actors.length === 0) {

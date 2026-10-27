@@ -1,0 +1,84 @@
+import { describe, expect, it } from 'vitest';
+import { buildScene } from './scene';
+import { CONTENT_INDEX } from './contentIndex';
+import {
+  advanceDialogue,
+  chooseDialogue,
+  getEligibleStory,
+  newGame,
+  startStory,
+} from './sim';
+
+function atPark(day = 1, minute = 12 * 60) {
+  const state = newGame(1);
+  state.clock.absoluteMinutes = (day - 1) * 1440 + minute;
+  state.locationId = 'park';
+  return state;
+}
+
+function play(state: ReturnType<typeof newGame>) {
+  for (let i = 0; i < 50 && state.pendingDialogueId; i += 1) {
+    const dialogue = CONTENT_INDEX.dialogues.get(state.pendingDialogueId)!;
+    const node = dialogue.nodes[state.dialogueNodeId!];
+    state = node.choices?.length
+      ? chooseDialogue(state, 0)
+      : advanceDialogue(state);
+  }
+  return state;
+}
+
+describe('Hiori story chain', () => {
+  it('offers the first step at the park', () => {
+    expect(getEligibleStory(atPark())?.step.id).toBe('hiori-park-1');
+  });
+
+  it('does not offer it outside the time window', () => {
+    expect(getEligibleStory(atPark(1, 9 * 60))).toBeUndefined();
+  });
+
+  it('adds a startStory action in the plan scene', () => {
+    const scene = buildScene(atPark());
+    expect(
+      scene.actions.some(
+        (action) =>
+          action.command.type === 'startStory' &&
+          action.command.chainId === 'hiori-encounter',
+      ),
+    ).toBe(true);
+  });
+
+  it('starts the first dialogue at n01', () => {
+    const next = startStory(atPark(), 'hiori-encounter');
+    expect(next.pendingDialogueId).toBe('dialogue.hiori.first');
+    expect(next.dialogueNodeId).toBe('n01');
+    expect(next.dialogueTargetIdolId).toBe('hiori');
+  });
+
+  it('marks Hiori known and schedules the second step two days later', () => {
+    const state = play(startStory(atPark(1), 'hiori-encounter'));
+    expect(state.idols.hiori?.status).toBe('known');
+    expect(state.storyChains['hiori-encounter']?.nextEligibleDay).toBe(3);
+
+    const day2 = structuredClone(state);
+    day2.clock.absoluteMinutes = 1440 + 12 * 60;
+    day2.locationId = 'park';
+    expect(getEligibleStory(day2)).toBeUndefined();
+
+    const day3 = structuredClone(state);
+    day3.clock.absoluteMinutes = 2 * 1440 + 12 * 60;
+    day3.locationId = 'park';
+    expect(getEligibleStory(day3)?.step.id).toBe('hiori-park-2');
+  });
+
+  it('completes the second step and recruits Hiori', () => {
+    const first = play(startStory(atPark(1), 'hiori-encounter'));
+    const secondStart = structuredClone(first);
+    secondStart.clock.absoluteMinutes = 2 * 1440 + 12 * 60;
+    secondStart.locationId = 'park';
+
+    const state = play(startStory(secondStart, 'hiori-encounter'));
+    expect(state.idols.hiori?.status).toBe('recruited');
+    expect(state.storyChains['hiori-encounter']?.completed).toBe(true);
+    expect(state.activeIdolId).toBe('mano');
+  });
+});

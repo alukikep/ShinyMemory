@@ -152,6 +152,7 @@ export type GameState = {
   shopPurchases: Record<string, number>;
   storyChains: Record<string, StoryChainState>;
   pendingDialogueId?: string;
+  dialogueChainId?: string;
   dialogueNodeId?: string;
   dialogueTargetIdolId?: string;
   flags: Record<string, boolean>;
@@ -507,6 +508,9 @@ export type ActionCommand =
   | { type: 'attendJob'; jobId: string }
   | { type: 'buyItem'; itemId: string }
   | { type: 'giveGift'; itemId: string; idolId: string }
+  | { type: 'startStory'; chainId: string }
+  | { type: 'dialogueAdvance' }
+  | { type: 'dialogueChoice'; index: number }
   | { type: 'leaveNpc' }
   | { type: 'leaveIdol' }
   | { type: 'eventChoice'; index: number }

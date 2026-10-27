@@ -36,6 +36,8 @@ import type {
   CheckContext,
   Condition,
   Cost,
+  DialogueDef,
+  DialogueNode,
   Effect,
   EndingDef,
   EventContext,
@@ -50,6 +52,8 @@ import type {
   Rank,
   SharedStatKey,
   StatKey,
+  StoryChainDef,
+  StoryChainStep,
   TriggerReport,
   WorkReward,
   WorkRisk,
@@ -537,6 +541,190 @@ export function giveGift(
   }
   applyIdolExp(next, 'trust', tier, 'gain', idolId);
   addLog(next, `你把${item.name}送给了${idol.name}。${reaction}`, 'good');
+  return next;
+}
+
+export function getDialogue(id: string): DialogueDef | undefined {
+  return CONTENT_INDEX.dialogues.get(id);
+}
+
+export function getDialogueNode(state: GameState): DialogueNode | undefined {
+  if (!state.pendingDialogueId || !state.dialogueNodeId) return undefined;
+  return getDialogue(state.pendingDialogueId)?.nodes[state.dialogueNodeId];
+}
+
+export function getDialogueText(
+  state: GameState,
+  node: DialogueNode,
+): string {
+  const variant = node.textVariants?.find((entry) =>
+    entry.when.every((condition) =>
+      checkCondition(condition, state, {
+        idolId: state.dialogueTargetIdolId,
+      }),
+    ),
+  );
+  return variant?.text ?? node.text;
+}
+
+function applyDialogueNodeEffects(state: GameState, node: DialogueNode): void {
+  if (node.effects?.length) {
+    applyEffects(state, node.effects, {
+      idolId: state.dialogueTargetIdolId,
+    });
+  }
+}
+
+function finishDialogue(state: GameState): GameState {
+  const next = clone(state);
+  const chainId = next.dialogueChainId;
+  const chain = chainId ? CONTENT_INDEX.storyChains.get(chainId) : undefined;
+  if (!chain) {
+    next.pendingDialogueId = undefined;
+    next.dialogueChainId = undefined;
+    next.dialogueNodeId = undefined;
+    next.dialogueTargetIdolId = undefined;
+    next.phase = 'plan';
+    return next;
+  }
+
+  const chainState = next.storyChains[chain.id] ?? {
+    chainId: chain.id,
+    stepIndex: 0,
+  };
+  const step = chain.steps[chainState.stepIndex];
+  const day = getDay(next.clock.absoluteMinutes);
+
+  if (step?.complete?.status && next.idols[chain.idolId]) {
+    const idol = next.idols[chain.idolId];
+    idol.status = step.complete.status;
+    if (step.complete.status === 'known') {
+      idol.knownAt = idol.knownAt ?? day;
+    }
+    if (step.complete.status === 'recruited') {
+      idol.knownAt = idol.knownAt ?? day;
+      idol.recruitedAt = day;
+    }
+    addLog(
+      next,
+      step.complete.status === 'recruited'
+        ? `${CONTENT_INDEX.idols.get(chain.idolId)?.name ?? chain.idolId} 加入了制作名单。`
+        : `你认识了${CONTENT_INDEX.idols.get(chain.idolId)?.name ?? chain.idolId}。`,
+      'good',
+    );
+  }
+
+  const stepIndex = chainState.stepIndex + 1;
+  if (stepIndex >= chain.steps.length) {
+    next.storyChains[chain.id] = {
+      ...chainState,
+      stepIndex,
+      completed: true,
+    };
+  } else {
+    next.storyChains[chain.id] = {
+      ...chainState,
+      stepIndex,
+      nextEligibleDay: day + (step?.complete?.nextStepDelayDays ?? 0),
+    };
+  }
+
+  next.pendingDialogueId = undefined;
+  next.dialogueChainId = undefined;
+  next.dialogueNodeId = undefined;
+  next.dialogueTargetIdolId = undefined;
+  next.phase = 'plan';
+  return next;
+}
+
+export function getEligibleStory(
+  state: GameState,
+): { chain: StoryChainDef; step: StoryChainStep; stepIndex: number } | undefined {
+  if (state.pendingDialogueId || state.flags.forced_rest) return undefined;
+  const day = getDay(state.clock.absoluteMinutes);
+  const minute = getMinuteOfDay(state.clock.absoluteMinutes);
+
+  for (const chain of CONTENT_INDEX.storyChains.values()) {
+    const chainState = state.storyChains[chain.id] ?? {
+      chainId: chain.id,
+      stepIndex: 0,
+    };
+    if (chainState.completed) continue;
+    if (chainState.nextEligibleDay && day < chainState.nextEligibleDay) {
+      continue;
+    }
+    const step = chain.steps[chainState.stepIndex];
+    if (!step || step.locationId !== state.locationId) continue;
+    if (
+      step.timeWindow &&
+      (minute < step.timeWindow.fromMinute || minute > step.timeWindow.toMinute)
+    ) {
+      continue;
+    }
+    return { chain, step, stepIndex: chainState.stepIndex };
+  }
+  return undefined;
+}
+
+export function startStory(state: GameState, chainId: string): GameState {
+  if (state.phase !== 'plan' || state.pendingDialogueId) return state;
+  const eligible = getEligibleStory(state);
+  if (!eligible || eligible.chain.id !== chainId) return state;
+  const dialogue = getDialogue(eligible.step.dialogueId);
+  if (!dialogue) return state;
+
+  const next = clone(state);
+  next.pendingDialogueId = dialogue.id;
+  next.dialogueChainId = eligible.chain.id;
+  next.dialogueNodeId = dialogue.startNodeId;
+  next.dialogueTargetIdolId = dialogue.idolId;
+  const node = dialogue.nodes[dialogue.startNodeId];
+  if (node) applyDialogueNodeEffects(next, node);
+  return next;
+}
+
+export function advanceDialogue(state: GameState): GameState {
+  if (!state.pendingDialogueId || !state.dialogueNodeId) return state;
+  const dialogue = getDialogue(state.pendingDialogueId);
+  const node = dialogue?.nodes[state.dialogueNodeId];
+  if (!dialogue || !node) return state;
+  if (node.choices?.length) return state;
+
+  if (!node.nextNodeId) return finishDialogue(state);
+  const nextNode = dialogue.nodes[node.nextNodeId];
+  if (!nextNode) return state;
+
+  const next = clone(state);
+  next.dialogueNodeId = nextNode.id;
+  applyDialogueNodeEffects(next, nextNode);
+  return next;
+}
+
+export function chooseDialogue(state: GameState, index: number): GameState {
+  if (!state.pendingDialogueId || !state.dialogueNodeId) return state;
+  const dialogue = getDialogue(state.pendingDialogueId);
+  const node = dialogue?.nodes[state.dialogueNodeId];
+  const choice = node?.choices?.[index];
+  if (!dialogue || !node || !choice) return state;
+  if (
+    choice.requires &&
+    !choice.requires.every((condition) =>
+      checkCondition(condition, state, {
+        idolId: state.dialogueTargetIdolId,
+      }),
+    )
+  ) {
+    return state;
+  }
+  const nextNode = dialogue.nodes[choice.nextNodeId];
+  if (!nextNode) return state;
+
+  const next = clone(state);
+  applyEffects(next, choice.effects ?? [], {
+    idolId: next.dialogueTargetIdolId,
+  });
+  next.dialogueNodeId = nextNode.id;
+  applyDialogueNodeEffects(next, nextNode);
   return next;
 }
 
@@ -1553,8 +1741,19 @@ export function handleCommand(
   state: GameState,
   command: ActionCommand,
 ): GameState {
+  if (state.pendingDialogueId) {
+    if (command.type === 'dialogueAdvance') return advanceDialogue(state);
+    if (command.type === 'dialogueChoice') {
+      return chooseDialogue(state, command.index);
+    }
+    return state;
+  }
+
   switch (state.phase) {
     case 'plan':
+      if (command.type === 'startStory') {
+        return startStory(state, command.chainId);
+      }
       if (command.type === 'move') return moveTo(state, command.locationId);
       if (command.type === 'transit') {
         return takeTransit(state, command.routeId);

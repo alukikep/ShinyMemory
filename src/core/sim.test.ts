@@ -447,6 +447,7 @@ describe('raising sim core', () => {
 
   it('trains a specific idol without changing the other', () => {
     const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    state.idols.hiori!.status = 'recruited';
     expect(presentActors(state).map((actor) => actor.id)).toEqual([
       'mano',
       'hiori',
@@ -571,6 +572,7 @@ describe('raising sim core', () => {
     tv.workRisk!.failureByGap = { 1: 1, 2: 1, 3: 1 };
     try {
       const state = travelTo(advanceTime(newGame(1), 12 * 60), 'studio');
+      state.idols.hiori!.status = 'recruited';
       state.idols.hiori!.stats.trust.exp = 10;
       const entered = handleCommand(state, {
         type: 'enterIdol',
@@ -608,6 +610,7 @@ describe('raising sim core', () => {
 
   it('routes a successful risky work into its success chain', () => {
     const state = travelTo(advanceTime(newGame(1), 12 * 60), 'studio');
+    state.idols.hiori!.status = 'recruited';
     state.idols.hiori!.stats.expression.rank = 'C';
     const entered = handleCommand(state, {
       type: 'enterIdol',
@@ -729,6 +732,7 @@ describe('raising sim core', () => {
     expect(scene.hero?.portrait).toBe('./assets/idols/mano-portrait.png');
 
     practice.activeIdolId = 'hiori';
+    practice.idols.hiori!.status = 'recruited';
     expect(buildScene(practice).hero?.idolId).toBe('hiori');
   });
 

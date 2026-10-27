@@ -250,6 +250,7 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     }
     state.storyChains = {};
     state.pendingDialogueId = undefined;
+    state.dialogueChainId = undefined;
     state.dialogueNodeId = undefined;
     state.dialogueTargetIdolId = undefined;
     next.schemaVersion = 12;

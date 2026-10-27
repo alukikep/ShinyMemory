@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACTIVITIES, ACTORS, ENDINGS, EVENTS, IDOLS, ITEMS, JOBS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES } from './content';
+import { ACTIVITIES, ACTORS, EVENTS, IDOLS, ITEMS, JOBS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES } from './content';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityKind, Condition, EventDef } from './types';
 
@@ -68,10 +68,8 @@ describe('content integrity', () => {
   it('has unique ids', () => {
     const activityIds = ACTIVITIES.map((activity) => activity.id);
     const eventIds = EVENTS.map((event) => event.id);
-    const endingIds = ENDINGS.map((ending) => ending.id);
     expect(new Set(activityIds).size).toBe(activityIds.length);
     expect(new Set(eventIds).size).toBe(eventIds.length);
-    expect(new Set(endingIds).size).toBe(endingIds.length);
   });
 
   it('has eight unique locations and a starting location', () => {
@@ -377,9 +375,8 @@ describe('content integrity', () => {
     }
   });
 
-  it('has the base event set and three endings', () => {
+  it('has the base event set', () => {
     expect(EVENTS.length).toBeGreaterThanOrEqual(33);
-    expect(ENDINGS).toHaveLength(3);
   });
 
   it('references existing activities in after.ids', () => {
@@ -452,7 +449,6 @@ describe('content integrity', () => {
   it('builds the content index', () => {
     expect(CONTENT_INDEX.activities.size).toBe(ACTIVITIES.length);
     expect(CONTENT_INDEX.events.size).toBe(EVENTS.length);
-    expect(CONTENT_INDEX.endings.size).toBe(ENDINGS.length);
     expect(CONTENT_INDEX.locations.size).toBe(LOCATIONS.length);
     expect(CONTENT_INDEX.eventsByActivityId.get('vocal')).toEqual(
       expect.arrayContaining([expect.objectContaining({ id: 'evt.vocal_strain' })]),

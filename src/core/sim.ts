@@ -4,13 +4,12 @@ import {
   SLEEP_UNTIL_MINUTE,
   START_MINUTE,
 } from './config';
-import { EVENTS, ENDINGS } from './content';
+import { EVENTS } from './content';
 import {
   CONTENT_INDEX,
   createInitialActorStates,
   createInitialIdolStates,
 } from './contentIndex';
-import { MID_EXAM } from './content/weeks';
 import { walkEdge, walkPath } from './content/map';
 import {
   DEFAULT_FAILURE_BY_GAP,
@@ -39,7 +38,6 @@ import type {
   DialogueDef,
   DialogueNode,
   Effect,
-  EndingDef,
   EventContext,
   EventDef,
   ExpTier,
@@ -325,8 +323,6 @@ export function newGame(seed: number = Date.now()): GameState {
     actionsTaken: 0,
     nextLogId: 1,
     rng: { seed: seed >>> 0, counter: 0 },
-    midExamDone: false,
-    finalExamDone: false,
   };
   return state;
 }
@@ -337,10 +333,6 @@ export function getActivity(id: string): ActivityDef | undefined {
 
 export function getEvent(id: string): EventDef | undefined {
   return CONTENT_INDEX.events.get(id);
-}
-
-export function getEnding(id: string): EndingDef | undefined {
-  return CONTENT_INDEX.endings.get(id);
 }
 
 export function getActor(id: string): ActorDef | undefined {
@@ -823,10 +815,6 @@ export function checkCondition(
       return state.locationId === condition.locationId;
     case 'flag':
       return (state.flags[condition.key] ?? false) === (condition.value ?? true);
-    case 'scoreAtLeast':
-      return (state.examScore ?? 0) >= condition.value;
-    case 'scoreAtMost':
-      return (state.examScore ?? 0) <= condition.value;
     case 'all':
       return condition.of.every((child) => checkCondition(child, state, ctx));
     case 'any':
@@ -1008,7 +996,6 @@ export function moveTo(state: GameState, locationId: string): GameState {
   addLog(next, `移动到了${location.name}。`, 'info');
 
   const advanced = advanceTime(next, edge.minutes);
-  if (advanced.pendingExam) return beginPendingExam(advanced);
   advanced.phase = 'plan';
   return advanced;
 }
@@ -1045,7 +1032,6 @@ export function takeTransit(state: GameState, routeId: string): GameState {
   );
 
   const advanced = advanceTime(next, route.minutes);
-  if (advanced.pendingExam) return beginPendingExam(advanced);
   advanced.phase = 'plan';
   return advanced;
 }
@@ -1558,102 +1544,11 @@ export function applyEventChoice(state: GameState, index: number): GameState {
   return advanced;
 }
 
-export type ScorePart = { label: string; value: number };
-export type ScoreBreakdown = { total: number; parts: ScorePart[] };
-
-function buildTotal(parts: ScorePart[]): number {
-  return Math.max(0, Math.round(parts.reduce((sum, part) => sum + part.value, 0)));
-}
-
-export function midScore(state: GameState): ScoreBreakdown {
-  const idol = getActiveIdol(state);
-  const performance =
-    (rankIndex(idol.stats.vocal.rank) +
-      rankIndex(idol.stats.dance.rank) +
-      rankIndex(idol.stats.expression.rank)) /
-    3;
-  const parts: ScorePart[] = [
-    { label: '能力均值 ×0.65', value: performance * 10 },
-    { label: '信任 ×1', value: rankIndex(idol.stats.trust.rank) * 2 },
-    { label: '压力余量 ×0.15', value: (100 - state.shared.stress) * 0.15 },
-  ];
-  return { total: buildTotal(parts), parts };
-}
-
-export function finalScore(state: GameState): ScoreBreakdown {
-  const idol = getActiveIdol(state);
-  const performance =
-    (rankIndex(idol.stats.vocal.rank) +
-      rankIndex(idol.stats.dance.rank) +
-      rankIndex(idol.stats.expression.rank)) /
-    3;
-  const parts: ScorePart[] = [
-    { label: '能力均值 ×0.75', value: performance * 10 },
-    { label: '信任 ×1', value: rankIndex(idol.stats.trust.rank) * 2 },
-    { label: '压力余量 ×0.05', value: (100 - state.shared.stress) * 0.05 },
-  ];
-  return { total: buildTotal(parts), parts };
-}
-
-function resolveMidExam(state: GameState): GameState {
-  const next = clone(state);
-  next.pendingExam = undefined;
-  const score = midScore(next);
-  next.examScore = score.total;
-  next.examParts = score.parts;
-  next.examPassed = score.total >= MID_EXAM.passLine;
-  next.midExamDone = true;
-  next.phase = 'examMid';
-
-  if (next.examPassed) {
-    next.money += 1000;
-    applyIdolExp(next, 'trust', 3);
-    next.flags.mid_passed = true;
-    addLog(next, `中期试镜通过（${score.total} 分）。`, 'good');
-  } else {
-    next.shared.stress += 10;
-    next.flags.failed_mid = true;
-    addLog(next, `中期试镜未通过（${score.total} 分）。`, 'bad');
-  }
-  clampState(next);
-  return next;
-}
-
-function resolveFinalExam(state: GameState): GameState {
-  const next = clone(state);
-  next.pendingExam = undefined;
-  const score = finalScore(next);
-  next.examScore = score.total;
-  next.examParts = score.parts;
-  next.finalExamDone = true;
-  next.phase = 'examFinal';
-
-  const ending =
-    ENDINGS.find((entry) =>
-      entry.when.every((condition) => checkCondition(condition, next)),
-    ) ?? ENDINGS[ENDINGS.length - 1]!;
-  next.endingId = ending.id;
-  addLog(next, `最终 Live 得分：${score.total}。`, 'info');
-  return next;
-}
-
-function beginPendingExam(state: GameState): GameState {
-  const pending = state.pendingExam;
-  const next = clone(state);
-  next.pendingExam = undefined;
-
-  if (pending === 'mid') return resolveMidExam(next);
-  if (pending === 'final') return resolveFinalExam(next);
-  return next;
-}
-
 function continueFromActivity(state: GameState): GameState {
   const activityId = state.pendingActivityId;
   const activityKind = activityId ? getActivity(activityId)?.kind : undefined;
   const next = clone(state);
   next.pendingActivityId = undefined;
-
-  if (next.pendingExam) return beginPendingExam(next);
 
   const result = checkForEvent(next, {
     lastActivityId: activityId,
@@ -1693,8 +1588,6 @@ function continueFromEvent(state: GameState): GameState {
   next.pendingEventId = undefined;
   next.pendingEventIdolId = undefined;
 
-  if (next.pendingExam) return beginPendingExam(next);
-
   if (next.pendingIdolId) {
     const idolActor = getActor(next.pendingIdolId);
     if (idolActor && isActorPresent(next, idolActor)) {
@@ -1732,17 +1625,6 @@ function continueFromNpc(state: GameState): GameState {
   if (result.event) return result.state;
 
   next.phase = 'npc';
-  return next;
-}
-
-function continueFromExam(state: GameState): GameState {
-  const next = clone(state);
-  next.pendingExam = undefined;
-  if (next.phase === 'examMid') {
-    next.phase = 'plan';
-  } else if (next.phase === 'examFinal') {
-    next.phase = 'ending';
-  }
   return next;
 }
 
@@ -1815,13 +1697,6 @@ export function handleCommand(
     case 'npcResult':
       return command.type === 'continue' ? continueFromNpc(state) : state;
 
-    case 'examMid':
-    case 'examFinal':
-      return command.type === 'continue' ? continueFromExam(state) : state;
-
-    case 'ending':
-      return state;
-
     default:
       return state;
   }
@@ -1890,8 +1765,6 @@ export function handleAction(state: GameState, actionId: string): GameState {
     case 'activityResult':
     case 'eventResult':
     case 'npcResult':
-    case 'examMid':
-    case 'examFinal':
       if (actionId === 'continue') command = { type: 'continue' };
       break;
 
@@ -1902,9 +1775,6 @@ export function handleAction(state: GameState, actionId: string): GameState {
           command = { type: 'eventChoice', index };
         }
       }
-      break;
-
-    case 'ending':
       break;
   }
 

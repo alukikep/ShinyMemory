@@ -82,14 +82,7 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     state.phase = 'plan';
     state.pendingActivityId = undefined;
     state.pendingEventId = undefined;
-    state.pendingExam = undefined;
     state.lastResult = undefined;
-    state.endingId = undefined;
-    state.examScore = undefined;
-    state.examParts = undefined;
-    state.examPassed = undefined;
-    state.midExamDone = false;
-    state.finalExamDone = false;
 
     delete state.week;
     delete state.slot;
@@ -191,15 +184,6 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
   }
 
   if (next.schemaVersion === 8) {
-    if (
-      next.state.phase === 'examMid' ||
-      next.state.phase === 'examFinal' ||
-      next.state.phase === 'ending'
-    ) {
-      next.state.phase = 'plan';
-      next.state.pendingExam = undefined;
-      next.state.endingId = undefined;
-    }
     next.schemaVersion = 9;
     next.gameVersion = GAME_VERSION;
   }

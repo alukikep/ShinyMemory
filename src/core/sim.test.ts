@@ -274,7 +274,6 @@ describe('raising sim core', () => {
   it('keeps time advancing without fixed exam triggers', () => {
     const state = newGame(1);
     const advanced = advanceTime(state, 10 * MINUTES_PER_DAY);
-    expect(advanced.pendingExam).toBeUndefined();
     expect(getDay(advanced.clock.absoluteMinutes)).toBe(11);
   });
 

@@ -1,4 +1,3 @@
-import { FINAL_EXAM, MID_EXAM } from './content/weeks';
 import { neighborsOf } from './content/map';
 import { CONTENT_INDEX } from './contentIndex';
 import {
@@ -16,16 +15,12 @@ import {
   activeJobFor,
   checkCondition,
   effectSummary,
-  finalScore,
   formatIdolText,
   getActivity,
-  getActiveIdol,
   getActor,
   getEligibleStory,
-  getEnding,
   getEvent,
   isActorPresent,
-  midScore,
   presentActors,
   topicAvailability,
   workRewardSummary,
@@ -49,9 +44,6 @@ const PHASE_LABEL = {
   npc: '交谈',
   npcResult: '对话',
   idol: '互动',
-  examMid: '中期考核',
-  examFinal: '最终考核',
-  ending: '结局',
 } as const;
 
 function sceneId(state: GameState): string {
@@ -641,93 +633,6 @@ function buildIdolPage(state: GameState): SceneView {
   };
 }
 
-function buildExam(state: GameState, kind: 'mid' | 'final'): SceneView {
-  const exam = kind === 'mid' ? MID_EXAM : FINAL_EXAM;
-  const computed = kind === 'mid' ? midScore(state) : finalScore(state);
-  const parts = state.examParts ?? computed.parts;
-  const total = state.examScore ?? computed.total;
-  const breakdown = parts
-    .map((part) => `${part.label} ${part.value.toFixed(1)}`)
-    .join(' · ');
-
-  const blocks: TextBlock[] = [
-    { kind: 'p', text: exam.text },
-    { kind: 'system', text: breakdown },
-    { kind: 'system', text: `合计：${total} 分` },
-  ];
-
-  if (kind === 'mid') {
-    blocks.push({
-      kind: 'system',
-      text: state.examPassed
-        ? `通过线 ${MID_EXAM.passLine} 分。她通过了。`
-        : `通过线 ${MID_EXAM.passLine} 分。她没有通过。`,
-    });
-  }
-
-  return {
-    id: sceneId(state),
-    phase: state.phase,
-    phaseLabel: PHASE_LABEL[state.phase],
-    title: exam.title,
-    blocks,
-    actions: [
-      {
-        id: 'continue',
-        command: { type: 'continue' },
-        label: kind === 'final' ? '查看结局' : '继续',
-        tone: 'primary',
-      },
-    ],
-    layout: 'list',
-  };
-}
-
-function buildEnding(state: GameState): SceneView {
-  const ending = (state.endingId ? getEnding(state.endingId) : undefined) ?? {
-    id: 'end.unknown',
-    title: '结局',
-    when: [],
-    text: '……',
-    accent: 'normal' as const,
-  };
-  const blocks: TextBlock[] = ending.text
-    .split('\n\n')
-    .filter(Boolean)
-    .map((text) => ({ kind: 'p' as const, text }));
-  blocks.push({
-    kind: 'system',
-    text: `最终得分 ${state.examScore ?? 0} · 信任 ${
-      getActiveIdol(state).stats.trust.rank
-    } · 压力 ${Math.round(state.shared.stress)} / 100`,
-  });
-
-  const endLabel =
-    ending.accent === 'true'
-      ? 'TRUE END'
-      : ending.accent === 'bad'
-        ? 'BAD END'
-        : 'NORMAL END';
-
-  return {
-    id: sceneId(state),
-    phase: state.phase,
-    phaseLabel: PHASE_LABEL[state.phase],
-    title: ending.title,
-    subtitle: endLabel,
-    blocks,
-    actions: [
-      {
-        id: 'restart',
-        command: { type: 'restart' },
-        label: '再玩一次',
-        tone: 'primary',
-      },
-    ],
-    layout: 'list',
-  };
-}
-
 export function buildScene(state: GameState): SceneView {
   switch (state.phase) {
     case 'plan':
@@ -744,12 +649,6 @@ export function buildScene(state: GameState): SceneView {
       return buildNpcResult(state);
     case 'idol':
       return buildIdolPage(state);
-    case 'examMid':
-      return buildExam(state, 'mid');
-    case 'examFinal':
-      return buildExam(state, 'final');
-    case 'ending':
-      return buildEnding(state);
     default:
       return buildPlan(state);
   }

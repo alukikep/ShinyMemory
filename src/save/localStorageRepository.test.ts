@@ -158,28 +158,6 @@ describe('LocalStorageRepository', () => {
     expect(loaded?.state.idols.hiori?.stats.vocal.rank).toBe('F');
   });
 
-  it('migrates a v8 ending save into the open loop', () => {
-    const storage = new MemoryStorage();
-    const state = newGame(1) as unknown as Record<string, unknown>;
-    state.phase = 'ending';
-    state.endingId = 'end.normal';
-    storage.setItem(
-      SAVE_KEY,
-      JSON.stringify({
-        schemaVersion: 8,
-        contentEpoch: 1,
-        gameVersion: '0.9.0',
-        createdAt: '2026-10-24T00:00:00.000Z',
-        state,
-      }),
-    );
-
-    const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(12);
-    expect(loaded?.state.phase).toBe('plan');
-    expect(loaded?.state.endingId).toBeUndefined();
-  });
-
   it('migrates a v9 numeric save to ranks', () => {
     const storage = new MemoryStorage();
     const state = newGame(1) as unknown as Record<string, unknown>;

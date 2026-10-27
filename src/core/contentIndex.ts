@@ -2,7 +2,6 @@ import {
   ACTORS,
   ACTIVITIES,
   DIALOGUES,
-  ENDINGS,
   EVENTS,
   IDOLS,
   ITEMS,
@@ -19,7 +18,6 @@ import type {
   ActorDef,
   ActorState,
   DialogueDef,
-  EndingDef,
   EventDef,
   IdolDef,
   IdolState,
@@ -42,7 +40,6 @@ export type ContentIndex = {
   shopsByLocation: Map<string, ShopDef[]>;
   dialogues: Map<string, DialogueDef>;
   storyChains: Map<string, StoryChainDef>;
-  endings: Map<string, EndingDef>;
   locations: Map<string, LocationDef>;
   transitRoutes: Map<string, TransitRouteDef>;
   transitRoutesByLocation: Map<string, TransitRouteDef[]>;
@@ -75,7 +72,6 @@ function buildIndex(): ContentIndex {
     list.push(shop);
     shopsByLocation.set(shop.locationId, list);
   }
-  const endings = new Map(ENDINGS.map((ending) => [ending.id, ending]));
   const locations = new Map(LOCATIONS.map((location) => [location.id, location]));
   const transitRoutes = new Map(
     TRANSIT_ROUTES.map((route) => [route.id, route]),
@@ -179,7 +175,6 @@ function buildIndex(): ContentIndex {
     shopsByLocation,
     dialogues,
     storyChains,
-    endings,
     locations,
     transitRoutes,
     transitRoutesByLocation,

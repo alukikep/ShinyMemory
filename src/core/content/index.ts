@@ -1,4 +1,4 @@
-import type { ActivityDef, EventDef, EndingDef } from '../types';
+import type { ActivityDef, EventDef } from '../types';
 import { LOCATIONS } from './locations';
 import { WALK_EDGES } from './map';
 import { TRANSIT_ROUTES } from './transit';
@@ -56,9 +56,6 @@ import headphones from './events/locations/studio/headphones';
 import homeNote from './events/locations/home/homeNote';
 import parkPigeons from './events/locations/park/parkPigeons';
 import shoppingWindow from './events/locations/shoppingStreet/shoppingWindow';
-import trueEnding from './endings/true';
-import normalEnding from './endings/normal';
-import badEnding from './endings/bad';
 
 export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, advancedVocal, advancedDance, cafeLunch];
 
@@ -71,7 +68,5 @@ export const DIALOGUES = HIORI_DIALOGUES;
 export const STORY_CHAIN_DEFS = STORY_CHAINS;
 
 export { STARTING_STATE };
-
-export const ENDINGS: EndingDef[] = [trueEnding, normalEnding, badEnding];
 
 export { ACTORS, IDOLS, ITEMS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES };

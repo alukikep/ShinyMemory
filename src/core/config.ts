@@ -10,10 +10,5 @@ export const CALENDAR_START = {
   day: 6,
 } as const;
 
-export const MID_EXAM_DAY = 2;
-export const MID_EXAM_MINUTE = 20 * 60;
-export const FINAL_EXAM_DAY = 3;
-export const FINAL_EXAM_MINUTE = 20 * 60;
-
 export const SLEEP_UNTIL_MINUTE = 8 * 60;
 export const ACTOR_AFFINITY_MAX = 20;

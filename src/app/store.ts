@@ -47,10 +47,7 @@ export const useGameStore = create<GameStore>((set) => ({
   state: initialState(),
   act: (command) =>
     set((previous) => {
-      const next =
-        command.type === 'restart'
-          ? newGame(makeSeed())
-          : handleCommand(previous.state, command);
+      const next = handleCommand(previous.state, command);
       repository.save(createSaveEnvelope(next));
       return { state: next };
     }),
@@ -78,7 +75,6 @@ export const useGameStore = create<GameStore>((set) => ({
       next.phase = 'plan';
       next.pendingActivityId = undefined;
       next.pendingEventId = undefined;
-      next.pendingExam = undefined;
       repository.save(createSaveEnvelope(next));
       return { state: next };
     }),
@@ -98,7 +94,6 @@ export const useGameStore = create<GameStore>((set) => ({
       next.phase = 'plan';
       next.pendingActivityId = undefined;
       next.pendingEventId = undefined;
-      next.pendingExam = undefined;
       next.pendingIdolId = undefined;
       repository.save(createSaveEnvelope(next));
       return { state: next };

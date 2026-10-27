@@ -136,10 +136,7 @@ export type Phase =
   | 'eventResult'
   | 'npc'
   | 'npcResult'
-  | 'idol'
-  | 'examMid'
-  | 'examFinal'
-  | 'ending';
+  | 'idol';
 
 export type GameState = {
   clock: { absoluteMinutes: number };
@@ -171,14 +168,7 @@ export type GameState = {
   pendingActorId?: string;
   pendingIdolId?: string;
   pendingTopicId?: string;
-  pendingExam?: 'mid' | 'final';
   lastResult?: string;
-  examScore?: number;
-  examPassed?: boolean;
-  examParts?: { label: string; value: number }[];
-  endingId?: string;
-  midExamDone: boolean;
-  finalExamDone: boolean;
 };
 
 export type Effect =
@@ -207,8 +197,6 @@ export type Condition =
   | { kind: 'moneyAtMost'; value: number }
   | { kind: 'atLocation'; locationId: string }
   | { kind: 'flag'; key: string; value?: boolean }
-  | { kind: 'scoreAtLeast'; value: number }
-  | { kind: 'scoreAtMost'; value: number }
   | { kind: 'all'; of: Condition[] }
   | { kind: 'any'; of: Condition[] }
   | { kind: 'not'; of: Condition };
@@ -473,14 +461,6 @@ export type SaveEnvelope = {
   state: GameState;
 };
 
-export type EndingDef = {
-  id: string;
-  title: string;
-  when: Condition[];
-  text: string;
-  accent: 'true' | 'normal' | 'bad';
-};
-
 export type TextBlock = {
   kind: 'p' | 'quote' | 'system';
   text: string;
@@ -516,8 +496,7 @@ export type ActionCommand =
   | { type: 'leaveNpc' }
   | { type: 'leaveIdol' }
   | { type: 'eventChoice'; index: number }
-  | { type: 'continue' }
-  | { type: 'restart' };
+  | { type: 'continue' };
 
 export type ActionView = {
   id: string;

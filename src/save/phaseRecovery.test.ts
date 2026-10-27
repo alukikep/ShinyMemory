@@ -67,27 +67,4 @@ describe('phase recovery', () => {
     const restored = roundtrip(state);
     expect(restored.actors.mano.scheduleOverrides?.[0]?.id).toBe('job-1');
   });
-
-  it('restores exam', () => {
-    const state = newGame(1);
-    state.phase = 'examMid';
-    state.examScore = 46;
-    state.examParts = [{ label: '测试', value: 46 }];
-    state.examPassed = true;
-
-    const scene = buildScene(roundtrip(state));
-    expect(scene.phase).toBe('examMid');
-    expect(scene.title).toBe('中期试镜');
-  });
-
-  it('restores ending', () => {
-    const state = newGame(1);
-    state.phase = 'ending';
-    state.endingId = 'end.true';
-    state.examScore = 80;
-
-    const scene = buildScene(roundtrip(state));
-    expect(scene.phase).toBe('ending');
-    expect(scene.title).toBe('闪耀的舞台');
-  });
 });

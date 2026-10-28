@@ -157,6 +157,7 @@ fixture build
 类型：**内容/数值工作**，不是架构问题。当前架构已经能表达：
 
 - 行动的实际消耗统一走 `activityCost(state, activity)`，房间等级在这一层做修正即可。
+- 行动时长统一走 `activityDuration(state, activity)`（已抽出，当前直通内容值），等级影响时长时只改函数体。
 - `ActivityDef` 的 `cost` / `durationMinutes` / `effects` 都是数据，升级表可以独立放置。
 - 新状态只需要 `GameState.facilities`（或单值 `roomLevel`）+ 一次存档迁移。
 

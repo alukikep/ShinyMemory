@@ -1,13 +1,18 @@
 import { expect, test } from '@playwright/test';
 import { getState, jumpTo, openGame, reset, watchConsole } from './helpers';
 
-test('manual save and load are separate from autosave', async ({ page }) => {
+test('manual save slot and load are separate from autosave', async ({
+  page,
+}) => {
   const errors = watchConsole(page);
   await openGame(page);
   await reset(page, 1);
   await jumpTo(page, 1, 12 * 60, 'park');
 
   await page.getByRole('button', { name: '存档' }).click();
+  const savePanel = page.getByRole('dialog', { name: '存档' });
+  await expect(savePanel).toBeVisible();
+  await savePanel.getByRole('button', { name: '新建存档槽' }).click();
   await expect(page.getByRole('status')).toContainText('已存档');
   const savedAt = await getState(page);
   expect(savedAt.locationId).toBe('park');
@@ -17,15 +22,35 @@ test('manual save and load are separate from autosave', async ({ page }) => {
     4 * 1440 + 9 * 60,
   );
 
-  page.once('dialog', (dialog) => void dialog.accept());
   await page.getByRole('button', { name: '读档' }).click();
-  await expect(page.getByRole('status')).toContainText('已读取手动存档');
+  const loadPanel = page.getByRole('dialog', { name: '读档' });
+  await expect(loadPanel).toBeVisible();
+  await loadPanel.getByRole('button', { name: '读取' }).click();
+  await expect(page.getByRole('status')).toContainText('已读取存档');
 
   const loaded = await getState(page);
   expect(loaded.locationId).toBe('park');
   expect(loaded.clock.absoluteMinutes).toBe(12 * 60);
 
   expect(errors).toEqual([]);
+});
+
+test('a save slot can be deleted', async ({ page }) => {
+  await openGame(page);
+  await reset(page, 1);
+
+  await page.getByRole('button', { name: '存档' }).click();
+  await page
+    .getByRole('dialog', { name: '存档' })
+    .getByRole('button', { name: '新建存档槽' })
+    .click();
+
+  await page.getByRole('button', { name: '读档' }).click();
+  const panel = page.getByRole('dialog', { name: '读档' });
+  await panel.getByRole('button', { name: '删除' }).click();
+  await panel.getByRole('button', { name: '确认删除' }).click();
+
+  await expect(panel.getByText('还没有存档。')).toBeVisible();
 });
 
 test('manual save controls are reachable on mobile', async ({ page }) => {

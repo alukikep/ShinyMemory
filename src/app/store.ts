@@ -12,14 +12,16 @@ import type { ActionCommand, GameState } from '../core/types';
 import { LocalStorageRepository } from '../save/localStorageRepository';
 import type { SaveRepository } from '../save/repository';
 import { createSaveEnvelope } from '../save/save';
+import type { SaveSlotMeta } from '../save/slots';
 
 type GameStore = {
   state: GameState;
-  manualSavedAt?: string;
+  slots: SaveSlotMeta[];
   act: (command: ActionCommand) => void;
   restart: () => void;
-  manualSave: () => string;
-  manualLoad: () => boolean;
+  saveSlot: (slotId: string, label: string) => string;
+  loadSlot: (slotId: string) => boolean;
+  deleteSlot: (slotId: string) => void;
   debugForceEvent: (eventId: string) => void;
   debugJumpDay: (day: number) => void;
   debugJumpTo: (
@@ -50,7 +52,7 @@ function initialState(): GameState {
 
 export const useGameStore = create<GameStore>((set, get) => ({
   state: initialState(),
-  manualSavedAt: repository.loadManual()?.createdAt,
+  slots: repository.listSlots(),
   act: (command) =>
     set((previous) => {
       const next = handleCommand(previous.state, command);
@@ -62,20 +64,24 @@ export const useGameStore = create<GameStore>((set, get) => ({
     repository.save(createSaveEnvelope(next));
     set({ state: next });
   },
-  manualSave: () => {
+  saveSlot: (slotId, label) => {
     const envelope = createSaveEnvelope(get().state);
-    repository.saveManual(envelope);
-    set({ manualSavedAt: envelope.createdAt });
+    repository.saveSlot(slotId, label, envelope);
+    set({ slots: repository.listSlots() });
     return envelope.createdAt;
   },
-  manualLoad: () => {
-    const saved = repository.loadManual();
+  loadSlot: (slotId) => {
+    const saved = repository.loadSlot(slotId);
     if (!saved) return false;
     pruneScheduleOverrides(saved.state);
     completeDueJobs(saved.state);
     repository.save(createSaveEnvelope(saved.state));
-    set({ state: saved.state, manualSavedAt: saved.createdAt });
+    set({ state: saved.state, slots: repository.listSlots() });
     return true;
+  },
+  deleteSlot: (slotId) => {
+    repository.deleteSlot(slotId);
+    set({ slots: repository.listSlots() });
   },
   debugForceEvent: (eventId) =>
     set((previous) => {

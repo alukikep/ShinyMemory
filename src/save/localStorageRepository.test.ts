@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { newGame } from '../core/sim';
 import {
+  LEGACY_MANUAL_SAVE_KEY,
   LocalStorageRepository,
-  MANUAL_SAVE_KEY,
   SAVE_KEY,
+  SLOT_KEY_PREFIX,
 } from './localStorageRepository';
 import { MemoryStorage } from './memoryStorage';
 import { createSaveEnvelope } from './save';
@@ -278,38 +279,79 @@ describe('LocalStorageRepository', () => {
     expect(repo.load()).toBeNull();
   });
 
-  it('keeps manual save separate from autosave', () => {
+  it('keeps slot saves separate from autosave', () => {
     const storage = new MemoryStorage();
     const repo = new LocalStorageRepository(storage);
     const manual = createSaveEnvelope(newGame(2));
     manual.state.clock.absoluteMinutes = 3 * 1440 + 12 * 60;
-    repo.saveManual(manual);
+    repo.saveSlot('a', '存档 1', manual);
     repo.save(createSaveEnvelope(newGame(3)));
 
     expect(repo.load()?.state.clock.absoluteMinutes).toBe(8 * 60);
-    expect(repo.loadManual()?.state.clock.absoluteMinutes).toBe(
+    expect(repo.loadSlot('a')?.state.clock.absoluteMinutes).toBe(
       3 * 1440 + 12 * 60,
     );
   });
 
-  it('rejects a manual save from another content epoch', () => {
+  it('lists slots newest first and can overwrite them', () => {
+    const storage = new MemoryStorage();
+    const repo = new LocalStorageRepository(storage);
+    const first = createSaveEnvelope(newGame(1));
+    first.createdAt = '2026-10-01T00:00:00.000Z';
+    const second = createSaveEnvelope(newGame(2));
+    second.createdAt = '2026-10-02T00:00:00.000Z';
+
+    repo.saveSlot('a', '存档 1', first);
+    repo.saveSlot('b', '存档 2', second);
+    expect(repo.listSlots().map((slot) => slot.id)).toEqual(['b', 'a']);
+
+    const overwrite = createSaveEnvelope(newGame(3));
+    overwrite.createdAt = '2026-10-03T00:00:00.000Z';
+    repo.saveSlot('a', '存档 1', overwrite);
+
+    const slots = repo.listSlots();
+    expect(slots.map((slot) => slot.id)).toEqual(['a', 'b']);
+    expect(slots[0]?.summary.day).toBe(1);
+  });
+
+  it('rejects a slot from another content epoch', () => {
     const storage = new MemoryStorage();
     const envelope = createSaveEnvelope(newGame(1));
     storage.setItem(
-      MANUAL_SAVE_KEY,
+      `${SLOT_KEY_PREFIX}bad`,
       JSON.stringify({ ...envelope, contentEpoch: 99 }),
     );
-    expect(new LocalStorageRepository(storage).loadManual()).toBeNull();
+    expect(new LocalStorageRepository(storage).loadSlot('bad')).toBeNull();
   });
 
-  it('clears the manual save without touching autosave', () => {
+  it('deletes a slot without touching autosave or other slots', () => {
     const storage = new MemoryStorage();
     const repo = new LocalStorageRepository(storage);
     repo.save(createSaveEnvelope(newGame(1)));
-    repo.saveManual(createSaveEnvelope(newGame(2)));
-    repo.clearManual();
-    expect(repo.loadManual()).toBeNull();
+    repo.saveSlot('a', '存档 1', createSaveEnvelope(newGame(2)));
+    repo.saveSlot('b', '存档 2', createSaveEnvelope(newGame(3)));
+
+    repo.deleteSlot('a');
+
+    expect(repo.loadSlot('a')).toBeNull();
+    expect(repo.loadSlot('b')).not.toBeNull();
+    expect(repo.listSlots().map((slot) => slot.id)).toEqual(['b']);
     expect(repo.load()).not.toBeNull();
+  });
+
+  it('migrates the legacy manual save into a slot', () => {
+    const storage = new MemoryStorage();
+    const legacy = createSaveEnvelope(newGame(1));
+    legacy.state.locationId = 'park';
+    storage.setItem(LEGACY_MANUAL_SAVE_KEY, JSON.stringify(legacy));
+
+    const repo = new LocalStorageRepository(storage);
+    const slots = repo.listSlots();
+
+    expect(slots).toHaveLength(1);
+    expect(slots[0]?.label).toBe('旧手动存档');
+    expect(repo.loadSlot(slots[0]!.id)?.state.locationId).toBe('park');
+    expect(storage.getItem(LEGACY_MANUAL_SAVE_KEY)).toBeNull();
   });
 
   it('clears the save', () => {

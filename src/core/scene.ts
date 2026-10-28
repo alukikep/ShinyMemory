@@ -21,7 +21,7 @@ import {
   formatIdolText,
   getActivity,
   getActor,
-  getEligibleStory,
+  getEligibleStories,
   getEvent,
   isActorPresent,
   presentActors,
@@ -307,12 +307,12 @@ function buildPlan(state: GameState): SceneView {
     actions.push(...buildJobActions(state));
     const jobOpportunity = buildJobOpportunity(state);
     if (jobOpportunity) actions.push(jobOpportunity);
-    const story = getEligibleStory(state);
-    if (story) {
+    const story = getEligibleStories(state);
+    for (const entry of story) {
       actions.push({
-        id: `story:${story.chain.id}`,
-        command: { type: 'startStory', chainId: story.chain.id },
-        label: story.step.actionLabel,
+        id: `story:${entry.chain.id}`,
+        command: { type: 'startStory', chainId: entry.chain.id },
+        label: entry.step.actionLabel,
         hint: '剧情',
         icon: 'sparkle',
         tone: 'primary',

@@ -6,10 +6,12 @@ import {
   advanceDialogue,
   chooseDialogue,
   getDialogueText,
+  getEligibleStories,
   getEligibleStory,
   newGame,
   startStory,
 } from './sim';
+import type { StoryChainDef } from './types';
 
 function atPark(day = 1, minute = 12 * 60) {
   const state = newGame(1);
@@ -133,12 +135,96 @@ describe('Hiori story chain', () => {
         status: 'unknown',
       };
       expect(getEligibleStory(state)?.chain.id).toBe(FIXTURE_CHAIN.id);
+      // 同一地点两条链都在，按 priority 降序：后加的那条不会静默消失
+      expect(getEligibleStories(state).map((entry) => entry.chain.id)).toEqual([
+        FIXTURE_CHAIN.id,
+        'hiori-encounter',
+      ]);
 
       const next = play(startStory(state, FIXTURE_CHAIN.id));
       expect(next.idols['fixture-idol']?.status).toBe('known');
       expect(next.selectedIdolId).toBe('mano');
+
+      const scene = buildScene(state);
+      const ids = scene.actions.map((action) => action.id);
+      expect(ids).toContain(`story:${FIXTURE_CHAIN.id}`);
+      expect(ids).toContain('story:hiori-encounter');
     } finally {
       unregisterFixture();
     }
+  });
+});
+
+describe('story chain step gates and rewards', () => {
+  function withChain<T>(chain: StoryChainDef, run: () => T): T {
+    CONTENT_INDEX.dialogues.set(FIXTURE_DIALOGUE.id, FIXTURE_DIALOGUE);
+    CONTENT_INDEX.storyChains.set(chain.id, chain);
+    try {
+      return run();
+    } finally {
+      CONTENT_INDEX.storyChains.delete(chain.id);
+      CONTENT_INDEX.dialogues.delete(FIXTURE_DIALOGUE.id);
+    }
+  }
+
+  const gated: StoryChainDef = {
+    id: 'fixture-when',
+    idolId: 'fixture-idol',
+    priority: 20,
+    steps: [
+      {
+        id: 'fixture-when-1',
+        locationId: 'park',
+        timeWindow: { fromMinute: 600, toMinute: 1080 },
+        dialogueId: FIXTURE_DIALOGUE.id,
+        actionLabel: 'fixture gated',
+        when: [{ kind: 'moneyAtLeast', value: 5000 }],
+        complete: { status: 'known' },
+      },
+    ],
+  };
+
+  const rewarded: StoryChainDef = {
+    id: 'fixture-reward',
+    idolId: 'fixture-idol',
+    priority: 20,
+    steps: [
+      {
+        id: 'fixture-reward-1',
+        locationId: 'park',
+        timeWindow: { fromMinute: 600, toMinute: 1080 },
+        dialogueId: FIXTURE_DIALOGUE.id,
+        actionLabel: 'fixture reward',
+        effects: [{ kind: 'money', delta: 1000 }],
+        complete: { status: 'known' },
+      },
+    ],
+  };
+
+  it('hides a step whose when conditions fail', () => {
+    withChain(gated, () => {
+      const poor = atPark();
+      poor.money = 1000;
+      expect(
+        getEligibleStories(poor).some((entry) => entry.chain.id === gated.id),
+      ).toBe(false);
+
+      const rich = atPark();
+      rich.money = 6000;
+      expect(
+        getEligibleStories(rich).some((entry) => entry.chain.id === gated.id),
+      ).toBe(true);
+    });
+  });
+
+  it('applies step effects exactly once on completion', () => {
+    withChain(rewarded, () => {
+      const state = atPark();
+      const before = state.money;
+      const after = play(startStory(state, rewarded.id));
+
+      expect(after.storyChains[rewarded.id]?.completed).toBe(true);
+      expect(after.money).toBe(before + 1000);
+    });
   });
 });

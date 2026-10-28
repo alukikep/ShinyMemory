@@ -4,6 +4,7 @@ export const manoEncounter: StoryChainDef = {
   id: 'mano-encounter',
   idolId: 'mano',
   priority: 10,
+  title: '公园的歌声',
   steps: [
     {
       id: 'mano-park-1',

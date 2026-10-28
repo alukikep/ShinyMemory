@@ -800,6 +800,10 @@ function finishDialogue(state: GameState): GameState {
     );
   }
 
+  if (step?.effects?.length) {
+    applyEffects(next, step.effects, { idolId: chain.idolId });
+  }
+
   const stepIndex = chainState.stepIndex + 1;
   if (stepIndex >= chain.steps.length) {
     next.storyChains[chain.id] = {
@@ -832,15 +836,21 @@ function finishDialogue(state: GameState): GameState {
   return next;
 }
 
-export function getEligibleStory(
-  state: GameState,
-): { chain: StoryChainDef; step: StoryChainStep; stepIndex: number } | undefined {
-  if (state.pendingDialogueId || state.flags.forced_rest) return undefined;
+export type StoryChainEntry = {
+  chain: StoryChainDef;
+  step: StoryChainStep;
+  stepIndex: number;
+};
+
+/**
+ * 当前地点、时间窗、最早天数、步骤条件都满足的剧情链，按 priority 降序。
+ * 同一地点可以同时有多条，全部返回；只取一条会让后加的链静默消失。
+ */
+export function getEligibleStories(state: GameState): StoryChainEntry[] {
+  if (state.pendingDialogueId || state.flags.forced_rest) return [];
   const day = getDay(state.clock.absoluteMinutes);
   const minute = getMinuteOfDay(state.clock.absoluteMinutes);
-  let best:
-    | { chain: StoryChainDef; step: StoryChainStep; stepIndex: number }
-    | undefined;
+  const found: StoryChainEntry[] = [];
 
   for (const chain of CONTENT_INDEX.storyChains.values()) {
     const chainState = state.storyChains[chain.id] ?? {
@@ -860,19 +870,32 @@ export function getEligibleStory(
       continue;
     }
     if (
-      !best ||
-      (chain.priority ?? 0) > (best.chain.priority ?? 0)
+      step.when &&
+      !step.when.every((condition) =>
+        checkCondition(condition, state, { idolId: chain.idolId }),
+      )
     ) {
-      best = { chain, step, stepIndex: chainState.stepIndex };
+      continue;
     }
+    found.push({ chain, step, stepIndex: chainState.stepIndex });
   }
-  return best;
+
+  found.sort((a, b) => (b.chain.priority ?? 0) - (a.chain.priority ?? 0));
+  return found;
+}
+
+export function getEligibleStory(
+  state: GameState,
+): StoryChainEntry | undefined {
+  return getEligibleStories(state)[0];
 }
 
 export function startStory(state: GameState, chainId: string): GameState {
   if (state.phase !== 'plan' || state.pendingDialogueId) return state;
-  const eligible = getEligibleStory(state);
-  if (!eligible || eligible.chain.id !== chainId) return state;
+  const eligible = getEligibleStories(state).find(
+    (entry) => entry.chain.id === chainId,
+  );
+  if (!eligible) return state;
   const dialogue = getDialogue(eligible.step.dialogueId);
   if (!dialogue) return state;
 

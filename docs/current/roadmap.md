@@ -170,19 +170,21 @@ fixture build
 - 等级影响费用、时长、EXP
 - 有效活动解析统一显示和结算
 
-### P1：制作人手册（待确认）
+### P1：制作人手册 · 已完成
 
 参考炸弹小队手册的**机制**（不是外观）：追踪进行中的任务/剧情链，结束后归档。
 
 动机不是“记进度”，而是补一个信息死角：`getEligibleStory` 只在地点、时间窗、最早天数三者同时满足时才露头，真乃第一次相遇后那两天，游戏完全没有出口告诉玩家“两天后下午去公园”。这个事实其实已经在 `nextEligibleDay` 里，只是没人读。
 
-配套要补的引擎能力（决定“能不能随便加任务”）：
+已落地：
 
+- `handbook.ts`：`buildHandbook` 把剧情链投影成条目（等候 / 受阻 / 时段 / 可前往 / 完成），`describeCondition` 把未满足条件翻成人话
+- 侧栏「手册」+ 进行中条数角标；归档按偶像分组折叠
 - `StoryChainDef.revealWhen`、`StoryChainStep.when` / `effects`（不引入 `requires`，与 `when` 重复）
-- `getEligibleStories` 返回全部候选，而不是只留 priority 最高的那一条（否则第二条同地点链会静默消失）
-- 补 `moneyAtLeast` / `idolStatus` / `hasItem` 三个 `Condition`（现有 16 种里一个都写不出“攒够钱再去”）
+- `getEligibleStories` 返回全部候选，同一地点不再静默吞链
+- 新增 `moneyAtLeast` / `idolStatus` / `hasItem` 三个 `Condition`（16 → 19 种）
 
-方案见 [制作人手册计划](plan-producer-handbook.md)。
+存档与内容纪元均未变动。方案见 [制作人手册计划](plan-producer-handbook.md)。
 
 ### P2：新地点
 
@@ -272,6 +274,7 @@ WING 竞赛系统
 | 2026-10-28 | v1.5 | 事件→对话桥：`openDialogue` 统一入口、选项 `dialogueId`、多人对话参与者 |
 | 2026-10-28 | v1.6 | 存档多槽：元数据索引 + 独立槽键、旧手动存档迁移、槽位面板 |
 | 2026-10-28 | v1.7 | 存档导出/导入；内容体检接入构建（content:audit） |
+| 2026-10-28 | v1.8 | 制作人手册：剧情链投影、`blocked` 原因派生、`getEligibleStories` 多链并存、三个新条件 |
 
 ## 8. 文档位置
 
@@ -279,6 +282,8 @@ WING 竞赛系统
 docs/README.md                 文档入口
 docs/current/roadmap.md        本文件
 docs/current/plan-unified-attributes.md
+docs/current/plan-producer-handbook.md
+docs/current/impl-producer-handbook.md
 docs/current/future-requirements.md
 docs/current/acceptance.md
 docs/systems/                  系统说明

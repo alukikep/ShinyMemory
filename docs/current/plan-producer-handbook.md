@@ -1,8 +1,8 @@
 # 制作人手册（任务与剧情链追踪）计划
 
-> 状态：方案待确认，未动工
+> 状态：已实施（P0–P3 全部完成）
 > 参考：塞尔达传说 梅祖拉的假面 · 炸弹小队手册
-> 目标版本：`0.18.0`
+> 版本：`0.18.0` 起生效
 > 存档：`SAVE_VERSION 14` 不变（不加任何新状态）
 > 内容纪元：`CONTENT_EPOCH 3` 不变
 
@@ -81,7 +81,12 @@ export type HandbookEntryView = {
   steps: { label: string; done: boolean; current: boolean }[];
 };
 
-export function buildHandbook(state: GameState): HandbookEntryView[];
+export function buildHandbook(state: GameState): HandbookView;
+
+export type HandbookView = {
+  active: HandbookEntryView[];
+  archive: HandbookEntryView[];
+};
 ```
 
 `buildHandbook` 只读 `state` 与 `CONTENT_INDEX`，纯函数，不做副作用。这样它不可能和真实状态脱节——这是选择投影而不是“写条目”的全部理由。
@@ -178,7 +183,7 @@ export function describeCondition(
 | 条件 | 文案 | 说明 |
 |---|---|---|
 | `moneyAtLeast` | `还差 ¥1,200` | 用当前钱算差额，不给总额 |
-| `idolStatus` | `还得先正式认识她` / `得先让她加入` | 按目标状态选词 |
+| `idolStatus` | `还得先正式认识风野灯织` / `得先让风野灯织加入` | 用全名，不用代词；未知偶像回退 |
 | `hasItem` | `还缺 生日礼物 ×1` | 用物品显示名，不用 id |
 | `attributeAtLeast` | `歌唱还得练到 D` | 复用 `attributeLabel` |
 | `atLocation` | `得回事务所一趟` | |
@@ -290,14 +295,15 @@ if (!best || (chain.priority ?? 0) > (best.chain.priority ?? 0)) best = { ... };
 
 ## 4. 阶段
 
-| 阶段 | 内容 | 验收 |
+| 阶段 | 内容 | 状态 |
 |---|---|---|
-| P0 | `handbook.ts` 投影 + `describeCondition` + 单测 | 五态判定按 2.2 的顺序命中；未启动偶像零条目；`revealWhen` 生效；`blocked` 说得出差什么 |
-| P1 | `HandbookPanel.tsx` + 侧栏第 7 项 + 数字角标 + 归档分组 | 浏览器里看到进行中与归档；`blocked` 行显示具体原因；空状态文案正确 |
-| P2 | `revealWhen` / `when` / `effects` + 多链并存 + 3 个条件 | fixture 两条同地点链同时出现在地点页与手册；旧 priority 断言改写 |
-| P3 | production `mano-encounter` 补 `title`；fixture 补一条带 `effects` 的链 | 完整序章 E2E 仍通过；新链在手册里状态正确 |
+| P0 | `handbook.ts` 投影 + `describeCondition` + 单测 | ✅ 已完成 |
+| P1 | `HandbookPanel.tsx` + 侧栏第 7 项 + 数字角标 + 归档分组 | ✅ 已完成 |
+| P2 | `revealWhen` / `when` / `effects` + 多链并存 + 3 个条件 | ✅ 已完成 |
+| P3 | production `mano-encounter` 补 `title` | ✅ 已完成 |
 
-P0/P1 是手册本体，P2/P3 是“随便加任务”的能力，可以分开上线。
+P3 的 `when` / `effects` 验证没往正式包或冻结 fixture 里塞内容：测试用 `CONTENT_INDEX` 临时注册链，
+避免留下“永远不触发”的死内容。P0–P3 已合并到 `main`。
 
 ## 5. 关键陷阱
 

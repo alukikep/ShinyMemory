@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { buildHandbook } from './core/handbook';
 import { buildScene } from './core/scene';
 import { CONTENT_INDEX } from './core/contentIndex';
 import { GAME_VERSION } from './save/version';
@@ -9,6 +10,7 @@ import { CityMap } from './ui/components/CityMap';
 import { BackpackModal } from './ui/components/BackpackModal';
 import { DialogueOverlay } from './ui/components/DialogueOverlay';
 import { GameIcon } from './ui/components/GameIcon';
+import { HandbookPanel } from './ui/components/HandbookPanel';
 import { IdolRoster } from './ui/components/IdolRoster';
 import { IdolSchedule } from './ui/components/IdolSchedule';
 import { LogPanel } from './ui/components/LogPanel';
@@ -54,6 +56,7 @@ export default function App() {
   const [scheduleOpen, setScheduleOpen] = useState(false);
   const [backpackOpen, setBackpackOpen] = useState(false);
   const [producerOpen, setProducerOpen] = useState(false);
+  const [handbookOpen, setHandbookOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const [savePanel, setSavePanel] = useState<'save' | 'load' | null>(null);
   const [saveNotice, setSaveNotice] = useState<string | undefined>();
@@ -61,6 +64,7 @@ export default function App() {
     typeof window !== 'undefined' &&
     new URLSearchParams(window.location.search).has('debug');
   const scene = buildScene(state);
+  const handbook = buildHandbook(state);
   const localShops = CONTENT_INDEX.shopsByLocation.get(state.locationId) ?? [];
   const shop = localShops[0];
   const sceneShop =
@@ -218,6 +222,17 @@ export default function App() {
             <GameIcon name="star" size={17} />
             <span>制作人</span>
           </button>
+          <button
+            type="button"
+            className="sidebar-nav-item"
+            onClick={() => setHandbookOpen(true)}
+          >
+            <GameIcon name="book" size={17} />
+            <span>手册</span>
+            {handbook.active.length > 0 ? (
+              <small className="sidebar-nav-count">{handbook.active.length}</small>
+            ) : null}
+          </button>
           {scene.phase === 'plan' ? (
             <button
               type="button"
@@ -361,6 +376,13 @@ export default function App() {
 
       {producerOpen ? (
         <ProducerPanel state={state} onClose={() => setProducerOpen(false)} />
+      ) : null}
+
+      {handbookOpen ? (
+        <HandbookPanel
+          view={handbook}
+          onClose={() => setHandbookOpen(false)}
+        />
       ) : null}
 
       {shopOpen && shop ? (

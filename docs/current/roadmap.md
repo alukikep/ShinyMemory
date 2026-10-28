@@ -194,6 +194,8 @@ fixture build
 - approved 内容进入构建
 - 内容 ID/flag 规范
 - 内容纪元发布流程
+- 多对象行动的组合场景按“平均分配”编写，规则见
+  [未来需求 · 多人剧情](future-requirements.md)
 
 ### P3：表现层
 

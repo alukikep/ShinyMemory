@@ -1005,15 +1005,38 @@ describe('raising sim core', () => {
     expect(activityAvailability(state, vocal).ok).toBe(true);
   });
 
-  it('triggers a bespoke pair scene only when both idols are present', () => {
+  it('settles group training once for cost and per idol for attributes', () => {
     const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
-    state.flags.test_pair_scenes = true;
-    const pair = getEvent('evt.pair_mano_hiori')!;
+    state.idols.hiori!.status = 'recruited';
+    const moneyBefore = state.money;
+    const staminaBefore = state.shared.stamina;
+    const clockBefore = state.clock.absoluteMinutes;
 
-    expect(checkEventCandidates(state, [pair]).event).toBe(null);
+    const next = applyActivity(state, 'group_training');
+
+    expect(next.money).toBe(moneyBefore - 2000);
+    expect(next.shared.stamina).toBe(staminaBefore - 30);
+    expect(next.clock.absoluteMinutes - clockBefore).toBe(120);
+    for (const idolId of ['mano', 'hiori']) {
+      expect(next.idols[idolId]?.stats.vocal.exp).toBe(1);
+      expect(next.idols[idolId]?.stats.trust.exp).toBe(1);
+    }
+  });
+
+  it('triggers a bespoke pair scene only after the anchored action', () => {
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    const pair = getEvent('evt.pair_mano_hiori')!;
+    const forced = [{ ...pair, chance: 1 }];
+    const ctx = { lastActivityId: 'group_training', locationId: 'practice_room' };
+
+    // 不在锚点行动之后
+    expect(checkEventCandidates(state, forced, { locationId: 'practice_room' }).event).toBe(null);
+
+    // 锚点对了，但 hiori 还没招募
+    expect(checkEventCandidates(state, forced, ctx).event).toBe(null);
 
     state.idols.hiori!.status = 'recruited';
-    const triggered = checkEventCandidates(state, [pair]);
+    const triggered = checkEventCandidates(state, forced, ctx);
 
     expect(triggered.event?.id).toBe(pair.id);
     expect(triggered.state.pendingEventCast).toEqual(['mano', 'hiori']);
@@ -1026,7 +1049,6 @@ describe('raising sim core', () => {
 
   it('picks two random participants for a generic pair scene', () => {
     const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
-    state.flags.test_pair_scenes = true;
     state.idols.hiori!.status = 'recruited';
     state.idols.meguru!.status = 'recruited';
     state.actors.meguru!.scheduleOverrides = [
@@ -1041,7 +1063,11 @@ describe('raising sim core', () => {
     ];
 
     const generic = getEvent('evt.pair_generic_rest')!;
-    const result = checkEventCandidates(state, [generic]);
+    const result = checkEventCandidates(
+      state,
+      [{ ...generic, chance: 1 }],
+      { lastActivityId: 'group_training', locationId: 'practice_room' },
+    );
 
     expect(result.event?.id).toBe(generic.id);
     expect(result.state.pendingEventCast).toHaveLength(2);
@@ -1052,14 +1078,15 @@ describe('raising sim core', () => {
 
   it('blocks the same pair from repeating through the pair cooldown', () => {
     const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
-    state.flags.test_pair_scenes = true;
     state.idols.hiori!.status = 'recruited';
     const pair = getEvent('evt.pair_mano_hiori')!;
+    const forced = [{ ...pair, chance: 1 }];
+    const ctx = { lastActivityId: 'group_training', locationId: 'practice_room' };
 
-    const first = checkEventCandidates(state, [pair]);
+    const first = checkEventCandidates(state, forced, ctx);
     expect(first.event?.id).toBe(pair.id);
 
-    const second = checkEventCandidates(first.state, [pair]);
+    const second = checkEventCandidates(first.state, forced, ctx);
     expect(second.event).toBe(null);
   });
 

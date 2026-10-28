@@ -188,15 +188,34 @@ describe('content integrity', () => {
     }
   });
 
-  it('validates pair scene declarations', () => {
+  it('keeps pair scenes anchored and within the content budget', () => {
     const idolIds = new Set(IDOLS.map((idol) => idol.id));
+    const activityIds = new Set(ACTIVITIES.map((activity) => activity.id));
+    const budget = new Map<string, { cast: number; generic: number }>();
+
     for (const event of EVENTS) {
+      const isPair = Boolean(event.cast) || event.castSize !== undefined;
+      if (!isPair) continue;
+
+      // 组合戏必须挂在具体行动之后，不能全世界随机触发。
+      expect(event.after, `${event.id} 缺少 after 锚点`).toBeTruthy();
+      if (event.after && 'ids' in event.after) {
+        for (const id of event.after.ids) {
+          expect(activityIds.has(id), `${event.id} -> ${id}`).toBe(true);
+        }
+        const key = [...event.after.ids].sort().join(',');
+        const entry = budget.get(key) ?? { cast: 0, generic: 0 };
+        if (event.cast) entry.cast += 1;
+        if (event.castSize !== undefined) entry.generic += 1;
+        budget.set(key, entry);
+      }
+
       if (event.cast) {
         expect(event.cast, `${event.id} cast 目前只支持 2 人`).toHaveLength(2);
+        expect(new Set(event.cast).size).toBe(2);
         for (const id of event.cast) {
           expect(idolIds.has(id), `${event.id} -> ${id}`).toBe(true);
         }
-        expect(new Set(event.cast).size).toBe(2);
       }
       if (event.castSize !== undefined) {
         expect(event.castSize).toBe(2);
@@ -204,6 +223,14 @@ describe('content integrity', () => {
       if (event.pairCooldownActions !== undefined) {
         expect(event.pairCooldownActions).toBeGreaterThan(0);
       }
+    }
+
+    // 一个多对象行动的内容预算：专属 ≤ 10，通用 ≤ 3。
+    for (const [anchor, entry] of budget) {
+      expect(entry.cast, `${anchor} 专属双人剧情超预算`).toBeLessThanOrEqual(10);
+      expect(entry.generic, `${anchor} 通用双人剧情超预算`).toBeLessThanOrEqual(
+        3,
+      );
     }
   });
 

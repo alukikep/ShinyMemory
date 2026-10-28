@@ -1,16 +1,18 @@
 import type { EventDef } from '../../../types';
 
 /**
- * 双人剧情切片（泛化模板）：从在场偶像里随机挑两人。
+ * 双人剧情（泛化模板）：从在场偶像里随机挑两人。
  * 同一对重复触发由组合冷却压制。
  */
 const card: EventDef = {
   id: 'evt.pair_generic_rest',
   title: '两个人的休息室',
-  when: [{ kind: 'flag', key: 'test_pair_scenes', value: true }],
+  when: [],
+  after: { ids: ['group_training'] },
   castSize: 2,
-  pairCooldownActions: 20,
+  chance: 0.5,
   weight: 1,
+  pairCooldownActions: 20,
   text: '{a}和{b}在休息室里待了一会儿，谁都没有先开口。',
   choices: [
     {

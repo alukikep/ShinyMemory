@@ -1,18 +1,17 @@
 import type { EventDef } from '../../../types';
 
-/**
- * 双人剧情切片（专用文案）。flag 门控，正常游玩不会触发。
- */
+/** 双人剧情（专属文案）：挂在「统一训练」之后。 */
 const card: EventDef = {
   id: 'evt.pair_mano_hiori',
   title: '两个人的午饭',
   when: [
-    { kind: 'flag', key: 'test_pair_scenes', value: true },
     { kind: 'castPresent', idolIds: ['mano', 'hiori'] },
   ],
+  after: { ids: ['group_training'] },
   cast: ['mano', 'hiori'],
+  chance: 0.6,
+  weight: 3,
   pairCooldownActions: 20,
-  weight: 2,
   text: '{a}把便当盒推到中间，{b}没有客气，先夹了一块。',
   choices: [
     {

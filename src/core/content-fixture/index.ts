@@ -28,6 +28,7 @@ import groupGreeting from './activities/groupGreeting';
 import demoRecording from './activities/demoRecording';
 import photoShoot from './activities/photoShoot';
 import coverShoot from './activities/coverShoot';
+import groupTraining from './activities/groupTraining';
 import nightPractice from './events/locations/practice_room/nightPractice';
 import extraLesson from './events/training/extraLesson';
 import vocalStrain from './events/activities/training/vocalStrain';
@@ -63,11 +64,12 @@ import parkPigeons from './events/locations/park/parkPigeons';
 import shoppingWindow from './events/locations/shoppingStreet/shoppingWindow';
 import staminaDrill from './events/producer/staminaDrill';
 import pairManoHiori from './events/pairs/manoHiori';
+import pairManoMeguru from './events/pairs/manoMeguru';
 import pairGenericRest from './events/pairs/genericRest';
 
-export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, advancedVocal, advancedDance, cafeLunch, groupGreeting, demoRecording, photoShoot, coverShoot];
+export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, advancedVocal, advancedDance, cafeLunch, groupGreeting, demoRecording, photoShoot, coverShoot, groupTraining];
 
-export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, parkPigeons, shoppingWindow, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath, staminaDrill, pairManoHiori, pairGenericRest, ...APPROVED_EVENTS];
+export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, parkPigeons, shoppingWindow, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath, staminaDrill, pairManoHiori, pairManoMeguru, pairGenericRest, ...APPROVED_EVENTS];
 
 export const JOBS = [...BASE_JOBS, ...APPROVED_JOBS];
 

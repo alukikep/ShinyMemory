@@ -159,7 +159,17 @@ function activityActionView(
     activity.kind === 'sleep'
       ? '睡到早上 8 点'
       : formatDuration(activity.durationMinutes);
-  const effects = effectSummary(activity.effects, activityCost(state, activity));
+  const effects =
+    activity.target === 'all-present-idols'
+      ? [
+          effectSummary([], activityCost(state, activity)),
+          effectSummary(activity.effects)
+            ? `每人：${effectSummary(activity.effects)}`
+            : '',
+        ]
+          .filter(Boolean)
+          .join(' · ')
+      : effectSummary(activity.effects, activityCost(state, activity));
   const reward =
     activity.workReward && idolId
       ? workRewardSummary(state, activity.workReward, idolId)
@@ -275,9 +285,9 @@ function buildPlan(state: GameState): SceneView {
   const activities = (CONTENT_INDEX.activitiesByLocation.get(state.locationId) ?? [])
     .filter(
       (activity) =>
-        activity.kind !== 'training' &&
-        activity.kind !== 'work' &&
-        activity.target !== 'present-idol',
+        activity.target !== 'present-idol' &&
+        (activity.target === 'all-present-idols' ||
+          (activity.kind !== 'training' && activity.kind !== 'work')),
     );
   const actors = buildActorViews(state);
 

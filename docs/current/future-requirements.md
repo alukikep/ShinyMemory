@@ -167,10 +167,28 @@ type WorkReward = {
 
 当前 fixture 示例：`group_training`（统一训练，¥2000 / 2 小时 / 全员全属性 +1、信任 +1）挂 2 条专属 + 1 条通用。
 
+### 事件 → 对话桥
+
+统一入口：
+
+```ts
+openDialogue(state, {
+  dialogueId,
+  idolId?,          // 缺省用参与者第一个
+  cast?,            // 缺省用 dialogue.participantIds
+  returnTo?: { phase, result? },   // 缺省回 plan
+})
+```
+
+- 事件选项：`EventChoice.dialogueId`。选择后先结算效果再进对话；对话结束回到 `eventResult`，沿用选项的 `result` 文案并写日志。
+- 剧情链：`startStory` 内部改走 `openDialogue`，行为不变。
+- 行动、调试强制事件都可以直接调用 `openDialogue`。
+- 多人对话：`DialogueDef.participantIds`，文本支持 `{a}` / `{b}`，节点按 `speakerId` 换说话人。
+- 对话内效果按参与者分配：偶像属性各一份，其余一次。
+
 当前边界：
 
 - 只支持两人，`cast` / `castSize` 都必须是 2。
-- 事件不能启动对话，多人剧情目前是「文本 + 选项」，没有多说话人结构。
 - `DialogueDef.idolId` / `StoryChainDef.idolId` 仍是单值，三人剧情链无法表达。
 - 正式内容只有一个偶像，所以双人场景目前只在 fixture 生效。
 - 没有关系状态支撑，A+B 与 A+B+C 的剧情只能是互不影响的平行小剧场。

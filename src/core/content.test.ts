@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACTIVITIES, ACTORS, EVENTS, IDOLS, ITEMS, JOBS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES } from './content-fixture';
+import { ACTIVITIES, ACTORS, DIALOGUES, EVENTS, IDOLS, ITEMS, JOBS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES } from './content-fixture';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityKind, Condition, EventDef } from './types';
 
@@ -185,6 +185,32 @@ describe('content integrity', () => {
       expect(activity.workReward).toBeUndefined();
       expect(activity.workRisk).toBeUndefined();
       expect(activity.kind).not.toBe('work');
+    }
+  });
+
+  it('references existing dialogues from event choices', () => {
+    const dialogueIds = new Set(DIALOGUES.map((dialogue) => dialogue.id));
+    const idolIds = new Set(IDOLS.map((idol) => idol.id));
+
+    for (const event of EVENTS) {
+      for (const choice of event.choices) {
+        if (!choice.dialogueId) continue;
+        expect(
+          dialogueIds.has(choice.dialogueId),
+          `${event.id} -> ${choice.dialogueId}`,
+        ).toBe(true);
+      }
+    }
+
+    for (const dialogue of DIALOGUES) {
+      if (!dialogue.participantIds) continue;
+      expect(dialogue.participantIds.length).toBeGreaterThanOrEqual(2);
+      expect(new Set(dialogue.participantIds).size).toBe(
+        dialogue.participantIds.length,
+      );
+      for (const id of dialogue.participantIds) {
+        expect(idolIds.has(id), `${dialogue.id} -> ${id}`).toBe(true);
+      }
     }
   });
 

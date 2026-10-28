@@ -17,7 +17,8 @@ const card: EventDef = {
     {
       label: '看着她们吃',
       effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
-      result: '{a}把最后一块留给了{b}，{b}说了一句“下次我来买”。',
+      dialogueId: 'dialogue.pair.mano_hiori',
+      result: '这顿饭吃得很慢，收工时便当盒是空的。',
     },
   ],
 };

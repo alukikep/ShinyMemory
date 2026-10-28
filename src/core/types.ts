@@ -112,6 +112,8 @@ export type DialogueNode = {
 export type DialogueDef = {
   id: string;
   idolId?: string;
+  /** 多人对话的参与者；文本里可用 {a} / {b}。 */
+  participantIds?: string[];
   startNodeId: string;
   nodes: Record<string, DialogueNode>;
 };
@@ -171,6 +173,10 @@ export type GameState = {
   dialogueChainId?: string;
   dialogueNodeId?: string;
   dialogueTargetIdolId?: string;
+  pendingDialogueCast?: string[];
+  /** 对话结束后回到的状态与文案。 */
+  dialogueReturnPhase?: Phase;
+  dialogueReturnResult?: string;
   flags: Record<string, boolean>;
   jobs: JobAssignment[];
   eventCooldowns: Record<string, number>;
@@ -390,6 +396,8 @@ export type EventChoice = {
   effects: Effect[];
   result: string;
   nextEventId?: string;
+  /** 选择后进入对话；对话结束回到事件结果。 */
+  dialogueId?: string;
 };
 
 export type ActivitySelector =

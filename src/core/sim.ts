@@ -46,6 +46,7 @@ import type {
   JobAssignment,
   IdolState,
   LogTone,
+  Phase,
   Rank,
   SharedStatKey,
   StatKey,
@@ -671,15 +672,72 @@ export function getDialogueText(
       }),
     ),
   );
-  return variant?.text ?? node.text;
+  return formatCastText(
+    variant?.text ?? node.text,
+    state.pendingDialogueCast ?? [],
+  );
 }
 
-function applyDialogueNodeEffects(state: GameState, node: DialogueNode): void {
-  if (node.effects?.length) {
-    applyEffects(state, node.effects, {
-      idolId: state.dialogueTargetIdolId ?? state.selectedIdolId,
-    });
+function applyCastEffects(
+  state: GameState,
+  effects: Effect[],
+  cast: string[],
+  fallbackIdolId?: string,
+): void {
+  if (cast.length === 0) {
+    applyEffects(state, effects, { idolId: fallbackIdolId });
+    return;
   }
+  if (cast.length === 1) {
+    applyEffects(state, effects, { idolId: cast[0] });
+    return;
+  }
+  // 多人：偶像属性各一份，其余一次。
+  const perIdol = effects.filter(isIdolAttributeEffect);
+  const shared = effects.filter((effect) => !isIdolAttributeEffect(effect));
+  for (const idolId of cast) {
+    applyEffects(state, perIdol, { idolId });
+  }
+  if (shared.length > 0) applyEffects(state, shared, { idolId: fallbackIdolId });
+}
+
+/**
+ * 打开一段对话。事件、行动、剧情链都走这个入口。
+ * 缺省结束后回到 plan；传入 returnTo 可以回到任意阶段。
+ */
+export function openDialogue(
+  state: GameState,
+  invocation: {
+    dialogueId: string;
+    idolId?: string;
+    cast?: string[];
+    returnTo?: { phase: Phase; result?: string };
+  },
+): GameState {
+  const dialogue = getDialogue(invocation.dialogueId);
+  if (!dialogue) return state;
+
+  const cast = invocation.cast ?? dialogue.participantIds ?? [];
+  const next = clone(state);
+  next.pendingDialogueId = dialogue.id;
+  next.dialogueNodeId = dialogue.startNodeId;
+  next.dialogueTargetIdolId =
+    invocation.idolId ?? cast[0] ?? dialogue.idolId ?? next.selectedIdolId;
+  next.pendingDialogueCast = cast.length > 0 ? cast : undefined;
+  next.dialogueReturnPhase = invocation.returnTo?.phase;
+  next.dialogueReturnResult = invocation.returnTo?.result;
+
+  const node = dialogue.nodes[dialogue.startNodeId];
+  if (node) applyCastEffects(next, node.effects ?? [], cast, next.dialogueTargetIdolId);
+  return next;
+}
+
+function clearDialogueState(next: GameState): void {
+  next.pendingDialogueId = undefined;
+  next.dialogueChainId = undefined;
+  next.dialogueNodeId = undefined;
+  next.dialogueTargetIdolId = undefined;
+  next.pendingDialogueCast = undefined;
 }
 
 function finishDialogue(state: GameState): GameState {
@@ -687,10 +745,19 @@ function finishDialogue(state: GameState): GameState {
   const chainId = next.dialogueChainId;
   const chain = chainId ? CONTENT_INDEX.storyChains.get(chainId) : undefined;
   if (!chain) {
-    next.pendingDialogueId = undefined;
-    next.dialogueChainId = undefined;
-    next.dialogueNodeId = undefined;
-    next.dialogueTargetIdolId = undefined;
+    const returnPhase = next.dialogueReturnPhase;
+    const returnResult = next.dialogueReturnResult;
+    clearDialogueState(next);
+    next.dialogueReturnPhase = undefined;
+    next.dialogueReturnResult = undefined;
+    if (returnPhase) {
+      if (returnResult) {
+      next.lastResult = returnResult;
+      addLog(next, returnResult, 'info');
+    }
+      next.phase = returnPhase;
+      return next;
+    }
     next.phase = 'plan';
     return next;
   }
@@ -736,10 +803,19 @@ function finishDialogue(state: GameState): GameState {
     };
   }
 
-  next.pendingDialogueId = undefined;
-  next.dialogueChainId = undefined;
-  next.dialogueNodeId = undefined;
-  next.dialogueTargetIdolId = undefined;
+  clearDialogueState(next);
+  const returnPhase = next.dialogueReturnPhase;
+  const returnResult = next.dialogueReturnResult;
+  next.dialogueReturnPhase = undefined;
+  next.dialogueReturnResult = undefined;
+  if (returnPhase) {
+    if (returnResult) {
+      next.lastResult = returnResult;
+      addLog(next, returnResult, 'info');
+    }
+    next.phase = returnPhase;
+    return next;
+  }
   next.phase = 'plan';
   return next;
 }
@@ -788,13 +864,9 @@ export function startStory(state: GameState, chainId: string): GameState {
   const dialogue = getDialogue(eligible.step.dialogueId);
   if (!dialogue) return state;
 
-  const next = clone(state);
-  next.pendingDialogueId = dialogue.id;
+  const next = openDialogue(state, { dialogueId: dialogue.id });
+  if (next === state) return state;
   next.dialogueChainId = eligible.chain.id;
-  next.dialogueNodeId = dialogue.startNodeId;
-  next.dialogueTargetIdolId = dialogue.idolId;
-  const node = dialogue.nodes[dialogue.startNodeId];
-  if (node) applyDialogueNodeEffects(next, node);
   return next;
 }
 
@@ -811,7 +883,12 @@ export function advanceDialogue(state: GameState): GameState {
 
   const next = clone(state);
   next.dialogueNodeId = nextNode.id;
-  applyDialogueNodeEffects(next, nextNode);
+  applyCastEffects(
+    next,
+    nextNode.effects ?? [],
+    next.pendingDialogueCast ?? [],
+    next.dialogueTargetIdolId,
+  );
   return next;
 }
 
@@ -835,11 +912,19 @@ export function chooseDialogue(state: GameState, index: number): GameState {
   if (!nextNode) return state;
 
   const next = clone(state);
-  applyEffects(next, choice.effects ?? [], {
-    idolId: next.dialogueTargetIdolId ?? next.selectedIdolId,
-  });
+  applyCastEffects(
+    next,
+    choice.effects ?? [],
+    next.pendingDialogueCast ?? [],
+    next.dialogueTargetIdolId ?? next.selectedIdolId,
+  );
   next.dialogueNodeId = nextNode.id;
-  applyDialogueNodeEffects(next, nextNode);
+  applyCastEffects(
+    next,
+    nextNode.effects ?? [],
+    next.pendingDialogueCast ?? [],
+    next.dialogueTargetIdolId,
+  );
   return next;
 }
 
@@ -1861,37 +1946,33 @@ export function applyEventChoice(state: GameState, index: number): GameState {
   const effectIdolId = state.pendingEventIdolId ?? state.selectedIdolId;
   const cast = state.pendingEventCast ?? [];
 
-  if (cast.length > 1) {
-    // 多人剧情：偶像属性效果按人各一份，其余效果只结算一次。
-    const perIdol = choice.effects.filter(isIdolAttributeEffect);
-    const shared = choice.effects.filter(
-      (effect) => !isIdolAttributeEffect(effect),
-    );
-    for (const idolId of cast) {
-      applyEffects(next, perIdol, { idolId });
-    }
-    if (shared.length > 0) {
-      applyEffects(next, shared, { idolId: effectIdolId });
-    }
-  } else {
-    applyEffects(next, choice.effects, { idolId: effectIdolId });
-  }
+  applyCastEffects(next, choice.effects, cast, effectIdolId);
   clampState(next);
 
   const advanced =
     choice.durationMinutes && choice.durationMinutes > 0
       ? advanceTime(next, choice.durationMinutes)
       : next;
-  advanced.phase = 'eventResult';
   advanced.pendingChainEventId =
     choice.nextEventId ?? event.nextEventId;
-  advanced.lastResult = formatCastText(choice.result, cast);
-  if (cast.length === 0 && state.pendingEventIdolId) {
-    advanced.lastResult = formatIdolText(
-      choice.result,
-      state.pendingEventIdolId,
-    );
+
+  const resultText =
+    cast.length > 0
+      ? formatCastText(choice.result, cast)
+      : formatIdolText(choice.result, state.pendingEventIdolId);
+
+  // 选择后进入对话：对话结束回到事件结果，并沿用这次选择的结果文本。
+  if (choice.dialogueId) {
+    return openDialogue(advanced, {
+      dialogueId: choice.dialogueId,
+      idolId: effectIdolId,
+      cast,
+      returnTo: { phase: 'eventResult', result: resultText },
+    });
   }
+
+  advanced.phase = 'eventResult';
+  advanced.lastResult = resultText;
   addLog(advanced, advanced.lastResult, 'info');
   return advanced;
 }

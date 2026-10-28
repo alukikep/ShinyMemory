@@ -7,6 +7,7 @@ import {
   activityAvailability,
   activityStaminaCost,
   activityTargets,
+  advanceDialogue,
   advanceTime,
   applyActivity,
   applyActivityDef,
@@ -18,6 +19,8 @@ import {
   formatIdolText,
   getActivity,
   getActor,
+  getDialogueNode,
+  getDialogueText,
   getEvent,
   handleAction,
   handleCommand,
@@ -1044,7 +1047,22 @@ describe('raising sim core', () => {
     const next = applyEventChoice(triggered.state, 0);
     expect(next.idols.mano?.stats.trust.exp).toBe(1);
     expect(next.idols.hiori?.stats.trust.exp).toBe(1);
-    expect(next.lastResult).toContain('风野灯织');
+
+    // 选择后进入对话，参与者带上。
+    expect(next.pendingDialogueId).toBe('dialogue.pair.mano_hiori');
+    expect(next.pendingDialogueCast).toEqual(['mano', 'hiori']);
+
+    const firstNode = getDialogueNode(next)!;
+    expect(getDialogueText(next, firstNode)).toContain('樱木真乃');
+
+    // 走完对话回到事件结果，并沿用这次选择的结果文案。
+    const secondNode = advanceDialogue(next);
+    const thirdNode = advanceDialogue(secondNode);
+    const done = advanceDialogue(thirdNode);
+    expect(done.pendingDialogueId).toBeUndefined();
+    expect(done.pendingDialogueCast).toBeUndefined();
+    expect(done.phase).toBe('eventResult');
+    expect(done.lastResult).toContain('这顿饭吃得很慢');
   });
 
   it('picks two random participants for a generic pair scene', () => {

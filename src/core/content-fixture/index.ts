@@ -66,6 +66,7 @@ import staminaDrill from './events/producer/staminaDrill';
 import pairManoHiori from './events/pairs/manoHiori';
 import pairManoMeguru from './events/pairs/manoMeguru';
 import pairGenericRest from './events/pairs/genericRest';
+import { PAIR_MANO_HIORI } from './dialogues/pairs/manoHiori';
 
 export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, advancedVocal, advancedDance, cafeLunch, groupGreeting, demoRecording, photoShoot, coverShoot, groupTraining];
 
@@ -73,7 +74,7 @@ export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia
 
 export const JOBS = [...BASE_JOBS, ...APPROVED_JOBS];
 
-export const DIALOGUES = [...HIORI_DIALOGUES, ...MEGURU_DIALOGUES];
+export const DIALOGUES = [PAIR_MANO_HIORI, ...HIORI_DIALOGUES, ...MEGURU_DIALOGUES];
 
 export const STORY_CHAIN_DEFS = STORY_CHAINS;
 

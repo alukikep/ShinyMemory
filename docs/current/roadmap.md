@@ -68,7 +68,7 @@ Hiori/Meguru 只存在于 `content-fixture`，用于多偶像架构回归，不�
 ### 当前验收
 
 ```text
-188 个 Vitest 测试
+191 个 Vitest 测试
 11 条引擎 E2E
 3 条内容 fixture E2E
 1 条正式序章 E2E
@@ -144,6 +144,7 @@ fixture build
 - ✅ 多目标行动（`all-present-idols`、`pendingResults`、fixture `group_greeting`）
 - ✅ 统一属性（`AttributeRef`、`terms` + `combine`、制作人摄影、存档 14）
 - ✅ 验收（fixture `demo_recording` / `photo_shoot` / `cover_shoot` 覆盖三种形态）
+- ✅ 制作人体能属性（体力上限 100–250、消耗倍率 1.00–0.80、测试事件验证）
 
 这一阶段不做正式内容，只做引擎能力。剩余可选项在计划的 P4。
 
@@ -239,6 +240,7 @@ WING 竞赛系统
 | 2026-10-28 | v0.9 | P1 完成：`all-present-idols` 多目标行动、`pendingResults`、fixture `group_greeting` |
 | 2026-10-28 | v1.0 | P2 完成：`AttributeRef` 统一属性、`terms` + `combine`、制作人摄影、存档 14 |
 | 2026-10-28 | v1.1 | P3 完成：三种工作形态的 fixture 回归；统一属性计划全部收尾 |
+| 2026-10-28 | v1.2 | 制作人面板独立；体能属性接入体力上限与消耗倍率；多目标制作人 EXP 只结算一次 |
 
 ## 8. 文档位置
 

@@ -16,6 +16,7 @@ export const STAT_LABELS: Record<StatKey, string> = {
 
 export const PRODUCER_STAT_LABELS: Record<ProducerStatKey, string> = {
   photography: '摄影',
+  stamina: '体能',
 };
 
 export const STAT_MAX: Record<SharedStatKey, number> = {

@@ -5,6 +5,7 @@ import {
 } from './config';
 import {
   activityAvailability,
+  activityStaminaCost,
   activityTargets,
   advanceTime,
   applyActivity,
@@ -18,6 +19,7 @@ import {
   getActor,
   handleAction,
   handleCommand,
+  maxStamina,
   moveTo,
   newGame,
   presentActors,
@@ -29,6 +31,7 @@ import {
   workRiskPreview,
 } from './sim';
 import { formatClock, getDay } from './time';
+import type { ActivityDef } from './types';
 
 describe('raising sim core', () => {
   it('starts on day 1 at 08:00 with the expected numbers', () => {
@@ -963,5 +966,63 @@ describe('raising sim core', () => {
     );
     expect(risk.ref).toEqual({ scope: 'producer', key: 'photography' });
     expect(risk.gap).toBe(1);
+  });
+
+  it('levels producer stamina from the test event and raises the cap', () => {
+    const state = newGame(1);
+    state.flags.test_producer_drill = true;
+    state.phase = 'event';
+    state.pendingEventId = 'evt.producer_stamina_drill';
+    state.producer.stamina.exp = 15;
+
+    const next = applyEventChoice(state, 0);
+
+    expect(next.producer.stamina.rank).toBe('E');
+    expect(next.producer.stamina.exp).toBe(0);
+    expect(maxStamina(next)).toBe(125);
+    expect(maxStamina(state)).toBe(100);
+  });
+
+  it('applies the producer stamina multiplier to activity cost', () => {
+    const state = travelTo(newGame(1), 'practice_room');
+    const vocal = getActivity('vocal')!;
+
+    expect(activityStaminaCost(state, vocal)).toBe(15);
+
+    state.producer.stamina.rank = 'B';
+    expect(activityStaminaCost(state, vocal)).toBe(14);
+    expect(activityAvailability(state, vocal).ok).toBe(true);
+  });
+
+  it('settles producer effects once for multi-target actions', () => {
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    state.idols.hiori!.status = 'recruited';
+    const drill: ActivityDef = {
+      id: 'test_group_drill',
+      name: '集体体能',
+      description: '测试用',
+      kind: 'bond',
+      target: 'all-present-idols',
+      locations: ['practice_room'],
+      durationMinutes: 30,
+      cost: {},
+      effects: [
+        { kind: 'attributeExp', ref: 'trust', tier: 1 },
+        {
+          kind: 'attributeExp',
+          ref: { scope: 'producer', key: 'stamina' },
+          tier: 5,
+        },
+      ],
+      resultTexts: ['一起练完，谁都没有先走。'],
+    };
+
+    const next = applyActivityDef(state, drill);
+
+    // 偶像效果按人各一份。
+    expect(next.idols.mano?.stats.trust.exp).toBe(1);
+    expect(next.idols.hiori?.stats.trust.exp).toBe(1);
+    // 制作人效果只结算一次。
+    expect(next.producer.stamina.exp).toBe(5);
   });
 });

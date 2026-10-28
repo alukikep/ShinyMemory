@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { RANK_CURVE } from '../../core/growth';
 import { PRODUCER_STAT_LABELS } from '../../core/labels';
-import { PRODUCER_STAT_KEYS } from '../../core/producer';
+import {
+  PRODUCER_STAT_KEYS,
+  staminaCapForRank,
+  staminaCostMultiplierForRank,
+} from '../../core/producer';
 import type { GameState } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 import { GameIcon } from './GameIcon';
@@ -87,13 +91,18 @@ export function ProducerPanel({ state, onClose }: ProducerPanelProps) {
                 <div className="bar">
                   <div className="bar-fill" style={{ width: `${percent}%` }} />
                 </div>
+                <p className="producer-detail-line">
+                  {key === 'stamina'
+                    ? `体力上限 ${staminaCapForRank(attribute.rank)} · 行动消耗 ×${staminaCostMultiplierForRank(attribute.rank).toFixed(2)}`
+                    : '工作收入倍率 ×1.0 – ×1.5'}
+                </p>
               </article>
             );
           })}
         </div>
 
         <p className="producer-note">
-          影响工作收入倍率 ×1.0 – ×1.5。只吃制作人属性的工作（例如摄影）完全由这里决定。
+          属性对所有偶像全局生效。体能决定体力上限与行动消耗倍率，摄影决定只吃制作人属性的工作收入。
         </p>
       </section>
     </div>

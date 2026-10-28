@@ -18,7 +18,7 @@ import {
   sameOrHigherRank,
 } from './growth';
 import { STAT_LABELS, STAT_MAX, attributeLabel } from './labels';
-import { createInitialProducerStats } from './producer';
+import { createInitialProducerStats, staminaCapForRank, staminaCostMultiplierForRank, PRODUCER_STAT_KEYS } from './producer';
 import { Rng } from './rng';
 import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, isMinuteInWindow } from './time';
 import { canReplaceDay, getScheduleSlot } from './schedule';
@@ -60,10 +60,37 @@ function clone(state: GameState): GameState {
   return structuredClone(state);
 }
 
+/** 体力上限由制作人体能属性推导，不进存档。 */
+export function maxStamina(state: GameState): number {
+  return staminaCapForRank(state.producer.stamina.rank);
+}
+
+export function staminaCostMultiplier(state: GameState): number {
+  return staminaCostMultiplierForRank(state.producer.stamina.rank);
+}
+
+/** 行动实际消耗的体力：基础值 × 制作人体能倍率，向上取整且至少 1。 */
+export function activityStaminaCost(
+  state: GameState,
+  activity: ActivityDef,
+): number {
+  const base = activity.cost.stamina ?? 0;
+  if (base <= 0) return 0;
+  return Math.max(1, Math.ceil(base * staminaCostMultiplier(state)));
+}
+
+/** 行动的实际消耗。判定、扣除、界面预告都必须走这里。 */
+export function activityCost(state: GameState, activity: ActivityDef): Cost {
+  return {
+    money: activity.cost.money,
+    stamina: activityStaminaCost(state, activity),
+  };
+}
+
 function clampState(state: GameState): void {
   state.shared.stamina = Math.max(
     0,
-    Math.min(STAT_MAX.stamina, state.shared.stamina),
+    Math.min(maxStamina(state), state.shared.stamina),
   );
   state.shared.stress = Math.max(
     0,
@@ -1008,7 +1035,7 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
     'dance',
     'expression',
     'trust',
-    'producer:photography',
+    ...PRODUCER_STAT_KEYS.map((key) => `producer:${key}`),
   ];
   for (const key of expOrder) {
     const entry = exp.get(key);
@@ -1100,12 +1127,13 @@ export function activityAvailability(
     }
   }
 
+  const staminaCost = activityStaminaCost(state, activity);
   const reasons: string[] = [];
   if (activity.cost.money && state.money < activity.cost.money) {
     reasons.push(`金钱不足（需要 ¥${activity.cost.money}）`);
   }
-  if (activity.cost.stamina && state.shared.stamina < activity.cost.stamina) {
-    reasons.push(`体力不足（需要 ${activity.cost.stamina}）`);
+  if (staminaCost > 0 && state.shared.stamina < staminaCost) {
+    reasons.push(`体力不足（需要 ${staminaCost}）`);
   }
   if (reasons.length > 0) {
     return { ok: false, display: 'disable', reason: reasons.join('；') };
@@ -1353,6 +1381,14 @@ function pickActivityResult(
   return variant?.text ?? rng.pick(activity.resultTexts);
 }
 
+/** 制作人属性效果是全局的，多目标时不能按偶像重复结算。 */
+function isProducerAttributeEffect(effect: Effect): boolean {
+  return (
+    effect.kind === 'attributeExp' &&
+    normalizeAttributeRef(effect.ref).scope === 'producer'
+  );
+}
+
 export function applyActivity(
   state: GameState,
   activityId: string,
@@ -1384,7 +1420,7 @@ export function applyActivityDef(
     const minutes = target - current;
     const hours = minutes / 60;
     const staminaGain = Math.min(
-      STAT_MAX.stamina - next.shared.stamina,
+      maxStamina(next) - next.shared.stamina,
       Math.round(hours * 10),
     );
 
@@ -1413,8 +1449,19 @@ export function applyActivityDef(
       ? activityTargets(state, activity)
       : [idolId];
 
-  next.money -= activity.cost.money ?? 0;
-  next.shared.stamina -= activity.cost.stamina ?? 0;
+  const cost = activityCost(state, activity);
+  next.money -= cost.money ?? 0;
+  next.shared.stamina -= cost.stamina ?? 0;
+
+  // 制作人属性是全局的：多目标时只在循环外结算一次，避免按人数翻倍。
+  const producerEffects =
+    resolvedTargets.length > 1
+      ? activity.effects.filter(isProducerAttributeEffect)
+      : [];
+  const perTargetEffects =
+    producerEffects.length > 0
+      ? activity.effects.filter((effect) => !isProducerAttributeEffect(effect))
+      : activity.effects;
 
   const outcomes = resolvedTargets.map((targetId) => {
     const risk =
@@ -1422,7 +1469,7 @@ export function applyActivityDef(
         ? workRiskPreview(next, activity.workRisk, activity.workReward, targetId)
         : undefined;
     const failed = !!risk && risk.chance > 0 && rng.next() < risk.chance;
-    applyEffects(next, activity.effects, {
+    applyEffects(next, perTargetEffects, {
       training: activity.kind === 'training',
       stressed,
       idolId: targetId,
@@ -1438,6 +1485,7 @@ export function applyActivityDef(
       rewardMoney: reward ? reward.money : undefined,
     };
   });
+  if (producerEffects.length > 0) applyEffects(next, producerEffects, {});
   clampState(next);
 
   next.actionsTaken += 1;

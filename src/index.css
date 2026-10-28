@@ -590,6 +590,13 @@ button:focus-visible,
   padding: 12px 14px;
 }
 
+.producer-detail-line {
+  margin: 8px 0 0;
+  color: var(--faint);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
 .producer-note {
   margin: 16px 0 0;
   color: var(--faint);

@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
-import { getSelectedIdol, isSelectedIdolRecruited } from '../../core/sim';
+import { getSelectedIdol, isSelectedIdolRecruited, maxStamina } from '../../core/sim';
 import { STAT_LABELS, STAT_MAX } from '../../core/labels';
 import type {
   GameState,
@@ -28,11 +28,12 @@ const IDOL_ICONS: Record<IdolStatKey, string> = {
 function StatRow({
   statKey,
   value,
+  max,
 }: {
   statKey: SharedStatKey;
   value: number;
+  max: number;
 }) {
-  const max = STAT_MAX[statKey];
   const percent = Math.max(0, Math.min(100, (value / max) * 100));
 
   return (
@@ -42,7 +43,10 @@ function StatRow({
           <GameIcon name={SHARED_ICONS[statKey]} size={12} />
           {STAT_LABELS[statKey]}
         </span>
-        <span className="stat-value">{Math.round(value)}</span>
+        <span className="stat-value">
+          {Math.round(value)}
+          <small> / {max}</small>
+        </span>
       </div>
       <div className="bar">
         <div className="bar-fill" style={{ width: `${percent}%` }} />
@@ -102,7 +106,12 @@ export function StatsPanel({
       <p className="stat-group-label">共享状态</p>
       <div className="stat-list shared-stat-list">
         {SHARED_ORDER.map((key) => (
-          <StatRow key={key} statKey={key} value={state.shared[key]} />
+          <StatRow
+            key={key}
+            statKey={key}
+            value={state.shared[key]}
+            max={key === 'stamina' ? maxStamina(state) : STAT_MAX[key]}
+          />
         ))}
       </div>
 

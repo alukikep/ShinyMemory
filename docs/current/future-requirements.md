@@ -95,6 +95,33 @@ type WorkReward = {
 - `WorkRisk.ref` 变为可选。
 - 省略时对全部 `terms` 各自算 gap，取最差，短板决定失败率。
 
+### 制作人体能属性
+
+已实现，链路可用；**正式内容暂不产出制作人 EXP**，先用测试事件验证。
+
+| Rank | 体力上限 | 消耗倍率 |
+|---|---:|---:|
+| F | 100 | 1.00 |
+| E | 125 | 1.00 |
+| D | 150 | 0.95 |
+| C | 175 | 0.95 |
+| B | 200 | 0.90 |
+| A | 225 | 0.85 |
+| S | 250 | 0.80 |
+
+规则：
+
+- 体力上限由体能 rank 推导（`maxStamina(state)`），不进存档。
+- 行动消耗 = `max(1, ceil(基础消耗 × 倍率))`。
+- 判定、扣除、结果页预告都走 `activityCost(state, activity)`，不允许各处直接读 `activity.cost.stamina`。
+- 倍率只作用于 `cost.stamina`，不修改 `effect` 里 `sharedStat` 的数值。
+- 多目标行动中，制作人属性效果只在循环外结算一次。
+
+测试：
+
+- fixture 事件 `evt.producer_stamina_drill`，用 flag `test_producer_drill` 门控，正常游玩不会触发。
+- 覆盖 EXP → rank → 体力上限、消耗倍率、多目标只结算一次三条链路。
+
 ## 3. 「当前偶像」字段
 
 已收敛为单一 `selectedIdolId`（P0 已完成）：

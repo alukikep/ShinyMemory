@@ -12,6 +12,7 @@ import {
 import { canReplaceDay } from './schedule';
 import {
   activityAvailability,
+  activityCost,
   activeJobFor,
   checkCondition,
   effectSummary,
@@ -157,7 +158,7 @@ function activityActionView(
     activity.kind === 'sleep'
       ? '睡到早上 8 点'
       : formatDuration(activity.durationMinutes);
-  const effects = effectSummary(activity.effects, activity.cost);
+  const effects = effectSummary(activity.effects, activityCost(state, activity));
   const reward =
     activity.workReward && idolId
       ? workRewardSummary(state, activity.workReward, idolId)
@@ -371,14 +372,17 @@ function buildActivityResult(state: GameState): SceneView {
     }
     if ((state.pendingResults?.length ?? 0) > 1) {
       // 多目标：消耗只结算一次，效果按偶像各算一份。
-      const costText = effectSummary([], activity.cost);
+      const costText = effectSummary([], activityCost(state, activity));
       if (costText) blocks.push({ kind: 'system', text: costText });
       const effectText = effectSummary(activity.effects);
       if (effectText) {
         blocks.push({ kind: 'system', text: `每人：${effectText}` });
       }
     } else {
-      const effects = effectSummary(activity.effects, activity.cost);
+      const effects = effectSummary(
+        activity.effects,
+        activityCost(state, activity),
+      );
       if (effects) {
         blocks.push({ kind: 'system', text: effects });
       }

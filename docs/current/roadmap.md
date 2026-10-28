@@ -178,7 +178,7 @@ fixture build
 
 配套要补的引擎能力（决定“能不能随便加任务”）：
 
-- `StoryChainDef.revealWhen` / `requires`、`StoryChainStep.when` / `effects`
+- `StoryChainDef.revealWhen`、`StoryChainStep.when` / `effects`（不引入 `requires`，与 `when` 重复）
 - `getEligibleStories` 返回全部候选，而不是只留 priority 最高的那一条（否则第二条同地点链会静默消失）
 - 补 `moneyAtLeast` / `idolStatus` / `hasItem` 三个 `Condition`（现有 16 种里一个都写不出“攒够钱再去”）
 

@@ -17,9 +17,10 @@
 | D5 | 存档 | 零改动；**不做已读状态**，侧栏用派生数字角标 | 我 |
 | D6 | 界面形态 | 扁平“接下来”列表，不做三天网格日程表 | 我 |
 | D7 | 未知占位 | 不做 `？？？`，条目出现即完整 | 我 |
-| D8 | 文案口径 | 第一人称手记，禁止“任务：前往…”式语言 | 我 |
-| D9 | 引擎扩展 | `requires` / `revealWhen` / `when` / `effects` + 多链并存 + 3 个新 `Condition` | 我 |
-| D10 | 第一”步”是否可见 | 默认隐藏；内容显式给 `revealWhen` 才可见 | 我 |
+| D8 | 文案口径 | 第一人称手记；`blocked` 显示**派生的具体原因**，不留白 | 你 |
+| D9 | 引擎扩展 | `revealWhen` / `when` / `effects` + 多链并存 + 3 个新 `Condition`（**不引入 `requires`**） | 我 |
+| D10 | 第一步是否可见 | 默认隐藏；内容显式给 `revealWhen` 才可见 | 我 |
+| D11 | 手册入口 | 常驻侧栏，不作为物品、不设获得门槛 | 你 |
 
 ## 1. 为什么现在做
 
@@ -73,6 +74,8 @@ export type HandbookEntryView = {
   status: HandbookStatus;
   locationName: string;
   timeWindowText: string;     // '10:00–18:00'
+  /** 仅 blocked 时有值，由 describeCondition 派生。 */
+  reason?: string;
   earliestDay?: number;       // chainState.nextEligibleDay
   daysLeft?: number;          // 相对当前天
   steps: { label: string; done: boolean; current: boolean }[];
@@ -88,7 +91,6 @@ export function buildHandbook(state: GameState): HandbookEntryView[];
 ```text
 可见 = state.storyChains[chain.id] 存在
      ∨ chain.revealWhen 全部满足
-且（无记录时）chain.requires 全部满足
 ```
 
 `getEligibleStory` 只读不建，`finishDialogue` 才写入，所以有记录等价于“第一步已经走过”。未相遇的偶像天然没有记录，手册是空的，不需要额外判 `idol.status`。
@@ -101,14 +103,16 @@ export function buildHandbook(state: GameState): HandbookEntryView[];
 1. chainState.completed                    → done
 2. pendingDialogueId ∨ flags.forced_rest   → blocked（"现在不行。"）
 3. day < nextEligibleDay                   → waiting（"还有 N 天"）
-4. step.when 不满足                        → blocked（"还不到时候。"）
+4. step.when 不满足                        → blocked（派生原因，见 2.5）
 5. 不在 step.timeWindow                    → off-hours（"明天 10:00 之后"）
 6. 否则                                     → available（"现在可以去"）
 ```
 
 第 2 步是把 `getEligibleStory` 里的短路（`sim.ts:837`）镜像过来，否则会出现“手册说可以去、地点页没有行动”。第 4 步是 `blocked` 而不是藏起来：链已经存在，藏起来玩家会以为它消失了。
 
-`blocked` 的文案固定两句，不给内容加字段时间。理由见 D4：条目文本必须完全可派生，一旦允许内容写“条件未满足时显示什么”，投影的承诺就破了。
+`waiting` 压过 `blocked`：时间没到时先告诉玩家“还有几天”，到了再暴露真正的门槛。一次只给一个“当前最近的阻碍”，不给清单。
+
+`blocked` 的文案见 2.5——**必须说清差什么**，否则玩家会卡在这里反复试。文字全部从 `Condition` 派生，不给内容加字段时间，D4 的承诺（条目完全可派生）不受影响。
 
 不设 `expired`：引擎本身不会让步骤过期，`nextEligibleDay` 只约束“最早”，过了就一直是可触发。手册不能比引擎更严格。
 
@@ -133,11 +137,12 @@ export function buildHandbook(state: GameState): HandbookEntryView[];
 要点：
 
 - 进行中按“最早可行动日”升序；`available` 永远排最前。
+- `blocked` 把原因接在同一行末尾：`公园 · 10:00–18:00 · 还差 ¥1,200`。不做折叠、不做悬浮提示，原因必须一眼看到。
 - 归档按偶像分组，默认折叠，不参与排序。归档无限增长也不影响主视图。
 - **不做“有新条目”的小圆点**。`waiting → available` 是时间自然流逝造成的，没有引擎事件；要判断“上次看到的是什么”就必须存快照，就得加 `GameState` 字段 + 迁移。数字角标是派生值，永远准，而且零成本。
 - 空状态不写引导语，写“还没有值得记下的事。”
 
-### 2.4 v0 需要的新内容字段
+### 2.4 v0 需要的两个新内容字段
 
 ```ts
 export type StoryChainDef = {
@@ -146,17 +151,47 @@ export type StoryChainDef = {
   priority?: number;
   /** 手册条目标题；缺省回退到「偶像名 · 首步标签」。 */
   title?: string;
-  /** 链尚未启动时，满足这些条件就允许出现在手册里。 */
+  /** 链尚未启动时，满足它就允许出现在手册里。默认要求已有存档记录。 */
   revealWhen?: Condition[];
-  /** 链的入场门。只在没有存档记录时检查一次。 */
-  requires?: Condition[];
   steps: StoryChainStep[];
 };
 ```
 
-三个字段都可选，现有 `mano-encounter` 不改也能跑。但真乃那条链建议补 `title: '公园的歌声'`——`actionLabel`（“循着歌声”）在第一步做完之后就过时了，不适合当条目标题。
+两个字段都可选，现有 `mano-encounter` 不改也能跑。但真乃那条链建议补 `title: '公园的歌声'`——`actionLabel`（“循着歌声”）在第一步做完之后就过时了，不适合当条目标题。
 
-`revealWhen` 存在的意义：默认规则是“走完第一步才进手册”，那对相遇型剧情是对的（第一次见面必须靠探索），对**已告知的任务**是错的（社长交代的事应该立刻记下来）。给内容一个开关注的开关，比改全局默认规则安全。
+`revealWhen` 存在的意义：默认规则是“走完第一步才进手册”，那对相遇型剧情是对的（第一次见面必须靠探索），对**已告知的任务**是错的（社长交代的事应该立刻记下来，哪怕现在还做不了）。给内容一个开关注的开关，比改全局默认规则安全。
+
+### 2.5 `blocked` 的原因文案
+
+`blocked` 必须说清差什么，否则玩家会卡在这里反复试。文案不手写，从当前步的 `when` 派生：
+
+```ts
+// src/core/handbook.ts
+export function describeCondition(
+  condition: Condition,
+  state: GameState,
+): string | undefined;
+```
+
+返回 `undefined` 表示这条条件无法翻译成人话，交给调用方回退。
+
+| 条件 | 文案 | 说明 |
+|---|---|---|
+| `moneyAtLeast` | `还差 ¥1,200` | 用当前钱算差额，不给总额 |
+| `idolStatus` | `还得先正式认识她` / `得先让她加入` | 按目标状态选词 |
+| `hasItem` | `还缺 生日礼物 ×1` | 用物品显示名，不用 id |
+| `attributeAtLeast` | `歌唱还得练到 D` | 复用 `attributeLabel` |
+| `atLocation` | `得回事务所一趟` | |
+| `timeWindow` / `dayAtLeast` | `过两天再说` | 时间类不给精确数字 |
+| 其余（`flag` / `sharedStat*` / `castPresent` / 组合条件） | `undefined` | 不猜语义 |
+
+规则：
+
+- 最多显示 **2 条**，`、` 连接，其余折叠成“等 N 项”。
+- 全部返回 `undefined` 时回退到固定句 `还不到时候。`
+- **泄露护栏**：条件里引用的偶像若还不是 `known` / `recruited`，整条原因降级为回退文案，绝不能出现名字。
+- 短句、不带主语、不加句末标点，和手记里其他行同一个语气。
+- `describeCondition` 与 `checkCondition` 吃的是**同一个 `Condition` 对象**，不另写一套判断。新增条件类型时忘了写文案只会退化成通用句，不会显示错误原因。
 
 ## 3. 顺手要补的引擎能力
 
@@ -181,9 +216,13 @@ if (step.when && !step.when.every((c) =>
   checkCondition(c, state, { idolId: chain.idolId }))) continue;
 ```
 
-**b. `StoryChainDef.requires?: Condition[]`**——**入场门，只在没有存档记录时检查一次**，不是持续生效。
+**b. `StoryChainDef.revealWhen?: Condition[]`**——手册可见性开关，只在链还没有存档记录时起作用。
 
-这条必须写死：如果持续判定，一条已经进行中的链会因为“钱花掉了”而从地点页和手册里同时消失，玩家丢线索。进行中的链只会被 `when` 挡住，不会被 `requires` 撤掉。
+默认规则是“走完第一步才进手册”，这对相遇型剧情是对的（第一次见面要靠探索），对已告知的任务是错的（社长交代的事应该立刻记下来，哪怕现在还做不了）。
+
+**明确不引入 `requires`。** 早先设想过一个“整条链的入场门”，但它和第一步的 `when` 语义重复：一旦把 `requires` 设计成持续生效，进行中的链会因为“钱花掉了”而从地点页和手册同时消失，玩家丢线索；设计成只在入场时检查，那它就和 `steps[0].when` 完全等价。少一个字段，少一处歧义。
+
+需要“招募之后才出现”的链，写 `revealWhen: [{ kind: 'idolStatus', idolId: 'mano', status: 'known' }]`；需要“招募之后才能做但先记账”的链，写 `revealWhen`（宽松）+ 第一步 `when`（严格），手册会显示 `blocked` 并说清差什么。
 
 **c. `StoryChainStep.effects?: Effect[]`**——步骤完成时结算一次。`applyEffects` 已经存在，改动是 `finishDialogue` 里三行：
 
@@ -225,6 +264,7 @@ if (!best || (chain.priority ?? 0) > (best.chain.priority ?? 0)) best = { ... };
 | 并行编排、任意跳转 | 线性 `stepIndex` 足够，复杂编排用事件系统 |
 | 计数器任务（“完成 3 次舞蹈课”） | 需要新 `GameState.counters` + 新 `Effect` + 新 `Condition`，等真有这种内容再加 |
 | 任务失败/超时 | 当前设计没有失败态，加了会破坏“无压力”定位 |
+| `StoryChainDef.requires` | 与第一步 `when` 语义重复，见 3.2b |
 | 手写手册条目（`HandbookNoteDef`） | v1 再评估；v0 用投影已覆盖全部现有链 |
 
 ### 3.4 新增一条链的实际操作
@@ -232,7 +272,7 @@ if (!best || (chain.priority ?? 0) > (best.chain.priority ?? 0)) best = { ... };
 对**已有偶像**（这是唯一成立的形式，理由见 3.5）：
 
 ```text
-1. src/core/content/storyChains.ts   加一条 def（title / revealWhen / requires / when / effects 按需）
+1. src/core/content/storyChains.ts   加一条 def（title / revealWhen / when / effects 按需）
 2. src/core/content/dialogues/*.ts   加对话节点
 3. 手册条目                          不用写，投影自动出现
 4. npm test && npm run content:audit
@@ -244,7 +284,7 @@ if (!best || (chain.priority ?? 0) > (best.chain.priority ?? 0)) best = { ... };
 
 `src/core/content` 里只有 mano 一个偶像、一条链；灯织与巡只存在于冻结的 `src/core/content-fixture`。所以：
 
-- 多链撞车、`requires`、`when`、`effects` 全部用 **fixture** 验证（fixture 已有 `hiori-encounter` / `meguru-encounter` 两条链可复用）。
+- 多链撞车、`revealWhen`、`when`、`effects`、`describeCondition` 全部用 **fixture** 验证（fixture 已有 `hiori-encounter` / `meguru-encounter` 两条链可复用）。
 - production 只在 `mano-encounter` 上补一个 `title`。
 - **不在本轮引入第二个正式偶像**——那是完整的内容工作（立绘、日程、起始状态、canon 来源），不属于这个计划。
 
@@ -252,9 +292,9 @@ if (!best || (chain.priority ?? 0) > (best.chain.priority ?? 0)) best = { ... };
 
 | 阶段 | 内容 | 验收 |
 |---|---|---|
-| P0 | `handbook.ts` 投影 + 单测 | 五态判定按 2.2 的顺序命中；未启动偶像零条目；`revealWhen` 生效 |
-| P1 | `HandbookPanel.tsx` + 侧栏第 7 项 + 数字角标 + 归档分组 | 浏览器里看到进行中与归档；空状态文案正确 |
-| P2 | `requires` / `revealWhen` / `when` / `effects` + 多链并存 + 3 个条件 | fixture 两条同地点链同时出现在地点页与手册；旧 priority 断言改写 |
+| P0 | `handbook.ts` 投影 + `describeCondition` + 单测 | 五态判定按 2.2 的顺序命中；未启动偶像零条目；`revealWhen` 生效；`blocked` 说得出差什么 |
+| P1 | `HandbookPanel.tsx` + 侧栏第 7 项 + 数字角标 + 归档分组 | 浏览器里看到进行中与归档；`blocked` 行显示具体原因；空状态文案正确 |
+| P2 | `revealWhen` / `when` / `effects` + 多链并存 + 3 个条件 | fixture 两条同地点链同时出现在地点页与手册；旧 priority 断言改写 |
 | P3 | production `mano-encounter` 补 `title`；fixture 补一条带 `effects` 的链 | 完整序章 E2E 仍通过；新链在手册里状态正确 |
 
 P0/P1 是手册本体，P2/P3 是“随便加任务”的能力，可以分开上线。
@@ -262,7 +302,8 @@ P0/P1 是手册本体，P2/P3 是“随便加任务”的能力，可以分开�
 ## 5. 关键陷阱
 
 - **两根轴打架**：状态判定必须按 2.2 的顺序短路，尤其是 `blocked` 要压过 `available`。地点页有行动而手册说“还不到时候”，或反过来，都是 bug。
-- **`requires` 不能持续判定**：见 3.2b。进行中的链消失比链没出现更伤人。
+- **原因说错比不说更糟**：`describeCondition` 必须和 `checkCondition` 吃同一个 `Condition` 对象。另写一套判断就会漂成“手册说还差钱、其实早就够了”。
+- **原因文案泄露**：见 2.5 的护栏。条件里引用的偶像还没有名字时，只能回退成通用句。
 - **多链撞车**：见 3.2d，不修就会静默吞内容。
 - **归档无限增长**：必须分组折叠，不要按时间平铺。
 - **文案漂移**：条目文字来自内容（`title`、`actionLabel`），不来自 UI 硬编码。加链的人负责文案，UI 只负责排版。
@@ -275,7 +316,10 @@ P0/P1 是手册本体，P2/P3 是“随便加任务”的能力，可以分开�
 Vitest
   · buildHandbook 五态判定（含 2.2 的短路顺序）
   · 未启动偶像零条目；revealWhen 满足后出现
-  · requires 只在入场时检查：进行中链的 requires 变假后仍留在手册
+  · 进行中的链不会被 when 之外的因素撤下（无 requires 回归）
+  · blocked 时 describeCondition 给出正确差额/状态/物品名
+  · describeCondition 在不可翻译的条件上返回 undefined
+  · describeCondition 对未知名偶像不输出名字
   · 多链并存时两条都在列表里，按 priority 降序
   · completed 链进入归档、不占进行中
   · effects 只在步骤完成时结算一次

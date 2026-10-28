@@ -12,6 +12,7 @@ import { GameIcon } from './ui/components/GameIcon';
 import { IdolRoster } from './ui/components/IdolRoster';
 import { IdolSchedule } from './ui/components/IdolSchedule';
 import { LogPanel } from './ui/components/LogPanel';
+import { ProducerPanel } from './ui/components/ProducerPanel';
 import { ScenePanel } from './ui/components/ScenePanel';
 import { ShopModal } from './ui/components/ShopModal';
 import { StatsPanel } from './ui/components/StatsPanel';
@@ -48,6 +49,7 @@ export default function App() {
   const [rosterOpen, setRosterOpen] = useState(false);
   const [scheduleOpen, setScheduleOpen] = useState(false);
   const [backpackOpen, setBackpackOpen] = useState(false);
+  const [producerOpen, setProducerOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const [saveNotice, setSaveNotice] = useState<string | undefined>();
   const debug =
@@ -175,6 +177,14 @@ export default function App() {
             <GameIcon name="bag" size={17} />
             <span>背包</span>
           </button>
+          <button
+            type="button"
+            className="sidebar-nav-item"
+            onClick={() => setProducerOpen(true)}
+          >
+            <GameIcon name="star" size={17} />
+            <span>制作人</span>
+          </button>
           {scene.phase === 'plan' ? (
             <button
               type="button"
@@ -301,6 +311,10 @@ export default function App() {
             act({ type: 'giveGift', itemId, idolId })
           }
         />
+      ) : null}
+
+      {producerOpen ? (
+        <ProducerPanel state={state} onClose={() => setProducerOpen(false)} />
       ) : null}
 
       {shopOpen && shop ? (

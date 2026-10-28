@@ -1,8 +1,7 @@
 import type { CSSProperties } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { getSelectedIdol, isSelectedIdolRecruited } from '../../core/sim';
-import { PRODUCER_STAT_LABELS, STAT_LABELS, STAT_MAX } from '../../core/labels';
-import { PRODUCER_STAT_KEYS } from '../../core/producer';
+import { STAT_LABELS, STAT_MAX } from '../../core/labels';
 import type {
   GameState,
   HeroView,
@@ -146,28 +145,6 @@ export function StatsPanel({
       {state.flags.forced_rest ? (
         <p className="status-alert">她需要休息。</p>
       ) : null}
-
-      <p className="stat-group-label">制作人</p>
-      <div className="idol-rank-chips">
-        {PRODUCER_STAT_KEYS.map((key) => (
-          <div
-            className="rank-chip"
-            key={key}
-            title={`${PRODUCER_STAT_LABELS[key]} ${state.producer[key].rank} · ${state.producer[key].exp}`}
-          >
-            <span className="stat-name rank-chip-name">
-              <GameIcon name="star" size={11} />
-              {PRODUCER_STAT_LABELS[key]}
-            </span>
-            <strong>
-              {state.producer[key].rank}
-              {state.producer[key].rank === state.producer[key].maxRank ? (
-                <small>MAX</small>
-              ) : null}
-            </strong>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }

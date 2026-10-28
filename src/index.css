@@ -565,6 +565,38 @@ button:focus-visible,
   font-weight: 400;
 }
 
+.producer-panel {
+  width: min(460px, 100%);
+  max-height: min(72vh, 560px);
+}
+
+.producer-lead {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.producer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.producer-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fbfdfe;
+  padding: 12px 14px;
+}
+
+.producer-note {
+  margin: 16px 0 0;
+  color: var(--faint);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
 .stat-line {
   display: flex;
   align-items: baseline;

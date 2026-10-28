@@ -22,7 +22,7 @@
 - 审查台支持事件、工作、对话、剧情链的新建、编辑、批注、通过、打回、废弃和版本化
 - 自动存档（localStorage），侧边栏另提供独立手动存档槽；存档 v12 + 内容纪元，内容纪元不一致时旧存档直接失效
 - 调试面板：`?debug=1`，可看触发判定、强制事件、跳天
-- 自动验收：`npm run acceptance` 跑单元测试、fixture build、11 条引擎 E2E 和 3 条内容 E2E；`npm run acceptance:prologue` 跑正式内容序章/真乃 E2E
+- 自动验收：`npm run acceptance` 跑单元测试、fixture build、12 条引擎 E2E 和 3 条内容 E2E；`npm run acceptance:prologue` 跑正式内容序章/真乃 E2E
 - 无 AI、无美术；先验证“选择 → 耗时 → 结算 → 事件”的开放循环
 
 ## 运行
@@ -120,6 +120,7 @@ Vitest + Playwright
 - 需要偶像对象的行动不会出现在地点页。
 - 行动可以作用于所有在场偶像，体力/时间只结算一次。
 - 制作人属性（当前只有摄影）与偶像属性同一套 rank 结算，工作结果可以只吃一边、相加或相乘。
+- 制作人属性详情收在侧栏「制作人」按钮里。
 - 旧内容纪元存档会直接失效。
 - 没有结局、周付款、事务所考核或 WING 竞赛系统。
 
@@ -127,7 +128,7 @@ Vitest + Playwright
 
 ```text
 188 个 Vitest 测试
-11 条引擎 E2E
+12 条引擎 E2E
 3 条内容 fixture E2E
 1 条正式序章 E2E
 2 条审查 E2E

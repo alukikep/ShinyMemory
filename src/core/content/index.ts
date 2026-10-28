@@ -12,6 +12,8 @@ import { ACTORS } from './actors';
 import { IDOLS } from './idols';
 import { MANO_DIALOGUES } from './dialogues/mano';
 import { PROLOGUE_DIALOGUES } from './dialogues/prologue';
+import { RIFT_DIALOGUES } from './dialogues/rift';
+import { manoQuarrel } from './events/mano/quarrel';
 import { STORY_CHAINS } from './storyChains';
 import { STARTING_STATE } from './starting';
 import vocal from './activities/vocal';
@@ -32,7 +34,7 @@ export const ACTIVITIES: ActivityDef[] = [
   sleep,
 ];
 
-export const EVENTS: EventDef[] = [];
+export const EVENTS: EventDef[] = [manoQuarrel];
 
 export const JOBS: JobDef[] = [];
 
@@ -40,7 +42,11 @@ export const ITEMS: ItemDef[] = [];
 
 export const SHOPS: ShopDef[] = [];
 
-export const DIALOGUES = [...PROLOGUE_DIALOGUES, ...MANO_DIALOGUES];
+export const DIALOGUES = [
+  ...PROLOGUE_DIALOGUES,
+  ...MANO_DIALOGUES,
+  ...RIFT_DIALOGUES,
+];
 
 export const STORY_CHAIN_DEFS = STORY_CHAINS;
 

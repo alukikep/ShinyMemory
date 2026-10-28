@@ -68,7 +68,7 @@ Hiori/Meguru 只存在于 `content-fixture`，用于多偶像架构回归，不�
 ### 当前验收
 
 ```text
-177 个 Vitest 测试
+180 个 Vitest 测试
 11 条引擎 E2E
 3 条内容 fixture E2E
 1 条正式序章 E2E
@@ -143,7 +143,7 @@ fixture build
 进度：
 
 - ✅ 上下文整理（`selectedIdolId`、显式 `idolId`、`jobs` 必填、`STAT_MAX` 清理、存档 13）
-- ⬜ 多目标行动（`all-present-idols`）
+- ✅ 多目标行动（`all-present-idols`、`pendingResults`、fixture `group_greeting`）
 - ⬜ 统一属性（`terms` + `combine` + 制作人摄影）
 
 这一阶段不做正式内容，只做引擎能力。
@@ -237,6 +237,7 @@ WING 竞赛系统
 | 2026-10-27 | v0.6 | 正式内容重置为真乃单人；序章、相遇、手动存档、活动目标规则；文档归档重组 |
 | 2026-10-28 | v0.7 | 确认统一属性模型与 `terms` 结算；拆解 P0–P3 阶段；新增统一属性计划文档 |
 | 2026-10-28 | v0.8 | P0 完成：`selectedIdolId`、显式 `idolId`、`jobs` 必填、`STAT_MAX` 清理、存档 13 |
+| 2026-10-28 | v0.9 | P1 完成：`all-present-idols` 多目标行动、`pendingResults`、fixture `group_greeting` |
 
 ## 8. 文档位置
 

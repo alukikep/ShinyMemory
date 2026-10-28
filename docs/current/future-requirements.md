@@ -15,9 +15,11 @@
 
 已实现：
 
-- `ActivityDef.target?: 'none' | 'present-idol'`
+- `ActivityDef.target?: 'none' | 'present-idol' | 'all-present-idols'`
 - `free` 标记为 `present-idol`
+- `group_greeting`（fixture）标记为 `all-present-idols`
 - 地点页过滤 `present-idol` 活动
+- 偶像页过滤 `all-present-idols` 活动
 - 偶像互动页展示当前在场偶像的 `bond` 活动
 - 活动命令显式携带 `idolId`
 
@@ -51,6 +53,8 @@ target?: 'none' | 'present-idol' | 'all-present-idols' | 'selected-idol';
 - 每个在场偶像分别结算效果与结果文本。
 - 没有符合条件的在场偶像时，行动隐藏。
 - 实施结构采用“单目标核心 + 外层循环”。
+- 多目标行动不能带 `workReward` / `workRisk`（依赖单偶像的成败事件跳转）。
+- `sharedStat` 效果按偶像各算一份；`cost` 只扣一次。
 
 ## 2. 制作人属性
 

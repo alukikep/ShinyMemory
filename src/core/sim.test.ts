@@ -5,8 +5,10 @@ import {
 } from './config';
 import {
   activityAvailability,
+  activityTargets,
   advanceTime,
   applyActivity,
+  applyActivityDef,
   applyEventChoice,
   applyIdolExp,
   checkCondition,
@@ -477,6 +479,47 @@ describe('raising sim core', () => {
 
     expect(next.selectedIdolId).toBe(before);
     expect(next.idols.hiori?.stats.vocal.exp).toBe(3);
+  });
+
+  it('applies a multi-target action to everyone present', () => {
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    state.idols.hiori!.status = 'recruited';
+    const activity = getActivity('group_greeting')!;
+    const staminaBefore = state.shared.stamina;
+    const clockBefore = state.clock.absoluteMinutes;
+
+    expect(activityTargets(state, activity)).toEqual(['mano', 'hiori']);
+
+    const next = applyActivityDef(state, activity);
+
+    expect(next.idols.mano?.stats.trust.exp).toBe(1);
+    expect(next.idols.hiori?.stats.trust.exp).toBe(1);
+    expect(next.shared.stamina).toBe(staminaBefore - 5);
+    expect(next.clock.absoluteMinutes - clockBefore).toBe(30);
+    expect(next.pendingResults?.map((entry) => entry.idolId)).toEqual([
+      'mano',
+      'hiori',
+    ]);
+    expect(next.phase).toBe('activityResult');
+
+    const plan = buildScene(state);
+    expect(plan.actions.some((action) => action.id === 'group_greeting')).toBe(
+      true,
+    );
+
+    const scene = buildScene(next);
+    const text = scene.blocks.map((block) => block.text).join('\n');
+    expect(text).toContain('樱木真乃');
+    expect(text).toContain('风野灯织');
+  });
+
+  it('hides a multi-target action when nobody is present', () => {
+    const state = newGame(1);
+    const activity = getActivity('group_greeting')!;
+
+    expect(activityTargets(state, activity)).toEqual([]);
+    expect(activityAvailability(state, activity).ok).toBe(false);
+    expect(applyActivityDef(state, activity)).toBe(state);
   });
 
   it('applies event effects to the context idol', () => {

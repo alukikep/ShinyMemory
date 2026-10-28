@@ -162,6 +162,7 @@ export type GameState = {
   nextLogId: number;
   rng: { seed: number; counter: number };
   pendingActivityId?: string;
+  pendingResults?: ActivityResultEntry[];
   pendingEventId?: string;
   pendingEventIdolId?: string;
   pendingChainEventId?: string;
@@ -283,7 +284,12 @@ export type Availability =
       reason: string;
     };
 
-export type ActivityTarget = 'none' | 'present-idol';
+export type ActivityTarget = 'none' | 'present-idol' | 'all-present-idols';
+
+export type ActivityResultEntry = {
+  idolId: string;
+  text: string;
+};
 
 export type ActivityDef = {
   id: string;

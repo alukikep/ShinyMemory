@@ -141,7 +141,7 @@ DEFAULT_PRODUCER_MULTIPLIERS // 制作人  F 1.0 … S 1.5
 行为验收：
 
 ```text
-177 个 Vitest 全绿
+180 个 Vitest 全绿
 新游戏 → 序章 → 相遇 → 招募后，侧栏偶像不随行动跳变
 偶像页的可用性判定基于当前页面的偶像，而不是全局指针
 ```
@@ -152,26 +152,38 @@ DEFAULT_PRODUCER_MULTIPLIERS // 制作人  F 1.0 … S 1.5
 
 **顺带修正：** `applyEffects` 的 `idolExp` 效果现在要求显式偶像上下文，缺失即报错。事件和对话在无显式目标时回退到 `selectedIdolId`，并在代码里注明。`getIdol` 也去掉了「找不到就返回第一个偶像」的兜底，改为直接报错。
 
-### P1 · 多目标行动
+### P1 · 多目标行动 · 已完成
 
-- [ ] `ActivityTarget` 增加 `'all-present-idols'`
-- [ ] 拆出 `applyActivityToIdol(next, activity, idolId)`：只结算**单个偶像的效果、风险、结果文本**
-- [ ] `applyActivity(state, activityId, idolIds)`：克隆一次 → 扣一次体力/金钱 → 走一次时间 → 循环单目标核心 → 收尾
-- [ ] `activityAvailability` 支持多目标：没有符合条件的在场偶像时隐藏
-- [ ] `buildPlan` 允许 `all-present-idols` 的行动出现
-- [ ] `buildActivityResult` 支持多段结果（每个偶像一个 block）
-- [ ] `GameState` 增加 `pendingActivityIdolIds?: string[]`
-- [ ] `ActionCommand.activity` 的 `idolId` 保持可选：多目标行动不传
+- [x] `ActivityTarget` 增加 `'all-present-idols'`
+- [x] `activityTargets(state, activity, idolId?)` 解析目标列表
+- [x] `applyActivityDef(state, activity, idolId?)` 承载结算逻辑（可脱离内容表测试）
+- [x] `applyActivity()` 只做查表 + 转调
+- [x] 克隆一次 → 扣一次体力/金钱 → 走一次时间 → 按目标循环结算
+- [x] `activityAvailability` 支持多目标：没有在场偶像时隐藏
+- [x] `buildPlan` 允许 `all-present-idols` 的行动出现
+- [x] `buildActivityResult` 支持多段结果（每个偶像一个 block）
+- [x] `GameState` 增加 `pendingResults?: ActivityResultEntry[]`
+- [x] 偶像页不显示多目标行动
+- [x] fixture 增加 `group_greeting` 作为多目标回归
 
 关键约束：**体力、金钱、时间只扣一次**，只有效果和结果按偶像数量复制。
 
 验收：
 
 ```text
-fixture 中同一地点两名在场偶像，地点页一次行动对两人都生效
+同一地点两名在场偶像，地点页一次行动对两人都生效
 时间只前进一次，体力只扣一次
 偶像页的自由时间仍然只作用于当前偶像
 ```
+
+**偏差说明：**
+
+1. 计划里的 `applyActivityToIdol(next, activity, idolId)` 没有单独导出。结算循环需要共享同一份 `stamina` / `stressed` / RNG，拆成独立函数反而要把这些当参数传递。改为内部按目标 `map` 结算，并把入口拆成 `applyActivityDef`（逻辑）+ `applyActivity`（查表），测试价值相同。
+2. `pendingActivityIdolIds` 改为 `pendingResults: Array<{ idolId, text }>`。结果文本是随机抽取的，只存 id 无法在之后还原同一段叙事。
+
+**规则：多目标行动不能带工作结算。** `workReward` / `workRisk` 依赖单一偶像的失败/成功事件跳转，与多目标冲突。`activityAvailability` 会直接隐藏这类配置，`content.test.ts` 也有断言。
+
+**规则：`sharedStat` 效果按偶像各算一份。** 多目标行动的体力/压力增减会乘以人数；`cost` 只扣一次。结果页因此把消耗和「每人」效果分开显示。
 
 ### P2 · 统一属性
 

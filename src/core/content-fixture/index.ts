@@ -24,6 +24,7 @@ import sleep from './activities/sleep';
 import advancedVocal from './activities/advancedVocal';
 import advancedDance from './activities/advancedDance';
 import cafeLunch from './activities/cafeLunch';
+import groupGreeting from './activities/groupGreeting';
 import nightPractice from './events/locations/practice_room/nightPractice';
 import extraLesson from './events/training/extraLesson';
 import vocalStrain from './events/activities/training/vocalStrain';
@@ -58,7 +59,7 @@ import homeNote from './events/locations/home/homeNote';
 import parkPigeons from './events/locations/park/parkPigeons';
 import shoppingWindow from './events/locations/shoppingStreet/shoppingWindow';
 
-export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, advancedVocal, advancedDance, cafeLunch];
+export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, advancedVocal, advancedDance, cafeLunch, groupGreeting];
 
 export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, parkPigeons, shoppingWindow, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath, ...APPROVED_EVENTS];
 

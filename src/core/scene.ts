@@ -347,7 +347,14 @@ function buildActivityResult(state: GameState): SceneView {
     ? getActivity(state.pendingActivityId)
     : undefined;
   const blocks: TextBlock[] = [];
-  if (state.lastResult) blocks.push({ kind: 'p', text: state.lastResult });
+  if (state.pendingResults?.length) {
+    for (const entry of state.pendingResults) {
+      const name = CONTENT_INDEX.idols.get(entry.idolId)?.name ?? entry.idolId;
+      blocks.push({ kind: 'p', text: `${name}：${entry.text}` });
+    }
+  } else if (state.lastResult) {
+    blocks.push({ kind: 'p', text: state.lastResult });
+  }
   if (activity) {
     if (activity.kind === 'sleep') {
       blocks.push({
@@ -362,9 +369,19 @@ function buildActivityResult(state: GameState): SceneView {
         )}。`,
       });
     }
-    const effects = effectSummary(activity.effects, activity.cost);
-    if (effects) {
-      blocks.push({ kind: 'system', text: effects });
+    if ((state.pendingResults?.length ?? 0) > 1) {
+      // 多目标：消耗只结算一次，效果按偶像各算一份。
+      const costText = effectSummary([], activity.cost);
+      if (costText) blocks.push({ kind: 'system', text: costText });
+      const effectText = effectSummary(activity.effects);
+      if (effectText) {
+        blocks.push({ kind: 'system', text: `每人：${effectText}` });
+      }
+    } else {
+      const effects = effectSummary(activity.effects, activity.cost);
+      if (effects) {
+        blocks.push({ kind: 'system', text: effects });
+      }
     }
   }
   if (state.flags.forced_rest) {
@@ -576,9 +593,10 @@ function buildIdolPage(state: GameState): SceneView {
   )
     .filter(
       (activity) =>
-        activity.kind === 'training' ||
-        activity.kind === 'work' ||
-        activity.kind === 'bond',
+        activity.target !== 'all-present-idols' &&
+        (activity.kind === 'training' ||
+          activity.kind === 'work' ||
+          activity.kind === 'bond'),
     )
     .map((activity) => ({
       activity,

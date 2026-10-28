@@ -946,6 +946,22 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
   return parts.join(' · ');
 }
 
+export function activityTargets(
+  state: GameState,
+  activity: ActivityDef,
+  idolId?: string,
+): string[] {
+  if (activity.target === 'all-present-idols') {
+    return presentActors(state)
+      .filter((actor) => actor.role === 'idol')
+      .map((actor) => actor.id);
+  }
+  if (activity.target === 'present-idol') {
+    return idolId ? [idolId] : [];
+  }
+  return [];
+}
+
 export function activityAvailability(
   state: GameState,
   activity: ActivityDef,
@@ -981,6 +997,22 @@ export function activityAvailability(
         ok: false,
         display: 'hide',
         reason: '她不在这里',
+      };
+    }
+  }
+  if (activity.target === 'all-present-idols') {
+    if (activityTargets(state, activity).length === 0) {
+      return {
+        ok: false,
+        display: 'hide',
+        reason: '这里没有偶像',
+      };
+    }
+    if (activity.workReward || activity.workRisk) {
+      return {
+        ok: false,
+        display: 'hide',
+        reason: '多目标行动不能带工作结算',
       };
     }
   }
@@ -1240,11 +1272,20 @@ export function applyActivity(
 ): GameState {
   const activity = getActivity(activityId);
   if (!activity) return state;
+  return applyActivityDef(state, activity, idolId);
+}
+
+export function applyActivityDef(
+  state: GameState,
+  activity: ActivityDef,
+  idolId?: string,
+): GameState {
   if (!activityAvailability(state, activity, idolId).ok) return state;
 
   const next = clone(state);
   const rng = new Rng(next.rng.seed, next.rng.counter);
   const stressed = next.shared.stress >= 70;
+  next.pendingResults = undefined;
 
   if (activity.kind === 'sleep') {
     const current = next.clock.absoluteMinutes;
@@ -1278,24 +1319,37 @@ export function applyActivity(
     return slept;
   }
 
+  // 多目标行动解析成一份偶像列表；其余行动只结算显式传入的偶像。
+  const resolvedTargets: Array<string | undefined> =
+    activity.target === 'all-present-idols'
+      ? activityTargets(state, activity)
+      : [idolId];
+
   next.money -= activity.cost.money ?? 0;
   next.shared.stamina -= activity.cost.stamina ?? 0;
-  const risk =
-    activity.workRisk && idolId
-      ? workRiskPreview(next, activity.workRisk, idolId)
-      : undefined;
-  const failed =
-    !!risk && risk.chance > 0 && rng.next() < risk.chance;
-  applyEffects(next, activity.effects, {
-    training: activity.kind === 'training',
-    stressed,
-    idolId,
+
+  const outcomes = resolvedTargets.map((targetId) => {
+    const risk =
+      activity.workRisk && targetId
+        ? workRiskPreview(next, activity.workRisk, targetId)
+        : undefined;
+    const failed = !!risk && risk.chance > 0 && rng.next() < risk.chance;
+    applyEffects(next, activity.effects, {
+      training: activity.kind === 'training',
+      stressed,
+      idolId: targetId,
+    });
+    const reward =
+      !failed && activity.workReward && targetId
+        ? workRewardPreview(next, activity.workReward, targetId)
+        : undefined;
+    if (reward) next.money += reward.money;
+    return {
+      idolId: targetId,
+      failed,
+      rewardMoney: reward ? reward.money : undefined,
+    };
   });
-  const reward =
-    !failed && activity.workReward && idolId
-      ? workRewardPreview(next, activity.workReward, idolId)
-      : undefined;
-  if (reward) next.money += reward.money;
   clampState(next);
 
   next.actionsTaken += 1;
@@ -1305,13 +1359,15 @@ export function applyActivity(
   const advanced = advanceTime(next, activity.durationMinutes);
   advanced.rng.counter = rng.counter;
 
-  if (failed) {
+  const single = outcomes.length === 1 ? outcomes[0] : undefined;
+
+  if (single?.failed) {
     advanced.pendingActivityId = undefined;
-    advanced.pendingEventIdolId = idolId;
+    advanced.pendingEventIdolId = single.idolId;
     const failureEventId = activity.workRisk?.failureEventId;
     if (failureEventId) {
       advanced.pendingEventId = failureEventId;
-      advanced.pendingEventIdolId = idolId;
+      advanced.pendingEventIdolId = single.idolId;
       advanced.phase = 'event';
       advanced.lastResult = undefined;
       addLog(advanced, `${activity.name}：工作失败。`, 'bad');
@@ -1323,21 +1379,23 @@ export function applyActivity(
     return advanced;
   }
 
-  const successEventId = activity.workRisk?.successEventId;
-  if (successEventId && getEvent(successEventId)) {
-    advanced.pendingActivityId = undefined;
-    advanced.pendingEventId = successEventId;
-    advanced.pendingEventIdolId = idolId;
-    advanced.phase = 'event';
-    advanced.lastResult = undefined;
-    addLog(advanced, `${activity.name}：工作成功。`, 'good');
-    return advanced;
+  if (single) {
+    const successEventId = activity.workRisk?.successEventId;
+    if (successEventId && getEvent(successEventId)) {
+      advanced.pendingActivityId = undefined;
+      advanced.pendingEventId = successEventId;
+      advanced.pendingEventIdolId = single.idolId;
+      advanced.phase = 'event';
+      advanced.lastResult = undefined;
+      addLog(advanced, `${activity.name}：工作成功。`, 'good');
+      return advanced;
+    }
   }
 
-  const result = pickActivityResult(advanced, activity, rng);
-  advanced.lastResult = reward
-    ? `${result} 收入 ¥${reward.money}。`
-    : result;
+  const results = outcomes.map((outcome) => ({
+    idolId: outcome.idolId,
+    text: pickActivityResult(advanced, activity, rng),
+  }));
   advanced.rng.counter = rng.counter;
 
   const tone: LogTone =
@@ -1346,7 +1404,29 @@ export function applyActivity(
     activity.kind === 'explore'
       ? 'good'
       : 'info';
-  addLog(advanced, `${activity.name}：${advanced.lastResult}`, tone);
+
+  if (single) {
+    const result = results[0]?.text ?? '';
+    advanced.lastResult =
+      single.rewardMoney !== undefined
+        ? `${result} 收入 ¥${single.rewardMoney}。`
+        : result;
+    addLog(advanced, `${activity.name}：${advanced.lastResult}`, tone);
+    return advanced;
+  }
+
+  advanced.pendingResults = results.map((entry) => ({
+    idolId: entry.idolId ?? '',
+    text: entry.text,
+  }));
+  const names = results.map(
+    (entry) =>
+      CONTENT_INDEX.idols.get(entry.idolId ?? '')?.name ?? entry.idolId ?? '',
+  );
+  advanced.lastResult = results
+    .map((entry, index) => `${names[index]}：${entry.text}`)
+    .join('\n');
+  addLog(advanced, `${activity.name}：${names.join('、')}`, tone);
 
   return advanced;
 }

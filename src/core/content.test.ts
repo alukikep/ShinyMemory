@@ -163,6 +163,15 @@ describe('content integrity', () => {
     }
   });
 
+  it('keeps multi-target activities free of work settlement', () => {
+    for (const activity of ACTIVITIES) {
+      if (activity.target !== 'all-present-idols') continue;
+      expect(activity.workReward).toBeUndefined();
+      expect(activity.workRisk).toBeUndefined();
+      expect(activity.kind).not.toBe('work');
+    }
+  });
+
   it('validates work risk, outcome and chain event references', () => {
     for (const activity of ACTIVITIES) {
       if (!activity.workRisk) continue;

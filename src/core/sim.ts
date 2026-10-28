@@ -11,6 +11,7 @@ import {
   DEFAULT_PRODUCER_MULTIPLIERS,
   DEFAULT_REWARD_MULTIPLIERS,
   EXP_TIER_VALUES,
+  IDOL_STATUS_RANK,
   RANK_CURVE,
   nextRank,
   rankIndex,
@@ -1037,6 +1038,16 @@ export function checkCondition(
       return (state.actors[condition.actorId]?.affinity ?? 0) <= condition.value;
     case 'moneyAtMost':
       return state.money <= condition.value;
+    case 'moneyAtLeast':
+      return state.money >= condition.value;
+    case 'hasItem':
+      return (state.inventory[condition.itemId] ?? 0) >= (condition.count ?? 1);
+    case 'idolStatus': {
+      const idolId = condition.idolId ?? ctx.idolId ?? state.selectedIdolId;
+      const current = state.idols[idolId]?.status;
+      if (!current) return false;
+      return IDOL_STATUS_RANK[current] >= IDOL_STATUS_RANK[condition.status];
+    }
     case 'atLocation':
       return state.locationId === condition.locationId;
     case 'flag':

@@ -222,6 +222,10 @@ export type Condition =
   | { kind: 'npcAffinityAtLeast'; actorId: string; value: number }
   | { kind: 'npcAffinityAtMost'; actorId: string; value: number }
   | { kind: 'moneyAtMost'; value: number }
+  | { kind: 'moneyAtLeast'; value: number }
+  | { kind: 'hasItem'; itemId: string; count?: number }
+  /** `idolId` 省略时取上下文偶像；`recruited` 满足 `known` 的要求。 */
+  | { kind: 'idolStatus'; idolId?: string; status: IdolStatus }
   | { kind: 'atLocation'; locationId: string }
   | { kind: 'flag'; key: string; value?: boolean }
   | { kind: 'all'; of: Condition[] }

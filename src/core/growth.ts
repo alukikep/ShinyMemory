@@ -1,6 +1,13 @@
-import type { ExpTier, Rank } from './types';
+import type { ExpTier, IdolStatus, Rank } from './types';
 
 export const RANK_ORDER: Rank[] = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
+
+/** 偶像状态的偏序：recruited 满足 known 的要求。 */
+export const IDOL_STATUS_RANK: Record<IdolStatus, number> = {
+  unknown: 0,
+  known: 1,
+  recruited: 2,
+};
 
 export const RANK_CURVE: Record<Rank, number> = {
   F: 20,

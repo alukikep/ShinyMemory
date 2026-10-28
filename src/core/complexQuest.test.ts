@@ -24,13 +24,13 @@ function dialogue(id: string): DialogueDef {
 }
 
 const DIALOGUES = [
-  dialogue('dlg.rift.office'),
-  dialogue('dlg.rift.shop'),
-  dialogue('dlg.rift.park'),
+  dialogue('test.dlg.rift.office'),
+  dialogue('test.dlg.rift.shop'),
+  dialogue('test.dlg.rift.park'),
 ];
 
 const quarrel: EventDef = {
-  id: 'evt.mano_rift',
+  id: 'evt.test_mano_rift',
   title: '话说重了',
   when: [],
   after: { ids: ['vocal'] },
@@ -42,7 +42,7 @@ const quarrel: EventDef = {
     {
       label: '沉默',
       effects: [
-        { kind: 'flag', key: 'mano_rift', value: true },
+        { kind: 'flag', key: 'test_mano_rift', value: true },
         { kind: 'actorAffinity', actorId: 'mano', delta: -10 },
         {
           kind: 'scheduleOverride',
@@ -57,26 +57,26 @@ const quarrel: EventDef = {
 };
 
 const riftChain: StoryChainDef = {
-  id: 'mano-rift',
+  id: 'test.mano-rift',
   idolId: 'mano',
   priority: 20,
   title: '闹别扭的真乃',
-  revealWhen: [{ kind: 'flag', key: 'mano_rift' }],
+  revealWhen: [{ kind: 'flag', key: 'test_mano_rift' }],
   steps: [
     {
       id: 'rift-1',
       locationId: 'office',
       timeWindow: { fromMinute: 600, toMinute: 1080 },
-      dialogueId: 'dlg.rift.office',
+      dialogueId: 'test.dlg.rift.office',
       actionLabel: '和社长商量',
-      when: [{ kind: 'flag', key: 'mano_rift' }],
+      when: [{ kind: 'flag', key: 'test_mano_rift' }],
       complete: {},
     },
     {
       id: 'rift-2',
       locationId: 'shopping_street',
       timeWindow: { fromMinute: 600, toMinute: 1080 },
-      dialogueId: 'dlg.rift.shop',
+      dialogueId: 'test.dlg.rift.shop',
       actionLabel: '挑一束花',
       when: [{ kind: 'hasItem', itemId: 'gift.flower' }],
       effects: [
@@ -97,7 +97,7 @@ const riftChain: StoryChainDef = {
       id: 'rift-3',
       locationId: 'park',
       timeWindow: { fromMinute: 600, toMinute: 1080 },
-      dialogueId: 'dlg.rift.park',
+      dialogueId: 'test.dlg.rift.park',
       actionLabel: '在公园找她',
       when: [{ kind: 'castPresent', idolIds: ['mano'] }],
       complete: {},
@@ -146,7 +146,7 @@ function startQuarrel(state: State): State {
     lastActivityId: 'vocal',
     lastActivityKind: 'training',
   });
-  expect(result.event?.id).toBe('evt.mano_rift');
+  expect(result.event?.id).toBe('evt.test_mano_rift');
   return applyEventChoice(result.state, 1);
 }
 
@@ -159,7 +159,7 @@ describe('complex quest: a fall-out with Mano', () => {
     base.actors.mano!.affinity = 30;
     const state = startQuarrel(base);
 
-    expect(state.flags.mano_rift).toBe(true);
+    expect(state.flags.test_mano_rift).toBe(true);
     expect(state.actors.mano?.affinity).toBe(20);
 
     const mano = getActor('mano')!;
@@ -183,8 +183,8 @@ describe('complex quest: a fall-out with Mano', () => {
     const state = startQuarrel(newGame(1));
     const office = at(state, 1, 12 * 60, 'office');
 
-    const afterOffice = playDialogue(startStory(office, 'mano-rift'));
-    expect(afterOffice.storyChains['mano-rift']?.stepIndex).toBe(1);
+    const afterOffice = playDialogue(startStory(office, 'test.mano-rift'));
+    expect(afterOffice.storyChains['test.mano-rift']?.stepIndex).toBe(1);
 
     const shop = at(afterOffice, 1, 13 * 60, 'shopping_street');
     const blocked = buildHandbook(shop).active[0];
@@ -194,13 +194,13 @@ describe('complex quest: a fall-out with Mano', () => {
 
   it('waits two days, then finds her in the park', () => {
     let state = startQuarrel(newGame(1));
-    state = playDialogue(startStory(at(state, 1, 12 * 60, 'office'), 'mano-rift'));
+    state = playDialogue(startStory(at(state, 1, 12 * 60, 'office'), 'test.mano-rift'));
 
     state.inventory['gift.flower'] = 1;
     const shop = at(state, 1, 13 * 60, 'shopping_street');
-    state = playDialogue(startStory(shop, 'mano-rift'));
-    expect(state.storyChains['mano-rift']?.stepIndex).toBe(2);
-    expect(state.storyChains['mano-rift']?.nextEligibleDay).toBe(3);
+    state = playDialogue(startStory(shop, 'test.mano-rift'));
+    expect(state.storyChains['test.mano-rift']?.stepIndex).toBe(2);
+    expect(state.storyChains['test.mano-rift']?.nextEligibleDay).toBe(3);
 
     const waiting = buildHandbook(at(state, 2, 12 * 60, 'park')).active[0];
     expect(waiting.status).toBe('waiting');
@@ -211,8 +211,8 @@ describe('complex quest: a fall-out with Mano', () => {
     expect(isActorPresent(day3, mano)).toBe(true);
     expect(buildHandbook(day3).active[0]?.status).toBe('available');
 
-    state = playDialogue(startStory(day3, 'mano-rift'));
-    expect(state.storyChains['mano-rift']?.completed).toBe(true);
+    state = playDialogue(startStory(day3, 'test.mano-rift'));
+    expect(state.storyChains['test.mano-rift']?.completed).toBe(true);
     expect(buildHandbook(state).active).toHaveLength(0);
     expect(buildHandbook(state).archive).toHaveLength(1);
   });

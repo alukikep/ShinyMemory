@@ -339,16 +339,18 @@ Playwright
   · 完成链 → 从进行中消失、出现在归档
 
 内容体检
-  · StoryChainDef.title 缺省回退可读
-  · 两条链 (地点, 时间窗) 完全重叠且有优先级差 → warning
+  · 链条的 when / revealWhen 计入 flag 读写
+  · hasItem / atLocation / idolStatus / castPresent / npcAffinity* 的 id 引用
 ```
 
-## 7. 不在本轮
+调试面板（`?debug=1`）里能看到每条链卡在哪一步、差什么，对应 `getStoryTriggerReport`。
+
+## 7. 尚未做
 
 - 手写条目（`HandbookNoteDef`）与“传闻”采集机制
 - MM 式的 `？？？` 与三天网格日程
 - “有新条目”小圆点（需要存快照，破坏零存档改动）
-- 条目来源行（“第 3 天，公园得知”）——需要新状态，v0 用当前步骤代替
+- 条目来源行（“第 3 天，公园得知”）——需要新状态，目前用当前步骤代替
 - 手册与存档导出联动
 - 计数器型任务
-- 第二个正式偶像
+- 第二条链与第一条链 (地点, 时间窗) 完全重叠时的体检 warning（现在只是按 priority 排序，不会报）

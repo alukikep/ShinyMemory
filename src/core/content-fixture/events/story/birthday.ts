@@ -12,8 +12,8 @@ const card: EventDef = {
       effects: [
         { kind: 'money', delta: -500 },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {
@@ -28,8 +28,8 @@ const card: EventDef = {
       label: '说一句生日快乐',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {
@@ -43,8 +43,8 @@ const card: EventDef = {
     {
       label: '装作不知道',
       effects: [{
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3,
         "direction": "loss"
       }],

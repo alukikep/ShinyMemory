@@ -13,11 +13,11 @@ const card: ActivityDef = {
     stamina: 25,
   },
   requires: [
-    { kind: 'rankAtLeast', attribute: 'dance', rank: 'D' },
+    { kind: 'attributeAtLeast', ref: 'dance', rank: 'D' },
     { kind: 'flag', key: 'lesson_dance_advanced_done', value: false },
   ],
   effects: [
-    { kind: 'idolExp', attribute: 'dance', tier: 5 },
+    { kind: 'attributeExp', ref: 'dance', tier: 5 },
     { kind: 'flag', key: 'lesson_dance_advanced_done', value: true },
   ],
   resultTexts: [

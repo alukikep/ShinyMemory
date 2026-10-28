@@ -17,7 +17,7 @@ const event: EventDef = {
       label: '把问题说清楚',
       hint: '目标偶像信任 EXP +1，共享压力 +3',
       effects: [
-        { kind: 'idolExp', attribute: 'trust', tier: 1 },
+        { kind: 'attributeExp', ref: 'trust', tier: 1 },
         { kind: 'sharedStat', stat: 'stress', delta: 3 },
       ],
       result: '她认真听完，点了点头。那晚她留下来多练了一会儿。',

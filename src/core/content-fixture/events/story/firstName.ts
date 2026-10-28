@@ -9,8 +9,8 @@ const card: EventDef = {
       "day": 2
     },
     {
-        "kind": "rankAtLeast",
-        "attribute": "trust",
+        "kind": "attributeAtLeast",
+        "ref": "trust",
         "rank": "C"
       }
   ],
@@ -22,8 +22,8 @@ const card: EventDef = {
       "label": "应一声",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       }
       ],
@@ -33,8 +33,8 @@ const card: EventDef = {
       "label": "开玩笑说她没大没小",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1,
         "direction": "loss"
       },
@@ -50,8 +50,8 @@ const card: EventDef = {
       "label": "也叫她的名字",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {

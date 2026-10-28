@@ -19,7 +19,7 @@ const card: EventDef = {
     {
       label: '坐着看喷泉',
       effects: [
-        { kind: 'idolExp', attribute: 'trust', tier: 1 },
+        { kind: 'attributeExp', ref: 'trust', tier: 1 },
         { kind: 'sharedStat', stat: 'stress', delta: -1 },
       ],
       result: '水声盖过了远处的车流。你想起她说过，休息也是训练的一部分。',

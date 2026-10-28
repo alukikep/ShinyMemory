@@ -14,8 +14,8 @@ const card: ActivityDef = {
   },
   effects: [
     {
-      kind: 'idolExp',
-      attribute: 'trust',
+      kind: 'attributeExp',
+      ref: 'trust',
       tier: 1,
     },
   ],

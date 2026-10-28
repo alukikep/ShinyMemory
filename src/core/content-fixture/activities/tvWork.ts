@@ -16,10 +16,10 @@ const card: ActivityDef = {
   ],
   workReward: {
     baseMoney: 2400,
-    checks: [{ attribute: 'expression', weight: 1 }],
+    terms: [{ ref: 'expression', weight: 1 }],
   },
   workRisk: {
-    attribute: 'expression',
+    ref: 'expression',
     minRank: 'F',
     safeRank: 'C',
     failureEventId: 'evt.work_failure_tv',

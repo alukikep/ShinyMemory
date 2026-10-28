@@ -16,7 +16,7 @@ const event: EventDef = {
       label: '陪她复盘',
       hint: '目标偶像信任 EXP +3，共享压力 +3',
       effects: [
-        { kind: 'idolExp', attribute: 'trust', tier: 3 },
+        { kind: 'attributeExp', ref: 'trust', tier: 3 },
         { kind: 'sharedStat', stat: 'stress', delta: 3 },
       ],
       result: '她把刚才的每个反应都重新说了一遍，说到最后自己笑了。',

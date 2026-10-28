@@ -15,8 +15,8 @@ const card: EventDef = {
       label: '说当然',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {
@@ -31,8 +31,8 @@ const card: EventDef = {
       label: '说需要时间',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {

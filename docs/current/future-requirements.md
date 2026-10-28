@@ -60,9 +60,10 @@ target?: 'none' | 'present-idol' | 'all-present-idols' | 'selected-idol';
 
 制作人属性与偶像属性**是同一套东西**，只是作用域不同：偶像属性只作用于单个偶像，制作人属性对所有偶像全局生效。
 
-已确认：
+已实现：
 
 - 统一引用 `AttributeRef { scope: 'idol' | 'producer', key }`。
+- 内容里可直接写偶像属性名（`ref: 'vocal'`），等价于 `{ scope: 'idol', key }`。
 - 共用 `IdolAttribute`（rank / exp / maxRank）与同一条 `RANK_CURVE`。
 - 所有结算经过同一个 `resolveAttribute()`，引擎里不出现“偶像分支 / 制作人分支”。
 - 首版只实现「摄影」。
@@ -73,7 +74,7 @@ target?: 'none' | 'present-idol' | 'all-present-idols' | 'selected-idol';
 
 ```ts
 type WorkTerm = {
-  attribute: AttributeRef;
+  ref: AttributeRef | IdolStatKey;
   weight?: number;                              // 仅 sum 模式有效
   multipliers?: Partial<Record<Rank, number>>;
 };
@@ -86,12 +87,12 @@ type WorkReward = {
 ```
 
 - `sum`：`multiplier = Σ(weight × multiplier)`，空列表兜底为 1.0。
-- `product`：`multiplier = Π(multiplier)`，建议项数 ≤ 2。
+- `product`：`multiplier = Π(multiplier)`，建议项数 ≤ 2，且不应写 `weight`。
 - “只看偶像 VO” / “只看制作人摄影”都是只有一项的列表；“两者相乘”是同一列表加 `combine: 'product'`。
 
 失败风险：
 
-- `WorkRisk.attribute` 变为可选。
+- `WorkRisk.ref` 变为可选。
 - 省略时对全部 `terms` 各自算 gap，取最差，短板决定失败率。
 
 ## 3. 「当前偶像」字段
@@ -108,5 +109,6 @@ type WorkReward = {
 - 自由时间已从地点页移到偶像互动页。
 - 正式内容仍然只有真乃。
 - 事件、工作、商店、物品正式内容仍为空。
-- 制作人属性尚未进入 `GameState`，实施未开始，方案见计划文档。
+- 制作人属性已进入 `GameState`（当前只有摄影），但正式内容还没有引用它。
+- 多目标行动已实现，正式内容还没有使用 `all-present-idols`。
 - 侧栏多偶像展示延后到有第二个正式偶像时。

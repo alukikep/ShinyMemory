@@ -22,8 +22,8 @@ const card: EventDef = {
       "label": "把伞给她，自己跑回去",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {
@@ -42,8 +42,8 @@ const card: EventDef = {
           "delta": -500
         },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       }
       ],
@@ -58,8 +58,8 @@ const card: EventDef = {
         "delta": -3
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {

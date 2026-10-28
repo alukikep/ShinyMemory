@@ -13,8 +13,8 @@ const card: EventDef = {
       label: '听完',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "expression",
+        "kind": "attributeExp",
+        "ref": "expression",
         "tier": 3
       },
         {
@@ -29,8 +29,8 @@ const card: EventDef = {
       label: '叫录音师来问',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "expression",
+        "kind": "attributeExp",
+        "ref": "expression",
         "tier": 1
       },
         {

@@ -33,8 +33,8 @@ const card: EventDef = {
       "label": "告诉她别在意",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {
@@ -49,8 +49,8 @@ const card: EventDef = {
       "label": "把评论念给她听，然后说你的看法",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {

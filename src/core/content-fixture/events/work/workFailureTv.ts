@@ -18,8 +18,8 @@ const event: EventDef = {
       effects: [
         { kind: 'sharedStat', stat: 'stress', delta: 10 },
         {
-          kind: 'idolExp',
-          attribute: 'trust',
+          kind: 'attributeExp',
+          ref: 'trust',
           tier: 3,
           direction: 'loss',
         },
@@ -32,8 +32,8 @@ const event: EventDef = {
       effects: [
         { kind: 'sharedStat', stat: 'stamina', delta: -10 },
         {
-          kind: 'idolExp',
-          attribute: 'trust',
+          kind: 'attributeExp',
+          ref: 'trust',
           tier: 1,
           direction: 'loss',
         },

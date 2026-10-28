@@ -16,8 +16,8 @@ const card: EventDef = {
       label: '读给她听',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {
@@ -32,8 +32,8 @@ const card: EventDef = {
       label: '让她自己看',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {

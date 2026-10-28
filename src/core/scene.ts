@@ -164,7 +164,7 @@ function activityActionView(
       : '';
   const risk =
     activity.workRisk && idolId
-      ? workRiskSummary(state, activity.workRisk, idolId)
+      ? workRiskSummary(state, activity.workRisk, activity.workReward, idolId)
       : '';
   const timeLabel = formatTimeWindows(activity.timeWindows);
   const hint = [timeLabel, duration, reward, risk, effects]

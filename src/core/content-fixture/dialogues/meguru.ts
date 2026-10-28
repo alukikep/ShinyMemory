@@ -25,7 +25,7 @@ export const meguruFirst: DialogueDef = {
           label: '接过她手里的纸袋',
           nextNodeId: 'n04a',
           effects: [
-            { kind: 'idolExp', attribute: 'trust', tier: 1 },
+            { kind: 'attributeExp', ref: 'trust', tier: 1 },
             { kind: 'flag', key: 'meguru_helped_bags', value: true },
           ],
         },
@@ -33,7 +33,7 @@ export const meguruFirst: DialogueDef = {
           label: '帮她按住被风吹起的传单',
           nextNodeId: 'n04b',
           effects: [
-            { kind: 'idolExp', attribute: 'trust', tier: 1 },
+            { kind: 'attributeExp', ref: 'trust', tier: 1 },
             { kind: 'flag', key: 'meguru_helped_flyer', value: true },
           ],
         },
@@ -73,7 +73,7 @@ export const meguruFirst: DialogueDef = {
           label: '我是制作人',
           nextNodeId: 'n07a',
           effects: [
-            { kind: 'idolExp', attribute: 'trust', tier: 1 },
+            { kind: 'attributeExp', ref: 'trust', tier: 1 },
             { kind: 'flag', key: 'meguru_knows_producer', value: true },
           ],
         },
@@ -84,7 +84,7 @@ export const meguruFirst: DialogueDef = {
         {
           label: '你手上的传单是什么？',
           nextNodeId: 'n07c',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
       ],
     },
@@ -162,12 +162,12 @@ export const meguruSecond: DialogueDef = {
         {
           label: '你已经在准备了',
           nextNodeId: 'n04b',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
         {
           label: '我陪你一起想',
           nextNodeId: 'n04c',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
       ],
     },
@@ -203,17 +203,17 @@ export const meguruSecond: DialogueDef = {
         {
           label: '我想正式负责你的工作',
           nextNodeId: 'n07a',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 3 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 3 }],
         },
         {
           label: '先从一起做一场活动开始',
           nextNodeId: 'n07b',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 3 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 3 }],
         },
         {
           label: '你不必现在回答',
           nextNodeId: 'n07c',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
       ],
     },

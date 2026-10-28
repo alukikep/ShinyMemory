@@ -9,8 +9,8 @@ const card: EventDef = {
       "day": 2
     },
     {
-        "kind": "rankAtLeast",
-        "attribute": "trust",
+        "kind": "attributeAtLeast",
+        "ref": "trust",
         "rank": "C"
       }
   ],
@@ -22,8 +22,8 @@ const card: EventDef = {
       "label": "告诉她你会一直在",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {
@@ -38,8 +38,8 @@ const card: EventDef = {
       "label": "提醒她这条路很难",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {
@@ -54,8 +54,8 @@ const card: EventDef = {
       "label": "问她想要什么",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       }
       ],

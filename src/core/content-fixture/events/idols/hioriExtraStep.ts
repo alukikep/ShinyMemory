@@ -16,13 +16,13 @@ const event: EventDef = {
       hint: '灯织 +舞蹈、+信任，共享压力 +3',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "dance",
+        "kind": "attributeExp",
+        "ref": "dance",
         "tier": 3
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {
@@ -38,8 +38,8 @@ const event: EventDef = {
       hint: '灯织 +信任，共享压力 -5',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {

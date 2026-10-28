@@ -37,6 +37,17 @@ export const DEFAULT_FAILURE_BY_GAP: Record<number, number> = {
   4: 0.85,
 };
 
+/** 制作人属性只加不减：F 起就是 1.0，S 到 1.5。 */
+export const DEFAULT_PRODUCER_MULTIPLIERS: Record<Rank, number> = {
+  F: 1,
+  E: 1.1,
+  D: 1.2,
+  C: 1.3,
+  B: 1.4,
+  A: 1.45,
+  S: 1.5,
+};
+
 export function nextRank(rank: Rank): Rank | undefined {
   const index = RANK_ORDER.indexOf(rank);
   return index >= 0 && index < RANK_ORDER.length - 1

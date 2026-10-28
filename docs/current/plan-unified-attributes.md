@@ -1,7 +1,7 @@
 # 统一属性与上下文整理计划
 
 > 状态：方案已确认，尚未动工
-> 目标版本：`0.16.0`
+> 目标版本：`0.17.0`
 > 存档：`SAVE_VERSION 12 → 14`
 > 内容纪元：`CONTENT_EPOCH 3` 保持不变（正式内容 ID 未变）
 
@@ -141,7 +141,7 @@ DEFAULT_PRODUCER_MULTIPLIERS // 制作人  F 1.0 … S 1.5
 行为验收：
 
 ```text
-180 个 Vitest 全绿
+187 个 Vitest 全绿
 新游戏 → 序章 → 相遇 → 招募后，侧栏偶像不随行动跳变
 偶像页的可用性判定基于当前页面的偶像，而不是全局指针
 ```
@@ -185,25 +185,24 @@ DEFAULT_PRODUCER_MULTIPLIERS // 制作人  F 1.0 … S 1.5
 
 **规则：`sharedStat` 效果按偶像各算一份。** 多目标行动的体力/压力增减会乘以人数；`cost` 只扣一次。结果页因此把消耗和「每人」效果分开显示。
 
-### P2 · 统一属性
+### P2 · 统一属性 · 已完成
 
-- [ ] `types.ts`：`ProducerStatKey` / `ProducerStats` / `AttributeRef`
-- [ ] `GameState.producer` 初始化（摄影 F / 0 exp）
-- [ ] `resolveAttribute()` 成为唯一属性读取入口
-- [ ] `applyAttributeExp()` 取代 `applyIdolExp()`
-- [ ] `Condition`：`attributeAtLeast { ref, rank }` 取代 `rankAtLeast`
-- [ ] `Effect`：`attributeExp { ref, tier, direction? }` 取代 `idolExp`
-- [ ] `WorkReward.checks` → `WorkReward.terms`
-- [ ] `WorkTerm.multipliers` 逐项覆盖，默认表按 `scope` 选择
-- [ ] `WorkRisk.attribute` 可选；省略时对全部 terms 取最差 gap
-- [ ] `workRewardPreview` / `workRiskPreview` 改为基于 terms
-- [ ] `effectSummary` 支持制作人 EXP 展示
-- [ ] 侧栏增加制作人区块（摄影 rank / exp）
-- [ ] 存档 `SAVE_VERSION 14`：初始化 `producer`；`checks` → `terms` 迁移
-- [ ] 审查与校验：
-  - `terms` / `combine` / `AttributeRef` 的 schema
-  - warning：`product` 项数 > 2
-  - 禁止：`combine: 'product'` 时出现 `weight`
+- [x] `types.ts`：`ProducerStatKey` / `ProducerStats` / `AttributeRef` / `AttributeRefInput`
+- [x] `GameState.producer` 初始化（摄影 F / 0 exp）
+- [x] `resolveAttribute()` 成为唯一属性读取入口
+- [x] `applyAttributeExp()` 取代 `applyIdolExp()`
+- [x] `Condition`：`attributeAtLeast { ref, rank }` 取代 `rankAtLeast`
+- [x] `Effect`：`attributeExp { ref, tier, direction? }` 取代 `idolExp`
+- [x] `WorkReward.checks` → `WorkReward.terms`
+- [x] `WorkTerm.multipliers` 逐项覆盖，默认表按 `scope` 选择
+- [x] `WorkRisk.ref` 可选；省略时对全部 terms 取最差 gap
+- [x] `workRewardPreview` / `workRiskPreview` 改为基于 terms
+- [x] `effectSummary` 支持制作人 EXP 展示
+- [x] 侧栏增加制作人区块（摄影 rank / exp）
+- [x] 存档 `SAVE_VERSION 14`：初始化 `producer`
+- [x] 审查与校验：
+  - [x] `terms` / `combine` / `AttributeRef` 的 schema
+  - [x] 禁止：`combine: 'product'` 时出现 `weight`
 
 验收：
 
@@ -214,11 +213,20 @@ product 模式下制作人倍率表落在 1.0–1.5
 风险省略 attribute 时取最差项
 ```
 
+**偏差说明：**
+
+1. **存档不需要迁移 `checks` → `terms`。** 内容定义不进入存档，只有状态进入。所以 14 只做 `producer` 初始化，比计划少一半工作。
+2. `AttributeRefInput = IdolStatKey | AttributeRef`。内容里可以直接写 `ref: 'vocal'`，制作人才写 `{ scope: 'producer', key: 'photography' }`。避免每一条偶像内容都套一层对象。
+3. **只用一条规则替代了原计划的 schema + warning 两条**：`content.test.ts` 断言 `product` 模式下 `weight` 必须缺省。这比「warning 提示」更早暴露问题。
+4. 三种形态的验证放在 `sim.test.ts` 用合成 `WorkReward` 覆盖（`workRewardPreview` / `workRiskPreview` 是纯函数），不新增正式内容。fixture 工作留到 P3。
+
+**验证结果：** 迁移后所有工作数值不变。因为旧内容权重合计为 1，`Σ(w × m)` 与原加权平均逐位相等。
+
 ### P3 · 验证
 
 - [ ] fixture 增加 3 条工作，覆盖三种形态
-- [ ] Vitest：`sum` / `product` / 单项 / 空 terms / 风险取最差 / 条件与效果泛化
-- [ ] 全部 E2E（引擎、内容、序章、审查）
+- [x] Vitest：`sum` / `product` / 单项 / 空 terms / 风险取最差 / 条件与效果泛化
+- [x] 全部 E2E（引擎、内容、序章、审查）
 
 ### P4 · 之后（不在本轮）
 

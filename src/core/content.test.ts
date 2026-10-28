@@ -141,22 +141,38 @@ describe('content integrity', () => {
     expect(CONTENT_INDEX.idols.size).toBe(IDOLS.length);
   });
 
-  it('validates work reward checks and weights', () => {
+  it('validates work reward terms and combine modes', () => {
     const ranks = new Set(['F', 'E', 'D', 'C', 'B', 'A', 'S']);
-    const attributes = new Set(['vocal', 'dance', 'expression', 'trust']);
+    const idolAttributes = new Set(['vocal', 'dance', 'expression', 'trust']);
     for (const activity of ACTIVITIES) {
-      if (!activity.workReward) continue;
-      expect(activity.workReward.baseMoney).toBeGreaterThan(0);
-      expect(activity.workReward.checks.length).toBeGreaterThan(0);
-      const weight = activity.workReward.checks.reduce(
-        (sum, check) => sum + check.weight,
-        0,
+      const reward = activity.workReward;
+      if (!reward) continue;
+      expect(reward.baseMoney).toBeGreaterThan(0);
+      expect(reward.terms.length).toBeGreaterThan(0);
+      const combine = reward.combine ?? 'sum';
+      const idolOnly = reward.terms.every(
+        (term) => typeof term.ref === 'string',
       );
-      expect(weight).toBeCloseTo(1, 5);
-      for (const check of activity.workReward.checks) {
-        expect(attributes.has(check.attribute)).toBe(true);
-        expect(check.weight).toBeGreaterThan(0);
-        for (const rank of Object.keys(check.multipliers ?? {})) {
+      // 纯偶像工作在 sum 模式下沿用「权重合计为 1」的内容约定。
+      if (combine === 'sum' && idolOnly) {
+        const weight = reward.terms.reduce(
+          (sum, term) => sum + (term.weight ?? 1),
+          0,
+        );
+        expect(weight).toBeCloseTo(1, 5);
+      }
+      for (const term of reward.terms) {
+        if (typeof term.ref === 'string') {
+          expect(idolAttributes.has(term.ref)).toBe(true);
+        } else {
+          expect(term.ref.scope).toBe('producer');
+        }
+        if (combine === 'product') {
+          expect(term.weight).toBeUndefined();
+        } else {
+          expect(term.weight ?? 1).toBeGreaterThan(0);
+        }
+        for (const rank of Object.keys(term.multipliers ?? {})) {
           expect(ranks.has(rank)).toBe(true);
         }
       }

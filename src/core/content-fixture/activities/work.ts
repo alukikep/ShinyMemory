@@ -20,9 +20,9 @@ const card: ActivityDef = {
   ],
   "workReward": {
     "baseMoney": 1500,
-    "checks": [
+    "terms": [
       {
-        "attribute": "expression",
+        "ref": "expression",
         "weight": 1
       }
     ]

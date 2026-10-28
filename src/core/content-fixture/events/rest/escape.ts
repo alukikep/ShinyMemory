@@ -25,8 +25,8 @@ const card: EventDef = {
         "delta": -10
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {
@@ -46,8 +46,8 @@ const card: EventDef = {
         "delta": -12
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
       ],
@@ -62,8 +62,8 @@ const card: EventDef = {
         "delta": 10
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3,
         "direction": "loss"
       },

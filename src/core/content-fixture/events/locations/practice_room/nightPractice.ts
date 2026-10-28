@@ -31,8 +31,8 @@ const card: EventDef = {
       "label": "陪她练一会儿",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {
@@ -57,8 +57,8 @@ const card: EventDef = {
         "delta": -10
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1,
         "direction": "loss"
       }

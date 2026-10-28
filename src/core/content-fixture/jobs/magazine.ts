@@ -10,8 +10,8 @@ const job: JobDef = {
   pay: 1200,
   label: '拍摄',
   effects: [
-    { kind: 'idolExp', attribute: 'expression', tier: 3 },
-    { kind: 'idolExp', attribute: 'trust', tier: 1 },
+    { kind: 'attributeExp', ref: 'expression', tier: 3 },
+    { kind: 'attributeExp', ref: 'trust', tier: 1 },
   ],
 };
 

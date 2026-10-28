@@ -10,7 +10,7 @@ const event: EventDef = {
     {
       label: '把消息告诉她',
       hint: '目标偶像信任 EXP +1',
-      effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+      effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
       result: '她看着屏幕，先是愣住，然后把手机递还给你，耳朵有点红。',
     },
   ],

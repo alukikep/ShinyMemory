@@ -25,7 +25,7 @@ export const hioriFirst: DialogueDef = {
           label: '帮她捡起被风吹散的纸',
           nextNodeId: 'n04a',
           effects: [
-            { kind: 'idolExp', attribute: 'trust', tier: 1 },
+            { kind: 'attributeExp', ref: 'trust', tier: 1 },
             { kind: 'flag', key: 'hiori_helped_paper', value: true },
           ],
         },
@@ -37,7 +37,7 @@ export const hioriFirst: DialogueDef = {
           label: '问她是不是在写歌',
           nextNodeId: 'n04c',
           effects: [
-            { kind: 'idolExp', attribute: 'trust', tier: 1 },
+            { kind: 'attributeExp', ref: 'trust', tier: 1 },
             { kind: 'flag', key: 'hiori_asked_song', value: true },
           ],
         },
@@ -73,7 +73,7 @@ export const hioriFirst: DialogueDef = {
           label: '我是 283 的制作人',
           nextNodeId: 'n07a',
           effects: [
-            { kind: 'idolExp', attribute: 'trust', tier: 1 },
+            { kind: 'attributeExp', ref: 'trust', tier: 1 },
             { kind: 'flag', key: 'hiori_knows_producer', value: true },
           ],
         },
@@ -85,7 +85,7 @@ export const hioriFirst: DialogueDef = {
           label: '想听你唱歌',
           nextNodeId: 'n07c',
           effects: [
-            { kind: 'idolExp', attribute: 'trust', tier: 1 },
+            { kind: 'attributeExp', ref: 'trust', tier: 1 },
             { kind: 'flag', key: 'hiori_wants_song', value: true },
           ],
         },
@@ -161,12 +161,12 @@ export const hioriSecond: DialogueDef = {
         {
           label: '我说过，会再来',
           nextNodeId: 'n04a',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
         {
           label: '我带了上次那张纸',
           nextNodeId: 'n04b',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
         {
           label: '只是来看看你',
@@ -206,17 +206,17 @@ export const hioriSecond: DialogueDef = {
         {
           label: '我想正式负责你的工作',
           nextNodeId: 'n07a',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 3 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 3 }],
         },
         {
           label: '先从朋友开始也可以',
           nextNodeId: 'n07b',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
         {
           label: '你不用现在回答',
           nextNodeId: 'n07c',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
       ],
     },

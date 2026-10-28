@@ -35,8 +35,8 @@ const card: EventDef = {
         "delta": 10
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
       ],
@@ -46,8 +46,8 @@ const card: EventDef = {
       label: '再试一次，确认一下',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "vocal",
+        "kind": "attributeExp",
+        "ref": "vocal",
         "tier": 3
       },
         {
@@ -61,8 +61,8 @@ const card: EventDef = {
         "delta": -5
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1,
         "direction": "loss"
       },
@@ -79,8 +79,8 @@ const card: EventDef = {
         "delta": -5
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
       ],

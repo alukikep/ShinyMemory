@@ -13,8 +13,8 @@ const card: EventDef = {
       label: '翻开看看',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "expression",
+        "kind": "attributeExp",
+        "ref": "expression",
         "tier": 3
       },
         {
@@ -29,8 +29,8 @@ const card: EventDef = {
       label: '拿去问经纪人',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {

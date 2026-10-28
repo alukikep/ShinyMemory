@@ -7,7 +7,7 @@ const IDOL_IDS = new Set(IDOLS.map((idol) => idol.id));
 
 const EFFECT_KINDS = new Set([
   'sharedStat',
-  'idolExp',
+  'attributeExp',
   'money',
   'flag',
   'actorAffinity',
@@ -20,8 +20,8 @@ const CONDITION_KINDS = new Set([
   'timeWindow',
   'sharedStatAtLeast',
   'sharedStatAtMost',
-  'rankAtLeast',
-  'rankAtMost',
+  'attributeAtLeast',
+  'attributeAtMost',
   'npcAffinityAtLeast',
   'npcAffinityAtMost',
   'moneyAtMost',

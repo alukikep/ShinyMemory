@@ -30,7 +30,7 @@ describe('review validation', () => {
           {
             label: '选项',
             result: '结果',
-            effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+            effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
           },
         ],
       }),

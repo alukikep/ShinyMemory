@@ -14,8 +14,8 @@ const card: ActivityDef = {
   },
   "effects": [
     {
-        "kind": "idolExp",
-        "attribute": "dance",
+        "kind": "attributeExp",
+        "ref": "dance",
         "tier": 3
       },
     {

@@ -13,11 +13,11 @@ const card: ActivityDef = {
     stamina: 20,
   },
   requires: [
-    { kind: 'rankAtLeast', attribute: 'vocal', rank: 'D' },
+    { kind: 'attributeAtLeast', ref: 'vocal', rank: 'D' },
     { kind: 'flag', key: 'lesson_vocal_advanced_done', value: false },
   ],
   effects: [
-    { kind: 'idolExp', attribute: 'vocal', tier: 5 },
+    { kind: 'attributeExp', ref: 'vocal', tier: 5 },
     { kind: 'flag', key: 'lesson_vocal_advanced_done', value: true },
   ],
   resultTexts: [

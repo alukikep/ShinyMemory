@@ -56,8 +56,8 @@ const card: EventDef = {
         "delta": -3
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       }
       ],
@@ -67,8 +67,8 @@ const card: EventDef = {
       "label": "问她自己的意思",
       "effects": [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {

@@ -14,8 +14,8 @@ const card: ActivityDef = {
   },
   "effects": [
     {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
     {
@@ -38,8 +38,8 @@ const card: ActivityDef = {
     {
       "when": [
         {
-        "kind": "rankAtLeast",
-        "attribute": "trust",
+        "kind": "attributeAtLeast",
+        "ref": "trust",
         "rank": "D"
       }
       ],

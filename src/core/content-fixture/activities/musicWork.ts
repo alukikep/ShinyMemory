@@ -16,13 +16,13 @@ const card: ActivityDef = {
   ],
   workReward: {
     baseMoney: 3000,
-    checks: [
-      { attribute: 'vocal', weight: 0.8 },
-      { attribute: 'trust', weight: 0.2 },
+    terms: [
+      { ref: 'vocal', weight: 0.8 },
+      { ref: 'trust', weight: 0.2 },
     ],
   },
   workRisk: {
-    attribute: 'vocal',
+    ref: 'vocal',
     minRank: 'B',
     safeRank: 'B',
   },

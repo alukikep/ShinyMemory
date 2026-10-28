@@ -13,8 +13,8 @@ const card: EventDef = {
       label: '读出来',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {
@@ -28,8 +28,8 @@ const card: EventDef = {
     {
       label: '撕下来收好',
       effects: [{
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       }],
       result: '你把便签夹进台本里。',

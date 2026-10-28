@@ -16,13 +16,13 @@ const card: EventDef = {
       durationMinutes: 60,
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 3
       },
         {
-        "kind": "idolExp",
-        "attribute": "expression",
+        "kind": "attributeExp",
+        "ref": "expression",
         "tier": 3
       },
         {
@@ -38,8 +38,8 @@ const card: EventDef = {
       durationMinutes: 60,
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1,
         "direction": "loss"
       },
@@ -56,8 +56,8 @@ const card: EventDef = {
       durationMinutes: 60,
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "expression",
+        "kind": "attributeExp",
+        "ref": "expression",
         "tier": 3
       },
         {
@@ -66,8 +66,8 @@ const card: EventDef = {
         "delta": 3
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
       ],

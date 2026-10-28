@@ -10,8 +10,9 @@ import {
   applyActivity,
   applyActivityDef,
   applyEventChoice,
-  applyIdolExp,
+  applyAttributeExp,
   checkCondition,
+  effectSummary,
   formatIdolText,
   getActivity,
   getActor,
@@ -25,6 +26,7 @@ import {
   topicAvailability,
   travelTo,
   workRewardPreview,
+  workRiskPreview,
 } from './sim';
 import { formatClock, getDay } from './time';
 
@@ -545,13 +547,13 @@ describe('raising sim core', () => {
   it('levels up and freezes at the idol cap', () => {
     const state = newGame(1);
     state.idols.mano!.stats.vocal.exp = 59;
-    applyIdolExp(state, 'vocal', 3, 'gain', 'mano');
+    applyAttributeExp(state, 'vocal', 3, 'gain', 'mano');
     expect(state.idols.mano?.stats.vocal.rank).toBe('C');
     expect(state.idols.mano?.stats.vocal.exp).toBe(2);
 
     state.idols.hiori!.stats.vocal.rank = 'B';
     state.idols.hiori!.stats.vocal.exp = 0;
-    applyIdolExp(state, 'vocal', 20, 'gain', 'hiori');
+    applyAttributeExp(state, 'vocal', 20, 'gain', 'hiori');
     expect(state.idols.hiori?.stats.vocal.rank).toBe('B');
     expect(state.idols.hiori?.stats.vocal.exp).toBe(0);
   });
@@ -561,8 +563,8 @@ describe('raising sim core', () => {
     state.idols.mano!.stats.trust.rank = 'E';
     state.idols.hiori!.stats.trust.rank = 'C';
     const condition = {
-      kind: 'rankAtLeast',
-      attribute: 'trust',
+      kind: 'attributeAtLeast',
+      ref: 'trust',
       rank: 'C',
     } as const;
 
@@ -820,5 +822,102 @@ describe('raising sim core', () => {
       'station',
       'park',
     ]);
+  });
+
+  it('settles a producer-only work with the producer multiplier table', () => {
+    const state = newGame(1);
+    state.producer.photography.rank = 'D';
+    const reward = {
+      baseMoney: 1000,
+      terms: [{ ref: { scope: 'producer', key: 'photography' } as const }],
+    };
+
+    const preview = workRewardPreview(state, reward, 'mano');
+
+    expect(preview.multiplier).toBeCloseTo(1.2);
+    expect(preview.money).toBe(1200);
+  });
+
+  it('settles an idol-only work with a single term', () => {
+    const state = newGame(1);
+    state.idols.mano!.stats.vocal.rank = 'D';
+    const reward = { baseMoney: 1000, terms: [{ ref: 'vocal' as const }] };
+
+    expect(workRewardPreview(state, reward, 'mano').money).toBe(1000);
+  });
+
+  it('adds idol and producer terms in sum mode', () => {
+    const state = newGame(1);
+    state.idols.mano!.stats.vocal.rank = 'S';
+    state.producer.photography.rank = 'F';
+    const reward = {
+      baseMoney: 1000,
+      combine: 'sum' as const,
+      terms: [
+        { ref: 'vocal' as const, weight: 0.7 },
+        { ref: { scope: 'producer', key: 'photography' } as const, weight: 0.3 },
+      ],
+    };
+
+    const preview = workRewardPreview(state, reward, 'mano');
+
+    expect(preview.multiplier).toBeCloseTo(1.56);
+    expect(preview.money).toBe(1560);
+  });
+
+  it('multiplies idol and producer terms in product mode', () => {
+    const state = newGame(1);
+    state.idols.mano!.stats.vocal.rank = 'S';
+    state.producer.photography.rank = 'S';
+    const reward = {
+      baseMoney: 1000,
+      combine: 'product' as const,
+      terms: [
+        { ref: 'vocal' as const },
+        { ref: { scope: 'producer', key: 'photography' } as const },
+      ],
+    };
+
+    expect(workRewardPreview(state, reward, 'mano').multiplier).toBeCloseTo(2.7);
+  });
+
+  it('falls back to a multiplier of one without terms', () => {
+    const state = newGame(1);
+    expect(
+      workRewardPreview(state, { baseMoney: 1000, terms: [] }).multiplier,
+    ).toBe(1);
+  });
+
+  it('takes the worst term when work risk omits its ref', () => {
+    const state = newGame(1);
+    state.idols.mano!.stats.vocal.rank = 'C';
+    state.producer.photography.rank = 'D';
+    const reward = {
+      baseMoney: 1000,
+      terms: [
+        { ref: 'vocal' as const },
+        { ref: { scope: 'producer', key: 'photography' } as const },
+      ],
+    };
+    const risk = { safeRank: 'B' as const };
+
+    const preview = workRiskPreview(state, risk, reward, 'mano');
+
+    expect(preview.ref).toEqual({ scope: 'producer', key: 'photography' });
+    expect(preview.gap).toBe(2);
+    expect(preview.chance).toBeCloseTo(0.5);
+  });
+
+  it('levels a producer attribute and reports it in effect summaries', () => {
+    const state = newGame(1);
+    applyAttributeExp(state, { scope: 'producer', key: 'photography' }, 20, 'gain');
+
+    expect(state.producer.photography.rank).toBe('E');
+    expect(state.log[0]?.text).toContain('制作人 摄影提升到 E');
+
+    const summary = effectSummary([
+      { kind: 'attributeExp', ref: { scope: 'producer', key: 'photography' }, tier: 3 },
+    ]);
+    expect(summary).toBe('摄影 EXP +3');
   });
 });

@@ -4,9 +4,11 @@ import {
   createInitialActorStates,
   createInitialIdolStates,
 } from '../core/contentIndex';
+import { createInitialProducerStats } from '../core/producer';
 import type {
   GameState,
   IdolAttribute,
+  ProducerStats,
   Rank,
   SaveEnvelope,
   StatKey,
@@ -258,6 +260,13 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     delete state.pendingIdolId;
     state.jobs = state.jobs ?? [];
     next.schemaVersion = 13;
+    next.gameVersion = GAME_VERSION;
+  }
+
+  if (next.schemaVersion === 13) {
+    const state = next.state as GameState & { producer?: ProducerStats };
+    state.producer = state.producer ?? createInitialProducerStats();
+    next.schemaVersion = 14;
     next.gameVersion = GAME_VERSION;
   }
 

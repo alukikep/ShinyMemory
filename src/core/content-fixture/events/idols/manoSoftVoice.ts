@@ -16,13 +16,13 @@ const event: EventDef = {
       hint: '真乃 +歌唱、+信任，共享体力 -5',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "vocal",
+        "kind": "attributeExp",
+        "ref": "vocal",
         "tier": 3
       },
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {
@@ -38,8 +38,8 @@ const event: EventDef = {
       hint: '真乃 +信任，共享压力 -5',
       effects: [
         {
-        "kind": "idolExp",
-        "attribute": "trust",
+        "kind": "attributeExp",
+        "ref": "trust",
         "tier": 1
       },
         {

@@ -25,7 +25,7 @@ export const manoFirst: DialogueDef = {
           label: '刚才的歌，很好听',
           nextNodeId: 'n04a',
           effects: [
-            { kind: 'idolExp', attribute: 'trust', tier: 1 },
+            { kind: 'attributeExp', ref: 'trust', tier: 1 },
             { kind: 'flag', key: 'mano_heard_song', value: true },
           ],
         },
@@ -118,17 +118,17 @@ export const manoSecond: DialogueDef = {
         {
           label: '因为我想听你唱完',
           nextNodeId: 'n04a',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
         {
           label: '因为那首歌让我停下了脚步',
           nextNodeId: 'n04b',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
         {
           label: '因为我觉得你还没有唱完',
           nextNodeId: 'n04c',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
       ],
     },
@@ -188,12 +188,12 @@ export const manoSecond: DialogueDef = {
         {
           label: '我会陪你到最后',
           nextNodeId: 'n11a',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 3 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 3 }],
         },
         {
           label: '先从第一步开始',
           nextNodeId: 'n11b',
-          effects: [{ kind: 'idolExp', attribute: 'trust', tier: 1 }],
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
       ],
     },

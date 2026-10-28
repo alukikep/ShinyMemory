@@ -8,6 +8,7 @@ import { CONTENT_INDEX, createInitialActorStates, createInitialIdolStates } from
 import { walkEdge, walkPath } from './content/map';
 import {
   DEFAULT_FAILURE_BY_GAP,
+  DEFAULT_PRODUCER_MULTIPLIERS,
   DEFAULT_REWARD_MULTIPLIERS,
   EXP_TIER_VALUES,
   RANK_CURVE,
@@ -16,7 +17,8 @@ import {
   reduceExpTier,
   sameOrHigherRank,
 } from './growth';
-import { STAT_LABELS, STAT_MAX } from './labels';
+import { STAT_LABELS, STAT_MAX, attributeLabel } from './labels';
+import { createInitialProducerStats } from './producer';
 import { Rng } from './rng';
 import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, isMinuteInWindow } from './time';
 import { canReplaceDay, getScheduleSlot } from './schedule';
@@ -26,6 +28,8 @@ import type {
   ActorDef,
   ActorScheduleOverride,
   ActorTopic,
+  AttributeRef,
+  AttributeRefInput,
   Availability,
   CheckContext,
   Condition,
@@ -114,30 +118,57 @@ export function formatIdolText(
   return text.replace(/她(?!们)/g, name);
 }
 
+export function normalizeAttributeRef(ref: AttributeRefInput): AttributeRef {
+  return typeof ref === 'string' ? { scope: 'idol', key: ref } : ref;
+}
+
+/**
+ * 属性读取的唯一入口。偶像属性需要 `idolId`，制作人属性全局唯一。
+ */
+export function resolveAttribute(
+  state: GameState,
+  ref: AttributeRefInput,
+  idolId?: string,
+): IdolAttribute {
+  const normalized = normalizeAttributeRef(ref);
+  if (normalized.scope === 'producer') {
+    const attribute = state.producer[normalized.key];
+    if (!attribute) {
+      throw new Error(`unknown producer attribute: ${normalized.key}`);
+    }
+    return attribute;
+  }
+  if (!idolId) {
+    throw new Error(`idol attribute requires idolId: ${normalized.key}`);
+  }
+  return getIdol(state, idolId).stats[normalized.key];
+}
+
 export function getIdolAttribute(
   state: GameState,
   attribute: IdolStatKey,
   idolId: string,
 ): IdolAttribute {
-  return getIdol(state, idolId).stats[attribute];
+  return resolveAttribute(state, attribute, idolId);
 }
 
 export function getRank(
   state: GameState,
-  attribute: IdolStatKey,
-  idolId: string,
+  ref: AttributeRefInput,
+  idolId?: string,
 ): Rank {
-  return getIdolAttribute(state, attribute, idolId).rank;
+  return resolveAttribute(state, ref, idolId).rank;
 }
 
-export function applyIdolExp(
+export function applyAttributeExp(
   state: GameState,
-  attribute: IdolStatKey,
+  ref: AttributeRefInput,
   tier: ExpTier,
   direction: 'gain' | 'loss',
-  idolId: string,
+  idolId?: string,
 ): void {
-  const target = getIdolAttribute(state, attribute, idolId);
+  const normalized = normalizeAttributeRef(ref);
+  const target = resolveAttribute(state, normalized, idolId);
   const amount = EXP_TIER_VALUES[tier];
 
   if (direction === 'loss') {
@@ -161,10 +192,13 @@ export function applyIdolExp(
   if (target.rank === target.maxRank) target.exp = 0;
 
   if (leveled) {
-    const name = CONTENT_INDEX.idols.get(idolId)?.name ?? idolId;
+    const who =
+      normalized.scope === 'producer'
+        ? '制作人'
+        : (CONTENT_INDEX.idols.get(idolId ?? '')?.name ?? idolId ?? '');
     addLog(
       state,
-      `${name} ${STAT_LABELS[attribute]}提升到 ${target.rank}。`,
+      `${who} ${attributeLabel(normalized)}提升到 ${target.rank}。`,
       'good',
     );
   }
@@ -191,43 +225,50 @@ export function getStatValue(
 export type WorkRewardPreview = {
   money: number;
   multiplier: number;
+  combine: 'sum' | 'product';
   parts: {
-    attribute: IdolStatKey;
+    ref: AttributeRef;
     rank: Rank;
     weight: number;
     multiplier: number;
   }[];
 };
 
+function defaultMultiplierTable(scope: AttributeRef['scope']): Record<Rank, number> {
+  return scope === 'producer'
+    ? DEFAULT_PRODUCER_MULTIPLIERS
+    : DEFAULT_REWARD_MULTIPLIERS;
+}
+
 export function workRewardPreview(
   state: GameState,
   reward: WorkReward,
-  idolId: string,
+  idolId?: string,
 ): WorkRewardPreview {
-  const parts = reward.checks.map((check) => {
-    const rank = getRank(state, check.attribute, idolId);
+  const combine = reward.combine ?? 'sum';
+  const parts = reward.terms.map((term) => {
+    const ref = normalizeAttributeRef(term.ref);
+    const rank = resolveAttribute(state, ref, idolId).rank;
     const table = {
-      ...DEFAULT_REWARD_MULTIPLIERS,
-      ...check.multipliers,
+      ...defaultMultiplierTable(ref.scope),
+      ...term.multipliers,
     };
     return {
-      attribute: check.attribute,
+      ref,
       rank,
-      weight: check.weight,
+      weight: term.weight ?? 1,
       multiplier: table[rank],
     };
   });
-  const weightSum = parts.reduce((sum, part) => sum + part.weight, 0);
-  const multiplier =
-    weightSum > 0
-      ? parts.reduce(
-          (sum, part) => sum + part.weight * part.multiplier,
-          0,
-        ) / weightSum
-      : 1;
+  const raw =
+    combine === 'product'
+      ? parts.reduce((acc, part) => acc * part.multiplier, 1)
+      : parts.reduce((sum, part) => sum + part.weight * part.multiplier, 0);
+  const multiplier = parts.length === 0 ? 1 : raw;
   return {
     money: Math.round(reward.baseMoney * multiplier),
     multiplier,
+    combine,
     parts,
   };
 }
@@ -235,19 +276,21 @@ export function workRewardPreview(
 export function workRewardSummary(
   state: GameState,
   reward: WorkReward,
-  idolId: string,
+  idolId?: string,
 ): string {
   const preview = workRewardPreview(state, reward, idolId);
+  const joiner = preview.combine === 'product' ? ' × ' : ' + ';
   const detail = preview.parts
     .map(
       (part) =>
-        `${STAT_LABELS[part.attribute]} ${part.rank} ×${part.multiplier}`,
+        `${attributeLabel(part.ref)} ${part.rank} ×${part.multiplier}`,
     )
-    .join(' + ');
+    .join(joiner);
   return `预计 ¥${preview.money} · ${detail}`;
 }
 
 export type WorkRiskPreview = {
+  ref?: AttributeRef;
   rank: Rank;
   safeRank: Rank;
   minRank: Rank;
@@ -256,43 +299,72 @@ export type WorkRiskPreview = {
   eligible: boolean;
 };
 
+/**
+ * 风险来源：`WorkRisk.ref` 显式指定，或退回 `workReward.terms`。
+ * 多来源时取 gap 最大的一项（短板决定失败率），任一不达标即不可用。
+ */
 export function workRiskPreview(
   state: GameState,
   risk: WorkRisk,
-  idolId: string,
+  reward?: WorkReward,
+  idolId?: string,
 ): WorkRiskPreview {
-  const rank = getRank(state, risk.attribute, idolId);
+  const refs: AttributeRef[] = risk.ref
+    ? [normalizeAttributeRef(risk.ref)]
+    : (reward?.terms ?? []).map((term) => normalizeAttributeRef(term.ref));
   const minRank = risk.minRank ?? 'F';
-  const gap = Math.max(0, rankIndex(risk.safeRank) - rankIndex(rank));
   const table = {
     ...DEFAULT_FAILURE_BY_GAP,
     ...risk.failureByGap,
   };
-  const chance =
-    gap <= 0 ? 0 : (table[Math.min(gap, 4)] ?? 0.85);
+
+  const evaluated = refs.map((ref) => {
+    const rank = resolveAttribute(state, ref, idolId).rank;
+    const gap = Math.max(0, rankIndex(risk.safeRank) - rankIndex(rank));
+    return {
+      ref,
+      rank,
+      gap,
+      eligible: rankIndex(rank) >= rankIndex(minRank),
+    };
+  });
+
+  const failing = evaluated.filter((entry) => !entry.eligible);
+  const worst =
+    failing.length > 0
+      ? failing.reduce((a, b) => (rankIndex(a.rank) <= rankIndex(b.rank) ? a : b))
+      : evaluated.reduce<typeof evaluated[number] | undefined>(
+          (a, b) => (!a || b.gap > a.gap ? b : a),
+          undefined,
+        );
+
+  const gap = worst?.gap ?? 0;
   return {
-    rank,
+    ref: worst?.ref,
+    rank: worst?.rank ?? risk.safeRank,
     safeRank: risk.safeRank,
     minRank,
     gap,
-    chance,
-    eligible: rankIndex(rank) >= rankIndex(minRank),
+    chance: gap <= 0 ? 0 : (table[Math.min(gap, 4)] ?? 0.85),
+    eligible: failing.length === 0,
   };
 }
 
 export function workRiskSummary(
   state: GameState,
   risk: WorkRisk,
-  idolId: string,
+  reward?: WorkReward,
+  idolId?: string,
 ): string {
-  const preview = workRiskPreview(state, risk, idolId);
+  const preview = workRiskPreview(state, risk, reward, idolId);
+  const label = preview.ref ? attributeLabel(preview.ref) : '属性';
   if (!preview.eligible) {
-    return `需要${STAT_LABELS[risk.attribute]} ${preview.minRank}`;
+    return `需要${label} ${preview.minRank}`;
   }
   if (preview.chance <= 0) return '稳定成功';
-  return `成功率 ${Math.round((1 - preview.chance) * 100)}% · 推荐${
-    STAT_LABELS[risk.attribute]
-  } ${preview.safeRank}`;
+  return `成功率 ${Math.round((1 - preview.chance) * 100)}% · 推荐${label} ${
+    preview.safeRank
+  }`;
 }
 
 function addLog(state: GameState, text: string, tone: LogTone = 'info'): void {
@@ -316,6 +388,7 @@ export function newGame(seed: number = Date.now()): GameState {
       stamina: 100,
       stress: 0,
     },
+    producer: createInitialProducerStats(),
     idols: createInitialIdolStates(),
     selectedIdolId: CONTENT_INDEX.startingIdolId,
     money: 3000,
@@ -546,7 +619,7 @@ export function giveGift(
   } else {
     next.inventory[itemId] = remaining;
   }
-  applyIdolExp(next, 'trust', tier, 'gain', idolId);
+  applyAttributeExp(next, 'trust', tier, 'gain', idolId);
   addLog(next, `你把${item.name}送给了${idol.name}。${reaction}`, 'good');
   return next;
 }
@@ -809,18 +882,22 @@ export function checkCondition(
       return state.shared[condition.stat] >= condition.value;
     case 'sharedStatAtMost':
       return state.shared[condition.stat] <= condition.value;
-    case 'rankAtLeast':
-      return ctx.idolId
-        ? sameOrHigherRank(
-            getRank(state, condition.attribute, ctx.idolId),
-            condition.rank,
-          )
-        : false;
-    case 'rankAtMost':
-      return ctx.idolId
-        ? rankIndex(getRank(state, condition.attribute, ctx.idolId)) <=
-            rankIndex(condition.rank)
-        : false;
+    case 'attributeAtLeast': {
+      const ref = normalizeAttributeRef(condition.ref);
+      if (ref.scope === 'idol' && !ctx.idolId) return false;
+      return sameOrHigherRank(
+        resolveAttribute(state, ref, ctx.idolId).rank,
+        condition.rank,
+      );
+    }
+    case 'attributeAtMost': {
+      const ref = normalizeAttributeRef(condition.ref);
+      if (ref.scope === 'idol' && !ctx.idolId) return false;
+      return (
+        rankIndex(resolveAttribute(state, ref, ctx.idolId).rank) <=
+        rankIndex(condition.rank)
+      );
+    }
     case 'npcAffinityAtLeast':
       return (state.actors[condition.actorId]?.affinity ?? 0) >= condition.value;
     case 'npcAffinityAtMost':
@@ -852,29 +929,31 @@ function applyEffects(
       case 'sharedStat':
         state.shared[effect.stat] += effect.delta;
         break;
-      case 'idolExp': {
-        if (!options?.idolId) {
+      case 'attributeExp': {
+        const ref = normalizeAttributeRef(effect.ref);
+        if (ref.scope === 'idol' && !options?.idolId) {
           throw new Error(
-            `idolExp effect requires an idol context: ${effect.attribute}`,
+            `attributeExp effect requires an idol context: ${ref.key}`,
           );
         }
         const isPerformance =
-          effect.attribute === 'vocal' ||
-          effect.attribute === 'dance' ||
-          effect.attribute === 'expression';
+          ref.scope === 'idol' &&
+          (ref.key === 'vocal' ||
+            ref.key === 'dance' ||
+            ref.key === 'expression');
         const tier =
-          options.training &&
-          options.stressed &&
+          options?.training &&
+          options?.stressed &&
           isPerformance &&
           (effect.direction ?? 'gain') === 'gain'
             ? reduceExpTier(effect.tier)
             : effect.tier;
-        applyIdolExp(
+        applyAttributeExp(
           state,
-          effect.attribute,
+          ref,
           tier,
           effect.direction ?? 'gain',
-          options.idolId,
+          options?.idolId,
         );
         break;
       }
@@ -900,17 +979,20 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
   const shared: Partial<Record<SharedStatKey, number>> = {
     stamina: -(cost?.stamina ?? 0),
   };
-  const exp: Partial<Record<IdolStatKey, number>> = {};
+  const exp = new Map<string, { label: string; value: number }>();
   let money = -(cost?.money ?? 0);
 
   for (const effect of effects) {
     if (effect.kind === 'sharedStat') {
       shared[effect.stat] = (shared[effect.stat] ?? 0) + effect.delta;
-    } else if (effect.kind === 'idolExp') {
+    } else if (effect.kind === 'attributeExp') {
+      const ref = normalizeAttributeRef(effect.ref);
+      const key = ref.scope === 'idol' ? ref.key : `producer:${ref.key}`;
       const value =
         EXP_TIER_VALUES[effect.tier] *
         (effect.direction === 'loss' ? -1 : 1);
-      exp[effect.attribute] = (exp[effect.attribute] ?? 0) + value;
+      const current = exp.get(key) ?? { label: attributeLabel(ref), value: 0 };
+      exp.set(key, { label: current.label, value: current.value + value });
     } else if (effect.kind === 'money') {
       money += effect.delta;
     }
@@ -921,17 +1003,18 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
     parts.push(`金钱 ${money > 0 ? '+' : ''}${money}`);
   }
 
-  const expOrder: IdolStatKey[] = [
+  const expOrder = [
     'vocal',
     'dance',
     'expression',
     'trust',
+    'producer:photography',
   ];
-  for (const attribute of expOrder) {
-    const delta = exp[attribute] ?? 0;
-    if (delta !== 0) {
+  for (const key of expOrder) {
+    const entry = exp.get(key);
+    if (entry && entry.value !== 0) {
       parts.push(
-        `${STAT_LABELS[attribute]} EXP ${delta > 0 ? '+' : ''}${delta}`,
+        `${entry.label} EXP ${entry.value > 0 ? '+' : ''}${entry.value}`,
       );
     }
   }
@@ -1038,12 +1121,17 @@ export function activityAvailability(
   }
 
   if (activity.workRisk && idolId) {
-    const risk = workRiskPreview(state, activity.workRisk, idolId);
+    const risk = workRiskPreview(
+      state,
+      activity.workRisk,
+      activity.workReward,
+      idolId,
+    );
     if (!risk.eligible) {
       return {
         ok: false,
         display: 'disable',
-        reason: `需要${STAT_LABELS[activity.workRisk.attribute]} ${risk.minRank}`,
+        reason: `需要${risk.ref ? attributeLabel(risk.ref) : '属性'} ${risk.minRank}`,
       };
     }
   }
@@ -1331,7 +1419,7 @@ export function applyActivityDef(
   const outcomes = resolvedTargets.map((targetId) => {
     const risk =
       activity.workRisk && targetId
-        ? workRiskPreview(next, activity.workRisk, targetId)
+        ? workRiskPreview(next, activity.workRisk, activity.workReward, targetId)
         : undefined;
     const failed = !!risk && risk.chance > 0 && rng.next() < risk.chance;
     applyEffects(next, activity.effects, {

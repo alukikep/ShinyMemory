@@ -1,5 +1,6 @@
 export type SharedStatKey = 'stamina' | 'stress';
 export type IdolStatKey = 'vocal' | 'dance' | 'expression' | 'trust';
+export type ProducerStatKey = 'photography';
 export type StatKey = SharedStatKey | IdolStatKey;
 
 export type Rank = 'F' | 'E' | 'D' | 'C' | 'B' | 'A' | 'S';
@@ -15,19 +16,35 @@ export type IdolAttribute = {
 
 export type IdolStats = Record<IdolStatKey, IdolAttribute>;
 
-export type WorkCheck = {
-  attribute: IdolStatKey;
-  weight: number;
+export type ProducerStats = Record<ProducerStatKey, IdolAttribute>;
+
+/**
+ * 属性的统一引用：偶像属性挂在单个偶像身上，制作人属性对所有偶像全局生效。
+ * 两者共用同一条 rank 曲线和同一套结算。
+ */
+export type AttributeRef =
+  | { scope: 'idol'; key: IdolStatKey }
+  | { scope: 'producer'; key: ProducerStatKey };
+
+/** 内容里允许直接写偶像属性名，等价于 `{ scope: 'idol', key }`。 */
+export type AttributeRefInput = IdolStatKey | AttributeRef;
+
+export type WorkTerm = {
+  ref: AttributeRefInput;
+  weight?: number;
   multipliers?: Partial<Record<Rank, number>>;
 };
 
 export type WorkReward = {
   baseMoney: number;
-  checks: WorkCheck[];
+  terms: WorkTerm[];
+  /** 默认 `sum`：各项权重相加；`product`：各项倍率相乘（此时 weight 无效）。 */
+  combine?: 'sum' | 'product';
 };
 
 export type WorkRisk = {
-  attribute: IdolStatKey;
+  /** 省略时对 `workReward.terms` 的每一项各算一次，取最差。 */
+  ref?: AttributeRefInput;
   minRank?: Rank;
   safeRank: Rank;
   failureEventId?: string;
@@ -143,6 +160,7 @@ export type GameState = {
   locationId: string;
   actors: Record<string, ActorState>;
   shared: SharedStats;
+  producer: ProducerStats;
   idols: Record<string, IdolState>;
   selectedIdolId: string;
   money: number;
@@ -175,8 +193,8 @@ export type GameState = {
 export type Effect =
   | { kind: 'sharedStat'; stat: SharedStatKey; delta: number }
   | {
-      kind: 'idolExp';
-      attribute: IdolStatKey;
+      kind: 'attributeExp';
+      ref: AttributeRefInput;
       tier: ExpTier;
       direction?: 'gain' | 'loss';
     }
@@ -191,8 +209,8 @@ export type Condition =
   | { kind: 'timeWindow'; fromMinute: number; toMinute: number }
   | { kind: 'sharedStatAtLeast'; stat: SharedStatKey; value: number }
   | { kind: 'sharedStatAtMost'; stat: SharedStatKey; value: number }
-  | { kind: 'rankAtLeast'; attribute: IdolStatKey; rank: Rank }
-  | { kind: 'rankAtMost'; attribute: IdolStatKey; rank: Rank }
+  | { kind: 'attributeAtLeast'; ref: AttributeRefInput; rank: Rank }
+  | { kind: 'attributeAtMost'; ref: AttributeRefInput; rank: Rank }
   | { kind: 'npcAffinityAtLeast'; actorId: string; value: number }
   | { kind: 'npcAffinityAtMost'; actorId: string; value: number }
   | { kind: 'moneyAtMost'; value: number }

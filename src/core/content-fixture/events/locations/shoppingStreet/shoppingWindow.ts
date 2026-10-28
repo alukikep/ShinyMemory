@@ -12,7 +12,7 @@ const card: EventDef = {
     {
       label: '拍下来发给她',
       effects: [
-        { kind: 'idolExp', attribute: 'trust', tier: 1 },
+        { kind: 'attributeExp', ref: 'trust', tier: 1 },
         { kind: 'sharedStat', stat: 'stress', delta: -1 },
       ],
       result: '她回了一个很短的消息：“拍得还行。”后面跟着一个小小的表情。',

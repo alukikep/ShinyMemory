@@ -13,6 +13,7 @@ import { LocalStorageRepository } from '../save/localStorageRepository';
 import type { SaveRepository } from '../save/repository';
 import { createSaveEnvelope } from '../save/save';
 import type { SaveSlotMeta } from '../save/slots';
+import { exportSaveText, parseSaveText } from '../save/transfer';
 
 type GameStore = {
   state: GameState;
@@ -22,6 +23,8 @@ type GameStore = {
   saveSlot: (slotId: string, label: string) => string;
   loadSlot: (slotId: string) => boolean;
   deleteSlot: (slotId: string) => void;
+  exportSlot: (slotId: string) => string | null;
+  importSlot: (label: string, text: string) => boolean;
   debugForceEvent: (eventId: string) => void;
   debugJumpDay: (day: number) => void;
   debugJumpTo: (
@@ -82,6 +85,17 @@ export const useGameStore = create<GameStore>((set, get) => ({
   deleteSlot: (slotId) => {
     repository.deleteSlot(slotId);
     set({ slots: repository.listSlots() });
+  },
+  exportSlot: (slotId) => {
+    const envelope = repository.loadSlot(slotId);
+    return envelope ? exportSaveText(envelope) : null;
+  },
+  importSlot: (label, text) => {
+    const parsed = parseSaveText(text);
+    if (!parsed.ok) return false;
+    repository.saveSlot(`slot-${Date.now()}`, label, parsed.envelope);
+    set({ slots: repository.listSlots() });
+    return true;
   },
   debugForceEvent: (eventId) =>
     set((previous) => {

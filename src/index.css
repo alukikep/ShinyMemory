@@ -628,6 +628,20 @@ button:focus-visible,
   color: var(--brand);
 }
 
+.save-import {
+  position: relative;
+  display: block;
+  text-align: center;
+  overflow: hidden;
+}
+
+.save-import input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
 .save-empty {
   margin: 24px 0;
   color: var(--faint);

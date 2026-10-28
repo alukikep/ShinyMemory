@@ -13,6 +13,8 @@ type SavePanelProps = {
   onSave: (slotId: string, label: string) => void;
   onLoad: (slotId: string) => void;
   onDelete: (slotId: string) => void;
+  onExport: (slotId: string, label: string) => void;
+  onImport: (file: File) => void;
 };
 
 export function SavePanel({
@@ -22,6 +24,8 @@ export function SavePanel({
   onSave,
   onLoad,
   onDelete,
+  onExport,
+  onImport,
 }: SavePanelProps) {
   const dialogRef = useDialogFocus<HTMLElement>();
   const [pendingDelete, setPendingDelete] = useState<string | null>(null);
@@ -71,9 +75,24 @@ export function SavePanel({
         </header>
 
         {mode === 'save' ? (
-          <button type="button" className="save-new" onClick={createSlot}>
-            新建存档槽
-          </button>
+          <>
+            <button type="button" className="save-new" onClick={createSlot}>
+              新建存档槽
+            </button>
+            <label className="save-new save-import">
+              导入存档文件
+              <input
+                type="file"
+                accept=".json,application/json"
+                aria-label="导入存档文件"
+                onChange={(event) => {
+                  const file = event.target.files?.[0];
+                  if (file) onImport(file);
+                  event.target.value = '';
+                }}
+              />
+            </label>
+          </>
         ) : null}
 
         {slots.length === 0 ? (
@@ -97,6 +116,13 @@ export function SavePanel({
                   </p>
                 </div>
                 <div className="save-slot-actions">
+                  <button
+                    type="button"
+                    className="save-slot-action"
+                    onClick={() => onExport(slot.id, slot.label)}
+                  >
+                    导出
+                  </button>
                   {mode === 'save' ? (
                     <button
                       type="button"

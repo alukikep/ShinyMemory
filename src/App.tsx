@@ -46,6 +46,8 @@ export default function App() {
   const saveSlot = useGameStore((store) => store.saveSlot);
   const loadSlot = useGameStore((store) => store.loadSlot);
   const deleteSlot = useGameStore((store) => store.deleteSlot);
+  const exportSlot = useGameStore((store) => store.exportSlot);
+  const importSlot = useGameStore((store) => store.importSlot);
   const debugForceEvent = useGameStore((store) => store.debugForceEvent);
   const debugJumpDay = useGameStore((store) => store.debugJumpDay);
   const [rosterOpen, setRosterOpen] = useState(false);
@@ -123,6 +125,34 @@ export default function App() {
   const handleDeleteSlot = (slotId: string) => {
     deleteSlot(slotId);
     setSaveNotice('已删除存档。');
+  };
+
+  const handleExportSlot = (slotId: string, label: string) => {
+    const text = exportSlot(slotId);
+    if (!text) {
+      setSaveNotice('导出失败：这个存档不可读。');
+      return;
+    }
+    const blob = new Blob([text], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `${label}.json`;
+    anchor.click();
+    URL.revokeObjectURL(url);
+    setSaveNotice('已导出存档文件。');
+  };
+
+  const handleImportFile = (file: File) => {
+    void file.text().then((text) => {
+      const label = file.name.replace(/\.json$/i, '') || '导入存档';
+      if (importSlot(label, text)) {
+        setSavePanel(null);
+        setSaveNotice('已导入存档。');
+      } else {
+        setSaveNotice('导入失败：文件不可用或版本不兼容。');
+      }
+    });
   };
 
   return (
@@ -324,6 +354,8 @@ export default function App() {
           onSave={handleSaveToSlot}
           onLoad={handleLoadFromSlot}
           onDelete={handleDeleteSlot}
+          onExport={handleExportSlot}
+          onImport={handleImportFile}
         />
       ) : null}
 

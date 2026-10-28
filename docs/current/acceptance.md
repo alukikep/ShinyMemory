@@ -12,7 +12,7 @@ npm run acceptance
 
 - Playwright Test；
 - `?debug=1` 状态/操作桥；
-- 13 条引擎浏览器流程；
+- 14 条引擎浏览器流程；
 - 3 条内容浏览器流程（冻结 fixture）；
 - 1 条正式序章流程（production build）；
 - 2 条审查流程 E2E；
@@ -39,7 +39,7 @@ tests/review/review.spec.ts
 当前验收：
 
 ```text
-引擎 13 passed
+引擎 14 passed
 内容 3 passed
 正式序章 1 passed
 审查 2 passed
@@ -80,7 +80,7 @@ Playwright Test
 已有：
 
 - Vitest 单元/集成测试；
-- 200 个测试；
+- 207 个测试；
 - 构建检查；
 - SSR UI 测试；
 - 多尺寸截图人工检查；
@@ -551,7 +551,7 @@ A4 axe
 
 ## 非目标
 
-- 不把全部 200 个测试迁移到 Playwright；
+- 不把全部 207 个测试迁移到 Playwright；
 - 不追求 100% 视觉像素一致；
 - 不测试所有事件文本；
 - 不把 E2E 当平衡测试；

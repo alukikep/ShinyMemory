@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
-import { getActiveIdol, isActiveIdolRecruited } from '../../core/sim';
+import { getSelectedIdol, isSelectedIdolRecruited } from '../../core/sim';
 import { STAT_LABELS, STAT_MAX } from '../../core/labels';
 import type {
   GameState,
@@ -85,10 +85,10 @@ export function StatsPanel({
   state: GameState;
   hero?: HeroView;
 }) {
-  const recruited = isActiveIdolRecruited(state);
-  const idol = recruited ? getActiveIdol(state) : undefined;
+  const recruited = isSelectedIdolRecruited(state);
+  const idol = recruited ? getSelectedIdol(state) : undefined;
   const idolDef = recruited
-    ? CONTENT_INDEX.idols.get(state.activeIdolId)
+    ? CONTENT_INDEX.idols.get(state.selectedIdolId)
     : undefined;
 
   return (
@@ -125,7 +125,7 @@ export function StatsPanel({
             </div>
             <div className="idol-summary-copy">
               <span className="idol-summary-name">
-                {idolDef?.name ?? state.activeIdolId}
+                {idolDef?.name ?? state.selectedIdolId}
               </span>
               <span className="idol-summary-unit">{idolDef?.unit ?? ''}</span>
             </div>

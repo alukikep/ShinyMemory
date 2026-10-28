@@ -169,16 +169,16 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
   }
 
   if (next.schemaVersion === 7) {
-    next.state.actors = {
+    const state = next.state as GameState & { activeIdolId?: string };
+    state.actors = {
       ...createInitialActorStates(),
-      ...(next.state.actors ?? {}),
+      ...(state.actors ?? {}),
     };
-    next.state.idols = {
+    state.idols = {
       ...createInitialIdolStates(),
-      ...(next.state.idols ?? {}),
+      ...(state.idols ?? {}),
     };
-    next.state.activeIdolId =
-      next.state.activeIdolId ?? CONTENT_INDEX.startingIdolId;
+    state.activeIdolId = state.activeIdolId ?? CONTENT_INDEX.startingIdolId;
     next.schemaVersion = 8;
     next.gameVersion = GAME_VERSION;
   }
@@ -242,6 +242,22 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     state.dialogueNodeId = undefined;
     state.dialogueTargetIdolId = undefined;
     next.schemaVersion = 12;
+    next.gameVersion = GAME_VERSION;
+  }
+
+  if (next.schemaVersion === 12) {
+    const state = next.state as GameState & {
+      activeIdolId?: string;
+      pendingIdolId?: string;
+    };
+    if (!state.selectedIdolId) {
+      state.selectedIdolId =
+        state.activeIdolId ?? CONTENT_INDEX.startingIdolId;
+    }
+    delete state.activeIdolId;
+    delete state.pendingIdolId;
+    state.jobs = state.jobs ?? [];
+    next.schemaVersion = 13;
     next.gameVersion = GAME_VERSION;
   }
 

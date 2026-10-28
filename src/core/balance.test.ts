@@ -19,7 +19,7 @@ const strategies: Record<string, Strategy> = {
   balanced: (state) => {
     const stamina = getStatValue(state, 'stamina');
     const stress = getStatValue(state, 'stress');
-    const trust = getStatValue(state, 'trust');
+    const trust = getStatValue(state, 'trust', state.selectedIdolId);
     if (stamina < 35 || stress > 65) return 'rest';
     if (state.money < 500) return 'work';
     if (trust < 3 && state.actionsTaken % 5 === 0) return 'free';
@@ -124,7 +124,7 @@ describe('balance smoke', () => {
         const state = run(strategy, seed);
         dayTotal += getDay(state.clock.absoluteMinutes);
         stressTotal += getStatValue(state, 'stress');
-        trustTotal += getStatValue(state, 'trust');
+        trustTotal += getStatValue(state, 'trust', state.selectedIdolId);
       }
       console.log(
         name,

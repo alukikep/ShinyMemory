@@ -20,8 +20,8 @@ export function BackpackModal({
     (idol) => idol.status === 'recruited',
   );
   const [giftTarget, setGiftTarget] = useState(
-    idols.some((idol) => idol.id === state.activeIdolId)
-      ? state.activeIdolId
+    idols.some((idol) => idol.id === state.selectedIdolId)
+      ? state.selectedIdolId
       : idols[0]?.id ?? '',
   );
   const [giftFeedback, setGiftFeedback] = useState<string | undefined>();
@@ -113,7 +113,7 @@ export function BackpackModal({
                 {idols.map((idol) => (
                   <option key={idol.id} value={idol.id}>
                     {CONTENT_INDEX.idols.get(idol.id)?.name ?? idol.id}
-                    {idol.id === state.activeIdolId ? '（当前）' : ''}
+                    {idol.id === state.selectedIdolId ? '（当前）' : ''}
                   </option>
                 ))}
               </select>

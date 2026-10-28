@@ -67,7 +67,7 @@ test('Meguru unlock: unknown -> known -> recruited', async ({ page }) => {
   expect(
     (await getState(page)).storyChains['meguru-encounter']?.completed,
   ).toBe(true);
-  expect((await getState(page)).activeIdolId).toBe('mano');
+  expect((await getState(page)).selectedIdolId).toBe('mano');
 
   await page.getByRole('button', { name: '偶像名册' }).click();
   await expect(
@@ -82,7 +82,7 @@ test('Meguru unlock: unknown -> known -> recruited', async ({ page }) => {
   await jumpTo(page, 4, 12 * 60, 'practice_room');
   await page.getByRole('button', { name: /八宫巡/ }).click();
   expect((await getState(page)).phase).toBe('idol');
-  expect((await getState(page)).activeIdolId).toBe('meguru');
+  expect((await getState(page)).selectedIdolId).toBe('meguru');
   await page.getByRole('button', { name: /^声乐课/ }).click();
   expect((await getState(page)).phase).toBe('activityResult');
 

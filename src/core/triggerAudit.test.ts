@@ -19,7 +19,7 @@ const strategies: Record<string, Strategy> = {
   balanced: (state) => {
     const stamina = getStatValue(state, 'stamina');
     const stress = getStatValue(state, 'stress');
-    const trust = getStatValue(state, 'trust');
+    const trust = getStatValue(state, 'trust', state.selectedIdolId);
     if (stamina < 35 || stress > 65) return 'rest';
     if (state.money < 500) return 'work';
     if (trust < 3 && state.actionsTaken % 5 === 0) return 'free';

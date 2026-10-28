@@ -79,17 +79,14 @@ function clampState(state: GameState): void {
   }
 }
 
-export function getIdol(
-  state: GameState,
-  idolId: string = state.activeIdolId,
-): IdolState {
-  const idol = state.idols[idolId] ?? Object.values(state.idols)[0];
-  if (!idol) throw new Error('no idol state');
+export function getIdol(state: GameState, idolId: string): IdolState {
+  const idol = state.idols[idolId];
+  if (!idol) throw new Error(`unknown idol: ${idolId}`);
   return idol;
 }
 
-export function getActiveIdol(state: GameState): IdolState {
-  return getIdol(state);
+export function getSelectedIdol(state: GameState): IdolState {
+  return getIdol(state, state.selectedIdolId);
 }
 
 export function isIdolRecruited(
@@ -103,8 +100,8 @@ export function hasRecruitedIdol(state: GameState): boolean {
   return Object.values(state.idols).some((idol) => idol.status === 'recruited');
 }
 
-export function isActiveIdolRecruited(state: GameState): boolean {
-  return isIdolRecruited(state, state.activeIdolId);
+export function isSelectedIdolRecruited(state: GameState): boolean {
+  return isIdolRecruited(state, state.selectedIdolId);
 }
 
 export function formatIdolText(
@@ -120,7 +117,7 @@ export function formatIdolText(
 export function getIdolAttribute(
   state: GameState,
   attribute: IdolStatKey,
-  idolId: string = state.activeIdolId,
+  idolId: string,
 ): IdolAttribute {
   return getIdol(state, idolId).stats[attribute];
 }
@@ -128,7 +125,7 @@ export function getIdolAttribute(
 export function getRank(
   state: GameState,
   attribute: IdolStatKey,
-  idolId: string = state.activeIdolId,
+  idolId: string,
 ): Rank {
   return getIdolAttribute(state, attribute, idolId).rank;
 }
@@ -137,8 +134,8 @@ export function applyIdolExp(
   state: GameState,
   attribute: IdolStatKey,
   tier: ExpTier,
-  direction: 'gain' | 'loss' = 'gain',
-  idolId: string = state.activeIdolId,
+  direction: 'gain' | 'loss',
+  idolId: string,
 ): void {
   const target = getIdolAttribute(state, attribute, idolId);
   const amount = EXP_TIER_VALUES[tier];
@@ -173,14 +170,21 @@ export function applyIdolExp(
   }
 }
 
+export function getStatValue(state: GameState, stat: SharedStatKey): number;
+export function getStatValue(
+  state: GameState,
+  stat: IdolStatKey,
+  idolId: string,
+): number;
 export function getStatValue(
   state: GameState,
   stat: StatKey,
-  idolId: string = state.activeIdolId,
+  idolId?: string,
 ): number {
   if (stat === 'stamina' || stat === 'stress') {
     return state.shared[stat];
   }
+  if (!idolId) throw new Error('idol attribute requires idolId');
   return rankIndex(getRank(state, stat, idolId));
 }
 
@@ -198,7 +202,7 @@ export type WorkRewardPreview = {
 export function workRewardPreview(
   state: GameState,
   reward: WorkReward,
-  idolId: string = state.activeIdolId,
+  idolId: string,
 ): WorkRewardPreview {
   const parts = reward.checks.map((check) => {
     const rank = getRank(state, check.attribute, idolId);
@@ -231,7 +235,7 @@ export function workRewardPreview(
 export function workRewardSummary(
   state: GameState,
   reward: WorkReward,
-  idolId: string = state.activeIdolId,
+  idolId: string,
 ): string {
   const preview = workRewardPreview(state, reward, idolId);
   const detail = preview.parts
@@ -255,7 +259,7 @@ export type WorkRiskPreview = {
 export function workRiskPreview(
   state: GameState,
   risk: WorkRisk,
-  idolId: string = state.activeIdolId,
+  idolId: string,
 ): WorkRiskPreview {
   const rank = getRank(state, risk.attribute, idolId);
   const minRank = risk.minRank ?? 'F';
@@ -279,7 +283,7 @@ export function workRiskPreview(
 export function workRiskSummary(
   state: GameState,
   risk: WorkRisk,
-  idolId: string = state.activeIdolId,
+  idolId: string,
 ): string {
   const preview = workRiskPreview(state, risk, idolId);
   if (!preview.eligible) {
@@ -313,7 +317,7 @@ export function newGame(seed: number = Date.now()): GameState {
       stress: 0,
     },
     idols: createInitialIdolStates(),
-    activeIdolId: CONTENT_INDEX.startingIdolId,
+    selectedIdolId: CONTENT_INDEX.startingIdolId,
     money: 3000,
     inventory: {},
     shopPurchases: {},
@@ -377,11 +381,11 @@ export function acceptJob(
   }
 
   const job = CONTENT_INDEX.jobs.get(jobId);
-  const actor = getActor(state.activeIdolId);
-  const actorState = state.actors[state.activeIdolId];
+  const actor = getActor(state.selectedIdolId);
+  const actorState = state.actors[state.selectedIdolId];
   if (!job || !actor || !actorState) return state;
   if (
-    state.jobs?.some(
+    state.jobs.some(
       (entry) => entry.jobId === job.id && entry.idolId === actor.id,
     )
   ) {
@@ -436,7 +440,7 @@ export function acceptJob(
 }
 
 export function completeDueJobs(state: GameState): void {
-  if (!state.jobs || state.jobs.length === 0) return;
+  if (state.jobs.length === 0) return;
   const currentMinutes = state.clock.absoluteMinutes;
   state.jobs = state.jobs.filter(
     (job) => currentMinutes < (job.day - 1) * MINUTES_PER_DAY + job.toMinute,
@@ -446,9 +450,9 @@ export function completeDueJobs(state: GameState): void {
 export function activeJobFor(state: GameState): JobAssignment | undefined {
   const minute = getMinuteOfDay(state.clock.absoluteMinutes);
   const day = getDay(state.clock.absoluteMinutes);
-  return state.jobs?.find(
+  return state.jobs.find(
     (job) =>
-      job.idolId === state.activeIdolId &&
+      job.idolId === state.selectedIdolId &&
       job.day === day &&
       job.locationId === state.locationId &&
       minute >= job.fromMinute &&
@@ -458,9 +462,9 @@ export function activeJobFor(state: GameState): JobAssignment | undefined {
 
 export function attendJob(state: GameState, jobId: string): GameState {
   if (state.phase !== 'plan') return state;
-  const assignment = state.jobs?.find((job) => job.id === jobId);
+  const assignment = state.jobs.find((job) => job.id === jobId);
   if (!assignment) return state;
-  if (assignment.idolId !== state.activeIdolId) return state;
+  if (assignment.idolId !== state.selectedIdolId) return state;
   if (assignment.locationId !== state.locationId) return state;
 
   const minute = getMinuteOfDay(state.clock.absoluteMinutes);
@@ -476,14 +480,14 @@ export function attendJob(state: GameState, jobId: string): GameState {
   if (!job) return state;
 
   const next = clone(state);
-  next.activeIdolId = assignment.idolId;
+  next.selectedIdolId = assignment.idolId;
   next.money += job.pay;
-  applyEffects(next, job.effects ?? []);
+  applyEffects(next, job.effects ?? [], { idolId: assignment.idolId });
   next.clock.absoluteMinutes = Math.max(
     next.clock.absoluteMinutes,
     (assignment.day - 1) * MINUTES_PER_DAY + assignment.toMinute,
   );
-  next.jobs = (next.jobs ?? []).filter((entry) => entry.id !== jobId);
+  next.jobs = next.jobs.filter((entry) => entry.id !== jobId);
   addLog(next, `你参与了《${job.name}》。`, 'good');
 
   return next;
@@ -573,7 +577,7 @@ export function getDialogueText(
 function applyDialogueNodeEffects(state: GameState, node: DialogueNode): void {
   if (node.effects?.length) {
     applyEffects(state, node.effects, {
-      idolId: state.dialogueTargetIdolId,
+      idolId: state.dialogueTargetIdolId ?? state.selectedIdolId,
     });
   }
 }
@@ -732,7 +736,7 @@ export function chooseDialogue(state: GameState, index: number): GameState {
 
   const next = clone(state);
   applyEffects(next, choice.effects ?? [], {
-    idolId: next.dialogueTargetIdolId,
+    idolId: next.dialogueTargetIdolId ?? next.selectedIdolId,
   });
   next.dialogueNodeId = nextNode.id;
   applyDialogueNodeEffects(next, nextNode);
@@ -806,15 +810,17 @@ export function checkCondition(
     case 'sharedStatAtMost':
       return state.shared[condition.stat] <= condition.value;
     case 'rankAtLeast':
-      return sameOrHigherRank(
-        getRank(state, condition.attribute, ctx.idolId),
-        condition.rank,
-      );
+      return ctx.idolId
+        ? sameOrHigherRank(
+            getRank(state, condition.attribute, ctx.idolId),
+            condition.rank,
+          )
+        : false;
     case 'rankAtMost':
-      return (
-        rankIndex(getRank(state, condition.attribute, ctx.idolId)) <=
-        rankIndex(condition.rank)
-      );
+      return ctx.idolId
+        ? rankIndex(getRank(state, condition.attribute, ctx.idolId)) <=
+            rankIndex(condition.rank)
+        : false;
     case 'npcAffinityAtLeast':
       return (state.actors[condition.actorId]?.affinity ?? 0) >= condition.value;
     case 'npcAffinityAtMost':
@@ -847,12 +853,17 @@ function applyEffects(
         state.shared[effect.stat] += effect.delta;
         break;
       case 'idolExp': {
+        if (!options?.idolId) {
+          throw new Error(
+            `idolExp effect requires an idol context: ${effect.attribute}`,
+          );
+        }
         const isPerformance =
           effect.attribute === 'vocal' ||
           effect.attribute === 'dance' ||
           effect.attribute === 'expression';
         const tier =
-          options?.training &&
+          options.training &&
           options.stressed &&
           isPerformance &&
           (effect.direction ?? 'gain') === 'gain'
@@ -863,7 +874,7 @@ function applyEffects(
           effect.attribute,
           tier,
           effect.direction ?? 'gain',
-          options?.idolId,
+          options.idolId,
         );
         break;
       }
@@ -938,7 +949,7 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
 export function activityAvailability(
   state: GameState,
   activity: ActivityDef,
-  idolId: string = state.activeIdolId,
+  idolId?: string,
 ): Availability {
   if (
     state.flags.forced_rest &&
@@ -959,11 +970,11 @@ export function activityAvailability(
     return { ok: false, display: 'hide', reason: '现在不能做' };
   }
   if (activity.target === 'present-idol') {
-    const actor = getActor(idolId);
+    const actor = idolId ? getActor(idolId) : undefined;
     if (
       !actor ||
       actor.role !== 'idol' ||
-      !isIdolRecruited(state, idolId) ||
+      !isIdolRecruited(state, idolId!) ||
       !isActorPresent(state, actor)
     ) {
       return {
@@ -994,7 +1005,7 @@ export function activityAvailability(
     return { ok: false, display: 'disable', reason: '条件未满足' };
   }
 
-  if (activity.workRisk) {
+  if (activity.workRisk && idolId) {
     const risk = workRiskPreview(state, activity.workRisk, idolId);
     if (!risk.eligible) {
       return {
@@ -1093,8 +1104,7 @@ export function enterIdol(state: GameState, idolId: string): GameState {
 
   const next = clone(state);
   next.phase = 'idol';
-  next.activeIdolId = idolId;
-  next.pendingIdolId = idolId;
+  next.selectedIdolId = idolId;
   next.pendingActorId = undefined;
   next.pendingTopicId = undefined;
   next.pendingActivityId = undefined;
@@ -1105,7 +1115,6 @@ export function enterIdol(state: GameState, idolId: string): GameState {
 export function leaveIdol(state: GameState): GameState {
   if (state.phase !== 'idol') return state;
   const next = clone(state);
-  next.pendingIdolId = undefined;
   next.pendingActivityId = undefined;
   next.phase = 'plan';
   return next;
@@ -1116,7 +1125,7 @@ export function train(
   idolId: string,
   activityId: string,
 ): GameState {
-  if (state.phase !== 'idol' || state.pendingIdolId !== idolId) return state;
+  if (state.phase !== 'idol' || state.selectedIdolId !== idolId) return state;
   if (!isIdolRecruited(state, idolId)) return state;
 
   const actor = getActor(idolId);
@@ -1134,7 +1143,7 @@ export function train(
 
   const next = applyActivity(state, activityId, idolId);
   if (next.phase !== 'activityResult' && next.phase !== 'event') return state;
-  next.pendingIdolId = idolId;
+  next.pendingIdolReturnId = idolId;
   return next;
 }
 
@@ -1143,7 +1152,7 @@ export function work(
   idolId: string,
   activityId: string,
 ): GameState {
-  if (state.phase !== 'idol' || state.pendingIdolId !== idolId) return state;
+  if (state.phase !== 'idol' || state.selectedIdolId !== idolId) return state;
   if (!isIdolRecruited(state, idolId)) return state;
 
   const actor = getActor(idolId);
@@ -1161,7 +1170,7 @@ export function work(
 
   const next = applyActivity(state, activityId, idolId);
   if (next.phase !== 'activityResult' && next.phase !== 'event') return state;
-  next.pendingIdolId = idolId;
+  next.pendingIdolReturnId = idolId;
   return next;
 }
 
@@ -1178,7 +1187,7 @@ export function talkTo(
   if (!topic || !topicAvailability(state, actor, topic).ok) return state;
 
   const next = clone(state);
-  applyEffects(next, topic.effects);
+  applyEffects(next, topic.effects, { idolId: next.selectedIdolId });
   clampState(next);
 
   const actorState = next.actors[actor.id]!;
@@ -1227,14 +1236,13 @@ function pickActivityResult(
 export function applyActivity(
   state: GameState,
   activityId: string,
-  idolId: string = state.activeIdolId,
+  idolId?: string,
 ): GameState {
   const activity = getActivity(activityId);
   if (!activity) return state;
   if (!activityAvailability(state, activity, idolId).ok) return state;
 
   const next = clone(state);
-  next.activeIdolId = idolId;
   const rng = new Rng(next.rng.seed, next.rng.counter);
   const stressed = next.shared.stress >= 70;
 
@@ -1272,9 +1280,10 @@ export function applyActivity(
 
   next.money -= activity.cost.money ?? 0;
   next.shared.stamina -= activity.cost.stamina ?? 0;
-  const risk = activity.workRisk
-    ? workRiskPreview(next, activity.workRisk, idolId)
-    : undefined;
+  const risk =
+    activity.workRisk && idolId
+      ? workRiskPreview(next, activity.workRisk, idolId)
+      : undefined;
   const failed =
     !!risk && risk.chance > 0 && rng.next() < risk.chance;
   applyEffects(next, activity.effects, {
@@ -1283,7 +1292,7 @@ export function applyActivity(
     idolId,
   });
   const reward =
-    !failed && activity.workReward
+    !failed && activity.workReward && idolId
       ? workRewardPreview(next, activity.workReward, idolId)
       : undefined;
   if (reward) next.money += reward.money;
@@ -1298,7 +1307,6 @@ export function applyActivity(
 
   if (failed) {
     advanced.pendingActivityId = undefined;
-    advanced.pendingIdolId = idolId;
     advanced.pendingEventIdolId = idolId;
     const failureEventId = activity.workRisk?.failureEventId;
     if (failureEventId) {
@@ -1318,7 +1326,6 @@ export function applyActivity(
   const successEventId = activity.workRisk?.successEventId;
   if (successEventId && getEvent(successEventId)) {
     advanced.pendingActivityId = undefined;
-    advanced.pendingIdolId = idolId;
     advanced.pendingEventId = successEventId;
     advanced.pendingEventIdolId = idolId;
     advanced.phase = 'event';
@@ -1549,8 +1556,10 @@ export function applyEventChoice(state: GameState, index: number): GameState {
   }
 
   const next = clone(state);
+  // 事件没有显式目标偶像时，效果作用于当前选中的偶像。
+  const effectIdolId = state.pendingEventIdolId ?? state.selectedIdolId;
   applyEffects(next, choice.effects, {
-    idolId: state.pendingEventIdolId,
+    idolId: effectIdolId,
   });
   clampState(next);
 
@@ -1579,17 +1588,17 @@ function continueFromActivity(state: GameState): GameState {
     lastActivityId: activityId,
     lastActivityKind: activityKind,
     locationId: next.locationId,
-    idolId: next.pendingIdolId,
+    idolId: next.pendingIdolReturnId,
   });
   if (result.event) return result.state;
 
-  if (next.pendingIdolId) {
-    const idolActor = getActor(next.pendingIdolId);
+  if (next.pendingIdolReturnId) {
+    const idolActor = getActor(next.pendingIdolReturnId);
     if (idolActor && isActorPresent(next, idolActor)) {
       next.phase = 'idol';
       return next;
     }
-    next.pendingIdolId = undefined;
+    next.pendingIdolReturnId = undefined;
   }
 
   next.phase = 'plan';
@@ -1613,13 +1622,13 @@ function continueFromEvent(state: GameState): GameState {
   next.pendingEventId = undefined;
   next.pendingEventIdolId = undefined;
 
-  if (next.pendingIdolId) {
-    const idolActor = getActor(next.pendingIdolId);
+  if (next.pendingIdolReturnId) {
+    const idolActor = getActor(next.pendingIdolReturnId);
     if (idolActor && isActorPresent(next, idolActor)) {
       next.phase = 'idol';
       return next;
     }
-    next.pendingIdolId = undefined;
+    next.pendingIdolReturnId = undefined;
   }
 
   const actor = next.pendingActorId ? getActor(next.pendingActorId) : undefined;
@@ -1709,11 +1718,15 @@ export function handleCommand(
         return work(state, command.idolId, command.activityId);
       }
       if (command.type === 'activity') {
-        return applyActivity(
-          state,
-          command.activityId,
-          command.idolId ?? state.activeIdolId,
-        );
+        if (!command.idolId) return state;
+        const next = applyActivity(state, command.activityId, command.idolId);
+        if (
+          next !== state &&
+          (next.phase === 'activityResult' || next.phase === 'event')
+        ) {
+          next.pendingIdolReturnId = command.idolId;
+        }
+        return next;
       }
       return state;
 
@@ -1765,7 +1778,17 @@ export function handleAction(state: GameState, actionId: string): GameState {
           command = { type: 'acceptJob', jobId, day };
         }
       } else {
-        command = { type: 'activity', activityId: actionId };
+        const activity = getActivity(actionId);
+        const needsIdol =
+          !!activity &&
+          (activity.target === 'present-idol' ||
+            activity.kind === 'training' ||
+            activity.kind === 'work');
+        command = {
+          type: 'activity',
+          activityId: actionId,
+          ...(needsIdol ? { idolId: state.selectedIdolId } : {}),
+        };
       }
       break;
 

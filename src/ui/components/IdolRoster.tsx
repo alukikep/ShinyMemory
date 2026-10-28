@@ -114,7 +114,7 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
           {idols.map((idol) => {
             const def = CONTENT_INDEX.idols.get(idol.id);
             const recruited = idol.status === 'recruited';
-            const active = recruited && idol.id === state.activeIdolId;
+            const active = recruited && idol.id === state.selectedIdolId;
             const actor = recruited ? CONTENT_INDEX.actors.get(idol.id) : undefined;
             const actorState = state.actors[idol.id];
             const locationId = actor

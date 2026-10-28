@@ -92,12 +92,12 @@ type WorkReward = {
 
 ## 3. 「当前偶像」字段
 
-已确认收敛为单一 `selectedIdolId`：
+已收敛为单一 `selectedIdolId`（P0 已完成）：
 
-- 删除 `activeIdolId`（当前实现里会被 `applyActivity` 改写）。
-- 删除 `pendingIdolId`。
+- 删除 `activeIdolId`（旧实现里会被 `applyActivity` 改写，导致侧栏随行动跳变）。
 - `selectedIdolId` 只由 UI 写入。
 - 所有业务函数显式接收 `idolId`，不再有隐式全局默认值。
+- `pendingIdolId` 保留但改名为 `pendingIdolReturnId`，只表示「行动结束后回到哪个偶像页」。
 
 ## 4. 当前边界
 

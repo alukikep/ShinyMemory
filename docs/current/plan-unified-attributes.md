@@ -120,31 +120,37 @@ DEFAULT_PRODUCER_MULTIPLIERS // 制作人  F 1.0 … S 1.5
 
 ## 2. 阶段
 
-### P0 · 上下文整理（纯重构，行为不变）
+### P0 · 上下文整理（纯重构，行为不变）· 已完成
 
 目标：删掉隐式的全局偶像上下文。
 
-- [ ] `GameState.activeIdolId` → `selectedIdolId`
-- [ ] 删除 `pendingIdolId`
-- [ ] `selectedIdolId` 只由 UI 写入（进入偶像页、侧栏点选）
-- [ ] 删除 `applyActivity` 里的 `next.activeIdolId = idolId`
-- [ ] 去掉以下函数的 `idolId = state.activeIdolId` 默认值，改为显式传参：
+- [x] `GameState.activeIdolId` → `selectedIdolId`
+- [x] `pendingIdolId` → `pendingIdolReturnId`（见下方偏差说明）
+- [x] `selectedIdolId` 只由 UI 写入（进入偶像页、侧栏点选、参与工作）
+- [x] 删除 `applyActivity` 里的 `next.activeIdolId = idolId`
+- [x] 去掉以下函数的 `idolId = state.activeIdolId` 默认值，改为显式传参：
   - `getIdolAttribute` / `getRank` / `applyIdolExp` / `getStatValue`
   - `workRewardPreview` / `workRewardSummary` / `workRiskPreview` / `workRiskSummary`
   - `activityAvailability` / `applyActivity`
-- [ ] `activityAvailability` 的 `idolId` 改为可选，但 `target` 需要偶像时必须传（缺失即判定失败）
-- [ ] `StatsPanel` / `IdolRoster` 改用 `selectedIdolId`
-- [ ] `jobs` 收成必填，删除 4 处 `state.jobs?.`
-- [ ] `STAT_MAX` 删除 `vocal` / `dance` / `expression` / `trust` 四条死值
-- [ ] 存档 `SAVE_VERSION 13`：`activeIdolId` / `pendingIdolId` → `selectedIdolId`
+- [x] `activityAvailability` 的 `idolId` 改为可选，但 `target` 需要偶像时必须传（缺失即判定失败）
+- [x] `StatsPanel` / `IdolRoster` 改用 `selectedIdolId`
+- [x] `jobs` 收成必填，删除 4 处 `state.jobs?.`
+- [x] `STAT_MAX` 删除 `vocal` / `dance` / `expression` / `trust` 四条死值
+- [x] 存档 `SAVE_VERSION 13`：`activeIdolId` / `pendingIdolId` → `selectedIdolId`
 
 行为验收：
 
 ```text
-176 个 Vitest 全绿
+177 个 Vitest 全绿
 新游戏 → 序章 → 相遇 → 招募后，侧栏偶像不随行动跳变
 偶像页的可用性判定基于当前页面的偶像，而不是全局指针
 ```
+
+**偏差说明：`pendingIdolId` 没有删除，而是改名为 `pendingIdolReturnId`。**
+
+原字段同时承担两个职责：偶像页的显示目标，以及行动结束后回到哪个偶像页。前者由 `selectedIdolId` 接管，后者需要一个独立字段——否则离开偶像页后再做地点页行动，会被错误地送回偶像页。改名后职责单一：只有 `train` / `work` / 偶像页活动会写它，`continueFromActivity` 消费它。
+
+**顺带修正：** `applyEffects` 的 `idolExp` 效果现在要求显式偶像上下文，缺失即报错。事件和对话在无显式目标时回退到 `selectedIdolId`，并在代码里注明。`getIdol` 也去掉了「找不到就返回第一个偶像」的兜底，改为直接报错。
 
 ### P1 · 多目标行动
 

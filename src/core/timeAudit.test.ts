@@ -105,7 +105,7 @@ describe('time balance audit', () => {
     for (let seed = 1; seed <= runs; seed += 1) {
       const result = run(seed);
       totalDay += getDay(result.state.clock.absoluteMinutes);
-      totalTrust += getStatValue(result.state, 'trust');
+      totalTrust += getStatValue(result.state, 'trust', result.state.selectedIdolId);
       totalStress += getStatValue(result.state, 'stress');
 
       for (const [day, count] of result.actionsByDay) {

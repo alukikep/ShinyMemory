@@ -33,7 +33,7 @@ describe('raising sim core', () => {
     expect(formatClock(state.clock.absoluteMinutes)).toBe('08:00');
     expect(state.locationId).toBe('office');
     expect(state.phase).toBe('plan');
-    expect(state.activeIdolId).toBe('mano');
+    expect(state.selectedIdolId).toBe('mano');
     expect(state.idols.mano?.stats.vocal.rank).toBe('D');
     expect(state.idols.mano?.stats.vocal.exp).toBe(0);
     expect(state.shared.stamina).toBe(100);
@@ -43,7 +43,7 @@ describe('raising sim core', () => {
 
   it('applies activity costs, effects and duration', () => {
     const state = travelTo(newGame(1), 'practice_room');
-    const next = applyActivity(state, 'vocal');
+    const next = applyActivity(state, 'vocal', 'mano');
     expect(next.idols.mano?.stats.vocal.rank).toBe('D');
     expect(next.idols.mano?.stats.vocal.exp).toBe(3);
     expect(next.money).toBe(2500);
@@ -396,6 +396,7 @@ describe('raising sim core', () => {
     state = handleCommand(state, {
       type: 'activity',
       activityId: 'vocal',
+      idolId: 'mano',
     });
     expect(state.phase).toBe('activityResult');
   });
@@ -428,7 +429,7 @@ describe('raising sim core', () => {
       idolId: 'mano',
     });
     expect(entered.phase).toBe('idol');
-    expect(entered.pendingIdolId).toBe('mano');
+    expect(entered.selectedIdolId).toBe('mano');
 
     const trained = handleCommand(entered, {
       type: 'train',
@@ -438,7 +439,7 @@ describe('raising sim core', () => {
     expect(trained.phase).toBe('activityResult');
     expect(trained.idols.mano?.stats.vocal.exp).toBe(3);
     expect(trained.shared.stamina).toBe(85);
-    expect(trained.pendingIdolId).toBe('mano');
+    expect(trained.pendingIdolReturnId).toBe('mano');
 
     const left = handleCommand(entered, { type: 'leaveIdol' });
     expect(left.phase).toBe('plan');
@@ -462,9 +463,20 @@ describe('raising sim core', () => {
       activityId: 'vocal',
     });
 
-    expect(trained.activeIdolId).toBe('hiori');
+    expect(trained.selectedIdolId).toBe('hiori');
     expect(trained.idols.hiori?.stats.vocal.exp).toBe(3);
     expect(trained.idols.mano?.stats.vocal.exp).toBe(0);
+  });
+
+  it('does not move the selection when another idol trains', () => {
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    state.idols.hiori!.status = 'recruited';
+    const before = state.selectedIdolId;
+
+    const next = applyActivity(state, 'vocal', 'hiori');
+
+    expect(next.selectedIdolId).toBe(before);
+    expect(next.idols.hiori?.stats.vocal.exp).toBe(3);
   });
 
   it('applies event effects to the context idol', () => {
@@ -490,7 +502,7 @@ describe('raising sim core', () => {
   it('levels up and freezes at the idol cap', () => {
     const state = newGame(1);
     state.idols.mano!.stats.vocal.exp = 59;
-    applyIdolExp(state, 'vocal', 3);
+    applyIdolExp(state, 'vocal', 3, 'gain', 'mano');
     expect(state.idols.mano?.stats.vocal.rank).toBe('C');
     expect(state.idols.mano?.stats.vocal.exp).toBe(2);
 
@@ -730,7 +742,7 @@ describe('raising sim core', () => {
     expect(scene.hero?.idolId).toBe('mano');
     expect(scene.hero?.portrait).toBe('./assets/idols/mano-portrait.png');
 
-    practice.activeIdolId = 'hiori';
+    practice.selectedIdolId = 'hiori';
     practice.idols.hiori!.status = 'recruited';
     expect(buildScene(practice).hero?.idolId).toBe('hiori');
   });

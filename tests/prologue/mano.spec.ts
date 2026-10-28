@@ -73,7 +73,7 @@ test('office prologue then Mano encounter', async ({ page }) => {
   await page.getByRole('button', { name: '再次听见歌声' }).click();
   await finishDialogue(page);
   expect((await getState(page)).idols.mano?.status).toBe('recruited');
-  expect((await getState(page)).activeIdolId).toBe('mano');
+  expect((await getState(page)).selectedIdolId).toBe('mano');
 
   await expect(page.locator('.idol-summary-name')).toHaveText('樱木真乃');
   await page.getByRole('button', { name: '日程表' }).click();

@@ -113,7 +113,6 @@ export const useGameStore = create<GameStore>((set, get) => ({
       next.phase = 'plan';
       next.pendingActivityId = undefined;
       next.pendingEventId = undefined;
-      next.pendingIdolId = undefined;
       repository.save(createSaveEnvelope(next));
       return { state: next };
     }),

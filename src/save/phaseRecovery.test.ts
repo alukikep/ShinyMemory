@@ -16,7 +16,7 @@ function roundtrip(state: GameState): GameState {
 
 describe('phase recovery', () => {
   it('restores activityResult', () => {
-    const state = applyActivity(travelTo(newGame(1), 'practice_room'), 'vocal');
+    const state = applyActivity(travelTo(newGame(1), 'practice_room'), 'vocal', 'mano');
     const scene = buildScene(roundtrip(state));
     expect(scene.phase).toBe('activityResult');
     expect(scene.title).toBe('声乐课');

@@ -72,7 +72,7 @@ test('Hiori encounter: unknown -> known -> recruited', async ({ page }) => {
 
   expect((await getState(page)).idols.hiori?.status).toBe('recruited');
   expect((await getState(page)).storyChains['hiori-encounter']?.completed).toBe(true);
-  expect((await getState(page)).activeIdolId).toBe('mano');
+  expect((await getState(page)).selectedIdolId).toBe('mano');
 
   await page.getByRole('button', { name: '偶像名册' }).click();
   await expect(
@@ -87,7 +87,7 @@ test('Hiori encounter: unknown -> known -> recruited', async ({ page }) => {
   await jumpTo(page, 3, 12 * 60, 'practice_room');
   await page.getByRole('button', { name: /风野灯织/ }).click();
   expect((await getState(page)).phase).toBe('idol');
-  expect((await getState(page)).activeIdolId).toBe('hiori');
+  expect((await getState(page)).selectedIdolId).toBe('hiori');
   await page.getByRole('button', { name: /^声乐课/ }).click();
   expect((await getState(page)).phase).toBe('activityResult');
 

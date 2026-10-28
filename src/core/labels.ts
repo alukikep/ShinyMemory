@@ -1,4 +1,4 @@
-import type { StatKey } from './types';
+import type { SharedStatKey, StatKey } from './types';
 
 export const STAT_LABELS: Record<StatKey, string> = {
   vocal: '歌唱',
@@ -9,13 +9,9 @@ export const STAT_LABELS: Record<StatKey, string> = {
   trust: '信任',
 };
 
-export const STAT_MAX: Record<StatKey, number> = {
-  vocal: 100,
-  dance: 100,
-  expression: 100,
+export const STAT_MAX: Record<SharedStatKey, number> = {
   stamina: 100,
   stress: 100,
-  trust: 20,
 };
 
 export const STAT_SHORT: Record<StatKey, string> = {

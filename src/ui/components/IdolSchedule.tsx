@@ -36,9 +36,9 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
     (id) => state.idols[id]?.status === 'recruited',
   );
   const [idolId, setIdolId] = useState(
-    recruitedIds.includes(state.activeIdolId)
-      ? state.activeIdolId
-      : (recruitedIds[0] ?? state.activeIdolId),
+    recruitedIds.includes(state.selectedIdolId)
+      ? state.selectedIdolId
+      : (recruitedIds[0] ?? state.selectedIdolId),
   );
   const idol = recruitedIds.includes(idolId)
     ? CONTENT_INDEX.idols.get(idolId)

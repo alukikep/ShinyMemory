@@ -72,7 +72,7 @@ function buildHero(state: GameState) {
     CONTENT_INDEX.idols.has(actor.id),
   );
   const focus =
-    presentIdols.find((actor) => actor.id === state.activeIdolId) ??
+    presentIdols.find((actor) => actor.id === state.selectedIdolId) ??
     presentIdols[0];
   const idol = focus ? CONTENT_INDEX.idols.get(focus.id) : undefined;
 
@@ -150,7 +150,7 @@ function activityIcon(activity: ActivityDef): string {
 function activityActionView(
   state: GameState,
   activity: ActivityDef,
-  idolId: string = state.activeIdolId,
+  idolId?: string,
 ): ActionView {
   const availability = activityAvailability(state, activity, idolId);
   const duration =
@@ -158,12 +158,14 @@ function activityActionView(
       ? '睡到早上 8 点'
       : formatDuration(activity.durationMinutes);
   const effects = effectSummary(activity.effects, activity.cost);
-  const reward = activity.workReward
-    ? workRewardSummary(state, activity.workReward, idolId)
-    : '';
-  const risk = activity.workRisk
-    ? workRiskSummary(state, activity.workRisk, idolId)
-    : '';
+  const reward =
+    activity.workReward && idolId
+      ? workRewardSummary(state, activity.workReward, idolId)
+      : '';
+  const risk =
+    activity.workRisk && idolId
+      ? workRiskSummary(state, activity.workRisk, idolId)
+      : '';
   const timeLabel = formatTimeWindows(activity.timeWindows);
   const hint = [timeLabel, duration, reward, risk, effects]
     .filter(Boolean)
@@ -185,10 +187,10 @@ function jobActionView(
   state: GameState,
   job: JobDef,
 ): ActionView | undefined {
-  const actor = CONTENT_INDEX.actors.get(state.activeIdolId);
+  const actor = CONTENT_INDEX.actors.get(state.selectedIdolId);
   if (!actor) return undefined;
   if (
-    state.jobs?.some(
+    state.jobs.some(
       (entry) => entry.jobId === job.id && entry.idolId === actor.id,
     )
   ) {
@@ -538,13 +540,12 @@ function buildNpcResult(state: GameState): SceneView {
 }
 
 function buildIdolPage(state: GameState): SceneView {
-  const idolId = state.pendingIdolId;
-  const actor = idolId ? getActor(idolId) : undefined;
-  const idolDef = idolId ? CONTENT_INDEX.idols.get(idolId) : undefined;
-  const idolState = idolId ? state.idols[idolId] : undefined;
+  const idolId = state.selectedIdolId;
+  const actor = getActor(idolId);
+  const idolDef = CONTENT_INDEX.idols.get(idolId);
+  const idolState = state.idols[idolId];
 
   if (
-    !idolId ||
     !actor ||
     actor.role !== 'idol' ||
     !isActorPresent(state, actor) ||
@@ -581,7 +582,7 @@ function buildIdolPage(state: GameState): SceneView {
     )
     .map((activity) => ({
       activity,
-      availability: activityAvailability(state, activity),
+      availability: activityAvailability(state, activity, idolId),
     }))
     .filter(
       ({ availability }) =>

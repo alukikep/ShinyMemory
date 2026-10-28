@@ -144,7 +144,7 @@ export type GameState = {
   actors: Record<string, ActorState>;
   shared: SharedStats;
   idols: Record<string, IdolState>;
-  activeIdolId: string;
+  selectedIdolId: string;
   money: number;
   inventory: Record<string, number>;
   shopPurchases: Record<string, number>;
@@ -154,7 +154,7 @@ export type GameState = {
   dialogueNodeId?: string;
   dialogueTargetIdolId?: string;
   flags: Record<string, boolean>;
-  jobs?: JobAssignment[];
+  jobs: JobAssignment[];
   eventCooldowns: Record<string, number>;
   log: LogEntry[];
   phase: Phase;
@@ -166,7 +166,7 @@ export type GameState = {
   pendingEventIdolId?: string;
   pendingChainEventId?: string;
   pendingActorId?: string;
-  pendingIdolId?: string;
+  pendingIdolReturnId?: string;
   pendingTopicId?: string;
   lastResult?: string;
 };

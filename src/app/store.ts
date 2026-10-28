@@ -2,8 +2,10 @@ import { create } from 'zustand';
 import { MAX_DEBUG_DAY, MINUTES_PER_DAY, START_MINUTE } from '../core/config';
 import {
   completeDueJobs,
+  getEvent,
   handleCommand,
   newGame,
+  presentIdolIds,
   pruneScheduleOverrides,
 } from '../core/sim';
 import type { ActionCommand, GameState } from '../core/types';
@@ -78,8 +80,15 @@ export const useGameStore = create<GameStore>((set, get) => ({
   debugForceEvent: (eventId) =>
     set((previous) => {
       const next = structuredClone(previous.state);
+      // 强制事件绕过触发条件，但要补上参与者，否则 {a}/{b} 会是原样。
+      const event = getEvent(eventId);
+      const cast =
+        event?.cast ??
+        (event?.castSize ? presentIdolIds(next).slice(0, event.castSize) : []);
       next.phase = 'event';
       next.pendingEventId = eventId;
+      next.pendingEventCast = cast.length > 1 ? cast : undefined;
+      next.pendingEventIdolId = cast[0] ?? next.selectedIdolId;
       next.pendingActivityId = undefined;
       repository.save(createSaveEnvelope(next));
       return { state: next };

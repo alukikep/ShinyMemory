@@ -88,6 +88,17 @@ export function activityCost(state: GameState, activity: ActivityDef): Cost {
   };
 }
 
+/**
+ * 行动实际占用的时间。结算与界面显示都必须走这里。
+ * 将来训练设施/房间等级影响时长时，只改这个函数体。
+ */
+export function activityDuration(
+  _state: GameState,
+  activity: ActivityDef,
+): number {
+  return activity.durationMinutes;
+}
+
 function clampState(state: GameState): void {
   state.shared.stamina = Math.max(
     0,
@@ -1603,7 +1614,7 @@ export function applyActivityDef(
   next.pendingActivityId = activity.id;
   next.phase = 'activityResult';
 
-  const advanced = advanceTime(next, activity.durationMinutes);
+  const advanced = advanceTime(next, activityDuration(next, activity));
   advanced.rng.counter = rng.counter;
 
   const single = outcomes.length === 1 ? outcomes[0] : undefined;

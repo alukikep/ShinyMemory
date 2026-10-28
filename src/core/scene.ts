@@ -13,6 +13,7 @@ import { canReplaceDay } from './schedule';
 import {
   activityAvailability,
   activityCost,
+  activityDuration,
   activeJobFor,
   checkCondition,
   effectSummary,
@@ -158,7 +159,7 @@ function activityActionView(
   const duration =
     activity.kind === 'sleep'
       ? '睡到早上 8 点'
-      : formatDuration(activity.durationMinutes);
+      : formatDuration(activityDuration(state, activity));
   const effects =
     activity.target === 'all-present-idols'
       ? [
@@ -376,7 +377,7 @@ function buildActivityResult(state: GameState): SceneView {
     } else {
       blocks.push({
         kind: 'system',
-        text: `${formatDuration(activity.durationMinutes)}后，现在是 ${formatClock(
+        text: `${formatDuration(activityDuration(state, activity))}后，现在是 ${formatClock(
           state.clock.absoluteMinutes,
         )}。`,
       });

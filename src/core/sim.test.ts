@@ -5,6 +5,7 @@ import {
 } from './config';
 import {
   activityAvailability,
+  activityDuration,
   activityStaminaCost,
   activityTargets,
   advanceDialogue,
@@ -1006,6 +1007,18 @@ describe('raising sim core', () => {
     state.producer.stamina.rank = 'B';
     expect(activityStaminaCost(state, vocal)).toBe(14);
     expect(activityAvailability(state, vocal).ok).toBe(true);
+  });
+
+  it('exposes activity duration through a single entry', () => {
+    const state = travelTo(newGame(1), 'practice_room');
+    const vocal = getActivity('vocal')!;
+
+    expect(activityDuration(state, vocal)).toBe(vocal.durationMinutes);
+
+    const next = applyActivity(state, 'vocal', 'mano');
+    expect(next.clock.absoluteMinutes - state.clock.absoluteMinutes).toBe(
+      activityDuration(state, vocal),
+    );
   });
 
   it('settles group training once for cost and per idol for attributes', () => {

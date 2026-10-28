@@ -8,6 +8,7 @@
 |---|---|
 | [当前路线图](current/roadmap.md) | 当前进度、下一步计划、优先级和开放问题 |
 | [统一属性与上下文整理计划](current/plan-unified-attributes.md) | 已确认方案的阶段拆解、存档迁移与验收 |
+| [制作人手册计划](current/plan-producer-handbook.md) | 任务/剧情链追踪面板，待确认 |
 | [未来需求](current/future-requirements.md) | 已确认但暂不实现的功能需求 |
 | [自动验收](current/acceptance.md) | Vitest、Playwright、fixture/production 验收方式 |
 

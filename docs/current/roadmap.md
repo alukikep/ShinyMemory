@@ -68,7 +68,7 @@ Hiori/Meguru 只存在于 `content-fixture`，用于多偶像架构回归，不�
 ### 当前验收
 
 ```text
-191 个 Vitest 测试
+192 个 Vitest 测试
 11 条引擎 E2E
 3 条内容 fixture E2E
 1 条正式序章 E2E

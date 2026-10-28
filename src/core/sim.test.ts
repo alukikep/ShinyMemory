@@ -968,6 +968,15 @@ describe('raising sim core', () => {
     expect(risk.gap).toBe(1);
   });
 
+  it('uses result variants that depend on the idol attribute', () => {
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    state.idols.mano!.stats.trust.rank = 'D';
+
+    const next = applyActivity(state, 'free', 'mano');
+
+    expect(next.lastResult).toContain('她开始主动跟你说些无关紧要的事');
+  });
+
   it('levels producer stamina from the test event and raises the cap', () => {
     const state = newGame(1);
     state.flags.test_producer_drill = true;

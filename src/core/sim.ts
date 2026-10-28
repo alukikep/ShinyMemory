@@ -1374,9 +1374,12 @@ function pickActivityResult(
   state: GameState,
   activity: ActivityDef,
   rng: Rng,
+  idolId?: string,
 ): string {
   const variant = activity.resultVariants?.find((entry) =>
-    entry.when.every((condition) => checkCondition(condition, state)),
+    entry.when.every((condition) =>
+      checkCondition(condition, state, { idolId }),
+    ),
   );
   return variant?.text ?? rng.pick(activity.resultTexts);
 }
@@ -1530,7 +1533,7 @@ export function applyActivityDef(
 
   const results = outcomes.map((outcome) => ({
     idolId: outcome.idolId,
-    text: pickActivityResult(advanced, activity, rng),
+    text: pickActivityResult(advanced, activity, rng, outcome.idolId),
   }));
   advanced.rng.counter = rng.counter;
 

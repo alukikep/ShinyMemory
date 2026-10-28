@@ -125,6 +125,10 @@ export type StoryChainStep = {
   minDaysAfterPrevious?: number;
   dialogueId: string;
   actionLabel: string;
+  /** 这一步的额外前置条件；不满足时地点页不出现行动，手册显示原因。 */
+  when?: Condition[];
+  /** 这一步完成时结算一次。 */
+  effects?: Effect[];
   complete?: {
     status?: IdolStatus;
     nextStepDelayDays?: number;
@@ -135,6 +139,10 @@ export type StoryChainDef = {
   id: string;
   idolId: string;
   priority?: number;
+  /** 手册条目标题；缺省回退到「偶像名 · 首步标签」。 */
+  title?: string;
+  /** 链尚未启动时，满足它就允许出现在手册里。 */
+  revealWhen?: Condition[];
   steps: StoryChainStep[];
 };
 

@@ -215,6 +215,21 @@ export type Effect =
     }
   | { kind: 'money'; delta: number }
   | { kind: 'flag'; key: string; value: boolean }
+  | {
+      /** 改写某个角色接下来几天的日程；不给 locationId 就是"这几天不在任何地方"。 */
+      kind: 'scheduleOverride';
+      actorId: string;
+      /** 从生效当天算起第几天开始，默认 0。 */
+      dayOffset?: number;
+      /** 连续几天，默认 1。 */
+      days?: number;
+      locationId?: string;
+      fromMinute?: number;
+      toMinute?: number;
+      label?: string;
+      mode?: 'add' | 'replace-day';
+      id?: string;
+    }
   | { kind: 'actorAffinity'; actorId: string; delta: number }
   | { kind: 'log'; text: string; tone?: LogTone };
 

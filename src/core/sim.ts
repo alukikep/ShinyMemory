@@ -1135,6 +1135,31 @@ function applyEffects(
         if (actor) actor.affinity += effect.delta;
         break;
       }
+      case 'scheduleOverride': {
+        const actor = state.actors[effect.actorId];
+        if (!actor) break;
+        const today = getDay(state.clock.absoluteMinutes);
+        const start = today + (effect.dayOffset ?? 0);
+        const days = Math.max(1, effect.days ?? 1);
+        const added = Array.from({ length: days }, (_, offset) => ({
+          id: `effect:${effect.actorId}:${effect.id ?? 'default'}:${start + offset}`,
+          day: start + offset,
+          locationId: effect.locationId,
+          fromMinute: effect.fromMinute ?? 0,
+          toMinute: effect.toMinute ?? 24 * 60,
+          label: effect.label,
+          visibility: 'public' as const,
+          mode: effect.mode ?? 'replace-day',
+        }));
+        const ids = new Set(added.map((entry) => entry.id));
+        actor.scheduleOverrides = [
+          ...(actor.scheduleOverrides ?? []).filter(
+            (entry) => !ids.has(entry.id ?? ''),
+          ),
+          ...added,
+        ];
+        break;
+      }
       case 'log':
         addLog(state, effect.text, effect.tone ?? 'info');
         break;

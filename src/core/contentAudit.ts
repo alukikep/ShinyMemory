@@ -127,6 +127,46 @@ export function auditContent(): ContentIssue[] {
     }
   }
 
+  // ---- 效果引用完整性 ----
+  const checkEffects = (effects: Effect[] | undefined, owner: string) => {
+    for (const effect of effects ?? []) {
+      if (effect.kind !== 'scheduleOverride') continue;
+      if (!actorIds.has(effect.actorId)) {
+        push(
+          'error',
+          'actor-ref',
+          `${owner} 的 scheduleOverride 指向不存在的角色 ${effect.actorId}`,
+        );
+      }
+      if (effect.locationId && !locationIds.has(effect.locationId)) {
+        push(
+          'error',
+          'location-ref',
+          `${owner} 的 scheduleOverride 指向不存在的地点 ${effect.locationId}`,
+        );
+      }
+    }
+  };
+
+  for (const event of eventIds.values()) {
+    for (const choice of event.choices) {
+      checkEffects(choice.effects, `${event.id} 的选项`);
+    }
+  }
+  for (const activity of activityIds.values()) {
+    checkEffects(activity.effects, activity.id);
+  }
+  for (const actor of actorIds.values()) {
+    for (const topic of actor.topics) {
+      checkEffects(topic.effects, `${actor.id}/${topic.id}`);
+    }
+  }
+  for (const chain of CONTENT_INDEX.storyChains.values()) {
+    for (const step of chain.steps) {
+      checkEffects(step.effects, `${chain.id}/${step.id}`);
+    }
+  }
+
   // ---- 组合戏规则与预算 ----
   const budget = new Map<string, { cast: number; generic: number }>();
   for (const event of eventIds.values()) {

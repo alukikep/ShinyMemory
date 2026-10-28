@@ -925,6 +925,16 @@ export function checkCondition(
         rankIndex(condition.rank)
       );
     }
+    case 'castPresent':
+      return condition.idolIds.every((id) => {
+        const actor = getActor(id);
+        return (
+          !!actor &&
+          actor.role === 'idol' &&
+          isIdolRecruited(state, id) &&
+          isActorPresent(state, actor)
+        );
+      });
     case 'npcAffinityAtLeast':
       return (state.actors[condition.actorId]?.affinity ?? 0) >= condition.value;
     case 'npcAffinityAtMost':
@@ -1056,15 +1066,19 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
   return parts.join(' · ');
 }
 
+export function presentIdolIds(state: GameState): string[] {
+  return presentActors(state)
+    .filter((actor) => actor.role === 'idol')
+    .map((actor) => actor.id);
+}
+
 export function activityTargets(
   state: GameState,
   activity: ActivityDef,
   idolId?: string,
 ): string[] {
   if (activity.target === 'all-present-idols') {
-    return presentActors(state)
-      .filter((actor) => actor.role === 'idol')
-      .map((actor) => actor.id);
+    return presentIdolIds(state);
   }
   if (activity.target === 'present-idol') {
     return idolId ? [idolId] : [];
@@ -1384,12 +1398,22 @@ function pickActivityResult(
   return variant?.text ?? rng.pick(activity.resultTexts);
 }
 
-/** 制作人属性效果是全局的，多目标时不能按偶像重复结算。 */
-function isProducerAttributeEffect(effect: Effect): boolean {
+/** 偶像属性效果按目标各结算一份；其余效果一次行动只算一次。 */
+function isIdolAttributeEffect(effect: Effect): boolean {
   return (
     effect.kind === 'attributeExp' &&
-    normalizeAttributeRef(effect.ref).scope === 'producer'
+    normalizeAttributeRef(effect.ref).scope === 'idol'
   );
+}
+
+export function formatCastText(text: string, cast: string[]): string {
+  if (cast.length === 0) return text;
+  const names = cast.map(
+    (idolId) => CONTENT_INDEX.idols.get(idolId)?.name ?? idolId,
+  );
+  return text
+    .replace(/\{a\}/g, names[0] ?? '')
+    .replace(/\{b\}/g, names[1] ?? names[0] ?? '');
 }
 
 export function applyActivity(
@@ -1456,15 +1480,14 @@ export function applyActivityDef(
   next.money -= cost.money ?? 0;
   next.shared.stamina -= cost.stamina ?? 0;
 
-  // 制作人属性是全局的：多目标时只在循环外结算一次，避免按人数翻倍。
-  const producerEffects =
-    resolvedTargets.length > 1
-      ? activity.effects.filter(isProducerAttributeEffect)
-      : [];
-  const perTargetEffects =
-    producerEffects.length > 0
-      ? activity.effects.filter((effect) => !isProducerAttributeEffect(effect))
-      : activity.effects;
+  // 多目标：偶像属性按人各一份；制作人属性、sharedStat、金钱、flag 等只结算一次。
+  const isMultiTarget = resolvedTargets.length > 1;
+  const perTargetEffects = isMultiTarget
+    ? activity.effects.filter(isIdolAttributeEffect)
+    : activity.effects;
+  const sharedEffects = isMultiTarget
+    ? activity.effects.filter((effect) => !isIdolAttributeEffect(effect))
+    : [];
 
   const outcomes = resolvedTargets.map((targetId) => {
     const risk =
@@ -1488,7 +1511,7 @@ export function applyActivityDef(
       rewardMoney: reward ? reward.money : undefined,
     };
   });
-  if (producerEffects.length > 0) applyEffects(next, producerEffects, {});
+  if (sharedEffects.length > 0) applyEffects(next, sharedEffects, {});
   clampState(next);
 
   next.actionsTaken += 1;
@@ -1605,6 +1628,50 @@ function cooldownReady(event: EventDef, state: GameState): boolean {
   return state.actionsTaken - last >= cooldown;
 }
 
+function isPresentIdol(state: GameState, idolId: string): boolean {
+  const actor = getActor(idolId);
+  return (
+    !!actor &&
+    actor.role === 'idol' &&
+    isIdolRecruited(state, idolId) &&
+    isActorPresent(state, actor)
+  );
+}
+
+function pairCooldownKey(eventId: string, cast: string[]): string {
+  return `${eventId}#${[...cast].sort().join('+')}`;
+}
+
+function castCooldownReady(event: EventDef, state: GameState): boolean {
+  const cooldown = event.pairCooldownActions ?? 0;
+  if (cooldown <= 0 || !event.cast) return true;
+  const last = state.eventCooldowns[pairCooldownKey(event.id, event.cast)];
+  if (last === undefined) return true;
+  return state.actionsTaken - last >= cooldown;
+}
+
+/** 解析这场戏的参与者：显式 cast 优先，否则从在场偶像里随机挑 castSize 人。 */
+function resolveEventCast(
+  state: GameState,
+  event: EventDef,
+  rng: Rng,
+): string[] {
+  if (event.cast && event.cast.length > 0) return [...event.cast];
+  if (event.castSize && event.castSize >= 2) {
+    const pool = presentIdolIds(state);
+    if (pool.length < event.castSize) return [];
+    const shuffled = [...pool];
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(rng.next() * (i + 1));
+      const left = shuffled[i]!;
+      shuffled[i] = shuffled[j]!;
+      shuffled[j] = left;
+    }
+    return shuffled.slice(0, event.castSize);
+  }
+  return [];
+}
+
 function isEligible(
   event: EventDef,
   state: GameState,
@@ -1613,11 +1680,21 @@ function isEligible(
   if (!matchesAfter(event.after, ctx)) return false;
   if (!matchesAfterNpc(event.afterNpc, ctx)) return false;
   if (!matchesAfterIdol(event.afterIdol, ctx)) return false;
+  if (
+    event.cast &&
+    !event.cast.every((idolId) => isPresentIdol(state, idolId))
+  ) {
+    return false;
+  }
+  if (event.castSize && presentIdolIds(state).length < event.castSize) {
+    return false;
+  }
   if (!event.when.every((condition) => checkCondition(condition, state, ctx))) {
     return false;
   }
   if (event.once && state.flags[`seen:${event.id}`]) return false;
   if (!cooldownReady(event, state)) return false;
+  if (!castCooldownReady(event, state)) return false;
   return true;
 }
 
@@ -1692,12 +1769,17 @@ export function checkEventCandidates(
   const topPriority = Math.max(...passed.map((event) => event.priority ?? 0));
   const top = passed.filter((event) => (event.priority ?? 0) === topPriority);
   const picked = weightedPick(top, rng);
+  const cast = resolveEventCast(next, picked, rng);
 
   next.rng.counter = rng.counter;
   if (picked.once) next.flags[`seen:${picked.id}`] = true;
   next.eventCooldowns[picked.id] = next.actionsTaken;
+  if (cast.length > 1) {
+    next.eventCooldowns[pairCooldownKey(picked.id, cast)] = next.actionsTaken;
+  }
   next.pendingEventId = picked.id;
-  next.pendingEventIdolId = ctx.idolId;
+  next.pendingEventCast = cast.length > 1 ? cast : undefined;
+  next.pendingEventIdolId = cast[0] ?? ctx.idolId;
   next.pendingChainEventId = undefined;
   next.phase = 'event';
   addLog(next, `事件：${picked.title}`, 'info');
@@ -1777,9 +1859,23 @@ export function applyEventChoice(state: GameState, index: number): GameState {
   const next = clone(state);
   // 事件没有显式目标偶像时，效果作用于当前选中的偶像。
   const effectIdolId = state.pendingEventIdolId ?? state.selectedIdolId;
-  applyEffects(next, choice.effects, {
-    idolId: effectIdolId,
-  });
+  const cast = state.pendingEventCast ?? [];
+
+  if (cast.length > 1) {
+    // 多人剧情：偶像属性效果按人各一份，其余效果只结算一次。
+    const perIdol = choice.effects.filter(isIdolAttributeEffect);
+    const shared = choice.effects.filter(
+      (effect) => !isIdolAttributeEffect(effect),
+    );
+    for (const idolId of cast) {
+      applyEffects(next, perIdol, { idolId });
+    }
+    if (shared.length > 0) {
+      applyEffects(next, shared, { idolId: effectIdolId });
+    }
+  } else {
+    applyEffects(next, choice.effects, { idolId: effectIdolId });
+  }
   clampState(next);
 
   const advanced =
@@ -1789,10 +1885,13 @@ export function applyEventChoice(state: GameState, index: number): GameState {
   advanced.phase = 'eventResult';
   advanced.pendingChainEventId =
     choice.nextEventId ?? event.nextEventId;
-  advanced.lastResult = formatIdolText(
-    choice.result,
-    state.pendingEventIdolId,
-  );
+  advanced.lastResult = formatCastText(choice.result, cast);
+  if (cast.length === 0 && state.pendingEventIdolId) {
+    advanced.lastResult = formatIdolText(
+      choice.result,
+      state.pendingEventIdolId,
+    );
+  }
   addLog(advanced, advanced.lastResult, 'info');
   return advanced;
 }

@@ -13,10 +13,12 @@ import {
   applyEventChoice,
   applyAttributeExp,
   checkCondition,
+  checkEventCandidates,
   effectSummary,
   formatIdolText,
   getActivity,
   getActor,
+  getEvent,
   handleAction,
   handleCommand,
   maxStamina,
@@ -1001,6 +1003,64 @@ describe('raising sim core', () => {
     state.producer.stamina.rank = 'B';
     expect(activityStaminaCost(state, vocal)).toBe(14);
     expect(activityAvailability(state, vocal).ok).toBe(true);
+  });
+
+  it('triggers a bespoke pair scene only when both idols are present', () => {
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    state.flags.test_pair_scenes = true;
+    const pair = getEvent('evt.pair_mano_hiori')!;
+
+    expect(checkEventCandidates(state, [pair]).event).toBe(null);
+
+    state.idols.hiori!.status = 'recruited';
+    const triggered = checkEventCandidates(state, [pair]);
+
+    expect(triggered.event?.id).toBe(pair.id);
+    expect(triggered.state.pendingEventCast).toEqual(['mano', 'hiori']);
+
+    const next = applyEventChoice(triggered.state, 0);
+    expect(next.idols.mano?.stats.trust.exp).toBe(1);
+    expect(next.idols.hiori?.stats.trust.exp).toBe(1);
+    expect(next.lastResult).toContain('风野灯织');
+  });
+
+  it('picks two random participants for a generic pair scene', () => {
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    state.flags.test_pair_scenes = true;
+    state.idols.hiori!.status = 'recruited';
+    state.idols.meguru!.status = 'recruited';
+    state.actors.meguru!.scheduleOverrides = [
+      {
+        id: 'test-meguru',
+        day: getDay(state.clock.absoluteMinutes),
+        fromMinute: 0,
+        toMinute: 24 * 60,
+        locationId: 'practice_room',
+        mode: 'replace-day',
+      },
+    ];
+
+    const generic = getEvent('evt.pair_generic_rest')!;
+    const result = checkEventCandidates(state, [generic]);
+
+    expect(result.event?.id).toBe(generic.id);
+    expect(result.state.pendingEventCast).toHaveLength(2);
+    for (const idolId of result.state.pendingEventCast ?? []) {
+      expect(['mano', 'hiori', 'meguru']).toContain(idolId);
+    }
+  });
+
+  it('blocks the same pair from repeating through the pair cooldown', () => {
+    const state = travelTo(advanceTime(newGame(1), 2 * 60), 'practice_room');
+    state.flags.test_pair_scenes = true;
+    state.idols.hiori!.status = 'recruited';
+    const pair = getEvent('evt.pair_mano_hiori')!;
+
+    const first = checkEventCandidates(state, [pair]);
+    expect(first.event?.id).toBe(pair.id);
+
+    const second = checkEventCandidates(first.state, [pair]);
+    expect(second.event).toBe(null);
   });
 
   it('settles producer effects once for multi-target actions', () => {

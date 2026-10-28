@@ -128,7 +128,7 @@ Vitest + Playwright
 当前验收：
 
 ```text
-192 个 Vitest 测试
+196 个 Vitest 测试
 12 条引擎 E2E
 3 条内容 fixture E2E
 1 条正式序章 E2E

@@ -131,7 +131,34 @@ type WorkReward = {
 - 所有业务函数显式接收 `idolId`，不再有隐式全局默认值。
 - `pendingIdolId` 保留但改名为 `pendingIdolReturnId`，只表示「行动结束后回到哪个偶像页」。
 
-## 4. 当前边界
+## 4. 多人剧情（双人切片）
+
+方向：组合内容是未来的主要体量来源，先支持两人。
+
+已实现：
+
+- `EventDef.cast?: string[]`：显式组合，要求全部在场。
+- `EventDef.castSize?: number`：泛化组合，从在场偶像里随机挑 N 人（当前只支持 2）。
+- `Condition.castPresent { idolIds }`：判定这些偶像是否都招募且在场。
+- `GameState.pendingEventCast`：本场戏的参与者。
+- `EventDef.pairCooldownActions`：按「事件 + 排序后的组合」计数冷却，同一对不会连续刷。
+- 文案模板 `{a}` / `{b}`，按参与者顺序替换。
+- 多人剧情的效果归属：偶像属性效果按参与者各一份，其余效果只结算一次。
+
+声明方式（方案 C 混合）：
+
+- 重点组合写专属文案（`cast` + `text`）。
+- 其余组合走模板（`castSize: 2` + `{a}` `{b}`）。
+
+当前边界：
+
+- 只支持两人，`cast` / `castSize` 都必须是 2。
+- 事件不能启动对话，多人剧情目前是「文本 + 选项」，没有多说话人结构。
+- `DialogueDef.idolId` / `StoryChainDef.idolId` 仍是单值，三人剧情链无法表达。
+- fixture 里的两条双人事件都用 `test_pair_scenes` flag 门控，正常游玩不触发；正式启用需要内容与日程设计。
+- 没有关系状态支撑，A+B 与 A+B+C 的剧情只能是互不影响的平行小剧场。
+
+## 5. 当前边界
 
 - 自由时间已从地点页移到偶像互动页。
 - 正式内容仍然只有真乃。

@@ -188,6 +188,25 @@ describe('content integrity', () => {
     }
   });
 
+  it('validates pair scene declarations', () => {
+    const idolIds = new Set(IDOLS.map((idol) => idol.id));
+    for (const event of EVENTS) {
+      if (event.cast) {
+        expect(event.cast, `${event.id} cast 目前只支持 2 人`).toHaveLength(2);
+        for (const id of event.cast) {
+          expect(idolIds.has(id), `${event.id} -> ${id}`).toBe(true);
+        }
+        expect(new Set(event.cast).size).toBe(2);
+      }
+      if (event.castSize !== undefined) {
+        expect(event.castSize).toBe(2);
+      }
+      if (event.pairCooldownActions !== undefined) {
+        expect(event.pairCooldownActions).toBeGreaterThan(0);
+      }
+    }
+  });
+
   it('validates work risk, outcome and chain event references', () => {
     for (const activity of ACTIVITIES) {
       if (!activity.workRisk) continue;

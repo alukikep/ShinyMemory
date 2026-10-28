@@ -16,6 +16,7 @@ import {
   activeJobFor,
   checkCondition,
   effectSummary,
+  formatCastText,
   formatIdolText,
   getActivity,
   getActor,
@@ -441,6 +442,8 @@ function buildEvent(state: GameState): SceneView {
     };
   });
 
+  const cast = state.pendingEventCast ?? [];
+
   return {
     id: sceneId(state),
     phase: state.phase,
@@ -449,7 +452,10 @@ function buildEvent(state: GameState): SceneView {
     blocks: [
       {
         kind: 'p',
-        text: formatIdolText(event.text, state.pendingEventIdolId),
+        text:
+          cast.length > 1
+            ? formatCastText(event.text, cast)
+            : formatIdolText(event.text, state.pendingEventIdolId),
       },
     ],
     actions,

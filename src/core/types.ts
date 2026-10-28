@@ -183,6 +183,7 @@ export type GameState = {
   pendingResults?: ActivityResultEntry[];
   pendingEventId?: string;
   pendingEventIdolId?: string;
+  pendingEventCast?: string[];
   pendingChainEventId?: string;
   pendingActorId?: string;
   pendingIdolReturnId?: string;
@@ -211,6 +212,7 @@ export type Condition =
   | { kind: 'sharedStatAtMost'; stat: SharedStatKey; value: number }
   | { kind: 'attributeAtLeast'; ref: AttributeRefInput; rank: Rank }
   | { kind: 'attributeAtMost'; ref: AttributeRefInput; rank: Rank }
+  | { kind: 'castPresent'; idolIds: string[] }
   | { kind: 'npcAffinityAtLeast'; actorId: string; value: number }
   | { kind: 'npcAffinityAtMost'; actorId: string; value: number }
   | { kind: 'moneyAtMost'; value: number }
@@ -407,6 +409,12 @@ export type EventDef = {
   id: string;
   title: string;
   when: Condition[];
+  /** 显式组合：这些偶像必须全部在场。目前只支持 2 人。 */
+  cast?: string[];
+  /** 泛化组合：从在场偶像里随机挑 N 人。目前只支持 2。 */
+  castSize?: number;
+  /** 按组合（而不是按事件 id）计算的冷却行动数。 */
+  pairCooldownActions?: number;
   entry?: EventEntry;
   nextEventId?: string;
   after?: ActivitySelector;
@@ -417,6 +425,7 @@ export type EventDef = {
   cooldownActions?: number;
   once?: boolean;
   weight?: number;
+  /** 支持 {a} / {b} 占位，按参与者顺序替换。 */
   text: string;
   choices: EventChoice[];
 };

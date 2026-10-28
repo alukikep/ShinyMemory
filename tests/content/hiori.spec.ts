@@ -29,7 +29,10 @@ test('Hiori encounter: unknown -> known -> recruited', async ({ page }) => {
 
   await page.getByRole('button', { name: '当前安排' }).click();
   await page.getByRole('button', { name: '偶像名册' }).click();
-  await expect(page.getByText('风野灯织')).toHaveCount(0);
+  // 只看名册：调试面板会显示未登场角色的链条，那是给开发看的
+  await expect(
+    page.locator('.roster-panel').getByText('风野灯织'),
+  ).toHaveCount(0);
   await page.getByRole('button', { name: '关闭偶像名册' }).click();
 
   await page.getByRole('button', { name: '日程表' }).click();

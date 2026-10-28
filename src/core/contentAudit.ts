@@ -250,6 +250,102 @@ export function auditContent(): ContentIssue[] {
       }
     }
   }
+  for (const chain of CONTENT_INDEX.storyChains.values()) {
+    collectFlagReads(chain.revealWhen, flagReads);
+    for (const step of chain.steps) {
+      collectFlagReads(step.when, flagReads);
+      collectFromEffects(step.effects);
+    }
+  }
+
+  // ---- 条件引用的 id 是否真实存在 ----
+  const itemIds = CONTENT_INDEX.items;
+  const checkConditionRefs = (
+    conditions: Condition[] | undefined,
+    owner: string,
+  ) => {
+    walkConditions(conditions, (condition) => {
+      switch (condition.kind) {
+        case 'hasItem':
+          if (!itemIds.has(condition.itemId)) {
+            push(
+              'error',
+              'item-ref',
+              `${owner} 指向不存在的物品 ${condition.itemId}`,
+            );
+          }
+          break;
+        case 'atLocation':
+          if (!locationIds.has(condition.locationId)) {
+            push(
+              'error',
+              'location-ref',
+              `${owner} 指向不存在的地点 ${condition.locationId}`,
+            );
+          }
+          break;
+        case 'idolStatus':
+          if (condition.idolId && !idolIds.has(condition.idolId)) {
+            push(
+              'error',
+              'idol-ref',
+              `${owner} 指向不存在的偶像 ${condition.idolId}`,
+            );
+          }
+          break;
+        case 'castPresent':
+          for (const id of condition.idolIds) {
+            if (!idolIds.has(id)) {
+              push('error', 'idol-ref', `${owner} 指向不存在的偶像 ${id}`);
+            }
+          }
+          break;
+        case 'npcAffinityAtLeast':
+        case 'npcAffinityAtMost':
+          if (!actorIds.has(condition.actorId)) {
+            push(
+              'error',
+              'actor-ref',
+              `${owner} 指向不存在的角色 ${condition.actorId}`,
+            );
+          }
+          break;
+        default:
+          break;
+      }
+    });
+  };
+
+  for (const event of eventIds.values()) {
+    checkConditionRefs(event.when, event.id);
+    for (const choice of event.choices) {
+      checkConditionRefs(choice.requires, `${event.id} 的选项`);
+    }
+  }
+  for (const activity of activityIds.values()) {
+    checkConditionRefs(activity.requires, activity.id);
+  }
+  for (const actor of actorIds.values()) {
+    for (const topic of actor.topics) {
+      checkConditionRefs(topic.when, `${actor.id}/${topic.id}`);
+    }
+  }
+  for (const dialogue of dialogueIds.values()) {
+    for (const node of Object.values(dialogue.nodes)) {
+      for (const choice of node.choices ?? []) {
+        checkConditionRefs(choice.requires, `${dialogue.id}/${node.id}`);
+      }
+      for (const variant of node.textVariants ?? []) {
+        checkConditionRefs(variant.when, `${dialogue.id}/${node.id}`);
+      }
+    }
+  }
+  for (const chain of CONTENT_INDEX.storyChains.values()) {
+    checkConditionRefs(chain.revealWhen, `${chain.id} 的 revealWhen`);
+    for (const step of chain.steps) {
+      checkConditionRefs(step.when, `${chain.id}/${step.id}`);
+    }
+  }
 
   for (const key of flagReads) {
     // test_ 前缀是测试钩子，允许只读不写。

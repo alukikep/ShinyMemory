@@ -22,6 +22,7 @@ import { STAT_LABELS, STAT_MAX, attributeLabel } from './labels';
 import { createInitialProducerStats, staminaCapForRank, staminaCostMultiplierForRank, PRODUCER_STAT_KEYS } from './producer';
 import { Rng } from './rng';
 import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, isMinuteInWindow } from './time';
+import { describeCondition } from './conditionText';
 import { canReplaceDay, getScheduleSlot } from './schedule';
 import type {
   ActionCommand,
@@ -842,45 +843,121 @@ export type StoryChainEntry = {
   stepIndex: number;
 };
 
+/** 一条链当前卡在哪；地点页、手册、调试面板都读同一份判定。 */
+export type StoryStepBlock =
+  | { kind: 'completed' }
+  | { kind: 'busy' }
+  | { kind: 'not-revealed' }
+  | { kind: 'waiting'; earliestDay: number }
+  | { kind: 'location'; expected: string; actual: string }
+  | { kind: 'off-hours'; fromMinute: number; toMinute: number }
+  | { kind: 'conditions'; failed: Condition[] };
+
+export type StoryStepEvaluation = {
+  chain: StoryChainDef;
+  step?: StoryChainStep;
+  stepIndex: number;
+  revealed: boolean;
+  /** 只差地点也算可触发——玩家走过去就行。 */
+  eligible: boolean;
+  nextEligibleDay?: number;
+  blocks: StoryStepBlock[];
+};
+
+export function evaluateStoryChain(
+  state: GameState,
+  chain: StoryChainDef,
+): StoryStepEvaluation {
+  const chainState = state.storyChains[chain.id] ?? {
+    chainId: chain.id,
+    stepIndex: 0,
+  };
+  const stepIndex = chainState.stepIndex;
+  const step = chain.steps[stepIndex];
+  const day = getDay(state.clock.absoluteMinutes);
+  const minute = getMinuteOfDay(state.clock.absoluteMinutes);
+  const ctx = { idolId: chain.idolId };
+
+  // revealWhen 只决定"手册里说不说"，不决定能不能触发。
+  const revealed =
+    Boolean(state.storyChains[chain.id]) ||
+    Boolean(
+      chain.revealWhen?.every((condition) =>
+        checkCondition(condition, state, ctx),
+      ) ?? false,
+    );
+
+  const blocks: StoryStepBlock[] = [];
+  if (!step || chainState.completed) {
+    blocks.push({ kind: 'completed' });
+  }
+  if (state.pendingDialogueId || state.flags.forced_rest) {
+    blocks.push({ kind: 'busy' });
+  }
+  if (!revealed) {
+    blocks.push({ kind: 'not-revealed' });
+  }
+  if (chainState.nextEligibleDay && day < chainState.nextEligibleDay) {
+    blocks.push({ kind: 'waiting', earliestDay: chainState.nextEligibleDay });
+  }
+
+  if (step) {
+    const failed = (step.when ?? []).filter(
+      (condition) => !checkCondition(condition, state, ctx),
+    );
+    if (failed.length > 0) blocks.push({ kind: 'conditions', failed });
+    if (
+      step.timeWindow &&
+      (minute < step.timeWindow.fromMinute ||
+        minute > step.timeWindow.toMinute)
+    ) {
+      blocks.push({
+        kind: 'off-hours',
+        fromMinute: step.timeWindow.fromMinute,
+        toMinute: step.timeWindow.toMinute,
+      });
+    }
+    if (step.locationId !== state.locationId) {
+      blocks.push({
+        kind: 'location',
+        expected: step.locationId,
+        actual: state.locationId,
+      });
+    }
+  }
+
+  return {
+    chain,
+    step,
+    stepIndex,
+    revealed,
+    eligible: !blocks.some((block) => block.kind !== 'not-revealed'),
+    nextEligibleDay: chainState.nextEligibleDay,
+    blocks,
+  };
+}
+
+/** 所有链的判定，按 priority 降序。 */
+export function evaluateStorySteps(state: GameState): StoryStepEvaluation[] {
+  return [...CONTENT_INDEX.storyChains.values()]
+    .map((chain) => evaluateStoryChain(state, chain))
+    .sort((a, b) => (b.chain.priority ?? 0) - (a.chain.priority ?? 0));
+}
+
 /**
  * 当前地点、时间窗、最早天数、步骤条件都满足的剧情链，按 priority 降序。
  * 同一地点可以同时有多条，全部返回；只取一条会让后加的链静默消失。
  */
 export function getEligibleStories(state: GameState): StoryChainEntry[] {
-  if (state.pendingDialogueId || state.flags.forced_rest) return [];
-  const day = getDay(state.clock.absoluteMinutes);
-  const minute = getMinuteOfDay(state.clock.absoluteMinutes);
   const found: StoryChainEntry[] = [];
-
-  for (const chain of CONTENT_INDEX.storyChains.values()) {
-    const chainState = state.storyChains[chain.id] ?? {
-      chainId: chain.id,
-      stepIndex: 0,
-    };
-    if (chainState.completed) continue;
-    if (chainState.nextEligibleDay && day < chainState.nextEligibleDay) {
-      continue;
-    }
-    const step = chain.steps[chainState.stepIndex];
-    if (!step || step.locationId !== state.locationId) continue;
-    if (
-      step.timeWindow &&
-      (minute < step.timeWindow.fromMinute || minute > step.timeWindow.toMinute)
-    ) {
-      continue;
-    }
-    if (
-      step.when &&
-      !step.when.every((condition) =>
-        checkCondition(condition, state, { idolId: chain.idolId }),
-      )
-    ) {
-      continue;
-    }
-    found.push({ chain, step, stepIndex: chainState.stepIndex });
+  for (const evaluation of evaluateStorySteps(state)) {
+    if (!evaluation.eligible || !evaluation.step) continue;
+    found.push({
+      chain: evaluation.chain,
+      step: evaluation.step,
+      stepIndex: evaluation.stepIndex,
+    });
   }
-
-  found.sort((a, b) => (b.chain.priority ?? 0) - (a.chain.priority ?? 0));
   return found;
 }
 
@@ -888,6 +965,100 @@ export function getEligibleStory(
   state: GameState,
 ): StoryChainEntry | undefined {
   return getEligibleStories(state)[0];
+}
+
+export type StoryTriggerReport = {
+  chainId: string;
+  title: string;
+  stepId: string;
+  stepLabel: string;
+  stepIndex: number;
+  totalSteps: number;
+  revealed: boolean;
+  eligible: boolean;
+  reason: string;
+};
+
+/** 调试面板一次只显示一个阻碍，按"最该先处理"的顺序取第一个。 */
+const STORY_BLOCK_ORDER: StoryStepBlock['kind'][] = [
+  'completed',
+  'busy',
+  'waiting',
+  'conditions',
+  'location',
+  'off-hours',
+];
+
+function storyBlockText(
+  block: StoryStepBlock,
+  evaluation: StoryStepEvaluation,
+  state: GameState,
+): string {
+  const ctx = { idolId: evaluation.chain.idolId };
+  switch (block.kind) {
+    case 'completed':
+      return '已完成';
+    case 'busy':
+      return '当前有对话或强制休息';
+    case 'waiting': {
+      const day = getDay(state.clock.absoluteMinutes);
+      return `还有 ${Math.max(0, block.earliestDay - day)} 天（最早第 ${block.earliestDay} 天）`;
+    }
+    case 'conditions': {
+      const phrases = block.failed
+        .map((condition) => describeCondition(condition, state, ctx))
+        .filter((text): text is string => Boolean(text));
+      return phrases.length > 0
+        ? `条件未满足：${phrases.slice(0, 2).join('、')}`
+        : '条件未满足';
+    }
+    case 'off-hours':
+      return `不在时间窗（${formatClock(block.fromMinute)}–${formatClock(block.toMinute)}）`;
+    case 'location': {
+      const expected =
+        CONTENT_INDEX.locations.get(block.expected)?.name ?? block.expected;
+      const actual =
+        CONTENT_INDEX.locations.get(block.actual)?.name ?? block.actual;
+      return `地点不对：要在${expected}（现在在${actual}）`;
+    }
+    default:
+      return '可以触发';
+  }
+}
+
+/**
+ * 每条剧情链当前卡在哪。给调试面板用——链条的失败模式是静默的，
+ * 没有这个就只能靠读代码猜。
+ */
+export function getStoryTriggerReport(state: GameState): StoryTriggerReport[] {
+  return evaluateStorySteps(state).map((evaluation) => {
+    const idolName =
+      CONTENT_INDEX.idols.get(evaluation.chain.idolId)?.name ??
+      evaluation.chain.idolId;
+    const blocked = STORY_BLOCK_ORDER.map((kind) =>
+      evaluation.blocks.find((block) => block.kind === kind),
+    ).find((block): block is StoryStepBlock => Boolean(block));
+
+    const reason = !blocked
+      ? evaluation.revealed
+        ? '可以触发'
+        : '可以触发（手册里还没显示）'
+      : storyBlockText(blocked, evaluation, state);
+
+    return {
+      chainId: evaluation.chain.id,
+      title:
+        evaluation.chain.title ??
+        `${idolName} · ${evaluation.chain.steps[0]?.actionLabel ?? ''}`,
+      stepId: evaluation.step?.id ?? '',
+      stepLabel: evaluation.step?.actionLabel ?? '',
+      stepIndex: evaluation.stepIndex,
+      totalSteps: evaluation.chain.steps.length,
+      revealed: evaluation.revealed,
+      eligible: evaluation.eligible,
+      reason,
+    };
+  });
 }
 
 export function startStory(state: GameState, chainId: string): GameState {

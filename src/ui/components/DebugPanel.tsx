@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MAX_DEBUG_DAY } from '../../core/config';
 import { CONTENT_INDEX } from '../../core/contentIndex';
-import { getActivity, getEvent, getTriggerReport } from '../../core/sim';
+import { getActivity, getEvent, getStoryTriggerReport, getTriggerReport } from '../../core/sim';
 import { formatClock, getDay } from '../../core/time';
 import type { GameState, TriggerReport } from '../../core/types';
 
@@ -35,6 +35,7 @@ export function DebugPanel({
     state.locationId;
 
   const reports = getTriggerReport(state, context);
+  const storyReports = getStoryTriggerReport(state);
 
   return (
     <section className="panel debug-panel">
@@ -131,6 +132,43 @@ export function DebugPanel({
                 </tr>
               );
             })}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="debug-table-wrap">
+        <table className="debug-table">
+          <thead>
+            <tr>
+              <th>剧情链</th>
+              <th>进度</th>
+              <th>状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            {storyReports.length === 0 ? (
+              <tr>
+                <td colSpan={3}>没有剧情链</td>
+              </tr>
+            ) : (
+              storyReports.map((report) => (
+                <tr key={report.chainId}>
+                  <td>{report.title}</td>
+                  <td>
+                    {report.stepIndex + 1}/{report.totalSteps}
+                    {report.stepLabel ? ` · ${report.stepLabel}` : ''}
+                    {report.revealed ? '' : ' · 手册未显示'}
+                  </td>
+                  <td
+                    className={
+                      report.eligible ? 'debug-eligible' : 'debug-blocked'
+                    }
+                  >
+                    {report.reason}
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

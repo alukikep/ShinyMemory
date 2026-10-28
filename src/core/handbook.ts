@@ -237,6 +237,18 @@ export function describeCondition(
     }
     case 'attributeAtLeast':
       return `${attributeLabel(condition.ref)}还得练到 ${condition.rank}`;
+    case 'castPresent': {
+      const idols = condition.idolIds.map((id) => CONTENT_INDEX.idols.get(id));
+      if (idols.some((idol) => !idol)) return undefined;
+      const introduced = condition.idolIds.every((id) => {
+        const status = state.idols[id]?.status;
+        return Boolean(status) && status !== 'unknown';
+      });
+      if (!introduced) return undefined;
+      return idols.length === 1
+        ? `今天见不到${idols[0]!.name}`
+        : '今天她们不在';
+    }
     case 'atLocation': {
       const name = CONTENT_INDEX.locations.get(condition.locationId)?.name;
       return name ? `得回${name}一趟` : undefined;

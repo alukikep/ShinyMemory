@@ -104,6 +104,18 @@ describe('describeCondition', () => {
       ),
     ).toBeUndefined();
   });
+
+  it('says who is missing when a cast condition fails', () => {
+    const state = newGame(1);
+
+    expect(
+      describeCondition({ kind: 'castPresent', idolIds: ['mano'] }, state),
+    ).toBe('今天见不到樱木真乃');
+    // 没登场的人不能说名字
+    expect(
+      describeCondition({ kind: 'castPresent', idolIds: ['meguru'] }, state),
+    ).toBeUndefined();
+  });
 });
 
 describe('buildHandbook', () => {

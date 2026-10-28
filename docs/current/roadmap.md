@@ -1,10 +1,10 @@
 # ShinyMemory 当前路线图
 
 > 状态：当前有效  
-> 最后更新：2026-10-27  
-> 版本：v0.6（内容重置后）  
+> 最后更新：2026-10-28  
+> 版本：v2.0（剧情链可观测 + 文档整理）  
 > 正式存档：`SAVE_VERSION 14` / `CONTENT_EPOCH 3`  
-> 游戏版本：`0.17.0`
+> 游戏版本：`0.18.0`
 
 ## 1. 当前目标
 
@@ -14,11 +14,12 @@
 
 1. 稳定真乃单偶像的正式内容基线；
 2. 保持事件、对话、剧情链、审查、存档架构可继续扩展；
-3. 在填充内容前，把行动目标、制作人属性和内容管线规则定清楚。
+3. **先把架构冻结**：行动目标、制作人属性、任务/剧情链的触发与可观测性、内容管线规则，定下来之后再大规模填内容。
 
 相关文档：
 
 - [文档索引](../README.md)
+- [系统说明](../systems/)
 - [未来需求](future-requirements.md)
 - [自动验收](acceptance.md)
 
@@ -60,19 +61,22 @@ Hiori/Meguru 只存在于 `content-fixture`，用于多偶像架构回归，不�
 - 工作生命周期
 - 物品/商店/礼物
 - 内容审查
+- 制作人手册（剧情链投影、受阻原因）
+- 剧情链调试表（`?debug=1`）
 - 自动存档 + 手动存档
 - 内容纪元
-- 内容校验
+- 内容校验 + 内容体检
 - Vitest/Playwright 分层验收
 
 ### 当前验收
 
 ```text
-208 个 Vitest 测试
-11 条引擎 E2E
+240 个 Vitest 测试
+17 条引擎 E2E
 3 条内容 fixture E2E
 1 条正式序章 E2E
 2 条审查 E2E
+内容体检 0 错误 0 警告
 production build
 fixture build
 ```
@@ -111,9 +115,11 @@ fixture build
 - 测试事件和工作正式文件
 - 根目录旧设计文档迁入归档
 
+> 内容重置之后的架构工作（统一属性、多目标、存档槽、手册、可观测性）记在第 4 节各阶段小节里。
+
 ## 4. 接下来的计划
 
-具体阶段拆解见 [统一属性与上下文整理计划](plan-unified-attributes.md)。本节只记录优先级。
+本节只记录优先级。已完成的方案文档统一在 `docs/archive/`，仍在使用的系统说明在 `docs/systems/`。
 
 ### P0：真乃正式内容基线
 
@@ -138,7 +144,7 @@ fixture build
 
 ### P1：上下文整理与统一属性 · 已完成
 
-方案见 [统一属性与上下文整理计划](plan-unified-attributes.md)，P0–P3 全部完成。
+方案见 [归档 · 统一属性计划](../archive/plan-unified-attributes.md)，P0–P3 全部完成。
 
 - ✅ 上下文整理（`selectedIdolId`、显式 `idolId`、`jobs` 必填、`STAT_MAX` 清理、存档 13）
 - ✅ 多目标行动（`all-present-idols`、`pendingResults`、fixture `group_greeting`）
@@ -183,8 +189,17 @@ fixture build
 - `StoryChainDef.revealWhen`、`StoryChainStep.when` / `effects`（不引入 `requires`，与 `when` 重复）
 - `getEligibleStories` 返回全部候选，同一地点不再静默吞链
 - 新增 `moneyAtLeast` / `idolStatus` / `hasItem` 三个 `Condition`（16 → 19 种）
+- `evaluateStoryChain` 单一判定（地点页 / 手册 / 调试面板共用）+ `getStoryTriggerReport` 调试表
 
-存档与内容纪元均未变动。方案见 [制作人手册计划](plan-producer-handbook.md)。
+存档与内容纪元均未变动。系统说明见 [制作人手册](../systems/producer-handbook.md)。
+
+### P1：剧情链可观测性 · 已完成
+
+加内容时唯一的失败模式是静默：链条不出现，没有任何地方说明原因。现在：
+
+- `evaluateStoryChain(state, chain)` 返回 `blocks`（已完成 / 忙 / 未到天数 / 条件 / 时段 / 地点），三个读者共用。
+- `?debug=1` 调试面板新增剧情链表，直接写出卡在哪一步、差什么。
+- 内容体检补上链条的 flag 读写，以及 `hasItem` / `atLocation` / `idolStatus` / `castPresent` / `npcAffinity*` 的 id 引用检查。
 
 ### P2：新地点
 
@@ -254,7 +269,8 @@ WING 竞赛系统
 2. 正式内容重制后，Hiori/Meguru fixture 是否继续保留？
 3. 新地点的地图区域如何扩展，是否需要多张地图？
 4. 对话/剧情链审查是继续 JSON 编辑，还是做节点编辑器？
-5. 制作人属性增加第二种时，是「体力」（驱动体力池上限）还是「口才」优先？
+5. 第三个制作人属性用「口才」还是别的？
+6. 组内关系状态是否要做有限的版本（当前只有接口，见 [未来需求](future-requirements.md)）？
 
 ## 7. 变更记录
 
@@ -276,17 +292,15 @@ WING 竞赛系统
 | 2026-10-28 | v1.7 | 存档导出/导入；内容体检接入构建（content:audit） |
 | 2026-10-28 | v1.8 | 制作人手册：剧情链投影、`blocked` 原因派生、`getEligibleStories` 多链并存、三个新条件 |
 | 2026-10-28 | v1.9 | 剧情链可观测：`evaluateStoryChain` 单一判定、`getStoryTriggerReport` 调试面板、体检补链的 flag 与条件引用检查 |
+| 2026-10-28 | v2.0 | 文档整理：已完成计划移入归档，手册转为系统说明，验收文档重写为当前状态 |
 
 ## 8. 文档位置
 
 ```text
 docs/README.md                 文档入口
 docs/current/roadmap.md        本文件
-docs/current/plan-unified-attributes.md
-docs/current/plan-producer-handbook.md
-docs/current/impl-producer-handbook.md
 docs/current/future-requirements.md
 docs/current/acceptance.md
-docs/systems/                  系统说明
-docs/archive/                  历史归档
+docs/systems/                  仍在使用中的系统说明
+docs/archive/                  已完成方案、旧设计与历史决策
 ```

@@ -7,11 +7,8 @@
 | 文档 | 用途 |
 |---|---|
 | [当前路线图](current/roadmap.md) | 当前进度、下一步计划、优先级和开放问题 |
-| [统一属性与上下文整理计划](current/plan-unified-attributes.md) | 已确认方案的阶段拆解、存档迁移与验收 |
-| [制作人手册计划](current/plan-producer-handbook.md) | 任务/剧情链追踪面板，已实施 |
-| [制作人手册实施计划](current/impl-producer-handbook.md) | 手册的逐任务拆解与验收 |
 | [未来需求](current/future-requirements.md) | 已确认但暂不实现的功能需求 |
-| [自动验收](current/acceptance.md) | Vitest、Playwright、fixture/production 验收方式 |
+| [自动验收](current/acceptance.md) | 命令、测试文件、状态桥与编写约定 |
 
 ## 系统说明
 
@@ -19,6 +16,7 @@
 
 | 文档 | 用途 |
 |---|---|
+| [制作人手册](systems/producer-handbook.md) | 剧情链投影、未满足条件的人话、调试口径 |
 | [内容审查系统](systems/content-review.md) | 草稿、批注、审批、approved 载入 |
 | [偶像日程系统](systems/idol-schedule.md) | 星期模板、动态覆盖、七天窗口 |
 | [物品与商店系统](systems/item-economy.md) | 物品、购买、背包、礼物 |
@@ -31,6 +29,9 @@
 以下内容已被当前架构或正式内容重置取代，仅作为历史记录保留，**不要按其中的状态开发**。
 
 - [归档说明](archive/README.md)
+- [统一属性与上下文整理计划](archive/plan-unified-attributes.md) — 已完成的属性重构
+- [制作人手册实施计划](archive/impl-producer-handbook.md) — 已完成的逐任务拆解
+- [验收方案选型](archive/acceptance-plan.md) — Playwright 选型与早期拆分
 - [旧路线图 v0.5](archive/roadmap-v0.5.md)
 - [Phase C 计划](archive/phase-c-plan.md)
 - [Phase C 后路线图](archive/post-phase-c-roadmap.md)

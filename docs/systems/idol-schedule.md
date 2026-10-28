@@ -7,12 +7,14 @@
 - `ActorSchedule.weekdays` / `priority` / `label` / `visibility`；
 - `ActorDef.overrides` 单日覆盖；
 - 解析器：覆盖 → 星期模板 → 默认；
-- 真乃/灯织每周模板；
+- 真乃（正式包）/ 灯织、巡（fixture）的每周模板；
 - 日程表以“今天”为起点显示未来七天；
 - 日程表隐藏私人地点，显示“自由活动”；
 - 名册显示实际当前位置，包括地图不可达的学校；
 - 公园/商业街两个可步行地点，学校为 off-map 地点；
 - 动态覆盖存入 `ActorState.scheduleOverrides`；
+- 内容侧也能写覆盖：`Effect.scheduleOverride`（`dayOffset` / `days` / 可选 `locationId`）；
+  不给 `locationId` 就是“这几天她不在任何地方”；
 - `replace-day` 覆盖会替换当天模板；
 - `protected` 日程保护 + `canReplaceDay` 冲突检查；
 - 过期覆盖在时间推进时自动删除；

@@ -13,8 +13,13 @@
 | `post-phase-c-roadmap.md` | Phase C 之后的旧路线图 |
 | `visual-migration-plan.md` | 旧视觉迁移计划 |
 | `job-day-events-plan.md` | 旧工作日事件计划 |
+| `plan-unified-attributes.md` | 已完成的统一属性/上下文重构计划 |
+| `impl-producer-handbook.md` | 已完成的制作人手册逐任务拆解 |
+| `acceptance-plan.md` | 验收方案选型（Playwright vs 自写脚本）与早期拆分 |
 | `early-design/` | v0.1/v0.2 早期设计、实现说明、技术选型 |
 | `superpowers/` | 已完成的 Hiori 相遇计划与设计稿 |
+
+制作人手册本身仍在用，说明已移到 [systems/producer-handbook.md](../systems/producer-handbook.md)。
 
 ## 使用规则
 

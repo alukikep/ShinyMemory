@@ -1,6 +1,6 @@
 # 制作人手册 实施计划
 
-> 状态：全部任务已完成。设计见 [plan-producer-handbook.md](plan-producer-handbook.md)。
+> 状态：全部任务已完成。设计见 [plan-producer-handbook.md](../systems/producer-handbook.md)。
 
 > **给执行者：** 按任务顺序做，每个任务先写失败测试。步骤用 `- [ ]` 跟踪。
 
@@ -10,7 +10,7 @@
 
 **Tech Stack:** TypeScript / React 19 / Zustand / Vitest / Playwright
 
-**Spec:** [plan-producer-handbook.md](plan-producer-handbook.md)
+**Spec:** [plan-producer-handbook.md](../systems/producer-handbook.md)
 
 ## Global Constraints
 

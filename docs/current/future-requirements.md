@@ -1,5 +1,9 @@
 # 未来需求记录
 
+> 状态说明：第 1–3 节的方案已经确定，实施步骤见
+> [统一属性与上下文整理计划](plan-unified-attributes.md)。
+> 本文档只保留需求与规则本身，不再重复实施顺序。
+
 ## 1. 活动目标规则
 
 当前规则：
@@ -41,31 +45,64 @@ target?: 'none' | 'present-idol' | 'all-present-idols' | 'selected-idol';
 - `all-present-idols`：地点页行动，作用于当前地点所有在场偶像。
 - `selected-idol`：仅在偶像交互页出现。
 
+已确认的结算约束：
+
+- 一次行动只扣一次体力、金钱和时间。
+- 每个在场偶像分别结算效果与结果文本。
+- 没有符合条件的在场偶像时，行动隐藏。
+- 实施结构采用“单目标核心 + 外层循环”。
+
 ## 2. 制作人属性
 
-未来会加入制作人自身属性，例如：
+制作人属性与偶像属性**是同一套东西**，只是作用域不同：偶像属性只作用于单个偶像，制作人属性对所有偶像全局生效。
 
-```text
-摄影能力
-体力能力
-口才能力
+已确认：
+
+- 统一引用 `AttributeRef { scope: 'idol' | 'producer', key }`。
+- 共用 `IdolAttribute`（rank / exp / maxRank）与同一条 `RANK_CURVE`。
+- 所有结算经过同一个 `resolveAttribute()`，引擎里不出现“偶像分支 / 制作人分支”。
+- 首版只实现「摄影」。
+- 「体力」作为制作人属性存在时会驱动 `shared.stamina` 的上限与恢复速率，本轮不实现。
+- 制作人倍率默认表为 `1.0 – 1.5`（只加不减），偶像仍为 `0.8 – 1.8`。
+
+工作结算：
+
+```ts
+type WorkTerm = {
+  attribute: AttributeRef;
+  weight?: number;                              // 仅 sum 模式有效
+  multipliers?: Partial<Record<Rank, number>>;
+};
+
+type WorkReward = {
+  baseMoney: number;
+  terms: WorkTerm[];
+  combine?: 'sum' | 'product';                  // 默认 'sum'
+};
 ```
 
-要求：
+- `sum`：`multiplier = Σ(weight × multiplier)`，空列表兜底为 1.0。
+- `product`：`multiplier = Π(multiplier)`，建议项数 ≤ 2。
+- “只看偶像 VO” / “只看制作人摄影”都是只有一项的列表；“两者相乘”是同一列表加 `combine: 'product'`。
 
-- 与偶像属性一样有等级/经验或数值成长。
-- 可以作用于事件判定、行动判定、工作结果、对话条件。
-- 需要新增条件类型，例如 `producerAttributeAtLeast`。
-- 需要新增效果类型，例如 `producerExp`。
-- 需要决定制作人属性是 Rank + EXP，还是数值 + 阈值。
-- 需要内容审查和 schema 校验支持。
-- 需要 UI 展示和存档迁移。
+失败风险：
 
-当前不实现，只记录需求。
+- `WorkRisk.attribute` 变为可选。
+- 省略时对全部 `terms` 各自算 gap，取最差，短板决定失败率。
 
-## 3. 当前边界
+## 3. 「当前偶像」字段
+
+已确认收敛为单一 `selectedIdolId`：
+
+- 删除 `activeIdolId`（当前实现里会被 `applyActivity` 改写）。
+- 删除 `pendingIdolId`。
+- `selectedIdolId` 只由 UI 写入。
+- 所有业务函数显式接收 `idolId`，不再有隐式全局默认值。
+
+## 4. 当前边界
 
 - 自由时间已从地点页移到偶像互动页。
 - 正式内容仍然只有真乃。
 - 事件、工作、商店、物品正式内容仍为空。
-- 制作人属性尚未进入 `GameState`、条件系统或审查系统。
+- 制作人属性尚未进入 `GameState`，实施未开始，方案见计划文档。
+- 侧栏多偶像展示延后到有第二个正式偶像时。

@@ -68,7 +68,7 @@ Hiori/Meguru 只存在于 `content-fixture`，用于多偶像架构回归，不�
 ### 当前验收
 
 ```text
-187 个 Vitest 测试
+188 个 Vitest 测试
 11 条引擎 E2E
 3 条内容 fixture E2E
 1 条正式序章 E2E
@@ -136,17 +136,16 @@ fixture build
 真乃在不同地点有符合人设的反馈
 ```
 
-### P1：上下文整理与统一属性
+### P1：上下文整理与统一属性 · 已完成
 
-方案已确认，实施拆解见 [统一属性与上下文整理计划](plan-unified-attributes.md)。
-
-进度：
+方案见 [统一属性与上下文整理计划](plan-unified-attributes.md)，P0–P3 全部完成。
 
 - ✅ 上下文整理（`selectedIdolId`、显式 `idolId`、`jobs` 必填、`STAT_MAX` 清理、存档 13）
 - ✅ 多目标行动（`all-present-idols`、`pendingResults`、fixture `group_greeting`）
 - ✅ 统一属性（`AttributeRef`、`terms` + `combine`、制作人摄影、存档 14）
+- ✅ 验收（fixture `demo_recording` / `photo_shoot` / `cover_shoot` 覆盖三种形态）
 
-这一阶段不做正式内容，只做引擎能力。
+这一阶段不做正式内容，只做引擎能力。剩余可选项在计划的 P4。
 
 ### P1：训练设施升级
 
@@ -239,6 +238,7 @@ WING 竞赛系统
 | 2026-10-28 | v0.8 | P0 完成：`selectedIdolId`、显式 `idolId`、`jobs` 必填、`STAT_MAX` 清理、存档 13 |
 | 2026-10-28 | v0.9 | P1 完成：`all-present-idols` 多目标行动、`pendingResults`、fixture `group_greeting` |
 | 2026-10-28 | v1.0 | P2 完成：`AttributeRef` 统一属性、`terms` + `combine`、制作人摄影、存档 14 |
+| 2026-10-28 | v1.1 | P3 完成：三种工作形态的 fixture 回归；统一属性计划全部收尾 |
 
 ## 8. 文档位置
 

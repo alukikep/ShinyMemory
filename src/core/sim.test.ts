@@ -920,4 +920,48 @@ describe('raising sim core', () => {
     ]);
     expect(summary).toBe('摄影 EXP +3');
   });
+
+  it('wires the three fixture work forms', () => {
+    const state = newGame(1);
+    state.idols.mano!.stats.vocal.rank = 'S';
+    state.idols.mano!.stats.expression.rank = 'S';
+    state.producer.photography.rank = 'F';
+
+    const demo = getActivity('demo_recording')!;
+    const photo = getActivity('photo_shoot')!;
+    const cover = getActivity('cover_shoot')!;
+
+    // 只看偶像：制作人等级不影响结果。
+    const demoAtF = workRewardPreview(state, demo.workReward!, 'mano');
+    state.producer.photography.rank = 'S';
+    const demoAtS = workRewardPreview(state, demo.workReward!, 'mano');
+    expect(demoAtF.multiplier).toBeCloseTo(1.8);
+    expect(demoAtS.multiplier).toBeCloseTo(1.8);
+
+    // 只看制作人：偶像属性不参与。
+    expect(photo.workReward!.terms).toHaveLength(1);
+    const photoHighIdol = workRewardPreview(state, photo.workReward!, 'mano');
+    state.idols.mano!.stats.vocal.rank = 'F';
+    const photoLowIdol = workRewardPreview(state, photo.workReward!, 'mano');
+    expect(photoHighIdol.multiplier).toBeCloseTo(1.5);
+    expect(photoLowIdol.multiplier).toBeCloseTo(1.5);
+
+    // 两者相乘。
+    expect(cover.workReward!.combine).toBe('product');
+    state.producer.photography.rank = 'D';
+    state.idols.mano!.stats.expression.rank = 'S';
+    expect(
+      workRewardPreview(state, cover.workReward!, 'mano').multiplier,
+    ).toBeCloseTo(1.8 * 1.2);
+
+    // 风险没有 ref 时取最差项：摄影 D 比表现 S 更差。
+    const risk = workRiskPreview(
+      state,
+      cover.workRisk!,
+      cover.workReward,
+      'mano',
+    );
+    expect(risk.ref).toEqual({ scope: 'producer', key: 'photography' });
+    expect(risk.gap).toBe(1);
+  });
 });

@@ -403,7 +403,9 @@ export function validateReviewDraft(
     for (const duplicate of duplicates) {
       errors.push(`ID 与现有内容重复：${duplicate}`);
     }
-    for (const issue of auditPack(buildContentIndex(pack))) {
+    for (const issue of auditPack(buildContentIndex(pack), {
+      skipPackRules: true,
+    })) {
       errors.push(
         `${issue.level === 'error' ? '[错误]' : '[警告]'} ${issue.code}: ${issue.message}`,
       );

@@ -76,7 +76,15 @@ function anchorOf(event: EventDef): string | undefined {
  * 对任意内容索引做同一套体检。审查台用它校验单条草稿，
  * 构建门用它校验整包，两边不再各写一套规则。
  */
-export function auditPack(index: ContentIndex): ContentIssue[] {
+export type AuditOptions = {
+  /** 跳过整包级规则（单条草稿校验时用）。 */
+  skipPackRules?: boolean;
+};
+
+export function auditPack(
+  index: ContentIndex,
+  options: AuditOptions = {},
+): ContentIssue[] {
   const issues: ContentIssue[] = [];
   const push = (
     level: ContentIssue['level'],
@@ -170,6 +178,31 @@ export function auditPack(index: ContentIndex): ContentIssue[] {
     if (!locationIds.has(job.locationId)) {
       push('error', 'location-ref', `${job.id} 指向不存在的地点 ${job.locationId}`);
     }
+  }
+
+  // 粉丝是只增不减的累计值：整包里一条 fans 效果都没有，它就永远是 0。
+  const collectedEffects: Effect[][] = [
+    ...[...activityIds.values()].map((activity) => activity.effects ?? []),
+    ...[...eventIds.values()].flatMap((event) => [
+      ...(event.choices ?? []).map((choice) => choice.effects ?? []),
+    ]),
+    ...[...index.jobs.values()].map((job) => job.effects ?? []),
+    ...[...actorIds.values()].flatMap((actor) =>
+      actor.topics.map((topic) => topic.effects ?? []),
+    ),
+    ...[...index.storyChains.values()].flatMap((chain) =>
+      chain.steps.map((step) => step.effects ?? []),
+    ),
+  ];
+  const hasFansSource = collectedEffects.some((effects) =>
+    effects.some((effect) => effect.kind === 'fans'),
+  );
+  if (!hasFansSource && !options.skipPackRules) {
+    push(
+      'warning',
+      'fans-source',
+      '内容里没有任何 fans 效果，粉丝数会永远是 0',
+    );
   }
 
   // 商品货架由商店的 itemIds 决定；物品不反向引用商店，避免两处真相。

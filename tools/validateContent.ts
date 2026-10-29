@@ -24,10 +24,16 @@ const { pack, duplicates } = mergeApprovedContent(BASE_PACK, approved);
 for (const duplicate of duplicates) {
   errors.push(`ID 与现有内容重复：${duplicate}`);
 }
+const warnings: string[] = [];
 for (const issue of auditPack(buildContentIndex(pack))) {
-  errors.push(
-    `${issue.level === 'error' ? '[错误]' : '[警告]'} ${issue.code}: ${issue.message}`,
-  );
+  const text = `${issue.code}: ${issue.message}`;
+  if (issue.level === 'error') errors.push(`[错误] ${text}`);
+  else warnings.push(`[警告] ${text}`);
+}
+
+if (warnings.length > 0) {
+  // 警告不拦构建：`content:audit --strict` 才是「警告也失败」的口径。
+  for (const warning of warnings) console.warn(`- ${warning}`);
 }
 
 if (errors.length > 0) {

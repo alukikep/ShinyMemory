@@ -33,6 +33,16 @@ export const STAT_SHORT: Record<StatKey, string> = {
   trust: '心',
 };
 
+import type { ModifierKey } from './types';
+
+export const MODIFIER_LABELS: Record<ModifierKey, string> = {
+  staminaCost: '体力消耗',
+  staminaCap: '体力上限',
+  duration: '行动时长',
+  trainingExp: '训练 EXP',
+  workMoney: '工作报酬',
+};
+
 export function attributeLabel(ref: AttributeRefInput): string {
   if (typeof ref === 'string') return STAT_LABELS[ref];
   return ref.scope === 'idol'

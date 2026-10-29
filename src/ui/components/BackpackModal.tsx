@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
-import type { GameState, ItemDef } from '../../core/types';
+import { describeModifier } from '../../core/modifiers';
+import { slotKeys } from '../../core/sim';
+import type { EquipDef, GameState, ItemDef } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 import { GameIcon } from './GameIcon';
 
@@ -8,12 +10,89 @@ type BackpackModalProps = {
   state: GameState;
   onClose: () => void;
   onGift: (itemId: string, idolId: string) => void;
+  onEquip: (equipId: string) => void;
+  onUnequip: (slotKey: string) => void;
 };
+
+function EquipSection({
+  state,
+  onEquip,
+  onUnequip,
+}: {
+  state: GameState;
+  onEquip: (equipId: string) => void;
+  onUnequip: (slotKey: string) => void;
+}) {
+  const equipment = state.equipment ?? {};
+  const slots = slotKeys(state, 'charm');
+  const owned = (state.ownedEquips ?? [])
+    .filter((id) => !Object.values(equipment).includes(id))
+    .map((id) => CONTENT_INDEX.equips.get(id))
+    .filter((def): def is EquipDef => Boolean(def));
+
+  if (slots.length === 0 && owned.length === 0) return null;
+
+  return (
+    <section className="equip-section" aria-label="饰品">
+      <h3 className="equip-title">饰品</h3>
+      <div className="equip-slots">
+        {slots.map((key, index) => {
+          const def = equipment[key]
+            ? CONTENT_INDEX.equips.get(equipment[key])
+            : undefined;
+          return (
+            <div className="equip-slot" key={key}>
+              <span className="equip-slot-label">位置 {index + 1}</span>
+              {def ? (
+                <>
+                  <span className="equip-slot-name">{def.name}</span>
+                  <span className="equip-slot-effect">
+                    {def.modifiers.map(describeModifier).join(' · ')}
+                  </span>
+                  <button
+                    type="button"
+                    className="equip-action"
+                    onClick={() => onUnequip(key)}
+                  >
+                    卸下
+                  </button>
+                </>
+              ) : (
+                <span className="equip-slot-empty">空</span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      {owned.length > 0 ? (
+        <ul className="equip-owned">
+          {owned.map((def) => (
+            <li key={def.id}>
+              <span className="equip-owned-name">{def.name}</span>
+              <span className="equip-owned-effect">
+                {def.modifiers.map(describeModifier).join(' · ')}
+              </span>
+              <button
+                type="button"
+                className="equip-action"
+                onClick={() => onEquip(def.id)}
+              >
+                装备
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </section>
+  );
+}
 
 export function BackpackModal({
   state,
   onClose,
   onGift,
+  onEquip,
+  onUnequip,
 }: BackpackModalProps) {
   const dialogRef = useDialogFocus<HTMLElement>();
   const idols = Object.values(state.idols).filter(
@@ -94,9 +173,11 @@ export function BackpackModal({
           </p>
         ) : null}
 
+        <EquipSection state={state} onEquip={onEquip} onUnequip={onUnequip} />
+
         {entries.length === 0 ? (
           <p className="inventory-empty">
-            背包还是空的。去商业街的礼品店看看？
+            背包里没有道具。去商业街的礼品店看看？
           </p>
         ) : (
           <>

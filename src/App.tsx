@@ -358,6 +358,8 @@ export default function App() {
           onGift={(itemId, idolId) =>
             act({ type: 'giveGift', itemId, idolId })
           }
+          onEquip={(equipId) => act({ type: 'equip', equipId })}
+          onUnequip={(slotKey) => act({ type: 'unequip', slotKey })}
         />
       ) : null}
 

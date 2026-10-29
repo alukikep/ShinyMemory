@@ -1,3 +1,4 @@
+import { MODIFIER_LABELS } from './labels';
 import type { Modifier, ModifierKey } from './types';
 
 export type ModifierSource = {
@@ -39,4 +40,14 @@ export function combineModifiers(
   }
 
   return { total: product * (1 + sum), parts };
+}
+
+/** 一条加成的人话：「体力消耗 ×0.90」「训练 EXP +20%」。 */
+export function describeModifier(modifier: Modifier): string {
+  const label = MODIFIER_LABELS[modifier.key];
+  if ((modifier.op ?? 'mul') === 'add') {
+    const sign = modifier.value > 0 ? '+' : '';
+    return `${label} ${sign}${Math.round(modifier.value * 100)}%`;
+  }
+  return `${label} ×${modifier.value.toFixed(2)}`;
 }

@@ -2746,6 +2746,95 @@ button:focus-visible,
   font-variant-numeric: tabular-nums;
 }
 
+.equip-section {
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fbfdfe;
+  padding: 12px 14px;
+}
+
+.equip-title {
+  margin: 0 0 10px;
+  color: var(--faint);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.equip-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.equip-slot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+
+.equip-slot-label {
+  min-width: 52px;
+  color: var(--faint);
+  font-size: 11px;
+}
+
+.equip-slot-name {
+  font-weight: 600;
+}
+
+.equip-slot-effect,
+.equip-owned-effect {
+  color: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.equip-slot-empty {
+  color: var(--faint);
+}
+
+.equip-action {
+  margin-left: auto;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  padding: 3px 10px;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.equip-action:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.equip-owned {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.equip-owned li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.equip-owned-name {
+  font-weight: 600;
+}
+
 .inventory-empty {
   margin: 28px 0 20px;
   color: var(--muted);

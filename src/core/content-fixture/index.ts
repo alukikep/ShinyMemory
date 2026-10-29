@@ -22,6 +22,7 @@ import rest from './activities/rest';
 import free from './activities/free';
 import lookAround from './activities/lookAround';
 import sleep from './activities/sleep';
+import oldDrawer from './activities/oldDrawer';
 import advancedVocal from './activities/advancedVocal';
 import advancedDance from './activities/advancedDance';
 import cafeLunch from './activities/cafeLunch';
@@ -69,7 +70,7 @@ import pairManoMeguru from './events/pairs/manoMeguru';
 import pairGenericRest from './events/pairs/genericRest';
 import { PAIR_MANO_HIORI } from './dialogues/pairs/manoHiori';
 
-export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, advancedVocal, advancedDance, cafeLunch, groupGreeting, demoRecording, photoShoot, coverShoot, groupTraining];
+export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, oldDrawer, advancedVocal, advancedDance, cafeLunch, groupGreeting, demoRecording, photoShoot, coverShoot, groupTraining];
 
 export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, parkPigeons, shoppingWindow, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath, staminaDrill, pairManoHiori, pairManoMeguru, pairGenericRest, ...APPROVED_EVENTS];
 

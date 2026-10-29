@@ -186,6 +186,8 @@ export type GameState = {
   dialogueReturnPhase?: Phase;
   dialogueReturnResult?: string;
   flags: Record<string, boolean>;
+  /** 定时事件 → 上次触发的日，用于同日去重。 */
+  scheduledDays?: Record<string, number>;
   jobs: JobAssignment[];
   eventCooldowns: Record<string, number>;
   log: LogEntry[];
@@ -462,6 +464,15 @@ export type EventEntry =
     }
   | { kind: 'chain' };
 
+/** 跟时间走的触发；带 trigger 的事件不参与行动后的随机池。 */
+export type EventTrigger = {
+  /** 每 N 天一次，从第 1 天起算。与 weekday 二选一。 */
+  everyDays?: number;
+  weekday?: Weekday;
+  /** 当天这个时间之后才算到点。 */
+  atMinute: number;
+};
+
 export type EventDef = {
   id: string;
   title: string;
@@ -473,6 +484,7 @@ export type EventDef = {
   /** 按组合（而不是按事件 id）计算的冷却行动数。 */
   pairCooldownActions?: number;
   entry?: EventEntry;
+  trigger?: EventTrigger;
   nextEventId?: string;
   after?: ActivitySelector;
   afterNpc?: { ids: string[] };

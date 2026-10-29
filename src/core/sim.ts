@@ -21,7 +21,7 @@ import {
 import { STAT_LABELS, STAT_MAX, attributeLabel } from './labels';
 import { createInitialProducerStats, staminaCapForRank, staminaCostMultiplierForRank, PRODUCER_STAT_KEYS } from './producer';
 import { Rng } from './rng';
-import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, isMinuteInWindow } from './time';
+import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, getWeekdayFromDay, isMinuteInWindow } from './time';
 import { describeCondition } from './conditionText';
 import { combineModifiers } from './modifiers';
 import type { ModifierBreakdown, ModifierSource } from './modifiers';
@@ -2140,7 +2140,44 @@ function buildPool(ctx: EventContext): EventDef[] {
     }
   }
 
-  return [...pool];
+  return [...pool].filter((event) => !event.trigger);
+}
+
+/** 到点的定时事件：周期、时间、当日去重、when 条件。 */
+function buildScheduledPool(state: GameState): EventDef[] {
+  const day = getDay(state.clock.absoluteMinutes);
+  const minute = getMinuteOfDay(state.clock.absoluteMinutes);
+
+  return [...CONTENT_INDEX.events.values()].filter((event) => {
+    const trigger = event.trigger;
+    if (!trigger) return false;
+    if (state.scheduledDays?.[event.id] === day) return false;
+    if (minute < trigger.atMinute) return false;
+    if (trigger.weekday !== undefined) {
+      if (getWeekdayFromDay(day) !== trigger.weekday) return false;
+    } else if (trigger.everyDays && trigger.everyDays > 0) {
+      if ((day - 1) % trigger.everyDays !== 0) return false;
+    } else {
+      return false;
+    }
+    return event.when.every((condition) => checkCondition(condition, state));
+  });
+}
+
+function fireScheduled(
+  state: GameState,
+  picked: EventDef,
+): EventCheckResult {
+  const next = clone(state);
+  const day = getDay(next.clock.absoluteMinutes);
+  next.scheduledDays = { ...(next.scheduledDays ?? {}), [picked.id]: day };
+  next.pendingEventId = picked.id;
+  next.pendingEventCast = undefined;
+  next.pendingEventIdolId = picked.cast?.[0] ?? state.selectedIdolId;
+  next.pendingChainEventId = undefined;
+  next.phase = 'event';
+  addLog(next, `事件：${picked.title}`, 'info');
+  return { state: next, event: picked };
 }
 
 function weightedPick(events: EventDef[], rng: Rng): EventDef {
@@ -2204,6 +2241,18 @@ export function checkEventCandidates(
   return { state: next, event: picked };
 }
 
+/** 到点的定时事件；没有则返回 event: null，不改 state。 */
+export function checkScheduledEvent(state: GameState): EventCheckResult {
+  const due = buildScheduledPool(state);
+  if (due.length === 0) return { state, event: null };
+
+  const picked = [...due].sort(
+    (a, b) =>
+      (b.priority ?? 0) - (a.priority ?? 0) || a.id.localeCompare(b.id),
+  )[0]!;
+  return fireScheduled(state, picked);
+}
+
 export function checkForEvent(
   state: GameState,
   ctx: EventContext = {},
@@ -2212,7 +2261,10 @@ export function checkForEvent(
     ...ctx,
     locationId: ctx.locationId ?? state.locationId,
   };
-  return checkEventCandidates(state, buildPool(context), context);
+  const random = checkEventCandidates(state, buildPool(context), context);
+  if (random.event) return random;
+
+  return checkScheduledEvent(random.state);
 }
 
 export function checkNpcEvent(

@@ -1822,6 +1822,13 @@ export function activityCheckChance(
   return Math.min(0.95, Math.max(0.05, raw));
 }
 
+/** 界面用档位；不暴露精确概率。 */
+export function activityCheckLabel(chance: number): string {
+  if (chance >= 0.75) return '有把握';
+  if (chance >= 0.45) return '五五开';
+  return '很勉强';
+}
+
 function pickActivityResult(
   state: GameState,
   activity: ActivityDef,

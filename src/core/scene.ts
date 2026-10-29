@@ -12,6 +12,8 @@ import {
 import { canReplaceDay } from './schedule';
 import {
   activityAvailability,
+  activityCheckChance,
+  activityCheckLabel,
   activityCost,
   activityDuration,
   activeJobFor,
@@ -180,7 +182,12 @@ function activityActionView(
       ? workRiskSummary(state, activity.workRisk, activity.workReward, idolId)
       : '';
   const timeLabel = formatTimeWindows(activity.timeWindows);
-  const hint = [timeLabel, duration, reward, risk, effects]
+  const checkChance = activityCheckChance(state, activity, idolId);
+  const checkLabel =
+    checkChance === undefined
+      ? ''
+      : `检定：${activityCheckLabel(checkChance)}`;
+  const hint = [timeLabel, duration, checkLabel, reward, risk, effects]
     .filter(Boolean)
     .join(' · ');
 

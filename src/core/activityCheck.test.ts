@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { activityCheckChance, applyActivityDef, newGame, travelTo } from './sim';
+import {
+  activityCheckChance,
+  activityCheckLabel,
+  applyActivityDef,
+  newGame,
+  travelTo,
+} from './sim';
 import type { ActivityDef, GameState } from './types';
 
 function activity(overrides: Partial<ActivityDef> = {}): ActivityDef {
@@ -100,5 +106,14 @@ describe('activity checks', () => {
     expect(next.pendingActivityPassed).toBe(true);
     expect(next.money).toBe(before + 100);
     expect(next.lastResult).toBe('过了。');
+  });
+});
+
+describe('activity check labels', () => {
+  it('speaks in bands, never percentages', () => {
+    expect(activityCheckLabel(0.9)).toBe('有把握');
+    expect(activityCheckLabel(0.75)).toBe('有把握');
+    expect(activityCheckLabel(0.6)).toBe('五五开');
+    expect(activityCheckLabel(0.44)).toBe('很勉强');
   });
 });

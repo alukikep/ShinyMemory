@@ -188,6 +188,7 @@ export function describeCondition(
 | `hasItem` | `还缺 生日礼物 ×1` | 用物品显示名，不用 id |
 | `attributeAtLeast` | `歌唱还得练到 D` | 复用 `attributeLabel` |
 | `atLocation` | `得回事务所一趟` | |
+| `fansAtLeast` | `樱木真乃的粉丝还差 600` | 用原始差额，显示时格式化；未知偶像回退 |
 | `timeWindow` / `dayAtLeast` | `过两天再说` | 时间类不给精确数字 |
 | 其余（`flag` / `sharedStat*` / `castPresent` / 组合条件） | `undefined` | 不猜语义 |
 
@@ -250,7 +251,7 @@ if (!best || (chain.priority ?? 0) > (best.chain.priority ?? 0)) best = { ... };
 - **`storyChain.test.ts` 有 7 处调用，其中「uses story priority」那条断言的正是“只有最高优先级出现”。这是被编码下来的旧行为，P2 必须把它改成“两条都出现、且按 priority 排序”。**
 - 改完之后 `priority` 从“选谁”变成“排序位”，字段保留，语义写进注释。
 
-**e. 补三个 `Condition`**——当时 16 种，缺的正好是任务最常用的三种（后来内容状态又加了 `varAtLeast` / `varAtMost`，现为 21 种）：
+**e. 补三个 `Condition`**——当时 16 种，缺的正好是任务最常用的三种（后来内容状态又加了 `varAtLeast` / `varAtMost`，粉丝数又加了 `fansAtLeast` / `fansAtMost`，现为 23 种）：
 
 | 新增 | 形态 | 用途 |
 |---|---|---|

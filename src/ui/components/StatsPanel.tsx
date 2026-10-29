@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { getSelectedIdol, isSelectedIdolRecruited, maxStamina } from '../../core/sim';
-import { STAT_LABELS, STAT_MAX } from '../../core/labels';
+import { FANS_LABEL, STAT_LABELS, STAT_MAX, formatFans } from '../../core/labels';
 import type {
   GameState,
   HeroView,
@@ -143,6 +143,13 @@ export function StatsPanel({
             {IDOL_ORDER.map((key) => (
               <RankChip key={key} statKey={key} attribute={idol.stats[key]} />
             ))}
+          </div>
+          <div className="idol-fans">
+            <span>
+              <GameIcon name="star" size={12} />
+              {FANS_LABEL}
+            </span>
+            <strong>{formatFans(idol.fans ?? 0)}</strong>
           </div>
         </>
       ) : (

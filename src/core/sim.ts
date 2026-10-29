@@ -18,7 +18,7 @@ import {
   reduceExpTier,
   sameOrHigherRank,
 } from './growth';
-import { STAT_LABELS, STAT_MAX, attributeLabel } from './labels';
+import { STAT_LABELS, STAT_MAX, attributeLabel, formatFans } from './labels';
 import { createInitialProducerStats, staminaCapForRank, staminaCostMultiplierForRank, PRODUCER_STAT_KEYS } from './producer';
 import { Rng } from './rng';
 import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, getWeekdayFromDay, isMinuteInWindow } from './time';
@@ -260,6 +260,9 @@ function clampState(state: GameState): void {
     }
   }
   state.money = Math.max(0, state.money);
+  for (const idol of Object.values(state.idols ?? {})) {
+    idol.fans = Math.max(0, Math.round(idol.fans ?? 0));
+  }
   for (const actor of Object.values(state.actors ?? {})) {
     actor.affinity = Math.max(
       0,
@@ -859,8 +862,8 @@ function applyCastEffects(
     return;
   }
   // 多人：偶像属性各一份，其余一次。
-  const perIdol = effects.filter(isIdolAttributeEffect);
-  const shared = effects.filter((effect) => !isIdolAttributeEffect(effect));
+  const perIdol = effects.filter(isPerIdolEffect);
+  const shared = effects.filter((effect) => !isPerIdolEffect(effect));
   for (const idolId of cast) {
     applyEffects(state, perIdol, { idolId });
   }
@@ -1335,6 +1338,12 @@ export function getVar(state: GameState, key: string): number {
   return state.vars?.[key] ?? 0;
 }
 
+/** 粉丝数。`idolId` 省略时取当前偶像。未知偶像读作 0。 */
+export function getFans(state: GameState, idolId?: string): number {
+  const id = idolId ?? state.selectedIdolId;
+  return state.idols[id]?.fans ?? 0;
+}
+
 export function checkCondition(
   condition: Condition,
   state: GameState,
@@ -1409,6 +1418,14 @@ export function checkCondition(
       return getVar(state, condition.key) >= condition.value;
     case 'varAtMost':
       return getVar(state, condition.key) <= condition.value;
+    case 'fansAtLeast':
+      return (
+        getFans(state, condition.idolId ?? ctx.idolId) >= condition.value
+      );
+    case 'fansAtMost':
+      return (
+        getFans(state, condition.idolId ?? ctx.idolId) <= condition.value
+      );
     case 'all':
       return condition.of.every((child) => checkCondition(child, state, ctx));
     case 'any':
@@ -1470,6 +1487,19 @@ function applyEffects(
         state.vars = { ...(state.vars ?? {}) };
         state.vars[effect.key] =
           (effect.op ?? 'add') === 'set' ? effect.value : current + effect.value;
+        break;
+      }
+      case 'fans': {
+        const idolId = effect.idolId ?? options?.idolId;
+        if (!idolId) {
+          throw new Error('fans effect requires an idol context');
+        }
+        const idol = state.idols[idolId];
+        if (!idol) throw new Error(`unknown idol: ${idolId}`);
+        idol.fans =
+          (effect.op ?? 'add') === 'set'
+            ? effect.value
+            : idol.fans + effect.value;
         break;
       }
       case 'scheduleEvent': {
@@ -1539,6 +1569,7 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
   };
   const exp = new Map<string, { label: string; value: number }>();
   let money = -(cost?.money ?? 0);
+  let fans = 0;
 
   for (const effect of effects) {
     if (effect.kind === 'sharedStat') {
@@ -1553,12 +1584,21 @@ export function effectSummary(effects: Effect[], cost?: Cost): string {
       exp.set(key, { label: current.label, value: current.value + value });
     } else if (effect.kind === 'money') {
       money += effect.delta;
+    } else if (effect.kind === 'fans') {
+      // set 是绝对量，摘要里没法表达「设成多少」，只标一下。
+      if ((effect.op ?? 'add') === 'set') fans = NaN;
+      else fans += effect.value;
     }
   }
 
   const parts: string[] = [];
   if (money !== 0) {
     parts.push(`金钱 ${money > 0 ? '+' : ''}${money}`);
+  }
+  if (Number.isNaN(fans)) {
+    parts.push('粉丝变动');
+  } else if (fans !== 0) {
+    parts.push(`粉丝 ${fans > 0 ? '+' : ''}${formatFans(fans)}`);
   }
 
   const expOrder = [
@@ -1980,8 +2020,10 @@ function pickActivityResult(
   return variant?.text ?? rng.pick(activity.resultTexts);
 }
 
-/** 偶像属性效果按目标各结算一份；其余效果一次行动只算一次。 */
-function isIdolAttributeEffect(effect: Effect): boolean {
+/** 挂在单个偶像身上的效果按目标各结算一份；其余效果一次行动只算一次。 */
+function isPerIdolEffect(effect: Effect): boolean {
+  // 显式写了 idolId 的粉丝效果只作用于那一个人，不该跟着目标循环翻倍。
+  if (effect.kind === 'fans') return !effect.idolId;
   return (
     effect.kind === 'attributeExp' &&
     normalizeAttributeRef(effect.ref).scope === 'idol'
@@ -2077,10 +2119,10 @@ export function applyActivityDef(
   // 多目标：偶像属性按人各一份；制作人属性、sharedStat、金钱、flag 等只结算一次。
   const isMultiTarget = resolvedTargets.length > 1;
   const perTargetEffects = isMultiTarget
-    ? activeEffects.filter(isIdolAttributeEffect)
+    ? activeEffects.filter(isPerIdolEffect)
     : activeEffects;
   const sharedEffects = isMultiTarget
-    ? activeEffects.filter((effect) => !isIdolAttributeEffect(effect))
+    ? activeEffects.filter((effect) => !isPerIdolEffect(effect))
     : [];
 
   const outcomes = resolvedTargets.map((targetId) => {

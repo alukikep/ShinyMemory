@@ -1,5 +1,5 @@
 import { CONTENT_INDEX } from './contentIndex';
-import { attributeLabel } from './labels';
+import { attributeLabel, formatFans } from './labels';
 import type { CheckContext, Condition, GameState } from './types';
 
 /**
@@ -59,6 +59,16 @@ export function describeCondition(
     case 'timeWindow':
     case 'dayAtLeast':
       return '过两天再说';
+    case 'fansAtLeast': {
+      const idolId = condition.idolId ?? ctx.idolId ?? state.selectedIdolId;
+      const idol = CONTENT_INDEX.idols.get(idolId);
+      const current = state.idols[idolId];
+      // 泄露护栏：还没认识的人不写进手记
+      if (!idol || !current || current.status === 'unknown') return undefined;
+      const gap = condition.value - (current.fans ?? 0);
+      if (gap <= 0) return undefined;
+      return `${idol.name}的粉丝还差 ${formatFans(gap)}`;
+    }
     case 'varAtLeast': {
       const gap = condition.value - (state.vars?.[condition.key] ?? 0);
       if (gap <= 0) return undefined;

@@ -8,6 +8,7 @@ import {
 } from './localStorageRepository';
 import { MemoryStorage } from './memoryStorage';
 import { createSaveEnvelope } from './save';
+import { SAVE_VERSION } from './version';
 
 describe('LocalStorageRepository', () => {
   it('roundtrips a save', () => {
@@ -16,7 +17,7 @@ describe('LocalStorageRepository', () => {
 
     const loaded = repo.load();
     expect(loaded).not.toBeNull();
-    expect(loaded?.schemaVersion).toBe(14);
+    expect(loaded?.schemaVersion).toBe(SAVE_VERSION);
     expect(loaded?.state.idols.mano?.stats.vocal.rank).toBe('D');
     expect(loaded?.state.idols.hiori?.stats.vocal.rank).toBe('F');
     expect(loaded?.state.shared.stamina).toBe(100);
@@ -46,7 +47,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(14);
+    expect(loaded?.schemaVersion).toBe(SAVE_VERSION);
     expect(loaded?.state.locationId).toBe('office');
     expect(loaded?.state.clock.absoluteMinutes).toBe(8 * 60);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
@@ -70,7 +71,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(14);
+    expect(loaded?.schemaVersion).toBe(SAVE_VERSION);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(0);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
     expect(loaded?.state.actors.mano?.affinity).toBe(0);
@@ -105,7 +106,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(14);
+    expect(loaded?.schemaVersion).toBe(SAVE_VERSION);
     expect(loaded?.state.actors.hazuki?.affinity).toBe(3);
     expect(loaded?.state.actors.tsutomu?.affinity).toBe(0);
     expect(loaded?.state.actors.mano?.affinity).toBe(0);
@@ -133,7 +134,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(14);
+    expect(loaded?.schemaVersion).toBe(SAVE_VERSION);
     expect(loaded?.state.actors.mano?.affinity).toBe(0);
   });
 
@@ -156,7 +157,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(14);
+    expect(loaded?.schemaVersion).toBe(SAVE_VERSION);
     expect(loaded?.state.actors.hiori?.affinity).toBe(0);
     expect(loaded?.state.idols.hiori?.stats.vocal.rank).toBe('F');
   });
@@ -186,7 +187,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(14);
+    expect(loaded?.schemaVersion).toBe(SAVE_VERSION);
     expect(loaded?.state.idols.mano?.stats.vocal.rank).toBe('D');
     expect(loaded?.state.idols.mano?.stats.trust.rank).toBe('E');
   });
@@ -208,7 +209,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(14);
+    expect(loaded?.schemaVersion).toBe(SAVE_VERSION);
     expect(loaded?.state.inventory).toEqual({});
     expect(loaded?.state.shopPurchases).toEqual({});
   });
@@ -235,7 +236,7 @@ describe('LocalStorageRepository', () => {
     );
 
     const loaded = new LocalStorageRepository(storage).load();
-    expect(loaded?.schemaVersion).toBe(14);
+    expect(loaded?.schemaVersion).toBe(SAVE_VERSION);
     expect(loaded?.state.idols.mano?.status).toBe('recruited');
     expect(loaded?.state.idols.hiori?.status).toBe('recruited');
     expect(loaded?.state.storyChains).toEqual({});

@@ -676,6 +676,7 @@ function buildIdolPage(state: GameState): SceneView {
       color: idolDef.color,
       avatar: idolDef.avatar,
       stats: idolState.stats,
+      fans: idolState.fans ?? 0,
     },
     actions: [
       ...activities,

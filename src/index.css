@@ -2187,6 +2187,48 @@ button:focus-visible,
   font-weight: 600;
 }
 
+.idol-stat-fans {
+  border-color: rgba(49, 155, 197, 0.35);
+  background: rgba(49, 155, 197, 0.07);
+}
+
+.idol-stat-fans strong {
+  color: var(--accent-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.idol-fans {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fbfdfe;
+  padding: 5px 8px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.idol-fans span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.idol-fans strong {
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.roster-fans {
+  margin: 2px 0 0;
+  color: var(--accent-strong);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
 .blocks {
   flex: 0 0 auto;
   padding: 22px 2px 8px;

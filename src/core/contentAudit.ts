@@ -149,6 +149,13 @@ export function auditContent(): ContentIssue[] {
   // ---- 效果引用完整性 ----
   const checkEffects = (effects: Effect[] | undefined, owner: string) => {
     for (const effect of effects ?? []) {
+      if (effect.kind === 'fans' && effect.idolId && !idolIds.has(effect.idolId)) {
+        push(
+          'error',
+          'idol-ref',
+          `${owner} 的 fans 效果指向不存在的偶像 ${effect.idolId}`,
+        );
+      }
       if (effect.kind !== 'scheduleOverride') continue;
       if (!actorIds.has(effect.actorId)) {
         push(
@@ -399,6 +406,16 @@ export function auditContent(): ContentIssue[] {
           }
           break;
         case 'idolStatus':
+          if (condition.idolId && !idolIds.has(condition.idolId)) {
+            push(
+              'error',
+              'idol-ref',
+              `${owner} 指向不存在的偶像 ${condition.idolId}`,
+            );
+          }
+          break;
+        case 'fansAtLeast':
+        case 'fansAtMost':
           if (condition.idolId && !idolIds.has(condition.idolId)) {
             push(
               'error',

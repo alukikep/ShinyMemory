@@ -67,6 +67,8 @@ export type IdolDef = {
   avatar?: string;
   quote?: string;
   isStart?: boolean;
+  /** 初始粉丝数；缺省 0。已经出道的偶像可以给一个非零起点。 */
+  fans?: number;
   growth: GrowthProfile;
 };
 
@@ -74,6 +76,8 @@ export type IdolState = {
   id: string;
   stats: IdolStats;
   status: IdolStatus;
+  /** 粉丝数。只增不减的累计值，不进 rank 曲线。 */
+  fans: number;
   knownAt?: number;
   recruitedAt?: number;
 };
@@ -263,6 +267,8 @@ export type Effect =
   | { kind: 'money'; delta: number }
   | { kind: 'flag'; key: string; value: boolean }
   | { kind: 'var'; key: string; op?: 'set' | 'add'; value: number }
+  /** 粉丝数。`idolId` 省略时取当前偶像上下文。 */
+  | { kind: 'fans'; idolId?: string; op?: 'set' | 'add'; value: number }
   | { kind: 'scheduleEvent'; eventId: string; inDays: number }
   | { kind: 'unlockSlot'; slot: EquipSlot; amount?: number }
   | { kind: 'grantEquip'; equipId: string }
@@ -305,6 +311,9 @@ export type Condition =
   /** 数值变量；未写过 = 0。label 只用于显示，参与不了结算。 */
   | { kind: 'varAtLeast'; key: string; value: number; label?: string }
   | { kind: 'varAtMost'; key: string; value: number; label?: string }
+  /** 粉丝数；`idolId` 省略时取上下文偶像。 */
+  | { kind: 'fansAtLeast'; idolId?: string; value: number }
+  | { kind: 'fansAtMost'; idolId?: string; value: number }
   | { kind: 'all'; of: Condition[] }
   | { kind: 'any'; of: Condition[] }
   | { kind: 'not'; of: Condition };
@@ -690,6 +699,7 @@ export type IdolPageView = {
   color?: string;
   avatar?: string;
   stats: IdolStats;
+  fans: number;
 };
 
 export type HeroView = {

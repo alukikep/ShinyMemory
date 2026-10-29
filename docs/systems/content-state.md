@@ -1,7 +1,7 @@
-# 内容状态：数值、延迟触发与移动倍率
+# 内容状态：数值、延迟触发、移动倍率与粉丝数
 
-> 当前有效 · `0.20.0` 起
-> 存档：`vars` / `pendingEvents` 为可选字段，不迁移
+> 当前有效 · `0.20.0` 起（粉丝数 `0.22.0` 起）
+> 存档：`vars` / `pendingEvents` 为可选字段，不迁移；粉丝数 `SAVE_VERSION` 15 起
 > 动机：让"进度条 / 倒计时 / 攒够 N 次"这类内容能写出来，而不引入新玩法
 
 ## 0. 已确认决策
@@ -89,6 +89,42 @@ export function travelMinutes(state: GameState, base: number): number {
 
 `ModifierKey` 加 `'travel'`。这样"马厩扩建 → 往返更快"这类升级才有效果可挂。
 
+### 2.4 偶像粉丝数（`0.22.0` 起）
+
+粉丝是偶像游戏里最直觉的成长量，但它**不适合塞进 `vars`**：
+
+- `vars` 是全局的，粉丝是每人一份，键名会变成 `fans.mano`、`fans.hiori`；
+- `vars` 没有界面位置，玩家看不见，等于没做；
+- `vars` 的键名要手工拼，漏一个 idol 就是一条静默失效的判定。
+
+所以它是一个一等字段：
+
+```ts
+// IdolState（进存档）
+fans: number;
+
+// IdolDef（可选，缺省 0）
+fans?: number;
+
+// Condition
+| { kind: 'fansAtLeast'; idolId?: string; value: number }
+| { kind: 'fansAtMost'; idolId?: string; value: number }
+
+// Effect
+| { kind: 'fans'; idolId?: string; op?: 'set' | 'add'; value: number }
+```
+
+语义：
+
+- `idolId` 省略时取上下文偶像（事件 / 对话 / 剧情链 / 当前选中）。都取不到时效果**报错**，不静默跳过。
+- 粉丝是**乘区外的累计值**，不进 rank 曲线，也不受 `resolveModifiers` 影响 —— 它本身就是别的倍率的结果。
+- 多目标行动：不带 `idolId` 的粉丝效果按人各算一份；带 `idolId` 的只算一次，不会跟着目标循环翻倍。
+- 下限 0，不做上限。显示用 `formatFans`（`1200` → `1200`，`12345` → `1.2万`），**判定一律用原始数字**。
+
+展示位置：侧栏偶像卡、偶像互动页的状态条、偶像名册。
+
+存档：`SAVE_VERSION` 14 → 15，旧存档迁移时补 `fans = 0`。
+
 ## 3. 计划落地后，三种玩法的覆盖变化
 
 | 玩法 | 现在 | 之后 | 还缺什么 |
@@ -110,6 +146,7 @@ export function travelMinutes(state: GameState, base: number): number {
 | V2 | 内容体检 + 调试面板 + `describeCondition` | 读而未写的 var 报 warning；`?debug=1` 能看到所有 vars；未满足条件能说人话 |
 | V3 | `travel` 接进管线 | 无修饰时移动耗时与改造前逐条一致；加一个 travel 修饰后变短 |
 | V4 | fixture 演示一条完整链 | 「清地 → 变量递减 → 到 0 解锁下一步 → 升级倒计时 → 到期生效」全流程可跑 |
+| V5 | 粉丝数：`IdolState.fans`、两个条件、一个效果、三处展示、存档迁移 | 加/设正确；多目标各算一份；显式 `idolId` 不翻倍；无上下文报错；旧存档补 0 |
 
 V0 单独提交，V3 是纯重构（数值零变化），其余各自独立。
 
@@ -121,6 +158,7 @@ V0 单独提交，V3 是纯重构（数值零变化），其余各自独立。
 - **移动是纯重构**：V3 必须验证"没有修饰时耗时完全一致"，和之前 `activityDuration` 一样的标准。
 - **别顺手做产量系统**：`vars` 能存"蛋的数量"，但要不要有"蛋"是内容决定，不是架构决定。
 - **调试面板必须能看见 vars**：没有这个，数值类 bug 会变成"我记得我攒够了但没触发"。
+- **粉丝别写成 `vars`**：每个人一份、要显示、要判定，这三点都和 `vars` 的属性冲突。个人数值用一等字段，全局计数才用 `vars`。
 
 ## 6. 验收
 
@@ -132,6 +170,8 @@ Vitest
   · scheduleEvent：第 N 天触发一次、不重复、出队
   · 到期检查和周期检查不互相吞掉
   · travelMinutes 无修饰时与原值一致
+  · 粉丝：默认 0、加/设、下限 0、多目标各一份、显式 idolId 不翻倍、无上下文报错
+  · 旧存档迁移后 fans = 0；新存档原样保留
 
 Playwright
   · 调试面板列出 vars

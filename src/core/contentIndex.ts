@@ -251,6 +251,7 @@ export function createInitialIdolStates(): Record<string, IdolState> {
             },
           ]),
         ) as IdolState['stats'],
+        fans: idol.fans ?? 0,
         status: CONTENT_INDEX.startingIdolStatus[idol.id] ?? 'unknown',
       } satisfies IdolState,
     ]),

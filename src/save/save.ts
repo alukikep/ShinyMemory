@@ -124,6 +124,7 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
       idols[idolId] = {
         id: idolId,
         status: 'recruited',
+        fans: 0,
         stats: {
           vocal: legacyAttribute(
             legacy.vocal,
@@ -267,6 +268,17 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     const state = next.state as GameState & { producer?: ProducerStats };
     state.producer = state.producer ?? createInitialProducerStats();
     next.schemaVersion = 14;
+    next.gameVersion = GAME_VERSION;
+  }
+
+  if (next.schemaVersion === 14) {
+    const state = next.state as GameState & {
+      idols?: Record<string, { fans?: number }>;
+    };
+    for (const idol of Object.values(state.idols ?? {})) {
+      idol.fans = idol.fans ?? 0;
+    }
+    next.schemaVersion = 15;
     next.gameVersion = GAME_VERSION;
   }
 

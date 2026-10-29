@@ -50,3 +50,15 @@ export function attributeLabel(ref: AttributeRefInput): string {
     ? STAT_LABELS[ref.key]
     : PRODUCER_STAT_LABELS[ref.key];
 }
+
+export const FANS_LABEL = '粉丝';
+
+/** 粉丝数只做展示，判定一律用原始数字。 */
+export function formatFans(value: number): string {
+  const abs = Math.abs(value);
+  if (abs < 10000) return String(value);
+  if (abs < 1000000) {
+    return `${(value / 10000).toFixed(1).replace(/\.0$/, '')}万`;
+  }
+  return `${Math.round(value / 10000)}万`;
+}

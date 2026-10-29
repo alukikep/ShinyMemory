@@ -5,7 +5,7 @@ import type {
   SceneView,
 } from '../../core/types';
 import type { CSSProperties } from 'react';
-import { STAT_LABELS } from '../../core/labels';
+import { FANS_LABEL, STAT_LABELS, formatFans } from '../../core/labels';
 import { GameIcon } from './GameIcon';
 
 const ACTOR_ROLE_LABEL: Record<ActorRole, string> = {
@@ -143,6 +143,10 @@ export function ScenePanel({
                 <strong>{scene.idol!.stats[key].rank}</strong>
               </span>
             ))}
+            <span className="idol-stat idol-stat-fans">
+              <span>{FANS_LABEL}</span>
+              <strong>{formatFans(scene.idol.fans)}</strong>
+            </span>
           </div>
         </section>
       ) : null}

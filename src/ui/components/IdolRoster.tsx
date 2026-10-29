@@ -4,7 +4,7 @@ import { useDialogFocus } from '../hooks/useDialogFocus';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { RANK_CURVE } from '../../core/growth';
 import { getActorLocation } from '../../core/sim';
-import { STAT_LABELS } from '../../core/labels';
+import { FANS_LABEL, STAT_LABELS, formatFans } from '../../core/labels';
 import type {
   GameState,
   IdolAttribute,
@@ -158,6 +158,11 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
                   </div>
                   {def?.profile ? (
                     <p className="roster-profile">{def.profile}</p>
+                  ) : null}
+                  {recruited ? (
+                    <p className={`roster-fans`}>
+                      {FANS_LABEL} {formatFans(idol.fans ?? 0)}
+                    </p>
                   ) : null}
                   {recruited ? (
                     <p className={`roster-location ${here ? 'here' : ''}`}>

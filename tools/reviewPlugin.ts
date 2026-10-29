@@ -1,7 +1,11 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Plugin } from 'vite';
 import type { ReviewKind, ReviewStatus } from '../src/review/types.js';
+import { mergeApprovedContent } from '../src/review/approval.js';
 import { validateReviewDraft } from '../src/review/validation.js';
+import { packApprovedFiles } from '../src/core/content/approved.js';
+import { PRODUCTION_PACK } from '../src/core/productionPack.js';
+import { readApprovedDrafts } from './approvedFiles.js';
 import {
   createReviewDraft,
   getReviewDraft,
@@ -10,6 +14,24 @@ import {
   reviseReviewDraft,
   saveReviewDraft,
 } from './reviewStore.js';
+
+/**
+ * 校验时要能看到“已经通过的兄弟内容”：一条剧情链引用五分钟前刚过的对话，
+ * 必须能过审。所以基准包 = 生产内容 + 所有 approved（排除正在审的这份，
+ * 以及它要替换的旧版本——旧版本通过前和新版本共用同一个 payload id）。
+ */
+async function basePackFor(excludeIds: string[]) {
+  const skip = new Set(excludeIds.filter(Boolean));
+  const drafts = await readApprovedDrafts();
+  const approved = packApprovedFiles(
+    Object.fromEntries(
+      drafts
+        .filter(({ draft }) => !skip.has(draft.id))
+        .map(({ file, draft }) => [file, draft]),
+    ),
+  );
+  return mergeApprovedContent(PRODUCTION_PACK, approved).pack;
+}
 
 const STATUSES = new Set<ReviewStatus>([
   'review',
@@ -76,13 +98,14 @@ export function reviewApiPlugin(): Plugin {
             }
             const kind = body.kind;
             if (
+              kind !== 'activity' &&
               kind !== 'event' &&
               kind !== 'job' &&
               kind !== 'dialogue' &&
               kind !== 'story'
             ) {
               sendJson(response, 400, {
-                error: 'kind must be event, job, dialogue, or story',
+                error: 'kind must be activity, event, job, dialogue, or story',
               });
               return;
             }
@@ -160,7 +183,10 @@ export function reviewApiPlugin(): Plugin {
               return;
             }
             if (body.status === 'approved') {
-              const validation = validateReviewDraft(current);
+              const validation = validateReviewDraft(
+                current,
+                await basePackFor([current.id, current.supersedes ?? '']),
+              );
               if (!validation.ok) {
                 sendJson(response, 422, {
                   error: 'draft is not valid',

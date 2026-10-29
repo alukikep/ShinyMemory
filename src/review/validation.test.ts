@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { PRODUCTION_PACK } from '../core/productionPack';
 import type { ReviewDraft, ReviewKind } from './types';
 import { validateReviewDraft } from './validation';
 
@@ -130,6 +131,113 @@ describe('review validation', () => {
     );
   });
 
+  it('accepts modern field usage that the old whitelist rejected', () => {
+    const result = validateReviewDraft(
+      draft('event', {
+        id: 'evt.modern',
+        title: '现代写法',
+        text: '正文',
+        entry: { kind: 'arrival' },
+        when: [
+          { kind: 'fansAtLeast', idolId: 'mano', value: 100 },
+          { kind: 'varAtLeast', key: 'fan.total', value: 3 },
+        ],
+        choices: [
+          {
+            label: '选项',
+            result: '结果',
+            effects: [
+              { kind: 'fans', value: 50 },
+              { kind: 'var', key: 'fan.total', value: 1 },
+            ],
+          },
+        ],
+      }),
+    );
+    expect(result.ok).toBe(true);
+  });
+
+  it('rejects unknown condition and effect kinds', () => {
+    const result = validateReviewDraft(
+      draft('event', {
+        id: 'evt.bad',
+        title: '坏写法',
+        text: '正文',
+        when: [{ kind: 'moonPhase', value: 3 }],
+        choices: [
+          {
+            label: '选项',
+            result: '结果',
+            effects: [{ kind: 'idolExp', tier: 3 }],
+          },
+        ],
+      }),
+    );
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((error) => error.includes('未知条件'))).toBe(true);
+    expect(result.errors.some((error) => error.includes('未知效果'))).toBe(true);
+  });
+
+  it('rejects an id that already exists', () => {
+    const result = validateReviewDraft(
+      draft('event', {
+        id: 'evt.dupe',
+        title: '重复',
+        text: '正文',
+        choices: [{ label: '选项', result: '结果', effects: [] }],
+      }),
+      {
+        ...PRODUCTION_PACK,
+        events: [
+          {
+            id: 'evt.dupe',
+            title: '已有',
+            when: [],
+            text: '已有',
+            choices: [{ label: '好', result: '好', effects: [] }],
+          },
+        ],
+      },
+    );
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((error) => error.includes('重复'))).toBe(true);
+  });
+
+  it('accepts a valid activity and rejects a bad kind', () => {
+    const valid = validateReviewDraft(
+      draft('activity', {
+        id: 'activity.test',
+        name: '测试行动',
+        description: '描述',
+        kind: 'work',
+        locations: ['park'],
+        durationMinutes: 30,
+        cost: { stamina: 10 },
+        effects: [{ kind: 'money', delta: 200 }],
+        resultTexts: ['结果'],
+      }),
+    );
+    expect(valid.ok).toBe(true);
+
+    const invalid = validateReviewDraft(
+      draft('activity', {
+        id: 'activity.test',
+        name: '测试行动',
+        description: '描述',
+        kind: 'nap',
+        locations: ['missing'],
+        durationMinutes: -5,
+        cost: {},
+        effects: [],
+        resultTexts: [],
+      }),
+    );
+    expect(invalid.ok).toBe(false);
+    expect(invalid.errors.some((error) => error.includes('kind'))).toBe(true);
+    expect(invalid.errors.some((error) => error.includes('地点'))).toBe(true);
+    expect(invalid.errors.some((error) => error.includes('结果文本'))).toBe(true);
+  });
+
   it('accepts a valid story chain and rejects invalid steps', () => {
     const valid = validateReviewDraft(
       draft('story', {
@@ -139,7 +247,7 @@ describe('review validation', () => {
           {
             id: 'step-1',
             locationId: 'park',
-            dialogueId: 'dialogue.test',
+            dialogueId: 'dialogue.mano.first',
             actionLabel: '去公园',
             timeWindow: { fromMinute: 600, toMinute: 1080 },
           },

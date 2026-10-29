@@ -5,6 +5,7 @@ import type {
   JobDef,
   ShopDef,
 } from '../types';
+import { APPROVED_CONTENT } from './approved';
 import { LOCATIONS } from './locations';
 import { WALK_EDGES } from './map';
 import { TRANSIT_ROUTES } from './transit';
@@ -31,21 +32,29 @@ export const ACTIVITIES: ActivityDef[] = [
   free,
   lookAround,
   sleep,
+  ...APPROVED_CONTENT.activities,
 ];
 
 export const EQUIPS = BASE_EQUIPS;
 
-export const EVENTS: EventDef[] = [];
+export const EVENTS: EventDef[] = [...APPROVED_CONTENT.events];
 
-export const JOBS: JobDef[] = [];
+export const JOBS: JobDef[] = [...APPROVED_CONTENT.jobs];
 
 export const ITEMS: ItemDef[] = [];
 
 export const SHOPS: ShopDef[] = [];
 
-export const DIALOGUES = [...PROLOGUE_DIALOGUES, ...MANO_DIALOGUES];
+export const DIALOGUES = [
+  ...PROLOGUE_DIALOGUES,
+  ...MANO_DIALOGUES,
+  ...APPROVED_CONTENT.dialogues,
+];
 
-export const STORY_CHAIN_DEFS = STORY_CHAINS;
+export const STORY_CHAIN_DEFS = [
+  ...STORY_CHAINS,
+  ...APPROVED_CONTENT.storyChains,
+];
 
 export { STARTING_STATE };
 

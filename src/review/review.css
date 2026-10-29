@@ -633,6 +633,20 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.review-location-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 4px 10px;
+}
+
+.review-result-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
 .review-field {
   display: flex;
   flex-direction: column;

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import { auditContent } from './contentAudit';
+import { auditPack } from './contentAudit';
 import { CONTENT_INDEX } from './contentIndex';
 import type { ActivityDef, EquipDef } from './types';
 
@@ -14,13 +14,13 @@ afterEach(() => {
 
 describe('content audit', () => {
   it('has no broken references or rule violations', () => {
-    const issues = auditContent();
+    const issues = auditPack(CONTENT_INDEX);
     const errors = issues.filter((issue) => issue.level === 'error');
     expect(errors).toEqual([]);
   });
 
   it('has no warnings in the active pack', () => {
-    expect(auditContent()).toEqual([]);
+    expect(auditPack(CONTENT_INDEX)).toEqual([]);
   });
 
   it('flags a bad modifier key and an unbranched check', () => {
@@ -46,7 +46,7 @@ describe('content audit', () => {
     CONTENT_INDEX.activities.set(badCheck.id, badCheck);
     registered.push(badEquip.id, badCheck.id);
 
-    const codes = auditContent().map((issue) => issue.code);
+    const codes = auditPack(CONTENT_INDEX).map((issue) => issue.code);
 
     expect(codes).toContain('modifier-key');
     expect(codes).toContain('check-branch');

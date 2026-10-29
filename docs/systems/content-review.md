@@ -1,651 +1,161 @@
-# 内容审查系统
+# 内容审查台
 
-> 当前有效 · 2026-10-27
-> 支持 `event` / `job` / `dialogue` / `story`
+> 当前有效 · `0.23.0` 起
+> 入口：`npm run review` → `http://localhost:5174/review.html`
+> 性质：本地开发工具，不进正式构建，不暴露到公网
 
-## 当前阶段
+## 1. 它是什么
 
-已实现：
-
-- `content-review/drafts|revisions|approved|discarded`；
-- `ReviewDraft` 类型；
-- `LocalReviewRepository`；
-- Vite 本地 `/api/review`（读/写/状态/批注）；
-- `npm run review`；
-- 审查台队列；
-- 事件/工作/对话/剧情链预览；
-- 从零新建四类内容；
-- 事件/工作表单 + 高级 JSON；
-- 对话/剧情链 JSON 编辑；
-- 字段批注添加/处理；
-- 通过/打回/废弃/重新送审；
-- approved JSON 进入游戏内容；
-- 通过前 schema/引用校验；
-- `npm run content:validate` 构建门；
-- approved 内容版本化：修订为新版本，旧版本移入 discarded；
-- 审查流程 Playwright E2E。
-
-仍未实现：
-
-- 远程审查服务；
-- 登录/权限；
-- 多人协作；
-- 自动修改。
-
-## 已确认的产品决策
-
-1. 作者目前和游戏在同一台机器；未来分发时再拆出服务端。
-2. 第一版只审查事件和工作。
-3. 审查页同时需要批注和页面内编辑。
-4. 打回后进入待修改池；作者会明确要求 AI 读取并修改，不做自动修改。
-5. 允许 approved 内容需要重新构建才进入游戏。
-
-这些决策意味着第一版不是“只读审查页”，而是：
+一个跑在本机的**内容编辑台 + 审查队列**：
 
 ```text
-本地内容编辑台
-+ 审查队列
-+ 批注
-+ 状态流转
-+ approved 构建加载
+新建草稿 → 编辑 → 保存 → 送审
+                ↓ 打回            ↓ 通过
+            revisions ←────────  drafts ──────→ approved
+                │                                   │
+           改完重新送审                         构建时进入游戏
 ```
 
-## 结论
+它不是玩家页面，也不写 localStorage：状态由**文件所在目录**决定，能用文件管理器看、能用 Git diff、AI 能直接读 `revisions/` 改稿。
 
-需要先明确一点：
-
-> 审查页面不能只是游戏里的一个普通页面。
-
-当前游戏是静态 Vite 构建：
-
-```text
-src/core/content/*.ts
-→ 构建时打包
-→ 浏览器读取
-→ localStorage 只保存游戏状态
-```
-
-浏览器页面没有权限把“通过”的内容写回源码或构建产物。
-
-所以审查系统必须是：
-
-```text
-本地开发工具
-+ 文件系统
-+ 只在开发环境运行
-```
-
-不是玩家游戏内页面，也不是 localStorage 状态。
-
-## 推荐形态
-
-```text
-npm run review
-→ 启动本地审查控制台
-→ 浏览器打开 /review
-→ 读取 content-review/drafts
-→ 作者预览、批注、通过、打回、废弃
-→ 文件移动到 approved / revisions / discarded
-→ 游戏构建只读取 approved
-```
-
-审查页面只负责：
-
-- 预览；
-- 判断；
-- 批注；
-- 状态流转。
-
-不负责：
-
-- 自动修改内容；
-- 自动生成内容；
-- 自动修复；
-- 自动通过。
-
-修改仍由人或 AI 手动完成。
-
-## 目录结构
-
-建议：
+## 2. 链路
 
 ```text
 content-review/
-  drafts/       待审查
-  revisions/    待修改
-  approved/     已通过，进入游戏
-  discarded/    废弃
+  drafts/      待审查
+  revisions/   待修改（打回后）
+  approved/    已通过，构建时进入游戏
+  discarded/   废弃（保留可追溯）
+  archived/    历史样例，不参与任何流程
 ```
 
-每个内容是一个 JSON 文件：
+`approved/` 是**唯一**进入游戏的出口，两个入口读它：
+
+| 读法 | 谁用 | 说明 |
+|---|---|---|
+| `import.meta.glob('../../content-review/approved/*.json')` | 游戏本体（Vite 构建 / dev） | `src/core/content/approved.ts` |
+| 直接读文件系统 | `content:validate` / `content:audit` | `tsx` 环境里没有 `import.meta.glob` |
+
+两边都用同一个 `packApprovedFiles()` 解析，结果一致。fixture 包**故意**不读 approved，单元测试不受工作区状态影响。
+
+## 3. 支持的类型
+
+| kind | 表单覆盖 | 只能走高级 JSON |
+|---|---|---|
+| `activity` | 名称 / ID / 描述 / 类型 / 时长 / 目标 / 体力与金钱消耗 / 可用地点（多选）/ 结果文本（可增删） | effects、failureEffects、check、requires |
+| `event` | 标题 / ID / 正文 / 概率 / 优先级 / once / 权重 / 冷却 / 入口（随机·到达·链）/ 每 N 天 / 到点时刻 / 组合人数 / 固定组合 cast / 选项（标题·提示·结果） | when、after、effects、nextEventId、dialogueId |
+| `job` | 名称 / ID / 描述 / 地点 / 起止时间 / 报酬 | effects |
+| `dialogue` | 纯 JSON | 全部 |
+| `story` | 纯 JSON | 全部 |
+
+预览区按类型渲染成卡片（行动显示时长/消耗/地点/结果文本，事件显示选项与 `when` 摘要），不用回游戏里确认。
+
+## 4. 校验只有一套规则
+
+这是这个系统最容易坏的地方，也是现在的核心约束：
 
 ```text
-content-review/drafts/event_2026_001.json
-content-review/revisions/event_2026_001.json
-content-review/approved/event_2026_001.json
+validateDraftShape()   结构：必填字段、数组还是对象、节点引用形状
+        ↓
+mergeApprovedContent() 把草稿并进「生产内容 + 其他 approved」
+        ↓
+auditPack(index)       语义：条件/效果种类、id 是否存在、预算、flag 读写
 ```
 
-状态不写进 localStorage，而是由所在目录决定。
+`auditPack` 就是构建门 `content:audit` 用的那个函数，**审查台和构建门共用一份规则**。
 
-优点：
+运行时白名单也只有一个来源 `src/core/contentSchema.ts`，并带编译期保险：
 
-- 可直接用文件管理器看；
-- 可用 Git diff；
-- 出错时容易恢复；
-- 不依赖数据库；
-- AI 可以直接读取 revisions。
+```ts
+type AssertNever<T extends never> = T;
+export type _EffectKindsComplete = AssertNever<Exclude<Effect['kind'], EffectKind>>;
+```
 
-## 数据模型
+给 `types.ts` 加了新效果却忘了加进 `EFFECT_KINDS`，`tsc` 直接报 `Type '"fans"' does not satisfy the constraint 'never'`。
+
+> 背景：`0.22.0` 之前审查台自己维护了 6 种效果 / 15 种条件的白名单，和真实类型（12 / 23）漂了一整代。任何用到 `vars`、粉丝、物品、偶像状态、双人组合的内容，点「通过」都会被 422「未知条件」挡回去。这套白名单已经删除。
+
+校验时基准包会带上**其他已通过的草稿**，所以「剧情链引用五分钟前刚过的对话」不会误报；同时会排除自己要替换的旧版本（`supersedes`），否则修订版永远过不了重复 id 检查。
+
+## 5. 数据模型
 
 ```ts
 type ReviewStatus = 'review' | 'revision' | 'approved' | 'discarded';
-
-type ReviewKind = 'event' | 'job' | 'schedule' | 'location';
-
-type ReviewAnnotation = {
-  id: string;
-  text: string;
-  field?: string;
-  createdAt: string;
-};
+type ReviewKind = 'activity' | 'event' | 'job' | 'dialogue' | 'story';
 
 type ReviewDraft = {
-  id: string;
+  id: string;              // 草稿 id，不是内容 id
   kind: ReviewKind;
   title: string;
   status: ReviewStatus;
-  payload: unknown;
-  annotations: ReviewAnnotation[];
-  createdAt: string;
-  updatedAt: string;
-  reviewedAt?: string;
-  history: {
-    status: ReviewStatus;
-    at: string;
-    note?: string;
-  }[];
+  version?: number;
+  rootId?: string;         // 版本线的起点
+  supersedes?: string;     // 这条要替换哪一条
+  payload: unknown;        // 真正的内容定义，形状同 types.ts 里的 Def
+  annotations: { id; text; field?; createdAt; resolved? }[];
+  createdAt; updatedAt; reviewedAt?; history;
 };
 ```
 
-第一版只支持：
+写文件一律「临时文件 + rename」，避免半写。
+
+## 6. 接口
 
 ```text
-event
-job
+GET    /api/review/drafts                 列表
+GET    /api/review/drafts/:id             单条
+POST   /api/review/drafts                 新建（kind, title）
+PUT    /api/review/drafts/:id             保存 payload / title / annotations
+POST   /api/review/drafts/:id/status      流转（approved 前校验）
+POST   /api/review/drafts/:id/revise      已通过 → 修订为新版本
+POST   /api/review/drafts/:id/annotations 加批注
+PATCH  /api/review/drafts/:id/annotations/:noteId  标记已处理
 ```
 
-日程和地点后续再加。
+`approved` / `discarded` 是锁死的，只能通过 `revise` 复制出新版本。
 
-## 流程
+## 7. 边界
+
+不做，且是刻意的：
+
+- 远程服务、登录、权限、多人并发（当前作者和游戏在同一台机器）
+- 自动修改、自动修复、自动通过（打回后由人或 AI 手动改）
+- 在线 CMS、数据库
+
+已知限制：
+
+- approved 需要**重新构建**才进游戏（dev 下 Vite 会热更新 JSON）。
+- 事件表单不覆盖 `when` / `after`：条件树的可视化编辑器还没做，复杂条件请用高级 JSON。
+
+## 8. 陷阱
+
+- **加新条件/效果只改 `contentSchema.ts`**。它是唯一白名单，改完审查台、构建门、引擎同时生效。
+- **approved 直接并进生产包**。一条坏 JSON 能让游戏白屏，所以 `content:validate` 是构建门，不是可选项。
+- **校验基准包必须包含其他 approved**，否则链式内容过不了审。
+- **修订版共用 payload id**：校验时要排除 `supersedes`，通过后旧的自动转 `discarded`。
+- **别在浏览器里做文件读写**：所有落盘都走 `/api/review`，UI 只调接口。
+
+## 9. 验收
 
 ```text
-新建草稿
-→ drafts/review
-→ 作者打开审查页面
-→ 通过
-   → approved
-   → 下一次构建进入游戏
-→ 打回
-   → revisions + 批注
-   → AI/人修改
-   → 作者说“重新送审”
-   → 文件移回 drafts
-→ 废弃
-   → discarded
+Vitest
+  · 结构校验：事件/工作/行动/对话/剧情链各一组正反例
+  · 现代字段（fans / var / entry=arrival）能通过——旧白名单曾在这里失败
+  · 未知条件 / 未知效果被拒
+  · id 与已有内容重复被拒
+  · auditPack 对 fixture 包零错误零警告
+
+Playwright
+  · 新建 → 编辑 → 保存 → 批注 → 打回 → 重新送审 → 通过 → 修订 → 替换旧版本
+  · 对话 + 剧情链（跨草稿引用）都能通过
+
+构建门
+  · npm run content:validate 对 approved 目录做结构 + 合并 + 体检
+  · npm run content:audit 输出全局错误/警告数
 ```
 
-关键：
+## 10. 历史
 
-- 通过后不是立刻修改运行中的游戏；
-- 需要重新构建或开发服务器 HMR；
-- 被打回的内容不会进入游戏；
-- 废弃内容保留文件，可追溯。
+`0.22.0` 及以前：审查台只能造事件/工作/对话/剧情链四类，approved 内容**没有任何加载器**（`src/core/content/approved.ts` 在「reset production content to Mano prologue」里被删掉），通过之后只会躺在目录里等 `content:validate` 检查一遍。
 
-## 审查页面
-
-建议布局：
-
-```text
-┌──────────────┬────────────────────────────┬──────────────┐
-│ 队列          │ 内容预览                    │ 审查操作      │
-│              │                            │              │
-│ 待审查 3      │ 事件标题 / 文本             │ [通过]        │
-│ 待修改 2      │ 条件 / 效果 / 选项           │ [打回]        │
-│ 已通过 10     │ 引用校验                    │ [废弃]        │
-│ 已废弃 1      │ 批注列表                    │              │
-└──────────────┴────────────────────────────┴──────────────┘
-```
-
-### 队列
-
-- 待审查；
-- 待修改；
-- 已通过；
-- 已废弃。
-
-### 预览
-
-事件：
-
-- 标题；
-- 正文；
-- 触发条件；
-- 选项；
-- 效果；
-- 结果文本；
-- 引用的地点/偶像/活动是否存在。
-
-工作：
-
-- 名称；
-- 地点；
-- 时间段；
-- 报酬；
-- 效果；
-- 事后事件。
-
-### 批注
-
-支持：
-
-- 整体批注；
-- 指定字段批注；
-- 批注时间。
-
-第一版可以只做整体批注。
-
-### 操作
-
-- 通过；
-- 打回；
-- 废弃；
-- 重新送审（可选）。
-
-重新送审不自动修改内容，只把文件从 revisions 移到 drafts。
-
-## 审查页是开发工具
-
-建议：
-
-```text
-/review
-只在 npm run review 时可用
-```
-
-不要把它放进正常游戏导航。
-
-不要把它打进正式构建。
-
-不要让它暴露在公网。
-
-为了简化：
-
-- 绑定 `127.0.0.1`；
-- 不需要登录；
-- 不需要数据库；
-- 不做多人并发。
-
-如果以后作者不在同一台机器，再考虑后端和权限。
-
-## 与游戏内容的关系
-
-游戏只读取：
-
-```text
-content-review/approved/
-```
-
-不读取：
-
-```text
-drafts/
-revisions/
-discarded/
-```
-
-推荐加载方式：
-
-```ts
-import.meta.glob('../../content-review/approved/events/*.json', {
-  eager: true,
-});
-```
-
-加载时：
-
-1. 解析 JSON；
-2. 校验 schema；
-3. 检查引用；
-4. 合并进 `EVENTS` / `JOBS`；
-5. 构建失败则不允许发布。
-
-## 校验
-
-通过前必须检查：
-
-- JSON 结构；
-- 事件 ID 唯一；
-- 地点存在；
-- 偶像存在；
-- 活动存在；
-- 效果类型合法；
-- 条件类型合法；
-- 时间窗口合法；
-- 工作时段有效；
-- 工作地点存在；
-- 结果文本非空；
-- 选项至少一个。
-
-校验失败：
-
-```text
-不能通过
-显示字段错误
-留在待修改
-```
-
-## 为什么不把状态放 localStorage
-
-因为：
-
-- 只对当前浏览器有效；
-- 清缓存就丢；
-- 不能参与构建；
-- 不能被 Git 追踪；
-- 不能作为正式内容状态。
-
-localStorage 只适合游戏存档，不适合内容审查。
-
-## 为什么不做自动修改
-
-按你的要求：
-
-```text
-不自动修改内容
-不自动修复
-不自动通过
-```
-
-修改流程：
-
-```text
-作者打回 + 批注
-→ 你告诉 AI“查看待修改池”
-→ AI 读取 revisions
-→ 修改文件
-→ 作者重新送审
-```
-
-审查页面只提供状态和批注，不负责生成。
-
-## 与 AI 的协作边界
-
-AI 可以：
-
-- 读取 `revisions/`；
-- 读取批注；
-- 修改内容文件；
-- 重新校验；
-- 把文件移回 `drafts/`（在你要求后）。
-
-AI 不应该：
-
-- 自己点击通过；
-- 自己把内容移入 approved；
-- 自动清除批注；
-- 自动废弃。
-
-## 工作量
-
-```text
-R1 目录/状态/schema       0.5 天
-R2 本地 review 服务       0.5–1 天
-R3 审查页面               1–2 天
-R4 approved 加载与校验    0.5–1 天
-R5 测试与文档             0.5 天
-```
-
-总计 **3–5 天**。
-
-第一版可以只做 event/job，不碰日程和地点。
-
-## 风险
-
-- 审查页和游戏渲染不一致；
-- JSON 与 TypeScript 类型漂移；
-- approved 内容需要重新构建才生效；
-- 本地服务路径/Windows 权限；
-- 作者不在同一台机器时需要后端；
-- 批注字段变得复杂；
-- 审查页面被误暴露到公网。
-
-## 建议的第一版
-
-```text
-1. content-review 四个目录
-2. ReviewDraft 数据结构
-3. npm run review
-4. 只读审查页
-5. 通过/打回/废弃
-6. approved JSON 加载
-7. 基础校验
-8. 不做页面内编辑
-9. 不做自动修改
-```
-
-## 页面内编辑
-
-第一版需要支持新建和编辑：
-
-```text
-事件
-工作
-```
-
-### 编辑方式
-
-建议：
-
-```text
-常用字段：表单
-复杂字段：高级 JSON
-```
-
-事件表单：
-
-- 标题；
-- 正文；
-- 触发条件；
-- 选项；
-- 每个选项的结果和效果；
-- 可选的后续事件。
-
-工作表单：
-
-- 名称；
-- 描述；
-- 地点；
-- 开始/结束时间；
-- 报酬；
-- 效果；
-- 工作事件。
-
-条件/效果编辑器第一版可以只覆盖常用类型：
-
-```text
-atLocation
-timeWindow
-rankAtLeast
-sharedStatAtLeast
-flag
-```
-
-复杂条件：
-
-```text
-all / any / not
-```
-
-用高级 JSON 编辑，避免一开始做完整可视化条件树。
-
-### 编辑和批注的关系
-
-- 编辑修改 payload；
-- 批注指向字段路径；
-- 字段被修改后，批注可以标记为已处理；
-- 打回时保留全部批注。
-
-### 保存
-
-- 显式“保存草稿”；
-- 保存前做 schema 校验；
-- 校验失败允许保存，但禁止通过；
-- 文件写入采用临时文件 + rename，避免半写。
-
-## 版本与 approved
-
-approved 内容不应该被直接编辑。
-
-修改已通过内容时：
-
-```text
-从 approved 复制出新草稿
-→ status = review
-→ version + 1
-→ supersedes 旧版本
-→ 新版本通过后替换旧 approved
-```
-
-第一版可以简化为：
-
-- approved 文件只读；
-- 需要修改时由作者新建一个草稿；
-- 旧 approved 保留，直到新版本通过。
-
-## 存储边界
-
-审查 UI 不直接读写文件，而是通过接口：
-
-```ts
-interface ReviewRepository {
-  list(status?: ReviewStatus): Promise<ReviewDraft[]>;
-  get(id: string): Promise<ReviewDraft | undefined>;
-  save(draft: ReviewDraft): Promise<void>;
-  move(id: string, status: ReviewStatus, note?: string): Promise<void>;
-  addAnnotation(id: string, annotation: ReviewAnnotation): Promise<void>;
-}
-```
-
-当前实现：
-
-```text
-LocalFileReviewRepository
-→ content-review/
-```
-
-未来分发：
-
-```text
-RemoteReviewRepository
-→ API / 数据库 / 对象存储
-```
-
-UI 不需要重写。
-
-## 未来分发边界
-
-现在不做的：
-
-- 登录；
-- 权限；
-- 多用户并发；
-- 远程文件系统；
-- 在线 CMS。
-
-未来需要时再加：
-
-```text
-认证
-角色（作者/审查者/管理员）
-服务端存储
-审计日志
-```
-
-当前只需绑定：
-
-```text
-127.0.0.1
-```
-
-不暴露到公网。
-
-## 修订后的 MVP
-
-```text
-1. content-review 四目录
-2. ReviewDraft + 状态历史
-3. ReviewRepository 接口
-4. 本地文件实现
-5. npm run review
-6. 队列 + 预览
-7. 事件/工作表单
-8. 高级 JSON 编辑
-9. 字段批注
-10. 通过/打回/废弃/重新送审
-11. approved JSON 加载
-12. schema + 引用校验
-13. 基础 E2E
-```
-
-不做：
-
-```text
-自动修改
-自动通过
-在线 CMS
-数据库
-玩家可见审查页
-```
-
-## 修订后的工作量
-
-```text
-R1 数据模型/目录/校验      1 天
-R2 ReviewRepository + API  1 天
-R3 审查页面/队列/预览      1–1.5 天
-R4 事件/工作编辑器         1.5–2 天
-R5 批注与状态流转          0.5–1 天
-R6 approved 加载/构建门    0.5–1 天
-R7 测试与文档              1 天
-```
-
-总计约 **6–8 天**。
-
-如果第一版只做“表单常用字段 + 高级 JSON”，可以控制在 **5–6 天**。
-
-## 推荐
-
-第一版：
-
-```text
-本地内容编辑台
-+ 事件/工作
-+ 表单 + 高级 JSON
-+ 批注
-+ 通过/打回/废弃
-+ approved 加载
-+ 校验
-+ 重新构建生效
-```
-
-不做：
-
-```text
-在线 CMS
-数据库
-自动修改
-自动发布
-玩家可见审查页
-```
-
-这符合当前单机、文件驱动、AI 手动协作的结构，也为未来远程审查留出接口边界。
+`0.23.0`：恢复 approved 载入、删除重复白名单、加行动类型、补齐事件表单字段。

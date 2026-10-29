@@ -16,6 +16,7 @@ const STATUS_LABELS: Record<ReviewStatus, string> = {
 };
 
 const KIND_LABELS: Record<ReviewKind, string> = {
+  activity: '行动',
   event: '事件',
   job: '工作',
   dialogue: '对话',
@@ -121,6 +122,70 @@ function EventPreview({ payload }: { payload: Record<string, unknown> }) {
 
       {payload.when ? <JsonBlock label="when" value={payload.when} /> : null}
       {payload.after ? <JsonBlock label="after" value={payload.after} /> : null}
+    </div>
+  );
+}
+
+function ActivityPreview({ payload }: { payload: Record<string, unknown> }) {
+  const cost =
+    typeof payload.cost === 'object' && payload.cost !== null
+      ? (payload.cost as Record<string, unknown>)
+      : {};
+  const texts = Array.isArray(payload.resultTexts)
+    ? payload.resultTexts.filter((text): text is string => typeof text === 'string')
+    : [];
+  const locations = Array.isArray(payload.locations)
+    ? payload.locations.map(String).join('、')
+    : '所有地点';
+
+  return (
+    <div className="review-content">
+      <p className="review-content-text">
+        {typeof payload.description === 'string' && payload.description
+          ? payload.description
+          : '（缺少描述）'}
+      </p>
+
+      <div className="review-meta-grid">
+        <div>
+          <span>类型</span>
+          <strong>{String(payload.kind ?? '—')}</strong>
+        </div>
+        <div>
+          <span>时长</span>
+          <strong>{String(payload.durationMinutes ?? '—')} 分钟</strong>
+        </div>
+        <div>
+          <span>地点</span>
+          <strong>{locations}</strong>
+        </div>
+        <div>
+          <span>消耗</span>
+          <strong>
+            体力 {String(cost.stamina ?? 0)} · ¥{String(cost.money ?? 0)}
+          </strong>
+        </div>
+      </div>
+
+      {payload.check ? <JsonBlock label="check" value={payload.check} /> : null}
+      {payload.effects ? <JsonBlock label="effects" value={payload.effects} /> : null}
+      {payload.failureEffects ? (
+        <JsonBlock label="failureEffects" value={payload.failureEffects} />
+      ) : null}
+      {payload.requires ? (
+        <JsonBlock label="requires" value={payload.requires} />
+      ) : null}
+
+      <h3>结果文本</h3>
+      {texts.length === 0 ? (
+        <p className="review-empty">没有结果文本</p>
+      ) : (
+        texts.map((text, index) => (
+          <p className="review-content-text" key={index}>
+            {text}
+          </p>
+        ))
+      )}
     </div>
   );
 }
@@ -281,7 +346,9 @@ function Preview({ draft }: { draft: ReviewDraft }) {
         <div className="review-readonly">第一阶段 · 只读预览</div>
       </header>
 
-      {draft.kind === 'event' ? (
+      {draft.kind === 'activity' ? (
+        <ActivityPreview payload={payload} />
+      ) : draft.kind === 'event' ? (
         <EventPreview payload={payload} />
       ) : draft.kind === 'job' ? (
         <JobPreview payload={payload} />
@@ -625,6 +692,7 @@ export function ReviewApp() {
                 value={newKind}
                 onChange={(event) => setNewKind(event.target.value as ReviewKind)}
               >
+                <option value="activity">行动</option>
                 <option value="event">事件</option>
                 <option value="job">工作</option>
                 <option value="dialogue">对话</option>

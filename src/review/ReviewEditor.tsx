@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { LOCATIONS } from '../core/content/locations';
+import { IDOLS } from '../core/content/idols';
 import type { ReviewDraft } from './types';
 
 type ReviewEditorProps = {
@@ -29,11 +30,21 @@ function asRecord(value: unknown): Record<string, unknown> {
 }
 
 const KIND_TITLE: Record<ReviewDraft['kind'], string> = {
+  activity: '行动',
   event: '事件',
   job: '工作',
   dialogue: '对话',
   story: '剧情链',
 };
+
+const ACTIVITY_KIND_OPTIONS = [
+  { value: 'training', label: '训练' },
+  { value: 'work', label: '工作' },
+  { value: 'rest', label: '休息' },
+  { value: 'bond', label: '互动' },
+  { value: 'explore', label: '探索' },
+  { value: 'sleep', label: '睡觉' },
+] as const;
 
 export function ReviewEditor({
   draft,
@@ -112,7 +123,7 @@ export function ReviewEditor({
       const nextTitle =
         draft.kind === 'event'
           ? String(nextPayload.title ?? title)
-          : draft.kind === 'job'
+          : draft.kind === 'activity' || draft.kind === 'job'
             ? String(nextPayload.name ?? title)
             : title;
       const nextErrors = await onSave(nextTitle, nextPayload);
@@ -143,7 +154,9 @@ export function ReviewEditor({
           <h2>编辑 {KIND_TITLE[draft.kind]}</h2>
         </div>
         <div className="review-editor-actions">
-          {draft.kind === 'event' || draft.kind === 'job' ? (
+          {draft.kind === 'event' ||
+          draft.kind === 'job' ||
+          draft.kind === 'activity' ? (
             <button
               type="button"
               className="review-button"
@@ -309,8 +322,321 @@ export function ReviewEditor({
             })}
           </div>
 
+          <div className="review-editor-section">
+            <div className="review-editor-section-head">
+              <h3>触发方式</h3>
+            </div>
+            <div className="review-form-grid three">
+              <label className="review-field">
+                <span>入口</span>
+                <select
+                  value={String(asRecord(payload.entry).kind ?? 'random')}
+                  onChange={(event) => {
+                    const next = event.target.value;
+                    if (next === 'random') update('entry', undefined);
+                    else update('entry', { kind: next });
+                  }}
+                >
+                  <option value="random">行动后随机</option>
+                  <option value="arrival">到达地点</option>
+                  <option value="chain">后续链</option>
+                </select>
+              </label>
+              <label className="review-field">
+                <span>每 N 天</span>
+                <input
+                  type="number"
+                  min="1"
+                  placeholder="空 = 不按天"
+                  value={String(asRecord(payload.trigger).everyDays ?? '')}
+                  onChange={(event) => {
+                    const raw = event.target.value;
+                    const current = asRecord(payload.trigger);
+                    update(
+                      'trigger',
+                      raw === ''
+                        ? undefined
+                        : { ...current, everyDays: Number(raw) },
+                    );
+                  }}
+                />
+              </label>
+              <label className="review-field">
+                <span>到点时刻</span>
+                <input
+                  type="time"
+                  value={minuteToTime(asRecord(payload.trigger).atMinute)}
+                  onChange={(event) =>
+                    update('trigger', {
+                      ...asRecord(payload.trigger),
+                      atMinute: timeToMinute(event.target.value),
+                    })
+                  }
+                />
+              </label>
+            </div>
+
+            <div className="review-form-grid three">
+              <label className="review-field">
+                <span>权重</span>
+                <input
+                  type="number"
+                  min="0"
+                  value={Number(payload.weight ?? 1)}
+                  onChange={(event) => update('weight', Number(event.target.value))}
+                />
+              </label>
+              <label className="review-field">
+                <span>冷却（行动数）</span>
+                <input
+                  type="number"
+                  min="0"
+                  value={Number(payload.cooldownActions ?? 0)}
+                  onChange={(event) =>
+                    update('cooldownActions', Number(event.target.value))
+                  }
+                />
+              </label>
+              <label className="review-field">
+                <span>组合人数</span>
+                <input
+                  type="number"
+                  min="0"
+                  placeholder="空 = 单偶像"
+                  value={String(payload.castSize ?? '')}
+                  onChange={(event) => {
+                    const raw = event.target.value;
+                    update('castSize', raw === '' ? undefined : Number(raw));
+                  }}
+                />
+              </label>
+            </div>
+
+            <p className="review-form-note">
+              条件（when）、锚点（after）、效果（effects）和后续事件仍用“高级 JSON”编辑。
+            </p>
+          </div>
+
+          <div className="review-editor-section">
+            <div className="review-editor-section-head">
+              <h3>固定组合（cast）</h3>
+            </div>
+            <div className="review-location-grid">
+              {IDOLS.map((idol) => {
+                const current = Array.isArray(payload.cast)
+                  ? (payload.cast as string[])
+                  : [];
+                const checked = current.includes(idol.id);
+                return (
+                  <label className="review-field checkbox" key={idol.id}>
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => {
+                        const next = checked
+                          ? current.filter((id) => id !== idol.id)
+                          : [...current, idol.id];
+                        update('cast', next.length > 0 ? next : undefined);
+                      }}
+                    />
+                    <span>{idol.name}</span>
+                  </label>
+                );
+              })}
+            </div>
+            <p className="review-form-note">
+              写了 cast 就是组合戏，必须挂在行动锚点（after）上。留空则用 castSize 随机组人。
+            </p>
+          </div>
+        </>
+      ) : draft.kind === 'activity' ? (
+        <>
+          <div className="review-form-grid">
+            <label className="review-field">
+              <span>行动名称</span>
+              <input
+                value={String(payload.name ?? '')}
+                onChange={(event) => update('name', event.target.value)}
+              />
+            </label>
+            <label className="review-field">
+              <span>行动 ID</span>
+              <input
+                value={String(payload.id ?? '')}
+                onChange={(event) => update('id', event.target.value)}
+              />
+            </label>
+          </div>
+
+          <label className="review-field">
+            <span>描述</span>
+            <textarea
+              className="review-textarea"
+              value={String(payload.description ?? '')}
+              onChange={(event) => update('description', event.target.value)}
+            />
+          </label>
+
+          <div className="review-form-grid three">
+            <label className="review-field">
+              <span>类型</span>
+              <select
+                value={String(payload.kind ?? 'training')}
+                onChange={(event) => update('kind', event.target.value)}
+              >
+                {ACTIVITY_KIND_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="review-field">
+              <span>时长（分钟）</span>
+              <input
+                type="number"
+                min="0"
+                step="5"
+                value={Number(payload.durationMinutes ?? 60)}
+                onChange={(event) =>
+                  update('durationMinutes', Number(event.target.value))
+                }
+              />
+            </label>
+            <label className="review-field">
+              <span>目标</span>
+              <select
+                value={String(payload.target ?? 'none')}
+                onChange={(event) =>
+                  update(
+                    'target',
+                    event.target.value === 'none' ? undefined : event.target.value,
+                  )
+                }
+              >
+                <option value="none">无（地点行动）</option>
+                <option value="present-idol">指定在场偶像</option>
+                <option value="all-present-idols">所有在场偶像</option>
+              </select>
+            </label>
+          </div>
+
+          <div className="review-form-grid">
+            <label className="review-field">
+              <span>体力消耗</span>
+              <input
+                type="number"
+                min="0"
+                value={Number(asRecord(payload.cost).stamina ?? 0)}
+                onChange={(event) =>
+                  update('cost', {
+                    ...asRecord(payload.cost),
+                    stamina: Number(event.target.value),
+                  })
+                }
+              />
+            </label>
+            <label className="review-field">
+              <span>金钱消耗</span>
+              <input
+                type="number"
+                min="0"
+                value={Number(asRecord(payload.cost).money ?? 0)}
+                onChange={(event) =>
+                  update('cost', {
+                    ...asRecord(payload.cost),
+                    money: Number(event.target.value),
+                  })
+                }
+              />
+            </label>
+          </div>
+
+          <div className="review-editor-section">
+            <div className="review-editor-section-head">
+              <h3>可用地点</h3>
+            </div>
+            <div className="review-location-grid">
+              {LOCATIONS.map((location) => {
+                const current = Array.isArray(payload.locations)
+                  ? (payload.locations as string[])
+                  : [];
+                const checked = current.includes(location.id);
+                return (
+                  <label className="review-field checkbox" key={location.id}>
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() =>
+                        update(
+                          'locations',
+                          checked
+                            ? current.filter((id) => id !== location.id)
+                            : [...current, location.id],
+                        )
+                      }
+                    />
+                    <span>{location.name}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="review-editor-section">
+            <div className="review-editor-section-head">
+              <h3>结果文本</h3>
+              <button
+                type="button"
+                className="review-button"
+                onClick={() =>
+                  update('resultTexts', [
+                    ...(Array.isArray(payload.resultTexts)
+                      ? (payload.resultTexts as string[])
+                      : []),
+                    '',
+                  ])
+                }
+              >
+                添加一条
+              </button>
+            </div>
+            {(Array.isArray(payload.resultTexts)
+              ? (payload.resultTexts as string[])
+              : []
+            ).map((text, index) => (
+              <div className="review-result-row" key={index}>
+                <textarea
+                  className="review-textarea"
+                  value={String(text ?? '')}
+                  onChange={(event) => {
+                    const next = [
+                      ...(payload.resultTexts as string[]),
+                    ];
+                    next[index] = event.target.value;
+                    update('resultTexts', next);
+                  }}
+                />
+                <button
+                  type="button"
+                  className="review-link danger"
+                  onClick={() =>
+                    update(
+                      'resultTexts',
+                      (payload.resultTexts as string[]).filter(
+                        (_, i) => i !== index,
+                      ),
+                    )
+                  }
+                >
+                  删除
+                </button>
+              </div>
+            ))}
+          </div>
+
           <p className="review-form-note">
-            触发条件、效果、后续事件使用“高级 JSON”编辑。
+            效果、失败分支、检定（check）、前置条件（requires）使用“高级 JSON”编辑。
           </p>
         </>
       ) : (

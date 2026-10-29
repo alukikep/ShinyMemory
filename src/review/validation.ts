@@ -1,36 +1,9 @@
-import { IDOLS } from '../core/content/idols/index.js';
-import { LOCATIONS } from '../core/content/locations/index.js';
+import { auditPack } from '../core/contentAudit.js';
+import { buildContentIndex, type ContentPack } from '../core/contentIndexCore.js';
+import { packApprovedFiles } from '../core/content/approved.js';
+import { PRODUCTION_PACK } from '../core/productionPack.js';
+import { mergeApprovedContent } from './approval.js';
 import type { ReviewDraft } from './types.js';
-
-const LOCATION_IDS = new Set(LOCATIONS.map((location) => location.id));
-const IDOL_IDS = new Set(IDOLS.map((idol) => idol.id));
-
-const EFFECT_KINDS = new Set([
-  'sharedStat',
-  'attributeExp',
-  'money',
-  'flag',
-  'actorAffinity',
-  'log',
-]);
-
-const CONDITION_KINDS = new Set([
-  'dayAtLeast',
-  'weekAtLeast',
-  'timeWindow',
-  'sharedStatAtLeast',
-  'sharedStatAtMost',
-  'attributeAtLeast',
-  'attributeAtMost',
-  'npcAffinityAtLeast',
-  'npcAffinityAtMost',
-  'moneyAtMost',
-  'atLocation',
-  'flag',
-  'all',
-  'any',
-  'not',
-]);
 
 export type ReviewValidation = {
   ok: boolean;
@@ -41,10 +14,52 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-function checkConditions(
+/**
+ * 只做“结构能不能用”的检查：必填字段、数组还是对象、引用链形状。
+ * 语义层（条件/效果的种类、id 是否存在、预算、flag 读写）一律交给 `auditPack`，
+ * 那份规则和构建门是同一份 —— 这里不再维护第二套白名单。
+ */
+
+function requireString(value: unknown, label: string, errors: string[]): void {
+  if (typeof value !== 'string' || value.length === 0) {
+    errors.push(`${label} 不能为空`);
+  }
+}
+
+function expectArray(value: unknown, label: string, errors: string[]): boolean {
+  if (value === undefined) return true;
+  if (!Array.isArray(value)) {
+    errors.push(`${label} 必须是数组`);
+    return false;
+  }
+  return true;
+}
+
+function checkEffectsShape(
   value: unknown,
-  errors: string[],
   label: string,
+  errors: string[],
+): void {
+  if (value === undefined) return;
+  if (!Array.isArray(value)) {
+    errors.push(`${label} 必须是数组`);
+    return;
+  }
+  for (const [index, effect] of value.entries()) {
+    if (!isRecord(effect)) {
+      errors.push(`${label}[${index}] 必须是对象`);
+      continue;
+    }
+    if (typeof effect.kind !== 'string' || !effect.kind) {
+      errors.push(`${label}[${index}] 缺少 kind`);
+    }
+  }
+}
+
+function checkConditionsShape(
+  value: unknown,
+  label: string,
+  errors: string[],
 ): void {
   if (value === undefined) return;
   if (!Array.isArray(value)) {
@@ -52,96 +67,57 @@ function checkConditions(
     return;
   }
   for (const [index, condition] of value.entries()) {
-    if (!isRecord(condition) || typeof condition.kind !== 'string') {
-      errors.push(`${label}[${index}] 缺少 kind`);
+    if (!isRecord(condition)) {
+      errors.push(`${label}[${index}] 必须是对象`);
       continue;
     }
-    if (!CONDITION_KINDS.has(condition.kind)) {
-      errors.push(`${label}[${index}] 未知条件 ${condition.kind}`);
-    }
-    if (
-      condition.kind === 'atLocation' &&
-      typeof condition.locationId === 'string' &&
-      !LOCATION_IDS.has(condition.locationId)
-    ) {
-      errors.push(`${label}[${index}] 地点不存在：${condition.locationId}`);
+    if (typeof condition.kind !== 'string' || !condition.kind) {
+      errors.push(`${label}[${index}] 缺少 kind`);
     }
   }
 }
 
-function checkEffects(value: unknown, errors: string[], label: string): void {
-  if (value === undefined) return;
-  if (!Array.isArray(value)) {
-    errors.push(`${label} 必须是数组`);
-    return;
-  }
-  for (const [index, effect] of value.entries()) {
-    if (!isRecord(effect) || typeof effect.kind !== 'string') {
-      errors.push(`${label}[${index}] 缺少 kind`);
-      continue;
-    }
-    if (!EFFECT_KINDS.has(effect.kind)) {
-      errors.push(`${label}[${index}] 未知效果 ${effect.kind}`);
-    }
-  }
-}
+function validateEvent(payload: Record<string, unknown>, errors: string[]): void {
+  requireString(payload.id, 'payload.id', errors);
+  requireString(payload.title, 'payload.title', errors);
+  requireString(payload.text, 'payload.text', errors);
+  checkConditionsShape(payload.when, 'when', errors);
 
-function validateEvent(
-  payload: Record<string, unknown>,
-  errors: string[],
-): void {
-  if (typeof payload.id !== 'string' || payload.id.length === 0) {
-    errors.push('payload.id 不能为空');
-  }
-  if (typeof payload.title !== 'string' || payload.title.length === 0) {
-    errors.push('payload.title 不能为空');
-  }
-  if (typeof payload.text !== 'string' || payload.text.length === 0) {
-    errors.push('payload.text 不能为空');
-  }
   if (!Array.isArray(payload.choices) || payload.choices.length === 0) {
     errors.push('事件至少需要一个选项');
-  } else {
-    for (const [index, choice] of payload.choices.entries()) {
-      if (!isRecord(choice)) {
-        errors.push(`choices[${index}] 必须是对象`);
-        continue;
-      }
-      if (typeof choice.label !== 'string' || choice.label.length === 0) {
-        errors.push(`choices[${index}].label 不能为空`);
-      }
-      if (typeof choice.result !== 'string' || choice.result.length === 0) {
-        errors.push(`choices[${index}].result 不能为空`);
-      }
-      checkEffects(choice.effects, errors, `choices[${index}].effects`);
-      checkConditions(choice.requires, errors, `choices[${index}].requires`);
-    }
+    return;
   }
-  checkConditions(payload.when, errors, 'when');
+  for (const [index, choice] of payload.choices.entries()) {
+    if (!isRecord(choice)) {
+      errors.push(`choices[${index}] 必须是对象`);
+      continue;
+    }
+    requireString(choice.label, `choices[${index}].label`, errors);
+    requireString(choice.result, `choices[${index}].result`, errors);
+    checkEffectsShape(choice.effects, `choices[${index}].effects`, errors);
+    checkConditionsShape(choice.requires, `choices[${index}].requires`, errors);
+  }
   if (payload.after !== undefined && !isRecord(payload.after)) {
     errors.push('after 必须是对象');
   }
+  if (payload.trigger !== undefined && !isRecord(payload.trigger)) {
+    errors.push('trigger 必须是对象');
+  }
+  if (payload.entry !== undefined && !isRecord(payload.entry)) {
+    errors.push('entry 必须是对象');
+  }
+  if (payload.cast !== undefined && !Array.isArray(payload.cast)) {
+    errors.push('cast 必须是数组');
+  }
 }
 
-function validateJob(
-  payload: Record<string, unknown>,
-  errors: string[],
-): void {
-  if (typeof payload.id !== 'string' || payload.id.length === 0) {
-    errors.push('payload.id 不能为空');
-  }
-  if (typeof payload.name !== 'string' || payload.name.length === 0) {
-    errors.push('payload.name 不能为空');
-  }
+function validateJob(payload: Record<string, unknown>, errors: string[]): void {
+  requireString(payload.id, 'payload.id', errors);
+  requireString(payload.name, 'payload.name', errors);
   if (typeof payload.description !== 'string') {
     errors.push('payload.description 必须是字符串');
   }
-  if (
-    typeof payload.locationId !== 'string' ||
-    !LOCATION_IDS.has(payload.locationId)
-  ) {
-    errors.push('payload.locationId 必须是已存在的地点');
-  }
+  requireString(payload.locationId, 'payload.locationId', errors);
   if (
     typeof payload.fromMinute !== 'number' ||
     typeof payload.toMinute !== 'number' ||
@@ -154,22 +130,61 @@ function validateJob(
   if (typeof payload.pay !== 'number' || payload.pay < 0) {
     errors.push('报酬必须是非负数字');
   }
-  checkEffects(payload.effects, errors, 'effects');
+  checkEffectsShape(payload.effects, 'effects', errors);
+}
+
+const ACTIVITY_KINDS = [
+  'training',
+  'work',
+  'rest',
+  'bond',
+  'explore',
+  'sleep',
+] as const;
+
+function validateActivity(
+  payload: Record<string, unknown>,
+  errors: string[],
+): void {
+  requireString(payload.id, 'payload.id', errors);
+  requireString(payload.name, 'payload.name', errors);
+  if (typeof payload.description !== 'string') {
+    errors.push('payload.description 必须是字符串');
+  }
+  if (
+    typeof payload.kind !== 'string' ||
+    !(ACTIVITY_KINDS as readonly string[]).includes(payload.kind)
+  ) {
+    errors.push(`payload.kind 必须是 ${ACTIVITY_KINDS.join(' / ')} 之一`);
+  }
+  if (
+    typeof payload.durationMinutes !== 'number' ||
+    payload.durationMinutes < 0
+  ) {
+    errors.push('payload.durationMinutes 必须是非负数字');
+  }
+  if (!isRecord(payload.cost)) {
+    errors.push('payload.cost 必须是对象');
+  }
+  if (!Array.isArray(payload.resultTexts) || payload.resultTexts.length === 0) {
+    errors.push('行动至少需要一条结果文本');
+  }
+  expectArray(payload.locations, 'locations', errors);
+  expectArray(payload.timeWindows, 'timeWindows', errors);
+  checkEffectsShape(payload.effects, 'effects', errors);
+  checkEffectsShape(payload.failureEffects, 'failureEffects', errors);
+  checkConditionsShape(payload.requires, 'requires', errors);
+  if (payload.check !== undefined && !isRecord(payload.check)) {
+    errors.push('check 必须是对象');
+  }
 }
 
 function validateDialogue(
   payload: Record<string, unknown>,
   errors: string[],
 ): void {
-  if (typeof payload.id !== 'string' || payload.id.length === 0) {
-    errors.push('payload.id 不能为空');
-  }
-  if (typeof payload.idolId !== 'string' || !IDOL_IDS.has(payload.idolId)) {
-    errors.push('payload.idolId 必须是已存在的偶像');
-  }
-  if (typeof payload.startNodeId !== 'string' || !payload.startNodeId) {
-    errors.push('payload.startNodeId 不能为空');
-  }
+  requireString(payload.id, 'payload.id', errors);
+  requireString(payload.startNodeId, 'payload.startNodeId', errors);
   if (!isRecord(payload.nodes) || Object.keys(payload.nodes).length === 0) {
     errors.push('payload.nodes 至少需要一个节点');
     return;
@@ -180,9 +195,7 @@ function validateDialogue(
       errors.push(`nodes.${id} 必须是对象`);
       continue;
     }
-    if (typeof rawNode.text !== 'string' || rawNode.text.trim().length === 0) {
-      errors.push(`nodes.${id}.text 不能为空`);
-    }
+    requireString(rawNode.text, `nodes.${id}.text`, errors);
     if (
       rawNode.nextNodeId !== undefined &&
       (typeof rawNode.nextNodeId !== 'string' || !nodes[rawNode.nextNodeId])
@@ -192,50 +205,43 @@ function validateDialogue(
     if (rawNode.choices !== undefined) {
       if (!Array.isArray(rawNode.choices)) {
         errors.push(`nodes.${id}.choices 必须是数组`);
-      } else {
-        for (const [index, choice] of rawNode.choices.entries()) {
-          if (!isRecord(choice)) {
-            errors.push(`nodes.${id}.choices[${index}] 必须是对象`);
-            continue;
-          }
-          if (typeof choice.label !== 'string' || !choice.label.trim()) {
-            errors.push(`nodes.${id}.choices[${index}].label 不能为空`);
-          }
-          if (
-            typeof choice.nextNodeId !== 'string' ||
-            !nodes[choice.nextNodeId]
-          ) {
-            errors.push(`nodes.${id}.choices[${index}].nextNodeId 不存在`);
-          }
-          checkEffects(
-            choice.effects,
-            errors,
-            `nodes.${id}.choices[${index}].effects`,
-          );
-          checkConditions(
-            choice.requires,
-            errors,
-            `nodes.${id}.choices[${index}].requires`,
-          );
+        continue;
+      }
+      for (const [index, choice] of rawNode.choices.entries()) {
+        if (!isRecord(choice)) {
+          errors.push(`nodes.${id}.choices[${index}] 必须是对象`);
+          continue;
         }
+        requireString(
+          choice.label,
+          `nodes.${id}.choices[${index}].label`,
+          errors,
+        );
+        if (typeof choice.nextNodeId !== 'string' || !nodes[choice.nextNodeId]) {
+          errors.push(`nodes.${id}.choices[${index}].nextNodeId 不存在`);
+        }
+        checkEffectsShape(
+          choice.effects,
+          `nodes.${id}.choices[${index}].effects`,
+          errors,
+        );
+        checkConditionsShape(
+          choice.requires,
+          `nodes.${id}.choices[${index}].requires`,
+          errors,
+        );
       }
     }
+    checkEffectsShape(rawNode.effects, `nodes.${id}.effects`, errors);
   }
   if (typeof payload.startNodeId === 'string' && !nodes[payload.startNodeId]) {
     errors.push('payload.startNodeId 不存在');
   }
 }
 
-function validateStory(
-  payload: Record<string, unknown>,
-  errors: string[],
-): void {
-  if (typeof payload.id !== 'string' || payload.id.length === 0) {
-    errors.push('payload.id 不能为空');
-  }
-  if (typeof payload.idolId !== 'string' || !IDOL_IDS.has(payload.idolId)) {
-    errors.push('payload.idolId 必须是已存在的偶像');
-  }
+function validateStory(payload: Record<string, unknown>, errors: string[]): void {
+  requireString(payload.id, 'payload.id', errors);
+  requireString(payload.idolId, 'payload.idolId', errors);
   if (payload.priority !== undefined && typeof payload.priority !== 'number') {
     errors.push('payload.priority 必须是数字');
   }
@@ -248,21 +254,10 @@ function validateStory(
       errors.push(`steps[${index}] 必须是对象`);
       continue;
     }
-    if (typeof rawStep.id !== 'string' || !rawStep.id) {
-      errors.push(`steps[${index}].id 不能为空`);
-    }
-    if (
-      typeof rawStep.locationId !== 'string' ||
-      !LOCATION_IDS.has(rawStep.locationId)
-    ) {
-      errors.push(`steps[${index}].locationId 必须是已存在的地点`);
-    }
-    if (typeof rawStep.dialogueId !== 'string' || !rawStep.dialogueId) {
-      errors.push(`steps[${index}].dialogueId 不能为空`);
-    }
-    if (typeof rawStep.actionLabel !== 'string' || !rawStep.actionLabel.trim()) {
-      errors.push(`steps[${index}].actionLabel 不能为空`);
-    }
+    requireString(rawStep.id, `steps[${index}].id`, errors);
+    requireString(rawStep.locationId, `steps[${index}].locationId`, errors);
+    requireString(rawStep.dialogueId, `steps[${index}].dialogueId`, errors);
+    requireString(rawStep.actionLabel, `steps[${index}].actionLabel`, errors);
     if (rawStep.timeWindow !== undefined) {
       if (!isRecord(rawStep.timeWindow)) {
         errors.push(`steps[${index}].timeWindow 必须是对象`);
@@ -280,34 +275,61 @@ function validateStory(
         }
       }
     }
+    checkConditionsShape(rawStep.when, `steps[${index}].when`, errors);
+    checkEffectsShape(rawStep.effects, `steps[${index}].effects`, errors);
   }
 }
 
-export function validateReviewDraft(draft: ReviewDraft): ReviewValidation {
+const SHAPE_VALIDATORS: Record<
+  string,
+  (payload: Record<string, unknown>, errors: string[]) => void
+> = {
+  activity: validateActivity,
+  event: validateEvent,
+  job: validateJob,
+  dialogue: validateDialogue,
+  story: validateStory,
+};
+
+export function validateDraftShape(draft: ReviewDraft): string[] {
   const errors: string[] = [];
   if (!draft.id) errors.push('id 不能为空');
   if (!draft.title) errors.push('title 不能为空');
-  if (
-    draft.kind !== 'event' &&
-    draft.kind !== 'job' &&
-    draft.kind !== 'dialogue' &&
-    draft.kind !== 'story'
-  ) {
-    errors.push('kind 必须是 event、job、dialogue 或 story');
+
+  const validateShape = SHAPE_VALIDATORS[draft.kind];
+  if (!validateShape) {
+    return [...errors, `kind 必须是 ${Object.keys(SHAPE_VALIDATORS).join(' / ')}`];
   }
   if (!isRecord(draft.payload)) {
-    errors.push('payload 必须是对象');
-  } else if (draft.kind === 'event') {
-    validateEvent(draft.payload, errors);
-  } else if (draft.kind === 'job') {
-    validateJob(draft.payload, errors);
-  } else if (draft.kind === 'dialogue') {
-    validateDialogue(draft.payload, errors);
-  } else if (draft.kind === 'story') {
-    validateStory(draft.payload, errors);
+    return [...errors, 'payload 必须是对象'];
+  }
+  validateShape(draft.payload, errors);
+  return errors;
+}
+
+export function validateReviewDraft(
+  draft: ReviewDraft,
+  base: ContentPack = PRODUCTION_PACK,
+): ReviewValidation {
+  const errors = validateDraftShape(draft);
+  const approved = packApprovedFiles({ [draft.id]: draft });
+
+  try {
+    const { pack, duplicates } = mergeApprovedContent(base, approved);
+    for (const duplicate of duplicates) {
+      errors.push(`ID 与现有内容重复：${duplicate}`);
+    }
+    for (const issue of auditPack(buildContentIndex(pack))) {
+      errors.push(
+        `${issue.level === 'error' ? '[错误]' : '[警告]'} ${issue.code}: ${issue.message}`,
+      );
+    }
+  } catch (error) {
+    // 结构坏到体检跑不动时，结构错误已经在上面了，这里只补一句说明。
+    errors.push(
+      `内容体检无法执行：${error instanceof Error ? error.message : String(error)}`,
+    );
   }
 
   return { ok: errors.length === 0, errors };
 }
-
-

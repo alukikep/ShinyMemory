@@ -1,4 +1,5 @@
-import { CONTENT_INDEX } from './contentIndex';
+import type { ContentIndex } from './contentIndexCore';
+import { isKnownConditionKind, isKnownEffectKind } from './contentSchema';
 import { RANK_ORDER } from './growth';
 import type {
   Condition,
@@ -71,7 +72,11 @@ function anchorOf(event: EventDef): string | undefined {
  * 静态内容体检：只做能可靠判定的检查，不做“这条剧情是否好玩”。
  * 返回空数组表示没有发现问题。
  */
-export function auditContent(): ContentIssue[] {
+/**
+ * 对任意内容索引做同一套体检。审查台用它校验单条草稿，
+ * 构建门用它校验整包，两边不再各写一套规则。
+ */
+export function auditPack(index: ContentIndex): ContentIssue[] {
   const issues: ContentIssue[] = [];
   const push = (
     level: ContentIssue['level'],
@@ -79,12 +84,12 @@ export function auditContent(): ContentIssue[] {
     message: string,
   ) => issues.push({ level, code, message });
 
-  const idolIds = CONTENT_INDEX.idols;
-  const actorIds = CONTENT_INDEX.actors;
-  const activityIds = CONTENT_INDEX.activities;
-  const eventIds = CONTENT_INDEX.events;
-  const dialogueIds = CONTENT_INDEX.dialogues;
-  const locationIds = CONTENT_INDEX.locations;
+  const idolIds = index.idols;
+  const actorIds = index.actors;
+  const activityIds = index.activities;
+  const eventIds = index.events;
+  const dialogueIds = index.dialogues;
+  const locationIds = index.locations;
   const rankOrder: string[] = RANK_ORDER;
 
   // ---- 引用完整性 ----
@@ -134,11 +139,20 @@ export function auditContent(): ContentIssue[] {
     }
   }
 
-  for (const chain of CONTENT_INDEX.storyChains.values()) {
-    auditChain(chain, push);
+  for (const job of index.jobs.values()) {
+    if (!locationIds.has(job.locationId)) {
+      push('error', 'location-ref', `${job.id} 指向不存在的地点 ${job.locationId}`);
+    }
+  }
+
+  for (const chain of index.storyChains.values()) {
+    auditChain(chain, push, index);
   }
 
   for (const dialogue of dialogueIds.values()) {
+    if (dialogue.idolId && !idolIds.has(dialogue.idolId)) {
+      push('error', 'idol-ref', `${dialogue.id} 的主偶像不存在 ${dialogue.idolId}`);
+    }
     for (const id of dialogue.participantIds ?? []) {
       if (!idolIds.has(id)) {
         push('error', 'idol-ref', `${dialogue.id} 的参与者不存在 ${id}`);
@@ -149,6 +163,10 @@ export function auditContent(): ContentIssue[] {
   // ---- 效果引用完整性 ----
   const checkEffects = (effects: Effect[] | undefined, owner: string) => {
     for (const effect of effects ?? []) {
+      if (!isKnownEffectKind(String(effect.kind))) {
+        push('error', 'effect-kind', `${owner} 出现未知效果 ${String(effect.kind)}`);
+        continue;
+      }
       if (effect.kind === 'fans' && effect.idolId && !idolIds.has(effect.idolId)) {
         push(
           'error',
@@ -181,15 +199,24 @@ export function auditContent(): ContentIssue[] {
   }
   for (const activity of activityIds.values()) {
     checkEffects(activity.effects, activity.id);
+    checkEffects(activity.failureEffects, `${activity.id} 的失败分支`);
   }
   for (const actor of actorIds.values()) {
     for (const topic of actor.topics) {
       checkEffects(topic.effects, `${actor.id}/${topic.id}`);
     }
   }
-  for (const chain of CONTENT_INDEX.storyChains.values()) {
+  for (const chain of index.storyChains.values()) {
     for (const step of chain.steps) {
       checkEffects(step.effects, `${chain.id}/${step.id}`);
+    }
+  }
+  for (const dialogue of dialogueIds.values()) {
+    for (const node of Object.values(dialogue.nodes)) {
+      checkEffects(node.effects, `${dialogue.id}/${node.id}`);
+      for (const choice of node.choices ?? []) {
+        checkEffects(choice.effects, `${dialogue.id}/${node.id} 的选项`);
+      }
     }
   }
 
@@ -202,7 +229,7 @@ export function auditContent(): ContentIssue[] {
     'workMoney',
   ]);
   const mulCount = new Map<string, number>();
-  for (const equip of CONTENT_INDEX.equips.values()) {
+  for (const equip of index.equips.values()) {
     for (const modifier of equip.modifiers) {
       if (!modifierKeys.has(modifier.key)) {
         push(
@@ -371,7 +398,7 @@ export function auditContent(): ContentIssue[] {
       }
     }
   }
-  for (const chain of CONTENT_INDEX.storyChains.values()) {
+  for (const chain of index.storyChains.values()) {
     collectReads(chain.revealWhen);
     for (const step of chain.steps) {
       collectReads(step.when);
@@ -380,12 +407,20 @@ export function auditContent(): ContentIssue[] {
   }
 
   // ---- 条件引用的 id 是否真实存在 ----
-  const itemIds = CONTENT_INDEX.items;
+  const itemIds = index.items;
   const checkConditionRefs = (
     conditions: Condition[] | undefined,
     owner: string,
   ) => {
     walkConditions(conditions, (condition) => {
+      if (!isKnownConditionKind(String(condition.kind))) {
+        push(
+          'error',
+          'condition-kind',
+          `${owner} 出现未知条件 ${String(condition.kind)}`,
+        );
+        return;
+      }
       switch (condition.kind) {
         case 'hasItem':
           if (!itemIds.has(condition.itemId)) {
@@ -471,7 +506,7 @@ export function auditContent(): ContentIssue[] {
       }
     }
   }
-  for (const chain of CONTENT_INDEX.storyChains.values()) {
+  for (const chain of index.storyChains.values()) {
     checkConditionRefs(chain.revealWhen, `${chain.id} 的 revealWhen`);
     for (const step of chain.steps) {
       checkConditionRefs(step.when, `${chain.id}/${step.id}`);
@@ -509,10 +544,11 @@ export function auditContent(): ContentIssue[] {
 function auditChain(
   chain: StoryChainDef,
   push: (level: ContentIssue['level'], code: string, message: string) => void,
+  index: ContentIndex,
 ): void {
-  const idolIds = CONTENT_INDEX.idols;
-  const dialogueIds = CONTENT_INDEX.dialogues;
-  const locationIds = CONTENT_INDEX.locations;
+  const idolIds = index.idols;
+  const dialogueIds = index.dialogues;
+  const locationIds = index.locations;
 
   if (!idolIds.has(chain.idolId)) {
     push('error', 'idol-ref', `${chain.id} 指向不存在的偶像 ${chain.idolId}`);

@@ -1,0 +1,84 @@
+{
+  "id": "draft.event.mano.b1.dance",
+  "kind": "event",
+  "title": "镜子里多了一拍",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.event.mano.b1.dance",
+  "payload": {
+    "id": "evt.mano.after_dance",
+    "title": "镜子里多了一拍",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mano"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束，她对着镜子又把最后两拍走了一遍。走完自己先皱起眉。",
+    "choices": [
+      {
+        "label": "陪她把这一拍抠顺",
+        "hint": "体力 -5，信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stamina",
+            "delta": -5
+          }
+        ],
+        "result": "数到第七遍，她停下来，说原来是脚先动了。"
+      },
+      {
+        "label": "问她哪里不对",
+        "hint": "信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "她比划了半天，最后小声说，大概是……我自己踩早了。"
+      },
+      {
+        "label": "今天就到这里",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "她把毛巾搭在肩上，说明天再试。走出门前又看了一眼镜子。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T20:30:00.000Z",
+  "updatedAt": "2026-10-29T12:32:55.186Z",
+  "reviewedAt": "2026-10-29T12:32:55.186Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T20:30:00.000Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T12:32:55.186Z"
+    }
+  ]
+}

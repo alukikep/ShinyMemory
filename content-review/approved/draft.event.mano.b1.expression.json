@@ -1,0 +1,94 @@
+{
+  "id": "draft.event.mano.b1.expression",
+  "kind": "event",
+  "title": "对着镜子练笑",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.event.mano.b1.expression",
+  "payload": {
+    "id": "evt.mano.after_expression",
+    "title": "对着镜子练笑",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mano"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表现课结束，她对着镜子练一个笑。练了几次，最后停下来，问自己是不是很奇怪。",
+    "choices": [
+      {
+        "label": "告诉她刚才那个就很好",
+        "hint": "信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "她愣了一下，说你这样说，我反而有点不知道该摆什么表情了。"
+      },
+      {
+        "label": "让她自己决定",
+        "hint": "压力 -3，信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "她想了很久，最后选了一个不太对称的。说这样比较像自己。"
+      },
+      {
+        "label": "陪她再试一次",
+        "hint": "体力 -5，信任 +1，压力 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stamina",
+            "delta": -5
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 3
+          }
+        ],
+        "result": "这一次她笑得更僵了。她看着镜子里的自己，慢慢把嘴角放下来。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T20:30:00.000Z",
+  "updatedAt": "2026-10-29T12:33:12.009Z",
+  "reviewedAt": "2026-10-29T12:33:12.009Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T20:30:00.000Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T12:33:12.009Z"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "draft.event.mano.b1.free",
+  "kind": "event",
+  "title": "回去的路上",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.event.mano.b1.free",
+  "payload": {
+    "id": "evt.mano.after_free",
+    "title": "回去的路上",
+    "when": [],
+    "after": {
+      "ids": [
+        "free"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mano"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "回去的路上她忽然停下来，说今天其实有一件事想讲，但讲之前先看了一眼前面路口的红灯。",
+    "choices": [
+      {
+        "label": "站在这里听她讲完",
+        "hint": "多花 15 分钟，信任 +3",
+        "durationMinutes": 15,
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "她讲了很久，最后说讲出来好像也没什么。绿灯亮了两次，你们才走。"
+      },
+      {
+        "label": "先送她回去",
+        "hint": "压力 -3，信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "她点点头，把想说的话收了回去。到楼下时她说，下次再说也一样。"
+      },
+      {
+        "label": "说改天再听",
+        "hint": "什么都不变",
+        "effects": [],
+        "result": "她说好，然后一路上都没有再提起。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T20:30:00.000Z",
+  "updatedAt": "2026-10-29T12:33:16.040Z",
+  "reviewedAt": "2026-10-29T12:33:16.040Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T20:30:00.000Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T12:33:16.040Z"
+    }
+  ]
+}

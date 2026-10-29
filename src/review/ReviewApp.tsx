@@ -470,7 +470,14 @@ export function ReviewApp() {
   const [annotationText, setAnnotationText] = useState('');
   const [annotationField, setAnnotationField] = useState('');
   const [actionError, setActionError] = useState<string | undefined>();
+  const [flash, setFlash] = useState<string | undefined>();
   const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    if (!flash) return;
+    const timer = window.setTimeout(() => setFlash(undefined), 2600);
+    return () => window.clearTimeout(timer);
+  }, [flash]);
 
   useEffect(() => {
     let cancelled = false;
@@ -563,18 +570,41 @@ export function ReviewApp() {
     }
     setBusy(true);
     setActionError(undefined);
+
+    // 当前队列的顺序（用户眼下看到的），用来在流转后挑"下一条"。
+    const order = filtered.map((draft) => draft.id);
+    const movedId = selected.id;
+    const movedTitle = selected.title;
+    const staysInTab = status === 'all' || nextStatus === status;
+
     try {
       const next = await repository.setStatus(
-        selected.id,
+        movedId,
         nextStatus,
         statusNote.trim() || undefined,
       );
       const all = await repository.list();
       setDrafts(all);
-      upsertDraft(next);
-      setStatus(next.status);
       setStatusNote('');
       setEditing(false);
+      setFlash(`《${movedTitle}》${STATUS_LABELS[nextStatus]}`);
+
+      if (staysInTab) {
+        upsertDraft(next);
+        return;
+      }
+
+      // 停在当前队列，选下一条；队列空了才清空选中。
+      const index = order.indexOf(movedId);
+      const candidates = [
+        ...order.slice(index + 1),
+        ...order.slice(0, Math.max(index, 0)),
+      ];
+      const nextId = candidates.find((id) => {
+        const draft = all.find((item) => item.id === id);
+        return draft?.status === status;
+      });
+      setSelectedId(nextId);
     } catch (reason) {
       setActionError(errorsOf(reason).join('；'));
     } finally {
@@ -785,6 +815,7 @@ export function ReviewApp() {
         </aside>
 
         <section className="review-main">
+          {flash ? <p className="review-flash">{flash}</p> : null}
           {actionError ? <p className="review-error review-action-error">{actionError}</p> : null}
           {selected ? (
             <>

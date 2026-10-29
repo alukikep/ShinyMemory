@@ -28,6 +28,13 @@ async function cleanup() {
 test.beforeEach(cleanup);
 test.afterEach(cleanup);
 
+/** 流转之后内容会离开当前队列，按标签页重新选中它。 */
+async function openInTab(page: Page, tab: RegExp, title: string) {
+  await page.getByRole('tab', { name: tab }).click();
+  await page.locator('.review-queue-item', { hasText: title }).click();
+  await expect(page.locator('.review-queue-item.active')).toContainText(title);
+}
+
 test('creates, revises, resubmits and approves an event', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(String(error)));
@@ -58,16 +65,22 @@ test('creates, revises, resubmits and approves an event', async ({ page }) => {
   await expect(page.locator('.review-note')).toHaveCount(1);
 
   await page.getByRole('button', { name: '打回' }).click();
+  await expect(page.locator('.review-flash')).toContainText('待修改');
+  await openInTab(page, /待修改/, 'E2E 审查事件');
   await expect(page.locator('.review-toolbar .review-status')).toHaveText(
     '待修改',
   );
 
   await page.getByRole('button', { name: '重新送审' }).click();
+  await expect(page.locator('.review-flash')).toContainText('待审查');
+  await openInTab(page, /待审查/, 'E2E 审查事件');
   await expect(page.locator('.review-toolbar .review-status')).toHaveText(
     '待审查',
   );
 
   await page.getByRole('button', { name: '通过' }).click();
+  await expect(page.locator('.review-flash')).toContainText('已通过');
+  await openInTab(page, /已通过/, 'E2E 审查事件');
   await expect(page.locator('.review-toolbar .review-status')).toHaveText(
     '已通过',
   );
@@ -92,26 +105,23 @@ test('creates, revises, resubmits and approves an event', async ({ page }) => {
   await page.getByRole('button', { name: '保存草稿' }).first().click();
   await expect(page.locator('.review-editor')).toHaveCount(0);
   await page.getByRole('button', { name: '通过' }).click();
-  await expect(page.locator('.review-toolbar .review-status')).toHaveText(
-    '已通过',
-  );
 
-  const discarded = await fs.readdir(
-    path.join(ROOT, 'content-review', 'discarded'),
-  );
-  const discardedText = await Promise.all(
-    discarded
-      .filter((name) => name.endsWith('.json'))
-      .map((name) =>
-        fs.readFile(
-          path.join(ROOT, 'content-review', 'discarded', name),
-          'utf8',
-        ),
-      ),
-  );
-  expect(discardedText.some((text) => text.includes('E2E 审查事件'))).toBe(
-    true,
-  );
+  // 旧版本被新版本替换后落到 discarded；用轮询，避免和上一条提示抢时序。
+  const discardedDir = path.join(ROOT, 'content-review', 'discarded');
+  await expect
+    .poll(
+      async () => {
+        const names = (await fs.readdir(discardedDir)).filter((name) =>
+          name.endsWith('.json'),
+        );
+        const texts = await Promise.all(
+          names.map((name) => fs.readFile(path.join(discardedDir, name), 'utf8')),
+        );
+        return texts.some((text) => text.includes('E2E 审查事件'));
+      },
+      { timeout: 10_000 },
+    )
+    .toBe(true);
   expect(errors).toEqual([]);
 
   await page.screenshot({ path: 'screenshots/v47-review-approved.png' });
@@ -143,9 +153,7 @@ test('creates and approves dialogue and story drafts', async ({ page }) => {
   await page.getByRole('button', { name: '保存草稿' }).first().click();
   await expect(page.locator('.review-editor')).toHaveCount(0);
   await page.getByRole('button', { name: '通过' }).click();
-  await expect(page.locator('.review-toolbar .review-status')).toHaveText(
-    '已通过',
-  );
+  await expect(page.locator('.review-flash')).toContainText('已通过');
 
   await page.getByRole('button', { name: '新建草稿' }).click();
   await page.locator('.review-modal select').selectOption('story');
@@ -174,9 +182,7 @@ test('creates and approves dialogue and story drafts', async ({ page }) => {
   await page.getByRole('button', { name: '保存草稿' }).first().click();
   await expect(page.locator('.review-editor')).toHaveCount(0);
   await page.getByRole('button', { name: '通过' }).click();
-  await expect(page.locator('.review-toolbar .review-status')).toHaveText(
-    '已通过',
-  );
+  await expect(page.locator('.review-flash')).toContainText('已通过');
 
   const approved = await fs.readdir(
     path.join(ROOT, 'content-review', 'approved'),

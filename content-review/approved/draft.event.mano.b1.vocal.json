@@ -1,0 +1,77 @@
+{
+  "id": "draft.event.mano.b1.vocal",
+  "kind": "event",
+  "title": "还没唱完的一句",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.event.mano.b1.vocal",
+  "payload": {
+    "id": "evt.mano.after_vocal",
+    "title": "还没唱完的一句",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mano"
+      ]
+    },
+    "chance": 0.45,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束了，她还站在钢琴边上，把刚才那一句反复唱到只剩气声。",
+    "choices": [
+      {
+        "label": "再陪她练一遍",
+        "hint": "体力 -5，信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stamina",
+            "delta": -5
+          }
+        ],
+        "result": "第三遍的时候她终于点头，说这一句好像找到地方了。"
+      },
+      {
+        "label": "让她早点回去休息",
+        "hint": "压力 -5，信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -5
+          }
+        ],
+        "result": "她把谱子合上，说下次一定唱完。走到门口又回头确认了一遍灯关没关。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T20:30:00.000Z",
+  "updatedAt": "2026-10-29T12:33:22.686Z",
+  "reviewedAt": "2026-10-29T12:33:22.686Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T20:30:00.000Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T12:33:22.686Z"
+    }
+  ]
+}

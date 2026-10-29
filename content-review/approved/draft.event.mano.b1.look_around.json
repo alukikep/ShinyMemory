@@ -1,0 +1,92 @@
+{
+  "id": "draft.event.mano.b1.look_around",
+  "kind": "event",
+  "title": "鸽子围了半圈",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.event.mano.b1.look_around",
+  "payload": {
+    "id": "evt.mano.look_around_pigeons",
+    "title": "鸽子围了半圈",
+    "when": [
+      {
+        "kind": "castPresent",
+        "idolIds": [
+          "mano"
+        ]
+      }
+    ],
+    "after": {
+      "ids": [
+        "look_around"
+      ]
+    },
+    "chance": 0.35,
+    "priority": 5,
+    "once": true,
+    "text": "她蹲在长椅边上，鸽子围了半圈。她正小声跟它们说话，没有注意到你。",
+    "choices": [
+      {
+        "label": "站着听一会儿",
+        "hint": "压力 -3，信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "她说的话都很短，像是在跟熟人打招呼。过了会儿她自己笑了。"
+      },
+      {
+        "label": "坐下来一起",
+        "hint": "体力 -2，信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stamina",
+            "delta": -2
+          }
+        ],
+        "result": "你坐下的时候有一只直接跳到你脚边。她小声说，它大概是觉得你安全。"
+      },
+      {
+        "label": "叫她该走了",
+        "hint": "信任 -1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1,
+            "direction": "loss"
+          }
+        ],
+        "result": "她应了一声，站起来，走了两步又回头看了一眼。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T20:30:00.000Z",
+  "updatedAt": "2026-10-29T12:33:19.659Z",
+  "reviewedAt": "2026-10-29T12:33:19.659Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T20:30:00.000Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T12:33:19.659Z"
+    }
+  ]
+}

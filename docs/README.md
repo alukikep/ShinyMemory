@@ -7,6 +7,8 @@
 | 文档 | 用途 |
 |---|---|
 | [当前路线图](current/roadmap.md) | 当前进度、下一步计划、优先级和开放问题 |
+| [统一计算接口与饰品槽计划](current/plan-modifier-pipeline.md) | 倍率管线、饰品槽，设计中 |
+| [周期触发 / 检定 / 监听计划](current/plan-triggers-and-checks.md) | 定时事件、行动检定、成就接口，设计中 |
 | [未来需求](current/future-requirements.md) | 已确认但暂不实现的功能需求 |
 | [自动验收](current/acceptance.md) | 命令、测试文件、状态桥与编写约定 |
 

@@ -201,6 +201,17 @@ fixture build
 - `?debug=1` 调试面板新增剧情链表，直接写出卡在哪一步、差什么。
 - 内容体检补上链条的 flag 读写，以及 `hasItem` / `atLocation` / `idolStatus` / `castPresent` / `npcAffinity*` 的 id 引用检查。
 
+### P2：计算接口 / 饰品 / 检定 / 周期触发（设计中）
+
+四项已确认要做，方案文档：
+
+- [统一计算接口与饰品槽](plan-modifier-pipeline.md)：`resolveModifiers` 单一入口，同类相加、跨类相乘、只取整一次；饰品槽是第一个使用者。
+- [周期触发 / 检定 / 监听](plan-triggers-and-checks.md)：`EventDef.trigger`（每周或每 N 天到点）、`ActivityDef.check`（掷骰 + 成败分支）、`GameEvent` sink（成就接口，只发不存）。
+
+顺序：计算接口 M0/M1 是纯重构，先行；饰品 M2–M4 依赖它；周期触发与检定相互独立，可与 M0/M1 并行。
+
+明确不做：遭遇系统（与当前玩法不兼容）、成就本体。
+
 ### P2：新地点
 
 新增地点已确认是低风险扩展。
@@ -293,6 +304,7 @@ WING 竞赛系统
 | 2026-10-28 | v1.8 | 制作人手册：剧情链投影、`blocked` 原因派生、`getEligibleStories` 多链并存、三个新条件 |
 | 2026-10-28 | v1.9 | 剧情链可观测：`evaluateStoryChain` 单一判定、`getStoryTriggerReport` 调试面板、体检补链的 flag 与条件引用检查 |
 | 2026-10-28 | v2.0 | 文档整理：已完成计划移入归档，手册转为系统说明，验收文档重写为当前状态 |
+| 2026-10-29 | v2.1 | 确认计算接口、饰品槽、检定、周期触发四项；成就只留监听接口；遭遇系统不做 |
 
 ## 8. 文档位置
 

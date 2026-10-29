@@ -17,9 +17,9 @@
 当前通过量：
 
 ```text
-Vitest            240 passed
+Vitest            272 passed
 内容结构/体检      4 passed
-引擎 E2E          17 passed
+引擎 E2E          18 passed
 内容 E2E           3 passed
 正式序章 E2E        1 passed
 审查 E2E            2 passed
@@ -36,6 +36,7 @@ tests/acceptance/
   shop.spec.ts         购买 → 背包 → 赠送
   save.spec.ts         多槽存档、导出/导入、移动端可达
   producer.spec.ts     制作人面板
+  equipment.spec.ts    发放饰品 → 装备 → 卸下
   handbook.spec.ts     手册空状态、相遇后的进行中条目
   debug.spec.ts        剧情链调试表（地点不对 / 可以触发）
   responsive.spec.ts   四档视口布局

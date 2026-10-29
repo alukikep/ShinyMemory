@@ -2,7 +2,7 @@
   "id": "draft.item.gift_bird_charm",
   "kind": "item",
   "title": "小鸟挂饰",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.item.gift_bird_charm",
   "payload": {
@@ -26,11 +26,16 @@
   },
   "annotations": [],
   "createdAt": "2026-10-29T12:54:55.285Z",
-  "updatedAt": "2026-10-29T12:54:55.285Z",
+  "updatedAt": "2026-10-29T12:59:53.762Z",
+  "reviewedAt": "2026-10-29T12:59:53.762Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-29T12:54:55.285Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T12:59:53.762Z"
     }
   ]
 }

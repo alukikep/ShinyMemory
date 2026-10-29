@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { auditPack } from './contentAudit';
 import { CONTENT_INDEX } from './contentIndex';
-import type { ActivityDef, EquipDef } from './types';
+import type { ActivityDef, EquipDef, EventDef } from './types';
 
 const registered: string[] = [];
 
@@ -9,6 +9,7 @@ afterEach(() => {
   for (const id of registered.splice(0)) {
     CONTENT_INDEX.equips.delete(id);
     CONTENT_INDEX.activities.delete(id);
+    CONTENT_INDEX.events.delete(id);
   }
 });
 
@@ -101,5 +102,19 @@ describe('content audit', () => {
     expect(
       issues.filter((issue) => issue.code === 'activity-idol-target'),
     ).toHaveLength(2);
+  });
+
+  it('reports a malformed event instead of throwing', () => {
+    const broken = {
+      id: 'audit.broken.event',
+      title: '没有选项',
+      when: [],
+      text: '正文',
+    } as unknown as EventDef;
+    CONTENT_INDEX.events.set(broken.id, broken);
+    registered.push(broken.id);
+
+    const issues = auditPack(CONTENT_INDEX);
+    expect(issues.some((issue) => issue.code === 'event-shape')).toBe(true);
   });
 });

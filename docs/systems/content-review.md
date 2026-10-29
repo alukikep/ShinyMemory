@@ -54,6 +54,8 @@ content-review/
 
 **内容走审查台，结构和配置留 TS。** 行动、事件、工作、对话、剧情链、物品、商店都从这里进游戏；偶像、角色日程、地点、交通、地图、饰品、初始状态属于结构，直接写在 `src/core/content`，因为它们不是一条条可批注的稿子。
 
+kind 清单只有一份：`REVIEW_KINDS`（`src/review/types.ts`）。类型、校验表、服务端白名单、读取脚本都从它派生——**新增一种 kind 只改这一个地方**。
+
 预览区按类型渲染成卡片（行动显示时长/消耗/地点/结果文本，事件显示选项与 `when` 摘要），不用回游戏里确认。
 
 **专属偶像**（`idolIds`）留空就是全员通用；勾了就只在这些偶像的互动页出现，别的偶像看不到（是隐藏，不是灰掉）。
@@ -72,9 +74,7 @@ auditPack(index)       语义：条件/效果种类、id 是否存在、预算�
 
 `auditPack` 就是构建门 `content:audit` 用的那个函数，**审查台和构建门共用一份规则**。
 
-运行时白名单也只有一个来源 `src/core/contentSchema.ts`，并带编译期保险：
-
-```ts
+运行时白名单也只有一个来源 `src/core/contentSchema.ts`，并带编译期保险：```ts
 type AssertNever<T extends never> = T;
 export type _EffectKindsComplete = AssertNever<Exclude<Effect['kind'], EffectKind>>;
 ```

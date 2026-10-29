@@ -1,13 +1,17 @@
 export type ReviewStatus = 'review' | 'revision' | 'approved' | 'discarded';
 
-export type ReviewKind =
-  | 'activity'
-  | 'event'
-  | 'job'
-  | 'dialogue'
-  | 'story'
-  | 'item'
-  | 'shop';
+/** 唯一的 kind 清单：类型、校验、工具脚本都从这里取，不要再抄一份。 */
+export const REVIEW_KINDS = [
+  'activity',
+  'event',
+  'job',
+  'dialogue',
+  'story',
+  'item',
+  'shop',
+] as const;
+
+export type ReviewKind = (typeof REVIEW_KINDS)[number];
 
 export type ReviewAnnotation = {
   id: string;

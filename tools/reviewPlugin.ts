@@ -1,6 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Plugin } from 'vite';
 import type { ReviewKind, ReviewStatus } from '../src/review/types.js';
+import { REVIEW_KINDS } from '../src/review/types.js';
 import { mergeApprovedContent } from '../src/review/approval.js';
 import { validateReviewDraft } from '../src/review/validation.js';
 import { packApprovedFiles } from '../src/core/content/approved.js';
@@ -98,17 +99,11 @@ export function reviewApiPlugin(): Plugin {
             }
             const kind = body.kind;
             if (
-              kind !== 'activity' &&
-              kind !== 'event' &&
-              kind !== 'job' &&
-              kind !== 'dialogue' &&
-              kind !== 'story' &&
-              kind !== 'item' &&
-              kind !== 'shop'
+              typeof kind !== 'string' ||
+              !(REVIEW_KINDS as readonly string[]).includes(kind)
             ) {
               sendJson(response, 400, {
-                error:
-                  'kind must be activity, event, job, dialogue, story, item, or shop',
+                error: `kind must be one of ${REVIEW_KINDS.join(', ')}`,
               });
               return;
             }

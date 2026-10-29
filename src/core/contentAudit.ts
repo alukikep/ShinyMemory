@@ -94,6 +94,9 @@ export function auditPack(index: ContentIndex): ContentIssue[] {
 
   // ---- 引用完整性 ----
   for (const event of eventIds.values()) {
+    if (!Array.isArray(event.choices) || event.choices.length === 0) {
+      push('error', 'event-shape', `${event.id} 没有 choices（至少一个选项）`);
+    }
     const checkEventRef = (id: string | undefined, label: string) => {
       if (id && !eventIds.has(id)) {
         push('error', 'event-ref', `${event.id} 的 ${label} 指向不存在的事件 ${id}`);
@@ -119,7 +122,7 @@ export function auditPack(index: ContentIndex): ContentIssue[] {
       }
     }
 
-    for (const choice of event.choices) {
+    for (const choice of event.choices ?? []) {
       checkEventRef(choice.nextEventId, 'choice.nextEventId');
       if (choice.dialogueId && !dialogueIds.has(choice.dialogueId)) {
         push(
@@ -229,7 +232,7 @@ export function auditPack(index: ContentIndex): ContentIssue[] {
   };
 
   for (const event of eventIds.values()) {
-    for (const choice of event.choices) {
+    for (const choice of event.choices ?? []) {
       checkEffects(choice.effects, `${event.id} 的选项`);
     }
   }
@@ -406,7 +409,7 @@ export function auditPack(index: ContentIndex): ContentIssue[] {
 
   for (const event of eventIds.values()) {
     collectReads(event.when);
-    for (const choice of event.choices) {
+    for (const choice of event.choices ?? []) {
       collectReads(choice.requires);
       collectFromEffects(choice.effects);
     }
@@ -520,7 +523,7 @@ export function auditPack(index: ContentIndex): ContentIssue[] {
 
   for (const event of eventIds.values()) {
     checkConditionRefs(event.when, event.id);
-    for (const choice of event.choices) {
+    for (const choice of event.choices ?? []) {
       checkConditionRefs(choice.requires, `${event.id} 的选项`);
     }
   }

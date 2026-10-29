@@ -1,16 +1,10 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import type { ReviewDraft, ReviewKind } from '../src/review/types.js';
+import { REVIEW_KINDS, type ReviewDraft, type ReviewKind } from '../src/review/types.js';
 
 export const APPROVED_DIR = path.join(process.cwd(), 'content-review', 'approved');
 
-const KINDS: ReadonlySet<string> = new Set<ReviewKind>([
-  'activity',
-  'event',
-  'job',
-  'dialogue',
-  'story',
-]);
+const KINDS: ReadonlySet<string> = new Set(REVIEW_KINDS);
 
 /**
  * 读出 approved 目录。`tsx` 下没有 `import.meta.glob`，所以脚本侧

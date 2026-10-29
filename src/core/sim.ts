@@ -1330,6 +1330,11 @@ export function topicAvailability(
   return { ok: true };
 }
 
+/** 通用数值变量；未写过读作 0。 */
+export function getVar(state: GameState, key: string): number {
+  return state.vars?.[key] ?? 0;
+}
+
 export function checkCondition(
   condition: Condition,
   state: GameState,
@@ -1400,6 +1405,10 @@ export function checkCondition(
       return state.locationId === condition.locationId;
     case 'flag':
       return (state.flags[condition.key] ?? false) === (condition.value ?? true);
+    case 'varAtLeast':
+      return getVar(state, condition.key) >= condition.value;
+    case 'varAtMost':
+      return getVar(state, condition.key) <= condition.value;
     case 'all':
       return condition.of.every((child) => checkCondition(child, state, ctx));
     case 'any':
@@ -1456,6 +1465,22 @@ function applyEffects(
       case 'flag':
         state.flags[effect.key] = effect.value;
         break;
+      case 'var': {
+        const current = getVar(state, effect.key);
+        state.vars = { ...(state.vars ?? {}) };
+        state.vars[effect.key] =
+          (effect.op ?? 'add') === 'set' ? effect.value : current + effect.value;
+        break;
+      }
+      case 'scheduleEvent': {
+        const day =
+          getDay(state.clock.absoluteMinutes) + Math.max(0, effect.inDays);
+        state.pendingEvents = [
+          ...(state.pendingEvents ?? []),
+          { eventId: effect.eventId, day },
+        ];
+        break;
+      }
       case 'unlockSlot': {
         const base = state.slots?.[effect.slot] ?? DEFAULT_EQUIP_SLOTS[effect.slot];
         state.slots = {
@@ -1676,6 +1701,11 @@ export function activityAvailability(
   return { ok: true };
 }
 
+/** 移动实际占用的时间。步行与交通都走这里。 */
+export function travelMinutes(state: GameState, base: number): number {
+  return Math.max(1, Math.round(base * resolveModifiers(state, 'travel')));
+}
+
 export function moveTo(state: GameState, locationId: string): GameState {
   if (state.phase !== 'plan') return state;
   const location = CONTENT_INDEX.locations.get(locationId);
@@ -1689,7 +1719,7 @@ export function moveTo(state: GameState, locationId: string): GameState {
   next.pendingEventId = undefined;
   addLog(next, `移动到了${location.name}。`, 'info');
 
-  const advanced = advanceTime(next, edge.minutes);
+  const advanced = advanceTime(next, travelMinutes(next, edge.minutes));
   advanced.phase = 'plan';
   return advanced;
 }
@@ -1725,7 +1755,7 @@ export function takeTransit(state: GameState, routeId: string): GameState {
     'info',
   );
 
-  const advanced = advanceTime(next, route.minutes);
+  const advanced = advanceTime(next, travelMinutes(next, route.minutes));
   advanced.phase = 'plan';
   return advanced;
 }
@@ -2299,19 +2329,27 @@ function buildScheduledPool(state: GameState): EventDef[] {
   });
 }
 
-function fireScheduled(
-  state: GameState,
-  picked: EventDef,
-): EventCheckResult {
+/** 把事件推到待选择状态；调用方负责清理自己的队列。 */
+function enterEvent(state: GameState, picked: EventDef): GameState {
   const next = clone(state);
-  const day = getDay(next.clock.absoluteMinutes);
-  next.scheduledDays = { ...(next.scheduledDays ?? {}), [picked.id]: day };
   next.pendingEventId = picked.id;
   next.pendingEventCast = undefined;
   next.pendingEventIdolId = picked.cast?.[0] ?? state.selectedIdolId;
   next.pendingChainEventId = undefined;
   next.phase = 'event';
   addLog(next, `事件：${picked.title}`, 'info');
+  return next;
+}
+
+function fireScheduled(
+  state: GameState,
+  picked: EventDef,
+): EventCheckResult {
+  const next = enterEvent(state, picked);
+  next.scheduledDays = {
+    ...(next.scheduledDays ?? {}),
+    [picked.id]: getDay(next.clock.absoluteMinutes),
+  };
   return { state: next, event: picked };
 }
 
@@ -2388,6 +2426,36 @@ export function checkScheduledEvent(state: GameState): EventCheckResult {
   return fireScheduled(state, picked);
 }
 
+/** 到期的延迟事件；一次只处理一条，其余留在队列里。 */
+export function checkPendingEvents(state: GameState): EventCheckResult {
+  const queue = state.pendingEvents ?? [];
+  if (queue.length === 0) return { state, event: null };
+
+  const today = getDay(state.clock.absoluteMinutes);
+  const due = queue
+    .map((entry, index) => ({
+      entry,
+      index,
+      event: CONTENT_INDEX.events.get(entry.eventId),
+    }))
+    .filter(
+      (item): item is { entry: { eventId: string; day: number }; index: number; event: EventDef } =>
+        item.entry.day <= today && Boolean(item.event),
+    );
+
+  if (due.length === 0) return { state, event: null };
+
+  due.sort(
+    (a, b) =>
+      (b.event.priority ?? 0) - (a.event.priority ?? 0) ||
+      a.entry.eventId.localeCompare(b.entry.eventId),
+  );
+  const picked = due[0]!;
+  const next = enterEvent(state, picked.event);
+  next.pendingEvents = queue.filter((_, index) => index !== picked.index);
+  return { state: next, event: picked.event };
+}
+
 export function checkForEvent(
   state: GameState,
   ctx: EventContext = {},
@@ -2399,7 +2467,10 @@ export function checkForEvent(
   const random = checkEventCandidates(state, buildPool(context), context);
   if (random.event) return random;
 
-  return checkScheduledEvent(random.state);
+  const pending = checkPendingEvents(random.state);
+  if (pending.event) return pending;
+
+  return checkScheduledEvent(pending.state);
 }
 
 export function checkNpcEvent(

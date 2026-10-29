@@ -53,6 +53,21 @@ export function DebugPanel({
         {Object.keys(state.eventCooldowns).length}
       </div>
 
+      <div className="debug-meta">
+        变量：
+        {Object.keys(state.vars ?? {}).length === 0
+          ? '（无）'
+          : Object.entries(state.vars ?? {})
+              .map(([key, value]) => `${key}=${value}`)
+              .join(' · ')}
+        {' · 待触发：'}
+        {(state.pendingEvents ?? []).length === 0
+          ? '（无）'
+          : (state.pendingEvents ?? [])
+              .map((entry) => `${entry.eventId}@第${entry.day}天`)
+              .join(' · ')}
+      </div>
+
       <div className="debug-controls">
         <label>
           行动上下文

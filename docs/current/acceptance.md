@@ -17,9 +17,9 @@
 当前通过量：
 
 ```text
-Vitest            272 passed
+Vitest            283 passed
 内容结构/体检      4 passed
-引擎 E2E          18 passed
+引擎 E2E          19 passed
 内容 E2E           3 passed
 正式序章 E2E        1 passed
 审查 E2E            2 passed

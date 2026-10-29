@@ -59,6 +59,16 @@ export function describeCondition(
     case 'timeWindow':
     case 'dayAtLeast':
       return '过两天再说';
+    case 'varAtLeast': {
+      const gap = condition.value - (state.vars?.[condition.key] ?? 0);
+      if (gap <= 0) return undefined;
+      return condition.label ? `${condition.label}还差 ${gap}` : undefined;
+    }
+    case 'varAtMost': {
+      const gap = (state.vars?.[condition.key] ?? 0) - condition.value;
+      if (gap <= 0) return undefined;
+      return condition.label ? `${condition.label}还差 ${gap}` : undefined;
+    }
     default:
       return undefined;
   }

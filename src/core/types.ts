@@ -188,6 +188,10 @@ export type GameState = {
   flags: Record<string, boolean>;
   /** 定时事件 → 上次触发的日，用于同日去重。 */
   scheduledDays?: Record<string, number>;
+  /** 通用数值状态；未写过的键读作 0。 */
+  vars?: Record<string, number>;
+  /** 一次性延迟触发的待办，按绝对日排队。 */
+  pendingEvents?: { eventId: string; day: number }[];
   /** 槽位键（charm1…）→ 饰品 id。倍率是派生值，不入档。 */
   equipment?: Record<string, string>;
   ownedEquips?: string[];
@@ -218,6 +222,7 @@ export type ModifierKey =
   | 'staminaCost'
   | 'staminaCap'
   | 'duration'
+  | 'travel'
   | 'trainingExp'
   | 'workMoney';
 
@@ -257,6 +262,8 @@ export type Effect =
     }
   | { kind: 'money'; delta: number }
   | { kind: 'flag'; key: string; value: boolean }
+  | { kind: 'var'; key: string; op?: 'set' | 'add'; value: number }
+  | { kind: 'scheduleEvent'; eventId: string; inDays: number }
   | { kind: 'unlockSlot'; slot: EquipSlot; amount?: number }
   | { kind: 'grantEquip'; equipId: string }
   | {
@@ -295,6 +302,9 @@ export type Condition =
   | { kind: 'idolStatus'; idolId?: string; status: IdolStatus }
   | { kind: 'atLocation'; locationId: string }
   | { kind: 'flag'; key: string; value?: boolean }
+  /** 数值变量；未写过 = 0。label 只用于显示，参与不了结算。 */
+  | { kind: 'varAtLeast'; key: string; value: number; label?: string }
+  | { kind: 'varAtMost'; key: string; value: number; label?: string }
   | { kind: 'all'; of: Condition[] }
   | { kind: 'any'; of: Condition[] }
   | { kind: 'not'; of: Condition };

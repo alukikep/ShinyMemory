@@ -14,3 +14,12 @@ test('debug panel explains why a story chain is blocked', async ({ page }) => {
   await jumpTo(page, 1, 12 * 60, 'park');
   await expect(panel).toContainText('可以触发（手册里还没显示）');
 });
+
+test('debug panel shows variables and pending events', async ({ page }) => {
+  await openGame(page);
+  await reset(page, 1);
+
+  const panel = page.locator('.debug-panel');
+  await expect(panel).toContainText('变量：（无）');
+  await expect(panel).toContainText('待触发：（无）');
+});

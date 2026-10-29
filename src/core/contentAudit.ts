@@ -45,6 +45,23 @@ function collectFlagReads(
   });
 }
 
+function collectVarWrites(effects: Effect[] | undefined, out: Set<string>): void {
+  for (const effect of effects ?? []) {
+    if (effect.kind === 'var') out.add(effect.key);
+  }
+}
+
+function collectVarReads(
+  conditions: Condition[] | undefined,
+  out: Set<string>,
+): void {
+  walkConditions(conditions, (condition) => {
+    if (condition.kind === 'varAtLeast' || condition.kind === 'varAtMost') {
+      out.add(condition.key);
+    }
+  });
+}
+
 function anchorOf(event: EventDef): string | undefined {
   if (!event.after || !('ids' in event.after)) return undefined;
   return [...event.after.ids].sort().join(',');
@@ -276,27 +293,35 @@ export function auditContent(): ContentIssue[] {
     }
   }
 
-  // ---- flag 读写一致性 ----
+  // ---- flag / var 读写一致性 ----
   const flagWrites = new Set<string>();
   const flagReads = new Set<string>();
-  const collectFromEffects = (effects: Effect[] | undefined) =>
+  const varWrites = new Set<string>();
+  const varReads = new Set<string>();
+  const collectFromEffects = (effects: Effect[] | undefined) => {
     collectFlagWrites(effects, flagWrites);
+    collectVarWrites(effects, varWrites);
+  };
+  const collectReads = (conditions: Condition[] | undefined) => {
+    collectFlagReads(conditions, flagReads);
+    collectVarReads(conditions, varReads);
+  };
 
   for (const event of eventIds.values()) {
-    collectFlagReads(event.when, flagReads);
+    collectReads(event.when);
     for (const choice of event.choices) {
-      collectFlagReads(choice.requires, flagReads);
+      collectReads(choice.requires);
       collectFromEffects(choice.effects);
     }
     if (event.once) flagWrites.add(`seen:${event.id}`);
   }
   for (const activity of activityIds.values()) {
-    collectFlagReads(activity.requires, flagReads);
+    collectReads(activity.requires);
     collectFromEffects(activity.effects);
   }
   for (const actor of actorIds.values()) {
     for (const topic of actor.topics) {
-      collectFlagReads(topic.when, flagReads);
+      collectReads(topic.when);
       collectFromEffects(topic.effects);
     }
   }
@@ -304,18 +329,18 @@ export function auditContent(): ContentIssue[] {
     for (const node of Object.values(dialogue.nodes)) {
       collectFromEffects(node.effects);
       for (const choice of node.choices ?? []) {
-        collectFlagReads(choice.requires, flagReads);
+        collectReads(choice.requires);
         collectFromEffects(choice.effects);
       }
       for (const variant of node.textVariants ?? []) {
-        collectFlagReads(variant.when, flagReads);
+        collectReads(variant.when);
       }
     }
   }
   for (const chain of CONTENT_INDEX.storyChains.values()) {
-    collectFlagReads(chain.revealWhen, flagReads);
+    collectReads(chain.revealWhen);
     for (const step of chain.steps) {
-      collectFlagReads(step.when, flagReads);
+      collectReads(step.when);
       collectFromEffects(step.effects);
     }
   }
@@ -414,6 +439,23 @@ export function auditContent(): ContentIssue[] {
     if (key.startsWith('test_')) continue;
     if (!flagWrites.has(key)) {
       push('warning', 'flag-read', `条件读取了从未被写入的 flag：${key}`);
+    }
+  }
+
+  for (const key of varReads) {
+    if (key.startsWith('test.')) continue;
+    if (!varWrites.has(key)) {
+      push('warning', 'var-read', `条件读取了从未被写入的 var：${key}`);
+    }
+  }
+  for (const key of [...varWrites, ...varReads]) {
+    if (key.startsWith('test.')) continue;
+    if (!key.includes('.')) {
+      push(
+        'warning',
+        'var-namespace',
+        `var 键名缺少命名空间（建议 domain.name）：${key}`,
+      );
     }
   }
 

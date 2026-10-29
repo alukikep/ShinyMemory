@@ -39,6 +39,7 @@ export const MODIFIER_LABELS: Record<ModifierKey, string> = {
   staminaCost: '体力消耗',
   staminaCap: '体力上限',
   duration: '行动时长',
+  travel: '移动耗时',
   trainingExp: '训练 EXP',
   workMoney: '工作报酬',
 };

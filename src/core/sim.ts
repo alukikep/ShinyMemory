@@ -23,6 +23,7 @@ import { createInitialProducerStats, staminaCapForRank, staminaCostMultiplierFor
 import { Rng } from './rng';
 import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, getWeekdayFromDay, isMinuteInWindow } from './time';
 import { describeCondition } from './conditionText';
+import { emitGameEvent } from './gameEvents';
 import { combineModifiers } from './modifiers';
 import type { ModifierBreakdown, ModifierSource } from './modifiers';
 import { canReplaceDay, getScheduleSlot } from './schedule';
@@ -137,6 +138,7 @@ export function equipItem(state: GameState, equipId: string): GameState {
 
   const next = clone(state);
   next.equipment = { ...(next.equipment ?? {}), [free]: equipId };
+  emitGameEvent({ kind: 'equipChanged', slot: free, equipId }, next);
   return next;
 }
 
@@ -146,6 +148,7 @@ export function unequipSlot(state: GameState, slotKey: string): GameState {
   const equipment = { ...(next.equipment ?? {}) };
   delete equipment[slotKey];
   next.equipment = equipment;
+  emitGameEvent({ kind: 'equipChanged', slot: slotKey }, next);
   return next;
 }
 
@@ -387,6 +390,10 @@ export function applyAttributeExp(
       state,
       `${who} ${attributeLabel(normalized)}提升到 ${target.rank}。`,
       'good',
+    );
+    emitGameEvent(
+      { kind: 'skillLevelUp', ref: normalized, rank: target.rank, idolId },
+      state,
     );
   }
 }
@@ -958,6 +965,7 @@ function finishDialogue(state: GameState): GameState {
       stepIndex,
       completed: true,
     };
+    emitGameEvent({ kind: 'storyCompleted', chainId: chain.id }, next);
   } else {
     next.storyChains[chain.id] = {
       ...chainState,
@@ -1856,9 +1864,14 @@ export function talkTo(
 
 export function advanceTime(state: GameState, minutes: number): GameState {
   const next = clone(state);
+  const beforeDay = getDay(next.clock.absoluteMinutes);
   next.clock.absoluteMinutes += Math.max(0, minutes);
   pruneScheduleOverrides(next);
   completeDueJobs(next);
+  const afterDay = getDay(next.clock.absoluteMinutes);
+  if (afterDay !== beforeDay) {
+    emitGameEvent({ kind: 'dayStarted', day: afterDay }, next);
+  }
   return next;
 }
 
@@ -1946,7 +1959,14 @@ export function applyActivity(
 ): GameState {
   const activity = getActivity(activityId);
   if (!activity) return state;
-  return applyActivityDef(state, activity, idolId);
+  const next = applyActivityDef(state, activity, idolId);
+  if (next !== state) {
+    emitGameEvent(
+      { kind: 'activityDone', activityId, passed: next.pendingActivityPassed },
+      next,
+    );
+  }
+  return next;
 }
 
 export function applyActivityDef(

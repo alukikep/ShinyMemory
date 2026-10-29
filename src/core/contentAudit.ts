@@ -1,4 +1,5 @@
 import { CONTENT_INDEX } from './contentIndex';
+import { RANK_ORDER } from './growth';
 import type {
   Condition,
   Effect,
@@ -67,6 +68,7 @@ export function auditContent(): ContentIssue[] {
   const eventIds = CONTENT_INDEX.events;
   const dialogueIds = CONTENT_INDEX.dialogues;
   const locationIds = CONTENT_INDEX.locations;
+  const rankOrder: string[] = RANK_ORDER;
 
   // ---- 引用完整性 ----
   for (const event of eventIds.values()) {
@@ -164,6 +166,66 @@ export function auditContent(): ContentIssue[] {
   for (const chain of CONTENT_INDEX.storyChains.values()) {
     for (const step of chain.steps) {
       checkEffects(step.effects, `${chain.id}/${step.id}`);
+    }
+  }
+
+  // ---- 饰品与检定 ----
+  const modifierKeys = new Set<string>([
+    'staminaCost',
+    'staminaCap',
+    'duration',
+    'trainingExp',
+    'workMoney',
+  ]);
+  const mulCount = new Map<string, number>();
+  for (const equip of CONTENT_INDEX.equips.values()) {
+    for (const modifier of equip.modifiers) {
+      if (!modifierKeys.has(modifier.key)) {
+        push(
+          'error',
+          'modifier-key',
+          `${equip.id} 的加成 key 不存在：${modifier.key}`,
+        );
+        continue;
+      }
+      if ((modifier.op ?? 'mul') === 'mul') {
+        mulCount.set(modifier.key, (mulCount.get(modifier.key) ?? 0) + 1);
+      }
+    }
+  }
+  for (const [key, count] of mulCount) {
+    if (count > 3) {
+      push(
+        'warning',
+        'modifier-stack',
+        `「${key}」有 ${count} 条乘算加成，超过 3 条容易滚出离谱数值`,
+      );
+    }
+  }
+
+  for (const activity of activityIds.values()) {
+    const check = activity.check;
+    if (!check) continue;
+    if (!rankOrder.includes(check.difficulty)) {
+      push(
+        'error',
+        'check-rank',
+        `${activity.id} 的检定难度不是合法等级：${check.difficulty}`,
+      );
+    }
+    if (Math.abs(check.shift ?? 0) > 40) {
+      push(
+        'warning',
+        'check-shift',
+        `${activity.id} 的检定 shift 超过 ±40，等于把难度抹平了`,
+      );
+    }
+    if (!activity.failureEffects?.length && !activity.failureTexts?.length) {
+      push(
+        'warning',
+        'check-branch',
+        `${activity.id} 有检定但没有失败分支，成败无差别`,
+      );
     }
   }
 

@@ -1,6 +1,6 @@
 # 计算接口 / 周期触发 / 检定 / 饰品 实施计划
 
-> 状态：**待检查**（未动工）
+> 状态：**S0–S8 已完成**
 > 设计依据：[统一计算接口与饰品槽](plan-modifier-pipeline.md)、[周期触发 / 检定 / 监听](plan-triggers-and-checks.md)
 > 目标版本：`0.19.0`（最后一步才升版本号）
 
@@ -342,3 +342,20 @@ S8  内容 + 体检 + 版本号
 | 直接在 `main` 上执行 | 不建 worktree | 本仓库一直如此工作，你已要求直接开工并推送 |
 | `resolveModifiers` 的落点 | 纯计算放 `src/core/modifiers.ts`；状态相关部分（`modifierSources` / `resolveModifiers` / `explainModifiers`）放 `src/core/sim.ts` | `Modifier.when` 要调 `checkCondition`，而它依赖 `sim.ts` 里的 `resolveAttribute` / `isActorPresent`；反向导入会形成循环。纯函数仍独立可测 |
 | S1 的接入范围 | 只接 `staminaCost` / `staminaCap` / `duration` / `trainingExp` | 见 Q4 |
+
+## 8. 完成记录
+
+| 阶段 | 提交 | 备注 |
+|---|---|---|
+| S0+S1 | `a4eed05` | 合并提交：接口一接上，两者之间没有可回滚的有意义状态 |
+| S2 | `bda9757` | `checkScheduledEvent` 单独导出，测试不靠随机事件 |
+| S3 | `912978f` | 掷骰复用行动同一条 RNG |
+| S4 | `5a8111d` | 档位进 hint；浏览器断言挪到 S8 |
+| S5 | `19ebb8d` | `EquipDef` / 命令 / 两个新 Effect |
+| S6 | `868c223` | 背包饰品区；fixture 加发放活动供 E2E |
+| S7 | `32f969c` | sink 只发不存 |
+
+**S8 的裁决**：正式内容（饰品、检定行动、槽位解锁）这一轮**不加**。
+你此前定过"等架构冻结再做内容"，加正式饰品会提前占掉那条线。
+因此 S8 只做体检规则、版本号与文档，内容验证全部留在 fixture
+（`equip.test.watch` / `equip.test.ribbon` / `test_old_drawer`）。

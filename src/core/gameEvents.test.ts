@@ -9,16 +9,11 @@ import {
   newGame,
   travelTo,
 } from './sim';
-import type { Effect, GameState } from './types';
 
 const events: GameEvent[] = [];
 
 function capture(): void {
   setGameEventSink((event) => events.push(event));
-}
-
-function grant(state: GameState, effects: Effect[]): GameState {
-  return applyActivity(state, 'test_old_drawer') ?? state;
 }
 
 afterEach(() => {

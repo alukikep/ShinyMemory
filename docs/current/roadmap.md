@@ -364,6 +364,9 @@ docs/current/roadmap.md                本文件
 docs/current/future-requirements.md
 docs/current/content-standards.md      内容数值标准
 docs/current/acceptance.md             命令与测试清单
+docs/content/                          内容生产
+  README.md                            块划分、流程、块清单与进度
+  mano/character.md                    真乃的角色卡
 docs/systems/                          仍在使用中的系统说明
   producer-handbook.md                 制作人手册
   modifiers-and-equipment.md           倍率管线与饰品槽

@@ -8,8 +8,15 @@
 |---|---|
 | [当前路线图](current/roadmap.md) | 当前进度、下一步计划、优先级和开放问题 |
 | [未来需求](current/future-requirements.md) | 已确认但暂不实现的功能需求 |
-| [内容数值标准](current/content-standards.md) | 时长、体力、金钱的取值规范 |
+| [内容数值标准](current/content-standards.md) | 时长、体力、金钱、经验、粉丝的档位表 |
 | [自动验收](current/acceptance.md) | 命令、测试文件、状态桥与编写约定 |
+
+## 内容生产
+
+| 文档 | 用途 |
+|---|---|
+| [内容生产](content/README.md) | 块的划分、生产流程、块清单与进度 |
+| [角色卡 · 樱木真乃](content/mano/character.md) | 语气、阶段态度、OOC 对照、写作自查 |
 
 ## 系统说明
 

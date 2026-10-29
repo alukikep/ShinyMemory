@@ -3,6 +3,7 @@
 > 这里放**内容素材与生产计划**：角色卡、块清单、进度。
 > 数值标准在 [`docs/current/content-standards.md`](../current/content-standards.md)。
 > 审查流程在 [`docs/systems/content-review.md`](../systems/content-review.md)。
+> 角色语气以 **官方剧情中译语料库** 为准，见各角色卡第 12 节。
 
 ## 1. 目录
 

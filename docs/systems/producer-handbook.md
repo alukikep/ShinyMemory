@@ -250,7 +250,7 @@ if (!best || (chain.priority ?? 0) > (best.chain.priority ?? 0)) best = { ... };
 - **`storyChain.test.ts` 有 7 处调用，其中「uses story priority」那条断言的正是“只有最高优先级出现”。这是被编码下来的旧行为，P2 必须把它改成“两条都出现、且按 priority 排序”。**
 - 改完之后 `priority` 从“选谁”变成“排序位”，字段保留，语义写进注释。
 
-**e. 补三个 `Condition`**——现有 16 种，缺的正好是任务最常用的三种：
+**e. 补三个 `Condition`**——当时 16 种，缺的正好是任务最常用的三种（后来内容状态又加了 `varAtLeast` / `varAtMost`，现为 21 种）：
 
 | 新增 | 形态 | 用途 |
 |---|---|---|
@@ -258,7 +258,7 @@ if (!best || (chain.priority ?? 0) > (best.chain.priority ?? 0)) best = { ... };
 | `idolStatus` | `{ kind, idolId?, status }` | 招募之后才出现 |
 | `hasItem` | `{ kind, itemId, count? }` | 拿到某物品之后才出现 |
 
-`idolId` 省略时取当前偶像／链的偶像。三个都只改 `checkCondition` 的一个 `case`，不改存档、不改存档格式。补完之后条件总数 19 种。
+`idolId` 省略时取当前偶像／链的偶像。三个都只改 `checkCondition` 的一个 `case`，不改存档、不改存档格式。
 
 不加这三个，“加一条任务”就只能写“地点 + 时间窗”那一种形状，字段加了等于没加。
 

@@ -1,7 +1,7 @@
 # 计算接口 / 周期触发 / 检定 / 饰品 实施计划
 
 > 状态：**S0–S8 已完成**
-> 设计依据：[统一计算接口与饰品槽](plan-modifier-pipeline.md)、[周期触发 / 检定 / 监听](plan-triggers-and-checks.md)
+> 设计依据：[统一计算接口与饰品槽](../systems/modifiers-and-equipment.md)、[周期触发 / 检定 / 监听](plan-triggers-and-checks.md)
 > 目标版本：`0.19.0`（最后一步才升版本号）
 
 ## 1. 目标

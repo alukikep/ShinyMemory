@@ -1,8 +1,7 @@
 # 内容状态：数值、延迟触发与移动倍率
 
-> 状态：已实施（`0.20.0`，V0–V4 全部完成）
-> 目标版本：`0.20.0`
-> 存档：新增可选字段，`SAVE_VERSION` 不变
+> 当前有效 · `0.20.0` 起
+> 存档：`vars` / `pendingEvents` 为可选字段，不迁移
 > 动机：让"进度条 / 倒计时 / 攒够 N 次"这类内容能写出来，而不引入新玩法
 
 ## 0. 已确认决策
@@ -80,7 +79,7 @@ pendingEvents?: { eventId: string; day: number }[];
 
 ### 2.3 移动耗时接进管线
 
-`moveTo` / `takeTransit` 现在直接用 `WALK_EDGES` / `TRANSIT_ROUTES` 的分钟数，绕过了 `resolveModifiers`。补一个：
+`moveTo` / `takeTransit` 原先直接用 `WALK_EDGES` / `TRANSIT_ROUTES` 的分钟数，绕过了 `resolveModifiers`。现在统一走：
 
 ```ts
 export function travelMinutes(state: GameState, base: number): number {
@@ -102,7 +101,7 @@ export function travelMinutes(state: GameState, base: number): number {
 
 剩下那 10–15% 都不是机制，是文本量。
 
-## 4. 阶段
+## 4. 落地记录
 
 | 阶段 | 内容 | 验收 |
 |---|---|---|

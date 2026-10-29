@@ -1,9 +1,8 @@
-# 周期触发、检定与事件监听计划
+# 周期触发、检定与事件监听
 
-> 状态：已实施（`0.19.0`）
-> 目标版本：`0.19.0`
-> 存档：`scheduledDays` 为新增可选字段，`SAVE_VERSION` 不变
-> 与 [统一计算接口与饰品槽](plan-modifier-pipeline.md) 无依赖，可与 M0/M1 并行
+> 当前有效 · `0.19.0` 起
+> 存档：`scheduledDays` 为可选字段（定时事件同日去重）
+> 相关：[统一计算接口与饰品槽](modifiers-and-equipment.md)
 
 ## 0. 已确认决策
 
@@ -41,18 +40,19 @@ trigger?: EventTrigger;
 
 ### 1.3 检查时机
 
-只有一个入口：`checkForEvent(state, ctx)`。
+只有一个入口：`checkForEvent(state, ctx)`，顺序固定：
 
 ```text
-1. 先查行动锚定的随机池（现有逻辑，不变）
-2. 未命中则查定时池：
+1. 行动锚定的随机池（现有逻辑，不变）
+2. 未命中则查延迟待办（`scheduleEvent` 排的，见 内容状态）
+3. 再未命中则查定时池：
    今天满足周期（weekday 或 everyDays 取模）
    ∧ 当前时间 ≥ atMinute
    ∧ scheduledDays[event.id] ≠ 今天
    ∧ when 条件满足
 ```
 
-放在这里的好处是调用点已经存在（行动结算、事件结束时都会走），不需要新增钩子。
+放在这里的好处是调用点已经存在（行动结算、事件结束时都会走），不需要新增钩子。随机事件优先，所以延迟待办可能晚一次行动生效，但不会丢。
 
 ### 1.4 去重与跳变
 
@@ -155,7 +155,7 @@ export function setGameEventSink(sink?: GameEventSink): void;
 
 将来做成就时，订阅这个 sink 即可，不用回头改 sim。
 
-## 4. 阶段
+## 4. 落地记录
 
 | 阶段 | 内容 | 验收 |
 |---|---|---|

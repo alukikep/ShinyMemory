@@ -1,8 +1,7 @@
-# 统一计算接口与饰品槽计划
+# 统一计算接口与饰品槽
 
-> 状态：已实施（`0.19.0`）
-> 目标版本：`0.19.0`
-> 存档：新增可选字段，`SAVE_VERSION` 不变
+> 当前有效 · `0.19.0` 起
+> 存档：只存 `equipment` / `ownedEquips` / `slots`；倍率是派生值，不入档
 > 前置：无（这是装备、设施、增益的共同底座）
 
 ## 0. 已确认决策
@@ -42,6 +41,7 @@ export type ModifierKey =
   | 'staminaCost'    // 行动体力消耗
   | 'staminaCap'     // 体力上限
   | 'duration'       // 行动时长
+  | 'travel'         // 移动耗时（0.20 起，见内容状态）
   | 'trainingExp'    // 训练获得的 EXP
   | 'workMoney';     // 工作报酬
 
@@ -103,6 +103,7 @@ function modifierSources(state: GameState, ctx): ModifierSource[];
 | `maxStamina` | `Math.round(baseCap × resolveModifiers(state,'staminaCap'))` |
 | `activityStaminaCost` | `Math.max(1, Math.ceil(base × resolveModifiers(state,'staminaCost',{idolId})))` |
 | `activityDuration` | `Math.max(1, Math.round(base × resolveModifiers(state,'duration')))` |
+| `moveTo` / `takeTransit` | `travelMinutes(state, base)` → `Math.max(1, Math.round(base × resolveModifiers(state,'travel')))`（0.20 起） |
 | `applyAttributeExp` | 增加可选参数 `opts?: { training?: boolean }`；`amount = EXP_TIER_VALUES[tier]`，训练时再 `× resolveModifiers(state,'trainingExp',{idolId})`，**取整后**累加 |
 | 工作报酬结算 | 最终金额 `× resolveModifiers(state,'workMoney')` |
 
@@ -144,7 +145,7 @@ equipment?: Partial<Record<EquipSlot, string>>;
 - 新增 `EQUIPS: EquipDef[]` 与 `ContentIndex.equips`，商店加一个 `sells: 'items' | 'equips'` 或独立 `equipShop` 列表。
 - 装备/卸下是命令：`{ type: 'equip'; equipId: string }` / `{ type: 'unequip'; slot: EquipSlot }`。不消耗时间（和购买/赠送一致）。
 
-## 3. 阶段
+## 3. 落地记录
 
 | 阶段 | 内容 | 验收 |
 |---|---|---|

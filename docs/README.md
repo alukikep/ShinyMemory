@@ -7,12 +7,8 @@
 | 文档 | 用途 |
 |---|---|
 | [当前路线图](current/roadmap.md) | 当前进度、下一步计划、优先级和开放问题 |
-| [统一计算接口与饰品槽计划](current/plan-modifier-pipeline.md) | 倍率管线、饰品槽，设计中 |
-| [周期触发 / 检定 / 监听计划](current/plan-triggers-and-checks.md) | 定时事件、行动检定、成就接口，设计中 |
-| [四项实施计划](current/impl-modifiers-equipment-checks.md) | S0–S8 阶段拆解，待检查 |
 | [未来需求](current/future-requirements.md) | 已确认但暂不实现的功能需求 |
 | [内容数值标准](current/content-standards.md) | 时长、体力、金钱的取值规范 |
-| [内容状态原语计划](current/plan-content-state.md) | 数值变量、延迟触发、移动倍率，待确认 |
 | [自动验收](current/acceptance.md) | 命令、测试文件、状态桥与编写约定 |
 
 ## 系统说明
@@ -22,6 +18,9 @@
 | 文档 | 用途 |
 |---|---|
 | [制作人手册](systems/producer-handbook.md) | 剧情链投影、未满足条件的人话、调试口径 |
+| [统一计算接口与饰品槽](systems/modifiers-and-equipment.md) | 倍率管线、饰品槽、分解面板 |
+| [周期触发、检定与事件监听](systems/checks-and-triggers.md) | 定时事件、掷骰成败分支、成就接口 |
+| [内容状态](systems/content-state.md) | 数值变量、延迟触发、移动倍率 |
 | [内容审查系统](systems/content-review.md) | 草稿、批注、审批、approved 载入 |
 | [偶像日程系统](systems/idol-schedule.md) | 星期模板、动态覆盖、七天窗口 |
 | [物品与商店系统](systems/item-economy.md) | 物品、购买、背包、礼物 |
@@ -37,6 +36,7 @@
 - [统一属性与上下文整理计划](archive/plan-unified-attributes.md) — 已完成的属性重构
 - [制作人手册实施计划](archive/impl-producer-handbook.md) — 已完成的逐任务拆解
 - [验收方案选型](archive/acceptance-plan.md) — Playwright 选型与早期拆分
+- [四项扩展实施计划](archive/impl-modifiers-equipment-checks.md) — 倍率/饰品/检定/触发的逐阶段拆解
 - [旧路线图 v0.5](archive/roadmap-v0.5.md)
 - [Phase C 计划](archive/phase-c-plan.md)
 - [Phase C 后路线图](archive/post-phase-c-roadmap.md)

@@ -62,6 +62,10 @@ Hiori/Meguru 只存在于 `content-fixture`，用于多偶像架构回归，不�
 - 物品/商店/礼物
 - 内容审查
 - 制作人手册（剧情链投影、受阻原因）
+- 倍率管线与饰品槽（体力消耗 / 时长 / 移动 / 训练 EXP）
+- 行动检定（掷骰 + 成败分支）
+- 周期触发与延迟触发（`EventDef.trigger` / `scheduleEvent`）
+- 数值变量 `vars`（进度条、阶段、销量、工时）
 - 剧情链调试表（`?debug=1`）
 - 自动存档 + 手动存档
 - 内容纪元
@@ -71,8 +75,8 @@ Hiori/Meguru 只存在于 `content-fixture`，用于多偶像架构回归，不�
 ### 当前验收
 
 ```text
-240 个 Vitest 测试
-17 条引擎 E2E
+283 个 Vitest 测试
+19 条引擎 E2E
 3 条内容 fixture E2E
 1 条正式序章 E2E
 2 条审查 E2E
@@ -203,20 +207,18 @@ fixture build
 
 ### P2：计算接口 / 饰品 / 检定 / 周期触发 · 已完成
 
-四项已确认要做，方案文档：
+四项已确认要做，系统说明：
 
-- [统一计算接口与饰品槽](plan-modifier-pipeline.md)：`resolveModifiers` 单一入口，同类相加、跨类相乘、只取整一次；饰品槽是第一个使用者。
-- [周期触发 / 检定 / 监听](plan-triggers-and-checks.md)：`EventDef.trigger`（每周或每 N 天到点）、`ActivityDef.check`（掷骰 + 成败分支）、`GameEvent` sink（成就接口，只发不存）。
+- [统一计算接口与饰品槽](../systems/modifiers-and-equipment.md)：`resolveModifiers` 单一入口，同类相加、跨类相乘、只取整一次；饰品槽是第一个使用者。
+- [周期触发与检定](../systems/checks-and-triggers.md)：`EventDef.trigger`（每周或每 N 天到点）、`ActivityDef.check`（掷骰 + 成败分支）、`GameEvent` sink（成就接口，只发不存）。
 
-顺序：计算接口 M0/M1 是纯重构，先行；饰品 M2–M4 依赖它；周期触发与检定相互独立，可与 M0/M1 并行。
-
-阶段拆解与完成记录见 [四项实施计划](impl-modifiers-equipment-checks.md)。正式内容（饰品、检定行动）本轮不加，验证留在 fixture。
+阶段拆解与完成记录见 [四项扩展实施计划](../archive/impl-modifiers-equipment-checks.md)。正式内容（饰品、检定行动）本轮不加，验证留在 fixture。
 
 明确不做：遭遇系统（与当前玩法不兼容）、成就本体。
 
 ### P2：内容状态原语 · 已完成
 
-三种 DoL 式玩法（咖啡馆、农场、敲门杂活）考察下来，缺的是同一块拼图：**通用数值状态**。方案见 [内容状态原语计划](plan-content-state.md)。
+三种 DoL 式玩法（咖啡馆、农场、敲门杂活）考察下来，缺的是同一块拼图：**通用数值状态**。系统说明见 [内容状态](../systems/content-state.md)。
 
 - `GameState.vars: Record<string, number>` + `varAtLeast` 条件 + `var` 效果 —— 解锁进度条、阶段、销量、累计工时
 - `scheduleEvent` 一次性延迟触发 —— 解锁"工期 N 天"
@@ -318,18 +320,24 @@ WING 竞赛系统
 | 2026-10-28 | v1.8 | 制作人手册：剧情链投影、`blocked` 原因派生、`getEligibleStories` 多链并存、三个新条件 |
 | 2026-10-28 | v1.9 | 剧情链可观测：`evaluateStoryChain` 单一判定、`getStoryTriggerReport` 调试面板、体检补链的 flag 与条件引用检查 |
 | 2026-10-28 | v2.0 | 文档整理：已完成计划移入归档，手册转为系统说明，验收文档重写为当前状态 |
-| 2026-10-29 | v2.4 | 内容状态原语完成：vars、延迟触发、travel 倍率，版本 0.20.0 |
-| 2026-10-29 | v2.3 | 确认内容状态原语：vars、延迟触发、travel 倍率；只做能力不做内容 |
-| 2026-10-29 | v2.2 | S0–S8 全部完成：倍率管线、周期触发、行动检定、饰品槽，版本 0.19.0 |
 | 2026-10-29 | v2.1 | 确认计算接口、饰品槽、检定、周期触发四项；成就只留监听接口；遭遇系统不做 |
+| 2026-10-29 | v2.2 | S0–S8 全部完成：倍率管线、周期触发、行动检定、饰品槽，版本 0.19.0 |
+| 2026-10-29 | v2.3 | 确认内容状态原语：vars、延迟触发、travel 倍率；只做能力不做内容 |
+| 2026-10-29 | v2.4 | 内容状态原语完成：vars、延迟触发、travel 倍率，版本 0.20.0 |
+| 2026-10-29 | v2.5 | 文档同步：三份已实施计划转为系统说明，实施计划归档 |
 
 ## 8. 文档位置
 
 ```text
-docs/README.md                 文档入口
-docs/current/roadmap.md        本文件
+docs/README.md                         文档入口
+docs/current/roadmap.md                本文件
 docs/current/future-requirements.md
-docs/current/acceptance.md
-docs/systems/                  仍在使用中的系统说明
-docs/archive/                  已完成方案、旧设计与历史决策
+docs/current/content-standards.md      内容数值标准
+docs/current/acceptance.md             命令与测试清单
+docs/systems/                          仍在使用中的系统说明
+  producer-handbook.md                 制作人手册
+  modifiers-and-equipment.md           倍率管线与饰品槽
+  checks-and-triggers.md               周期触发、检定、监听
+  content-state.md                     数值变量、延迟触发、移动倍率
+docs/archive/                          已完成方案、旧设计与历史决策
 ```

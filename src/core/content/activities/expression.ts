@@ -6,11 +6,11 @@ const card: ActivityDef = {
   "description": "镜头、眼神、把一句话说进别人心里。",
   "kind": "training",
   "locations": ["practice_room"],
-  "durationMinutes": 120,
+  "durationMinutes": 30,
   "timeWindows": [{ "fromMinute": 480, "toMinute": 1200 }],
   "cost": {
-    "money": 500,
-    "stamina": 12
+    "money": 120,
+    "stamina": 10
   },
   "effects": [
     {
@@ -21,7 +21,7 @@ const card: ActivityDef = {
     {
         "kind": "sharedStat",
         "stat": "stress",
-        "delta": 7
+        "delta": 4
       }
   ],
   "resultTexts": [

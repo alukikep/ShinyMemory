@@ -7,10 +7,10 @@ const card: ActivityDef = {
   "kind": "bond",
   "target": "present-idol",
   "locations": ["office", "practice_room", "studio", "home"],
-  "durationMinutes": 120,
+  "durationMinutes": 30,
   "timeWindows": [{ "fromMinute": 480, "toMinute": 1320 }],
   "cost": {
-    "stamina": 10
+    "stamina": 6
   },
   "effects": [
     {
@@ -21,12 +21,12 @@ const card: ActivityDef = {
     {
         "kind": "sharedStat",
         "stat": "stress",
-        "delta": -10
+        "delta": -6
       },
     {
         "kind": "sharedStat",
         "stat": "stamina",
-        "delta": 5
+        "delta": 2
       }
   ],
   "resultTexts": [

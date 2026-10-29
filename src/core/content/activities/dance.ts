@@ -6,11 +6,11 @@ const card: ActivityDef = {
   "description": "同一个转身，练到不用想为止。",
   "kind": "training",
   "locations": ["practice_room"],
-  "durationMinutes": 120,
+  "durationMinutes": 30,
   "timeWindows": [{ "fromMinute": 480, "toMinute": 1200 }],
   "cost": {
-    "money": 500,
-    "stamina": 18
+    "money": 120,
+    "stamina": 15
   },
   "effects": [
     {
@@ -21,7 +21,7 @@ const card: ActivityDef = {
     {
         "kind": "sharedStat",
         "stat": "stress",
-        "delta": 10
+        "delta": 6
       }
   ],
   "resultTexts": [

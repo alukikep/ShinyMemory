@@ -6,11 +6,11 @@ const card: ActivityDef = {
   "description": "气息、音准、把一句歌唱完整。",
   "kind": "training",
   "locations": ["practice_room"],
-  "durationMinutes": 120,
+  "durationMinutes": 30,
   "timeWindows": [{ "fromMinute": 480, "toMinute": 1200 }],
   "cost": {
-    "money": 500,
-    "stamina": 15
+    "money": 120,
+    "stamina": 12
   },
   "effects": [
     {
@@ -21,7 +21,7 @@ const card: ActivityDef = {
     {
         "kind": "sharedStat",
         "stat": "stress",
-        "delta": 8
+        "delta": 5
       }
   ],
   "resultTexts": [

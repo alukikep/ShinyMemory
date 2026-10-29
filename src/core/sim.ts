@@ -1706,6 +1706,19 @@ export function travelMinutes(state: GameState, base: number): number {
   return Math.max(1, Math.round(base * resolveModifiers(state, 'travel')));
 }
 
+/**
+ * 到达之后的检查：先看到达事件，再看已到期的延迟事件与定时事件。
+ * 移动会让时间走一段，所以「到点」的戏在这里补结算，不必等下一个行动。
+ */
+function afterArrival(state: GameState): GameState {
+  const result = checkForEvent(
+    state,
+    { locationId: state.locationId },
+    { pool: 'arrival' },
+  );
+  return result.event ? result.state : state;
+}
+
 export function moveTo(state: GameState, locationId: string): GameState {
   if (state.phase !== 'plan') return state;
   const location = CONTENT_INDEX.locations.get(locationId);
@@ -1721,7 +1734,7 @@ export function moveTo(state: GameState, locationId: string): GameState {
 
   const advanced = advanceTime(next, travelMinutes(next, edge.minutes));
   advanced.phase = 'plan';
-  return advanced;
+  return afterArrival(advanced);
 }
 
 export function travelTo(state: GameState, locationId: string): GameState {
@@ -1729,8 +1742,11 @@ export function travelTo(state: GameState, locationId: string): GameState {
   if (path.length === 0) return state;
   let current = state;
   for (const step of path.slice(1)) {
-    current = moveTo(current, step);
-    if (current.locationId !== step) return state;
+    // 上一跳触发了事件：停在这里，等事件结算完再继续。
+    if (current.phase !== 'plan') return current;
+    const moved = moveTo(current, step);
+    if (moved.locationId !== step) return current;
+    current = moved;
   }
   return current;
 }
@@ -1757,7 +1773,7 @@ export function takeTransit(state: GameState, routeId: string): GameState {
 
   const advanced = advanceTime(next, travelMinutes(next, route.minutes));
   advanced.phase = 'plan';
-  return advanced;
+  return afterArrival(advanced);
 }
 
 export function enterNpc(state: GameState, actorId: string): GameState {
@@ -2305,7 +2321,19 @@ function buildPool(ctx: EventContext): EventDef[] {
     }
   }
 
-  return [...pool].filter((event) => !event.trigger);
+  return [...pool].filter(
+    (event) => !event.trigger && event.entry?.kind !== 'arrival',
+  );
+}
+
+/**
+ * 到达某地时可以考虑的事件。只看显式写了 `entry.kind = 'arrival'` 的，
+ * 不碰行动后随机池 —— 否则所有「做完某事」的戏都会变成「走进来就中」。
+ */
+function buildArrivalPool(): EventDef[] {
+  return [...CONTENT_INDEX.events.values()].filter(
+    (event) => event.entry?.kind === 'arrival' && !event.trigger,
+  );
 }
 
 /** 到点的定时事件：周期、时间、当日去重、when 条件。 */
@@ -2456,15 +2484,23 @@ export function checkPendingEvents(state: GameState): EventCheckResult {
   return { state: next, event: picked.event };
 }
 
+export type EventCheckOptions = {
+  /** 用哪个池子挑第一个候选；默认 `action`（行动后随机池）。 */
+  pool?: 'action' | 'arrival';
+};
+
 export function checkForEvent(
   state: GameState,
   ctx: EventContext = {},
+  options: EventCheckOptions = {},
 ): EventCheckResult {
   const context: EventContext = {
     ...ctx,
     locationId: ctx.locationId ?? state.locationId,
   };
-  const random = checkEventCandidates(state, buildPool(context), context);
+  const candidates =
+    options.pool === 'arrival' ? buildArrivalPool() : buildPool(context);
+  const random = checkEventCandidates(state, candidates, context);
   if (random.event) return random;
 
   const pending = checkPendingEvents(random.state);

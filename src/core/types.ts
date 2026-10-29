@@ -505,7 +505,9 @@ export type EventEntry =
       activityId: string;
       outcome: 'success' | 'failure';
     }
-  | { kind: 'chain' };
+  | { kind: 'chain' }
+  /** 到达某个地点时触发；不参与行动后的随机池。 */
+  | { kind: 'arrival' };
 
 /** 跟时间走的触发；带 trigger 的事件不参与行动后的随机池。 */
 export type EventTrigger = {

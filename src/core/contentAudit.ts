@@ -249,6 +249,31 @@ export function auditContent(): ContentIssue[] {
   // ---- 组合戏规则与预算 ----
   const budget = new Map<string, { cast: number; generic: number }>();
   for (const event of eventIds.values()) {
+    const isArrival = event.entry?.kind === 'arrival';
+    if (isArrival) {
+      if (event.after || event.afterNpc || event.afterIdol) {
+        push(
+          'error',
+          'arrival-anchor',
+          `${event.id} 是到达事件，不会经过行动后的锚点判定，after/afterNpc/afterIdol 永远不会命中`,
+        );
+      }
+      if (event.trigger) {
+        push(
+          'error',
+          'arrival-trigger',
+          `${event.id} 同时写了 arrival 和 trigger：定时事件不走到达池，请二选一`,
+        );
+      }
+      if (event.cooldownActions) {
+        push(
+          'warning',
+          'arrival-cooldown',
+          `${event.id} 的 cooldownActions 按行动数计，而移动不算行动，冷却几乎不会推进；到达事件建议用 once 或 chance`,
+        );
+      }
+    }
+
     const isPair = Boolean(event.cast) || event.castSize !== undefined;
     if (!isPair) continue;
 
@@ -268,7 +293,9 @@ export function auditContent(): ContentIssue[] {
 
     const anchor = anchorOf(event);
     if (!anchor) {
-      push('warning', 'pair-anchor', `${event.id} 是组合戏但没有 after 锚点`);
+      if (!isArrival) {
+        push('warning', 'pair-anchor', `${event.id} 是组合戏但没有 after 锚点`);
+      }
       continue;
     }
     const entry = budget.get(anchor) ?? { cast: 0, generic: 0 };

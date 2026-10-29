@@ -222,6 +222,7 @@ openDialogue(state, {
 
 - 引用完整性：`nextEventId`、`choice.nextEventId`、`choice.dialogueId`、`after.ids`、`afterNpc.ids`、`afterIdol.ids`、活动地点、剧情链的对话与地点、对话参与者。
 - 组合戏规则：`cast` / `castSize` 必须是 2；组合戏必须带 `after` 锚点。
+- 到达事件规则：不能带 `after` / `afterNpc` / `afterIdol`（永不命中）、不能同时带 `trigger`、`cooldownActions` 报 warning（移动不算行动）。
 - 内容预算：每个锚点的专属双人剧情 ≤ 10、通用 ≤ 3。
 - flag 一致性：条件读取了从未被写入的 flag 会告警（`test_` 前缀豁免，作为测试钩子）。
 

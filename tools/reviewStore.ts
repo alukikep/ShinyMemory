@@ -45,11 +45,29 @@ function fileFor(status: ReviewStatus, id: string): string {
   return path.join(CONTENT_ROOT, statusDir(status), `${id}.json`);
 }
 
+/**
+ * 写文件一律「临时文件 + rename」。
+ *
+ * Windows 上 rename 偶尔会因为文件正在被扫描（杀毒、索引、Vite 的 watcher）
+ * 报 EPERM/EBUSY，所以带几次退避重试；重试都失败才抛。
+ */
 async function writeJson(filePath: string, value: unknown): Promise<void> {
   const temporary = `${filePath}.tmp-${process.pid}-${Date.now()}`;
   await fs.writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
   await fs.rm(filePath, { force: true });
-  await fs.rename(temporary, filePath);
+
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    try {
+      await fs.rename(temporary, filePath);
+      return;
+    } catch (error) {
+      lastError = error;
+      await new Promise((resolve) => setTimeout(resolve, 30 * (attempt + 1)));
+    }
+  }
+  await fs.rm(temporary, { force: true });
+  throw lastError;
 }
 
 function normalizeDraft(

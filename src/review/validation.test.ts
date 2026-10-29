@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PRODUCTION_PACK } from '../core/productionPack';
+import { BASE_PACK } from '../core/content/basePack';
 import type { ReviewDraft, ReviewKind } from './types';
 import { validateReviewDraft } from './validation';
 
@@ -19,9 +19,12 @@ function draft(
   };
 }
 
+/** 校验基准固定为不带 approved 的内容包。 */
+const check = (draft: ReviewDraft) => validateReviewDraft(draft, BASE_PACK);
+
 describe('review validation', () => {
   it('accepts a valid event draft', () => {
-    const result = validateReviewDraft(
+    const result = check(
       draft('event', {
         id: 'evt.test',
         title: '测试事件',
@@ -40,7 +43,7 @@ describe('review validation', () => {
   });
 
   it('rejects a missing event result and unknown effect', () => {
-    const result = validateReviewDraft(
+    const result = check(
       draft('event', {
         id: 'evt.test',
         title: '测试事件',
@@ -60,7 +63,7 @@ describe('review validation', () => {
   });
 
   it('accepts a valid job and rejects a missing location', () => {
-    const valid = validateReviewDraft(
+    const valid = check(
       draft('job', {
         id: 'job.test',
         name: '测试工作',
@@ -74,7 +77,7 @@ describe('review validation', () => {
     );
     expect(valid.ok).toBe(true);
 
-    const invalid = validateReviewDraft(
+    const invalid = check(
       draft('job', {
         id: 'job.test',
         name: '测试工作',
@@ -92,7 +95,7 @@ describe('review validation', () => {
   });
 
   it('accepts a valid dialogue and rejects broken node references', () => {
-    const valid = validateReviewDraft(
+    const valid = check(
       draft('dialogue', {
         id: 'dialogue.test',
         idolId: 'mano',
@@ -109,7 +112,7 @@ describe('review validation', () => {
     );
     expect(valid.ok).toBe(true);
 
-    const invalid = validateReviewDraft(
+    const invalid = check(
       draft('dialogue', {
         id: 'dialogue.test',
         idolId: 'missing',
@@ -132,7 +135,7 @@ describe('review validation', () => {
   });
 
   it('accepts modern field usage that the old whitelist rejected', () => {
-    const result = validateReviewDraft(
+    const result = check(
       draft('event', {
         id: 'evt.modern',
         title: '现代写法',
@@ -158,7 +161,7 @@ describe('review validation', () => {
   });
 
   it('rejects unknown condition and effect kinds', () => {
-    const result = validateReviewDraft(
+    const result = check(
       draft('event', {
         id: 'evt.bad',
         title: '坏写法',
@@ -187,7 +190,7 @@ describe('review validation', () => {
         choices: [{ label: '选项', result: '结果', effects: [] }],
       }),
       {
-        ...PRODUCTION_PACK,
+        ...BASE_PACK,
         events: [
           {
             id: 'evt.dupe',
@@ -204,7 +207,7 @@ describe('review validation', () => {
   });
 
   it('accepts a valid activity and rejects a bad kind', () => {
-    const valid = validateReviewDraft(
+    const valid = check(
       draft('activity', {
         id: 'activity.test',
         name: '测试行动',
@@ -219,7 +222,7 @@ describe('review validation', () => {
     );
     expect(valid.ok).toBe(true);
 
-    const invalid = validateReviewDraft(
+    const invalid = check(
       draft('activity', {
         id: 'activity.test',
         name: '测试行动',
@@ -239,7 +242,7 @@ describe('review validation', () => {
   });
 
   it('accepts a valid story chain and rejects invalid steps', () => {
-    const valid = validateReviewDraft(
+    const valid = check(
       draft('story', {
         id: 'story.test',
         idolId: 'mano',
@@ -256,7 +259,7 @@ describe('review validation', () => {
     );
     expect(valid.ok).toBe(true);
 
-    const invalid = validateReviewDraft(
+    const invalid = check(
       draft('story', {
         id: 'story.test',
         idolId: 'missing',

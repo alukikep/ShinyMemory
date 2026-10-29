@@ -130,6 +130,7 @@ test('creates, revises, resubmits and approves an event', async ({ page }) => {
 test('creates and approves dialogue and story drafts', async ({ page }) => {
   await page.goto('/review.html');
 
+  // 先把两条都建好再走审批，避免"通过 → 新建"这种交错动作。
   await page.getByRole('button', { name: '新建草稿' }).click();
   await page.locator('.review-modal select').selectOption('dialogue');
   await page.locator('.review-modal input').fill('E2E 审查对话');
@@ -152,8 +153,6 @@ test('creates and approves dialogue and story drafts', async ({ page }) => {
   );
   await page.getByRole('button', { name: '保存草稿' }).first().click();
   await expect(page.locator('.review-editor')).toHaveCount(0);
-  await page.getByRole('button', { name: '通过' }).click();
-  await expect(page.locator('.review-flash')).toContainText('已通过');
 
   await page.getByRole('button', { name: '新建草稿' }).click();
   await page.locator('.review-modal select').selectOption('story');
@@ -181,22 +180,33 @@ test('creates and approves dialogue and story drafts', async ({ page }) => {
   );
   await page.getByRole('button', { name: '保存草稿' }).first().click();
   await expect(page.locator('.review-editor')).toHaveCount(0);
+
+  // 先过对话，剧情链才引用得到它。
+  await openInTab(page, /待审查/, 'E2E 审查对话');
   await page.getByRole('button', { name: '通过' }).click();
   await expect(page.locator('.review-flash')).toContainText('已通过');
+  await openInTab(page, /已通过/, 'E2E 审查对话');
 
-  const approved = await fs.readdir(
-    path.join(ROOT, 'content-review', 'approved'),
-  );
-  const texts = await Promise.all(
-    approved
-      .filter((name) => name.endsWith('.json'))
-      .map((name) =>
-        fs.readFile(
-          path.join(ROOT, 'content-review', 'approved', name),
-          'utf8',
-        ),
-      ),
-  );
-  expect(texts.some((text) => text.includes('E2E 审查对话'))).toBe(true);
-  expect(texts.some((text) => text.includes('E2E 审查剧情链'))).toBe(true);
+  await openInTab(page, /待审查/, 'E2E 审查剧情链');
+  await page.getByRole('button', { name: '通过' }).click();
+
+  // 审批是异步的，落盘会略晚于界面提示；轮询到两条都出现。
+  const approvedDir = path.join(ROOT, 'content-review', 'approved');
+  await expect
+    .poll(
+      async () => {
+        const names = (await fs.readdir(approvedDir)).filter((name) =>
+          name.endsWith('.json'),
+        );
+        const texts = await Promise.all(
+          names.map((name) => fs.readFile(path.join(approvedDir, name), 'utf8')),
+        );
+        return [
+          texts.some((text) => text.includes('E2E 审查对话')),
+          texts.some((text) => text.includes('E2E 审查剧情链')),
+        ];
+      },
+      { timeout: 10_000 },
+    )
+    .toEqual([true, true]);
 });

@@ -31,14 +31,27 @@ content-review/
   archived/    历史样例，不参与任何流程
 ```
 
-`approved/` 是**唯一**进入游戏的出口，两个入口读它：
+`approved/` 是**唯一**进入游戏的出口。它不是被运行时读取的，而是**生成**成代码：
 
-| 读法 | 谁用 | 说明 |
-|---|---|---|
-| `import.meta.glob('../../content-review/approved/*.json')` | 游戏本体（Vite 构建 / dev） | `src/core/content/approved.ts` |
-| 直接读文件系统 | `content:validate` / `content:audit` | `tsx` 环境里没有 `import.meta.glob` |
+```text
+content-review/approved/*.json
+        │  npm run content:sync（构建门会自动跑，审批时也会自动跑）
+        ▼
+src/core/content/approved.generated.ts   ← 不要手改
+        │
+        ▼
+PRODUCTION_PACK = BASE_PACK + approved（游戏加载的就是它）
+```
 
-两边都用同一个 `packApprovedFiles()` 解析，结果一致。fixture 包**故意**不读 approved，单元测试不受工作区状态影响。
+| 概念 | 是什么 |
+|---|---|
+| `BASE_PACK` | 只用 TS 写死的内容，**不含** approved |
+| `PRODUCTION_PACK` | `BASE_PACK` + approved，游戏实际加载的包 |
+| `approved.generated.ts` | 由 `content:sync` 生成，审批通过后自动更新 |
+
+构建门（`content:validate`）和审查台都用 `BASE_PACK` 做基准，再把 approved 合上去——否则 approved 会被算两次，报重复 id。
+
+> 为什么不用 `import.meta.glob`：它在**构建产物运行时不存在**，任何 `typeof` 判空都会让整批 approved 静默变空；而无头脚本（`tsx`、构建门、vite 配置）里它又完全不存在。生成文件对两边都成立。这条踩过一次，`tests/prologue/approved.spec.ts` 是它的看门测试。
 
 ## 3. 支持的类型
 

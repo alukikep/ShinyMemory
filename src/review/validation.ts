@@ -1,7 +1,6 @@
 import { auditPack } from '../core/contentAudit.js';
 import { buildContentIndex, type ContentPack } from '../core/contentIndexCore.js';
-import { packApprovedFiles } from '../core/content/approved.js';
-import { PRODUCTION_PACK } from '../core/productionPack.js';
+import { packApprovedFiles } from '../core/content/approvedPacking.js';
 import { mergeApprovedContent } from './approval.js';
 import type { ReviewDraft } from './types.js';
 
@@ -394,7 +393,7 @@ export function validateDraftShape(draft: ReviewDraft): string[] {
 
 export function validateReviewDraft(
   draft: ReviewDraft,
-  base: ContentPack = PRODUCTION_PACK,
+  base: ContentPack,
 ): ReviewValidation {
   const errors = validateDraftShape(draft);
   const approved = packApprovedFiles({ [draft.id]: draft });

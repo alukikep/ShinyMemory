@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { REVIEW_KINDS } from '../../review/types';
-import { packApprovedFiles } from './approved';
+import { packApprovedFiles } from './approvedPacking';
 
 describe('approved content packing', () => {
   it('routes every review kind into its own bucket', () => {

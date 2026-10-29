@@ -1,11 +1,11 @@
 import type {
   ActivityDef,
+  DialogueDef,
   EventDef,
   ItemDef,
   JobDef,
   ShopDef,
 } from '../types';
-import { APPROVED_CONTENT } from './approved';
 import { LOCATIONS } from './locations';
 import { WALK_EDGES } from './map';
 import { TRANSIT_ROUTES } from './transit';
@@ -24,6 +24,13 @@ import free from './activities/free';
 import lookAround from './activities/lookAround';
 import sleep from './activities/sleep';
 
+/**
+ * 只用 TS 写死的内容，**不含**审查台通过的 approved。
+ *
+ * 构建门和审查台拿它当基准（再把 approved 合上去），否则 approved 会被算两次。
+ * 游戏实际使用的是 `PRODUCTION_PACK`（`productionPack.ts`，基准 + approved）。
+ */
+
 export const ACTIVITIES: ActivityDef[] = [
   vocal,
   dance,
@@ -32,29 +39,24 @@ export const ACTIVITIES: ActivityDef[] = [
   free,
   lookAround,
   sleep,
-  ...APPROVED_CONTENT.activities,
 ];
 
 export const EQUIPS = BASE_EQUIPS;
 
-export const EVENTS: EventDef[] = [...APPROVED_CONTENT.events];
+export const EVENTS: EventDef[] = [];
 
-export const JOBS: JobDef[] = [...APPROVED_CONTENT.jobs];
+export const JOBS: JobDef[] = [];
 
-export const ITEMS: ItemDef[] = [...APPROVED_CONTENT.items];
+export const ITEMS: ItemDef[] = [];
 
-export const SHOPS: ShopDef[] = [...APPROVED_CONTENT.shops];
+export const SHOPS: ShopDef[] = [];
 
-export const DIALOGUES = [
+export const DIALOGUES: DialogueDef[] = [
   ...PROLOGUE_DIALOGUES,
   ...MANO_DIALOGUES,
-  ...APPROVED_CONTENT.dialogues,
 ];
 
-export const STORY_CHAIN_DEFS = [
-  ...STORY_CHAINS,
-  ...APPROVED_CONTENT.storyChains,
-];
+export const STORY_CHAIN_DEFS = STORY_CHAINS;
 
 export { STARTING_STATE };
 

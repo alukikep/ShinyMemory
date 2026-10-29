@@ -4,9 +4,10 @@ import type { ReviewKind, ReviewStatus } from '../src/review/types.js';
 import { REVIEW_KINDS } from '../src/review/types.js';
 import { mergeApprovedContent } from '../src/review/approval.js';
 import { validateReviewDraft } from '../src/review/validation.js';
-import { packApprovedFiles } from '../src/core/content/approved.js';
-import { PRODUCTION_PACK } from '../src/core/productionPack.js';
+import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
+import { BASE_PACK } from '../src/core/content/basePack.js';
 import { readApprovedDrafts } from './approvedFiles.js';
+import { syncApprovedContent } from './syncApproved.js';
 import {
   createReviewDraft,
   getReviewDraft,
@@ -31,7 +32,7 @@ async function basePackFor(excludeIds: string[]) {
         .map(({ file, draft }) => [file, draft]),
     ),
   );
-  return mergeApprovedContent(PRODUCTION_PACK, approved).pack;
+  return mergeApprovedContent(BASE_PACK, approved).pack;
 }
 
 const STATUSES = new Set<ReviewStatus>([
@@ -208,6 +209,8 @@ export function reviewApiPlugin(): Plugin {
                 );
               }
             }
+            // approved 目录变了，立刻重新生成给游戏用的模块（dev 下会热更新）。
+            await syncApprovedContent();
             sendJson(response, 200, { draft });
             return;
           }

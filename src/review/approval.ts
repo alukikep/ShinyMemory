@@ -1,5 +1,5 @@
 import type { ContentPack } from '../core/contentIndexCore';
-import type { ApprovedContent } from '../core/content/approved';
+import type { ApprovedContent } from '../core/content/approvedPacking';
 
 export type MergeResult = {
   pack: ContentPack;

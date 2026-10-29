@@ -1,7 +1,7 @@
 import { auditPack } from '../src/core/contentAudit.js';
 import { buildContentIndex } from '../src/core/contentIndexCore.js';
-import { packApprovedFiles } from '../src/core/content/approved.js';
-import { PRODUCTION_PACK } from '../src/core/productionPack.js';
+import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
+import { BASE_PACK } from '../src/core/content/basePack.js';
 import { mergeApprovedContent } from '../src/review/approval.js';
 import { validateDraftShape } from '../src/review/validation.js';
 import { readApprovedDrafts } from './approvedFiles.js';
@@ -20,7 +20,7 @@ for (const { file, draft } of drafts) {
 const approved = packApprovedFiles(
   Object.fromEntries(drafts.map(({ file, draft }) => [file, draft])),
 );
-const { pack, duplicates } = mergeApprovedContent(PRODUCTION_PACK, approved);
+const { pack, duplicates } = mergeApprovedContent(BASE_PACK, approved);
 for (const duplicate of duplicates) {
   errors.push(`ID 与现有内容重复：${duplicate}`);
 }

@@ -41,9 +41,10 @@ function payloadId(payload: unknown): string | undefined {
 }
 
 /**
- * 把 approved 目录里的文件按 kind 分组。
- * 读不了或没有 id 的直接跳过——构建门（content:validate）负责把它们拦下来，
- * 运行时不因为一条坏内容整页白屏。
+ * 把一批 approved 文件按 kind 分组。
+ *
+ * 这个模块**不碰 import.meta.glob**：`tsx` 脚本（内容体检、构建门）也 import 它，
+ * 那些环境里没有 Vite 的 glob。真正的文件读取放在 `approved.ts`。
  */
 export function packApprovedFiles(files: Record<string, unknown>): ApprovedContent {
   const result: ApprovedContent = {
@@ -79,16 +80,3 @@ export function packApprovedFiles(files: Record<string, unknown>): ApprovedConte
 
   return result;
 }
-
-/**
- * Vite 在构建/开发时把 glob 展开成静态导入；`tsx`（内容体检等脚本）里没有
- * `import.meta.glob`，这时退化成空表——那些脚本自己从文件系统读 approved。
- */
-const APPROVED_FILES: Record<string, unknown> =
-  typeof import.meta.glob === 'function'
-    ? (import.meta.glob('../../../content-review/approved/*.json', {
-        eager: true,
-      }) as Record<string, unknown>)
-    : {};
-
-export const APPROVED_CONTENT: ApprovedContent = packApprovedFiles(APPROVED_FILES);

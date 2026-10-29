@@ -2,7 +2,7 @@
   "id": "draft.item.gift_hairclip",
   "kind": "item",
   "title": "发饰",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.item.gift_hairclip",
   "payload": {
@@ -31,11 +31,16 @@
   },
   "annotations": [],
   "createdAt": "2026-10-29T12:54:55.285Z",
-  "updatedAt": "2026-10-29T12:54:55.285Z",
+  "updatedAt": "2026-10-29T13:09:06.019Z",
+  "reviewedAt": "2026-10-29T13:09:06.019Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-29T12:54:55.285Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T13:09:06.019Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.item.gift_flower",
   "kind": "item",
   "title": "花束",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.item.gift_flower",
   "payload": {
@@ -31,11 +31,16 @@
   },
   "annotations": [],
   "createdAt": "2026-10-29T12:54:55.285Z",
-  "updatedAt": "2026-10-29T12:54:55.285Z",
+  "updatedAt": "2026-10-29T13:09:04.887Z",
+  "reviewedAt": "2026-10-29T13:09:04.887Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-29T12:54:55.285Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T13:09:04.887Z"
     }
   ]
 }

@@ -2,7 +2,9 @@ import type {
   ActivityDef,
   DialogueDef,
   EventDef,
+  ItemDef,
   JobDef,
+  ShopDef,
   StoryChainDef,
 } from '../types';
 
@@ -12,6 +14,8 @@ export type ApprovedContent = {
   jobs: JobDef[];
   dialogues: DialogueDef[];
   storyChains: StoryChainDef[];
+  items: ItemDef[];
+  shops: ShopDef[];
 };
 
 type ApprovedDraftFile = {
@@ -48,6 +52,8 @@ export function packApprovedFiles(files: Record<string, unknown>): ApprovedConte
     jobs: [],
     dialogues: [],
     storyChains: [],
+    items: [],
+    shops: [],
   };
 
   for (const key of Object.keys(files).sort()) {
@@ -64,6 +70,10 @@ export function packApprovedFiles(files: Record<string, unknown>): ApprovedConte
       result.dialogues.push(payload as DialogueDef);
     } else if (draft?.kind === 'story') {
       result.storyChains.push(payload as StoryChainDef);
+    } else if (draft?.kind === 'item') {
+      result.items.push(payload as ItemDef);
+    } else if (draft?.kind === 'shop') {
+      result.shops.push(payload as ShopDef);
     }
   }
 

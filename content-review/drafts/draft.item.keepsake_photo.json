@@ -1,0 +1,26 @@
+{
+  "id": "draft.item.keepsake_photo",
+  "kind": "item",
+  "title": "演唱会照片",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.item.keepsake_photo",
+  "payload": {
+    "id": "keepsake.photo",
+    "name": "演唱会照片",
+    "description": "一张从街角照相馆买到的照片，边角有点翘。",
+    "category": "keepsake",
+    "price": 300,
+    "icon": "star",
+    "maxPurchases": 1
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T12:54:55.285Z",
+  "updatedAt": "2026-10-29T12:54:55.285Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T12:54:55.285Z"
+    }
+  ]
+}

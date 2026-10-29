@@ -35,6 +35,8 @@ const KIND_TITLE: Record<ReviewDraft['kind'], string> = {
   job: '工作',
   dialogue: '对话',
   story: '剧情链',
+  item: '物品',
+  shop: '商店',
 };
 
 const ACTIVITY_KIND_OPTIONS = [
@@ -57,7 +59,10 @@ export function ReviewEditor({
     asRecord(draft.payload),
   );
   const [jsonMode, setJsonMode] = useState(
-    draft.kind === 'dialogue' || draft.kind === 'story',
+    draft.kind === 'dialogue' ||
+      draft.kind === 'story' ||
+      draft.kind === 'item' ||
+      draft.kind === 'shop',
   );
   const [jsonText, setJsonText] = useState(
     JSON.stringify(draft.payload, null, 2),
@@ -69,7 +74,12 @@ export function ReviewEditor({
     setTitle(draft.title);
     setPayload(asRecord(draft.payload));
     setJsonText(JSON.stringify(draft.payload, null, 2));
-    setJsonMode(draft.kind === 'dialogue' || draft.kind === 'story');
+    setJsonMode(
+      draft.kind === 'dialogue' ||
+        draft.kind === 'story' ||
+        draft.kind === 'item' ||
+        draft.kind === 'shop',
+    );
     setErrors([]);
   }, [draft.id, draft.title, draft.payload, draft.kind]);
 
@@ -192,7 +202,10 @@ export function ReviewEditor({
 
       {jsonMode ? (
         <>
-          {draft.kind === 'dialogue' || draft.kind === 'story' ? (
+          {draft.kind === 'dialogue' ||
+          draft.kind === 'story' ||
+          draft.kind === 'item' ||
+          draft.kind === 'shop' ? (
             <label className="review-field">
               <span>标题</span>
               <input

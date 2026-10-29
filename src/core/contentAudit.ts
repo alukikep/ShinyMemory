@@ -169,6 +169,18 @@ export function auditPack(index: ContentIndex): ContentIssue[] {
     }
   }
 
+  // 商品货架由商店的 itemIds 决定；物品不反向引用商店，避免两处真相。
+  for (const shop of index.shops.values()) {
+    if (!locationIds.has(shop.locationId)) {
+      push('error', 'location-ref', `${shop.id} 指向不存在的地点 ${shop.locationId}`);
+    }
+    for (const id of shop.itemIds ?? []) {
+      if (!index.items.has(id)) {
+        push('error', 'item-ref', `${shop.id} 上架了不存在的物品 ${id}`);
+      }
+    }
+  }
+
   for (const chain of index.storyChains.values()) {
     auditChain(chain, push, index);
   }

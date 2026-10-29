@@ -21,6 +21,8 @@ const KIND_LABELS: Record<ReviewKind, string> = {
   job: '工作',
   dialogue: '对话',
   story: '剧情链',
+  item: '物品',
+  shop: '商店',
 };
 
 const STATUS_TABS: Array<{ value: ReviewStatus | 'all'; label: string }> = [
@@ -190,6 +192,94 @@ function ActivityPreview({ payload }: { payload: Record<string, unknown> }) {
   );
 }
 
+function ItemPreview({ payload }: { payload: Record<string, unknown> }) {
+  const gift = typeof payload.gift === 'object' && payload.gift !== null
+    ? (payload.gift as Record<string, unknown>)
+    : undefined;
+  const preferences = Array.isArray(gift?.preferences)
+    ? (gift!.preferences as Array<Record<string, unknown>>)
+    : [];
+  return (
+    <div className="review-content">
+      <p className="review-content-text">
+        {typeof payload.description === 'string' && payload.description
+          ? payload.description
+          : '（缺少描述）'}
+      </p>
+      <div className="review-meta-grid">
+        <div>
+          <span>类别</span>
+          <strong>{String(payload.category ?? '—')}</strong>
+        </div>
+        <div>
+          <span>价格</span>
+          <strong>¥{String(payload.price ?? '—')}</strong>
+        </div>
+        <div>
+          <span>限购</span>
+          <strong>{String(payload.maxPurchases ?? '不限')}</strong>
+        </div>
+      </div>
+      {gift ? (
+        <>
+          <h3>赠送效果</h3>
+          <p className="review-content-text">
+            默认信任 tier {String(gift.defaultTrustTier ?? '—')}
+          </p>
+          {preferences.length > 0 ? (
+            <ul className="review-content-text">
+              {preferences.map((preference, index) => (
+                <li key={index}>
+                  {String(preference.idolId)} · tier {String(preference.trustTier)}
+                  {typeof preference.reaction === 'string'
+                    ? ` · ${preference.reaction}`
+                    : ''}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </>
+      ) : null}
+      {payload.shopId ? <JsonBlock label="shopId" value={payload.shopId} /> : null}
+    </div>
+  );
+}
+
+function ShopPreview({ payload }: { payload: Record<string, unknown> }) {
+  const itemIds = Array.isArray(payload.itemIds)
+    ? (payload.itemIds as string[])
+    : [];
+  return (
+    <div className="review-content">
+      <p className="review-content-text">
+        {typeof payload.description === 'string' && payload.description
+          ? payload.description
+          : '（缺少描述）'}
+      </p>
+      <div className="review-meta-grid">
+        <div>
+          <span>地点</span>
+          <strong>{String(payload.locationId ?? '—')}</strong>
+        </div>
+        <div>
+          <span>商品数</span>
+          <strong>{itemIds.length}</strong>
+        </div>
+      </div>
+      <h3>商品</h3>
+      {itemIds.length === 0 ? (
+        <p className="review-empty">还没有上架商品</p>
+      ) : (
+        <ul className="review-content-text">
+          {itemIds.map((id) => (
+            <li key={id}>{id}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 function JobPreview({ payload }: { payload: Record<string, unknown> }) {
   return (
     <div className="review-content">
@@ -348,6 +438,10 @@ function Preview({ draft }: { draft: ReviewDraft }) {
 
       {draft.kind === 'activity' ? (
         <ActivityPreview payload={payload} />
+      ) : draft.kind === 'item' ? (
+        <ItemPreview payload={payload} />
+      ) : draft.kind === 'shop' ? (
+        <ShopPreview payload={payload} />
       ) : draft.kind === 'event' ? (
         <EventPreview payload={payload} />
       ) : draft.kind === 'job' ? (
@@ -724,6 +818,8 @@ export function ReviewApp() {
               >
                 <option value="activity">行动</option>
                 <option value="event">事件</option>
+                <option value="item">物品</option>
+                <option value="shop">商店</option>
                 <option value="job">工作</option>
                 <option value="dialogue">对话</option>
                 <option value="story">剧情链</option>

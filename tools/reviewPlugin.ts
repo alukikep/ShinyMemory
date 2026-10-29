@@ -102,10 +102,13 @@ export function reviewApiPlugin(): Plugin {
               kind !== 'event' &&
               kind !== 'job' &&
               kind !== 'dialogue' &&
-              kind !== 'story'
+              kind !== 'story' &&
+              kind !== 'item' &&
+              kind !== 'shop'
             ) {
               sendJson(response, 400, {
-                error: 'kind must be activity, event, job, dialogue, or story',
+                error:
+                  'kind must be activity, event, job, dialogue, story, item, or shop',
               });
               return;
             }

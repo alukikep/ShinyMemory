@@ -151,6 +151,27 @@ export async function getReviewDraft(id: string): Promise<ReviewDraft | undefine
 
 function defaultPayload(kind: ReviewKind, title: string): Record<string, unknown> {
   const slug = `${Date.now()}`;
+  if (kind === 'item') {
+    return {
+      id: `item.draft.${slug}`,
+      name: title,
+      description: '',
+      category: 'gift',
+      price: 200,
+      shopId: 'shopping_street_gift',
+      maxPurchases: 1,
+      gift: { defaultTrustTier: 1, preferences: [] },
+    };
+  }
+  if (kind === 'shop') {
+    return {
+      id: `shop.draft.${slug}`,
+      name: title,
+      description: '',
+      locationId: 'shopping_street',
+      itemIds: [],
+    };
+  }
   if (kind === 'activity') {
     return {
       id: `activity.draft.${slug}`,
@@ -230,6 +251,8 @@ function defaultPayload(kind: ReviewKind, title: string): Record<string, unknown
 }
 
 function defaultTitle(kind: ReviewKind): string {
+  if (kind === 'item') return '未命名物品';
+  if (kind === 'shop') return '未命名商店';
   if (kind === 'activity') return '未命名行动';
   if (kind === 'job') return '未命名工作';
   if (kind === 'dialogue') return '未命名对话';

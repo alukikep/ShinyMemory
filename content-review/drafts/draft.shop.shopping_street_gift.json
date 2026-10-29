@@ -1,0 +1,30 @@
+{
+  "id": "draft.shop.shopping_street_gift",
+  "kind": "shop",
+  "title": "街角礼品店",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.shop.shopping_street_gift",
+  "payload": {
+    "id": "shopping_street_gift",
+    "name": "街角礼品店",
+    "description": "卖些小礼物和旧照片的店，店主不太打扰客人。",
+    "locationId": "shopping_street",
+    "itemIds": [
+      "gift.flower",
+      "gift.hairclip",
+      "gift.letter",
+      "keepsake.photo",
+      "gift.bird_charm"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T12:54:55.285Z",
+  "updatedAt": "2026-10-29T12:54:55.285Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T12:54:55.285Z"
+    }
+  ]
+}

@@ -280,6 +280,89 @@ function validateStory(payload: Record<string, unknown>, errors: string[]): void
   }
 }
 
+const ITEM_CATEGORIES = ['gift', 'keepsake', 'consumable'] as const;
+const EXP_TIERS = [1, 3, 5, 10, 20] as const;
+
+function validateItem(payload: Record<string, unknown>, errors: string[]): void {
+  requireString(payload.id, 'payload.id', errors);
+  requireString(payload.name, 'payload.name', errors);
+  if (typeof payload.description !== 'string') {
+    errors.push('payload.description 必须是字符串');
+  }
+  if (
+    typeof payload.category !== 'string' ||
+    !(ITEM_CATEGORIES as readonly string[]).includes(payload.category)
+  ) {
+    errors.push(`payload.category 必须是 ${ITEM_CATEGORIES.join(' / ')} 之一`);
+  }
+  if (typeof payload.price !== 'number' || payload.price < 0) {
+    errors.push('payload.price 必须是非负数字');
+  }
+  if (payload.shopId !== undefined && typeof payload.shopId !== 'string') {
+    errors.push('payload.shopId 必须是字符串');
+  }
+  if (payload.maxPurchases !== undefined) {
+    if (
+      typeof payload.maxPurchases !== 'number' ||
+      payload.maxPurchases <= 0
+    ) {
+      errors.push('payload.maxPurchases 必须是正数');
+    }
+  }
+  if (payload.gift !== undefined) {
+    if (!isRecord(payload.gift)) {
+      errors.push('payload.gift 必须是对象');
+      return;
+    }
+    const gift = payload.gift;
+    if (
+      typeof gift.defaultTrustTier !== 'number' ||
+      !(EXP_TIERS as readonly number[]).includes(gift.defaultTrustTier)
+    ) {
+      errors.push('gift.defaultTrustTier 必须是 1 / 3 / 5 / 10 / 20');
+    }
+    if (gift.preferences !== undefined) {
+      if (!Array.isArray(gift.preferences)) {
+        errors.push('gift.preferences 必须是数组');
+      } else {
+        for (const [index, raw] of gift.preferences.entries()) {
+          if (!isRecord(raw)) {
+            errors.push(`gift.preferences[${index}] 必须是对象`);
+            continue;
+          }
+          requireString(raw.idolId, `gift.preferences[${index}].idolId`, errors);
+          if (
+            typeof raw.trustTier !== 'number' ||
+            !(EXP_TIERS as readonly number[]).includes(raw.trustTier)
+          ) {
+            errors.push(
+              `gift.preferences[${index}].trustTier 必须是 1 / 3 / 5 / 10 / 20`,
+            );
+          }
+        }
+      }
+    }
+  }
+}
+
+function validateShop(payload: Record<string, unknown>, errors: string[]): void {
+  requireString(payload.id, 'payload.id', errors);
+  requireString(payload.name, 'payload.name', errors);
+  if (typeof payload.description !== 'string') {
+    errors.push('payload.description 必须是字符串');
+  }
+  requireString(payload.locationId, 'payload.locationId', errors);
+  if (!Array.isArray(payload.itemIds) || payload.itemIds.length === 0) {
+    errors.push('payload.itemIds 至少需要一件商品');
+  } else {
+    for (const [index, id] of payload.itemIds.entries()) {
+      if (typeof id !== 'string' || !id) {
+        errors.push(`itemIds[${index}] 必须是非空字符串`);
+      }
+    }
+  }
+}
+
 const SHAPE_VALIDATORS: Record<
   string,
   (payload: Record<string, unknown>, errors: string[]) => void
@@ -289,6 +372,8 @@ const SHAPE_VALIDATORS: Record<
   job: validateJob,
   dialogue: validateDialogue,
   story: validateStory,
+  item: validateItem,
+  shop: validateShop,
 };
 
 export function validateDraftShape(draft: ReviewDraft): string[] {

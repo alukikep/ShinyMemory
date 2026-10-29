@@ -1,0 +1,41 @@
+{
+  "id": "draft.item.gift_hairclip",
+  "kind": "item",
+  "title": "发饰",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.item.gift_hairclip",
+  "payload": {
+    "id": "gift.hairclip",
+    "name": "发饰",
+    "description": "一枚小小的银色发饰，在灯下会闪一下。",
+    "category": "gift",
+    "price": 800,
+    "icon": "star",
+    "maxPurchases": 1,
+    "gift": {
+      "defaultTrustTier": 1,
+      "preferences": [
+        {
+          "idolId": "mano",
+          "trustTier": 1,
+          "reaction": "真乃把发饰别在头发上，对着橱窗照了照。"
+        },
+        {
+          "idolId": "hiori",
+          "trustTier": 3,
+          "reaction": "灯织捏着发饰看了很久，最后小心地收进了口袋。"
+        }
+      ]
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T12:54:55.285Z",
+  "updatedAt": "2026-10-29T12:54:55.285Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T12:54:55.285Z"
+    }
+  ]
+}

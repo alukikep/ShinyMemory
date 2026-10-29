@@ -53,6 +53,8 @@ export function mergeApprovedContent(
         '剧情链',
         duplicates,
       ),
+      items: mergeList(base.items, approved.items, '物品', duplicates),
+      shops: mergeList(base.shops, approved.shops, '商店', duplicates),
     },
     duplicates,
   };

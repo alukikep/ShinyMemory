@@ -1,0 +1,41 @@
+{
+  "id": "draft.item.gift_flower",
+  "kind": "item",
+  "title": "花束",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.item.gift_flower",
+  "payload": {
+    "id": "gift.flower",
+    "name": "花束",
+    "description": "用浅色包装纸扎好的小花束，适合在见面时递过去。",
+    "category": "gift",
+    "price": 500,
+    "icon": "sparkle",
+    "maxPurchases": 3,
+    "gift": {
+      "defaultTrustTier": 1,
+      "preferences": [
+        {
+          "idolId": "mano",
+          "trustTier": 3,
+          "reaction": "真乃把花抱在怀里，低头闻了很久。"
+        },
+        {
+          "idolId": "hiori",
+          "trustTier": 1,
+          "reaction": "灯织接过花，认真地说了声谢谢。"
+        }
+      ]
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T12:54:55.285Z",
+  "updatedAt": "2026-10-29T12:54:55.285Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T12:54:55.285Z"
+    }
+  ]
+}

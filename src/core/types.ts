@@ -196,6 +196,8 @@ export type GameState = {
   nextLogId: number;
   rng: { seed: number; counter: number };
   pendingActivityId?: string;
+  /** 有检定的行动：这次是成功还是失败。 */
+  pendingActivityPassed?: boolean;
   pendingResults?: ActivityResultEntry[];
   pendingEventId?: string;
   pendingEventIdolId?: string;
@@ -366,6 +368,15 @@ export type ActivityTarget = 'none' | 'present-idol' | 'all-present-idols';
 export type ActivityResultEntry = {
   idolId: string;
   text: string;
+  /** 有检定时记录成败，供结果页显示。 */
+  passed?: boolean;
+};
+
+export type ActivityCheck = {
+  ref: AttributeRefInput;
+  difficulty: Rank;
+  /** 概率微调，单位百分点。 */
+  shift?: number;
 };
 
 export type ActivityDef = {
@@ -379,6 +390,10 @@ export type ActivityDef = {
   timeWindows?: TimeWindow[];
   cost: Cost;
   effects: Effect[];
+  /** 存在时先掷骰：成功走 effects/resultTexts，失败走下面两条。 */
+  check?: ActivityCheck;
+  failureEffects?: Effect[];
+  failureTexts?: string[];
   workReward?: WorkReward;
   workRisk?: WorkRisk;
   requires?: Condition[];

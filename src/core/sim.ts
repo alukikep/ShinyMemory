@@ -1802,12 +1802,40 @@ export function pruneScheduleOverrides(state: GameState): void {
   }
 }
 
+/**
+ * 检定的成功率。同等级 50%，每差一级 ±15%，再按内容给的 shift 微调，
+ * 夹在 5%–95%。界面只显示档位，不显示这个数。
+ */
+export function activityCheckChance(
+  state: GameState,
+  activity: ActivityDef,
+  idolId?: string,
+): number | undefined {
+  const check = activity.check;
+  if (!check) return undefined;
+  const targetId = idolId ?? state.selectedIdolId;
+  const actual = resolveAttribute(state, check.ref, targetId).rank;
+  const raw =
+    0.5 +
+    (rankIndex(actual) - rankIndex(check.difficulty)) * 0.15 +
+    (check.shift ?? 0) / 100;
+  return Math.min(0.95, Math.max(0.05, raw));
+}
+
 function pickActivityResult(
   state: GameState,
   activity: ActivityDef,
   rng: Rng,
   idolId?: string,
+  passed?: boolean,
 ): string {
+  if (passed === false) {
+    const texts =
+      activity.failureTexts?.length
+        ? activity.failureTexts
+        : activity.resultTexts;
+    return rng.pick(texts);
+  }
   const variant = activity.resultVariants?.find((entry) =>
     entry.when.every((condition) =>
       checkCondition(condition, state, { idolId }),
@@ -1856,6 +1884,11 @@ export function applyActivityDef(
   const stressed = next.shared.stress >= 70;
   next.pendingResults = undefined;
 
+  const checkChance = activityCheckChance(state, activity, idolId);
+  const passed = checkChance === undefined ? undefined : rng.chance(checkChance);
+  const activeEffects =
+    passed === false ? (activity.failureEffects ?? []) : activity.effects;
+
   if (activity.kind === 'sleep') {
     const current = next.clock.absoluteMinutes;
     const dayStart = Math.floor(current / MINUTES_PER_DAY) * MINUTES_PER_DAY;
@@ -1894,22 +1927,22 @@ export function applyActivityDef(
       ? activityTargets(state, activity)
       : [idolId];
 
-  const cost = activityCost(state, activity);
+  const cost = activityCost(state, activity, idolId);
   next.money -= cost.money ?? 0;
   next.shared.stamina -= cost.stamina ?? 0;
 
   // 多目标：偶像属性按人各一份；制作人属性、sharedStat、金钱、flag 等只结算一次。
   const isMultiTarget = resolvedTargets.length > 1;
   const perTargetEffects = isMultiTarget
-    ? activity.effects.filter(isIdolAttributeEffect)
-    : activity.effects;
+    ? activeEffects.filter(isIdolAttributeEffect)
+    : activeEffects;
   const sharedEffects = isMultiTarget
-    ? activity.effects.filter((effect) => !isIdolAttributeEffect(effect))
+    ? activeEffects.filter((effect) => !isIdolAttributeEffect(effect))
     : [];
 
   const outcomes = resolvedTargets.map((targetId) => {
     const risk =
-      activity.workRisk && targetId
+      passed !== false && activity.workRisk && targetId
         ? workRiskPreview(next, activity.workRisk, activity.workReward, targetId)
         : undefined;
     const failed = !!risk && risk.chance > 0 && rng.next() < risk.chance;
@@ -1934,6 +1967,7 @@ export function applyActivityDef(
 
   next.actionsTaken += 1;
   next.pendingActivityId = activity.id;
+  next.pendingActivityPassed = passed;
   next.phase = 'activityResult';
 
   const advanced = advanceTime(next, activityDuration(next, activity));
@@ -1974,16 +2008,19 @@ export function applyActivityDef(
 
   const results = outcomes.map((outcome) => ({
     idolId: outcome.idolId,
-    text: pickActivityResult(advanced, activity, rng, outcome.idolId),
+    text: pickActivityResult(advanced, activity, rng, outcome.idolId, passed),
+    passed,
   }));
   advanced.rng.counter = rng.counter;
 
   const tone: LogTone =
-    activity.kind === 'rest' ||
-    activity.kind === 'bond' ||
-    activity.kind === 'explore'
-      ? 'good'
-      : 'info';
+    passed === false
+      ? 'bad'
+      : activity.kind === 'rest' ||
+          activity.kind === 'bond' ||
+          activity.kind === 'explore'
+        ? 'good'
+        : 'info';
 
   if (single) {
     const result = results[0]?.text ?? '';
@@ -1998,6 +2035,7 @@ export function applyActivityDef(
   advanced.pendingResults = results.map((entry) => ({
     idolId: entry.idolId ?? '',
     text: entry.text,
+    passed: entry.passed,
   }));
   const names = results.map(
     (entry) =>
@@ -2367,6 +2405,7 @@ function continueFromActivity(state: GameState): GameState {
   const activityKind = activityId ? getActivity(activityId)?.kind : undefined;
   const next = clone(state);
   next.pendingActivityId = undefined;
+  next.pendingActivityPassed = undefined;
 
   const result = checkForEvent(next, {
     lastActivityId: activityId,

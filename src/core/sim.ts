@@ -51,6 +51,7 @@ import type {
   IdolAttribute,
   IdolStatKey,
   JobAssignment,
+  JobDef,
   IdolState,
   LogTone,
   Modifier,
@@ -751,14 +752,37 @@ export function attendJob(state: GameState, jobId: string): GameState {
 
   const next = clone(state);
   next.selectedIdolId = assignment.idolId;
-  next.money += job.pay;
-  applyEffects(next, job.effects ?? [], { idolId: assignment.idolId });
+
+  // 有检定的工作：出发前掷一次骰，失败按比例结算。
+  const rng = new Rng(next.rng.seed, next.rng.counter);
+  const chance = jobCheckChance(next, job);
+  const passed = chance === undefined ? true : rng.chance(chance);
+  next.rng.counter = rng.counter;
+
+  const ratio = passed ? 1 : Math.min(1, Math.max(0, job.failurePayRatio ?? 0.5));
+  const pay = Math.round(job.pay * ratio);
+  next.money += pay;
+  applyEffects(next, (passed ? job.effects : job.failureEffects) ?? [], {
+    idolId: assignment.idolId,
+  });
   next.clock.absoluteMinutes = Math.max(
     next.clock.absoluteMinutes,
     (assignment.day - 1) * MINUTES_PER_DAY + assignment.toMinute,
   );
   next.jobs = next.jobs.filter((entry) => entry.id !== jobId);
-  addLog(next, `你参与了《${job.name}》。`, 'good');
+
+  const idolName = CONTENT_INDEX.idols.get(assignment.idolId)?.name ?? '';
+  if (chance === undefined) {
+    addLog(next, `你参与了《${job.name}》，拿到 ¥${pay}。`, 'good');
+  } else if (passed) {
+    addLog(next, `《${job.name}》顺利完成，拿到 ¥${pay}。`, 'good');
+  } else {
+    addLog(
+      next,
+      `《${job.name}》没有达到要求，只结算了 ¥${pay}。${idolName}在回程的路上没有说话。`,
+      'bad',
+    );
+  }
 
   return next;
 }
@@ -1984,13 +2008,12 @@ export function pruneScheduleOverrides(state: GameState): void {
  * 检定的成功率。同等级 50%，每差一级 ±15%，再按内容给的 shift 微调，
  * 夹在 5%–95%。界面只显示档位，不显示这个数。
  */
-export function activityCheckChance(
+/** 检定成功率的统一公式：等级差 ×15%，再叠加 shift，夹在 5%–95%。 */
+function checkChance(
   state: GameState,
-  activity: ActivityDef,
+  check: { ref: AttributeRefInput; difficulty: Rank; shift?: number },
   idolId?: string,
-): number | undefined {
-  const check = activity.check;
-  if (!check) return undefined;
+): number {
   const targetId = idolId ?? state.selectedIdolId;
   const actual = resolveAttribute(state, check.ref, targetId).rank;
   const raw =
@@ -1998,6 +2021,22 @@ export function activityCheckChance(
     (rankIndex(actual) - rankIndex(check.difficulty)) * 0.15 +
     (check.shift ?? 0) / 100;
   return Math.min(0.95, Math.max(0.05, raw));
+}
+
+export function activityCheckChance(
+  state: GameState,
+  activity: ActivityDef,
+  idolId?: string,
+): number | undefined {
+  const check = activity.check;
+  return check ? checkChance(state, check, idolId) : undefined;
+}
+
+export function jobCheckChance(
+  state: GameState,
+  job: JobDef,
+): number | undefined {
+  return job.check ? checkChance(state, job.check) : undefined;
 }
 
 /** 界面用档位；不暴露精确概率。 */

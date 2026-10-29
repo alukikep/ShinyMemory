@@ -443,6 +443,13 @@ export type ActivityDef = {
   resultVariants?: { when: Condition[]; text: string }[];
 };
 
+export type JobCheck = {
+  ref: AttributeRefInput;
+  difficulty: Rank;
+  /** 概率微调，单位百分点。 */
+  shift?: number;
+};
+
 export type JobDef = {
   id: string;
   name: string;
@@ -453,6 +460,11 @@ export type JobDef = {
   pay: number;
   label?: string;
   effects?: Effect[];
+  /** 存在时出发前掷骰：成功拿全款，失败按比例结算并走 failureEffects。 */
+  check?: JobCheck;
+  /** 失败时的报酬比例，缺省 0.5。 */
+  failurePayRatio?: number;
+  failureEffects?: Effect[];
 };
 
 export type JobAssignment = {

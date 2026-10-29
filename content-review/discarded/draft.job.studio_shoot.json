@@ -1,0 +1,49 @@
+{
+  "id": "draft.job.studio_shoot",
+  "kind": "job",
+  "title": "摄影棚拍摄",
+  "status": "discarded",
+  "version": 1,
+  "rootId": "draft.job.studio_shoot",
+  "payload": {
+    "id": "job.studio_shoot",
+    "name": "摄影棚拍摄",
+    "description": "杂志内页的一组拍摄。两个小时，灯光和快门都比想象中吵。",
+    "locationId": "studio",
+    "fromMinute": 600,
+    "toMinute": 720,
+    "pay": 1200,
+    "label": "拍摄",
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "expression",
+        "tier": 3
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 6
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T12:54:55.285Z",
+  "updatedAt": "2026-10-29T13:38:06.872Z",
+  "reviewedAt": "2026-10-29T13:38:06.872Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T12:54:55.285Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T13:09:07.458Z"
+    },
+    {
+      "status": "discarded",
+      "at": "2026-10-29T13:38:06.872Z",
+      "note": "已被 draft.job.studio_shoot.v2（v2）替换"
+    }
+  ]
+}

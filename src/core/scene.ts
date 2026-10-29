@@ -10,10 +10,12 @@ import {
   getMinuteOfDay,
 } from './time';
 import { canReplaceDay } from './schedule';
+import { attributeLabel } from './labels';
 import {
   activityAvailability,
   activityCheckChance,
   activityCheckLabel,
+  jobCheckChance,
   activityCost,
   activityDuration,
   activeJobFor,
@@ -222,11 +224,16 @@ function jobActionView(
   for (let offset = 0; offset < 7; offset += 1) {
     const day = startDay + offset;
     if (!canReplaceDay(actor, day, overrides).ok) continue;
+    const chance = jobCheckChance(state, job);
+    const checkHint =
+      job.check && chance !== undefined
+        ? ` · 需要${attributeLabel(job.check.ref)} ${job.check.difficulty}（${activityCheckLabel(chance)}）`
+        : '';
     return {
       id: `job:${job.id}:${day}`,
       command: { type: 'acceptJob', jobId: job.id, day },
       label: `接下：${job.name}`,
-      hint: `${formatCalendarDateFromDay(day, false)} · ${formatClock(job.fromMinute)}–${formatClock(job.toMinute)} · ¥${job.pay.toLocaleString('zh-CN')}`,
+      hint: `${formatCalendarDateFromDay(day, false)} · ${formatClock(job.fromMinute)}–${formatClock(job.toMinute)} · ¥${job.pay.toLocaleString('zh-CN')}${checkHint}`,
       icon: 'star',
       tone: 'work',
     };
@@ -294,7 +301,9 @@ function buildPlan(state: GameState): SceneView {
     .filter(
       (activity) =>
         activity.target !== 'present-idol' &&
-        (activity.target === 'all-present-idols' ||
+        // 训练/工作默认只出现在偶像页；但 target: 'none' 的是制作人自己的活，留在地点页。
+        (activity.target === 'none' ||
+          activity.target === 'all-present-idols' ||
           (activity.kind !== 'training' && activity.kind !== 'work')),
     );
   const actors = buildActorViews(state);

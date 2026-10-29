@@ -1,10 +1,11 @@
 {
-  "id": "draft.job.studio_shoot",
+  "id": "draft.job.studio_shoot.v2",
   "kind": "job",
   "title": "摄影棚拍摄",
   "status": "approved",
-  "version": 1,
+  "version": 2,
   "rootId": "draft.job.studio_shoot",
+  "supersedes": "draft.job.studio_shoot",
   "payload": {
     "id": "job.studio_shoot",
     "name": "摄影棚拍摄",
@@ -24,21 +25,26 @@
         "kind": "sharedStat",
         "stat": "stress",
         "delta": 6
+      },
+      {
+        "kind": "fans",
+        "value": 120
       }
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-29T12:54:55.285Z",
-  "updatedAt": "2026-10-29T13:09:07.458Z",
-  "reviewedAt": "2026-10-29T13:09:07.458Z",
+  "createdAt": "2026-10-29T13:32:34.154Z",
+  "updatedAt": "2026-10-29T13:38:06.844Z",
+  "reviewedAt": "2026-10-29T13:38:06.844Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-29T12:54:55.285Z"
+      "at": "2026-10-29T13:32:34.154Z",
+      "note": "由 draft.job.studio_shoot 修订：加上粉丝增量"
     },
     {
       "status": "approved",
-      "at": "2026-10-29T13:09:07.458Z"
+      "at": "2026-10-29T13:38:06.844Z"
     }
   ]
 }

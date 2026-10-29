@@ -115,9 +115,9 @@ B1 2026-10-29  5 条 / 通过 5 / 打回 0
 ## 9. 现在的位置
 
 - 已确立：角色卡（[mano/character.md](mano/character.md)）、数值档位（[content-standards.md](../current/content-standards.md) §6–§9）
-- 已完成：B1（5 条训练后事件）、P2 数值校准、P3 经济闭环（工作 + 商店 + 5 件物品，12 条全部通过）
-- 🟡 审核中：**P4 粉丝接通**——`draft.job.studio_shoot.v2`（工作加 +120 粉丝）
-  - 这是「修订已通过内容」的第一次实操：v2 的 `supersedes` 指向 v1，通过后 v1 自动转 discarded
-  - 通过前 `content:audit` 会有一条 `fans-source` 警告（全包没有粉丝来源），通过后消失
+- 已完成：B1（5 条训练后事件）、P2 数值校准、P3 经济闭环、P4 粉丝接通（工作 +120 粉，已通过）
+- 🟡 审核中：
+  - `draft.job.studio_shoot.v3`——给工作加属性门槛（表现 E）与失败分支（失败只结 40%，压力 +12）
+  - `draft.activity.daily_errand`——「发传单」，地点页的零工，30 分钟 ¥280，无检定
 - 下一步：P5 真乃的独特性（专属行动 ×3 + 日常话题 ×8）
 - 产能实测：B1 从写稿到进游戏约 1 小时（含一次审查往返），比预估快

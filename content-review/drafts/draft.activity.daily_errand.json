@@ -1,0 +1,32 @@
+{
+  "id": "draft.activity.daily_errand",
+  "kind": "activity",
+  "title": "发传单",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.daily_errand",
+  "payload": {
+    "id": "activity.daily_errand",
+    "name": "发传单",
+    "description": "商业街的店在找人手，站一个下午，按小时结。",
+    "kind": "work",
+    "target": "none",
+    "locations": ["shopping_street", "station"],
+    "durationMinutes": 30,
+    "timeWindows": [{ "fromMinute": 540, "toMinute": 1140 }],
+    "cost": { "stamina": 8 },
+    "effects": [
+      { "kind": "money", "delta": 280 },
+      { "kind": "sharedStat", "stat": "stress", "delta": 3 }
+    ],
+    "resultTexts": [
+      "半个下午过去，手里只剩两张。店主还是按说好的数结了。",
+      "有人接了传单，有人绕开。你数了数剩下的，够交差。",
+      "风把传单吹跑了几张，你追出去两条街。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T20:00:00.000Z",
+  "updatedAt": "2026-10-29T20:00:00.000Z",
+  "history": [{ "status": "review", "at": "2026-10-29T20:00:00.000Z" }]
+}

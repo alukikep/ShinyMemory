@@ -342,6 +342,10 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "kind": "sharedStat",
       "stat": "stress",
       "delta": 6
+    },
+    {
+      "kind": "fans",
+      "value": 120
     }
   ]
 }

@@ -178,6 +178,13 @@ export function auditPack(
     if (!locationIds.has(job.locationId)) {
       push('error', 'location-ref', `${job.id} 指向不存在的地点 ${job.locationId}`);
     }
+    if (job.check && !(job.failureEffects?.length)) {
+      push(
+        'warning',
+        'job-check-branch',
+        `${job.id} 有检定但没有 failureEffects，失败只是少拿钱`,
+      );
+    }
   }
 
   // 粉丝是只增不减的累计值：整包里一条 fans 效果都没有，它就永远是 0。

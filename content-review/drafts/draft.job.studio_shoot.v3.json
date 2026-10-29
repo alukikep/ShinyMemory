@@ -1,11 +1,11 @@
 {
-  "id": "draft.job.studio_shoot.v2",
+  "id": "draft.job.studio_shoot.v3",
   "kind": "job",
   "title": "摄影棚拍摄",
   "status": "review",
-  "version": 2,
+  "version": 3,
   "rootId": "draft.job.studio_shoot",
-  "supersedes": "draft.job.studio_shoot",
+  "supersedes": "draft.job.studio_shoot.v2",
   "payload": {
     "id": "job.studio_shoot",
     "name": "摄影棚拍摄",
@@ -30,16 +30,34 @@
         "kind": "fans",
         "value": 120
       }
+    ],
+    "check": {
+      "ref": "expression",
+      "difficulty": "E",
+      "shift": 0
+    },
+    "failurePayRatio": 0.4,
+    "failureEffects": [
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 12
+      },
+      {
+        "kind": "log",
+        "text": "拍摄方说这组不合用，只能按试用价结算。",
+        "tone": "bad"
+      }
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-29T13:32:34.154Z",
-  "updatedAt": "2026-10-29T13:32:34.154Z",
+  "createdAt": "2026-10-29T13:42:07.967Z",
+  "updatedAt": "2026-10-29T13:42:07.967Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-29T13:32:34.154Z",
-      "note": "由 draft.job.studio_shoot 修订：加上粉丝增量"
+      "at": "2026-10-29T13:42:07.967Z",
+      "note": "v3：加属性门槛与失败分支"
     }
   ]
 }

@@ -13,6 +13,8 @@ const actor: ActorDef = {
       locationId: 'practice_room',
       weekdays: [1, 2, 3, 4, 5],
       label: '练习',
+      // 真乃是新人，行程由制作人安排，可以被工作顶掉。
+      protected: false,
     },
     {
       fromMinute: 14 * 60,
@@ -20,6 +22,7 @@ const actor: ActorDef = {
       locationId: 'studio',
       weekdays: [1, 2, 3, 4, 5],
       label: '收录',
+      protected: false,
     },
     {
       fromMinute: 10 * 60,
@@ -27,6 +30,8 @@ const actor: ActorDef = {
       locationId: 'practice_room',
       weekdays: [6],
       label: '练习',
+      // 真乃是新人，行程由制作人安排，可以被工作顶掉。
+      protected: false,
     },
     {
       fromMinute: 14 * 60,
@@ -34,6 +39,7 @@ const actor: ActorDef = {
       locationId: 'studio',
       weekdays: [6],
       label: '收录',
+      protected: false,
     },
     {
       fromMinute: 10 * 60,

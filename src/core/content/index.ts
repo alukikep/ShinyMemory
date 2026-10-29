@@ -16,6 +16,7 @@ import { MANO_DIALOGUES } from './dialogues/mano';
 import { PROLOGUE_DIALOGUES } from './dialogues/prologue';
 import { STORY_CHAINS } from './storyChains';
 import { STARTING_STATE } from './starting';
+import { ITEMS as BASE_ITEMS, SHOPS as BASE_SHOPS } from './items';
 import vocal from './activities/vocal';
 import dance from './activities/dance';
 import expression from './activities/expression';
@@ -23,6 +24,7 @@ import rest from './activities/rest';
 import free from './activities/free';
 import lookAround from './activities/lookAround';
 import sleep from './activities/sleep';
+import studioShoot from './jobs/studioShoot';
 
 export const ACTIVITIES: ActivityDef[] = [
   vocal,
@@ -39,11 +41,11 @@ export const EQUIPS = BASE_EQUIPS;
 
 export const EVENTS: EventDef[] = [...APPROVED_CONTENT.events];
 
-export const JOBS: JobDef[] = [...APPROVED_CONTENT.jobs];
+export const JOBS: JobDef[] = [studioShoot, ...APPROVED_CONTENT.jobs];
 
-export const ITEMS: ItemDef[] = [];
+export const ITEMS: ItemDef[] = [...BASE_ITEMS];
 
-export const SHOPS: ShopDef[] = [];
+export const SHOPS: ShopDef[] = [...BASE_SHOPS];
 
 export const DIALOGUES = [
   ...PROLOGUE_DIALOGUES,

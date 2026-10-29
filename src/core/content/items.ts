@@ -86,6 +86,26 @@ export const ITEMS: ItemDef[] = [
     shopId: 'shopping_street_gift',
     maxPurchases: 1,
   },
+  {
+    id: 'gift.bird_charm',
+    name: '小鸟挂饰',
+    description: '木头雕的小鸟，尾巴上系着一根细绳。',
+    category: 'gift',
+    price: 600,
+    icon: 'sparkle',
+    shopId: 'shopping_street_gift',
+    maxPurchases: 2,
+    gift: {
+      defaultTrustTier: 1,
+      preferences: [
+        {
+          idolId: 'mano',
+          trustTier: 5,
+          reaction: '呼哇……她捏着小鸟看了很久，最后才想起来说谢谢。',
+        },
+      ],
+    },
+  },
 ];
 
 export const SHOPS: ShopDef[] = [

@@ -51,4 +51,55 @@ describe('content audit', () => {
     expect(codes).toContain('modifier-key');
     expect(codes).toContain('check-branch');
   });
+
+  it('flags idol-exclusive activities that can never appear', () => {
+    const wrongTarget: ActivityDef = {
+      id: 'audit.exclusive.target',
+      name: '专属但地点页',
+      description: '',
+      kind: 'bond',
+      target: 'none',
+      idolIds: ['mano'],
+      durationMinutes: 30,
+      cost: {},
+      effects: [],
+      resultTexts: ['ok'],
+    };
+    const missingIdol: ActivityDef = {
+      id: 'audit.exclusive.idol',
+      name: '专属但人不存在',
+      description: '',
+      kind: 'bond',
+      target: 'present-idol',
+      idolIds: ['nobody'],
+      durationMinutes: 30,
+      cost: {},
+      effects: [],
+      resultTexts: ['ok'],
+    };
+    const badRest: ActivityDef = {
+      id: 'audit.exclusive.rest',
+      name: '专属休息',
+      description: '',
+      kind: 'rest',
+      target: 'present-idol',
+      idolIds: ['mano'],
+      durationMinutes: 30,
+      cost: {},
+      effects: [],
+      resultTexts: ['ok'],
+    };
+    for (const activity of [wrongTarget, missingIdol, badRest]) {
+      CONTENT_INDEX.activities.set(activity.id, activity);
+      registered.push(activity.id);
+    }
+
+    const issues = auditPack(CONTENT_INDEX);
+    const codes = issues.map((issue) => issue.code);
+
+    expect(codes).toContain('idol-ref');
+    expect(
+      issues.filter((issue) => issue.code === 'activity-idol-target'),
+    ).toHaveLength(2);
+  });
 });

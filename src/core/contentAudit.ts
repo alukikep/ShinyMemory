@@ -137,6 +137,30 @@ export function auditPack(index: ContentIndex): ContentIssue[] {
         push('error', 'location-ref', `${activity.id} 指向不存在的地点 ${id}`);
       }
     }
+    if (activity.idolIds) {
+      for (const id of activity.idolIds) {
+        if (!idolIds.has(id)) {
+          push('error', 'idol-ref', `${activity.id} 的专属偶像不存在 ${id}`);
+        }
+      }
+      if (activity.idolIds.length === 0) {
+        push('warning', 'activity-idol-target', `${activity.id} 的 idolIds 是空数组`);
+      }
+      if (activity.target !== 'present-idol' && activity.target !== 'all-present-idols') {
+        push(
+          'warning',
+          'activity-idol-target',
+          `${activity.id} 是专属行动但 target 不是 present-idol / all-present-idols，永远不会出现`,
+        );
+      }
+      if (activity.kind === 'rest' || activity.kind === 'sleep') {
+        push(
+          'warning',
+          'activity-idol-target',
+          `${activity.id} 是 ${activity.kind}，不该做专属`,
+        );
+      }
+    }
   }
 
   for (const job of index.jobs.values()) {

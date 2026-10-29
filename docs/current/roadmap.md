@@ -67,6 +67,7 @@ Hiori/Meguru 只存在于 `content-fixture`，用于多偶像架构回归，不�
 - 周期触发与延迟触发（`EventDef.trigger` / `scheduleEvent`）
 - 到达触发（`entry.kind = 'arrival'`，移动落地与定时结算共用一条检查链）
 - 偶像粉丝数（`IdolState.fans` + `fansAtLeast` / `fansAtMost` + `fans` 效果）
+- 偶像专属行动（`ActivityDef.idolIds`，只在该偶像的互动页出现）
 - 数值变量 `vars`（进度条、阶段、销量、工时）
 - 剧情链调试表（`?debug=1`）
 - 自动存档 + 手动存档
@@ -77,8 +78,8 @@ Hiori/Meguru 只存在于 `content-fixture`，用于多偶像架构回归，不�
 ### 当前验收
 
 ```text
-301 个 Vitest 测试
-19 条引擎 E2E
+313 个 Vitest 测试
+20 条引擎 E2E
 3 条内容 fixture E2E
 1 条正式序章 E2E
 2 条审查 E2E
@@ -353,6 +354,7 @@ WING 竞赛系统
 | 2026-10-29 | v2.6 | 到达触发：移动落地检查到达池、定时事件在移动时也结算，版本 0.21.0 |
 | 2026-10-29 | v2.7 | 偶像粉丝数：`IdolState.fans`、两个条件、一个效果、三处展示，版本 0.22.0 |
 | 2026-10-29 | v2.8 | 审查台修复：approved 载入恢复、校验改为单一来源、新增行动类型，版本 0.23.0 |
+| 2026-10-29 | v2.9 | 偶像专属行动：`ActivityDef.idolIds`、隐藏式过滤、体检三条规则，版本 0.24.0 |
 
 ## 8. 文档位置
 

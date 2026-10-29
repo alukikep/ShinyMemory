@@ -554,6 +554,38 @@ export function ReviewEditor({
 
           <div className="review-editor-section">
             <div className="review-editor-section-head">
+              <h3>专属偶像</h3>
+            </div>
+            <div className="review-location-grid">
+              {IDOLS.map((idol) => {
+                const current = Array.isArray(payload.idolIds)
+                  ? (payload.idolIds as string[])
+                  : [];
+                const checked = current.includes(idol.id);
+                return (
+                  <label className="review-field checkbox" key={idol.id}>
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => {
+                        const next = checked
+                          ? current.filter((id) => id !== idol.id)
+                          : [...current, idol.id];
+                        update('idolIds', next.length > 0 ? next : undefined);
+                      }}
+                    />
+                    <span>{idol.name}</span>
+                  </label>
+                );
+              })}
+            </div>
+            <p className="review-form-note">
+              勾选后这条行动只在这些偶像的互动页出现；留空 = 全员通用。目标必须是“指定在场偶像”或“所有在场偶像”。
+            </p>
+          </div>
+
+          <div className="review-editor-section">
+            <div className="review-editor-section-head">
               <h3>可用地点</h3>
             </div>
             <div className="review-location-grid">

@@ -42,13 +42,15 @@ content-review/
 
 | kind | 表单覆盖 | 只能走高级 JSON |
 |---|---|---|
-| `activity` | 名称 / ID / 描述 / 类型 / 时长 / 目标 / 体力与金钱消耗 / 可用地点（多选）/ 结果文本（可增删） | effects、failureEffects、check、requires |
+| `activity` | 名称 / ID / 描述 / 类型 / 时长 / 目标 / 体力与金钱消耗 / **专属偶像**（多选）/ 可用地点（多选）/ 结果文本（可增删） | effects、failureEffects、check、requires |
 | `event` | 标题 / ID / 正文 / 概率 / 优先级 / once / 权重 / 冷却 / 入口（随机·到达·链）/ 每 N 天 / 到点时刻 / 组合人数 / 固定组合 cast / 选项（标题·提示·结果） | when、after、effects、nextEventId、dialogueId |
 | `job` | 名称 / ID / 描述 / 地点 / 起止时间 / 报酬 | effects |
 | `dialogue` | 纯 JSON | 全部 |
 | `story` | 纯 JSON | 全部 |
 
 预览区按类型渲染成卡片（行动显示时长/消耗/地点/结果文本，事件显示选项与 `when` 摘要），不用回游戏里确认。
+
+**专属偶像**（`idolIds`）留空就是全员通用；勾了就只在这些偶像的互动页出现，别的偶像看不到（是隐藏，不是灰掉）。
 
 ## 4. 校验只有一套规则
 

@@ -31,6 +31,7 @@ import demoRecording from './activities/demoRecording';
 import photoShoot from './activities/photoShoot';
 import coverShoot from './activities/coverShoot';
 import groupTraining from './activities/groupTraining';
+import manoExtraPractice from './activities/manoExtraPractice';
 import nightPractice from './events/locations/practice_room/nightPractice';
 import extraLesson from './events/training/extraLesson';
 import vocalStrain from './events/activities/training/vocalStrain';
@@ -70,7 +71,7 @@ import pairManoMeguru from './events/pairs/manoMeguru';
 import pairGenericRest from './events/pairs/genericRest';
 import { PAIR_MANO_HIORI } from './dialogues/pairs/manoHiori';
 
-export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, oldDrawer, advancedVocal, advancedDance, cafeLunch, groupGreeting, demoRecording, photoShoot, coverShoot, groupTraining];
+export const ACTIVITIES: ActivityDef[] = [vocal, dance, expression, work, tvWork, musicWork, rest, free, lookAround, sleep, oldDrawer, advancedVocal, advancedDance, cafeLunch, groupGreeting, demoRecording, photoShoot, coverShoot, groupTraining, manoExtraPractice];
 
 export const EVENTS: EventDef[] = [nightPractice, bento, rain, herPast, insomnia, cold, tvOffer, onlineComment, extraLesson, firstName, herResolve, beforeLive, collapse, vocalStrain, fanLetter, interview, escape, rival, birthday, producerDoubt, deskScript, mirrorNote, headphones, homeNote, parkPigeons, shoppingWindow, hazukiNap, manoSoftVoice, hioriExtraStep, workFailureTv, tvSuccess, tvAfterglow, tvFailureAftermath, staminaDrill, pairManoHiori, pairManoMeguru, pairGenericRest, ...APPROVED_EVENTS];
 

@@ -1638,11 +1638,16 @@ export function activityTargets(
   activity: ActivityDef,
   idolId?: string,
 ): string[] {
+  const owned = (ids: string[]) =>
+    activity.idolIds
+      ? ids.filter((id) => activity.idolIds!.includes(id))
+      : ids;
+
   if (activity.target === 'all-present-idols') {
-    return presentIdolIds(state);
+    return owned(presentIdolIds(state));
   }
   if (activity.target === 'present-idol') {
-    return idolId ? [idolId] : [];
+    return idolId && owned([idolId]).length > 0 ? [idolId] : [];
   }
   return [];
 }
@@ -1661,6 +1666,10 @@ export function activityAvailability(
   }
   if (activity.locations && !activity.locations.includes(state.locationId)) {
     return { ok: false, display: 'hide', reason: '不在此地点' };
+  }
+  // 专属行动：不属于当前目标时整条消失，而不是灰掉。
+  if (activity.idolIds && (!idolId || !activity.idolIds.includes(idolId))) {
+    return { ok: false, display: 'hide', reason: '专属行动' };
   }
   if (
     activity.timeWindows &&

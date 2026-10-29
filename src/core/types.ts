@@ -422,6 +422,11 @@ export type ActivityDef = {
   description: string;
   kind: ActivityKind;
   target?: ActivityTarget;
+  /**
+   * 这条行动只属于这些偶像；省略 = 全员通用。
+   * 不匹配时整条隐藏（不是禁用），且只对 present-idol / all-present-idols 有意义。
+   */
+  idolIds?: string[];
   locations?: string[];
   durationMinutes: number;
   timeWindows?: TimeWindow[];

@@ -3,7 +3,45 @@
 import type { ApprovedContent } from './approvedPacking';
 
 export const APPROVED_CONTENT: ApprovedContent = {
-  activities: [],
+  activities: [
+{
+  "id": "activity.daily_errand",
+  "name": "发传单",
+  "description": "商业街的店在找人手，站一个下午，按小时结。",
+  "kind": "work",
+  "target": "none",
+  "locations": [
+    "shopping_street",
+    "station"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 540,
+      "toMinute": 1140
+    }
+  ],
+  "cost": {
+    "stamina": 8
+  },
+  "effects": [
+    {
+      "kind": "money",
+      "delta": 280
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 3
+    }
+  ],
+  "resultTexts": [
+    "半个下午过去，手里只剩两张。店主还是按说好的数结了。",
+    "有人接了传单，有人绕开。你数了数剩下的，够交差。",
+    "风把传单吹跑了几张，你追出去两条街。"
+  ]
+}
+],
   events: [
 {
   "id": "evt.mano.after_dance",
@@ -346,6 +384,24 @@ export const APPROVED_CONTENT: ApprovedContent = {
     {
       "kind": "fans",
       "value": 120
+    }
+  ],
+  "check": {
+    "ref": "expression",
+    "difficulty": "E",
+    "shift": 0
+  },
+  "failurePayRatio": 0.4,
+  "failureEffects": [
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 12
+    },
+    {
+      "kind": "log",
+      "text": "拍摄方说这组不合用，只能按试用价结算。",
+      "tone": "bad"
     }
   ]
 }

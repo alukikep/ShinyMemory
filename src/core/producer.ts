@@ -1,12 +1,21 @@
 import type { ProducerStatKey, ProducerStats, Rank } from './types';
 
-export const PRODUCER_STAT_KEYS: ProducerStatKey[] = ['photography', 'stamina'];
+export const PRODUCER_STAT_KEYS: ProducerStatKey[] = [
+  'photography',
+  'negotiation',
+  'planning',
+  'insight',
+  'stamina',
+];
 
 const PRODUCER_GROWTH: Record<
   ProducerStatKey,
   { initial: Rank; max: Rank }
 > = {
   photography: { initial: 'F', max: 'S' },
+  negotiation: { initial: 'F', max: 'S' },
+  planning: { initial: 'F', max: 'S' },
+  insight: { initial: 'F', max: 'S' },
   stamina: { initial: 'F', max: 'S' },
 };
 

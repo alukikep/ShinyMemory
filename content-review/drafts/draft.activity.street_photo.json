@@ -1,0 +1,58 @@
+{
+  "id": "draft.activity.street_photo",
+  "kind": "activity",
+  "title": "街拍练习",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.street_photo",
+  "payload": {
+    "id": "activity.street_photo",
+    "name": "街拍练习",
+    "description": "带着相机在街上走，找一点值得按快门的东西。",
+    "kind": "explore",
+    "target": "none",
+    "locations": [
+      "park",
+      "shopping_street"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 540,
+        "toMinute": 1200
+      }
+    ],
+    "cost": {
+      "stamina": 8
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "producer",
+          "key": "photography"
+        },
+        "tier": 3
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 0
+      }
+    ],
+    "resultTexts": [
+      "你拍了三十几张，回看的时候删掉了二十九张。",
+      "光落在橱窗边上的时候你按了一次快门，之后再也等不到那个角度。",
+      "有个老人问你是不是记者。你说是练习，他笑了一下。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-29T21:50:00.000Z",
+  "updatedAt": "2026-10-29T21:50:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-29T21:50:00.000Z"
+    }
+  ]
+}

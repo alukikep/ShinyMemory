@@ -16,6 +16,9 @@ export const STAT_LABELS: Record<StatKey, string> = {
 
 export const PRODUCER_STAT_LABELS: Record<ProducerStatKey, string> = {
   photography: '摄影',
+  negotiation: '交涉',
+  planning: '企划',
+  insight: '洞察',
   stamina: '体能',
 };
 

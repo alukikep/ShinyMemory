@@ -630,6 +630,8 @@ function buildIdolPage(state: GameState): SceneView {
   )
     .filter(
       (activity) =>
+        // target: 'none' 是制作人自己的活，只留在地点页。
+        activity.target !== 'none' &&
         activity.target !== 'all-present-idols' &&
         (activity.kind === 'training' ||
           activity.kind === 'work' ||

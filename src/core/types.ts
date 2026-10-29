@@ -1,6 +1,11 @@
 export type SharedStatKey = 'stamina' | 'stress';
 export type IdolStatKey = 'vocal' | 'dance' | 'expression' | 'trust';
-export type ProducerStatKey = 'photography' | 'stamina';
+export type ProducerStatKey =
+  | 'photography'
+  | 'negotiation'
+  | 'planning'
+  | 'insight'
+  | 'stamina';
 export type StatKey = SharedStatKey | IdolStatKey;
 
 export type Rank = 'F' | 'E' | 'D' | 'C' | 'B' | 'A' | 'S';

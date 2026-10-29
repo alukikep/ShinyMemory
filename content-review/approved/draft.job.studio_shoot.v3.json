@@ -2,7 +2,7 @@
   "id": "draft.job.studio_shoot.v3",
   "kind": "job",
   "title": "摄影棚拍摄",
-  "status": "review",
+  "status": "approved",
   "version": 3,
   "rootId": "draft.job.studio_shoot",
   "supersedes": "draft.job.studio_shoot.v2",
@@ -52,12 +52,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-29T13:42:07.967Z",
-  "updatedAt": "2026-10-29T13:42:07.967Z",
+  "updatedAt": "2026-10-29T13:47:05.750Z",
+  "reviewedAt": "2026-10-29T13:47:05.750Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-29T13:42:07.967Z",
       "note": "v3：加属性门槛与失败分支"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T13:47:05.750Z"
     }
   ]
 }

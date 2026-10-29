@@ -11,6 +11,7 @@
 | [周期触发 / 检定 / 监听计划](current/plan-triggers-and-checks.md) | 定时事件、行动检定、成就接口，设计中 |
 | [四项实施计划](current/impl-modifiers-equipment-checks.md) | S0–S8 阶段拆解，待检查 |
 | [未来需求](current/future-requirements.md) | 已确认但暂不实现的功能需求 |
+| [内容数值标准](current/content-standards.md) | 时长、体力、金钱的取值规范 |
 | [自动验收](current/acceptance.md) | 命令、测试文件、状态桥与编写约定 |
 
 ## 系统说明

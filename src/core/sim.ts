@@ -23,6 +23,8 @@ import { createInitialProducerStats, staminaCapForRank, staminaCostMultiplierFor
 import { Rng } from './rng';
 import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, isMinuteInWindow } from './time';
 import { describeCondition } from './conditionText';
+import { combineModifiers } from './modifiers';
+import type { ModifierBreakdown, ModifierSource } from './modifiers';
 import { canReplaceDay, getScheduleSlot } from './schedule';
 import type {
   ActionCommand,
@@ -48,6 +50,8 @@ import type {
   JobAssignment,
   IdolState,
   LogTone,
+  Modifier,
+  ModifierKey,
   Phase,
   Rank,
   SharedStatKey,
@@ -65,28 +69,105 @@ function clone(state: GameState): GameState {
 
 /** 体力上限由制作人体能属性推导，不进存档。 */
 export function maxStamina(state: GameState): number {
-  return staminaCapForRank(state.producer.stamina.rank);
+  return Math.round(
+    staminaCapForRank(state.producer.stamina.rank) *
+      resolveModifiers(state, 'staminaCap'),
+  );
 }
 
 export function staminaCostMultiplier(state: GameState): number {
-  return staminaCostMultiplierForRank(state.producer.stamina.rank);
+  return resolveModifiers(state, 'staminaCost');
 }
 
-/** 行动实际消耗的体力：基础值 × 制作人体能倍率，向上取整且至少 1。 */
+type ModifierContext = { idolId?: string };
+
+function modifierMatches(
+  state: GameState,
+  modifier: Modifier,
+  ctx: ModifierContext,
+): boolean {
+  if (modifier.idolId && modifier.idolId !== ctx.idolId) return false;
+  if (
+    modifier.when &&
+    !modifier.when.every((condition) =>
+      checkCondition(condition, state, { idolId: ctx.idolId }),
+    )
+  ) {
+    return false;
+  }
+  return true;
+}
+
+/**
+ * 当前生效的加成来源。制作人体能是第一来源，装备是第二来源；
+ * 以后设施等级、临时增益都往这里加，所有计算自动生效。
+ */
+export function modifierSources(
+  state: GameState,
+  _ctx: ModifierContext = {},
+): ModifierSource[] {
+  return [
+    {
+      label: '体能',
+      modifiers: [
+        {
+          key: 'staminaCost',
+          value: staminaCostMultiplierForRank(state.producer.stamina.rank),
+        },
+      ],
+    },
+  ];
+}
+
+/** 派生数字的唯一入口。同类相加、跨类相乘，不要在下游再取整。 */
+export function resolveModifiers(
+  state: GameState,
+  key: ModifierKey,
+  ctx: ModifierContext = {},
+): number {
+  return combineModifiers(
+    modifierSources(state, ctx),
+    key,
+    (modifier) => modifierMatches(state, modifier, ctx),
+  ).total;
+}
+
+/** 给界面解释"这个数是怎么来的"。 */
+export function explainModifiers(
+  state: GameState,
+  key: ModifierKey,
+  ctx: ModifierContext = {},
+): ModifierBreakdown {
+  return combineModifiers(
+    modifierSources(state, ctx),
+    key,
+    (modifier) => modifierMatches(state, modifier, ctx),
+  );
+}
+
+/** 行动实际消耗的体力：基础值 × 全部加成，向上取整且至少 1。 */
 export function activityStaminaCost(
   state: GameState,
   activity: ActivityDef,
+  idolId?: string,
 ): number {
   const base = activity.cost.stamina ?? 0;
   if (base <= 0) return 0;
-  return Math.max(1, Math.ceil(base * staminaCostMultiplier(state)));
+  return Math.max(
+    1,
+    Math.ceil(base * resolveModifiers(state, 'staminaCost', { idolId })),
+  );
 }
 
 /** 行动的实际消耗。判定、扣除、界面预告都必须走这里。 */
-export function activityCost(state: GameState, activity: ActivityDef): Cost {
+export function activityCost(
+  state: GameState,
+  activity: ActivityDef,
+  idolId?: string,
+): Cost {
   return {
     money: activity.cost.money,
-    stamina: activityStaminaCost(state, activity),
+    stamina: activityStaminaCost(state, activity, idolId),
   };
 }
 
@@ -95,10 +176,15 @@ export function activityCost(state: GameState, activity: ActivityDef): Cost {
  * 将来训练设施/房间等级影响时长时，只改这个函数体。
  */
 export function activityDuration(
-  _state: GameState,
+  state: GameState,
   activity: ActivityDef,
 ): number {
-  return activity.durationMinutes;
+  return Math.max(
+    1,
+    Math.round(
+      activity.durationMinutes * resolveModifiers(state, 'duration'),
+    ),
+  );
 }
 
 function clampState(state: GameState): void {
@@ -207,10 +293,15 @@ export function applyAttributeExp(
   tier: ExpTier,
   direction: 'gain' | 'loss',
   idolId?: string,
+  opts?: { training?: boolean },
 ): void {
   const normalized = normalizeAttributeRef(ref);
   const target = resolveAttribute(state, normalized, idolId);
-  const amount = EXP_TIER_VALUES[tier];
+  const base = EXP_TIER_VALUES[tier];
+  const amount =
+    direction === 'gain' && opts?.training
+      ? Math.round(base * resolveModifiers(state, 'trainingExp', { idolId }))
+      : base;
 
   if (direction === 'loss') {
     target.exp = Math.max(0, target.exp - amount);
@@ -1292,6 +1383,7 @@ function applyEffects(
           tier,
           effect.direction ?? 'gain',
           options?.idolId,
+          { training: options?.training },
         );
         break;
       }

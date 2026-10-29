@@ -326,9 +326,19 @@ S8  内容 + 体检 + 版本号
 | S8 | 0.5 天 |
 | 合计 | **约 4.5 天** |
 
-## 6. 需要你确认的点
+## 6. 已确认
 
-1. **饰品获取方式**：这一轮走"剧情/活动发放"（`grantEquip`），不进商店。商店卖饰品留到内容管线阶段。
-2. **槽位上限**：`unlockSlot` 没有上限，靠内容控制。要不要在体检里设一个"最多 3 个"的 warning？
-3. **检定失败是否也消耗**：按设计照扣。如果你想让"失败返还一半时间"之类的规则，需要现在说，会改动 S3 的结算形状。
-4. **S1 的前置依赖**：`workMoney` 现在只在工作结算处生效，正式内容里还没有工作。要不要 S1 只接 `staminaCost / staminaCap / duration / trainingExp` 四个，`workMoney` 留到有工作时再加？
+| 编号 | 问题 | 结论 |
+|---|---|---|
+| Q1 | 饰品获取方式 | 走剧情/活动发放（`grantEquip`），**不进商店** |
+| Q2 | 槽位上限 | 不设硬上限，**靠内容控制**；体检不加"最多 3 个"的 warning |
+| Q3 | 检定失败的消耗 | 照扣时间/钱/体力，无返还 |
+| Q4 | `workMoney` | 这一轮**不接**，等正式内容有工作再挂上 |
+
+## 7. 执行裁决
+
+| 项 | 裁决 | 理由 |
+|---|---|---|
+| 直接在 `main` 上执行 | 不建 worktree | 本仓库一直如此工作，你已要求直接开工并推送 |
+| `resolveModifiers` 的落点 | 纯计算放 `src/core/modifiers.ts`；状态相关部分（`modifierSources` / `resolveModifiers` / `explainModifiers`）放 `src/core/sim.ts` | `Modifier.when` 要调 `checkCondition`，而它依赖 `sim.ts` 里的 `resolveAttribute` / `isActorPresent`；反向导入会形成循环。纯函数仍独立可测 |
+| S1 的接入范围 | 只接 `staminaCost` / `staminaCap` / `duration` / `trainingExp` | 见 Q4 |

@@ -205,6 +205,28 @@ export type GameState = {
   lastResult?: string;
 };
 
+export type ModifierKey =
+  | 'staminaCost'
+  | 'staminaCap'
+  | 'duration'
+  | 'trainingExp'
+  | 'workMoney';
+
+/**
+ * 一条加成。同类相加、跨类相乘，由 resolveModifiers 统一结算；
+ * 中间层不要取整。
+ */
+export type Modifier = {
+  key: ModifierKey;
+  /** 缺省 mul。mul 连乘，add 先各自相加。 */
+  op?: 'mul' | 'add';
+  value: number;
+  /** 不满足时这条不生效。 */
+  when?: Condition[];
+  /** 只对某个偶像生效；省略 = 全体。 */
+  idolId?: string;
+};
+
 export type Effect =
   | { kind: 'sharedStat'; stat: SharedStatKey; delta: number }
   | {

@@ -8,6 +8,7 @@ import { JOBS as BASE_JOBS } from './jobs';
 import { ITEMS, SHOPS } from './items';
 import { HIORI_DIALOGUES } from './dialogues/hiori';
 import { MEGURU_DIALOGUES } from './dialogues/meguru';
+import { EQUIPS } from './equips';
 import { STORY_CHAINS } from './storyChains';
 import { STARTING_STATE } from './starting';
 import { APPROVED_EVENTS, APPROVED_JOBS } from './approved';
@@ -80,4 +81,4 @@ export const STORY_CHAIN_DEFS = STORY_CHAINS;
 
 export { STARTING_STATE };
 
-export { ACTORS, IDOLS, ITEMS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES };
+export { ACTORS, EQUIPS, IDOLS, ITEMS, LOCATIONS, SHOPS, TRANSIT_ROUTES, WALK_EDGES };

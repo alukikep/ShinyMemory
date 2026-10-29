@@ -6,6 +6,7 @@ import type {
   ActorState,
   DialogueDef,
   EventDef,
+  EquipDef,
   IdolDef,
   IdolState,
   IdolStatus,
@@ -21,6 +22,7 @@ export type ContentIndex = {
   activities: Map<string, ActivityDef>;
   actors: Map<string, ActorDef>;
   idols: Map<string, IdolDef>;
+  equips: Map<string, EquipDef>;
   events: Map<string, EventDef>;
   jobs: Map<string, JobDef>;
   items: Map<string, ItemDef>;
@@ -48,6 +50,7 @@ export type ContentPack = {
   activities: ActivityDef[];
   actors: ActorDef[];
   idols: IdolDef[];
+  equips: EquipDef[];
   events: EventDef[];
   jobs: JobDef[];
   items: ItemDef[];
@@ -67,6 +70,7 @@ export function buildContentIndex({
   activities: ACTIVITIES,
   actors: ACTORS,
   idols: IDOLS,
+  equips: EQUIPS,
   events: EVENTS,
   jobs: JOBS,
   items: ITEMS,
@@ -80,6 +84,7 @@ export function buildContentIndex({
   const activities = new Map(ACTIVITIES.map((activity) => [activity.id, activity]));
   const actors = new Map(ACTORS.map((actor) => [actor.id, actor]));
   const idols = new Map(IDOLS.map((idol) => [idol.id, idol]));
+  const equips = new Map(EQUIPS.map((equip) => [equip.id, equip]));
   const events = new Map(EVENTS.map((event) => [event.id, event]));
   const jobs = new Map(JOBS.map((job) => [job.id, job]));
   const items = new Map(ITEMS.map((item) => [item.id, item]));
@@ -190,6 +195,7 @@ export function buildContentIndex({
     activities,
     actors,
     idols,
+    equips,
     events,
     jobs,
     items,

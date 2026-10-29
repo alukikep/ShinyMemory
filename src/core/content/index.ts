@@ -10,6 +10,7 @@ import { WALK_EDGES } from './map';
 import { TRANSIT_ROUTES } from './transit';
 import { ACTORS } from './actors';
 import { IDOLS } from './idols';
+import { EQUIPS as BASE_EQUIPS } from './equips';
 import { MANO_DIALOGUES } from './dialogues/mano';
 import { PROLOGUE_DIALOGUES } from './dialogues/prologue';
 import { STORY_CHAINS } from './storyChains';
@@ -31,6 +32,8 @@ export const ACTIVITIES: ActivityDef[] = [
   lookAround,
   sleep,
 ];
+
+export const EQUIPS = BASE_EQUIPS;
 
 export const EVENTS: EventDef[] = [];
 

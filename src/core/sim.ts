@@ -41,6 +41,8 @@ import type {
   DialogueDef,
   DialogueNode,
   Effect,
+  EquipDef,
+  EquipSlot,
   EventContext,
   EventDef,
   ExpTier,
@@ -98,6 +100,55 @@ function modifierMatches(
   return true;
 }
 
+const DEFAULT_EQUIP_SLOTS: Record<EquipSlot, number> = { charm: 1 };
+
+/** 某个槽位当前有几个位置；内容用 unlockSlot 往上加。 */
+export function slotCount(state: GameState, slot: EquipSlot): number {
+  return state.slots?.[slot] ?? DEFAULT_EQUIP_SLOTS[slot];
+}
+
+/** 槽位键：charm1、charm2…… */
+export function slotKeys(state: GameState, slot: EquipSlot): string[] {
+  return Array.from(
+    { length: slotCount(state, slot) },
+    (_, index) => `${slot}${index + 1}`,
+  );
+}
+
+export function equippedEquips(state: GameState): EquipDef[] {
+  const result: EquipDef[] = [];
+  for (const id of Object.values(state.equipment ?? {})) {
+    const def = CONTENT_INDEX.equips.get(id);
+    if (def) result.push(def);
+  }
+  return result;
+}
+
+export function equipItem(state: GameState, equipId: string): GameState {
+  const def = CONTENT_INDEX.equips.get(equipId);
+  if (!def) return state;
+  if (!(state.ownedEquips ?? []).includes(equipId)) return state;
+  if (Object.values(state.equipment ?? {}).includes(equipId)) return state;
+
+  const free = slotKeys(state, def.slot).find(
+    (key) => !(state.equipment ?? {})[key],
+  );
+  if (!free) return state;
+
+  const next = clone(state);
+  next.equipment = { ...(next.equipment ?? {}), [free]: equipId };
+  return next;
+}
+
+export function unequipSlot(state: GameState, slotKey: string): GameState {
+  if (!(state.equipment ?? {})[slotKey]) return state;
+  const next = clone(state);
+  const equipment = { ...(next.equipment ?? {}) };
+  delete equipment[slotKey];
+  next.equipment = equipment;
+  return next;
+}
+
 /**
  * 当前生效的加成来源。制作人体能是第一来源，装备是第二来源；
  * 以后设施等级、临时增益都往这里加，所有计算自动生效。
@@ -116,6 +167,10 @@ export function modifierSources(
         },
       ],
     },
+    ...equippedEquips(state).map((equip) => ({
+      label: equip.name,
+      modifiers: equip.modifiers,
+    })),
   ];
 }
 
@@ -1393,6 +1448,21 @@ function applyEffects(
       case 'flag':
         state.flags[effect.key] = effect.value;
         break;
+      case 'unlockSlot': {
+        const base = state.slots?.[effect.slot] ?? DEFAULT_EQUIP_SLOTS[effect.slot];
+        state.slots = {
+          ...(state.slots ?? {}),
+          [effect.slot]: base + (effect.amount ?? 1),
+        };
+        break;
+      }
+      case 'grantEquip': {
+        if (!CONTENT_INDEX.equips.has(effect.equipId)) break;
+        const owned = state.ownedEquips ?? [];
+        if (owned.includes(effect.equipId)) break;
+        state.ownedEquips = [...owned, effect.equipId];
+        break;
+      }
       case 'actorAffinity': {
         const actor = state.actors[effect.actorId];
         if (actor) actor.affinity += effect.delta;
@@ -2503,6 +2573,10 @@ export function handleCommand(
     }
     return state;
   }
+
+  // 装备是界面操作，不占时间，也不依赖当前阶段。
+  if (command.type === 'equip') return equipItem(state, command.equipId);
+  if (command.type === 'unequip') return unequipSlot(state, command.slotKey);
 
   switch (state.phase) {
     case 'plan':

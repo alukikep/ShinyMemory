@@ -188,6 +188,11 @@ export type GameState = {
   flags: Record<string, boolean>;
   /** 定时事件 → 上次触发的日，用于同日去重。 */
   scheduledDays?: Record<string, number>;
+  /** 槽位键（charm1…）→ 饰品 id。倍率是派生值，不入档。 */
+  equipment?: Record<string, string>;
+  ownedEquips?: string[];
+  /** 某个槽位的数量；缺省取各槽的默认值。 */
+  slots?: Partial<Record<EquipSlot, number>>;
   jobs: JobAssignment[];
   eventCooldowns: Record<string, number>;
   log: LogEntry[];
@@ -231,6 +236,17 @@ export type Modifier = {
   idolId?: string;
 };
 
+export type EquipSlot = 'charm';
+
+export type EquipDef = {
+  id: string;
+  name: string;
+  slot: EquipSlot;
+  description: string;
+  modifiers: Modifier[];
+  icon?: string;
+};
+
 export type Effect =
   | { kind: 'sharedStat'; stat: SharedStatKey; delta: number }
   | {
@@ -241,6 +257,8 @@ export type Effect =
     }
   | { kind: 'money'; delta: number }
   | { kind: 'flag'; key: string; value: boolean }
+  | { kind: 'unlockSlot'; slot: EquipSlot; amount?: number }
+  | { kind: 'grantEquip'; equipId: string }
   | {
       /** 改写某个角色接下来几天的日程；不给 locationId 就是"这几天不在任何地方"。 */
       kind: 'scheduleOverride';
@@ -609,6 +627,8 @@ export type ActionCommand =
   | { type: 'acceptJob'; jobId: string; day: number }
   | { type: 'attendJob'; jobId: string }
   | { type: 'buyItem'; itemId: string }
+  | { type: 'equip'; equipId: string }
+  | { type: 'unequip'; slotKey: string }
   | { type: 'giveGift'; itemId: string; idolId: string }
   | { type: 'startStory'; chainId: string }
   | { type: 'dialogueAdvance' }

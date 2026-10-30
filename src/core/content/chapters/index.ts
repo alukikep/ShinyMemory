@@ -1,4 +1,7 @@
 import type { StoryChainDef } from '../../types';
+import meguruCoffee from './meguruCoffee';
+import meguruPurity from './meguruPurity';
+import meguruStars from './meguruStars';
 import meguruSunshine from './meguruSunshine';
 import meguruSwimsuit from './meguruSwimsuit';
 
@@ -12,4 +15,7 @@ import meguruSwimsuit from './meguruSwimsuit';
 export const PENDING_CHAPTERS: StoryChainDef[] = [
   meguruSwimsuit,
   meguruSunshine,
+  meguruPurity,
+  meguruCoffee,
+  meguruStars,
 ];

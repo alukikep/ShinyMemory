@@ -1,0 +1,116 @@
+{
+  "id": "draft.dialogue.meguru.stars.memory",
+  "kind": "dialogue",
+  "title": "星空 · 第一次遇见",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.stars.memory",
+  "payload": {
+    "id": "dialogue.meguru.stars.memory",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "speakerId": "meguru",
+        "text": "我就是在这个公园第一次遇到制作人的，还记得吗？",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "text": "当然记得。那时候她在打篮球。",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "meguru",
+        "text": "然后制作人说，自己不是怪人！",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "text": "……你说过吗？你有点不确定。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "speakerId": "meguru",
+        "text": "说过！",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "meguru",
+        "text": "对了，现在的我和相遇的时候比起来怎么样？变帅了吗？",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "text": "你想了想。",
+        "choices": [
+          {
+            "label": "成长得令人惊讶",
+            "nextNodeId": "n08a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 5
+              }
+            ]
+          },
+          {
+            "label": "和那时候一样有精神",
+            "nextNodeId": "n08b",
+            "effects": [
+              {
+                "kind": "sharedStat",
+                "stat": "stress",
+                "delta": -4
+              }
+            ]
+          }
+        ]
+      },
+      "n08a": {
+        "id": "n08a",
+        "speakerId": "meguru",
+        "text": "诶嘿嘿，好耶——！",
+        "nextNodeId": "n09"
+      },
+      "n08b": {
+        "id": "n08b",
+        "speakerId": "meguru",
+        "text": "和那时候一样？……那算是夸我吗！？",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "speakerId": "meguru",
+        "text": "到那天为止，我每天都在期待什么时候能遇到制作人。",
+        "nextNodeId": "n10"
+      },
+      "n10": {
+        "id": "n10",
+        "speakerId": "meguru",
+        "text": "然后在公园看到了穿西装的人……是我的制作人！这个想法一闪而过，我就跑起来了！",
+        "nextNodeId": "n11"
+      },
+      "n11": {
+        "id": "n11",
+        "speakerId": "meguru",
+        "text": "真的很开心……！我那时候真的很兴奋吧？"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T15:58:16.386Z",
+  "updatedAt": "2026-10-30T15:58:16.386Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T15:58:16.386Z",
+      "note": "B13：卡面章 3–5（夏に恋するピチカート！）"
+    }
+  ]
+}

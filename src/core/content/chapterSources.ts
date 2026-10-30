@@ -31,4 +31,34 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
       '下次也一起来泳池里玩吧',
     ],
   },
+  {
+    chapterId: 'meguru-purity',
+    source:
+      'data/story/八宮めぐる/【夏に恋するピチカート！】八宮めぐる/それはまだ純白な.csv',
+    anchors: [
+      '制作人谈过恋爱吗',
+      '我最喜欢大家了',
+      '我想让制作人记住现在的我',
+    ],
+  },
+  {
+    chapterId: 'meguru-coffee',
+    source:
+      'data/story/八宮めぐる/【夏に恋するピチカート！】八宮めぐる/淹れたてコーヒー.csv',
+    anchors: [
+      '我最近都没看到你休息啊',
+      '因为我才这么忙',
+      '因为我是在离你最近的地方看你努力的',
+    ],
+  },
+  {
+    chapterId: 'meguru-stars',
+    source:
+      'data/story/八宮めぐる/【夏に恋するピチカート！】八宮めぐる/なんでもない日の星空.csv',
+    anchors: [
+      '在这个公园第一次遇到制作人',
+      '今后也拜托你了',
+      '我还想记住更多这种什么都没有的日子',
+    ],
+  },
 ];

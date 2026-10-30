@@ -1,0 +1,69 @@
+{
+  "id": "draft.dialogue.meguru.coffee.first",
+  "kind": "dialogue",
+  "title": "咖啡 · 睡着的人",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.coffee.first",
+  "payload": {
+    "id": "dialogue.meguru.coffee.first",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "事务所的灯还亮着。桌上摊着文件，你趴在上面睡着了。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "meguru",
+        "text": "制作人，制作人……",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "text": "你睁开眼。肩上盖着一条毯子。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "meguru",
+        "text": "早安！",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "text": "你说早安，问这条毯子是哪儿来的。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "meguru",
+        "text": "是叶月放的。她还说她试着叫醒你，但你没醒。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "speakerId": "meguru",
+        "text": "工作很忙吧……在家里好好睡一觉更好啊——",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "speakerId": "meguru",
+        "text": "制作人，我最近都没看到你休息啊？"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T15:58:16.386Z",
+  "updatedAt": "2026-10-30T15:58:16.386Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T15:58:16.386Z",
+      "note": "B13：卡面章 3–5（夏に恋するピチカート！）"
+    }
+  ]
+}

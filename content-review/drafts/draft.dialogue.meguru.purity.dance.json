@@ -1,0 +1,88 @@
+{
+  "id": "draft.dialogue.meguru.purity.dance",
+  "kind": "dialogue",
+  "title": "纯白 · 要好好看着我",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.purity.dance",
+  "payload": {
+    "id": "dialogue.meguru.purity.dance",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "speakerId": "meguru",
+        "text": "……我最喜欢大家了。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "meguru",
+        "text": "但是，喜欢到什么程度算恋爱呢……是在我的最喜欢的更前面吗，还是在一个完全不同的地方吗……",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "meguru",
+        "text": "我就是不知道这个，所以也不知道想不想谈恋爱……诶嘿嘿。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "text": "你说按她自己的步调摸索就好。跳舞的时候，试着想那些她最喜欢的人正在看着她。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "speakerId": "meguru",
+        "text": "哇，好有趣……！要把这个想法传达给最喜欢的大家的那种感觉……",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "meguru",
+        "text": "可以现在试试吗！？我去放音乐……！",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "speakerId": "meguru",
+        "text": "……制作人！我想跳一下舞，你帮我看看！",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "text": "你问她是不是明白了什么。",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "speakerId": "meguru",
+        "text": "我想让制作人记住现在的我！为了让你随时能察觉我的变化。",
+        "nextNodeId": "n10"
+      },
+      "n10": {
+        "id": "n10",
+        "speakerId": "meguru",
+        "text": "对吧，是个好主意吧！？我去放音乐！",
+        "nextNodeId": "n11"
+      },
+      "n11": {
+        "id": "n11",
+        "speakerId": "meguru",
+        "text": "……——要好好看着我————！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T15:58:16.386Z",
+  "updatedAt": "2026-10-30T15:58:16.386Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T15:58:16.386Z",
+      "note": "B13：卡面章 3–5（夏に恋するピチカート！）"
+    }
+  ]
+}

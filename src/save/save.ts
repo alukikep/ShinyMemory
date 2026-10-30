@@ -4,7 +4,7 @@ import {
   createInitialActorStates,
   createInitialIdolStates,
 } from '../core/contentIndex';
-import { createInitialProducerStats } from '../core/producer';
+import { createInitialProducerStats, PRODUCER_STAT_KEYS } from '../core/producer';
 import type {
   GameState,
   IdolAttribute,
@@ -279,6 +279,21 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
       idol.fans = idol.fans ?? 0;
     }
     next.schemaVersion = 15;
+    next.gameVersion = GAME_VERSION;
+  }
+
+  if (next.schemaVersion === 15) {
+    // 制作人属性从 2 个扩到 5 个；旧存档里缺 negotiation/planning/insight，
+    // 面板直接读 undefined.rank 会整页崩，所以在这里补齐。
+    const initial = createInitialProducerStats();
+    const state = next.state as GameState & {
+      producer?: Partial<GameState['producer']>;
+    };
+    state.producer = { ...initial, ...(state.producer ?? {}) };
+    for (const key of PRODUCER_STAT_KEYS) {
+      if (!state.producer[key]) state.producer[key] = initial[key];
+    }
+    next.schemaVersion = 16;
     next.gameVersion = GAME_VERSION;
   }
 

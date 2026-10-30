@@ -9,7 +9,6 @@ import {
   newGame,
 } from './sim';
 import { migrateSave, createSaveEnvelope } from '../save/save';
-import { SAVE_VERSION } from '../save/version';
 import type { ActivityDef, Effect, GameState, IdolState } from './types';
 
 const registeredActs: string[] = [];
@@ -133,7 +132,8 @@ describe('fans', () => {
         idols: Record<string, Omit<IdolState, 'fans'> & { fans?: number }>;
       };
     };
-    legacy.schemaVersion = SAVE_VERSION - 1;
+    // 直接指定「fans 迁移之前」的版本，不要用 SAVE_VERSION - 1：后面再加迁移就错位了。
+    legacy.schemaVersion = 14;
     delete legacy.state.idols.mano!.fans;
 
     const migrated = migrateSave(legacy as never);

@@ -10,6 +10,7 @@ import {
   pruneScheduleOverrides,
 } from '../core/sim';
 import type { ActionCommand, GameState } from '../core/types';
+import { createInitialProducerStats } from '../core/producer';
 import { LocalStorageRepository } from '../save/localStorageRepository';
 import type { SaveRepository } from '../save/repository';
 import { createSaveEnvelope } from '../save/save';
@@ -47,6 +48,11 @@ function makeSeed(): number {
 function initialState(): GameState {
   const saved = repository.load();
   if (saved) {
+    // 兜底：导入的存档、或迁移链漏掉的字段，都在这里补齐，别让面板读到 undefined。
+    saved.state.producer = {
+      ...createInitialProducerStats(),
+      ...saved.state.producer,
+    };
     pruneScheduleOverrides(saved.state);
     completeDueJobs(saved.state);
     return saved.state;

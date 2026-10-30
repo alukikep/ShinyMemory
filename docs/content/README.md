@@ -1,6 +1,7 @@
 # 内容生产
 
-> 这里放**生产规范、流程、块清单与进度**。
+> 这里放**生产规范、流程、块清单与进度**。  
+> 批量生产一个角色时先看 [playbook.md](playbook.md)——交付协议、覆盖矩阵、写作配方都在那儿。
 > 数值档位在 [`docs/current/content-standards.md`](../current/content-standards.md)。
 > 审查系统在 [`docs/systems/content-review.md`](../systems/content-review.md)。
 > 角色语气以 **官方剧情中译语料库** 为准，见各角色卡第 12 节。

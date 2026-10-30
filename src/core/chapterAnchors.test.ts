@@ -7,76 +7,48 @@ import {
 } from './chapterAnchors';
 
 /**
- * 锚点校验的两头：语料里有、游戏里也有。
- * 这里用纯函数 + 假数据测，不依赖真实语料库（换机器也能跑）。
+ * 锚点 = 原作里必须覆盖到的**行 id**。
+ * 中文是我们自己写的，没有权威译本可比；id 能对着游戏剧本（私有缓存）核对。
  */
-
-const source = 'data/story/test/card.csv';
-const corpus = [
-  '制作人｜好，那就出门吧课程我晚点给你安排',
-  '巡｜能全部都穿到就好了',
-  '巡｜能上杂志的只有一件吧',
-].join('\n');
 
 const chapter: ChapterSource = {
   chapterId: 'chapter-1',
-  source,
-  anchors: [
-    '能全部都穿到就好了',
-    '能上杂志的只有一件吧',
-    '那就出门吧课程我晚点',
-  ],
+  source: 'data/story/test/card.csv',
+  script: '200300599',
+  anchors: ['2003005990010', '2003005990100', '2003005990200'],
 };
 
+const scriptIds = new Set(['2003005990010', '2003005990100', '2003005990200']);
+
 const baseOptions = {
-  readSource: (path: string) => (path === source ? corpus : undefined),
-  hasInGame: () => true,
+  readScriptIds: () => scriptIds,
 };
 
 describe('chapter anchors', () => {
-  it('accepts a chapter whose anchors exist in both places', () => {
+  it('accepts a chapter whose anchor ids exist in the script', () => {
     expect(validateChapterAnchors([chapter], baseOptions)).toEqual([]);
   });
 
-  it('rejects anchors that were rewritten', () => {
+  it('rejects an anchor id the script does not have', () => {
     const problems = validateChapterAnchors(
-      [
-        {
-          ...chapter,
-          anchors: [
-            '能全部都穿到吧朋友',
-            '能上杂志的只有一件吧',
-            '那就出门吧课程我晚点',
-          ],
-        },
-      ],
+      [{ ...chapter, anchors: ['2003005990010', '2003005999999', '2003005990200'] }],
       baseOptions,
     );
-    expect(problems.some((p) => p.message.includes('语料里找不到'))).toBe(true);
-  });
-
-  it('rejects anchors that did not survive into the game', () => {
-    const problems = validateChapterAnchors([chapter], {
-      ...baseOptions,
-      hasInGame: (text) => text !== '能上杂志的只有一件吧',
-    });
-    expect(problems.some((p) => p.message.includes('没进游戏内容'))).toBe(true);
+    expect(problems.some((p) => p.message.includes('剧本里不存在'))).toBe(true);
   });
 
   it('requires at least three anchors', () => {
     const problems = validateChapterAnchors(
-      [{ ...chapter, anchors: ['能全部都穿到就好了'] }],
+      [{ ...chapter, anchors: ['2003005990010'] }],
       baseOptions,
     );
     expect(problems.some((p) => p.message.includes('锚点不足'))).toBe(true);
   });
 
-  it('fails when the source file is missing', () => {
-    const problems = validateChapterAnchors([chapter], {
-      ...baseOptions,
-      readSource: () => undefined,
-    });
-    expect(problems.some((p) => p.message.includes('语料文件不存在'))).toBe(true);
+  it('skips id checks when the private script cache is unavailable', () => {
+    expect(
+      validateChapterAnchors([chapter], { readScriptIds: () => undefined }),
+    ).toEqual([]);
   });
 });
 

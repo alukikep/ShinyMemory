@@ -45,3 +45,7 @@ screenshots/
 # or add it to .gitignore. See workshop/README.md.
 
 playwright-report-review/
+
+# 游戏原始剧本缓存（含日文原文，不提交）
+.cache/
+

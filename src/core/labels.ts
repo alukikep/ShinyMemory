@@ -75,3 +75,13 @@ export function formatFans(value: number): string {
   }
   return `${Math.round(value / 10000)}万`;
 }
+
+/**
+ * 不占日程的说话人。
+ *
+ * 制作人和旁白没有 ActorDef（他们不排班），但台词需要署名——
+ * 没有 speakerId 就会被 UI 当成"旁白"，制作人说的话也变成旁白。
+ */
+export const SPEAKER_NAMES: Record<string, string> = {
+  producer: '制作人',
+};

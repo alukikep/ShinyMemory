@@ -9,6 +9,7 @@ import { CONTENT_INDEX } from '../core/contentIndex';
 import { PENDING_CHAPTERS } from '../core/content/chapters';
 import { CHAPTER_SOURCES } from '../core/content/chapterSources';
 import { walkDialogue } from '../core/dialogueWalk';
+import { SPEAKER_NAMES } from '../core/labels';
 import type { DialogueNode } from '../core/types';
 import { LocalReviewRepository, ReviewApiError } from './repository';
 import { ReviewEditor } from './ReviewEditor';
@@ -417,7 +418,7 @@ function DialoguePreview({
       </div>
       {anchors.length > 0 ? (
         <p className="review-anchor-note">
-          本章锚点（必须逐字保留）：{anchors.join(' ／ ')}
+          本章锚点（原句 id，必须覆盖）：{anchors.join(' ／ ')}
         </p>
       ) : null}
       <h3>按阅读顺序</h3>
@@ -428,6 +429,7 @@ function DialoguePreview({
           const speaker = entry.node.speakerId
             ? (CONTENT_INDEX.idols.get(entry.node.speakerId)?.name ??
               CONTENT_INDEX.actors.get(entry.node.speakerId)?.name ??
+              SPEAKER_NAMES[entry.node.speakerId] ??
               entry.node.speakerId)
             : '旁白';
           return (

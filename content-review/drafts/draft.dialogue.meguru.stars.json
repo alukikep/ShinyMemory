@@ -36,7 +36,8 @@
       "1-n05": {
         "id": "1-n05",
         "text": "你问她指的是 illumination STARS 吗。",
-        "nextNodeId": "1-n06"
+        "nextNodeId": "1-n06",
+        "speakerId": "producer"
       },
       "1-n06": {
         "id": "1-n06",
@@ -53,7 +54,8 @@
       "2-n02": {
         "id": "2-n02",
         "text": "当然记得。那时候她在打篮球。",
-        "nextNodeId": "2-n03"
+        "nextNodeId": "2-n03",
+        "speakerId": "producer"
       },
       "2-n03": {
         "id": "2-n03",
@@ -110,7 +112,8 @@
       "3-n01": {
         "id": "3-n01",
         "text": "你说和平常没什么两样吧，然后补了一句是在夸她。",
-        "nextNodeId": "3-n02"
+        "nextNodeId": "3-n02",
+        "speakerId": "producer"
       },
       "3-n02": {
         "id": "3-n02",

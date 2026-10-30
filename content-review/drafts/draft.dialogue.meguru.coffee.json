@@ -13,17 +13,20 @@
       "1-01": {
         "id": "1-01",
         "text": "（好，必要的联络差不多都结束了。）",
-        "nextNodeId": "1-02"
+        "nextNodeId": "1-02",
+        "speakerId": "producer"
       },
       "1-02": {
         "id": "1-02",
         "text": "（已经这个时间了，得早点回去……）",
-        "nextNodeId": "1-03"
+        "nextNodeId": "1-03",
+        "speakerId": "producer"
       },
       "1-03": {
         "id": "1-03",
         "text": "（唉……回去之前先喝一杯咖啡吧。）",
-        "nextNodeId": "1-04"
+        "nextNodeId": "1-04",
+        "speakerId": "producer"
       },
       "1-04": {
         "id": "1-04",
@@ -40,12 +43,14 @@
       "1-06": {
         "id": "1-06",
         "text": "早安……这样啊，我趴在桌上睡着了。",
-        "nextNodeId": "1-07"
+        "nextNodeId": "1-07",
+        "speakerId": "producer"
       },
       "1-07": {
         "id": "1-07",
         "text": "这条毯子是？",
-        "nextNodeId": "1-08"
+        "nextNodeId": "1-08",
+        "speakerId": "producer"
       },
       "1-08": {
         "id": "1-08",
@@ -114,7 +119,8 @@
       "2-01": {
         "id": "2-01",
         "text": "让你这么想，抱歉。",
-        "nextNodeId": "2-02"
+        "nextNodeId": "2-02",
+        "speakerId": "producer"
       },
       "2-02": {
         "id": "2-02",
@@ -125,12 +131,14 @@
       "2-03": {
         "id": "2-03",
         "text": "巡每天也都坚持完成严格的课程吧。",
-        "nextNodeId": "2-04"
+        "nextNodeId": "2-04",
+        "speakerId": "producer"
       },
       "2-04": {
         "id": "2-04",
         "text": "在舞台上发光是巡的工作，在背后支撑你是我的工作。",
-        "nextNodeId": "2-05"
+        "nextNodeId": "2-05",
+        "speakerId": "producer"
       },
       "2-05": {
         "id": "2-05",
@@ -141,7 +149,8 @@
       "2-06": {
         "id": "2-06",
         "text": "不过，我会尽量不让你担心。",
-        "nextNodeId": "2-07"
+        "nextNodeId": "2-07",
+        "speakerId": "producer"
       },
       "2-07": {
         "id": "2-07",
@@ -152,12 +161,14 @@
       "2-08": {
         "id": "2-08",
         "text": "嗯。不过巡也没资格说别人吧。",
-        "nextNodeId": "2-09"
+        "nextNodeId": "2-09",
+        "speakerId": "producer"
       },
       "2-09": {
         "id": "2-09",
         "text": "以后我会给你接更多更多工作的！",
-        "nextNodeId": "2-10"
+        "nextNodeId": "2-10",
+        "speakerId": "producer"
       },
       "2-10": {
         "id": "2-10",
@@ -173,7 +184,8 @@
       "3-01": {
         "id": "3-01",
         "text": "你能这么想我很高兴，不过这样也不行啊。",
-        "nextNodeId": "3-02"
+        "nextNodeId": "3-02",
+        "speakerId": "producer"
       },
       "3-02": {
         "id": "3-02",
@@ -184,7 +196,8 @@
       "3-03": {
         "id": "3-03",
         "text": "巡每天也都坚持完成严格的课程吧。在舞台上发光是巡的工作，在背后支撑你是我的工作。",
-        "nextNodeId": "3-04"
+        "nextNodeId": "3-04",
+        "speakerId": "producer"
       },
       "3-04": {
         "id": "3-04",
@@ -195,7 +208,8 @@
       "3-05": {
         "id": "3-05",
         "text": "我会尽量不让你担心。",
-        "nextNodeId": "3-06"
+        "nextNodeId": "3-06",
+        "speakerId": "producer"
       },
       "3-06": {
         "id": "3-06",
@@ -217,12 +231,14 @@
       "4-02": {
         "id": "4-02",
         "text": "……今天确实拖得晚了点。",
-        "nextNodeId": "4-03"
+        "nextNodeId": "4-03",
+        "speakerId": "producer"
       },
       "4-03": {
         "id": "4-03",
         "text": "巡每天也都坚持完成严格的课程吧。在舞台上发光是巡的工作，在背后支撑你是我的工作。",
-        "nextNodeId": "4-04"
+        "nextNodeId": "4-04",
+        "speakerId": "producer"
       },
       "4-04": {
         "id": "4-04",
@@ -233,7 +249,8 @@
       "4-05": {
         "id": "4-05",
         "text": "我会尽量不让你担心。",
-        "nextNodeId": "4-06"
+        "nextNodeId": "4-06",
+        "speakerId": "producer"
       },
       "4-06": {
         "id": "4-06",

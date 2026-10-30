@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
+import { SPEAKER_NAMES } from '../../core/labels';
 import { getDialogueNode, getDialogueText } from '../../core/sim';
 import type { GameState } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
@@ -24,7 +25,7 @@ export function DialogueOverlay({
   const speakerId = node?.speakerId;
   const idol = speakerId ? CONTENT_INDEX.idols.get(speakerId) : undefined;
   const actor = speakerId ? CONTENT_INDEX.actors.get(speakerId) : undefined;
-  const speakerName = idol?.name ?? actor?.name ?? '';
+  const speakerName = idol?.name ?? actor?.name ?? SPEAKER_NAMES[speakerId ?? ''] ?? '';
   const speakerAvatar = idol?.avatar;
   const choices = node?.choices ?? [];
   const text = node ? getDialogueText(state, node) : '';

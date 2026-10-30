@@ -30,7 +30,8 @@
       "1-n04": {
         "id": "1-n04",
         "text": "你说辛苦了，表情很好。她笑起来。",
-        "nextNodeId": "1-n05"
+        "nextNodeId": "1-n05",
+        "speakerId": "producer"
       },
       "1-n05": {
         "id": "1-n05",
@@ -47,7 +48,8 @@
       "1-n07": {
         "id": "1-n07",
         "text": "你说当然好，这很重要。而且她确实做到了摄影师要的东西。",
-        "nextNodeId": "1-n09"
+        "nextNodeId": "1-n09",
+        "speakerId": "producer"
       },
       "1-n09": {
         "id": "1-n09",
@@ -64,7 +66,8 @@
       "1-n11": {
         "id": "1-n11",
         "text": "你说完全没事。她盯着你手里的水瓶看了两秒。",
-        "nextNodeId": "1-n12"
+        "nextNodeId": "1-n12",
+        "speakerId": "producer"
       },
       "1-n12": {
         "id": "1-n12",
@@ -159,7 +162,8 @@
       "3-n05": {
         "id": "3-n05",
         "text": "你说是啊，让她别跌倒了。",
-        "nextNodeId": "3-n06"
+        "nextNodeId": "3-n06",
+        "speakerId": "producer"
       },
       "3-n06": {
         "id": "3-n06",

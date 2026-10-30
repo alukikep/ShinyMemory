@@ -13,7 +13,8 @@
       "1-01": {
         "id": "1-01",
         "text": "这是一本叫新人偶像特集的杂志。你先看看。",
-        "nextNodeId": "1-02"
+        "nextNodeId": "1-02",
+        "speakerId": "producer"
       },
       "1-02": {
         "id": "1-02",
@@ -30,7 +31,8 @@
       "1-04": {
         "id": "1-04",
         "text": "这本杂志的方针，好像是重视偶像的个性。",
-        "nextNodeId": "1-05"
+        "nextNodeId": "1-05",
+        "speakerId": "producer"
       },
       "1-05": {
         "id": "1-05",
@@ -41,12 +43,14 @@
       "1-06": {
         "id": "1-06",
         "text": "还有，服装那边说想用巡的私服。",
-        "nextNodeId": "1-07"
+        "nextNodeId": "1-07",
+        "speakerId": "producer"
       },
       "1-07": {
         "id": "1-07",
         "text": "平时的衣服我觉得挺好，但也有泳装的镜头。你有吗？",
-        "nextNodeId": "1-08"
+        "nextNodeId": "1-08",
+        "speakerId": "producer"
       },
       "1-08": {
         "id": "1-08",
@@ -63,7 +67,8 @@
       "1-10": {
         "id": "1-10",
         "text": "好，那就出去一趟吧。课程之后的安排我来定。",
-        "nextNodeId": "1-11"
+        "nextNodeId": "1-11",
+        "speakerId": "producer"
       },
       "1-11": {
         "id": "1-11",
@@ -92,7 +97,8 @@
       "1-15": {
         "id": "1-15",
         "text": "不是该选巡自己喜欢的吗？",
-        "nextNodeId": "1-16"
+        "nextNodeId": "1-16",
+        "speakerId": "producer"
       },
       "1-16": {
         "id": "1-16",
@@ -155,7 +161,8 @@
       "2-01": {
         "id": "2-01",
         "text": "有精神的会不会更适合你？",
-        "nextNodeId": "2-02"
+        "nextNodeId": "2-02",
+        "speakerId": "producer"
       },
       "2-02": {
         "id": "2-02",
@@ -189,7 +196,8 @@
       "3-01": {
         "id": "3-01",
         "text": "试试搭配吧。",
-        "nextNodeId": "3-02"
+        "nextNodeId": "3-02",
+        "speakerId": "producer"
       },
       "3-02": {
         "id": "3-02",
@@ -200,7 +208,8 @@
       "3-03": {
         "id": "3-03",
         "text": "发饰啊项链之类的……",
-        "nextNodeId": "3-04"
+        "nextNodeId": "3-04",
+        "speakerId": "producer"
       },
       "3-04": {
         "id": "3-04",
@@ -216,7 +225,8 @@
       "4-01": {
         "id": "4-01",
         "text": "试试闭上眼睛随手抓一件，赌在偶然的相遇上如何？",
-        "nextNodeId": "4-02"
+        "nextNodeId": "4-02",
+        "speakerId": "producer"
       },
       "4-02": {
         "id": "4-02",
@@ -245,7 +255,8 @@
       "4-06": {
         "id": "4-06",
         "text": "喂，别往我身上比。",
-        "nextNodeId": "4-07"
+        "nextNodeId": "4-07",
+        "speakerId": "producer"
       },
       "4-07": {
         "id": "4-07",

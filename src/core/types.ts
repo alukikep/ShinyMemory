@@ -505,7 +505,9 @@ export type JobBoardEntry = {
   checkText?: string;
   /** 检定用的偶像属性，界面上用来显示 Vo / Da / Vi 徽标。 */
   checkStat?: StatKey;
+  /** 只用于调试/日志；界面只显示「未解锁」。 */
   lockedReason?: string;
+  locked: boolean;
   /** 已派出 / 冷却中：这份工作暂时没人能接。 */
   busyReason?: string;
   offers: JobBoardOffer[];

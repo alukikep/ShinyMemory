@@ -41,7 +41,7 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
   );
 
   const statusOf = (entry: JobBoardEntry) =>
-    entry.lockedReason ? '未解锁' : entry.busyReason;
+    entry.locked ? '未解锁' : entry.busyReason;
 
   return (
     <div
@@ -102,7 +102,7 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
               {detail.checkText ? <span>{detail.checkText}</span> : null}
             </div>
 
-            {detail.lockedReason ? (
+            {detail.locked ? (
               <p className="job-board-locked-note">未解锁</p>
             ) : detail.busyReason ? (
               <p className="job-board-locked-note">{detail.busyReason}</p>

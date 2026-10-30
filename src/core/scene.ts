@@ -250,7 +250,12 @@ export function buildJobBoard(state: GameState): JobBoardView {
   );
 
   const entries: JobBoardEntry[] = [...CONTENT_INDEX.jobs.values()].map((job) => {
-    const lockedReason = (job.requires ?? [])
+    // 解锁判定走 checkCondition；describeCondition 只拿来写调试文案。
+    const unmet = (job.requires ?? []).filter(
+      (condition) => !checkCondition(condition, state, { idolId: focusIdolId }),
+    );
+    const locked = unmet.length > 0;
+    const lockedReason = unmet
       .map((condition) =>
         describeCondition(condition, state, { idolId: focusIdolId }),
       )
@@ -269,7 +274,7 @@ export function buildJobBoard(state: GameState): JobBoardView {
         ? `冷却中，还有 ${coolingDays} 天`
         : undefined;
 
-    const offers: JobBoardOffer[] = (busyReason ? [] : idols).map((idol) => {
+    const offers: JobBoardOffer[] = (busyReason || locked ? [] : idols).map((idol) => {
       const offer = jobOfferFor(state, job, idol.id);
       const chance = jobCheckChance(state, job, idol.id);
       const checkLabel =
@@ -310,6 +315,7 @@ export function buildJobBoard(state: GameState): JobBoardView {
         }
         return ref.scope === 'idol' ? ref.key : undefined;
       })(),
+      locked,
       lockedReason: lockedReason || undefined,
       offers,
     };

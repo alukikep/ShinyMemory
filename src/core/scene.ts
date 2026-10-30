@@ -321,6 +321,7 @@ export function buildJobBoard(state: GameState): JobBoardView {
       })(),
       locked,
       lockedReason: lockedReason || undefined,
+      busyReason,
       offers,
     };
     return { entry, hidden };

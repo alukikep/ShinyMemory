@@ -2,7 +2,7 @@
   "id": "draft.activity.meguru.after_practice",
   "kind": "activity",
   "title": "收工以后",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.meguru.after_practice",
   "payload": {
@@ -47,12 +47,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T14:02:42.034Z",
-  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:33:29.401Z",
+  "reviewedAt": "2026-10-30T14:33:29.401Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T14:02:42.034Z",
       "note": "B9：巡专属行动"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T14:33:29.401Z"
     }
   ]
 }

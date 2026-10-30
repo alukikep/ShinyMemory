@@ -278,6 +278,91 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.meguru.after_practice",
+  "name": "收工以后",
+  "description": "练习结束，她还没走。你想确认一下她的状态。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "meguru"
+  ],
+  "locations": [
+    "practice_room"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 900,
+      "toMinute": 960
+    }
+  ],
+  "cost": {
+    "stamina": 4
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -6
+    }
+  ],
+  "resultTexts": [
+    "「诶？我没事哦！」她说得有点快。你没接话，她停了一下，说「……其实有一点累」。",
+    "她把毛巾叠得很整齐，说这样明天用起来方便。",
+    "「制作人，你每次都留到最后呢。」她说完自己点了点头。"
+  ]
+},
+{
+  "id": "activity.meguru.park_help",
+  "name": "陪她去球场",
+  "description": "她说就去看一眼，结果一进场就被拉上场了。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "meguru"
+  ],
+  "locations": [
+    "park"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 960,
+      "toMinute": 1080
+    }
+  ],
+  "cost": {
+    "stamina": 9
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "dance",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -4
+    }
+  ],
+  "resultTexts": [
+    "她连着投中三个，回头冲你比了个手势。第四个没进，她自己先笑了。",
+    "朋友说\"巡的朋友也一起打啊\"，她看了你一眼，好像在等你点头。",
+    "散场以后她坐在球场边喝水，说好久没打得这么开心了。"
+  ]
+},
+{
   "id": "activity.office_filing",
   "name": "整理资料",
   "description": "把抽屉里那堆通告单和合同按日期重新排一遍。",
@@ -967,6 +1052,186 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "result": "她愣了一下才接过去，喝了两口，说谢谢。"
     }
   ]
+},
+{
+  "id": "evt.meguru.after_dance",
+  "title": "再来一次",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "meguru"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "课结束了。她把音乐倒回去，从第一拍重新开始。",
+  "choices": [
+    {
+      "label": "陪她再来一遍",
+      "hint": "信任 +3、舞蹈 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        }
+      ],
+      "result": "第二遍结束，她喘着气说：这次对了！"
+    },
+    {
+      "label": "提醒她该休息了",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「诶……啊，也是。」她关了音乐，动作有点舍不得。"
+    },
+    {
+      "label": "问她为什么突然这么拼",
+      "hint": "信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「因为我想跳得好看一点嘛！……还有，想让大家觉得我很厉害。」"
+    }
+  ]
+},
+{
+  "id": "evt.meguru.after_free",
+  "title": "手机一直在响",
+  "when": [],
+  "after": {
+    "ids": [
+      "free"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "meguru"
+    ]
+  },
+  "chance": 0.35,
+  "priority": 5,
+  "once": true,
+  "text": "自由时间刚开始，她的手机就响了三次。每次接完都笑得很好看。",
+  "choices": [
+    {
+      "label": "问她是谁打来的",
+      "hint": "信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「是朋友！……都说是\"只帮一下\"就这样。」她挠了挠头。"
+    },
+    {
+      "label": "把她的手机轻轻按下去",
+      "hint": "信任 +1、压力 -4",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -4
+        }
+      ],
+      "result": "她愣了半秒，然后真的把手机放进包里：「……那我今天先不管它。」"
+    },
+    {
+      "label": "什么也不说",
+      "hint": "无变化",
+      "effects": [],
+      "result": "她接完第三个电话，坐下来，安静了一会儿。"
+    }
+  ]
+},
+{
+  "id": "evt.meguru.after_vocal",
+  "title": "声音太大",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "meguru"
+    ]
+  },
+  "chance": 0.35,
+  "priority": 5,
+  "once": true,
+  "text": "声乐老师说她的音量太满，第一段就放到底了，后面没有余地。",
+  "choices": [
+    {
+      "label": "让她试着留一半力气",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "她唱得收着，自己先笑出来：「这样好难啊！」"
+    },
+    {
+      "label": "说\"有精神就好\"",
+      "hint": "信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「诶嘿嘿，谢谢你！……不过老师说得对啦。」"
+    },
+    {
+      "label": "问她为什么总是唱这么满",
+      "hint": "压力 +3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 3
+        }
+      ],
+      "result": "她愣了一下：「因为我怕停下来啊。」"
+    }
+  ]
 }
 ],
   jobs: [
@@ -1405,42 +1670,8 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "cooldownDays": 2
 }
 ],
-  dialogues: [
-{
-  "id": "dialogue.e2e.review",
-  "idolId": "mano",
-  "startNodeId": "n01",
-  "nodes": {
-    "n01": {
-      "id": "n01",
-      "text": "第一句",
-      "nextNodeId": "n02"
-    },
-    "n02": {
-      "id": "n02",
-      "text": "第二句"
-    }
-  }
-}
-],
-  storyChains: [
-{
-  "id": "story.e2e.review",
-  "idolId": "mano",
-  "steps": [
-    {
-      "id": "step-1",
-      "locationId": "park",
-      "dialogueId": "dialogue.e2e.review",
-      "actionLabel": "E2E 剧情步骤",
-      "timeWindow": {
-        "fromMinute": 600,
-        "toMinute": 1080
-      }
-    }
-  ]
-}
-],
+  dialogues: [],
+  storyChains: [],
   items: [
 {
   "id": "gift.bird_charm",
@@ -1760,6 +1991,90 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "mano",
   "label": "明天的事",
   "text": "「明天想早点到。上次那段还没练熟，不想拖大家后腿。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "meguru.chat.alone",
+  "actorId": "meguru",
+  "label": "一个人的时候",
+  "text": "「一个人啊……会有点安静。所以我才喜欢待在人多的地方吧？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "meguru.chat.call_her",
+  "actorId": "meguru",
+  "label": "名字",
+  "text": "「叫我巡就可以了！前辈这么叫会让我觉得难为情——啊，制作人不算前辈啦。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "meguru.chat.friends",
+  "actorId": "meguru",
+  "label": "朋友的事",
+  "text": "「诶嘿嘿，大家都很可爱哦。篮球部、排球部，还有田径部——只要拜托我的话，我都去！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "meguru.chat.how_was_today",
+  "actorId": "meguru",
+  "label": "今天怎么样",
+  "text": "「今天超有精神的！……啊，不过刚才跑太多了，腿有点酸。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "meguru.chat.practice",
+  "actorId": "meguru",
+  "label": "练习的进度",
+  "text": "「那个转身我练了三十次！……三十次之后还是会歪，诶嘿嘿。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "meguru.chat.worried",
+  "actorId": "meguru",
+  "label": "被担心的时候",
+  "text": "「诶？我没事哦！真的！……制作人，你刚才是不是在担心我？」",
   "cooldownMinutes": 1440,
   "effects": [
     {

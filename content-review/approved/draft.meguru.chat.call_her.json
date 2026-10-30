@@ -2,7 +2,7 @@
   "id": "draft.meguru.chat.call_her",
   "kind": "topic",
   "title": "名字",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.meguru.chat.call_her",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T14:02:42.034Z",
-  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:33:35.437Z",
+  "reviewedAt": "2026-10-30T14:33:35.437Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T14:02:42.034Z",
       "note": "B9：巡日常话题（依 W.I.N.G. 语料）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T14:33:35.437Z"
     }
   ]
 }

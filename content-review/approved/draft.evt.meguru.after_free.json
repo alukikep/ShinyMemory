@@ -2,7 +2,7 @@
   "id": "draft.evt.meguru.after_free",
   "kind": "event",
   "title": "手机一直在响",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.meguru.after_free",
   "payload": {
@@ -63,12 +63,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T14:02:42.034Z",
-  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:33:33.214Z",
+  "reviewedAt": "2026-10-30T14:33:33.214Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T14:02:42.034Z",
       "note": "B9：巡训练后事件（依 W.I.N.G. 语料）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T14:33:33.214Z"
     }
   ]
 }

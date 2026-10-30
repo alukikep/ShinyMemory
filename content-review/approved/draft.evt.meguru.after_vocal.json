@@ -2,7 +2,7 @@
   "id": "draft.evt.meguru.after_vocal",
   "kind": "event",
   "title": "声音太大",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.meguru.after_vocal",
   "payload": {
@@ -69,12 +69,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T14:02:42.034Z",
-  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:33:34.015Z",
+  "reviewedAt": "2026-10-30T14:33:34.015Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T14:02:42.034Z",
       "note": "B9：巡训练后事件（依 W.I.N.G. 语料）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T14:33:34.015Z"
     }
   ]
 }

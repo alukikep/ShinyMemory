@@ -2,7 +2,7 @@
   "id": "draft.activity.meguru.park_help",
   "kind": "activity",
   "title": "陪她去球场",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.meguru.park_help",
   "payload": {
@@ -52,12 +52,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T14:02:42.034Z",
-  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:33:30.598Z",
+  "reviewedAt": "2026-10-30T14:33:30.598Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T14:02:42.034Z",
       "note": "B9：巡专属行动"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T14:33:30.598Z"
     }
   ]
 }

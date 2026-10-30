@@ -26,6 +26,7 @@ import {
   formatIdolText,
   getActivity,
   getActor,
+  chatRemainingToday,
   getFocusIdolId,
   getEligibleStories,
   getEvent,
@@ -764,17 +765,23 @@ function buildIdolPage(state: GameState): SceneView {
   const availableTopics = (getActor(idolId)?.topics ?? []).filter(
     (topic) => topicAvailability(state, actor, topic).ok,
   );
+  const chatLeft = chatRemainingToday(state, idolId);
+  const chatBlocked =
+    chatLeft <= 0
+      ? '今天已经聊够了'
+      : availableTopics.length === 0
+        ? '她今天好像没什么想说的'
+        : undefined;
   const topics: ActionView[] = [
     {
       id: `chat:${idolId}`,
       command: { type: 'chat', actorId: idolId },
       label: '聊两句',
-      hint: availableTopics.length ? '随便聊聊' : '她今天好像没什么想说的',
+      hint: chatBlocked ?? `随便聊聊 · 还能聊 ${chatLeft} 次`,
       icon: 'people',
       tone: 'bond',
-      disabled: availableTopics.length === 0,
-      disabledReason:
-        availableTopics.length === 0 ? '她今天好像没什么想说的' : undefined,
+      disabled: Boolean(chatBlocked),
+      disabledReason: chatBlocked,
     },
   ];
 

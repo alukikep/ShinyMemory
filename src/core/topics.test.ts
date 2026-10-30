@@ -3,7 +3,13 @@ import { mergeApprovedContent } from '../review/approval';
 import type { ApprovedContent } from './content/approvedPacking';
 import { FIXTURE_CONTENT_PACK } from './content-fixture/pack';
 import { CONTENT_INDEX, buildContentIndex } from './contentIndex';
-import { chatWith, newGame, talkTo } from './sim';
+import {
+  chatRemainingToday,
+  chatWith,
+  handleCommand,
+  newGame,
+  talkTo,
+} from './sim';
 import { buildScene } from './scene';
 
 const TOPIC_ID = 'mano.test_topic';
@@ -71,6 +77,38 @@ describe('approved topics', () => {
     expect(after.phase).toBe('npcResult');
     expect(after.pendingTopicId).toBe(TOPIC_ID);
     expect(after.idols.mano!.stats.trust.exp - before).toBe(1);
+  });
+
+  it('spends time and is capped per day', () => {
+    withTopic();
+    let state = idolPageState();
+    const startMinute = state.clock.absoluteMinutes;
+
+    // 话题有 24 小时冷却，这里把冷却清掉，只测每日上限。
+    state = chatWith(state, 'mano');
+    expect(state.clock.absoluteMinutes).toBe(startMinute + 15);
+
+    for (let i = 0; i < 2; i += 1) {
+      state.actors.mano!.topicCooldowns = {};
+      state.phase = 'idol';
+      state.selectedIdolId = 'mano';
+      state = chatWith(state, 'mano');
+    }
+    expect(chatRemainingToday(state, 'mano')).toBe(0);
+
+    // 第 4 次不生效
+    state.actors.mano!.topicCooldowns = {};
+    state.phase = 'idol';
+    state.selectedIdolId = 'mano';
+    const blocked = chatWith(state, 'mano');
+    expect(blocked).toBe(state);
+  });
+
+  it('returns to the idol page instead of the topic list', () => {
+    withTopic();
+    const talked = chatWith(idolPageState(), 'mano');
+    const back = handleCommand(talked, { type: 'continue' });
+    expect(back.phase).toBe('idol');
   });
 
   it('can be started from the idol page and grants its effects', () => {

@@ -305,5 +305,12 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     next.gameVersion = GAME_VERSION;
   }
 
+  if (next.schemaVersion === 17) {
+    const state = next.state as GameState & { chatCounts?: Record<string, number> };
+    state.chatCounts = state.chatCounts ?? {};
+    next.schemaVersion = 18;
+    next.gameVersion = GAME_VERSION;
+  }
+
   return next;
 }

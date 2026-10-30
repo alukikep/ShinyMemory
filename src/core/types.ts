@@ -212,6 +212,8 @@ export type GameState = {
   jobs: JobAssignment[];
   /** 每份工作最后一次完成的日期，冷却从这天算起。 */
   jobCooldowns: Record<string, number>;
+  /** 每天和谁聊过几次，key 是 `<day>:<actorId>`。 */
+  chatCounts: Record<string, number>;
   eventCooldowns: Record<string, number>;
   log: LogEntry[];
   phase: Phase;

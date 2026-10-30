@@ -1,5 +1,7 @@
 import {
   ACTOR_AFFINITY_MAX,
+  CHAT_DAILY_LIMIT,
+  CHAT_MINUTES,
   MINUTES_PER_DAY,
   SLEEP_UNTIL_MINUTE,
   START_MINUTE,
@@ -619,6 +621,7 @@ export function newGame(seed: number = Date.now()): GameState {
     flags: {},
     jobs: [],
   jobCooldowns: {},
+  chatCounts: {},
     eventCooldowns: {},
     log: [],
     phase: 'plan',
@@ -2077,13 +2080,28 @@ export function work(
   return next;
 }
 
-/** 从可用话题里随机挑一条来聊，偶像页只暴露这一个入口。 */
+/** 今天还能和这个角色聊几次。 */
+export function chatRemainingToday(
+  state: GameState,
+  actorId: string,
+): number {
+  const key = `${getDay(state.clock.absoluteMinutes)}:${actorId}`;
+  const used = state.chatCounts?.[key] ?? 0;
+  return Math.max(0, CHAT_DAILY_LIMIT - used);
+}
+
+/**
+ * 从可用话题里随机挑一条来聊，偶像页只暴露这一个入口。
+ *
+ * 每次花 `CHAT_MINUTES` 分钟，每天最多 `CHAT_DAILY_LIMIT` 次。
+ */
 export function chatWith(state: GameState, actorId: string): GameState {
   const fromIdolPage =
     state.phase === 'idol' && state.selectedIdolId === actorId;
   if (!fromIdolPage && state.phase !== 'npc') return state;
   const actor = getActor(actorId);
   if (!actor || !isActorPresent(state, actor)) return state;
+  if (chatRemainingToday(state, actorId) <= 0) return state;
 
   const available = actor.topics.filter(
     (topic) => topicAvailability(state, actor, topic).ok,
@@ -2092,9 +2110,21 @@ export function chatWith(state: GameState, actorId: string): GameState {
 
   const rng = new Rng(state.rng.seed, state.rng.counter);
   const chosen = rng.pick(available);
-  const next = clone(state);
-  next.rng.counter = rng.counter;
-  return talkTo(next, actorId, chosen.id);
+
+  // 从偶像页发起时，聊完要回到偶像页，而不是 NPC 的话题列表。
+  const seeded = clone(state);
+  seeded.rng.counter = rng.counter;
+  if (fromIdolPage) seeded.pendingIdolReturnId = actorId;
+
+  const talked = talkTo(seeded, actorId, chosen.id);
+  const key = `${getDay(talked.clock.absoluteMinutes)}:${actorId}`;
+  talked.chatCounts = {
+    ...talked.chatCounts,
+    [key]: (talked.chatCounts?.[key] ?? 0) + 1,
+  };
+
+  // 聊两句也花时间。
+  return advanceTime(talked, CHAT_MINUTES);
 }
 
 export function talkTo(
@@ -2930,6 +2960,15 @@ function continueFromNpc(state: GameState): GameState {
 
   const result = checkNpcEvent(next, actor.id, topicId ?? '');
   if (result.event) return result.state;
+
+  // 从偶像页来的：回到她的页面，别再把她的话题铺一遍。
+  if (next.pendingIdolReturnId === actor.id) {
+    next.pendingIdolReturnId = undefined;
+    next.pendingActorId = undefined;
+    next.selectedIdolId = actor.id;
+    next.phase = 'idol';
+    return next;
+  }
 
   next.phase = 'npc';
   return next;

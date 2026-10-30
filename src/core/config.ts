@@ -12,3 +12,7 @@ export const CALENDAR_START = {
 
 export const SLEEP_UNTIL_MINUTE = 8 * 60;
 export const ACTOR_AFFINITY_MAX = 20;
+
+/** 聊两句：每次花一点时间，每天有次数上限。 */
+export const CHAT_MINUTES = 15;
+export const CHAT_DAILY_LIMIT = 3;

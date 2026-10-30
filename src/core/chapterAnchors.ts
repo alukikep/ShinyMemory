@@ -226,12 +226,8 @@ export function validateChapterShape(
         }
       }
 
-      if (!merge && choices.length > 1) {
-        problems.push({
-          chapterId: input.chapterId,
-          message: '各选项分支没有汇合点（它们会各走各的，永远回不到主线）',
-        });
-      }
+      // 不要求合流：卡面剧本里三条分支常常各自演到章末（实测 501/503/504 都是），
+      // 强行要求"回到主线"会把原作结构改掉。
     }
   }
 

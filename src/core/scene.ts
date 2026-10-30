@@ -760,17 +760,23 @@ function buildIdolPage(state: GameState): SceneView {
       };
     });
 
-  // 聊两句：她自己有话题池，偶像页直接列出来。
-  const topics: ActionView[] = (getActor(idolId)?.topics ?? [])
-    .filter((topic) => topicAvailability(state, actor, topic).ok)
-    .map((topic) => ({
-      id: `talk:${idolId}:${topic.id}`,
-      command: { type: 'talk', actorId: idolId, topicId: topic.id },
-      label: topic.label,
-      hint: topic.hint ?? '聊两句',
+  // 聊两句：话题池不铺成按钮，随机抽一条，界面只留一个入口。
+  const availableTopics = (getActor(idolId)?.topics ?? []).filter(
+    (topic) => topicAvailability(state, actor, topic).ok,
+  );
+  const topics: ActionView[] = [
+    {
+      id: `chat:${idolId}`,
+      command: { type: 'chat', actorId: idolId },
+      label: '聊两句',
+      hint: availableTopics.length ? '随便聊聊' : '她今天好像没什么想说的',
       icon: 'people',
       tone: 'bond',
-    }));
+      disabled: availableTopics.length === 0,
+      disabledReason:
+        availableTopics.length === 0 ? '她今天好像没什么想说的' : undefined,
+    },
+  ];
 
   const mode = idolActivityKindAt(state);
   const modeLabel = mode === 'work' ? '工作' : mode === 'training' ? '训练' : '互动';

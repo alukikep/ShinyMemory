@@ -2077,6 +2077,26 @@ export function work(
   return next;
 }
 
+/** 从可用话题里随机挑一条来聊，偶像页只暴露这一个入口。 */
+export function chatWith(state: GameState, actorId: string): GameState {
+  const fromIdolPage =
+    state.phase === 'idol' && state.selectedIdolId === actorId;
+  if (!fromIdolPage && state.phase !== 'npc') return state;
+  const actor = getActor(actorId);
+  if (!actor || !isActorPresent(state, actor)) return state;
+
+  const available = actor.topics.filter(
+    (topic) => topicAvailability(state, actor, topic).ok,
+  );
+  if (available.length === 0) return state;
+
+  const rng = new Rng(state.rng.seed, state.rng.counter);
+  const chosen = rng.pick(available);
+  const next = clone(state);
+  next.rng.counter = rng.counter;
+  return talkTo(next, actorId, chosen.id);
+}
+
 export function talkTo(
   state: GameState,
   actorId: string,
@@ -2973,6 +2993,10 @@ export function handleCommand(
 
     case 'idol':
       if (command.type === 'leaveIdol') return leaveIdol(state);
+      if (command.type === 'chat') return chatWith(state, command.actorId);
+      if (command.type === 'talk') {
+        return talkTo(state, command.actorId, command.topicId);
+      }
       if (command.type === 'train') {
         return train(state, command.idolId, command.activityId);
       }

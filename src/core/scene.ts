@@ -249,7 +249,7 @@ export function buildJobBoard(state: GameState): JobBoardView {
     (idol) => state.idols[idol.id]?.status === 'recruited',
   );
 
-  const entries: JobBoardEntry[] = [...CONTENT_INDEX.jobs.values()].map((job) => {
+  const rows = [...CONTENT_INDEX.jobs.values()].map((job) => {
     // 解锁判定走 checkCondition；describeCondition 只拿来写调试文案。
     const unmet = (job.requires ?? []).filter(
       (condition) => !checkCondition(condition, state, { idolId: focusIdolId }),
@@ -296,7 +296,10 @@ export function buildJobBoard(state: GameState): JobBoardView {
       };
     });
 
-    return {
+    // 剧情解锁的工作在解锁前整条消失，避免剧透后续内容。
+    const hidden = locked && Boolean(job.hiddenUntilUnlocked);
+
+    const entry: JobBoardEntry = {
       jobId: job.id,
       name: job.name,
       description: job.description,
@@ -319,7 +322,12 @@ export function buildJobBoard(state: GameState): JobBoardView {
       lockedReason: lockedReason || undefined,
       offers,
     };
+    return { entry, hidden };
   });
+
+  const entries = rows
+    .filter((row) => !row.hidden)
+    .map((row) => row.entry);
 
   return { entries, focusIdolId };
 }

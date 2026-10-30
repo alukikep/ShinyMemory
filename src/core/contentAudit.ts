@@ -200,6 +200,12 @@ export function auditPack(
     ...[...index.storyChains.values()].flatMap((chain) =>
       chain.steps.map((step) => step.effects ?? []),
     ),
+    ...[...dialogueIds.values()].flatMap((dialogue) =>
+      Object.values(dialogue.nodes ?? {}).flatMap((node) => [
+        node.effects ?? [],
+        ...(node.choices ?? []).map((choice) => choice.effects ?? []),
+      ]),
+    ),
   ];
   const hasFansSource = collectedEffects.some((effects) =>
     effects.some((effect) => effect.kind === 'fans'),
@@ -210,6 +216,25 @@ export function auditPack(
       'fans-source',
       '内容里没有任何 fans 效果，粉丝数会永远是 0',
     );
+  }
+
+  // 工作引用了 flag 当解锁条件，但整包没人写这个 flag → 这份工作永远开不了。
+  const setFlags = new Set(
+    collectedEffects
+      .flat()
+      .filter((effect) => effect.kind === 'flag' && effect.value)
+      .map((effect) => (effect as { key: string }).key),
+  );
+  for (const job of index.jobs.values()) {
+    for (const condition of job.requires ?? []) {
+      if (condition.kind !== 'flag') continue;
+      if (setFlags.has(condition.key)) continue;
+      push(
+        'warning',
+        'job-unlock-flag',
+        `${job.id} 需要 flag ${condition.key}，但内容里没有任何效果会设置它`,
+      );
+    }
   }
 
   // 商品货架由商店的 itemIds 决定；物品不反向引用商店，避免两处真相。

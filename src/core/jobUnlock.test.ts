@@ -34,6 +34,20 @@ function setup(): GameState {
 }
 
 describe('story-gated jobs', () => {
+  it('can hide a job entirely until the story flag is set', () => {
+    CONTENT_INDEX.jobs.set(JOB_ID, { ...job, hiddenUntilUnlocked: true });
+
+    const state = setup();
+    expect(
+      buildJobBoard(state).entries.some((entry) => entry.jobId === JOB_ID),
+    ).toBe(false);
+
+    state.flags[FLAG] = true;
+    expect(
+      buildJobBoard(state).entries.some((entry) => entry.jobId === JOB_ID),
+    ).toBe(true);
+  });
+
   it('stays locked until the flag is set, then becomes assignable', () => {
     CONTENT_INDEX.jobs.set(JOB_ID, job);
 

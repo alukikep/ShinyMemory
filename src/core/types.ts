@@ -482,6 +482,8 @@ export type JobDef = {
   requires?: Condition[];
   /** 工作完成后的冷却天数，缺省 0（次日即可再接）。 */
   cooldownDays?: number;
+  /** 未解锁时整条从面板消失（剧情解锁用，避免剧透）。 */
+  hiddenUntilUnlocked?: boolean;
 };
 
 export type JobBoardOffer = {

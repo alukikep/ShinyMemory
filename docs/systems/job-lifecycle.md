@@ -95,7 +95,19 @@ type JobAssignment = {
 | 名称 / 报酬 / 地点 / 时段 | 基本盘 |
 | 检定要求 | 例如「需要表现 E」，按**每个偶像各自的等级**算成功率 |
 | 派谁去 | 每个已出道偶像一个按钮，写明最早可排的日期与她的成功率 |
-| 未解锁 | `requires` 不满足时灰掉，并写出还差什么 |
+| 未解锁 | `requires` 不满足时显示「未解锁」（不写条件） |
+| 隐藏 | `hiddenUntilUnlocked: true` 且未解锁时，整条从面板消失（剧情解锁用） |
+
+解锁条件可以是属性、粉丝、或剧情 flag：
+
+```jsonc
+{ "requires": [{ "kind": "flag", "key": "unlocked.magazine_cover" }],
+  "hiddenUntilUnlocked": true }
+```
+
+判定用 `checkCondition`（不是展示文案）——曾经用 `describeCondition` 判过，
+flag 没有文案时会被当成已满足，工作直接可接。`content:audit` 的
+`job-unlock-flag` 规则会挡住"引用了没人设置的 flag"。
 
 偶像侧的变化：
 

@@ -89,13 +89,40 @@ PRODUCTION_PACK = BASE_PACK + approved    ← 游戏加载的就是它
 5. **高报酬的工作必须有检定**：没有检定的高报酬等于签到。
 6. **工作要给粉丝和属性**：只给钱的工作永远打不过 30 分钟零工。
 7. **一份工作同时只能派一个人**，完成后进入 `cooldownDays` 冷却。
-8. **事件没有文本变体**（对话节点才有）。高频锚点写多条 `once`，不要写一条循环。
-9. **`after` / `afterIdol` 只对偶像页行动生效**；地点页行动没有偶像上下文，用 `castPresent` 代替。
-10. **密度先低后高**：一个块 3–8 条。先让整条链路跑通，再回头加量。
+8. **剧情解锁用 flag**：剧情步骤写 `{ kind: 'flag', key, value: true }`，工作写 `requires: [{ kind: 'flag', key }]`。这类解锁再加 `hiddenUntilUnlocked: true`，解锁前整条从面板消失（属性/粉丝门槛照常显示，给玩家方向）。
+9. **事件没有文本变体**（对话节点才有）。高频锚点写多条 `once`，不要写一条循环。
+10. **`after` / `afterIdol` 只对偶像页行动生效**；地点页行动没有偶像上下文，用 `castPresent` 代替。
+11. **密度先低后高**：一个块 3–8 条。先让整条链路跑通，再回头加量。
 
 ---
 
-## 6. 数值速查
+## 6. 解锁一份工作
+
+三种门槛，写法都是 `JobDef.requires`：
+
+| 类型 | 条件 | 界面表现 | 用在哪 |
+|---|---|---|---|
+| 属性 | `{ kind: 'attributeAtLeast', ref, rank }` | 列表显示「未解锁」 | 引导玩家练某个属性 |
+| 粉丝 | `{ kind: 'fansAtLeast', value }` | 列表显示「未解锁」 | 里程碑式的大活 |
+| 剧情 | `{ kind: 'flag', key }` + `hiddenUntilUnlocked: true` | **整条消失** | 剧情推进的奖励，不剧透 |
+
+剧情解锁的完整写法：
+
+```jsonc
+// 剧情链的一步（或对话节点 / 选项）完成时
+{ "effects": [{ "kind": "flag", "key": "unlocked.magazine_cover", "value": true }] }
+
+// 工作
+{
+  "requires": [{ "kind": "flag", "key": "unlocked.magazine_cover" }],
+  "hiddenUntilUnlocked": true
+}
+```
+
+`content:audit` 会检查：**工作引用了某个 flag，但整包没有任何效果会设置它** → 警告 `job-unlock-flag`。
+写错 key、改名忘改、剧情还没写就把工作挂上去，都会在这里被拦下。
+
+## 7. 数值速查
 
 完整表见 [`content-standards.md`](../current/content-standards.md) §6，写稿时只看这几行：
 
@@ -112,7 +139,7 @@ PRODUCTION_PACK = BASE_PACK + approved    ← 游戏加载的就是它
 
 ---
 
-## 7. 完成后自检（DoD）
+## 8. 完成后自检（DoD）
 
 一个块算完成，要同时满足：
 
@@ -123,11 +150,12 @@ PRODUCTION_PACK = BASE_PACK + approved    ← 游戏加载的就是它
 - [ ] 在游戏里真的触发过一次（不是审查台预览）
 - [ ] 没有新增未使用的 flag / var
 - [ ] 工作类内容：有检定、有 `failureEffects`、有结果页文案、有冷却
+- [ ] 带解锁的工作：`content:audit` 没有 `job-unlock-flag` 警告（剧情那条已经写好了）
 - [ ] 块表标记完成
 
 ---
 
-## 8. 命名
+## 9. 命名
 
 草稿 id 带块号，审查台队列本身就是进度表：
 
@@ -146,7 +174,7 @@ evt.mano.b1_after_vocal   ❌
 
 ---
 
-## 9. 块清单
+## 10. 块清单
 
 ### 樱木真乃
 
@@ -174,7 +202,7 @@ evt.mano.b1_after_vocal   ❌
 
 ---
 
-## 10. 块记录
+## 11. 块记录
 
 ```text
 B1 2026-10-29  5 条 / 通过 5 / 打回 0
@@ -203,7 +231,7 @@ P6 2026-10-30  系统层 / 无内容
 
 ---
 
-## 11. 现在的位置
+## 12. 现在的位置
 
 - 已确立：角色卡、数值档位、审查流程、内容生成链路
 - 已完成：B1、P2 数值校准、P3 经济闭环、P4 粉丝接通、P5 制作人属性、P6 工作系统重做

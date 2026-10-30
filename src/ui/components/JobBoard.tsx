@@ -13,8 +13,8 @@ type JobBoardProps = {
 /**
  * 工作面板：事务所的接活入口。
  *
- * 每份工作列出"谁能去、哪天、成功率"，多偶像时自然变成派活界面；
- * 没解锁的工作也显示出来，让玩家知道该往哪个方向交涉。
+ * 默认只排**重点偶像**，一份工作一个按钮——偶像再多，界面也不会变重。
+ * 没解锁的工作只显示「未解锁」，不写条件。
  */
 export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
   const dialogRef = useDialogFocus<HTMLElement>();
@@ -71,51 +71,53 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
           {board.entries.length === 0 ? (
             <p className="shop-description">现在还没有工作邀约。</p>
           ) : null}
-          {board.entries.map((entry) => (
-            <article
-              className={`job-board-card ${entry.lockedReason ? 'job-board-locked' : ''}`}
-              key={entry.jobId}
-            >
-              <div className="job-board-main">
-                <div className="job-board-title">
-                  <h3>{entry.name}</h3>
-                  <span className="shop-price">
-                    ¥{entry.pay.toLocaleString('zh-CN')}
-                  </span>
+          {board.entries.map((entry) => {
+            const offer = entry.offers.find(
+              (item) => item.idolId === board.focusIdolId,
+            );
+            return (
+              <article
+                className={`job-board-card ${entry.lockedReason ? 'job-board-locked' : ''}`}
+                key={entry.jobId}
+              >
+                <div className="job-board-main">
+                  <div className="job-board-title">
+                    <h3>{entry.name}</h3>
+                    <span className="shop-price">
+                      ¥{entry.pay.toLocaleString('zh-CN')}
+                    </span>
+                  </div>
+                  <p>{entry.description}</p>
+                  <div className="job-board-meta">
+                    <span>{entry.locationName}</span>
+                    <span>{entry.timeLabel}</span>
+                    {entry.checkText ? <span>{entry.checkText}</span> : null}
+                  </div>
                 </div>
-                <p>{entry.description}</p>
-                <div className="job-board-meta">
-                  <span>{entry.locationName}</span>
-                  <span>{entry.timeLabel}</span>
-                  {entry.checkText ? <span>{entry.checkText}</span> : null}
-                </div>
-              </div>
 
-              {entry.lockedReason ? (
-                <p className="job-board-locked-note">未解锁：{entry.lockedReason}</p>
-              ) : (
-                <div className="job-board-offers">
-                  {entry.offers.map((offer) => (
-                    <button
-                      type="button"
-                      key={offer.idolId}
-                      className="job-board-accept"
-                      disabled={!offer.command}
-                      onClick={() => {
-                        if (!offer.command) return;
-                        onAccept(offer.command);
-                        onClose();
-                      }}
-                    >
-                      <strong>派 {offer.idolName} 去</strong>
-                      <span>{offer.dayLabel}</span>
-                      {offer.checkLabel ? <span>{offer.checkLabel}</span> : null}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </article>
-          ))}
+                {entry.lockedReason ? (
+                  <p className="job-board-locked-note">未解锁</p>
+                ) : offer ? (
+                  <button
+                    type="button"
+                    className="job-board-accept"
+                    disabled={!offer.command}
+                    onClick={() => {
+                      if (!offer.command) return;
+                      onAccept(offer.command);
+                      onClose();
+                    }}
+                  >
+                    <strong>派 {offer.idolName} 去</strong>
+                    <span>{offer.dayLabel}</span>
+                    {offer.checkLabel ? <span>{offer.checkLabel}</span> : null}
+                  </button>
+                ) : (
+                  <p className="job-board-locked-note">还没有能去的偶像</p>
+                )}
+              </article>
+            );
+          })}
         </div>
       </section>
     </div>

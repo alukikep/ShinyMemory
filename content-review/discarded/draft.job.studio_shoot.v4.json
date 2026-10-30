@@ -2,7 +2,7 @@
   "id": "draft.job.studio_shoot.v4",
   "kind": "job",
   "title": "摄影棚拍摄",
-  "status": "approved",
+  "status": "discarded",
   "version": 4,
   "rootId": "draft.job.studio_shoot",
   "supersedes": "draft.job.studio_shoot.v3",
@@ -61,8 +61,8 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T10:32:02.434Z",
-  "updatedAt": "2026-10-30T10:37:19.164Z",
-  "reviewedAt": "2026-10-30T10:37:19.164Z",
+  "updatedAt": "2026-10-30T11:32:37.831Z",
+  "reviewedAt": "2026-10-30T11:32:37.831Z",
   "history": [
     {
       "status": "review",
@@ -72,6 +72,11 @@
     {
       "status": "approved",
       "at": "2026-10-30T10:37:19.164Z"
+    },
+    {
+      "status": "discarded",
+      "at": "2026-10-30T11:32:37.831Z",
+      "note": "已被 draft.job.studio_shoot.v5（v5）替换"
     }
   ]
 }

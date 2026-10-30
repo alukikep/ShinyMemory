@@ -2,7 +2,7 @@
   "id": "draft.job.radio_recording",
   "kind": "job",
   "title": "电台收录",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.job.radio_recording",
   "payload": {
@@ -81,12 +81,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T11:30:41.592Z",
-  "updatedAt": "2026-10-30T11:30:41.592Z",
+  "updatedAt": "2026-10-30T11:32:36.401Z",
+  "reviewedAt": "2026-10-30T11:32:36.401Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T11:30:41.592Z",
       "note": "新工作：电台收录，表现 D 解锁"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T11:32:36.401Z"
     }
   ]
 }

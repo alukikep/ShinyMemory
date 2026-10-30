@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { buildJobBoard } from '../../core/scene';
-import type { ActionCommand, GameState } from '../../core/types';
+import type { ActionCommand, GameState, JobBoardEntry } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 import { GameIcon } from './GameIcon';
 
@@ -11,22 +11,36 @@ type JobBoardProps = {
 };
 
 /**
- * 工作面板：事务所的接活入口。
+ * 工作面板：两级。
  *
- * 默认只排**重点偶像**，一份工作一个按钮——偶像再多，界面也不会变重。
- * 没解锁的工作只显示「未解锁」，不写条件。
+ * 列表只看「名字 / 门槛 / 报酬」，工作再多也不会挤；
+ * 点进一条才看详情和派谁去。默认只排重点偶像。
  */
 export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
   const dialogRef = useDialogFocus<HTMLElement>();
   const board = buildJobBoard(state);
+  const [detailId, setDetailId] = useState<string | undefined>();
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
+      if (event.key !== 'Escape') return;
+      if (detailId) {
+        setDetailId(undefined);
+        return;
+      }
+      onClose();
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [onClose]);
+  }, [detailId, onClose]);
+
+  const detail = board.entries.find((entry) => entry.jobId === detailId);
+  const focusOffer = detail?.offers.find(
+    (offer) => offer.idolId === board.focusIdolId,
+  );
+
+  const statusOf = (entry: JobBoardEntry) =>
+    entry.lockedReason ? '未解锁' : entry.busyReason;
 
   return (
     <div
@@ -47,15 +61,27 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
         <header className="roster-head">
           <div>
             <p className="eyebrow">JOBS</p>
-            <h2>可以接的工作</h2>
+            <h2>{detail ? detail.name : '可以接的工作'}</h2>
             <p className="shop-description">
-              接下来会占掉她那一整天的行程；带检定的工作可能达不到要求。
+              {detail
+                ? `${detail.locationName} · ${detail.timeLabel}`
+                : '接下来会占掉她那一整天的行程；带检定的工作可能达不到要求。'}
             </p>
           </div>
           <div className="inventory-head-meta">
             <span>
               <GameIcon name="coin" size={13} /> ¥{state.money}
             </span>
+            {detail ? (
+              <button
+                type="button"
+                className="roster-close"
+                onClick={() => setDetailId(undefined)}
+                aria-label="返回工作列表"
+              >
+                返回
+              </button>
+            ) : null}
             <button
               type="button"
               className="roster-close"
@@ -67,60 +93,76 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
           </div>
         </header>
 
-        <div className="job-board-list">
-          {board.entries.length === 0 ? (
-            <p className="shop-description">现在还没有工作邀约。</p>
-          ) : null}
-          {board.entries.map((entry) => {
-            const offer = entry.offers.find(
-              (item) => item.idolId === board.focusIdolId,
-            );
-            return (
-              <article
-                className={`job-board-card ${entry.lockedReason ? 'job-board-locked' : ''}`}
-                key={entry.jobId}
+        {detail ? (
+          <div className="job-detail">
+            <p className="job-detail-description">{detail.description}</p>
+            <div className="job-board-meta">
+              <span>¥{detail.pay.toLocaleString('zh-CN')}</span>
+              {detail.checkText ? <span>{detail.checkText}</span> : null}
+            </div>
+
+            {detail.lockedReason ? (
+              <p className="job-board-locked-note">未解锁</p>
+            ) : detail.busyReason ? (
+              <p className="job-board-locked-note">{detail.busyReason}</p>
+            ) : focusOffer ? (
+              <button
+                type="button"
+                className="job-board-accept"
+                disabled={!focusOffer.command}
+                onClick={() => {
+                  if (!focusOffer.command) return;
+                  onAccept(focusOffer.command);
+                  onClose();
+                }}
               >
-                <div className="job-board-main">
-                  <div className="job-board-title">
-                    <h3>{entry.name}</h3>
+                <strong>派 {focusOffer.idolName} 去</strong>
+                <span>{focusOffer.dayLabel}</span>
+                {focusOffer.checkLabel ? (
+                  <span>{focusOffer.checkLabel}</span>
+                ) : null}
+              </button>
+            ) : (
+              <p className="job-board-locked-note">还没有能去的偶像</p>
+            )}
+
+            <p className="job-detail-note">
+              到场可拿全额；不去的话到点按 20% 结算、不涨粉丝。
+            </p>
+          </div>
+        ) : (
+          <div className="job-board-list">
+            {board.entries.length === 0 ? (
+              <p className="shop-description">现在还没有工作邀约。</p>
+            ) : null}
+            {board.entries.map((entry) => {
+              const status = statusOf(entry);
+              return (
+                <button
+                  type="button"
+                  key={entry.jobId}
+                  className={`job-board-row ${status ? 'job-board-row-muted' : ''}`}
+                  onClick={() => setDetailId(entry.jobId)}
+                >
+                  <span className="job-board-row-main">
+                    <strong>{entry.name}</strong>
+                    <span className="job-board-row-sub">
+                      {entry.checkText ?? '无门槛'}
+                    </span>
+                  </span>
+                  <span className="job-board-row-side">
+                    {status ? (
+                      <span className="job-board-row-status">{status}</span>
+                    ) : null}
                     <span className="shop-price">
                       ¥{entry.pay.toLocaleString('zh-CN')}
                     </span>
-                  </div>
-                  <p>{entry.description}</p>
-                  <div className="job-board-meta">
-                    <span>{entry.locationName}</span>
-                    <span>{entry.timeLabel}</span>
-                    {entry.checkText ? <span>{entry.checkText}</span> : null}
-                  </div>
-                </div>
-
-                {entry.lockedReason ? (
-                  <p className="job-board-locked-note">未解锁</p>
-                ) : entry.busyReason ? (
-                  <p className="job-board-locked-note">{entry.busyReason}</p>
-                ) : offer ? (
-                  <button
-                    type="button"
-                    className="job-board-accept"
-                    disabled={!offer.command}
-                    onClick={() => {
-                      if (!offer.command) return;
-                      onAccept(offer.command);
-                      onClose();
-                    }}
-                  >
-                    <strong>派 {offer.idolName} 去</strong>
-                    <span>{offer.dayLabel}</span>
-                    {offer.checkLabel ? <span>{offer.checkLabel}</span> : null}
-                  </button>
-                ) : (
-                  <p className="job-board-locked-note">还没有能去的偶像</p>
-                )}
-              </article>
-            );
-          })}
-        </div>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        )}
       </section>
     </div>
   );

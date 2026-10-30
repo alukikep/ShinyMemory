@@ -3509,3 +3509,73 @@ button:focus-visible,
   font-size: 10px;
   color: var(--ink-soft);
 }
+
+.job-board-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fbfdfe;
+  padding: 10px 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.job-board-row:hover {
+  border-color: var(--accent);
+}
+
+.job-board-row-muted {
+  opacity: 0.62;
+}
+
+.job-board-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.job-board-row-main strong {
+  font-size: 13px;
+}
+
+.job-board-row-sub {
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+
+.job-board-row-side {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.job-board-row-status {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 1px 7px;
+  font-size: 9px;
+  color: var(--ink-soft);
+}
+
+.job-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.job-detail-description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.job-detail-note {
+  margin: 0;
+  font-size: 10px;
+  color: var(--ink-soft);
+}

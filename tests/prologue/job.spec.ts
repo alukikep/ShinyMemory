@@ -32,6 +32,7 @@ test('a job needs an idol and ends on a result page', async ({ page }) => {
   // 还没出道：工作面板里没有人能去。
   await page.getByRole('button', { name: '查看可以接的工作' }).click();
   await expect(page.getByRole('dialog', { name: '可以接的工作' })).toBeVisible();
+  await page.getByRole('button', { name: /摄影棚拍摄/ }).click();
   expect(await page.getByRole('button', { name: /派 .* 去/ }).count()).toBe(0);
   await page.getByRole('button', { name: '关闭工作面板' }).click();
 
@@ -46,6 +47,7 @@ test('a job needs an idol and ends on a result page', async ({ page }) => {
 
   await jumpTo(page, 4, 9 * 60, 'office');
   await page.getByRole('button', { name: '查看可以接的工作' }).click();
+  await page.getByRole('button', { name: /摄影棚拍摄/ }).click();
   await page.getByRole('button', { name: /派 樱木真乃 去/ }).click();
   const accepted = await getState(page);
   expect(accepted.jobs).toHaveLength(1);

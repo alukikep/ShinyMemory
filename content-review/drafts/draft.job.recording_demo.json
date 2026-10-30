@@ -1,0 +1,82 @@
+{
+  "id": "draft.job.recording_demo",
+  "kind": "job",
+  "title": "录音小样",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.job.recording_demo",
+  "payload": {
+    "id": "job.recording_demo",
+    "name": "录音小样",
+    "description": "先录一版小样给制作方听。两小时，棚里只有她和你。",
+    "locationId": "studio",
+    "fromMinute": 840,
+    "toMinute": 960,
+    "pay": 600,
+    "check": {
+      "ref": "vocal",
+      "difficulty": "E",
+      "shift": 0
+    },
+    "failurePayRatio": 0.4,
+    "cooldownDays": 1,
+    "effects": [
+      {
+        "kind": "fans",
+        "value": 50
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "vocal"
+        },
+        "tier": 10
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "trust"
+        },
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 3
+      }
+    ],
+    "failureEffects": [
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 8
+      },
+      {
+        "kind": "log",
+        "text": "录到第四遍，她自己说先停一下。",
+        "tone": "bad"
+      }
+    ],
+    "resultTexts": [
+      "第二遍就过了。录音师说这个声音干净，她愣了一下才道谢。",
+      "棚里很安静，只有她换气的声音。收工时她把耳机绕好放回架子上。",
+      "你隔着玻璃看她唱完最后一句，她抬头确认，看见你点头才笑出来。"
+    ],
+    "failureTexts": [
+      "「对不起，我能再来一次吗。」她说了三次，声音一次比一次小。",
+      "今天状态不对，最后先回去了。她说明天想早点来。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T11:36:58.170Z",
+  "updatedAt": "2026-10-30T11:36:58.170Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T11:36:58.170Z",
+      "note": "新工作：录音小样，歌唱 E，冷却 1 天"
+    }
+  ]
+}

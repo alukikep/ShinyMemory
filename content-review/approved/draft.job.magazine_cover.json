@@ -2,7 +2,7 @@
   "id": "draft.job.magazine_cover",
   "kind": "job",
   "title": "杂志封面",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.job.magazine_cover",
   "payload": {
@@ -85,12 +85,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T11:30:41.592Z",
-  "updatedAt": "2026-10-30T11:30:41.592Z",
+  "updatedAt": "2026-10-30T11:32:34.717Z",
+  "reviewedAt": "2026-10-30T11:32:34.717Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T11:30:41.592Z",
       "note": "新工作：杂志封面，粉丝 500 解锁"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T11:32:34.717Z"
     }
   ]
 }

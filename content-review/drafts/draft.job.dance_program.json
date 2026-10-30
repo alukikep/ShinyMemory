@@ -1,0 +1,92 @@
+{
+  "id": "draft.job.dance_program",
+  "kind": "job",
+  "title": "舞蹈节目收录",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.job.dance_program",
+  "payload": {
+    "id": "job.dance_program",
+    "name": "舞蹈节目收录",
+    "description": "综艺里的一个舞蹈环节，两小时连排带录。",
+    "locationId": "studio",
+    "fromMinute": 840,
+    "toMinute": 960,
+    "pay": 1000,
+    "check": {
+      "ref": "dance",
+      "difficulty": "D",
+      "shift": 0
+    },
+    "failurePayRatio": 0.4,
+    "cooldownDays": 2,
+    "requires": [
+      {
+        "kind": "attributeAtLeast",
+        "ref": {
+          "scope": "idol",
+          "key": "dance"
+        },
+        "rank": "E"
+      }
+    ],
+    "effects": [
+      {
+        "kind": "fans",
+        "value": 90
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "dance"
+        },
+        "tier": 10
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "trust"
+        },
+        "tier": 3
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 8
+      }
+    ],
+    "failureEffects": [
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 14
+      },
+      {
+        "kind": "log",
+        "text": "走位错了两次，重排到很晚才收工。",
+        "tone": "bad"
+      }
+    ],
+    "resultTexts": [
+      "连着录了三条，导演说可以了。她下台时腿还在抖。",
+      "她和伴舞对了一个手势，现场笑了一下，那个反应被留在了成片里。",
+      "收工后她一个人在空舞台上把那段又走了一遍。"
+    ],
+    "failureTexts": [
+      "「我拖慢大家了。」她在后台小声说，然后去把地上的胶带一条条揭掉。",
+      "第三条还是没过。节目组说先用备选方案，她点点头，没再说什么。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T11:36:58.170Z",
+  "updatedAt": "2026-10-30T11:36:58.170Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T11:36:58.170Z",
+      "note": "新工作：舞蹈节目收录，舞蹈 E 解锁、舞蹈 D 检定"
+    }
+  ]
+}

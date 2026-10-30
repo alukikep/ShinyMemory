@@ -2,7 +2,7 @@
   "id": "draft.job.studio_shoot.v5",
   "kind": "job",
   "title": "摄影棚拍摄",
-  "status": "review",
+  "status": "approved",
   "version": 5,
   "rootId": "draft.job.studio_shoot",
   "supersedes": "draft.job.studio_shoot.v4",
@@ -73,12 +73,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T11:15:19.586Z",
-  "updatedAt": "2026-10-30T11:15:19.586Z",
+  "updatedAt": "2026-10-30T11:32:37.792Z",
+  "reviewedAt": "2026-10-30T11:32:37.792Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T11:15:19.586Z",
       "note": "v5：工作给表现 +10 / 信任 +3（未到场降一档），加 2 天冷却"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T11:32:37.792Z"
     }
   ]
 }

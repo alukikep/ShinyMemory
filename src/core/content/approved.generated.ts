@@ -540,6 +540,158 @@ export const APPROVED_CONTENT: ApprovedContent = {
 ],
   jobs: [
 {
+  "id": "job.magazine_cover",
+  "name": "杂志封面",
+  "description": "一整天的外景拍摄，主视觉封面。要求她全程在状态。",
+  "locationId": "studio",
+  "fromMinute": 600,
+  "toMinute": 960,
+  "pay": 2000,
+  "check": {
+    "ref": "expression",
+    "difficulty": "C",
+    "shift": 0
+  },
+  "failurePayRatio": 0.4,
+  "cooldownDays": 4,
+  "requires": [
+    {
+      "kind": "fansAtLeast",
+      "value": 500
+    }
+  ],
+  "effects": [
+    {
+      "kind": "fans",
+      "value": 250
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "expression"
+      },
+      "tier": 10
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "vocal"
+      },
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "trust"
+      },
+      "tier": 5
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 12
+    }
+  ],
+  "failureEffects": [
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 20
+    },
+    {
+      "kind": "log",
+      "text": "封面组最后换了备选方案。她在车里一句话都没说。",
+      "tone": "bad"
+    }
+  ],
+  "resultTexts": [
+    "拍到日落才收工。摄影师说这组不用修太多。",
+    "她站在海边被风吹了六个小时，回程时头发还没顺过来。",
+    "最后一版打样出来时，staff 围在一起看了很久。"
+  ],
+  "failureTexts": [
+    "「我是不是拖慢了进度。」她小声问，然后自己摇了摇头。",
+    "状态一直没找回来。封面组礼貌地说会再看看，她听懂了下半句。"
+  ]
+},
+{
+  "id": "job.radio_recording",
+  "name": "电台收录",
+  "description": "深夜档的电台节目，两小时，讲自己的近况再放一首歌。",
+  "locationId": "studio",
+  "fromMinute": 840,
+  "toMinute": 960,
+  "pay": 900,
+  "check": {
+    "ref": "expression",
+    "difficulty": "D",
+    "shift": 0
+  },
+  "failurePayRatio": 0.4,
+  "cooldownDays": 2,
+  "requires": [
+    {
+      "kind": "attributeAtLeast",
+      "ref": {
+        "scope": "idol",
+        "key": "expression"
+      },
+      "rank": "D"
+    }
+  ],
+  "effects": [
+    {
+      "kind": "fans",
+      "value": 80
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "expression"
+      },
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "trust"
+      },
+      "tier": 3
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 4
+    }
+  ],
+  "failureEffects": [
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 10
+    },
+    {
+      "kind": "log",
+      "text": "麦克风前她卡了三次，主持人帮她圆了过去。",
+      "tone": "bad"
+    }
+  ],
+  "resultTexts": [
+    "她讲起最近在练的那段舞，讲到一半自己笑了。主持人说这种反应很好。",
+    "直播结束后，staff 说她的声音比想象中稳。她把台本折成四折塞进包里。",
+    "最后放歌的时候她没说话，只是听完了整首。"
+  ],
+  "failureTexts": [
+    "「对不起……我刚才是不是说错了。」她在电梯里问了两遍。",
+    "直播中有十几秒没人说话。回来路上她一直看着窗外。"
+  ]
+},
+{
   "id": "job.studio_shoot",
   "name": "摄影棚拍摄",
   "description": "杂志内页的一组拍摄。两个小时，灯光和快门都比想象中吵。",
@@ -550,18 +702,29 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "label": "拍摄",
   "effects": [
     {
+      "kind": "fans",
+      "value": 120
+    },
+    {
       "kind": "attributeExp",
-      "ref": "expression",
+      "ref": {
+        "scope": "idol",
+        "key": "expression"
+      },
+      "tier": 10
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "trust"
+      },
       "tier": 3
     },
     {
       "kind": "sharedStat",
       "stat": "stress",
       "delta": 6
-    },
-    {
-      "kind": "fans",
-      "value": 120
     }
   ],
   "check": {
@@ -590,7 +753,8 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "failureTexts": [
     "「对不起……是我没跟上。」她说这句话的时候，声音比平时更小。",
     "拍到一半她开始出神。最后勉强收工，对方说会用已经拍好的部分。"
-  ]
+  ],
+  "cooldownDays": 2
 }
 ],
   dialogues: [],

@@ -3,6 +3,7 @@ import { getState, jumpTo, openGame, reset } from './helpers';
 
 async function acceptMagazine(page: import('@playwright/test').Page) {
   await page.getByRole('button', { name: '查看可以接的工作' }).click();
+  await page.getByRole('button', { name: /杂志拍摄/ }).click();
   await page.getByRole('button', { name: /派 .* 去/ }).first().click();
 }
 

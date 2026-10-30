@@ -6,6 +6,7 @@ import {
   validateChapterAnchors,
   validateChapterShape,
   validateChapterStructure,
+  validateChapterTriggers,
 } from '../src/core/chapterAnchors.js';
 import { CHAPTER_SOURCES } from '../src/core/content/chapterSources.js';
 import { PENDING_CHAPTERS } from '../src/core/content/chapters/index.js';
@@ -193,6 +194,29 @@ const problems = [
     dialogueIds: new Set([...index.dialogues.keys(), ...pendingDialogueIds]),
     locationIds: new Set(index.locations.keys()),
   }),
+  ...validateChapterTriggers(
+    [...PENDING_CHAPTERS].map((chain) => {
+      const step = chain.steps[0];
+      const needsFlags = (step?.when ?? [])
+        .filter((condition) => condition.kind === 'flag')
+        .map((condition) => String((condition as { key?: string }).key ?? ''));
+      const setsFlags = (step?.effects ?? [])
+        .filter((effect) => effect.kind === 'flag')
+        .map((effect) => String((effect as { key?: string }).key ?? ''));
+      const day = (step?.when ?? []).find((c) => c.kind === 'dayAtLeast') as
+        | { day?: number }
+        | undefined;
+      return {
+        chapterId: chain.id,
+        needsFlags,
+        setsFlags,
+        day: day?.day,
+        locationId: step?.locationId,
+        fromMinute: step?.timeWindow?.fromMinute,
+        toMinute: step?.timeWindow?.toMinute,
+      };
+    }),
+  ),
   ...validateChapterShape(
     CHAPTER_SOURCES.map((chapter) => {
       const chain =

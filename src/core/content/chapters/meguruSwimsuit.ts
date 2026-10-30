@@ -26,8 +26,9 @@ const meguruSwimsuit: StoryChainDef = {
       timeWindow: { fromMinute: 10 * 60, toMinute: 20 * 60 },
       dialogueId: 'dialogue.meguru.swimsuit',
       actionLabel: '杂志那边约了新人特集',
+      // 第一章没有前置 flag——它自己要写出这个 flag。
       when: [
-        { kind: 'flag', key: 'completed.meguru.swimsuit', value: true },
+        { kind: 'idolStatus', idolId: 'meguru', status: 'recruited' },
         { kind: 'dayAtLeast', day: 5 },
       ],
       effects: [

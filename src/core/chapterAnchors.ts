@@ -114,6 +114,79 @@ export type ChapterStructureProbe = {
   locationIds: Set<string>;
 };
 
+
+/**
+ * 触发配置的连锁校验。
+ *
+ * 规则来自真实事故：第一章的 `when` 里写了它自己才设置的完成 flag，
+ * 结果这一章永远不会出现（要先完成它才能触发它）。
+ */
+export type ChapterTrigger = {
+  chapterId: string;
+  /** 第一步要求的 flag */
+  needsFlags: string[];
+  /** 第一步设置（effects）的 flag */
+  setsFlags: string[];
+  day?: number;
+  locationId?: string;
+  fromMinute?: number;
+  toMinute?: number;
+};
+
+export function validateChapterTriggers(
+  chapters: ChapterTrigger[],
+): ChapterStructureProblem[] {
+  const problems: ChapterStructureProblem[] = [];
+
+  chapters.forEach((chapter, index) => {
+    // 自引用：要求自己设置的 flag
+    for (const flag of chapter.needsFlags) {
+      if (chapter.setsFlags.includes(flag)) {
+        problems.push({
+          chapterId: chapter.chapterId,
+          message: `要求自己设置的 flag「${flag}」——这一章永远不会出现`,
+        });
+      }
+    }
+
+    if (!chapter.locationId) {
+      problems.push({ chapterId: chapter.chapterId, message: '没有触发地点' });
+    }
+    if (
+      chapter.fromMinute !== undefined &&
+      chapter.toMinute !== undefined &&
+      !(chapter.fromMinute < chapter.toMinute)
+    ) {
+      problems.push({ chapterId: chapter.chapterId, message: '时间窗不合法' });
+    }
+
+    if (index > 0) {
+      const previous = chapters[index - 1]!;
+      const chained = previous.setsFlags.some((flag) =>
+        chapter.needsFlags.includes(flag),
+      );
+      if (!chained) {
+        problems.push({
+          chapterId: chapter.chapterId,
+          message: `没有承接上一章（${previous.chapterId}）的完成 flag`,
+        });
+      }
+      if (
+        chapter.day !== undefined &&
+        previous.day !== undefined &&
+        chapter.day <= previous.day
+      ) {
+        problems.push({
+          chapterId: chapter.chapterId,
+          message: `最早天数 ${chapter.day} 没有晚于上一章的 ${previous.day}`,
+        });
+      }
+    }
+  });
+
+  return problems;
+}
+
 export type ChapterStructureProblem = {
   chapterId: string;
   message: string;

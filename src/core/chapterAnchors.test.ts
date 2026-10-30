@@ -3,6 +3,7 @@ import {
   validateChapterAnchors,
   validateChapterShape,
   validateChapterStructure,
+  validateChapterTriggers,
   type ChapterSource,
 } from './chapterAnchors';
 
@@ -221,5 +222,42 @@ describe('chapter shape: branches and reachability', () => {
       { chapterId: 'c1', stepCount: 1, dialogue: { startNodeId: 'start', nodes: graph } },
     ]);
     expect(problems.some((p) => p.message.includes('接不上'))).toBe(true);
+  });
+});
+
+describe('chapter triggers', () => {
+  const base = {
+    locationId: 'park',
+    fromMinute: 600,
+    toMinute: 1200,
+  };
+
+  it('rejects a chapter that requires its own completion flag', () => {
+    const problems = validateChapterTriggers([
+      {
+        ...base,
+        chapterId: 'c1',
+        needsFlags: ['done.c1'],
+        setsFlags: ['done.c1'],
+        day: 5,
+      },
+    ]);
+    expect(problems.some((p) => p.message.includes('永远不会出现'))).toBe(true);
+  });
+
+  it('rejects a chapter that does not chain to the previous one', () => {
+    const problems = validateChapterTriggers([
+      { ...base, chapterId: 'c1', needsFlags: [], setsFlags: ['done.c1'], day: 5 },
+      { ...base, chapterId: 'c2', needsFlags: [], setsFlags: ['done.c2'], day: 8 },
+    ]);
+    expect(problems.some((p) => p.message.includes('没有承接'))).toBe(true);
+  });
+
+  it('accepts a properly chained sequence', () => {
+    const problems = validateChapterTriggers([
+      { ...base, chapterId: 'c1', needsFlags: [], setsFlags: ['done.c1'], day: 5 },
+      { ...base, chapterId: 'c2', needsFlags: ['done.c1'], setsFlags: ['done.c2'], day: 8 },
+    ]);
+    expect(problems).toEqual([]);
   });
 });

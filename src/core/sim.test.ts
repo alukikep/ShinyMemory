@@ -213,7 +213,7 @@ describe('raising sim core', () => {
     expect(nextEntry?.offers[0]?.command).toBeUndefined();
   });
 
-  it('completes an accepted job automatically without reward or log', () => {
+  it('settles an unattended job at a discount and starts its cooldown', () => {
     const state = newGame(1);
     state.idols.mano!.status = 'recruited';
     const accepted = acceptFromBoard(state, '杂志拍摄');
@@ -221,8 +221,12 @@ describe('raising sim core', () => {
     const after = advanceTime(accepted, 6 * 24 * 60 + 8 * 60);
 
     expect(after.jobs).toHaveLength(0);
-    expect(after.money).toBe(3000);
-    expect(after.log.length).toBe(logLength);
+    // 到场 100%，没到场 20%；失败再乘 failurePayRatio。
+    expect([3000 + 240, 3000 + 96]).toContain(after.money);
+    expect(after.log.length).toBeGreaterThan(logLength);
+    expect(after.log.some((entry) => entry.text.includes('没能到场'))).toBe(true);
+    // 冷却从完成那天开始计时。
+    expect(after.jobCooldowns['job_magazine']).toBe(7);
   });
 
   it('participating in a job pays and advances to the end', () => {

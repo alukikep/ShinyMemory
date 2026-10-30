@@ -618,6 +618,7 @@ export function newGame(seed: number = Date.now()): GameState {
     storyChains: {},
     flags: {},
     jobs: [],
+  jobCooldowns: {},
     eventCooldowns: {},
     log: [],
     phase: 'plan',
@@ -694,6 +695,12 @@ export function acceptJob(
   const currentDay = getDay(state.clock.absoluteMinutes);
   if (!Number.isInteger(day) || day <= currentDay) return state;
 
+  // 一份工作同时只能派一个人；完成后进入冷却。
+  if (state.jobs?.some((entry) => entry.jobId === job.id)) return state;
+  const cooldownUntil =
+    (state.jobCooldowns?.[job.id] ?? 0) + (job.cooldownDays ?? 0);
+  if (currentDay < cooldownUntil) return state;
+
   const check = canReplaceDay(actor, day, actorState.scheduleOverrides);
   if (!check.ok) return state;
 
@@ -729,21 +736,104 @@ export function acceptJob(
     },
   ];
 
+  // 指派本身要花时间：跑来跑去谈档期也得半小时。
+  const afterAssign = advanceTime(next, 30);
   addLog(
-    next,
+    afterAssign,
     `接下了《${job.name}》。${formatCalendarDateFromDay(day, false)}，${formatClock(job.fromMinute)}–${formatClock(job.toMinute)}。`,
     'good',
   );
 
-  return next;
+  return afterAssign;
 }
 
+/** 未到场：经验降一档，粉丝归零。 */
+function previousExpTier(tier: ExpTier): ExpTier {
+  if (tier >= 20) return 10;
+  if (tier >= 10) return 5;
+  if (tier >= 5) return 3;
+  return 1;
+}
+
+function discountEffects(effects: Effect[]): Effect[] {
+  return effects
+    .filter((effect) => effect.kind !== 'fans')
+    .map((effect) =>
+      effect.kind === 'attributeExp'
+        ? { ...effect, tier: previousExpTier(effect.tier) }
+        : effect,
+    );
+}
+
+type JobSettlement = {
+  passed: boolean;
+  pay: number;
+  flavour: string;
+};
+
+/**
+ * 结算一份工作：掷检定 → 算钱 → 上效果。
+ *
+ * attended = false 时按 20% 结算、不涨粉，属性成长降一档：
+ * 她确实去上班了，只是没有制作人在旁边推。
+ */
+function settleJob(
+  state: GameState,
+  job: JobDef,
+  assignment: JobAssignment,
+  attended: boolean,
+): JobSettlement {
+  const rng = new Rng(state.rng.seed, state.rng.counter);
+  const chance = jobCheckChance(state, job, assignment.idolId);
+  const passed = chance === undefined ? true : rng.chance(chance);
+
+  const attendanceRatio = attended ? 1 : 0.2;
+  const failureRatio = passed
+    ? 1
+    : Math.min(1, Math.max(0, job.failurePayRatio ?? 0.5));
+  const pay = Math.round(job.pay * attendanceRatio * failureRatio);
+
+  const base = (passed ? job.effects : job.failureEffects) ?? [];
+  state.money += pay;
+  applyEffects(state, attended ? base : discountEffects(base), {
+    idolId: assignment.idolId,
+  });
+
+  const texts = passed ? job.resultTexts : job.failureTexts;
+  const flavour = texts?.length ? rng.pick(texts) : '';
+  state.rng.counter = rng.counter;
+  return { passed, pay, flavour };
+}
+
+/**
+ * 到点自动结算没去现场的工作。
+ *
+ * 读档、推进时间、调试跳天都会调用它，所以"关掉游戏"也算没到场。
+ */
 export function completeDueJobs(state: GameState): void {
   if (state.jobs.length === 0) return;
   const currentMinutes = state.clock.absoluteMinutes;
-  state.jobs = state.jobs.filter(
-    (job) => currentMinutes < (job.day - 1) * MINUTES_PER_DAY + job.toMinute,
+
+  const due = state.jobs.filter(
+    (job) => currentMinutes >= (job.day - 1) * MINUTES_PER_DAY + job.toMinute,
   );
+  if (due.length === 0) return;
+
+  state.jobs = state.jobs.filter((job) => !due.includes(job));
+
+  for (const assignment of due) {
+    const job = CONTENT_INDEX.jobs.get(assignment.jobId);
+    if (!job) continue;
+    const { passed, pay } = settleJob(state, job, assignment, false);
+    const day = assignment.day;
+    state.jobCooldowns = { ...state.jobCooldowns, [job.id]: day };
+    const idolName = CONTENT_INDEX.idols.get(assignment.idolId)?.name ?? '';
+    addLog(
+      state,
+      `${idolName}一个人去做了《${job.name}》，你没能到场，只结算了 ¥${pay}。${passed ? '' : '这次没达到要求。'}`,
+      passed ? 'info' : 'bad',
+    );
+  }
 }
 
 export function activeJobFor(state: GameState): JobAssignment | undefined {
@@ -783,28 +873,20 @@ export function attendJob(state: GameState, jobId: string): GameState {
   next.selectedIdolId = assignment.idolId;
   next.focusIdolId = assignment.idolId;
 
-  // 有检定的工作：出发前掷一次骰，失败按比例结算。
-  const rng = new Rng(next.rng.seed, next.rng.counter);
-  const chance = jobCheckChance(next, job);
-  const passed = chance === undefined ? true : rng.chance(chance);
-
-  const ratio = passed ? 1 : Math.min(1, Math.max(0, job.failurePayRatio ?? 0.5));
-  const pay = Math.round(job.pay * ratio);
-  next.money += pay;
-  applyEffects(next, (passed ? job.effects : job.failureEffects) ?? [], {
-    idolId: assignment.idolId,
-  });
-
-  // 和行动一致：走结果页，而不是把一句日志直接塞回安排页。
-  const texts = passed ? job.resultTexts : job.failureTexts;
-  const flavour = texts?.length ? rng.pick(texts) : '';
-  next.rng.counter = rng.counter;
+  const chance = jobCheckChance(next, job, assignment.idolId);
+  const { passed, pay, flavour } = settleJob(
+    next,
+    job,
+    assignment,
+    true,
+  );
 
   next.clock.absoluteMinutes = Math.max(
     next.clock.absoluteMinutes,
     (assignment.day - 1) * MINUTES_PER_DAY + assignment.toMinute,
   );
   next.jobs = next.jobs.filter((entry) => entry.id !== jobId);
+  next.jobCooldowns = { ...next.jobCooldowns, [job.id]: assignment.day };
 
   const idolName = CONTENT_INDEX.idols.get(assignment.idolId)?.name ?? '';
   const head = chance === undefined || passed

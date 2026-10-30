@@ -97,6 +97,8 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
 
                 {entry.lockedReason ? (
                   <p className="job-board-locked-note">未解锁</p>
+                ) : entry.busyReason ? (
+                  <p className="job-board-locked-note">{entry.busyReason}</p>
                 ) : offer ? (
                   <button
                     type="button"

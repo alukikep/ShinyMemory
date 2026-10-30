@@ -129,6 +129,12 @@ type JobAssignment = {
 completeDueJobs(state)
 ```
 
+工作到点而玩家没到场 → **按 20% 结算**，并照常掷检定（失败再乘 failurePayRatio）。
+属性成长降一档（tier 10 → 5、5 → 3、3 → 1），**粉丝归零**——她确实去上班了，只是没有制作人在旁边推。
+
+冷却从**完成那天**开始算：`jobCooldowns[jobId] = 完成日`，再按 `cooldownDays` 锁定若干天。
+一份工作同时只能派一个人（被派出期间全城锁死）。
+
 当前时间达到或超过工作结束时间：
 
 ```text

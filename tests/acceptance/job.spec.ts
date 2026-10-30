@@ -41,7 +41,7 @@ test('accepts, attends and rewards a job', async ({ page }, testInfo) => {
   expect(state.actors.mano.scheduleOverrides).toHaveLength(0);
 });
 
-test('does not reward or log an unattended job', async ({ page }) => {
+test('settles an unattended job at 20%', async ({ page }) => {
   await openGame(page);
   await acceptMagazine(page);
   const before = await getState(page);
@@ -50,12 +50,12 @@ test('does not reward or log an unattended job', async ({ page }) => {
   const after = await getState(page);
 
   expect(after.jobs).toHaveLength(0);
-  expect(after.money).toBe(before.money);
+  // 到场 100%，没到场 20%；检定失败再乘失败比例。
+  expect([before.money + 240, before.money + 96]).toContain(after.money);
   expect(after.shared.stamina).toBe(before.shared.stamina);
-  expect(after.shared.stress).toBe(before.shared.stress);
   expect(
-    after.log.some((entry) => entry.text.includes('收入 ¥')),
-  ).toBe(false);
+    after.log.some((entry) => entry.text.includes('没能到场')),
+  ).toBe(true);
 });
 
 test('persists a job across a reload and clears it after the end', async ({
@@ -76,5 +76,6 @@ test('persists a job across a reload and clears it after the end', async ({
 
   state = await getState(page);
   expect(state.jobs).toHaveLength(0);
-  expect(state.money).toBe(3000);
+  // 读档也算没到场：按 20% 结算。
+  expect([3240, 3096]).toContain(state.money);
 });

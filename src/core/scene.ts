@@ -256,7 +256,19 @@ export function buildJobBoard(state: GameState): JobBoardView {
       .filter(Boolean)
       .join('；');
 
-    const offers: JobBoardOffer[] = idols.map((idol) => {
+    // 一份工作同时只能派一个人；完成后按 cooldownDays 冷却。
+    const assigned = state.jobs?.some((entry) => entry.jobId === job.id);
+    const cooldownUntil =
+      (state.jobCooldowns?.[job.id] ?? 0) + (job.cooldownDays ?? 0);
+    const coolingDays =
+      cooldownUntil - getDay(state.clock.absoluteMinutes);
+    const busyReason = assigned
+      ? '已派出'
+      : coolingDays > 0
+        ? `冷却中，还有 ${coolingDays} 天`
+        : undefined;
+
+    const offers: JobBoardOffer[] = (busyReason ? [] : idols).map((idol) => {
       const offer = jobOfferFor(state, job, idol.id);
       const chance = jobCheckChance(state, job, idol.id);
       const checkLabel =
@@ -304,7 +316,9 @@ function buildJobActions(state: GameState): ActionView[] {
   if (jobs.length === 0) return [];
 
   const board = buildJobBoard(state);
-  const openCount = board.entries.filter((entry) => !entry.lockedReason).length;
+  const openCount = board.entries.filter(
+    (entry) => !entry.lockedReason && !entry.busyReason,
+  ).length;
 
   return [
     {

@@ -210,6 +210,8 @@ export type GameState = {
   /** 某个槽位的数量；缺省取各槽的默认值。 */
   slots?: Partial<Record<EquipSlot, number>>;
   jobs: JobAssignment[];
+  /** 每份工作最后一次完成的日期，冷却从这天算起。 */
+  jobCooldowns: Record<string, number>;
   eventCooldowns: Record<string, number>;
   log: LogEntry[];
   phase: Phase;
@@ -478,6 +480,8 @@ export type JobDef = {
   failureTexts?: string[];
   /** 全部满足才会出现在工作面板里（交涉、人脉解锁用）。 */
   requires?: Condition[];
+  /** 工作完成后的冷却天数，缺省 0（次日即可再接）。 */
+  cooldownDays?: number;
 };
 
 export type JobBoardOffer = {
@@ -500,6 +504,8 @@ export type JobBoardEntry = {
   pay: number;
   checkText?: string;
   lockedReason?: string;
+  /** 已派出 / 冷却中：这份工作暂时没人能接。 */
+  busyReason?: string;
   offers: JobBoardOffer[];
 };
 

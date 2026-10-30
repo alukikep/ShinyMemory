@@ -1,0 +1,184 @@
+{
+  "id": "draft.dialogue.meguru.stars",
+  "kind": "dialogue",
+  "title": "星空",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.stars",
+  "payload": {
+    "id": "dialogue.meguru.stars",
+    "idolId": "meguru",
+    "startNodeId": "1-n01",
+    "nodes": {
+      "1-n01": {
+        "id": "1-n01",
+        "text": "晚上的公园。路灯很暗，抬头能看到星星。",
+        "nextNodeId": "1-n02"
+      },
+      "1-n02": {
+        "id": "1-n02",
+        "speakerId": "meguru",
+        "text": "哇——！制作人快看！",
+        "nextNodeId": "1-n03"
+      },
+      "1-n03": {
+        "id": "1-n03",
+        "speakerId": "meguru",
+        "text": "星星真的很漂亮……！",
+        "nextNodeId": "1-n04"
+      },
+      "1-n04": {
+        "id": "1-n04",
+        "speakerId": "meguru",
+        "text": "好多一闪一闪的！诶嘿嘿，好像我们一样。",
+        "nextNodeId": "1-n05"
+      },
+      "1-n05": {
+        "id": "1-n05",
+        "text": "你问她指的是 illumination STARS 吗。",
+        "nextNodeId": "1-n06"
+      },
+      "1-n06": {
+        "id": "1-n06",
+        "speakerId": "meguru",
+        "text": "对！诶嘿嘿……",
+        "nextNodeId": "2-n01"
+      },
+      "2-n01": {
+        "id": "2-n01",
+        "speakerId": "meguru",
+        "text": "我就是在这个公园第一次遇到制作人的，还记得吗？",
+        "nextNodeId": "2-n02"
+      },
+      "2-n02": {
+        "id": "2-n02",
+        "text": "当然记得。那时候她在打篮球。",
+        "nextNodeId": "2-n03"
+      },
+      "2-n03": {
+        "id": "2-n03",
+        "speakerId": "meguru",
+        "text": "然后制作人说，自己不是怪人！",
+        "nextNodeId": "2-n04"
+      },
+      "2-n04": {
+        "id": "2-n04",
+        "text": "……你说过吗？你有点不确定。",
+        "nextNodeId": "2-n05"
+      },
+      "2-n05": {
+        "id": "2-n05",
+        "speakerId": "meguru",
+        "text": "说过！",
+        "nextNodeId": "2-n06"
+      },
+      "2-n06": {
+        "id": "2-n06",
+        "speakerId": "meguru",
+        "text": "对了，现在的我和相遇的时候比起来怎么样？变帅了吗？",
+        "nextNodeId": "2-n07"
+      },
+      "2-n07": {
+        "id": "2-n07",
+        "text": "你想了想，说成长得令人惊讶。",
+        "nextNodeId": "2-n08a"
+      },
+      "2-n08a": {
+        "id": "2-n08a",
+        "speakerId": "meguru",
+        "text": "诶嘿嘿，好耶——！",
+        "nextNodeId": "2-n09"
+      },
+      "2-n09": {
+        "id": "2-n09",
+        "speakerId": "meguru",
+        "text": "到那天为止，我每天都在期待什么时候能遇到制作人。",
+        "nextNodeId": "2-n10"
+      },
+      "2-n10": {
+        "id": "2-n10",
+        "speakerId": "meguru",
+        "text": "然后在公园看到了穿西装的人……是我的制作人！这个想法一闪而过，我就跑起来了！",
+        "nextNodeId": "2-n11"
+      },
+      "2-n11": {
+        "id": "2-n11",
+        "speakerId": "meguru",
+        "text": "真的很开心……！我那时候真的很兴奋吧？",
+        "nextNodeId": "3-n01"
+      },
+      "3-n01": {
+        "id": "3-n01",
+        "text": "你说和平常没什么两样吧，然后补了一句是在夸她。",
+        "nextNodeId": "3-n02"
+      },
+      "3-n02": {
+        "id": "3-n02",
+        "speakerId": "meguru",
+        "text": "这么认真的表情说这些，我有点害羞了……不过……谢谢你！",
+        "nextNodeId": "3-n03"
+      },
+      "3-n03": {
+        "id": "3-n03",
+        "speakerId": "meguru",
+        "text": "到现在发生的这么多事，对我来说全部都是不想忘记的重要的回忆……",
+        "nextNodeId": "3-n04"
+      },
+      "3-n04": {
+        "id": "3-n04",
+        "speakerId": "meguru",
+        "text": "今后也拜托你了，我最喜欢你了，制作人！",
+        "nextNodeId": "3-n05"
+      },
+      "3-n05": {
+        "id": "3-n05",
+        "text": "她说完就往前跑。你说跑起来很危险。",
+        "nextNodeId": "3-n06"
+      },
+      "3-n06": {
+        "id": "3-n06",
+        "speakerId": "meguru",
+        "text": "嗯，我会注意！稍微等一下……！",
+        "nextNodeId": "3-n07"
+      },
+      "3-n07": {
+        "id": "3-n07",
+        "text": "她举起手机，对着天空。过了一会儿放下来。",
+        "nextNodeId": "3-n08"
+      },
+      "3-n08": {
+        "id": "3-n08",
+        "speakerId": "meguru",
+        "text": "……啊——，好像不行啊。",
+        "nextNodeId": "3-n09"
+      },
+      "3-n09": {
+        "id": "3-n09",
+        "speakerId": "meguru",
+        "text": "我就是想拍今晚的星空，可是手机的镜头好像拍不出来。",
+        "nextNodeId": "3-n10"
+      },
+      "3-n10": {
+        "id": "3-n10",
+        "speakerId": "meguru",
+        "text": "工作和课程虽然也一样，但是我还想记住更多这种什么都没有的日子。",
+        "nextNodeId": "3-n11"
+      },
+      "3-n11": {
+        "id": "3-n11",
+        "speakerId": "meguru",
+        "text": "……今天的事我也会好好藏在心底的……好吗，制作人！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T16:14:37.040Z",
+  "updatedAt": "2026-10-30T16:14:37.040Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T16:14:37.040Z",
+      "note": "一章一段：合并且让选择贯穿整章"
+    }
+  ]
+}

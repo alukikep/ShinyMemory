@@ -1161,7 +1161,12 @@ export function ReviewApp() {
                           ) : null}
                         </header>
                         {group.drafts.map((draft) =>
-                          renderItem(draft, `第${chapterOf(draft)?.step ?? 0}步`),
+                          renderItem(
+                            draft,
+                            (chapterOf(draft)?.total ?? 0) > 1
+                              ? `第${chapterOf(draft)?.step ?? 0}步`
+                              : undefined,
+                          ),
                         )}
                       </section>
                     );

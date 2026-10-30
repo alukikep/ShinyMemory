@@ -1,0 +1,208 @@
+{
+  "id": "draft.dialogue.meguru.sunshine",
+  "kind": "dialogue",
+  "title": "拍摄当天",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.sunshine",
+  "payload": {
+    "id": "dialogue.meguru.sunshine",
+    "idolId": "meguru",
+    "startNodeId": "1-n01",
+    "nodes": {
+      "1-n01": {
+        "id": "1-n01",
+        "text": "泳池边，器材正在撤。太阳把白瓷砖照得发亮。",
+        "nextNodeId": "1-n02"
+      },
+      "1-n02": {
+        "id": "1-n02",
+        "speakerId": "meguru",
+        "text": "非常感谢——！",
+        "nextNodeId": "1-n03"
+      },
+      "1-n03": {
+        "id": "1-n03",
+        "speakerId": "meguru",
+        "text": "制作人！",
+        "nextNodeId": "1-n04"
+      },
+      "1-n04": {
+        "id": "1-n04",
+        "text": "你说辛苦了，表情很好。她笑起来。",
+        "nextNodeId": "1-n05"
+      },
+      "1-n05": {
+        "id": "1-n05",
+        "speakerId": "meguru",
+        "text": "嗯，我拍得很开心——！",
+        "nextNodeId": "1-n06"
+      },
+      "1-n06": {
+        "id": "1-n06",
+        "speakerId": "meguru",
+        "text": "啊……明明在工作，说开心真的好吗。",
+        "nextNodeId": "1-n07"
+      },
+      "1-n07": {
+        "id": "1-n07",
+        "text": "你说当然好，这很重要。而且她确实做到了摄影师要的东西。",
+        "nextNodeId": "1-n08"
+      },
+      "1-n09": {
+        "id": "1-n09",
+        "speakerId": "meguru",
+        "text": "诶嘿嘿，制作人真温柔——",
+        "nextNodeId": "1-n10"
+      },
+      "1-n10": {
+        "id": "1-n10",
+        "speakerId": "meguru",
+        "text": "谢谢你一直看着我！你很热吧？",
+        "nextNodeId": "1-n11"
+      },
+      "1-n11": {
+        "id": "1-n11",
+        "text": "你说完全没事。她盯着你手里的水瓶看了两秒。",
+        "nextNodeId": "1-n12"
+      },
+      "1-n12": {
+        "id": "1-n12",
+        "speakerId": "meguru",
+        "text": "……那个水看起来也温温的啊？",
+        "nextNodeId": "1-n13"
+      },
+      "1-n13": {
+        "id": "1-n13",
+        "speakerId": "meguru",
+        "text": "到下一段采访之前还有点时间。巡也去玩玩水吧？",
+        "nextNodeId": "1-n14"
+      },
+      "1-n14": {
+        "id": "1-n14",
+        "speakerId": "meguru",
+        "text": "那我先休息一下吧。一起去阳伞下休息吧！",
+        "nextNodeId": "2-n01"
+      },
+      "2-n01": {
+        "id": "2-n01",
+        "text": "阳伞下摆着两张折叠椅。她去拿毛巾了。",
+        "nextNodeId": "2-n02"
+      },
+      "2-n02": {
+        "id": "2-n02",
+        "text": "你坐下，想着不要迷路就好了。阴凉处确实凉快。",
+        "nextNodeId": "2-n03"
+      },
+      "2-n03": {
+        "id": "2-n03",
+        "text": "不知道过了多久，忽然有人叫你。",
+        "nextNodeId": "2-n04"
+      },
+      "2-n04": {
+        "id": "2-n04",
+        "speakerId": "meguru",
+        "text": "……制作人！",
+        "nextNodeId": "2-n05"
+      },
+      "2-n05": {
+        "id": "2-n05",
+        "text": "你被冰了一下，醒过来。",
+        "nextNodeId": "2-n06"
+      },
+      "2-n06": {
+        "id": "2-n06",
+        "speakerId": "meguru",
+        "text": "诶嘿嘿，醒啦？给你果汁——",
+        "nextNodeId": "2-n07"
+      },
+      "2-n07": {
+        "id": "2-n07",
+        "speakerId": "meguru",
+        "text": "制作人，这个就可以吗？虽然我选了我想喝的！",
+        "nextNodeId": "2-n08"
+      },
+      "2-n08": {
+        "id": "2-n08",
+        "text": "你接过来道谢。瓶身上还挂着一层水。",
+        "nextNodeId": "2-n09"
+      },
+      "2-n09": {
+        "id": "2-n09",
+        "speakerId": "meguru",
+        "text": "我已经喝过了！我去下泳池！",
+        "nextNodeId": "3-n01"
+      },
+      "3-n01": {
+        "id": "3-n01",
+        "text": "她几步跑到池边，跳了进去。水面碎开又合上。",
+        "nextNodeId": "3-n02"
+      },
+      "3-n02": {
+        "id": "3-n02",
+        "speakerId": "meguru",
+        "text": "……制作人！快看——！",
+        "nextNodeId": "3-n03"
+      },
+      "3-n03": {
+        "id": "3-n03",
+        "speakerId": "meguru",
+        "text": "是不是闪闪发亮的——！",
+        "nextNodeId": "3-n04"
+      },
+      "3-n04": {
+        "id": "3-n04",
+        "speakerId": "meguru",
+        "text": "太阳耀眼的时候溅起的水花，超漂亮的……！",
+        "nextNodeId": "3-n05"
+      },
+      "3-n05": {
+        "id": "3-n05",
+        "text": "你说是啊，让她别跌倒了。",
+        "nextNodeId": "3-n06"
+      },
+      "3-n06": {
+        "id": "3-n06",
+        "speakerId": "meguru",
+        "text": "没关系的——！你看你看——",
+        "nextNodeId": "3-n07"
+      },
+      "3-n07": {
+        "id": "3-n07",
+        "text": "水花溅到脚边。凉凉的很舒服。",
+        "nextNodeId": "3-n08"
+      },
+      "3-n08": {
+        "id": "3-n08",
+        "speakerId": "meguru",
+        "text": "啊，泼到你了？对不起！",
+        "nextNodeId": "3-n09"
+      },
+      "3-n09": {
+        "id": "3-n09",
+        "text": "她趴在池边，仰头看着你。头发贴在脸上，还在滴水。",
+        "nextNodeId": "3-n10"
+      },
+      "3-n10": {
+        "id": "3-n10",
+        "speakerId": "meguru",
+        "text": "制作人，下次也一起来泳池里玩吧。",
+        "nextNodeId": "3-n11"
+      },
+      "3-n11": {
+        "id": "3-n11",
+        "text": "远处工作人员在喊集合。她应了一声，又回头看了你一眼。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T16:14:37.040Z",
+  "updatedAt": "2026-10-30T16:14:37.040Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T16:14:37.040Z",
+      "note": "一章一段：合并且让选择贯穿整章"
+    }
+  ]
+}

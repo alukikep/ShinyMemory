@@ -1,0 +1,259 @@
+{
+  "id": "draft.dialogue.meguru.purity",
+  "kind": "dialogue",
+  "title": "纯白",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.purity",
+  "payload": {
+    "id": "dialogue.meguru.purity",
+    "idolId": "meguru",
+    "startNodeId": "1-n01",
+    "nodes": {
+      "1-n01": {
+        "id": "1-n01",
+        "text": "练习室。比集合时间早了将近一小时，里面却已经有人在拉伸。",
+        "nextNodeId": "1-n02"
+      },
+      "1-n02": {
+        "id": "1-n02",
+        "text": "你说其他人好像还没来，问她平常就这么早吗。",
+        "nextNodeId": "1-n03"
+      },
+      "1-n03": {
+        "id": "1-n03",
+        "speakerId": "meguru",
+        "text": "今天是偶然！因为学校那边的安排结束得比较早。",
+        "nextNodeId": "1-n04"
+      },
+      "1-n04": {
+        "id": "1-n04",
+        "speakerId": "meguru",
+        "text": "你看你看，我的身体比之前更柔软了吧——！",
+        "nextNodeId": "1-n05"
+      },
+      "1-n05": {
+        "id": "1-n05",
+        "text": "确实，腿能顺畅地抬起来了。你照实说了。",
+        "nextNodeId": "1-n06"
+      },
+      "1-n06": {
+        "id": "1-n06",
+        "speakerId": "meguru",
+        "text": "诶嘿嘿，谢谢夸奖！",
+        "nextNodeId": "1-n07"
+      },
+      "1-n07": {
+        "id": "1-n07",
+        "speakerId": "meguru",
+        "text": "啊，我想伸展一下，可以压着我的背吗？",
+        "nextNodeId": "1-n08"
+      },
+      "1-n08": {
+        "id": "1-n08",
+        "text": "你说好，按住她的背。她数着拍子往下沉，呼吸很稳。",
+        "nextNodeId": "1-n09"
+      },
+      "1-n09": {
+        "id": "1-n09",
+        "speakerId": "meguru",
+        "text": "嗯，谢谢你！",
+        "nextNodeId": "1-n10"
+      },
+      "1-n10": {
+        "id": "1-n10",
+        "speakerId": "meguru",
+        "text": "说起来……制作人谈过恋爱吗？",
+        "nextNodeId": "2-n01"
+      },
+      "2-n01": {
+        "id": "2-n01",
+        "text": "她说，之前舞蹈课请来的老师讲过——就算很认真地跳，也不足以表现自己的感情。",
+        "nextNodeId": "2-n02"
+      },
+      "2-n02": {
+        "id": "2-n02",
+        "speakerId": "meguru",
+        "text": "要我回忆起恋爱时的心动，然后更加投入……",
+        "nextNodeId": "2-n03"
+      },
+      "2-n03": {
+        "id": "2-n03",
+        "speakerId": "meguru",
+        "text": "可是，我……根本不知道这种东西啊！",
+        "nextNodeId": "2-n04"
+      },
+      "2-n04": {
+        "id": "2-n04",
+        "speakerId": "meguru",
+        "text": "制作人知道吗？恋爱是什么感觉？",
+        "choices": [
+          {
+            "label": "心动的感觉",
+            "nextNodeId": "2-n05a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "expression",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "心头一紧的感觉",
+            "nextNodeId": "2-n05b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "你可以看看书",
+            "nextNodeId": "2-n05c",
+            "effects": [
+              {
+                "kind": "sharedStat",
+                "stat": "stress",
+                "delta": -2
+              }
+            ]
+          }
+        ]
+      },
+      "2-n05a": {
+        "id": "2-n05a",
+        "speakerId": "meguru",
+        "text": "心跳会变快那种？……唔，好像有点明白了。",
+        "nextNodeId": "2-n06"
+      },
+      "2-n05b": {
+        "id": "2-n05b",
+        "speakerId": "meguru",
+        "text": "心头一紧……听起来好难啊。",
+        "nextNodeId": "2-n06"
+      },
+      "2-n05c": {
+        "id": "2-n05c",
+        "speakerId": "meguru",
+        "text": "书！对哦，书里应该写着！",
+        "nextNodeId": "2-n06"
+      },
+      "2-n06": {
+        "id": "2-n06",
+        "text": "你反问她，自己没有心动的时候吗。",
+        "nextNodeId": "2-n07"
+      },
+      "2-n07": {
+        "id": "2-n07",
+        "speakerId": "meguru",
+        "text": "有啊。站在舞台上的时候！",
+        "nextNodeId": "2-n08"
+      },
+      "2-n08": {
+        "id": "2-n08",
+        "speakerId": "meguru",
+        "text": "在后台的时候，真乃和灯织在旁边，等待出场的时候最激动了……！",
+        "nextNodeId": "2-n09"
+      },
+      "2-n09": {
+        "id": "2-n09",
+        "speakerId": "meguru",
+        "text": "那样就好？就算不是恋爱？",
+        "nextNodeId": "2-n10"
+      },
+      "2-n10": {
+        "id": "2-n10",
+        "text": "你说老师想说的，大概就是像恋爱那样强烈的心意吧。",
+        "nextNodeId": "2-n11"
+      },
+      "2-n11": {
+        "id": "2-n11",
+        "speakerId": "meguru",
+        "text": "是吗……！如果不马上恋爱就不行的话，我还在想要怎么办呢。",
+        "nextNodeId": "2-n12"
+      },
+      "2-n12": {
+        "id": "2-n12",
+        "speakerId": "meguru",
+        "text": "好，我现在就来试试看……！嘿……恋爱是好事啊……",
+        "nextNodeId": "3-n01"
+      },
+      "3-n01": {
+        "id": "3-n01",
+        "speakerId": "meguru",
+        "text": "……我最喜欢大家了。",
+        "nextNodeId": "3-n02"
+      },
+      "3-n02": {
+        "id": "3-n02",
+        "speakerId": "meguru",
+        "text": "但是，喜欢到什么程度算恋爱呢……是在我的最喜欢的更前面吗，还是在一个完全不同的地方吗……",
+        "nextNodeId": "3-n03"
+      },
+      "3-n03": {
+        "id": "3-n03",
+        "speakerId": "meguru",
+        "text": "我就是不知道这个，所以也不知道想不想谈恋爱……诶嘿嘿。",
+        "nextNodeId": "3-n04"
+      },
+      "3-n04": {
+        "id": "3-n04",
+        "text": "你说按她自己的步调摸索就好。跳舞的时候，试着想那些她最喜欢的人正在看着她。",
+        "nextNodeId": "3-n05"
+      },
+      "3-n05": {
+        "id": "3-n05",
+        "speakerId": "meguru",
+        "text": "哇，好有趣……！要把这个想法传达给最喜欢的大家的那种感觉……",
+        "nextNodeId": "3-n06"
+      },
+      "3-n06": {
+        "id": "3-n06",
+        "speakerId": "meguru",
+        "text": "可以现在试试吗！？我去放音乐……！",
+        "nextNodeId": "3-n07"
+      },
+      "3-n07": {
+        "id": "3-n07",
+        "speakerId": "meguru",
+        "text": "……制作人！我想跳一下舞，你帮我看看！",
+        "nextNodeId": "3-n08"
+      },
+      "3-n08": {
+        "id": "3-n08",
+        "text": "你问她是不是明白了什么。",
+        "nextNodeId": "3-n09"
+      },
+      "3-n09": {
+        "id": "3-n09",
+        "speakerId": "meguru",
+        "text": "我想让制作人记住现在的我！为了让你随时能察觉我的变化。",
+        "nextNodeId": "3-n10"
+      },
+      "3-n10": {
+        "id": "3-n10",
+        "speakerId": "meguru",
+        "text": "对吧，是个好主意吧！？我去放音乐！",
+        "nextNodeId": "3-n11"
+      },
+      "3-n11": {
+        "id": "3-n11",
+        "speakerId": "meguru",
+        "text": "……——要好好看着我————！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T16:14:37.040Z",
+  "updatedAt": "2026-10-30T16:14:37.040Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T16:14:37.040Z",
+      "note": "一章一段：合并且让选择贯穿整章"
+    }
+  ]
+}

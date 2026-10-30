@@ -22,12 +22,13 @@ const nodes: Record<string, DialogueNode> = {
 describe('walkDialogue', () => {
   it('follows nextNodeId, not object key order', () => {
     const entries = walkDialogue(nodes, 'n01');
+    // 分支就地展开，再走汇合点，最后是孤立节点
     expect(entries.map((entry) => entry.nodeId)).toEqual([
       'n01',
       'n02',
       'n02a',
-      'n03',
       'n02b',
+      'n03',
       'orphan',
     ]);
   });
@@ -37,8 +38,8 @@ describe('walkDialogue', () => {
     const a = entries.find((entry) => entry.nodeId === 'n02a');
     expect(a?.depth).toBe(1);
     expect(a?.viaChoice).toBe('A');
-    // 汇合点按"第一次到达"的深度显示（从 A 分支进来就是 1）
-    expect(entries.find((entry) => entry.nodeId === 'n03')?.depth).toBe(1);
+    // 汇合点回到主干深度
+    expect(entries.find((entry) => entry.nodeId === 'n03')?.depth).toBe(0);
   });
 
   it('surfaces orphan nodes instead of silently dropping them', () => {

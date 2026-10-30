@@ -37,6 +37,7 @@ npm run build             # 上面全部 + 类型 + 打包
 | `content:audit` | 结构/数值/引用完整性 | `content:validate` |
 | `content:coverage` | 每个偶像的内容单元是否齐全 | 手动（建议每轮跑） |
 | `viewContract.test` | 界面读的字段从对象上消失 | `npm test` |
+| `content:anchors` | 卡面改编的锚点句（语料里有 + 游戏里也有） | `content:validate` |
 | E2E（prologue / content / review） | 流程真的能走通 | `npm run acceptance*` |
 
 **新增视图类型时**：把它加进 `viewContract.test.ts` 的字段清单。

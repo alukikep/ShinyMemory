@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { validateChapterAnchors, type ChapterSource } from './chapterAnchors';
+import {
+  validateChapterAnchors,
+  validateChapterStructure,
+  type ChapterSource,
+} from './chapterAnchors';
 
 /**
  * 锚点校验的两头：语料里有、游戏里也有。
@@ -72,5 +76,60 @@ describe('chapter anchors', () => {
       readSource: () => undefined,
     });
     expect(problems.some((p) => p.message.includes('语料文件不存在'))).toBe(true);
+  });
+});
+
+describe('chapter structure', () => {
+  const chainId = 'meguru-chapter-1';
+
+  const probe = {
+    chains: new Map([
+      [
+        chainId,
+        {
+          idolId: 'meguru',
+          stepCount: 2,
+          steps: [
+            { dialogueId: 'dialogue.a', locationId: 'shopping_street' },
+            { dialogueId: 'dialogue.b', locationId: 'office' },
+          ],
+        },
+      ],
+    ]),
+    dialogueIds: new Set(['dialogue.a', 'dialogue.b']),
+    locationIds: new Set(['shopping_street', 'office']),
+  };
+
+  it('accepts a chapter whose chain wires up', () => {
+    expect(
+      validateChapterStructure([{ ...chapter, chapterId: chainId }], probe),
+    ).toEqual([]);
+  });
+
+  it('rejects a chapter with no matching chain', () => {
+    const problems = validateChapterStructure(
+      [{ ...chapter, chapterId: 'missing-chapter' }],
+      probe,
+    );
+    expect(problems.some((p) => p.message.includes('找不到同名剧情链'))).toBe(
+      true,
+    );
+  });
+
+  it('rejects steps pointing at missing dialogues or locations', () => {
+    const problems = validateChapterStructure([{ ...chapter, chapterId: chainId }], {
+      ...probe,
+      dialogueIds: new Set(['dialogue.b']),
+      locationIds: new Set(['office']),
+    });
+    expect(problems.some((p) => p.message.includes('对话不存在'))).toBe(true);
+    expect(problems.some((p) => p.message.includes('地点不存在'))).toBe(true);
+  });
+
+  it('rejects an unregistered chapter chain', () => {
+    const problems = validateChapterStructure([], probe);
+    expect(
+      problems.some((p) => p.message.includes('没在 chapterSources 登记')),
+    ).toBe(true);
   });
 });

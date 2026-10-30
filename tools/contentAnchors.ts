@@ -2,7 +2,10 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { BASE_PACK } from '../src/core/content/basePack.js';
 import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
-import { validateChapterAnchors } from '../src/core/chapterAnchors.js';
+import {
+  validateChapterAnchors,
+  validateChapterStructure,
+} from '../src/core/chapterAnchors.js';
 import { CHAPTER_SOURCES } from '../src/core/content/chapterSources.js';
 import { buildContentIndex } from '../src/core/contentIndexCore.js';
 import { mergeApprovedContent } from '../src/review/approval.js';
@@ -58,10 +61,29 @@ if (!corpusAvailable) {
   );
 }
 
-const problems = validateChapterAnchors(CHAPTER_SOURCES, {
-  readSource,
-  hasInGame: (text) => gameText.includes(text),
-});
+const problems = [
+  ...validateChapterStructure(CHAPTER_SOURCES, {
+    chains: new Map(
+      [...index.storyChains.entries()].map(([id, chain]) => [
+        id,
+        {
+          idolId: chain.idolId,
+          stepCount: chain.steps.length,
+          steps: chain.steps.map((step) => ({
+            dialogueId: step.dialogueId,
+            locationId: step.locationId,
+          })),
+        },
+      ]),
+    ),
+    dialogueIds: new Set(index.dialogues.keys()),
+    locationIds: new Set(index.locations.keys()),
+  }),
+  ...validateChapterAnchors(CHAPTER_SOURCES, {
+    readSource,
+    hasInGame: (text) => gameText.includes(text),
+  }),
+];
 
 if (CHAPTER_SOURCES.length === 0) {
   console.log('还没有卡面改编章节（chapterSources 为空），跳过锚点校验。');

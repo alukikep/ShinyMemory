@@ -80,3 +80,85 @@ export function validateChapterAnchors(
 
   return problems;
 }
+
+/**
+ * 章节结构的机器校验。
+ *
+ * 章节是**结构**（TS），进不了审查台——所以由这里代替人审：
+ * 链存不存在、每一步的对话/地点/时间窗有没有真的接上。
+ *
+ * 锚点管"像不像原作"，这里管"能不能跑起来"。
+ */
+
+export type ChapterStructureProbe = {
+  /** 剧情链 id → 步骤（只有校验需要的字段）。 */
+  chains: Map<
+    string,
+    {
+      idolId: string;
+      stepCount: number;
+      steps: { dialogueId: string; locationId: string }[];
+    }
+  >;
+  dialogueIds: Set<string>;
+  locationIds: Set<string>;
+};
+
+export type ChapterStructureProblem = {
+  chapterId: string;
+  message: string;
+};
+
+export function validateChapterStructure(
+  chapters: ChapterSource[],
+  probe: ChapterStructureProbe,
+): ChapterStructureProblem[] {
+  const problems: ChapterStructureProblem[] = [];
+  const registered = new Set(chapters.map((chapter) => chapter.chapterId));
+
+  for (const chapter of chapters) {
+    const chain = probe.chains.get(chapter.chapterId);
+    if (!chain) {
+      problems.push({
+        chapterId: chapter.chapterId,
+        message: '找不到同名剧情链（chapterId 和链 id 必须一致）',
+      });
+      continue;
+    }
+
+    if (chain.stepCount < 2) {
+      problems.push({
+        chapterId: chapter.chapterId,
+        message: `章节只有 ${chain.stepCount} 步，至少 2 步`,
+      });
+    }
+
+    for (const [index, step] of chain.steps.entries()) {
+      if (!probe.dialogueIds.has(step.dialogueId)) {
+        problems.push({
+          chapterId: chapter.chapterId,
+          message: `第 ${index + 1} 步的对话不存在：${step.dialogueId}`,
+        });
+      }
+      if (!probe.locationIds.has(step.locationId)) {
+        problems.push({
+          chapterId: chapter.chapterId,
+          message: `第 ${index + 1} 步的地点不存在：${step.locationId}`,
+        });
+      }
+    }
+  }
+
+  // 反过来：设了 cadenceDays 的链必须是登记过的卡面章，避免"偷偷做了一章没登记"。
+  for (const [chainId, chain] of probe.chains) {
+    if (!chainId.includes('chapter')) continue;
+    if (!registered.has(chainId)) {
+      problems.push({
+        chapterId: chainId,
+        message: `链 id 看起来像卡面章（${chain.idolId}），但没在 chapterSources 登记（缺锚点）`,
+      });
+    }
+  }
+
+  return problems;
+}

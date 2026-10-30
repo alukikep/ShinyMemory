@@ -301,6 +301,7 @@ npm run acceptance:prologue      # 正式包 E2E
 | 事件被当成其他类型解析 | 体检报 `choices is not iterable` | 类型清单只有一份（`REVIEW_KINDS`） |
 | 地点页按钮一多就挤 | 体验崩塌 | 一个入口 + 两级面板 |
 | 专属行动比训练强 | 训练失去意义 | 专属行动给信任，训练给属性 |
+| 变体条件用 `varAtLeast` 写分支 | 分支永远命中第一条（三选一永远显示第一种） | 精确匹配要同时写 `varAtLeast` + `varAtMost` |
 
 ---
 

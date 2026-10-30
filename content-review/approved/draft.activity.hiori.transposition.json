@@ -2,7 +2,7 @@
   "id": "draft.activity.hiori.transposition",
   "kind": "activity",
   "title": "陪她练到满意为止",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.hiori.transposition",
   "payload": {
@@ -52,12 +52,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T13:41:08.984Z",
-  "updatedAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:50:26.237Z",
+  "reviewedAt": "2026-10-30T13:50:26.237Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T13:41:08.984Z",
       "note": "B7：灯织专属行动（依 WING 语料）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T13:50:26.237Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.evt.hiori.after_free",
   "kind": "event",
   "title": "她准备了东西",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.hiori.after_free",
   "payload": {
@@ -58,12 +58,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T13:41:08.984Z",
-  "updatedAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:50:40.615Z",
+  "reviewedAt": "2026-10-30T13:50:40.615Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T13:41:08.984Z",
       "note": "B7：灯织训练后事件（依 WING 语料）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T13:50:40.615Z"
     }
   ]
 }

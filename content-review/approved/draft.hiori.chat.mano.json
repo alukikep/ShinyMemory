@@ -1,15 +1,15 @@
 {
-  "id": "draft.hiori.chat.about_you",
+  "id": "draft.hiori.chat.mano",
   "kind": "topic",
-  "title": "关于制作人",
-  "status": "review",
+  "title": "真乃的事",
+  "status": "approved",
   "version": 1,
-  "rootId": "draft.hiori.chat.about_you",
+  "rootId": "draft.hiori.chat.mano",
   "payload": {
-    "id": "hiori.chat.about_you",
+    "id": "hiori.chat.mano",
     "actorId": "hiori",
-    "label": "关于制作人",
-    "text": "「你来做我的制作人，到底有没有问题——我现在，稍微不那么想了。」",
+    "label": "真乃的事",
+    "text": "「她太容易把事揽到自己身上。……别的我不说。」",
     "cooldownMinutes": 1440,
     "effects": [
       {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T13:41:08.984Z",
-  "updatedAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:50:45.743Z",
+  "reviewedAt": "2026-10-30T13:50:45.743Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T13:41:08.984Z",
       "note": "B7：灯织日常话题（依 WING/S.T.E.P. 语料）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T13:50:45.743Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.evt.mano.overwork",
   "kind": "event",
   "title": "站得不太稳",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.mano.overwork",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T13:47:48.503Z",
-  "updatedAt": "2026-10-30T13:47:48.503Z",
+  "updatedAt": "2026-10-30T13:50:06.582Z",
+  "reviewedAt": "2026-10-30T13:50:06.582Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T13:47:48.503Z",
       "note": "Mano 回查补缺：太拼（依 頑張りすぎ.csv）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T13:50:06.582Z"
     }
   ]
 }

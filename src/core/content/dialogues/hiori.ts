@@ -226,4 +226,316 @@ export const hioriSecond: DialogueDef = {
   },
 };
 
-export const HIORI_DIALOGUES = [hioriFirst, hioriSecond];
+
+/**
+ * 长线第一步：街角的广告牌。
+ * 改编自 G.R.A.D.編「そこには千里の距離があるよう」——
+ * 她看见两人接到的个人工作，嘴上说"很厉害"，其实在意。
+ */
+export const hioriGapFirst: DialogueDef = {
+  id: 'dialogue.hiori.gap.first',
+  idolId: 'hiori',
+  startNodeId: 'n01',
+  nodes: {
+    n01: {
+      id: 'n01',
+      text: '商业街的橱窗前站了几个人。玻璃里是新一期的海报。',
+      nextNodeId: 'n02',
+    },
+    n02: {
+      id: 'n02',
+      speakerId: 'hiori',
+      text: '……真乃的广告牌。',
+      nextNodeId: 'n03',
+    },
+    n03: {
+      id: 'n03',
+      speakerId: 'hiori',
+      text: '巡也在。杂志的样刊前天寄到事务所了。',
+      nextNodeId: 'n04',
+    },
+    n04: {
+      id: 'n04',
+      speakerId: 'hiori',
+      text: '个人的工作，两个人都在努力呢。',
+      nextNodeId: 'n05',
+    },
+    n05: {
+      id: 'n05',
+      text: '旁边的两个女生在讨论海报上的发型。她听着，也接了一句。',
+      nextNodeId: 'n06',
+    },
+    n06: {
+      id: 'n06',
+      speakerId: 'hiori',
+      text: '我懂。那个发型很适合巡。……杂志我也买吧。',
+      nextNodeId: 'n07',
+    },
+    n07: {
+      id: 'n07',
+      text: '她说完就安静了。橱窗的灯把她的侧脸照得很白。',
+      choices: [
+        {
+          label: '你注意到了。只是没说。',
+          nextNodeId: 'n08a',
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 3 }],
+        },
+        {
+          label: '什么也不说，陪她站一会儿',
+          nextNodeId: 'n08b',
+          effects: [
+            { kind: 'attributeExp', ref: 'trust', tier: 3 },
+            { kind: 'flag', key: 'hiori_stood_quietly', value: true },
+          ],
+        },
+        {
+          label: '她们确实很厉害',
+          nextNodeId: 'n08c',
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
+        },
+      ],
+    },
+    n08a: {
+      id: 'n08a',
+      speakerId: 'hiori',
+      text: '……你今天说话很讨厌。',
+      nextNodeId: 'n09',
+    },
+    n08b: {
+      id: 'n08b',
+      text: '她没说话。过了很久，才低声开口。',
+      nextNodeId: 'n09',
+    },
+    n08c: {
+      id: 'n08c',
+      speakerId: 'hiori',
+      text: '是啊。',
+      nextNodeId: 'n09',
+    },
+    n09: {
+      id: 'n09',
+      speakerId: 'hiori',
+      text: '今天是经常看到两人名字的日子呢。',
+      nextNodeId: 'n10',
+    },
+    n10: {
+      id: 'n10',
+      speakerId: 'hiori',
+      text: '"只是"今天吗。……其实并不是这样的。是我没有注意到。',
+      nextNodeId: 'n11',
+    },
+    n11: {
+      id: 'n11',
+      text: '她转过身，往车站的方向走，走了两步停下。',
+      nextNodeId: 'n12',
+    },
+    n12: {
+      id: 'n12',
+      speakerId: 'hiori',
+      text: '……我回去练习了。',
+      effects: [{ kind: 'var', key: 'hiori.gap', op: 'set', value: 1 }],
+    },
+  },
+};
+
+/**
+ * 长线第二步：她把问题问出来了。
+ * 改编自 G.R.A.D.編「明かりがさす方へ」——她一条条排除技术、笑容、人气。
+ */
+export const hioriGapSecond: DialogueDef = {
+  id: 'dialogue.hiori.gap.second',
+  idolId: 'hiori',
+  startNodeId: 'n01',
+  nodes: {
+    n01: {
+      id: 'n01',
+      text: '收录结束，棚里只剩设备散热的嗡声。她没有走。',
+      nextNodeId: 'n02',
+    },
+    n02: {
+      id: 'n02',
+      speakerId: 'hiori',
+      text: '制作人。我想问一件事。',
+      nextNodeId: 'n03',
+    },
+    n03: {
+      id: 'n03',
+      speakerId: 'hiori',
+      text: '两人有的，而我没有的东西，是什么。',
+      nextNodeId: 'n04',
+    },
+    n04: {
+      id: 'n04',
+      speakerId: 'hiori',
+      text: '技术？……不。她们也不是每次都做到完美。',
+      nextNodeId: 'n05',
+    },
+    n05: {
+      id: 'n05',
+      speakerId: 'hiori',
+      text: '笑容？像真乃那样治愈人的笑，像巡那样让人有精神的笑，我都做不到。',
+      nextNodeId: 'n06',
+    },
+    n06: {
+      id: 'n06',
+      speakerId: 'hiori',
+      text: '人气？……人气不是越多越好。理由不够。',
+      nextNodeId: 'n07',
+    },
+    n07: {
+      id: 'n07',
+      speakerId: 'hiori',
+      text: '不知道。为什么。',
+      choices: [
+        {
+          label: '我也没答案。但我知道你一直在往前走',
+          nextNodeId: 'n08a',
+          effects: [
+            { kind: 'var', key: 'hiori.gapApproach', op: 'set', value: 1 },
+            { kind: 'attributeExp', ref: 'trust', tier: 3 },
+          ],
+        },
+        {
+          label: '你有一样她们没有的：你从不敷衍自己',
+          nextNodeId: 'n08b',
+          effects: [
+            { kind: 'var', key: 'hiori.gapApproach', op: 'set', value: 2 },
+            { kind: 'attributeExp', ref: 'trust', tier: 3 },
+          ],
+        },
+        {
+          label: '先不谈这个。你今天有没有好好休息',
+          nextNodeId: 'n08c',
+          effects: [
+            { kind: 'var', key: 'hiori.gapApproach', op: 'set', value: 3 },
+            { kind: 'attributeExp', ref: 'trust', tier: 3 },
+          ],
+        },
+      ],
+    },
+    n08a: {
+      id: 'n08a',
+      speakerId: 'hiori',
+      text: '……制作人也没有答案啊。',
+      nextNodeId: 'n09',
+    },
+    n08b: {
+      id: 'n08b',
+      speakerId: 'hiori',
+      text: '不敷衍自己。……这算优点吗。',
+      nextNodeId: 'n09',
+    },
+    n08c: {
+      id: 'n08c',
+      speakerId: 'hiori',
+      text: '……有。吃了饭才来的。',
+      nextNodeId: 'n09',
+    },
+    n09: {
+      id: 'n09',
+      text: '她把耳机收进盒里，动作很慢。',
+      nextNodeId: 'n10',
+    },
+    n10: {
+      id: 'n10',
+      speakerId: 'hiori',
+      text: '……我先回去了。明天见。',
+      effects: [{ kind: 'var', key: 'hiori.gap', op: 'set', value: 2 }],
+    },
+  },
+};
+
+/**
+ * 长线第三步：她没有找到答案，但继续走了。
+ * 改编自 G.R.A.D.編「そしてまた歩き出そう」——不是"想通了"，是"继续往前"。
+ */
+export const hioriGapThird: DialogueDef = {
+  id: 'dialogue.hiori.gap.third',
+  idolId: 'hiori',
+  startNodeId: 'n01',
+  nodes: {
+    n01: {
+      id: 'n01',
+      text: '第二天。练习室的音响没开，只有她数拍子的声音。',
+      nextNodeId: 'n02',
+    },
+    n02: {
+      id: 'n02',
+      speakerId: 'hiori',
+      text: '我昨天想了一路。',
+      textVariants: [
+        {
+          when: [{ kind: 'varAtLeast', key: 'hiori.gapApproach', value: 1 }, { kind: 'varAtMost', key: 'hiori.gapApproach', value: 1 }],
+          text: '我昨天想了一路。制作人也没有答案的话，那就一起找。',
+        },
+        {
+          when: [{ kind: 'varAtLeast', key: 'hiori.gapApproach', value: 2 }, { kind: 'varAtMost', key: 'hiori.gapApproach', value: 2 }],
+          text: '我昨天想了一路。不敷衍自己——如果是这个，那确实是我有的。',
+        },
+        {
+          when: [{ kind: 'varAtLeast', key: 'hiori.gapApproach', value: 3 }, { kind: 'varAtMost', key: 'hiori.gapApproach', value: 3 }],
+          text: '我昨天想了一路，然后就睡着了。……难得睡得那么好。',
+        },
+      ],
+      nextNodeId: 'n03',
+    },
+    n03: {
+      id: 'n03',
+      speakerId: 'hiori',
+      text: '不过，我没有想通。两人有什么、我缺什么，还是不知道。',
+      nextNodeId: 'n04',
+    },
+    n04: {
+      id: 'n04',
+      speakerId: 'hiori',
+      text: '不知道也没关系。我不打算停下来等答案。',
+      nextNodeId: 'n05',
+    },
+    n05: {
+      id: 'n05',
+      text: '她按下播放键，从第一拍开始。这一次没有停。',
+      nextNodeId: 'n06',
+    },
+    n06: {
+      id: 'n06',
+      speakerId: 'hiori',
+      text: '制作人。明天也继续吧。',
+      choices: [
+        {
+          label: '当然。我一直在。',
+          nextNodeId: 'n07a',
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 5 }],
+        },
+        {
+          label: '你已经在走了，不用等谁',
+          nextNodeId: 'n07b',
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 5 }],
+        },
+      ],
+    },
+    n07a: {
+      id: 'n07a',
+      speakerId: 'hiori',
+      text: '……嗯。那就这样。',
+      nextNodeId: 'n08',
+    },
+    n07b: {
+      id: 'n07b',
+      speakerId: 'hiori',
+      text: '这句话，我记下了。',
+      nextNodeId: 'n08',
+    },
+    n08: {
+      id: 'n08',
+      text: '她重新戴上耳机。窗外的光落在镜子上，晃了一下。',
+    },
+  },
+};
+
+export const HIORI_DIALOGUES = [
+  hioriFirst,
+  hioriSecond,
+  hioriGapFirst,
+  hioriGapSecond,
+  hioriGapThird,
+];

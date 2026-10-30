@@ -127,4 +127,55 @@ export const hioriEncounter: StoryChainDef = {
   ],
 };
 
-export const STORY_CHAINS = [manoEncounter, manoSlump, hioriEncounter];
+
+/**
+ * 灯织长线：千里的距离。
+ *
+ * 改编自 G.R.A.D.編（そこには千里の距離があるよう → 明かりがさす方へ → そしてまた歩き出そう）：
+ * 她发现自己落后于同组合的两人，一条条排除原因，最后**没有找到答案**但继续往前。
+ * 这是"负面长线"的第二种写法——不是克服，是带着问题走下去。
+ */
+export const hioriGap: StoryChainDef = {
+  id: 'hiori-gap',
+  idolId: 'hiori',
+  priority: 20,
+  title: '千里的距离',
+  revealWhen: [
+    { kind: 'idolStatus', idolId: 'hiori', status: 'recruited' },
+    { kind: 'attributeAtLeast', ref: 'trust', rank: 'E' },
+  ],
+  steps: [
+    {
+      id: 'hiori-gap-1',
+      locationId: 'shopping_street',
+      timeWindow: { fromMinute: 18 * 60, toMinute: 20 * 60 },
+      dialogueId: 'dialogue.hiori.gap.first',
+      actionLabel: '橱窗前的广告牌',
+      when: [{ kind: 'dayAtLeast', day: 6 }],
+      effects: [{ kind: 'sharedStat', stat: 'stress', delta: 6 }],
+      complete: { nextStepDelayDays: 1 },
+    },
+    {
+      id: 'hiori-gap-2',
+      locationId: 'studio',
+      timeWindow: { fromMinute: 16 * 60, toMinute: 22 * 60 },
+      dialogueId: 'dialogue.hiori.gap.second',
+      actionLabel: '收录结束后她没走',
+      complete: { nextStepDelayDays: 1 },
+    },
+    {
+      id: 'hiori-gap-3',
+      locationId: 'practice_room',
+      timeWindow: { fromMinute: 10 * 60, toMinute: 16 * 60 },
+      dialogueId: 'dialogue.hiori.gap.third',
+      actionLabel: '她按下了播放键',
+      effects: [
+        { kind: 'sharedStat', stat: 'stress', delta: -20 },
+        { kind: 'var', key: 'hiori.gap', op: 'set', value: 3 },
+        { kind: 'flag', key: 'resolved.hiori.gap', value: true },
+      ],
+    },
+  ],
+};
+
+export const STORY_CHAINS = [manoEncounter, manoSlump, hioriEncounter, hioriGap];

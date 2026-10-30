@@ -2,7 +2,7 @@
   "id": "draft.hiori.chat.mistake",
   "kind": "topic",
   "title": "失误之后",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.hiori.chat.mistake",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T13:41:08.984Z",
-  "updatedAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:50:46.505Z",
+  "reviewedAt": "2026-10-30T13:50:46.505Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T13:41:08.984Z",
       "note": "B7：灯织日常话题（依 WING/S.T.E.P. 语料）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T13:50:46.505Z"
     }
   ]
 }

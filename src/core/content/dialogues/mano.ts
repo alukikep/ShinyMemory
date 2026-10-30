@@ -484,15 +484,15 @@ const manoSlumpThird: DialogueDef = {
       text: '我准备好了。',
       textVariants: [
         {
-          when: [{ kind: 'varAtLeast', key: 'mano.slumpApproach', value: 1 }],
+          when: [{ kind: 'varAtLeast', key: 'mano.slumpApproach', value: 1 }, { kind: 'varAtMost', key: 'mano.slumpApproach', value: 1 }],
           text: '我数过了。第二段最后那句，一共 11 个字，我拆成了三段练。',
         },
         {
-          when: [{ kind: 'varAtLeast', key: 'mano.slumpApproach', value: 2 }],
+          when: [{ kind: 'varAtLeast', key: 'mano.slumpApproach', value: 2 }, { kind: 'varAtMost', key: 'mano.slumpApproach', value: 2 }],
           text: '昨天什么都没想，睡了一整天。……好像有点用。',
         },
         {
-          when: [{ kind: 'varAtLeast', key: 'mano.slumpApproach', value: 3 }],
+          when: [{ kind: 'varAtLeast', key: 'mano.slumpApproach', value: 3 }, { kind: 'varAtMost', key: 'mano.slumpApproach', value: 3 }],
           text: '我把那段重听了。听了七遍。……然后发现自己一直在抢拍。',
         },
       ],

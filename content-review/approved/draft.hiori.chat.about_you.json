@@ -1,0 +1,37 @@
+{
+  "id": "draft.hiori.chat.about_you",
+  "kind": "topic",
+  "title": "关于制作人",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hiori.chat.about_you",
+  "payload": {
+    "id": "hiori.chat.about_you",
+    "actorId": "hiori",
+    "label": "关于制作人",
+    "text": "「你来做我的制作人，到底有没有问题——我现在，稍微不那么想了。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:50:44.575Z",
+  "reviewedAt": "2026-10-30T13:50:44.575Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:41:08.984Z",
+      "note": "B7：灯织日常话题（依 WING/S.T.E.P. 语料）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T13:50:44.575Z"
+    }
+  ]
+}

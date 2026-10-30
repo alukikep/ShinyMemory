@@ -2,7 +2,7 @@
   "id": "draft.evt.hiori.after_vocal",
   "kind": "event",
   "title": "到该停的地方",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.hiori.after_vocal",
   "payload": {
@@ -69,12 +69,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T13:41:08.984Z",
-  "updatedAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:50:42.623Z",
+  "reviewedAt": "2026-10-30T13:50:42.623Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T13:41:08.984Z",
       "note": "B7：灯织训练后事件（依 WING 语料）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T13:50:42.623Z"
     }
   ]
 }

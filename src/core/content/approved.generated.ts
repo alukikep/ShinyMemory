@@ -94,6 +94,96 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.hiori.review",
+  "name": "听她复盘",
+  "description": "收工之后，她把自己今天做错的地方一条条说出来。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "hiori"
+  ],
+  "locations": [
+    "studio"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 960,
+      "toMinute": 1080
+    }
+  ],
+  "cost": {
+    "stamina": 4
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -5
+    }
+  ],
+  "resultTexts": [
+    "她列了四条，第三条说完停住，说这条不算，是我自己太在意。",
+    "你只是听着，没有安慰。她说完之后道了声谢，语气比平时轻。",
+    "复盘到一半她抬头：你在记吗。你说在记。她没有再问。"
+  ]
+},
+{
+  "id": "activity.hiori.transposition",
+  "name": "陪她练到满意为止",
+  "description": "她说状态不错，想再多练一会儿。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "hiori"
+  ],
+  "locations": [
+    "practice_room"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 600,
+      "toMinute": 900
+    }
+  ],
+  "cost": {
+    "stamina": 8
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "vocal",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 3
+    }
+  ],
+  "resultTexts": [
+    "又练了一遍。她停下来，说：没有。练到满意为止会没完没了，考虑到明天，到这里该停了。",
+    "「不要勉强自己。」她想了想，回了一句：那我只做必要的练习。",
+    "她把毛巾搭在肩上，说明天再继续。走之前回头看了一眼镜子。"
+  ]
+},
+{
   "id": "activity.mano.extra_practice",
   "name": "陪她加练",
   "description": "她说最后那两拍还不对，问你能不能再看一遍。",
@@ -628,6 +718,253 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "她把谱子合上，说下次一定唱完。走到门口又回头确认了一遍灯关没关。"
+    }
+  ]
+},
+{
+  "id": "evt.hiori.after_dance",
+  "title": "被指出来的那一拍",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "hiori"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "老师说她第三拍慢了半拍。她点头说知道了，然后从头再来。",
+  "choices": [
+    {
+      "label": "什么也不说，看她做完",
+      "hint": "信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "第三遍对了。她看着镜子里的自己，没有表情，也没有停下来。"
+    },
+    {
+      "label": "说「这次准了」",
+      "hint": "信任 +1、舞蹈 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        }
+      ],
+      "result": "「嗯。」她没回头，但下一遍更稳。"
+    },
+    {
+      "label": "说「别太苛责自己」",
+      "hint": "压力 +3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 3
+        }
+      ],
+      "result": "「这不是苛责。是事实。」她说完继续数拍子。"
+    }
+  ]
+},
+{
+  "id": "evt.hiori.after_free",
+  "title": "她准备了东西",
+  "when": [],
+  "after": {
+    "ids": [
+      "free"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "hiori"
+    ]
+  },
+  "chance": 0.35,
+  "priority": 5,
+  "once": true,
+  "text": "她把手里的文件夹递过来，说这是这几天的总结。",
+  "choices": [
+    {
+      "label": "当场翻一遍",
+      "hint": "信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "里面按日期排得整整齐齐。最后一页写着：以上，我自己判断还有不足。"
+    },
+    {
+      "label": "问她为什么给你看",
+      "hint": "信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「因为你说过，不会替我遮过去。」"
+    },
+    {
+      "label": "说之后再细看",
+      "hint": "无变化",
+      "effects": [],
+      "result": "她点头，把文件夹收回去，说明天再带过来。"
+    }
+  ]
+},
+{
+  "id": "evt.hiori.after_vocal",
+  "title": "到该停的地方",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "hiori"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "课已经结束了。她还在练，说状态不错，想再多练一会儿。",
+  "choices": [
+    {
+      "label": "让她练到满意",
+      "hint": "信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "她又练了三遍，然后停下：考虑到明天，到这里吧。"
+    },
+    {
+      "label": "提醒明天还有事",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「……说得对。我只做必要的练习。」她关了音响。"
+    },
+    {
+      "label": "问她差在哪里",
+      "hint": "信任 +1、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "她想了想：不是技巧，是我不敢把最后那一句放开。"
+    }
+  ]
+},
+{
+  "id": "evt.mano.overwork",
+  "title": "站得不太稳",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "mano"
+    ]
+  },
+  "chance": 0.35,
+  "priority": 8,
+  "once": true,
+  "text": "练习结束，她扶着把杆站了一会儿才松开手。看见你在门口，她立刻站直了。",
+  "choices": [
+    {
+      "label": "让她今天就到这里",
+      "hint": "信任 +3、压力 -6",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -6
+        }
+      ],
+      "result": "「没事的呼哇哇哇……」她说完自己也笑了一下，才把手从把杆上拿开。"
+    },
+    {
+      "label": "问她是不是还想再练",
+      "hint": "信任 +1、舞蹈 +1、压力 +4",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 4
+        }
+      ],
+      "result": "「嗯。……就一遍。」她练了三遍，第二遍开始手就在抖。"
+    },
+    {
+      "label": "什么也没说，把水递给她",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "她愣了一下才接过去，喝了两口，说谢谢。"
     }
   ]
 }
@@ -1189,6 +1526,90 @@ export const APPROVED_CONTENT: ApprovedContent = {
 ],
   topics: [
 {
+  "id": "hiori.chat.about_you",
+  "actorId": "hiori",
+  "label": "关于制作人",
+  "text": "「你来做我的制作人，到底有没有问题——我现在，稍微不那么想了。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hiori.chat.how_was_today",
+  "actorId": "hiori",
+  "label": "今天怎么样",
+  "text": "「普通。」停了一下。「……你问这个做什么。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hiori.chat.mano",
+  "actorId": "hiori",
+  "label": "真乃的事",
+  "text": "「她太容易把事揽到自己身上。……别的我不说。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hiori.chat.mistake",
+  "actorId": "hiori",
+  "label": "失误之后",
+  "text": "「明明练了那么多次，连一件工作都做不好。」她停了停。「……没什么。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hiori.chat.practice",
+  "actorId": "hiori",
+  "label": "训练的进度",
+  "text": "「不管再怎么练习，都感觉不到自己在接近理想中的样子。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hiori.chat.why_idol",
+  "actorId": "hiori",
+  "label": "为什么想当偶像",
+  "text": "「……那时候只是自我满足。现在不一样了。大概。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
   "id": "mano.chat.about_you",
   "actorId": "mano",
   "label": "关于制作人",
@@ -1249,6 +1670,20 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "mano",
   "label": "公园的鸽子",
   "text": "「好像多了一只。白色的那只不太抢食，总是等别的吃完才过去。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mano.chat.piichan",
+  "actorId": "mano",
+  "label": "家里的鸟",
+  "text": "「小P最近好像学会新叫法了。……制作人想听吗。它叫起来是『啾』一下那种。」",
   "cooldownMinutes": 1440,
   "effects": [
     {

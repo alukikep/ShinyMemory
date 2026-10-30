@@ -858,3 +858,90 @@
     min-height: 320px;
   }
 }
+
+/* ——— 章节分组（卡面章：整章通过/打回） ——— */
+.review-chapter {
+  border: 1px solid rgba(120, 140, 180, 0.25);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.review-chapter-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  background: rgba(120, 140, 180, 0.1);
+}
+
+.review-chapter-head strong {
+  display: block;
+  font-size: 13px;
+}
+
+.review-chapter-head small {
+  color: #6b7a90;
+  font-size: 11px;
+}
+
+.review-chapter-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.review-chapter-actions button {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.review-chapter-actions .review-approve {
+  background: #2f8f5b;
+  color: #fff;
+}
+
+.review-chapter-actions .review-reject {
+  background: #b04a4a;
+  color: #fff;
+}
+
+.review-chapter-actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.review-chapter .review-queue-item {
+  border-radius: 0;
+  border-bottom: 1px solid rgba(120, 140, 180, 0.12);
+}
+
+.review-anchor-note {
+  margin: 8px 0;
+  padding: 8px 10px;
+  border-left: 3px solid #d9a441;
+  background: rgba(217, 164, 65, 0.12);
+  font-size: 12px;
+}
+
+.review-content mark {
+  background: rgba(217, 164, 65, 0.45);
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+.review-via {
+  color: #8a6d3b;
+  font-size: 11px;
+  margin-left: 6px;
+}
+
+.review-choice-list {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  font-size: 12px;
+  color: #45536a;
+}

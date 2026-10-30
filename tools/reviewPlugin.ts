@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { Plugin } from 'vite';
-import type { ReviewKind, ReviewStatus } from '../src/review/types.js';
+import type { ReviewDraft, ReviewKind, ReviewStatus } from '../src/review/types.js';
 import { REVIEW_KINDS } from '../src/review/types.js';
 import { mergeApprovedContent } from '../src/review/approval.js';
 import { validateReviewDraft } from '../src/review/validation.js';
@@ -13,6 +13,7 @@ import {
   getReviewDraft,
   listReviewDrafts,
   moveReviewDraft,
+  moveReviewDrafts,
   reviseReviewDraft,
   saveReviewDraft,
 } from './reviewStore.js';
@@ -111,6 +112,69 @@ export function reviewApiPlugin(): Plugin {
             const title = typeof body.title === 'string' ? body.title : '';
             const draft = await createReviewDraft(kind as ReviewKind, title);
             sendJson(response, 201, { draft });
+            return;
+          }
+
+          if (
+            parts[0] === 'drafts' &&
+            parts[1] === 'batch' &&
+            parts[2] === 'status' &&
+            request.method === 'POST'
+          ) {
+            const body = await readJson(request);
+            if (
+              !isRecord(body) ||
+              !Array.isArray(body.ids) ||
+              typeof body.status !== 'string'
+            ) {
+              sendJson(response, 400, { error: 'ids and status are required' });
+              return;
+            }
+            if (!STATUSES.has(body.status as ReviewStatus)) {
+              sendJson(response, 400, { error: 'unknown status' });
+              return;
+            }
+            const ids = body.ids.filter(
+              (value): value is string => typeof value === 'string',
+            );
+            // 先全部校验，再统一移动——不允许"半章通过"。
+            const errors: string[] = [];
+            const drafts: ReviewDraft[] = [];
+            for (const id of ids) {
+              const current = await getReviewDraft(id);
+              if (!current) {
+                errors.push(`${id}: 草稿不存在`);
+                continue;
+              }
+              if (
+                current.status === 'approved' ||
+                current.status === 'discarded'
+              ) {
+                errors.push(`${id}: 已锁定`);
+                continue;
+              }
+              if (body.status === 'approved') {
+                const validation = validateReviewDraft(
+                  current,
+                  await basePackFor([current.id, current.supersedes ?? '']),
+                );
+                if (!validation.ok) {
+                  errors.push(...validation.errors.map((e) => `${id}: ${e}`));
+                  continue;
+                }
+              }
+              drafts.push(current);
+            }
+            if (errors.length > 0) {
+              sendJson(response, 422, { error: 'batch validation failed', errors });
+              return;
+            }
+            const moved = await moveReviewDrafts(
+              drafts.map((draft) => draft.id),
+              body.status as ReviewStatus,
+              typeof body.note === 'string' ? body.note : undefined,
+            );
+            sendJson(response, 200, { drafts: moved });
             return;
           }
 

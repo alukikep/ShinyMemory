@@ -6,6 +6,10 @@ import type {
   ReviewStatus,
 } from './types';
 import { CONTENT_INDEX } from '../core/contentIndex';
+import { PENDING_CHAPTERS } from '../core/content/chapters';
+import { CHAPTER_SOURCES } from '../core/content/chapterSources';
+import { walkDialogue } from '../core/dialogueWalk';
+import type { DialogueNode } from '../core/types';
 import { LocalReviewRepository, ReviewApiError } from './repository';
 import { ReviewEditor } from './ReviewEditor';
 
@@ -349,12 +353,48 @@ function JobPreview({ payload }: { payload: Record<string, unknown> }) {
   );
 }
 
-function DialoguePreview({ payload }: { payload: Record<string, unknown> }) {
+/** 把锚点句包成 <mark>，审的时候一眼看到哪几句不能改。 */
+function highlightAnchors(text: string, anchors: string[]) {
+  if (anchors.length === 0) return text;
+  const parts: (string | React.ReactElement)[] = [];
+  let rest = text;
+  let guard = 0;
+  while (rest.length > 0 && guard < 20) {
+    guard += 1;
+    let hitIndex = -1;
+    let hitAnchor = '';
+    for (const anchor of anchors) {
+      const index = rest.indexOf(anchor);
+      if (index !== -1 && (hitIndex === -1 || index < hitIndex)) {
+        hitIndex = index;
+        hitAnchor = anchor;
+      }
+    }
+    if (hitIndex === -1) {
+      parts.push(rest);
+      break;
+    }
+    if (hitIndex > 0) parts.push(rest.slice(0, hitIndex));
+    parts.push(<mark key={`anchor-${guard}`}>{hitAnchor}</mark>);
+    rest = rest.slice(hitIndex + hitAnchor.length);
+  }
+  return parts.length > 0 ? parts : text;
+}
+
+function DialoguePreview({
+  payload,
+  anchors = [],
+}: {
+  payload: Record<string, unknown>;
+  anchors?: string[];
+}) {
   const nodes =
     typeof payload.nodes === 'object' && payload.nodes !== null
-      ? (payload.nodes as Record<string, unknown>)
+      ? (payload.nodes as Record<string, DialogueNode>)
       : {};
-  const nodeIds = Object.keys(nodes);
+  const startNodeId = String(payload.startNodeId ?? '');
+  const walk = walkDialogue(nodes, startNodeId);
+
   return (
     <div className="review-content">
       <div className="review-meta-grid">
@@ -364,34 +404,54 @@ function DialoguePreview({ payload }: { payload: Record<string, unknown> }) {
         </div>
         <div>
           <span>起始节点</span>
-          <strong>{String(payload.startNodeId ?? '—')}</strong>
+          <strong>{startNodeId || '—'}</strong>
         </div>
         <div>
           <span>节点数</span>
-          <strong>{nodeIds.length}</strong>
+          <strong>{Object.keys(nodes).length}</strong>
+        </div>
+        <div>
+          <span>阅读顺序</span>
+          <strong>{walk.length} 步</strong>
         </div>
       </div>
-      <h3>节点</h3>
-      {nodeIds.length === 0 ? (
+      {anchors.length > 0 ? (
+        <p className="review-anchor-note">
+          本章锚点（必须逐字保留）：{anchors.join(' ／ ')}
+        </p>
+      ) : null}
+      <h3>按阅读顺序</h3>
+      {walk.length === 0 ? (
         <p className="review-empty">没有节点</p>
       ) : (
-        nodeIds.map((id) => {
-          const node = nodes[id];
-          const record =
-            typeof node === 'object' && node !== null
-              ? (node as Record<string, unknown>)
-              : {};
+        walk.map((entry) => {
+          const speaker = entry.node.speakerId
+            ? (CONTENT_INDEX.idols.get(entry.node.speakerId)?.name ??
+              CONTENT_INDEX.actors.get(entry.node.speakerId)?.name ??
+              entry.node.speakerId)
+            : '旁白';
           return (
-            <article className="review-choice" key={id}>
+            <article
+              className="review-choice"
+              key={entry.nodeId}
+              style={{ marginLeft: entry.depth * 18 }}
+            >
               <header>
-                <span>{id}</span>
-                <strong>{String(record.speakerId ?? '旁白')}</strong>
+                <span>{entry.nodeId}</span>
+                <strong>{speaker}</strong>
+                {entry.viaChoice ? (
+                  <em className="review-via">← 选项：{entry.viaChoice}</em>
+                ) : null}
               </header>
-              <p>{String(record.text ?? '（缺少文本）')}</p>
-              {Array.isArray(record.choices) && record.choices.length > 0 ? (
-                <p className="review-choice-hint">
-                  选项：{record.choices.length}
-                </p>
+              <p>{highlightAnchors(entry.node.text, anchors)}</p>
+              {entry.node.choices && entry.node.choices.length > 0 ? (
+                <ul className="review-choice-list">
+                  {entry.node.choices.map((choice) => (
+                    <li key={choice.label}>
+                      {choice.label} → {choice.nextNodeId}
+                    </li>
+                  ))}
+                </ul>
               ) : null}
             </article>
           );
@@ -448,7 +508,13 @@ function StoryPreview({ payload }: { payload: Record<string, unknown> }) {
   );
 }
 
-function Preview({ draft }: { draft: ReviewDraft }) {
+function Preview({
+  draft,
+  anchors = [],
+}: {
+  draft: ReviewDraft;
+  anchors?: string[];
+}) {
   const payload =
     typeof draft.payload === 'object' && draft.payload !== null
       ? (draft.payload as Record<string, unknown>)
@@ -484,7 +550,7 @@ function Preview({ draft }: { draft: ReviewDraft }) {
       ) : draft.kind === 'job' ? (
         <JobPreview payload={payload} />
       ) : draft.kind === 'dialogue' ? (
-        <DialoguePreview payload={payload} />
+        <DialoguePreview payload={payload} anchors={anchors} />
       ) : (
         <StoryPreview payload={payload} />
       )}
@@ -691,6 +757,66 @@ export function ReviewApp() {
       const errors = errorsOf(reason);
       setActionError(errors.join('；'));
       return errors;
+    }
+  };
+
+  // 对话草稿 → 所属章节与步号。审查台靠它把一章的几段按顺序排在一起。
+  const chapterIndex = useMemo(() => {
+    const map = new Map<
+      string,
+      { chapterId: string; title: string; step: number; total: number; anchors: string[] }
+    >();
+    const chains = [...CONTENT_INDEX.storyChains.values(), ...PENDING_CHAPTERS];
+    for (const chain of chains) {
+      const source = CHAPTER_SOURCES.find((entry) => entry.chapterId === chain.id);
+      chain.steps.forEach((step, index) => {
+        map.set(step.dialogueId, {
+          chapterId: chain.id,
+          title: chain.title ?? chain.id,
+          step: index + 1,
+          total: chain.steps.length,
+          anchors: source?.anchors ?? [],
+        });
+      });
+    }
+    return map;
+  }, []);
+
+  const chapterOf = (draft: ReviewDraft) => {
+    const payload = draft.payload as { id?: string };
+    return payload.id ? chapterIndex.get(payload.id) : undefined;
+  };
+
+  /** 整章通过 / 整章打回：剧情是连着的，只过一半链会断。 */
+  const changeStatusBatch = async (
+    ids: string[],
+    nextStatus: ReviewStatus,
+  ) => {
+    if (ids.length === 0) return;
+    const label = ids.length > 1 ? `这一组 ${ids.length} 条` : '这一条';
+    if (
+      nextStatus === 'discarded' &&
+      !window.confirm(`确认废弃${label}内容？`)
+    ) {
+      return;
+    }
+    setBusy(true);
+    setActionError(undefined);
+    try {
+      await repository.setStatusBatch(
+        ids,
+        nextStatus,
+        statusNote.trim() || undefined,
+      );
+      const all = await repository.list();
+      setDrafts(all);
+      setStatusNote('');
+      setEditing(false);
+      setFlash(`${label}${STATUS_LABELS[nextStatus]}`);
+    } catch (caught) {
+      setActionError(caught instanceof Error ? caught.message : '操作失败');
+    } finally {
+      setBusy(false);
     }
   };
 
@@ -925,25 +1051,106 @@ export function ReviewApp() {
             {!loading && !error && filtered.length === 0 ? (
               <p className="review-empty">这个队列是空的。</p>
             ) : null}
-            {filtered.map((draft) => (
-              <button
-                type="button"
-                key={draft.id}
-                className={`review-queue-item ${draft.id === selectedId ? 'active' : ''}`}
-                onClick={() => {
-                  setSelectedId(draft.id);
-                  setEditing(false);
-                }}
-              >
-                <span className={`review-status status-${draft.status}`}>
-                  {STATUS_LABELS[draft.status]}
-                </span>
-                <strong>{draft.title}</strong>
-                <small>
-                  {KIND_LABELS[draft.kind]} · {formatDate(draft.updatedAt)}
-                </small>
-              </button>
-            ))}
+            {(() => {
+              // 一章的对话按步号排在一起；其余草稿照旧平铺。
+              const groups = new Map<string, ReviewDraft[]>();
+              const singles: ReviewDraft[] = [];
+              for (const draft of filtered) {
+                const info = chapterOf(draft);
+                if (!info) {
+                  singles.push(draft);
+                  continue;
+                }
+                const list = groups.get(info.chapterId) ?? [];
+                list.push(draft);
+                groups.set(info.chapterId, list);
+              }
+              const orderedGroups = [...groups.entries()].map(([id, list]) => ({
+                id,
+                title: chapterOf(list[0]!)?.title ?? id,
+                total: chapterOf(list[0]!)?.total ?? list.length,
+                drafts: [...list].sort(
+                  (a, b) =>
+                    (chapterOf(a)?.step ?? 0) - (chapterOf(b)?.step ?? 0),
+                ),
+              }));
+
+              const renderItem = (draft: ReviewDraft, stepLabel?: string) => (
+                <button
+                  type="button"
+                  key={draft.id}
+                  className={`review-queue-item ${draft.id === selectedId ? 'active' : ''}`}
+                  onClick={() => {
+                    setSelectedId(draft.id);
+                    setEditing(false);
+                  }}
+                >
+                  <span className={`review-status status-${draft.status}`}>
+                    {STATUS_LABELS[draft.status]}
+                  </span>
+                  <strong>
+                    {stepLabel ? `${stepLabel} ` : ''}
+                    {draft.title}
+                  </strong>
+                  <small>
+                    {KIND_LABELS[draft.kind]} · {formatDate(draft.updatedAt)}
+                  </small>
+                </button>
+              );
+
+              return (
+                <>
+                  {orderedGroups.map((group) => {
+                    const ids = group.drafts.map((draft) => draft.id);
+                    const pending = group.drafts.filter(
+                      (draft) =>
+                        draft.status !== 'approved' &&
+                        draft.status !== 'discarded',
+                    );
+                    return (
+                      <section className="review-chapter" key={group.id}>
+                        <header className="review-chapter-head">
+                          <div>
+                            <strong>{group.title}</strong>
+                            <small>
+                              一章 {group.total} 段 · 这里 {group.drafts.length} 段
+                            </small>
+                          </div>
+                          {pending.length > 0 ? (
+                            <div className="review-chapter-actions">
+                              <button
+                                type="button"
+                                className="review-approve"
+                                disabled={busy}
+                                onClick={() =>
+                                  void changeStatusBatch(ids, 'approved')
+                                }
+                              >
+                                整章通过
+                              </button>
+                              <button
+                                type="button"
+                                className="review-reject"
+                                disabled={busy}
+                                onClick={() =>
+                                  void changeStatusBatch(ids, 'revision')
+                                }
+                              >
+                                整章打回
+                              </button>
+                            </div>
+                          ) : null}
+                        </header>
+                        {group.drafts.map((draft) =>
+                          renderItem(draft, `第${chapterOf(draft)?.step ?? 0}步`),
+                        )}
+                      </section>
+                    );
+                  })}
+                  {singles.map((draft) => renderItem(draft))}
+                </>
+              );
+            })()}
           </div>
         </aside>
 
@@ -1048,7 +1255,10 @@ export function ReviewApp() {
                   onCancel={() => setEditing(false)}
                 />
               ) : (
-                <Preview draft={selected} />
+                <Preview
+                  draft={selected}
+                  anchors={chapterOf(selected)?.anchors ?? []}
+                />
               )}
             </>
           ) : (

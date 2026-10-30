@@ -128,6 +128,21 @@ export class LocalReviewRepository implements ReviewRepository {
     return body.draft;
   }
 
+  async setStatusBatch(
+    ids: string[],
+    status: ReviewStatus,
+    note?: string,
+  ): Promise<ReviewDraft[]> {
+    const response = await fetch('/api/review/drafts/batch/status', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ids, status, note }),
+    });
+    if (!response.ok) throw await readError(response);
+    const body = (await response.json()) as { drafts: ReviewDraft[] };
+    return body.drafts;
+  }
+
   async revise(id: string): Promise<ReviewDraft> {
     const response = await fetch(
       `/api/review/drafts/${encodeURIComponent(id)}/revise`,

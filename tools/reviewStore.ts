@@ -353,6 +353,22 @@ export async function saveReviewDraft(
   return next;
 }
 
+/**
+ * 批量移动（整章通过/整组打回）。
+ * 调用方先全部校验，再调这里——保证不会出现"半章通过"。
+ */
+export async function moveReviewDrafts(
+  ids: string[],
+  status: ReviewStatus,
+  note?: string,
+): Promise<ReviewDraft[]> {
+  const moved: ReviewDraft[] = [];
+  for (const id of ids) {
+    moved.push(await moveReviewDraft(id, status, note));
+  }
+  return moved;
+}
+
 export async function moveReviewDraft(
   id: string,
   status: ReviewStatus,

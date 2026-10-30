@@ -1,0 +1,80 @@
+{
+  "id": "draft.evt.meguru.after_dance",
+  "kind": "event",
+  "title": "再来一次",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.meguru.after_dance",
+  "payload": {
+    "id": "evt.meguru.after_dance",
+    "title": "再来一次",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "meguru"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "课结束了。她把音乐倒回去，从第一拍重新开始。",
+    "choices": [
+      {
+        "label": "陪她再来一遍",
+        "hint": "信任 +3、舞蹈 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          }
+        ],
+        "result": "第二遍结束，她喘着气说：这次对了！"
+      },
+      {
+        "label": "提醒她该休息了",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「诶……啊，也是。」她关了音乐，动作有点舍不得。"
+      },
+      {
+        "label": "问她为什么突然这么拼",
+        "hint": "信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「因为我想跳得好看一点嘛！……还有，想让大家觉得我很厉害。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T14:02:42.034Z",
+      "note": "B9：巡训练后事件（依 W.I.N.G. 语料）"
+    }
+  ]
+}

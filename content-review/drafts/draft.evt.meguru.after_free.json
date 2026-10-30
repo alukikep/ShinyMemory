@@ -1,0 +1,74 @@
+{
+  "id": "draft.evt.meguru.after_free",
+  "kind": "event",
+  "title": "手机一直在响",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.meguru.after_free",
+  "payload": {
+    "id": "evt.meguru.after_free",
+    "title": "手机一直在响",
+    "when": [],
+    "after": {
+      "ids": [
+        "free"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "meguru"
+      ]
+    },
+    "chance": 0.35,
+    "priority": 5,
+    "once": true,
+    "text": "自由时间刚开始，她的手机就响了三次。每次接完都笑得很好看。",
+    "choices": [
+      {
+        "label": "问她是谁打来的",
+        "hint": "信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「是朋友！……都说是\"只帮一下\"就这样。」她挠了挠头。"
+      },
+      {
+        "label": "把她的手机轻轻按下去",
+        "hint": "信任 +1、压力 -4",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -4
+          }
+        ],
+        "result": "她愣了半秒，然后真的把手机放进包里：「……那我今天先不管它。」"
+      },
+      {
+        "label": "什么也不说",
+        "hint": "无变化",
+        "effects": [],
+        "result": "她接完第三个电话，坐下来，安静了一会儿。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T14:02:42.034Z",
+      "note": "B9：巡训练后事件（依 W.I.N.G. 语料）"
+    }
+  ]
+}

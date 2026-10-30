@@ -1,0 +1,58 @@
+{
+  "id": "draft.activity.meguru.after_practice",
+  "kind": "activity",
+  "title": "收工以后",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.meguru.after_practice",
+  "payload": {
+    "id": "activity.meguru.after_practice",
+    "name": "收工以后",
+    "description": "练习结束，她还没走。你想确认一下她的状态。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "meguru"
+    ],
+    "locations": [
+      "practice_room"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 900,
+        "toMinute": 960
+      }
+    ],
+    "cost": {
+      "stamina": 4
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -6
+      }
+    ],
+    "resultTexts": [
+      "「诶？我没事哦！」她说得有点快。你没接话，她停了一下，说「……其实有一点累」。",
+      "她把毛巾叠得很整齐，说这样明天用起来方便。",
+      "「制作人，你每次都留到最后呢。」她说完自己点了点头。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T14:02:42.034Z",
+      "note": "B9：巡专属行动"
+    }
+  ]
+}

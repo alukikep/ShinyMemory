@@ -178,4 +178,94 @@ export const hioriGap: StoryChainDef = {
   ],
 };
 
-export const STORY_CHAINS = [manoEncounter, manoSlump, hioriEncounter, hioriGap];
+
+/** 八宫巡的招募链：公园球场 → 她提前到事务所问了一件事。 */
+export const meguruEncounter: StoryChainDef = {
+  id: 'meguru-encounter',
+  idolId: 'meguru',
+  priority: 10,
+  title: '球场边的人',
+  steps: [
+    {
+      id: 'meguru-park-1',
+      locationId: 'park',
+      timeWindow: { fromMinute: 13 * 60, toMinute: 17 * 60 },
+      dialogueId: 'dialogue.meguru.first',
+      actionLabel: '球场上有人在喊',
+      complete: {
+        status: 'known',
+        nextStepDelayDays: 2,
+      },
+    },
+    {
+      id: 'meguru-office-2',
+      locationId: 'office',
+      timeWindow: { fromMinute: 9 * 60, toMinute: 12 * 60 },
+      dialogueId: 'dialogue.meguru.second',
+      actionLabel: '她提前来了',
+      complete: {
+        status: 'recruited',
+      },
+    },
+  ],
+};
+
+/**
+ * 巡的长线：大切、選べないから。
+ *
+ * 改编自 W.I.N.G.編的同名章节：她把所有请求都接下来，
+ * 累到站着都费劲还说"很有精神，别担心"，并且拒绝取消工作
+ * （"因为这些都是自己说了想做的工作"）。
+ * 第三步不是"她学会拒绝"，而是**她第一次为自己做选择**。
+ */
+export const meguruBurden: StoryChainDef = {
+  id: 'meguru-burden',
+  idolId: 'meguru',
+  priority: 20,
+  title: '不重要的事，选不出来',
+  revealWhen: [
+    { kind: 'idolStatus', idolId: 'meguru', status: 'recruited' },
+    { kind: 'attributeAtLeast', ref: 'trust', rank: 'E' },
+  ],
+  steps: [
+    {
+      id: 'meguru-burden-1',
+      locationId: 'park',
+      timeWindow: { fromMinute: 16 * 60, toMinute: 18 * 60 },
+      dialogueId: 'dialogue.meguru.burden.first',
+      actionLabel: '她还在球场上',
+      when: [{ kind: 'dayAtLeast', day: 5 }],
+      effects: [{ kind: 'sharedStat', stat: 'stress', delta: 8 }],
+      complete: { nextStepDelayDays: 1 },
+    },
+    {
+      id: 'meguru-burden-2',
+      locationId: 'office',
+      timeWindow: { fromMinute: 18 * 60, toMinute: 22 * 60 },
+      dialogueId: 'dialogue.meguru.burden.second',
+      actionLabel: '她说不用取消',
+      complete: { nextStepDelayDays: 1 },
+    },
+    {
+      id: 'meguru-burden-3',
+      locationId: 'practice_room',
+      timeWindow: { fromMinute: 10 * 60, toMinute: 16 * 60 },
+      dialogueId: 'dialogue.meguru.burden.third',
+      actionLabel: '她第一次说了"不去"',
+      effects: [
+        { kind: 'sharedStat', stat: 'stress', delta: -20 },
+        { kind: 'var', key: 'meguru.burden', op: 'set', value: 3 },
+        { kind: 'flag', key: 'resolved.meguru.burden', value: true },
+      ],
+    },
+  ],
+};
+
+export const STORY_CHAINS = [
+  manoEncounter,
+  manoSlump,
+  hioriEncounter,
+  hioriGap,
+  meguruEncounter,
+  meguruBurden,
+];

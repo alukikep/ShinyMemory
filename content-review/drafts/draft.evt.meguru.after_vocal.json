@@ -1,0 +1,80 @@
+{
+  "id": "draft.evt.meguru.after_vocal",
+  "kind": "event",
+  "title": "声音太大",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.meguru.after_vocal",
+  "payload": {
+    "id": "evt.meguru.after_vocal",
+    "title": "声音太大",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "meguru"
+      ]
+    },
+    "chance": 0.35,
+    "priority": 5,
+    "once": true,
+    "text": "声乐老师说她的音量太满，第一段就放到底了，后面没有余地。",
+    "choices": [
+      {
+        "label": "让她试着留一半力气",
+        "hint": "信任 +3、歌唱 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          }
+        ],
+        "result": "她唱得收着，自己先笑出来：「这样好难啊！」"
+      },
+      {
+        "label": "说\"有精神就好\"",
+        "hint": "信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「诶嘿嘿，谢谢你！……不过老师说得对啦。」"
+      },
+      {
+        "label": "问她为什么总是唱这么满",
+        "hint": "压力 +3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 3
+          }
+        ],
+        "result": "她愣了一下：「因为我怕停下来啊。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T14:02:42.034Z",
+      "note": "B9：巡训练后事件（依 W.I.N.G. 语料）"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.meguru.chat.practice",
+  "kind": "topic",
+  "title": "练习的进度",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.meguru.chat.practice",
+  "payload": {
+    "id": "meguru.chat.practice",
+    "actorId": "meguru",
+    "label": "练习的进度",
+    "text": "「那个转身我练了三十次！……三十次之后还是会歪，诶嘿嘿。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T14:02:42.034Z",
+      "note": "B9：巡日常话题（依 W.I.N.G. 语料）"
+    }
+  ]
+}

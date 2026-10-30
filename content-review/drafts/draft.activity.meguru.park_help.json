@@ -1,0 +1,63 @@
+{
+  "id": "draft.activity.meguru.park_help",
+  "kind": "activity",
+  "title": "陪她去球场",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.meguru.park_help",
+  "payload": {
+    "id": "activity.meguru.park_help",
+    "name": "陪她去球场",
+    "description": "她说就去看一眼，结果一进场就被拉上场了。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "meguru"
+    ],
+    "locations": [
+      "park"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 960,
+        "toMinute": 1080
+      }
+    ],
+    "cost": {
+      "stamina": 9
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "dance",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -4
+      }
+    ],
+    "resultTexts": [
+      "她连着投中三个，回头冲你比了个手势。第四个没进，她自己先笑了。",
+      "朋友说\"巡的朋友也一起打啊\"，她看了你一眼，好像在等你点头。",
+      "散场以后她坐在球场边喝水，说好久没打得这么开心了。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T14:02:42.034Z",
+  "updatedAt": "2026-10-30T14:02:42.034Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T14:02:42.034Z",
+      "note": "B9：巡专属行动"
+    }
+  ]
+}

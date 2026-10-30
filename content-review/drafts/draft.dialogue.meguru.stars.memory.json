@@ -46,42 +46,13 @@
       },
       "n07": {
         "id": "n07",
-        "text": "你想了想。",
-        "choices": [
-          {
-            "label": "成长得令人惊讶",
-            "nextNodeId": "n08a",
-            "effects": [
-              {
-                "kind": "attributeExp",
-                "ref": "trust",
-                "tier": 5
-              }
-            ]
-          },
-          {
-            "label": "和那时候一样有精神",
-            "nextNodeId": "n08b",
-            "effects": [
-              {
-                "kind": "sharedStat",
-                "stat": "stress",
-                "delta": -4
-              }
-            ]
-          }
-        ]
+        "text": "你想了想，说成长得令人惊讶。",
+        "nextNodeId": "n08a"
       },
       "n08a": {
         "id": "n08a",
         "speakerId": "meguru",
         "text": "诶嘿嘿，好耶——！",
-        "nextNodeId": "n09"
-      },
-      "n08b": {
-        "id": "n08b",
-        "speakerId": "meguru",
-        "text": "和那时候一样？……那算是夸我吗！？",
         "nextNodeId": "n09"
       },
       "n09": {

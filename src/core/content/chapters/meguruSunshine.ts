@@ -48,8 +48,9 @@ const meguruSunshine: StoryChainDef = {
       dialogueId: 'dialogue.meguru.sunshine.splash',
       actionLabel: '她跳进泳池',
       effects: [
-        { kind: 'attributeExp', ref: 'trust', tier: 5 },
-        { kind: 'sharedStat', stat: 'stress', delta: -10 },
+        { kind: 'attributeExp', ref: 'trust', tier: 3 },
+        { kind: 'attributeExp', ref: 'expression', tier: 1 },
+        { kind: 'sharedStat', stat: 'stress', delta: -5 },
         { kind: 'flag', key: 'completed.meguru.sunshine', value: true },
       ],
       complete: { nextStepDelayDays: 2 },

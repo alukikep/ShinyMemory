@@ -58,41 +58,6 @@
       "n09": {
         "id": "n09",
         "text": "她趴在池边，仰头看着你。头发贴在脸上，还在滴水。",
-        "choices": [
-          {
-            "label": "下次也一起下水吧",
-            "nextNodeId": "n10",
-            "effects": [
-              {
-                "kind": "attributeExp",
-                "ref": "trust",
-                "tier": 3
-              }
-            ]
-          },
-          {
-            "label": "小心别着凉",
-            "nextNodeId": "n10b",
-            "effects": [
-              {
-                "kind": "sharedStat",
-                "stat": "stress",
-                "delta": -4
-              }
-            ]
-          }
-        ]
-      },
-      "n10b": {
-        "id": "n10b",
-        "speakerId": "meguru",
-        "text": "诶——才不会呢！现在这么热！",
-        "nextNodeId": "n10c"
-      },
-      "n10c": {
-        "id": "n10c",
-        "speakerId": "meguru",
-        "text": "……不过，谢谢你。",
         "nextNodeId": "n10"
       },
       "n10": {

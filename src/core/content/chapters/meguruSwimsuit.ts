@@ -53,8 +53,8 @@ const meguruSwimsuit: StoryChainDef = {
       dialogueId: 'dialogue.meguru.swimsuit.after',
       actionLabel: '从店里出来',
       effects: [
-        { kind: 'attributeExp', ref: 'trust', tier: 5 },
-        { kind: 'sharedStat', stat: 'stress', delta: -8 },
+        { kind: 'attributeExp', ref: 'trust', tier: 3 },
+        { kind: 'sharedStat', stat: 'stress', delta: -5 },
         { kind: 'flag', key: 'completed.meguru.swimsuit', value: true },
       ],
       complete: { nextStepDelayDays: 3 },

@@ -51,41 +51,6 @@
       "n08": {
         "id": "n08",
         "text": "你接过来道谢。瓶身上还挂着一层水。",
-        "choices": [
-          {
-            "label": "谢谢你，我收下了",
-            "nextNodeId": "n09",
-            "effects": [
-              {
-                "kind": "attributeExp",
-                "ref": "trust",
-                "tier": 1
-              }
-            ]
-          },
-          {
-            "label": "刚才睡着了，抱歉",
-            "nextNodeId": "n09b",
-            "effects": [
-              {
-                "kind": "sharedStat",
-                "stat": "stress",
-                "delta": -3
-              }
-            ]
-          }
-        ]
-      },
-      "n09b": {
-        "id": "n09b",
-        "speakerId": "meguru",
-        "text": "没关系！制作人最近都没怎么睡吧？",
-        "nextNodeId": "n09c"
-      },
-      "n09c": {
-        "id": "n09c",
-        "speakerId": "meguru",
-        "text": "……所以刚才，我都没敢叫你。",
         "nextNodeId": "n09"
       },
       "n09": {

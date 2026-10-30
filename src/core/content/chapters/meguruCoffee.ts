@@ -43,8 +43,8 @@ const meguruCoffee: StoryChainDef = {
       dialogueId: 'dialogue.meguru.coffee.cup',
       actionLabel: '砂糖和牛奶',
       effects: [
-        { kind: 'attributeExp', ref: 'trust', tier: 5 },
-        { kind: 'sharedStat', stat: 'stress', delta: -8 },
+        { kind: 'attributeExp', ref: 'trust', tier: 3 },
+        { kind: 'sharedStat', stat: 'stress', delta: -5 },
         { kind: 'flag', key: 'completed.meguru.coffee', value: true },
       ],
       complete: { nextStepDelayDays: 2 },

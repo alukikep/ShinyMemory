@@ -41,47 +41,13 @@
       "n06": {
         "id": "n06",
         "speakerId": "meguru",
-        "text": "那就得去买泳装了，制作人！",
-        "choices": [
-          {
-            "label": "好，那就出门吧",
-            "nextNodeId": "n07",
-            "effects": [
-              {
-                "kind": "attributeExp",
-                "ref": "trust",
-                "tier": 1
-              }
-            ]
-          },
-          {
-            "label": "拍摄前不紧张吗",
-            "nextNodeId": "n07b",
-            "effects": [
-              {
-                "kind": "attributeExp",
-                "ref": "trust",
-                "tier": 3
-              }
-            ]
-          }
-        ]
+        "text": "有学校穿的泳装……嗯——不过要拍照的话还是可爱的泳装更好吧！？那就得去买泳装了，制作人！",
+        "nextNodeId": "n07"
       },
       "n07": {
         "id": "n07",
         "speakerId": "meguru",
         "text": "好耶——！谢谢你，制作人！要选什么泳装好呢，诶嘿嘿！"
-      },
-      "n07b": {
-        "id": "n07b",
-        "speakerId": "meguru",
-        "text": "诶？……有一点。不过现在先想着买泳装的事！",
-        "nextNodeId": "n07c"
-      },
-      "n07c": {
-        "id": "n07c",
-        "speakerId": "meguru",
-        "text": "要选什么泳装好呢，诶嘿嘿！"
       }
     }
   },

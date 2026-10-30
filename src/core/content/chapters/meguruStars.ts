@@ -43,8 +43,8 @@ const meguruStars: StoryChainDef = {
       dialogueId: 'dialogue.meguru.stars.photo',
       actionLabel: '拍不下来的东西',
       effects: [
-        { kind: 'attributeExp', ref: 'trust', tier: 5 },
-        { kind: 'sharedStat', stat: 'stress', delta: -8 },
+        { kind: 'attributeExp', ref: 'trust', tier: 3 },
+        { kind: 'sharedStat', stat: 'stress', delta: -5 },
         { kind: 'flag', key: 'completed.meguru.stars', value: true },
       ],
       complete: { nextStepDelayDays: 2 },

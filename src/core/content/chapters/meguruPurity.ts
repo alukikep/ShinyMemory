@@ -43,8 +43,8 @@ const meguruPurity: StoryChainDef = {
       dialogueId: 'dialogue.meguru.purity.dance',
       actionLabel: '要好好看着我',
       effects: [
-        { kind: 'attributeExp', ref: 'trust', tier: 5 },
-        { kind: 'sharedStat', stat: 'stress', delta: -8 },
+        { kind: 'attributeExp', ref: 'trust', tier: 3 },
+        { kind: 'attributeExp', ref: 'expression', tier: 1 },
         { kind: 'flag', key: 'completed.meguru.purity', value: true },
       ],
       complete: { nextStepDelayDays: 2 },

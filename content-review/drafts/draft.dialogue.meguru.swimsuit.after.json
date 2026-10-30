@@ -25,41 +25,12 @@
         "id": "n03",
         "speakerId": "meguru",
         "text": "……那个。下次，要是还有这种事的话……",
-        "choices": [
-          {
-            "label": "下次也一起去",
-            "nextNodeId": "n04a",
-            "effects": [
-              {
-                "kind": "attributeExp",
-                "ref": "trust",
-                "tier": 3
-              }
-            ]
-          },
-          {
-            "label": "先把这次的拍摄做好",
-            "nextNodeId": "n04b",
-            "effects": [
-              {
-                "kind": "attributeExp",
-                "ref": "trust",
-                "tier": 1
-              }
-            ]
-          }
-        ]
+        "nextNodeId": "n04a"
       },
       "n04a": {
         "id": "n04a",
         "speakerId": "meguru",
         "text": "真的？诶嘿嘿，那就说好了！",
-        "nextNodeId": "n05"
-      },
-      "n04b": {
-        "id": "n04b",
-        "speakerId": "meguru",
-        "text": "……也是哦！那我拍摄的时候，会加油的！",
         "nextNodeId": "n05"
       },
       "n05": {

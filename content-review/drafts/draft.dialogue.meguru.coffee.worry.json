@@ -33,7 +33,7 @@
               {
                 "kind": "attributeExp",
                 "ref": "trust",
-                "tier": 3
+                "tier": 1
               }
             ]
           },
@@ -44,7 +44,7 @@
               {
                 "kind": "sharedStat",
                 "stat": "stress",
-                "delta": -4
+                "delta": -2
               }
             ]
           },
@@ -54,7 +54,7 @@
             "effects": [
               {
                 "kind": "attributeExp",
-                "ref": "trust",
+                "ref": "insight",
                 "tier": 1
               }
             ]

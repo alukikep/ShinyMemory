@@ -47,42 +47,7 @@
       "n07": {
         "id": "n07",
         "text": "你说当然好，这很重要。而且她确实做到了摄影师要的东西。",
-        "nextNodeId": "n08",
-        "choices": [
-          {
-            "label": "当然好。这很重要。",
-            "nextNodeId": "n08",
-            "effects": [
-              {
-                "kind": "attributeExp",
-                "ref": "trust",
-                "tier": 3
-              }
-            ]
-          },
-          {
-            "label": "你把自己要求得太严了。",
-            "nextNodeId": "n08b",
-            "effects": [
-              {
-                "kind": "attributeExp",
-                "ref": "expression",
-                "tier": 1
-              }
-            ]
-          }
-        ]
-      },
-      "n08b": {
-        "id": "n08b",
-        "speakerId": "meguru",
-        "text": "诶……有吗？我明明没觉得辛苦啊。",
-        "nextNodeId": "n08c"
-      },
-      "n08c": {
-        "id": "n08c",
-        "text": "她想了想，又说了一遍「真的没觉得辛苦」，语气比刚才小。",
-        "nextNodeId": "n09"
+        "nextNodeId": "n08"
       },
       "n09": {
         "id": "n09",

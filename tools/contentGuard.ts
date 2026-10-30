@@ -43,6 +43,29 @@ function resolveCorpusPaths(card: string): string[] {
   return [...new Set(matches)];
 }
 
+type CardQuote = { text: string; file: string };
+
+/** 卡里形如 `- 「原文」 —— data/story/...csv` 的行。 */
+function parseQuotes(card: string): CardQuote[] {
+  const pattern = /^-\s*「(.+?)」\s*——\s*(data\/story\/\S+\.csv)\s*$/gm;
+  const quotes: CardQuote[] = [];
+  for (const match of card.matchAll(pattern)) {
+    quotes.push({ text: match[1]!.trim(), file: match[2]!.trim() });
+  }
+  return quotes;
+}
+
+const corpusCache = new Map<string, string>();
+
+function readCorpusFile(relative: string): string {
+  const cached = corpusCache.get(relative);
+  if (cached !== undefined) return cached;
+  const full = path.join(corpusRoot, relative.replace(/\//g, path.sep));
+  const content = readFileSync(full, 'utf8');
+  corpusCache.set(relative, content);
+  return content;
+}
+
 function findCorpusFile(relative: string): boolean {
   const full = path.join(corpusRoot, relative.replace(/\//g, path.sep));
   return existsSync(full);
@@ -97,6 +120,50 @@ for (const idol of [...index.idols.values()]) {
     problems.push({
       idol: idol.id,
       message: '角色卡里没有「回查记录」——写完全部内容后要对着语料回查一次',
+    });
+  }
+
+  // 引文：至少三条语料原文，且必须真的出现在所指文件里。
+  // 这是"有没有读过"能落到机器上的最低保证——抄三句真话就得打开文件。
+  const quotes = parseQuotes(card);
+  if (quotes.length < 3) {
+    problems.push({
+      idol: idol.id,
+      message: `角色卡里的原文引文不足三条（现在 ${quotes.length} 条）。格式：- 「原文」 —— data/story/...csv`,
+    });
+  }
+
+  for (const quote of quotes) {
+    if (quote.text.length < 6) {
+      problems.push({
+        idol: idol.id,
+        message: `引文太短，无法校验：${quote.text}`,
+      });
+      continue;
+    }
+    if (!findCorpusFile(quote.file)) {
+      problems.push({
+        idol: idol.id,
+        message: `引文指向的文件不存在：${quote.file}`,
+      });
+      continue;
+    }
+    if (corpusAvailable) {
+      const content = readCorpusFile(quote.file);
+      if (!content.includes(quote.text)) {
+        problems.push({
+          idol: idol.id,
+          message: `引文在文件里找不到（可能改写过了）：「${quote.text}」← ${quote.file}`,
+        });
+      }
+    }
+  }
+
+  const winning = quotes.some((quote) => quote.file.includes('W.I.N.G.'));
+  if (quotes.length > 0 && !winning) {
+    problems.push({
+      idol: idol.id,
+      message: '引文里至少要有一条出自 W.I.N.G.編（相遇章节必须读过）',
     });
   }
 }

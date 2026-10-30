@@ -1,0 +1,97 @@
+{
+  "id": "draft.job.first_live",
+  "kind": "job",
+  "title": "初次 Live",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.job.first_live",
+  "payload": {
+    "id": "job.first_live",
+    "name": "初次 Live",
+    "description": "三十个人的小场子。第一次站上去，唱三首。",
+    "locationId": "studio",
+    "fromMinute": 1080,
+    "toMinute": 1260,
+    "pay": 800,
+    "check": {
+      "ref": "dance",
+      "difficulty": "C",
+      "shift": 0
+    },
+    "failurePayRatio": 0.4,
+    "cooldownDays": 4,
+    "requires": [
+      {
+        "kind": "flag",
+        "key": "unlocked.first_live"
+      }
+    ],
+    "hiddenUntilUnlocked": true,
+    "effects": [
+      {
+        "kind": "fans",
+        "value": 220
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "dance"
+        },
+        "tier": 10
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "expression"
+        },
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "trust"
+        },
+        "tier": 5
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 15
+      }
+    ],
+    "failureEffects": [
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 25
+      },
+      {
+        "kind": "log",
+        "text": "第二首歌的后半段，她的声音开始发抖。",
+        "tone": "bad"
+      }
+    ],
+    "resultTexts": [
+      "唱到第三首的时候，前排有人举起了手。她看见了，笑了一下，然后接着唱。",
+      "结束之后她在后台坐了很久，说腿还是软的。",
+      "散场时有个女孩等在门口，说自己是从公园那次开始听她唱歌的。"
+    ],
+    "failureTexts": [
+      "「对不起……第三首我没唱好。」她一遍遍说，声音已经哑了。",
+      "下来以后她没哭，只是把话筒放回架子上，慢慢蹲了下去。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T12:00:40.234Z",
+  "updatedAt": "2026-10-30T12:00:40.234Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T12:00:40.234Z",
+      "note": "B2：剧情解锁的舞台工作，hiddenUntilUnlocked"
+    }
+  ]
+}

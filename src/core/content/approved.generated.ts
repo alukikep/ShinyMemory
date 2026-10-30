@@ -94,6 +94,100 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.mano.extra_practice",
+  "name": "陪她加练",
+  "description": "她说最后那两拍还不对，问你能不能再看一遍。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "mano"
+  ],
+  "locations": [
+    "practice_room"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 480,
+      "toMinute": 810
+    }
+  ],
+  "cost": {
+    "stamina": 8
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "trust"
+      },
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "expression"
+      },
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 3
+    }
+  ],
+  "resultTexts": [
+    "她数着拍子走了第七遍，终于停下来，说这次好像对了。",
+    "你站在镜子侧边看她的脚。她说被看着会更紧张，但还是继续了。",
+    "跳到一半她突然笑出来，说刚才那个动作自己都觉得奇怪。"
+  ]
+},
+{
+  "id": "activity.mano.pigeons",
+  "name": "一起喂鸽子",
+  "description": "傍晚的公园，她蹲在长椅边上，手心里还剩一点面包屑。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "mano"
+  ],
+  "locations": [
+    "park"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 1080,
+      "toMinute": 1170
+    }
+  ],
+  "cost": {
+    "stamina": 5
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "trust"
+      },
+      "tier": 5
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -6
+    }
+  ],
+  "resultTexts": [
+    "她把手摊平不动，等了很久，才有一只鸽子跳上来。",
+    "「它们认得我吗。」她小声问，没等你回答就自己点了头。",
+    "面包屑用完以后她还在原地蹲着，看鸽子散开。"
+  ]
+},
+{
   "id": "activity.office_filing",
   "name": "整理资料",
   "description": "把抽屉里那堆通告单和合同按日期重新排一遍。",

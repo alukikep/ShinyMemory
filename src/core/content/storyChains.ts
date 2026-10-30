@@ -27,6 +27,16 @@ export const manoEncounter: StoryChainDef = {
         status: 'recruited',
       },
     },
+    {
+      // 招募之后她第一次主动来找你：这一步会解锁「初次 Live」。
+      id: 'mano-office-3',
+      locationId: 'office',
+      timeWindow: { fromMinute: 18 * 60, toMinute: 22 * 60 },
+      minDaysAfterPrevious: 1,
+      dialogueId: 'dialogue.mano.third',
+      actionLabel: '她在事务所等你',
+      effects: [{ kind: 'flag', key: 'unlocked.first_live', value: true }],
+    },
   ],
 };
 

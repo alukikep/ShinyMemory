@@ -2,7 +2,7 @@
   "id": "draft.activity.mano.cooking",
   "kind": "activity",
   "title": "看她做饭",
-  "status": "review",
+  "status": "revision",
   "version": 1,
   "rootId": "draft.activity.mano.cooking",
   "payload": {
@@ -53,14 +53,34 @@
       "吃完她把碗收走，说下次会做得更好一点。"
     ]
   },
-  "annotations": [],
+  "annotations": [
+    {
+      "id": "note-1793361529472",
+      "text": "在事务所做饭有点奇怪，可以改成泡咖啡之类的简单活动",
+      "createdAt": "2026-10-30T11:58:49.472Z",
+      "resolved": false
+    }
+  ],
   "createdAt": "2026-10-30T11:55:19.505Z",
-  "updatedAt": "2026-10-30T11:55:19.505Z",
+  "updatedAt": "2026-10-30T11:58:59.866Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T11:55:19.505Z",
       "note": "B3：真乃专属行动·看她做饭（工作日晚）"
+    },
+    {
+      "status": "revision",
+      "at": "2026-10-30T11:58:20.271Z",
+      "note": "在事务所做饭有点怪，可以换成帮泡咖啡之类的简单活动"
+    },
+    {
+      "status": "review",
+      "at": "2026-10-30T11:58:52.947Z"
+    },
+    {
+      "status": "revision",
+      "at": "2026-10-30T11:58:59.866Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.activity.mano.pigeons",
   "kind": "activity",
   "title": "一起喂鸽子",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.mano.pigeons",
   "payload": {
@@ -50,12 +50,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T11:55:19.505Z",
-  "updatedAt": "2026-10-30T11:55:19.505Z",
+  "updatedAt": "2026-10-30T11:59:18.425Z",
+  "reviewedAt": "2026-10-30T11:59:18.425Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T11:55:19.505Z",
       "note": "B3：真乃专属行动·公园喂鸽子（周日晚）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T11:59:18.425Z"
     }
   ]
 }

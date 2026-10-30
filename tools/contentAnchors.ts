@@ -109,7 +109,8 @@ const problems = [
     dialogueIds: new Set([...index.dialogues.keys(), ...pendingDialogueIds]),
     locationIds: new Set(index.locations.keys()),
   }),
-  ...validateChapterAnchors(activeChapters, {
+  // 锚点对「全部登记章节」都校验：待审草稿也算内容，没理由跳过。
+  ...validateChapterAnchors(CHAPTER_SOURCES, {
     readSource,
     hasInGame: (text, normalize) =>
       normalize(allContentText).includes(normalize(text)),

@@ -1136,6 +1136,11 @@ function finishDialogue(state: GameState): GameState {
     };
   }
 
+  // 可选的"结束时把玩家放到剧情收尾的地点"。不写就不搬。
+  if (step?.endLocationId && next.locationId !== step.endLocationId) {
+    next.locationId = step.endLocationId;
+  }
+
   clearDialogueState(next);
   const returnPhase = next.dialogueReturnPhase;
   const returnResult = next.dialogueReturnResult;

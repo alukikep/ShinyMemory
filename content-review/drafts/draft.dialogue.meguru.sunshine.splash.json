@@ -1,0 +1,120 @@
+{
+  "id": "draft.dialogue.meguru.sunshine.splash",
+  "kind": "dialogue",
+  "title": "拍摄当天 · 水花",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.sunshine.splash",
+  "payload": {
+    "id": "dialogue.meguru.sunshine.splash",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "她几步跑到池边，跳了进去。水面碎开又合上。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "meguru",
+        "text": "……制作人！快看——！",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "meguru",
+        "text": "是不是闪闪发亮的——！",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "meguru",
+        "text": "太阳耀眼的时候溅起的水花，超漂亮的……！",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "text": "你说是啊，让她别跌倒了。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "meguru",
+        "text": "没关系的——！你看你看——",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "text": "水花溅到脚边。凉凉的很舒服。",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "speakerId": "meguru",
+        "text": "啊，泼到你了？对不起！",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "text": "她趴在池边，仰头看着你。头发贴在脸上，还在滴水。",
+        "choices": [
+          {
+            "label": "下次也一起下水吧",
+            "nextNodeId": "n10",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "小心别着凉",
+            "nextNodeId": "n10b",
+            "effects": [
+              {
+                "kind": "sharedStat",
+                "stat": "stress",
+                "delta": -4
+              }
+            ]
+          }
+        ]
+      },
+      "n10b": {
+        "id": "n10b",
+        "speakerId": "meguru",
+        "text": "诶——才不会呢！现在这么热！",
+        "nextNodeId": "n10c"
+      },
+      "n10c": {
+        "id": "n10c",
+        "speakerId": "meguru",
+        "text": "……不过，谢谢你。",
+        "nextNodeId": "n10"
+      },
+      "n10": {
+        "id": "n10",
+        "speakerId": "meguru",
+        "text": "制作人，下次也一起来泳池里玩吧。",
+        "nextNodeId": "n11"
+      },
+      "n11": {
+        "id": "n11",
+        "text": "远处工作人员在喊集合。她应了一声，又回头看了你一眼。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T15:55:57.524Z",
+  "updatedAt": "2026-10-30T15:55:57.524Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T15:55:57.524Z",
+      "note": "B12：卡面章「拍摄当天」（太陽のしずく）"
+    }
+  ]
+}

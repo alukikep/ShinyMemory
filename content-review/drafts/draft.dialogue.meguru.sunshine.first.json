@@ -1,0 +1,133 @@
+{
+  "id": "draft.dialogue.meguru.sunshine.first",
+  "kind": "dialogue",
+  "title": "拍摄当天 · 结束",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.sunshine.first",
+  "payload": {
+    "id": "dialogue.meguru.sunshine.first",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "泳池边，器材正在撤。太阳把白瓷砖照得发亮。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "meguru",
+        "text": "非常感谢——！",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "meguru",
+        "text": "制作人！",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "text": "你说辛苦了，表情很好。她笑起来。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "speakerId": "meguru",
+        "text": "嗯，我拍得很开心——！",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "meguru",
+        "text": "啊……明明在工作，说开心真的好吗。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "text": "你说当然好，这很重要。而且她确实做到了摄影师要的东西。",
+        "nextNodeId": "n08",
+        "choices": [
+          {
+            "label": "当然好。这很重要。",
+            "nextNodeId": "n08",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "你把自己要求得太严了。",
+            "nextNodeId": "n08b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "expression",
+                "tier": 1
+              }
+            ]
+          }
+        ]
+      },
+      "n08b": {
+        "id": "n08b",
+        "speakerId": "meguru",
+        "text": "诶……有吗？我明明没觉得辛苦啊。",
+        "nextNodeId": "n08c"
+      },
+      "n08c": {
+        "id": "n08c",
+        "text": "她想了想，又说了一遍「真的没觉得辛苦」，语气比刚才小。",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "speakerId": "meguru",
+        "text": "诶嘿嘿，制作人真温柔——",
+        "nextNodeId": "n10"
+      },
+      "n10": {
+        "id": "n10",
+        "speakerId": "meguru",
+        "text": "谢谢你一直看着我！你很热吧？",
+        "nextNodeId": "n11"
+      },
+      "n11": {
+        "id": "n11",
+        "text": "你说完全没事。她盯着你手里的水瓶看了两秒。",
+        "nextNodeId": "n12"
+      },
+      "n12": {
+        "id": "n12",
+        "speakerId": "meguru",
+        "text": "……那个水看起来也温温的啊？",
+        "nextNodeId": "n13"
+      },
+      "n13": {
+        "id": "n13",
+        "speakerId": "meguru",
+        "text": "到下一段采访之前还有点时间。巡也去玩玩水吧？",
+        "nextNodeId": "n14"
+      },
+      "n14": {
+        "id": "n14",
+        "speakerId": "meguru",
+        "text": "那我先休息一下吧。一起去阳伞下休息吧！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T15:55:57.524Z",
+  "updatedAt": "2026-10-30T15:55:57.524Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T15:55:57.524Z",
+      "note": "B12：卡面章「拍摄当天」（太陽のしずく）"
+    }
+  ]
+}

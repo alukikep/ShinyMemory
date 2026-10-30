@@ -1,4 +1,5 @@
 import type { StoryChainDef } from '../../types';
+import meguruSunshine from './meguruSunshine';
 import meguruSwimsuit from './meguruSwimsuit';
 
 /**
@@ -8,4 +9,7 @@ import meguruSwimsuit from './meguruSwimsuit';
  * 否则 BASE_PACK 会引用不存在的对话（每个草稿预检都会报 dialogue-ref）。
  * 审查台靠这份清单知道"哪些草稿属于同一章、按什么顺序读"。
  */
-export const PENDING_CHAPTERS: StoryChainDef[] = [meguruSwimsuit];
+export const PENDING_CHAPTERS: StoryChainDef[] = [
+  meguruSwimsuit,
+  meguruSunshine,
+];

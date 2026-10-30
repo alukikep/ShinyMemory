@@ -1,0 +1,108 @@
+{
+  "id": "draft.dialogue.meguru.sunshine.rest",
+  "kind": "dialogue",
+  "title": "拍摄当天 · 阳伞下",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.sunshine.rest",
+  "payload": {
+    "id": "dialogue.meguru.sunshine.rest",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "阳伞下摆着两张折叠椅。她去拿毛巾了。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "text": "你坐下，想着不要迷路就好了。阴凉处确实凉快。",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "text": "不知道过了多久，忽然有人叫你。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "meguru",
+        "text": "……制作人！",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "text": "你被冰了一下，醒过来。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "meguru",
+        "text": "诶嘿嘿，醒啦？给你果汁——",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "speakerId": "meguru",
+        "text": "制作人，这个就可以吗？虽然我选了我想喝的！",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "text": "你接过来道谢。瓶身上还挂着一层水。",
+        "choices": [
+          {
+            "label": "谢谢你，我收下了",
+            "nextNodeId": "n09",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "刚才睡着了，抱歉",
+            "nextNodeId": "n09b",
+            "effects": [
+              {
+                "kind": "sharedStat",
+                "stat": "stress",
+                "delta": -3
+              }
+            ]
+          }
+        ]
+      },
+      "n09b": {
+        "id": "n09b",
+        "speakerId": "meguru",
+        "text": "没关系！制作人最近都没怎么睡吧？",
+        "nextNodeId": "n09c"
+      },
+      "n09c": {
+        "id": "n09c",
+        "speakerId": "meguru",
+        "text": "……所以刚才，我都没敢叫你。",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "speakerId": "meguru",
+        "text": "我已经喝过了！我去下泳池！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T15:55:57.524Z",
+  "updatedAt": "2026-10-30T15:55:57.524Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T15:55:57.524Z",
+      "note": "B12：卡面章「拍摄当天」（太陽のしずく）"
+    }
+  ]
+}

@@ -140,6 +140,11 @@ export type StoryChainStep = {
   when?: Condition[];
   /** 这一步完成时结算一次。 */
   effects?: Effect[];
+  /**
+   * 这一章结束时把玩家移动到哪。缺省 = 不搬（停在原地）。
+   * 只在"叙事换了地点、玩家应当在场"时写。
+   */
+  endLocationId?: string;
   complete?: {
     status?: IdolStatus;
     nextStepDelayDays?: number;

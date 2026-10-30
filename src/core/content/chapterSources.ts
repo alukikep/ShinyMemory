@@ -21,4 +21,14 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
       '……这么大的尺寸应该比较适合制作人了——',
     ],
   },
+  {
+    chapterId: 'meguru-sunshine',
+    source:
+      'data/story/八宮めぐる/【夏に恋するピチカート！】八宮めぐる/太陽のしずく.csv',
+    anchors: [
+      '明明在工作，说开心真的好吗',
+      '谢谢你一直看着我！你很热吧？',
+      '下次也一起来泳池里玩吧',
+    ],
+  },
 ];

@@ -18,6 +18,7 @@
 |---|---|
 | [内容生产](content/README.md) | 块的划分、生产流程、块清单与进度 |
 | [内容生产手册](content/playbook.md) | 交付协议、新角色接入清单、覆盖矩阵、写作配方、卡面改编规则、质量门 |
+| [卡面改编执行手册](content/card-adaptation.md) | 从看素材到过审的完整顺序，每步标了哪条命令会拦住你 |
 | [卡面剧情实现计划](content/card-story-plan.md) | 试点一章的选材、结构、锚点、成本与验收（待确认） |
 | [卡面剧情实现计划（详细）](content/card-story-implementation.md) | 引擎改动、剧情日/接活策略、分三次提交与验收（待审） |
 | [角色卡 · 樱木真乃](content/mano/character.md) | 语气、阶段态度、OOC 对照、写作自查 |

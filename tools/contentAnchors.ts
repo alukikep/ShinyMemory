@@ -4,9 +4,11 @@ import { BASE_PACK } from '../src/core/content/basePack.js';
 import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
 import {
   validateChapterAnchors,
+  validateChapterShape,
   validateChapterStructure,
 } from '../src/core/chapterAnchors.js';
 import { CHAPTER_SOURCES } from '../src/core/content/chapterSources.js';
+import { PENDING_CHAPTERS } from '../src/core/content/chapters/index.js';
 import { buildContentIndex } from '../src/core/contentIndexCore.js';
 import { mergeApprovedContent } from '../src/review/approval.js';
 import { readApprovedDrafts } from './approvedFiles.js';
@@ -42,11 +44,17 @@ const pendingDialogues = readdirSync('content-review/drafts')
     ) as {
       payload?: { id?: string; nodes?: Record<string, { text?: string }> };
     };
+    const nodes = (draft.payload?.nodes ?? {}) as Record<
+      string,
+      { nextNodeId?: string; choices?: { label: string; nextNodeId: string }[] }
+    >;
     return {
       id: draft.payload?.id ?? '',
-      text: Object.values(draft.payload?.nodes ?? {})
-        .map((node) => node.text ?? '')
+      text: Object.values(nodes)
+        .map((node: { text?: string }) => node.text ?? '')
         .join('\n'),
+      nodes,
+      startNodeId: draft.payload?.startNodeId ?? '',
     };
   });
 
@@ -69,6 +77,45 @@ const allContentText = `${gameText}\n${pendingDialogueText}`;
 const cache = new Map<string, string | undefined>();
 
 /** 用 commu id 的第 7–8 位还原"这是卡里第几节"。 */
+/**
+ * 原作在"选项后有分支正文"时，会把选中的那句再显示一次。
+ * 用这个特征判断：这一段到底有没有分支。
+ */
+function readExpectBranch(relative: string): boolean | undefined {
+  if (!corpusAvailable) return undefined;
+  const full = path.join(corpusRoot, relative.split('/').join(path.sep));
+  if (!existsSync(full)) return undefined;
+  const rows = readFileSync(full, 'utf8')
+    .split(/\r?\n/)
+    .slice(1)
+    .filter((line) => line.trim().length > 0)
+    .map((line) => {
+      const cells = line.split(',');
+      return { name: cells[1] ?? '', text: (cells[cells.length - 1] ?? '').replace(/^"|"$/g, '') };
+    });
+
+  // 连续的「无说话人」行 = 选项块
+  let start = -1;
+  for (let index = 0; index < rows.length; index += 1) {
+    if (rows[index]!.name === '' && rows[index + 1]?.name === '') {
+      start = index;
+      break;
+    }
+  }
+  if (start === -1) return undefined;
+
+  const options: string[] = [];
+  let cursor = start;
+  while (cursor < rows.length && rows[cursor]!.name === '') {
+    options.push(rows[cursor]!.text.replace(/\\n/g, ''));
+    cursor += 1;
+  }
+  if (options.length === 0) return undefined;
+
+  const next = rows[cursor]?.text.replace(/\\n/g, '') ?? '';
+  return options.some((option) => option === next);
+}
+
 function readCardOrder(relative: string): { index: number; total: number } | undefined {
   if (!corpusAvailable) return undefined;
   const full = path.join(corpusRoot, relative.split('/').join(path.sep));
@@ -135,6 +182,23 @@ const problems = [
     dialogueIds: new Set([...index.dialogues.keys(), ...pendingDialogueIds]),
     locationIds: new Set(index.locations.keys()),
   }),
+  ...validateChapterShape(
+    CHAPTER_SOURCES.map((chapter) => {
+      const chain =
+        index.storyChains.get(chapter.chapterId) ??
+        PENDING_CHAPTERS.find((entry) => entry.id === chapter.chapterId);
+      const dialogueId = chain?.steps[0]?.dialogueId;
+      const draft = pendingDialogues.find((entry) => entry.id === dialogueId);
+      return {
+        chapterId: chapter.chapterId,
+        stepCount: chain?.steps.length ?? 0,
+        expectBranch: readExpectBranch(chapter.source),
+        dialogue: draft
+          ? { startNodeId: draft.startNodeId, nodes: draft.nodes }
+          : undefined,
+      };
+    }),
+  ),
   // 锚点对「全部登记章节」都校验：待审草稿也算内容，没理由跳过。
   ...validateChapterAnchors(CHAPTER_SOURCES, {
     readSource,

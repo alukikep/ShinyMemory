@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   validateChapterAnchors,
+  validateChapterShape,
   validateChapterStructure,
   type ChapterSource,
 } from './chapterAnchors';
@@ -131,5 +132,80 @@ describe('chapter structure', () => {
     expect(
       problems.some((p) => p.message.includes('没在 chapterSources 登记')),
     ).toBe(true);
+  });
+});
+
+describe('chapter shape', () => {
+  const nodes = (branchLength: number) => {
+    const built: Record<string, { nextNodeId?: string; choices?: { label: string; nextNodeId: string }[] }> = {
+      start: {
+        choices: [
+          { label: 'A', nextNodeId: 'a1' },
+          { label: 'B', nextNodeId: 'b1' },
+        ],
+      },
+    };
+    for (const key of ['a', 'b'] as const) {
+      for (let index = 1; index <= branchLength; index += 1) {
+        built[`${key}${index}`] = {
+          nextNodeId: index === branchLength ? 'merge' : `${key}${index + 1}`,
+        };
+      }
+    }
+    built.merge = {};
+    return built;
+  };
+
+  it('rejects a card chapter split into several steps', () => {
+    const problems = validateChapterShape([
+      { chapterId: 'c1', stepCount: 3 },
+    ]);
+    expect(problems.some((p) => p.message.includes('1 步'))).toBe(true);
+  });
+
+  it('rejects thin branches when the source has branch content', () => {
+    const problems = validateChapterShape([
+      {
+        chapterId: 'c1',
+        stepCount: 1,
+        expectBranch: true,
+        dialogue: { startNodeId: 'start', nodes: nodes(1) },
+      },
+    ]);
+    expect(problems.some((p) => p.message.includes('分支只有'))).toBe(true);
+  });
+
+  it('accepts thin branches when the source converges immediately', () => {
+    const problems = validateChapterShape([
+      {
+        chapterId: 'c1',
+        stepCount: 1,
+        expectBranch: false,
+        dialogue: { startNodeId: 'start', nodes: nodes(1) },
+      },
+    ]);
+    expect(problems).toEqual([]);
+  });
+
+  it('accepts thick branches that converge', () => {
+    const problems = validateChapterShape([
+      {
+        chapterId: 'c1',
+        stepCount: 1,
+        expectBranch: true,
+        dialogue: { startNodeId: 'start', nodes: nodes(4) },
+      },
+    ]);
+    expect(problems).toEqual([]);
+  });
+
+  it('rejects more than one choice point in a chapter', () => {
+    const graph = nodes(3);
+    graph.merge = { choices: [{ label: 'A', nextNodeId: 'merge2' }, { label: 'B', nextNodeId: 'merge2' }] };
+    graph.merge2 = {};
+    const problems = validateChapterShape([
+      { chapterId: 'c1', stepCount: 1, dialogue: { startNodeId: 'start', nodes: graph } },
+    ]);
+    expect(problems.some((p) => p.message.includes('0 或 1 个'))).toBe(true);
   });
 });

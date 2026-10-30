@@ -138,6 +138,125 @@ export type ChapterStructureProblem = {
   message: string;
 };
 
+
+/**
+ * 卡面章的"形状"规则。
+ *
+ * 这些是从真实错误里长出来的，不是理论：
+ *   · 一章拆成几步 → 选项只影响那一步，后面照旧（视觉小说里不成立）
+ *   · 选项后面只写一句就合流 → 选项等于没做（原作分支占半章）
+ *   · 一章塞两三个选择点 → 原作每章 0 或 1 个
+ */
+
+export type ChapterShapeInput = {
+  chapterId: string;
+  stepCount: number;
+  /**
+   * 原作这一段选项后面有没有分支正文。
+   * 有 → 分支必须够厚；没有（选完立即合流）→ 不要求。
+   */
+  expectBranch?: boolean;
+  dialogue?: {
+    startNodeId: string;
+    nodes: Record<
+      string,
+      { id?: string; nextNodeId?: string; choices?: { label: string; nextNodeId: string }[] }
+    >;
+  };
+};
+
+/** 分支最短要求：少于这个节点数，选项就只是换了一句话。 */
+const MIN_BRANCH_NODES = 3;
+
+export function validateChapterShape(
+  inputs: ChapterShapeInput[],
+): ChapterStructureProblem[] {
+  const problems: ChapterStructureProblem[] = [];
+
+  for (const input of inputs) {
+    if (input.stepCount !== 1) {
+      problems.push({
+        chapterId: input.chapterId,
+        message: `卡面章应该是 1 步（一次坐下读完），现在是 ${input.stepCount} 步`,
+      });
+    }
+    if (!input.dialogue) {
+      problems.push({
+        chapterId: input.chapterId,
+        message: '找不到这一章的对话（对话是否已送审？）',
+      });
+      continue;
+    }
+
+    const { nodes } = input.dialogue;
+    const choiceNodes = Object.values(nodes).filter(
+      (node) => Array.isArray(node.choices) && node.choices.length > 0,
+    );
+
+    if (choiceNodes.length > 1) {
+      problems.push({
+        chapterId: input.chapterId,
+        message: `一章只能有 0 或 1 个选择点，现在是 ${choiceNodes.length} 个`,
+      });
+    }
+
+    for (const node of choiceNodes) {
+      const choices = node.choices ?? [];
+      if (choices.length < 2) {
+        problems.push({
+          chapterId: input.chapterId,
+          message: '选择点至少要 2 个选项',
+        });
+      }
+
+      const starts = choices.map((choice) => choice.nextNodeId);
+      const reachable = (start: string): Set<string> => {
+        const seen = new Set<string>();
+        const queue = [start];
+        while (queue.length > 0) {
+          const id = queue.shift()!;
+          if (seen.has(id) || !nodes[id]) continue;
+          seen.add(id);
+          const next = nodes[id]!.nextNodeId;
+          if (next) queue.push(next);
+          for (const choice of nodes[id]!.choices ?? []) queue.push(choice.nextNodeId);
+        }
+        return seen;
+      };
+      const sets = starts.map(reachable);
+      const common = sets.every((set) => set.size > 0)
+        ? [...sets[0]!].filter((id) => sets.every((set) => set.has(id)))
+        : [];
+      const merge = common[0];
+
+      for (const [index, start] of starts.entries()) {
+        let count = 0;
+        let current: string | undefined = start;
+        while (current && current !== merge && count < 100) {
+          if (!nodes[current]) break;
+          count += 1;
+          current = nodes[current]!.nextNodeId;
+        }
+        if (input.expectBranch !== false && count < MIN_BRANCH_NODES) {
+          problems.push({
+            chapterId: input.chapterId,
+            message: `第 ${index + 1} 个选项的分支只有 ${count} 个节点（至少 ${MIN_BRANCH_NODES} 个）——选项会变成"只换一句话"`,
+          });
+        }
+      }
+
+      if (!merge && choices.length > 1) {
+        problems.push({
+          chapterId: input.chapterId,
+          message: '各选项分支没有汇合点（它们会各走各的，永远回不到主线）',
+        });
+      }
+    }
+  }
+
+  return problems;
+}
+
 export function validateChapterStructure(
   chapters: ChapterSource[],
   probe: ChapterStructureProbe,

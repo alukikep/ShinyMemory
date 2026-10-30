@@ -15,7 +15,7 @@ function statusLine(entry: HandbookEntryView): string | undefined {
         ? `还有 ${entry.daysLeft} 天`
         : '这两天就去看看';
     case 'off-hours':
-      return `明天 ${entry.timeWindowText.split('–')[0]} 之后`;
+      return `${entry.opensLaterToday ? '今天' : '明天'} ${entry.timeWindowText.split('–')[0]} 之后`;
     case 'available':
       return '现在可以去';
     case 'blocked':

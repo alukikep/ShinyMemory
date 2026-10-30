@@ -60,7 +60,12 @@ test('office prologue then Mano encounter', async ({ page }) => {
   await expect(
     page.getByRole('heading', { name: '樱木真乃' }),
   ).toBeVisible();
-  await expect(page.getByText('尚未招募')).toBeVisible();
+  // 灯织和巡是档案型，开局就是"尚未招募"，所以要限定到真乃那张卡。
+  await expect(
+    page
+      .locator('.roster-card', { hasText: '樱木真乃' })
+      .getByText('尚未招募'),
+  ).toBeVisible();
   await page.getByRole('button', { name: '关闭偶像名册' }).click();
 
   await page.getByRole('button', { name: '日程表' }).click();

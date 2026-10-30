@@ -2,7 +2,7 @@ import { describeCondition } from './conditionText';
 import { CONTENT_INDEX } from './contentIndex';
 import { evaluateStorySteps } from './sim';
 import type { StoryStepEvaluation } from './sim';
-import { formatClock, getDay } from './time';
+import { formatClock, getDay, getMinuteOfDay } from './time';
 import type { GameState, StoryChainStep } from './types';
 
 export { describeCondition };
@@ -31,6 +31,8 @@ export type HandbookEntryView = {
   reason?: string;
   earliestDay?: number;
   daysLeft?: number;
+  /** 时段还没到，但今天之内会开：决定写"今天"还是"明天"。 */
+  opensLaterToday?: boolean;
   steps: HandbookStepView[];
 };
 
@@ -105,6 +107,10 @@ function buildEntry(
     ? (CONTENT_INDEX.locations.get(locationId)?.name ?? locationId)
     : '';
   const earliestDay = evaluation.nextEligibleDay;
+  const fromMinute = placeStep?.timeWindow?.fromMinute;
+  const opensLaterToday =
+    fromMinute !== undefined &&
+    fromMinute > getMinuteOfDay(state.clock.absoluteMinutes);
 
   return {
     id: `chain:${chain.id}`,
@@ -116,6 +122,7 @@ function buildEntry(
     timeWindowText: stepWindowText(placeStep),
     reason,
     earliestDay,
+    opensLaterToday,
     daysLeft:
       earliestDay === undefined ? undefined : Math.max(0, earliestDay - day),
     steps: chain.steps.map((entry, index) => ({

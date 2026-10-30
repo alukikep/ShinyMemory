@@ -33,6 +33,15 @@ describe('production pack', () => {
     );
   });
 
+  it('starts file-selected idols as known, encounter idols as unknown', () => {
+    // 两种起步方式（见 content/starting.ts）：
+    // 真乃是公园偶遇 → unknown；灯织和巡是档案选定 → 第一天就认识。
+    const status = PRODUCTION_PACK.starting.idolStatus;
+    expect(status.mano).toBe('unknown');
+    expect(status.hiori).toBe('known');
+    expect(status.meguru).toBe('known');
+  });
+
   it('attaches approved topics to their actors', () => {
     for (const topic of APPROVED_CONTENT.topics) {
       const actor = PRODUCTION_PACK.actors.find(

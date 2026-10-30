@@ -102,6 +102,8 @@ export const hioriEncounter: StoryChainDef = {
   idolId: 'hiori',
   priority: 10,
   title: '练习室里的人在数拍子',
+  // 档案型偶像：开局就认识，手册里直接写"接下来要做什么"。
+  revealWhen: [{ kind: 'idolStatus', idolId: 'hiori', status: 'known' }],
   steps: [
     {
       id: 'hiori-practice-1',
@@ -109,8 +111,8 @@ export const hioriEncounter: StoryChainDef = {
       timeWindow: { fromMinute: 10 * 60, toMinute: 18 * 60 },
       dialogueId: 'dialogue.hiori.first',
       actionLabel: '练习室里的人在数拍子',
+      // 已经认识，这一步只是第一次见面。
       complete: {
-        status: 'known',
         nextStepDelayDays: 2,
       },
     },
@@ -185,6 +187,7 @@ export const meguruEncounter: StoryChainDef = {
   idolId: 'meguru',
   priority: 10,
   title: '球场边的人',
+  revealWhen: [{ kind: 'idolStatus', idolId: 'meguru', status: 'known' }],
   steps: [
     {
       id: 'meguru-park-1',
@@ -193,7 +196,6 @@ export const meguruEncounter: StoryChainDef = {
       dialogueId: 'dialogue.meguru.first',
       actionLabel: '球场上有人在喊',
       complete: {
-        status: 'known',
         nextStepDelayDays: 2,
       },
     },

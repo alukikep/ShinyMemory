@@ -105,7 +105,7 @@ npm run content:guard      # 已接进 content:validate，构建时会跑
 | 1.5 | 角色卡 | 语气、称呼、阶段态度、OOC 对照、语料索引（台词要能指回文件） | `docs/content/<id>/character.md` |
 | 2 | 偶像定义 | id、名字、组合、颜色、头像、成长曲线 | `src/core/content/idols/<id>.ts` |
 | 3 | 角色日程 | 一周作息（她在哪、什么时候、能不能被工作顶掉） | `src/core/content/actors/<id>.ts` |
-| 4 | 招募链 | 2–3 步剧情链 + 对话，从「认识」到「招募」 | `storyChains.ts` + `dialogues/<id>.ts` |
+| 4 | 招募链 | 2 步剧情链 + 对话。**先定起步方式**（见下） | `storyChains.ts` + `dialogues/<id>.ts` |
 | 5 | 训练与自由时间 | 至少 4 条偶像页行动 | 审查台批次 |
 | 6 | 专属行动 | 1–3 条，挂在她作息的空档 | 审查台批次 |
 | 7 | 日常话题 | 6–8 条闲聊，24 小时冷却 | 审查台批次 |
@@ -114,6 +114,16 @@ npm run content:guard      # 已接进 content:validate，构建时会跑
 | 10 | 长线剧情 | 3 步 + 分支，带一次解锁 | 审查台批次 + 结构 |
 | 11 | 验收 | 跑 `npm run content:coverage` 补缺口，再在游戏里走一遍 | `npm run acceptance` |
 | 12 | 记录 | 块表 + 一条经验 | `docs/content/README.md` |
+
+**两种起步方式**（`src/core/content/starting.ts` 的 `idolStatus`）：
+
+| 类型 | 开局状态 | 招募链做什么 | 例子 |
+|---|---|---|---|
+| **偶遇型** | `unknown` | 第一步"认识她"（设 known），第二步招募 | 真乃（公园听见她唱歌） |
+| **档案型** | `known` | 第一步就是第一次见面，第二步让她答应 | 灯织、巡（制作人看档案选的人） |
+
+档案型的链要写 `revealWhen: [{ kind: 'idolStatus', idolId, status: 'known' }]`，
+这样**手册第一天就会出现"接下来要做什么"**。偶遇型不写 revealWhen，见过面才进手册。
 
 第 2–4 步是结构（直接写 TS，不需要审查）；第 5–10 步全部走审查台。
 

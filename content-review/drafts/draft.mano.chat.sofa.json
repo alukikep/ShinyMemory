@@ -1,0 +1,32 @@
+{
+  "id": "draft.mano.chat.sofa",
+  "kind": "topic",
+  "title": "事务所的沙发",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mano.chat.sofa",
+  "payload": {
+    "id": "mano.chat.sofa",
+    "actorId": "mano",
+    "label": "事务所的沙发",
+    "text": "「这里比家里舒服。……啊，不是那个意思。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T12:08:23.786Z",
+  "updatedAt": "2026-10-30T12:08:23.786Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T12:08:23.786Z",
+      "note": "B5：真乃日常话题"
+    }
+  ]
+}

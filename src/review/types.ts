@@ -9,6 +9,7 @@ export const REVIEW_KINDS = [
   'story',
   'item',
   'shop',
+  'topic',
 ] as const;
 
 export type ReviewKind = (typeof REVIEW_KINDS)[number];

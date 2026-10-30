@@ -2,7 +2,7 @@
   "id": "draft.job.first_live",
   "kind": "job",
   "title": "初次 Live",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.job.first_live",
   "payload": {
@@ -86,12 +86,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T12:00:40.234Z",
-  "updatedAt": "2026-10-30T12:00:40.234Z",
+  "updatedAt": "2026-10-30T12:04:47.344Z",
+  "reviewedAt": "2026-10-30T12:04:47.344Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T12:00:40.234Z",
       "note": "B2：剧情解锁的舞台工作，hiddenUntilUnlocked"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T12:04:47.344Z"
     }
   ]
 }

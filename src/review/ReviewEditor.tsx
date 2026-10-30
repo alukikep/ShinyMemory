@@ -37,6 +37,7 @@ const KIND_TITLE: Record<ReviewDraft['kind'], string> = {
   story: '剧情链',
   item: '物品',
   shop: '商店',
+  topic: '话题',
 };
 
 const ACTIVITY_KIND_OPTIONS = [
@@ -62,7 +63,8 @@ export function ReviewEditor({
     draft.kind === 'dialogue' ||
       draft.kind === 'story' ||
       draft.kind === 'item' ||
-      draft.kind === 'shop',
+      draft.kind === 'shop' ||
+      draft.kind === 'topic',
   );
   const [jsonText, setJsonText] = useState(
     JSON.stringify(draft.payload, null, 2),

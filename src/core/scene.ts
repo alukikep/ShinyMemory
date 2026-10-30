@@ -759,6 +759,19 @@ function buildIdolPage(state: GameState): SceneView {
                 },
       };
     });
+
+  // 聊两句：她自己有话题池，偶像页直接列出来。
+  const topics: ActionView[] = (getActor(idolId)?.topics ?? [])
+    .filter((topic) => topicAvailability(state, actor, topic).ok)
+    .map((topic) => ({
+      id: `talk:${idolId}:${topic.id}`,
+      command: { type: 'talk', actorId: idolId, topicId: topic.id },
+      label: topic.label,
+      hint: topic.hint ?? '聊两句',
+      icon: 'people',
+      tone: 'bond',
+    }));
+
   const mode = idolActivityKindAt(state);
   const modeLabel = mode === 'work' ? '工作' : mode === 'training' ? '训练' : '互动';
 
@@ -781,6 +794,7 @@ function buildIdolPage(state: GameState): SceneView {
     },
     actions: [
       ...activities,
+      ...topics,
       {
         id: 'leave_idol',
         command: { type: 'leaveIdol' },

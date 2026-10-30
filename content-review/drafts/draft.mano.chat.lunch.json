@@ -1,0 +1,32 @@
+{
+  "id": "draft.mano.chat.lunch",
+  "kind": "topic",
+  "title": "午饭吃了吗",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mano.chat.lunch",
+  "payload": {
+    "id": "mano.chat.lunch",
+    "actorId": "mano",
+    "label": "午饭吃了吗",
+    "text": "「吃了。面包。……其实没吃饱，但没关系。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T12:08:23.786Z",
+  "updatedAt": "2026-10-30T12:08:23.786Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T12:08:23.786Z",
+      "note": "B5：真乃日常话题"
+    }
+  ]
+}

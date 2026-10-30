@@ -46,6 +46,7 @@ export async function syncApprovedContent(): Promise<{
     `  storyChains: ${section(packed.storyChains.map((x) => x.id), Object.fromEntries(packed.storyChains.map((x) => [x.id, x])))},`,
     `  items: ${section(packed.items.map((x) => x.id), Object.fromEntries(packed.items.map((x) => [x.id, x])))},`,
     `  shops: ${section(packed.shops.map((x) => x.id), Object.fromEntries(packed.shops.map((x) => [x.id, x])))},`,
+    `  topics: ${section(packed.topics.map((x) => x.id), Object.fromEntries(packed.topics.map((x) => [x.id, x])))},`,
     '};',
     '',
   ].join('\n');

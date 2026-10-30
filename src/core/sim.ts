@@ -2082,7 +2082,12 @@ export function talkTo(
   actorId: string,
   topicId: string,
 ): GameState {
-  if (state.phase !== 'npc' || state.pendingActorId !== actorId) return state;
+  // 偶像页也能发起话题：她就在眼前，没必要先绕到 NPC 页。
+  const fromIdolPage =
+    state.phase === 'idol' && state.selectedIdolId === actorId;
+  if (!fromIdolPage && (state.phase !== 'npc' || state.pendingActorId !== actorId)) {
+    return state;
+  }
   const actor = getActor(actorId);
   if (!actor || !isActorPresent(state, actor)) return state;
 
@@ -2090,6 +2095,10 @@ export function talkTo(
   if (!topic || !topicAvailability(state, actor, topic).ok) return state;
 
   const next = clone(state);
+  if (fromIdolPage) {
+    next.phase = 'npc';
+    next.pendingActorId = actor.id;
+  }
   applyEffects(next, topic.effects, { idolId: next.selectedIdolId });
   clampState(next);
 

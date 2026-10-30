@@ -362,6 +362,30 @@ function validateShop(payload: Record<string, unknown>, errors: string[]): void 
   }
 }
 
+
+/** 话题：挂在某个角色身上的闲聊条目。 */
+function validateTopic(payload: Record<string, unknown>, errors: string[]): void {
+  requireString(payload.id, 'payload.id', errors);
+  requireString(payload.actorId, 'payload.actorId', errors);
+  requireString(payload.label, 'payload.label', errors);
+  requireString(payload.text, 'payload.text', errors);
+  if (!Array.isArray(payload.effects)) {
+    errors.push('payload.effects 必须是数组（可以为空）');
+  }
+  if (payload.when !== undefined && !Array.isArray(payload.when)) {
+    errors.push('payload.when 必须是条件数组');
+  }
+  if (
+    payload.cooldownMinutes !== undefined &&
+    (typeof payload.cooldownMinutes !== 'number' || payload.cooldownMinutes < 0)
+  ) {
+    errors.push('payload.cooldownMinutes 必须是非负数字');
+  }
+  if (payload.once !== undefined && typeof payload.once !== 'boolean') {
+    errors.push('payload.once 必须是布尔值');
+  }
+}
+
 const SHAPE_VALIDATORS: Record<
   string,
   (payload: Record<string, unknown>, errors: string[]) => void
@@ -373,6 +397,7 @@ const SHAPE_VALIDATORS: Record<
   story: validateStory,
   item: validateItem,
   shop: validateShop,
+  topic: validateTopic,
 };
 
 export function validateDraftShape(draft: ReviewDraft): string[] {

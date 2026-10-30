@@ -40,6 +40,13 @@ export function mergeApprovedContent(
 ): MergeResult {
   const duplicates: string[] = [];
 
+  const actorIds = new Set(base.actors.map((actor) => actor.id));
+  for (const topic of approved.topics) {
+    if (!actorIds.has(topic.actorId)) {
+      duplicates.push(`话题 ${topic.id} 指向不存在的角色 ${topic.actorId}`);
+    }
+  }
+
   return {
     pack: {
       ...base,
@@ -55,6 +62,22 @@ export function mergeApprovedContent(
       ),
       items: mergeList(base.items, approved.items, '物品', duplicates),
       shops: mergeList(base.shops, approved.shops, '商店', duplicates),
+      // 话题挂在角色身上：按 actorId 并进对应角色的 topics。
+      actors: base.actors.map((actor) => {
+        const extra = approved.topics.filter(
+          (topic) => topic.actorId === actor.id,
+        );
+        if (extra.length === 0) return actor;
+        return {
+          ...actor,
+          topics: mergeList(
+            actor.topics,
+            extra.map(({ actorId: _actorId, ...topic }) => topic),
+            `话题(${actor.id})`,
+            duplicates,
+          ),
+        };
+      }),
     },
     duplicates,
   };

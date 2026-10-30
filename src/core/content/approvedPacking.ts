@@ -1,5 +1,6 @@
 import type {
   ActivityDef,
+  ActorTopic,
   DialogueDef,
   EventDef,
   ItemDef,
@@ -7,6 +8,9 @@ import type {
   ShopDef,
   StoryChainDef,
 } from '../types';
+
+/** 话题挂在角色身上，所以 payload 必须带 actorId。 */
+export type ApprovedTopic = ActorTopic & { actorId: string };
 
 export type ApprovedContent = {
   activities: ActivityDef[];
@@ -16,6 +20,7 @@ export type ApprovedContent = {
   storyChains: StoryChainDef[];
   items: ItemDef[];
   shops: ShopDef[];
+  topics: ApprovedTopic[];
 };
 
 type ApprovedDraftFile = {
@@ -55,6 +60,7 @@ export function packApprovedFiles(files: Record<string, unknown>): ApprovedConte
     storyChains: [],
     items: [],
     shops: [],
+    topics: [],
   };
 
   for (const key of Object.keys(files).sort()) {
@@ -75,6 +81,8 @@ export function packApprovedFiles(files: Record<string, unknown>): ApprovedConte
       result.items.push(payload as ItemDef);
     } else if (draft?.kind === 'shop') {
       result.shops.push(payload as ShopDef);
+    } else if (draft?.kind === 'topic') {
+      result.topics.push(payload as ApprovedTopic);
     }
   }
 

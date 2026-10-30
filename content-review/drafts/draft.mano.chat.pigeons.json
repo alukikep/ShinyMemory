@@ -1,0 +1,32 @@
+{
+  "id": "draft.mano.chat.pigeons",
+  "kind": "topic",
+  "title": "公园的鸽子",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mano.chat.pigeons",
+  "payload": {
+    "id": "mano.chat.pigeons",
+    "actorId": "mano",
+    "label": "公园的鸽子",
+    "text": "「好像多了一只。白色的那只不太抢食，总是等别的吃完才过去。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T12:08:23.786Z",
+  "updatedAt": "2026-10-30T12:08:23.786Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T12:08:23.786Z",
+      "note": "B5：真乃日常话题"
+    }
+  ]
+}

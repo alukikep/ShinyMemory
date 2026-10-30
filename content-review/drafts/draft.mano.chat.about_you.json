@@ -1,0 +1,32 @@
+{
+  "id": "draft.mano.chat.about_you",
+  "kind": "topic",
+  "title": "关于制作人",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mano.chat.about_you",
+  "payload": {
+    "id": "mano.chat.about_you",
+    "actorId": "mano",
+    "label": "关于制作人",
+    "text": "「制作人先生……您每天都来吗。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T12:08:23.786Z",
+  "updatedAt": "2026-10-30T12:08:23.786Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T12:08:23.786Z",
+      "note": "B5：真乃日常话题"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import type {
   ReviewKind,
   ReviewStatus,
 } from './types';
+import { CONTENT_INDEX } from '../core/contentIndex';
 import { LocalReviewRepository, ReviewApiError } from './repository';
 import { ReviewEditor } from './ReviewEditor';
 
@@ -23,6 +24,7 @@ const KIND_LABELS: Record<ReviewKind, string> = {
   story: '剧情链',
   item: '物品',
   shop: '商店',
+  topic: '话题',
 };
 
 const STATUS_TABS: Array<{ value: ReviewStatus | 'all'; label: string }> = [
@@ -188,6 +190,39 @@ function ActivityPreview({ payload }: { payload: Record<string, unknown> }) {
           </p>
         ))
       )}
+    </div>
+  );
+}
+
+
+function TopicPreview({ payload }: { payload: Record<string, unknown> }) {
+  const actorId = String(payload.actorId ?? '');
+  const actor = CONTENT_INDEX.actors.get(actorId);
+  return (
+    <div className="review-preview">
+      <dl className="review-facts">
+        <div>
+          <dt>角色</dt>
+          <dd>{actor?.name ?? actorId}</dd>
+        </div>
+        <div>
+          <dt>标签</dt>
+          <dd>{String(payload.label ?? '')}</dd>
+        </div>
+        <div>
+          <dt>冷却</dt>
+          <dd>
+            {payload.cooldownMinutes
+              ? `${payload.cooldownMinutes} 分钟`
+              : payload.once
+                ? '只触发一次'
+                : '无'}
+          </dd>
+        </div>
+      </dl>
+      <blockquote className="review-quote">
+        {String(payload.text ?? '')}
+      </blockquote>
     </div>
   );
 }
@@ -442,6 +477,8 @@ function Preview({ draft }: { draft: ReviewDraft }) {
         <ItemPreview payload={payload} />
       ) : draft.kind === 'shop' ? (
         <ShopPreview payload={payload} />
+      ) : draft.kind === 'topic' ? (
+        <TopicPreview payload={payload} />
       ) : draft.kind === 'event' ? (
         <EventPreview payload={payload} />
       ) : draft.kind === 'job' ? (

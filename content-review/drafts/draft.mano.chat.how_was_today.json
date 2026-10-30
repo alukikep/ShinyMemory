@@ -1,0 +1,32 @@
+{
+  "id": "draft.mano.chat.how_was_today",
+  "kind": "topic",
+  "title": "今天怎么样",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mano.chat.how_was_today",
+  "payload": {
+    "id": "mano.chat.how_was_today",
+    "actorId": "mano",
+    "label": "今天怎么样",
+    "text": "「……嗯。还行。就是刚才把水杯碰倒了，洒了半桌。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T12:08:23.786Z",
+  "updatedAt": "2026-10-30T12:08:23.786Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T12:08:23.786Z",
+      "note": "B5：真乃日常话题"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.mano.chat.favorite",
+  "kind": "topic",
+  "title": "喜欢的东西",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mano.chat.favorite",
+  "payload": {
+    "id": "mano.chat.favorite",
+    "actorId": "mano",
+    "label": "喜欢的东西",
+    "text": "「喜欢……可以说喜欢吗。那我喜欢甜的。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T12:08:23.786Z",
+  "updatedAt": "2026-10-30T12:08:23.786Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T12:08:23.786Z",
+      "note": "B5：真乃日常话题"
+    }
+  ]
+}

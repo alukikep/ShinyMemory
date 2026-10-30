@@ -1,0 +1,32 @@
+{
+  "id": "draft.hiori.chat.notebook",
+  "kind": "topic",
+  "title": "那本笔记本",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.hiori.chat.notebook",
+  "payload": {
+    "id": "hiori.chat.notebook",
+    "actorId": "hiori",
+    "label": "那本笔记本",
+    "text": "「里面写的不用看。还没成形的东西，看的人会有误解。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:34:21.284Z",
+  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:34:21.284Z",
+      "note": "B7：灯织日常话题"
+    }
+  ]
+}

@@ -18,6 +18,7 @@
 | [内容生产](content/README.md) | 块的划分、生产流程、块清单与进度 |
 | [内容生产手册](content/playbook.md) | 交付协议、新角色接入清单、覆盖矩阵、写作配方、质量门 |
 | [角色卡 · 樱木真乃](content/mano/character.md) | 语气、阶段态度、OOC 对照、写作自查 |
+| [角色卡 · 风野灯织](content/hiori/character.md) | 语气、语域、OOC 对照、写作自查（含待核对项） |
 
 ## 系统说明
 

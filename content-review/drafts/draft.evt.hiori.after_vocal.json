@@ -1,0 +1,80 @@
+{
+  "id": "draft.evt.hiori.after_vocal",
+  "kind": "event",
+  "title": "同一句二十遍",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.hiori.after_vocal",
+  "payload": {
+    "id": "evt.hiori.after_vocal",
+    "title": "同一句二十遍",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "hiori"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束，她没有走。同一句转音又唱了一遍，第二遍，第三遍。",
+    "choices": [
+      {
+        "label": "再听一遍",
+        "hint": "信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "第二十一遍的时候她停下来，说可以了。"
+      },
+      {
+        "label": "提醒她该休息了",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「……我知道。再五分钟。」五分钟后她真的停了。"
+      },
+      {
+        "label": "问她卡在哪",
+        "hint": "信任 +1、歌唱 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          }
+        ],
+        "result": "她指着谱子上一个小节：「气换早了。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:34:21.284Z",
+  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:34:21.284Z",
+      "note": "B7：灯织训练后事件"
+    }
+  ]
+}

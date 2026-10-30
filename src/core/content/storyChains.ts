@@ -95,4 +95,36 @@ export const manoSlump: StoryChainDef = {
   ],
 };
 
-export const STORY_CHAINS = [manoEncounter, manoSlump];
+
+/** 风野灯织的招募链：公园偶遇 → 她自己来事务所。 */
+export const hioriEncounter: StoryChainDef = {
+  id: 'hiori-encounter',
+  idolId: 'hiori',
+  priority: 10,
+  title: '长椅上的笔记本',
+  steps: [
+    {
+      id: 'hiori-park-1',
+      locationId: 'park',
+      timeWindow: { fromMinute: 13 * 60, toMinute: 17 * 60 },
+      dialogueId: 'dialogue.hiori.first',
+      actionLabel: '长椅上的人',
+      complete: {
+        status: 'known',
+        nextStepDelayDays: 2,
+      },
+    },
+    {
+      id: 'hiori-office-2',
+      locationId: 'office',
+      timeWindow: { fromMinute: 18 * 60, toMinute: 22 * 60 },
+      dialogueId: 'dialogue.hiori.second',
+      actionLabel: '她来事务所了',
+      complete: {
+        status: 'recruited',
+      },
+    },
+  ],
+};
+
+export const STORY_CHAINS = [manoEncounter, manoSlump, hioriEncounter];

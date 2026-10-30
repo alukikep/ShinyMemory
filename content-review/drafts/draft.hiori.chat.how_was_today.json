@@ -1,0 +1,32 @@
+{
+  "id": "draft.hiori.chat.how_was_today",
+  "kind": "topic",
+  "title": "今天怎么样",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.hiori.chat.how_was_today",
+  "payload": {
+    "id": "hiori.chat.how_was_today",
+    "actorId": "hiori",
+    "label": "今天怎么样",
+    "text": "「普通。」停了一下。「……你问这个做什么。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:34:21.284Z",
+  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:34:21.284Z",
+      "note": "B7：灯织日常话题"
+    }
+  ]
+}

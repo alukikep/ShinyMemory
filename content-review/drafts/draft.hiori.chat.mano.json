@@ -1,0 +1,32 @@
+{
+  "id": "draft.hiori.chat.mano",
+  "kind": "topic",
+  "title": "真乃的事",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.hiori.chat.mano",
+  "payload": {
+    "id": "hiori.chat.mano",
+    "actorId": "hiori",
+    "label": "真乃的事",
+    "text": "「她太容易把事揽到自己身上。……别的我不说。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:34:21.284Z",
+  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:34:21.284Z",
+      "note": "B7：灯织日常话题"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "draft.activity.hiori.transposition",
+  "kind": "activity",
+  "title": "陪她练转音",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.hiori.transposition",
+  "payload": {
+    "id": "activity.hiori.transposition",
+    "name": "陪她练转音",
+    "description": "她把同一句唱了二十遍，说还差一点。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "hiori"
+    ],
+    "locations": [
+      "practice_room"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 600,
+        "toMinute": 900
+      }
+    ],
+    "cost": {
+      "stamina": 8
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "vocal",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 3
+      }
+    ],
+    "resultTexts": [
+      "第二十一遍，她终于停下来，说这一遍可以录。",
+      "「你听得出区别吗。」她问，然后自己先回答了。「应该听不出。」",
+      "她把谱子上那一小节圈了起来，写上日期。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:34:21.284Z",
+  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:34:21.284Z",
+      "note": "B7：灯织专属行动"
+    }
+  ]
+}

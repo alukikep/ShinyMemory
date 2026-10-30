@@ -1,0 +1,80 @@
+{
+  "id": "draft.evt.hiori.after_dance",
+  "kind": "event",
+  "title": "被指出来的那一拍",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.hiori.after_dance",
+  "payload": {
+    "id": "evt.hiori.after_dance",
+    "title": "被指出来的那一拍",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "hiori"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "老师说她第三拍慢了。她点头，说知道了，然后从头再来一遍。",
+    "choices": [
+      {
+        "label": "什么也不说，看她做完",
+        "hint": "信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "三遍之后对了。她抬头看镜子里的自己，没什么表情。"
+      },
+      {
+        "label": "说\"这次快了\"",
+        "hint": "信任 +1、舞蹈 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          }
+        ],
+        "result": "「嗯。」她没有道谢，但下一遍改得更准了。"
+      },
+      {
+        "label": "问她是不是在意",
+        "hint": "压力 +3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 3
+          }
+        ],
+        "result": "「被指出问题不代表被否定。」她说得很平，像在说服自己。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:34:21.284Z",
+  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:34:21.284Z",
+      "note": "B7：灯织训练后事件"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.hiori.chat.school",
+  "kind": "topic",
+  "title": "学校那边",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.hiori.chat.school",
+  "payload": {
+    "id": "hiori.chat.school",
+    "actorId": "hiori",
+    "label": "学校那边",
+    "text": "「没什么。请过一次假，老师问了一句，我说有事。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:34:21.284Z",
+  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:34:21.284Z",
+      "note": "B7：灯织日常话题"
+    }
+  ]
+}

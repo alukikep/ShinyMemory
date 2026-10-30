@@ -1,0 +1,69 @@
+{
+  "id": "draft.evt.hiori.after_free",
+  "kind": "event",
+  "title": "耳机分你一半",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.hiori.after_free",
+  "payload": {
+    "id": "evt.hiori.after_free",
+    "title": "耳机分你一半",
+    "when": [],
+    "after": {
+      "ids": [
+        "free"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "hiori"
+      ]
+    },
+    "chance": 0.35,
+    "priority": 5,
+    "once": true,
+    "text": "她把耳机摘下来一只，递过来，没有说话。",
+    "choices": [
+      {
+        "label": "戴上",
+        "hint": "信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "放了大概二十秒，她问：「听出来了吗，第二段少了一点东西。」"
+      },
+      {
+        "label": "问她这是什么",
+        "hint": "信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「别人写的。我在想如果换成我会怎么写。」"
+      },
+      {
+        "label": "说下次吧",
+        "hint": "无变化",
+        "effects": [],
+        "result": "她点点头，把耳机戴回去，没有多问。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:34:21.284Z",
+  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:34:21.284Z",
+      "note": "B7：灯织训练后事件"
+    }
+  ]
+}

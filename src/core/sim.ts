@@ -1100,6 +1100,11 @@ function finishDialogue(state: GameState): GameState {
     if (step.complete.status === 'recruited') {
       idol.knownAt = idol.knownAt ?? day;
       idol.recruitedAt = day;
+      // 刚招进来的人自动成为重点偶像——但已经有人在带的时候不抢。
+      if (!isIdolRecruited(next, getFocusIdolId(next))) {
+        next.focusIdolId = chain.idolId;
+        next.selectedIdolId = chain.idolId;
+      }
     }
     addLog(
       next,

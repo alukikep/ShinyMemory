@@ -1113,7 +1113,7 @@ export function ReviewApp() {
                           <div>
                             <strong>{group.title}</strong>
                             <small>
-                              一章 {group.total} 段 · 这里 {group.drafts.length} 段
+                              {group.drafts.length}/{group.total} 段待审
                             </small>
                           </div>
                           {pending.length > 0 ? (

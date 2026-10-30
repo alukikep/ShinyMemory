@@ -945,3 +945,63 @@
   font-size: 12px;
   color: #45536a;
 }
+
+/* ——— 章头排版修正：窄栏里按钮不再折字 ——— */
+.review-chapter {
+  margin-bottom: 8px;
+}
+
+.review-chapter-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 8px;
+  padding: 8px 10px;
+  background: rgba(120, 140, 180, 0.12);
+}
+
+.review-chapter-head > div:first-child {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.review-chapter-head strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.review-chapter-head small {
+  color: #6b7a90;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.review-chapter-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 6px;
+}
+
+.review-chapter-actions button {
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.review-chapter .review-queue-item {
+  padding: 7px 10px;
+}
+
+/* 队列是限高的 flex 列；子元素默认会被压缩，导致章节被压扁、条目被裁掉。 */
+.review-queue-list > * {
+  flex: 0 0 auto;
+}

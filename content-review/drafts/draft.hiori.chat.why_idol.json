@@ -1,0 +1,32 @@
+{
+  "id": "draft.hiori.chat.why_idol",
+  "kind": "topic",
+  "title": "为什么想当偶像",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.hiori.chat.why_idol",
+  "payload": {
+    "id": "hiori.chat.why_idol",
+    "actorId": "hiori",
+    "label": "为什么想当偶像",
+    "text": "「……那时候只是自我满足。现在不一样了。大概。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:41:08.984Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:41:08.984Z",
+      "note": "B7：灯织日常话题（依 WING/S.T.E.P. 语料）"
+    }
+  ]
+}

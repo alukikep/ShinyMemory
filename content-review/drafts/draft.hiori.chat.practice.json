@@ -1,15 +1,15 @@
 {
   "id": "draft.hiori.chat.practice",
   "kind": "topic",
-  "title": "练习的进度",
+  "title": "训练的进度",
   "status": "review",
   "version": 1,
   "rootId": "draft.hiori.chat.practice",
   "payload": {
     "id": "hiori.chat.practice",
     "actorId": "hiori",
-    "label": "练习的进度",
-    "text": "「第三段的转音还是不稳。我知道问题在哪，只是还没改过来。」",
+    "label": "训练的进度",
+    "text": "「不管再怎么练习，都感觉不到自己在接近理想中的样子。」",
     "cooldownMinutes": 1440,
     "effects": [
       {
@@ -20,13 +20,13 @@
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-30T13:34:21.284Z",
-  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "createdAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:41:08.984Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-30T13:34:21.284Z",
-      "note": "B7：灯织日常话题"
+      "at": "2026-10-30T13:41:08.984Z",
+      "note": "B7：灯织日常话题（依 WING/S.T.E.P. 语料）"
     }
   ]
 }

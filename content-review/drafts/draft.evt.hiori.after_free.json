@@ -1,13 +1,13 @@
 {
   "id": "draft.evt.hiori.after_free",
   "kind": "event",
-  "title": "耳机分你一半",
+  "title": "她准备了东西",
   "status": "review",
   "version": 1,
   "rootId": "draft.evt.hiori.after_free",
   "payload": {
     "id": "evt.hiori.after_free",
-    "title": "耳机分你一半",
+    "title": "她准备了东西",
     "when": [],
     "after": {
       "ids": [
@@ -22,10 +22,10 @@
     "chance": 0.35,
     "priority": 5,
     "once": true,
-    "text": "她把耳机摘下来一只，递过来，没有说话。",
+    "text": "她把手里的文件夹递过来，说这是这几天的总结。",
     "choices": [
       {
-        "label": "戴上",
+        "label": "当场翻一遍",
         "hint": "信任 +3",
         "effects": [
           {
@@ -34,10 +34,10 @@
             "tier": 3
           }
         ],
-        "result": "放了大概二十秒，她问：「听出来了吗，第二段少了一点东西。」"
+        "result": "里面按日期排得整整齐齐。最后一页写着：以上，我自己判断还有不足。"
       },
       {
-        "label": "问她这是什么",
+        "label": "问她为什么给你看",
         "hint": "信任 +1",
         "effects": [
           {
@@ -46,24 +46,24 @@
             "tier": 1
           }
         ],
-        "result": "「别人写的。我在想如果换成我会怎么写。」"
+        "result": "「因为你说过，不会替我遮过去。」"
       },
       {
-        "label": "说下次吧",
+        "label": "说之后再细看",
         "hint": "无变化",
         "effects": [],
-        "result": "她点点头，把耳机戴回去，没有多问。"
+        "result": "她点头，把文件夹收回去，说明天再带过来。"
       }
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-30T13:34:21.284Z",
-  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "createdAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:41:08.984Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-30T13:34:21.284Z",
-      "note": "B7：灯织训练后事件"
+      "at": "2026-10-30T13:41:08.984Z",
+      "note": "B7：灯织训练后事件（依 WING 语料）"
     }
   ]
 }

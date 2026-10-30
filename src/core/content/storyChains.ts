@@ -101,14 +101,14 @@ export const hioriEncounter: StoryChainDef = {
   id: 'hiori-encounter',
   idolId: 'hiori',
   priority: 10,
-  title: '长椅上的笔记本',
+  title: '练习室里的人在数拍子',
   steps: [
     {
-      id: 'hiori-park-1',
-      locationId: 'park',
-      timeWindow: { fromMinute: 13 * 60, toMinute: 17 * 60 },
+      id: 'hiori-practice-1',
+      locationId: 'practice_room',
+      timeWindow: { fromMinute: 10 * 60, toMinute: 18 * 60 },
       dialogueId: 'dialogue.hiori.first',
-      actionLabel: '长椅上的人',
+      actionLabel: '练习室里的人在数拍子',
       complete: {
         status: 'known',
         nextStepDelayDays: 2,
@@ -119,7 +119,7 @@ export const hioriEncounter: StoryChainDef = {
       locationId: 'office',
       timeWindow: { fromMinute: 18 * 60, toMinute: 22 * 60 },
       dialogueId: 'dialogue.hiori.second',
-      actionLabel: '她来事务所了',
+      actionLabel: '她来事务所问了一句话',
       complete: {
         status: 'recruited',
       },

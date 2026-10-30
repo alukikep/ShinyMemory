@@ -1,13 +1,13 @@
 {
   "id": "draft.evt.hiori.after_vocal",
   "kind": "event",
-  "title": "同一句二十遍",
+  "title": "到该停的地方",
   "status": "review",
   "version": 1,
   "rootId": "draft.evt.hiori.after_vocal",
   "payload": {
     "id": "evt.hiori.after_vocal",
-    "title": "同一句二十遍",
+    "title": "到该停的地方",
     "when": [],
     "after": {
       "ids": [
@@ -22,10 +22,10 @@
     "chance": 0.4,
     "priority": 5,
     "once": true,
-    "text": "声乐课结束，她没有走。同一句转音又唱了一遍，第二遍，第三遍。",
+    "text": "课已经结束了。她还在练，说状态不错，想再多练一会儿。",
     "choices": [
       {
-        "label": "再听一遍",
+        "label": "让她练到满意",
         "hint": "信任 +3",
         "effects": [
           {
@@ -34,10 +34,10 @@
             "tier": 3
           }
         ],
-        "result": "第二十一遍的时候她停下来，说可以了。"
+        "result": "她又练了三遍，然后停下：考虑到明天，到这里吧。"
       },
       {
-        "label": "提醒她该休息了",
+        "label": "提醒明天还有事",
         "hint": "压力 -3",
         "effects": [
           {
@@ -46,10 +46,10 @@
             "delta": -3
           }
         ],
-        "result": "「……我知道。再五分钟。」五分钟后她真的停了。"
+        "result": "「……说得对。我只做必要的练习。」她关了音响。"
       },
       {
-        "label": "问她卡在哪",
+        "label": "问她差在哪里",
         "hint": "信任 +1、歌唱 +1",
         "effects": [
           {
@@ -63,18 +63,18 @@
             "tier": 1
           }
         ],
-        "result": "她指着谱子上一个小节：「气换早了。」"
+        "result": "她想了想：不是技巧，是我不敢把最后那一句放开。"
       }
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-30T13:34:21.284Z",
-  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "createdAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:41:08.984Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-30T13:34:21.284Z",
-      "note": "B7：灯织训练后事件"
+      "at": "2026-10-30T13:41:08.984Z",
+      "note": "B7：灯织训练后事件（依 WING 语料）"
     }
   ]
 }

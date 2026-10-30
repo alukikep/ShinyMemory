@@ -1,6 +1,12 @@
 import type { DialogueDef } from '../../types';
 
-/** 第一次见面：公园的长椅，她在写东西。 */
+/**
+ * 招募第一步：改编自 W.I.N.G. 开场（`クールで真面目な女の子`）。
+ *
+ * 原作里制作人是**看资料**选中她的，第一次见面在练习室，
+ * 说了一句「你是个努力家啊」，被她用「只是稍微看了下就知道了吗？」顶回来。
+ * 这一段把那一击做成可选分支——玩家要不要犯那个错，自己选。
+ */
 export const hioriFirst: DialogueDef = {
   id: 'dialogue.hiori.first',
   idolId: 'hiori',
@@ -8,133 +14,104 @@ export const hioriFirst: DialogueDef = {
   nodes: {
     n01: {
       id: 'n01',
-      text: '公园的长椅上，她戴着耳机，膝盖上摊着一本写到一半的笔记本。风把其中一页掀起来，她用手压住。',
+      text: '练习室的镜墙里，一个人正在数拍子。',
       nextNodeId: 'n02',
     },
     n02: {
       id: 'n02',
       speakerId: 'hiori',
-      text: '你站在这里很久了。',
+      text: '1，2，3，4……1，2，3，4……',
       nextNodeId: 'n03',
     },
     n03: {
       id: 'n03',
+      text: '她停下来，从镜子里看见门口的人。然后转过身。',
+      nextNodeId: 'n04',
+    },
+    n04: {
+      id: 'n04',
       speakerId: 'hiori',
-      text: '有事吗。',
+      text: '……有事吗。',
       choices: [
         {
-          label: '帮她把被吹散的纸捡回来',
-          nextNodeId: 'n04a',
+          label: '你就是风野灯织吧',
+          nextNodeId: 'n05a',
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
+        },
+        {
+          label: '先等她这一遍练完',
+          nextNodeId: 'n05b',
           effects: [
-            { kind: 'attributeExp', ref: 'trust', tier: 1 },
-            { kind: 'flag', key: 'hiori_helped_paper', value: true },
+            { kind: 'attributeExp', ref: 'trust', tier: 3 },
+            { kind: 'flag', key: 'hiori_waited', value: true },
           ],
         },
         {
-          label: '退开一点，不打扰她',
-          nextNodeId: 'n04b',
-        },
-        {
-          label: '问她是不是在写歌',
-          nextNodeId: 'n04c',
-          effects: [
-            { kind: 'attributeExp', ref: 'trust', tier: 1 },
-            { kind: 'flag', key: 'hiori_asked_song', value: true },
-          ],
+          label: '你是个努力家啊',
+          nextNodeId: 'n05c',
+          effects: [{ kind: 'flag', key: 'hiori_judged_quickly', value: true }],
         },
       ],
     },
-    n04a: {
-      id: 'n04a',
-      text: '纸被她接过去的时候，指尖停了一下。她按页序理好，才重新抬头。',
-      nextNodeId: 'n05',
-    },
-    n04b: {
-      id: 'n04b',
-      text: '她重新戴上耳机，却没有立刻低头。风把头发吹到脸侧，她抬手别开。',
-      nextNodeId: 'n05',
-    },
-    n04c: {
-      id: 'n04c',
-      text: '她合上笔记本，像是没料到会被这样问。',
-      nextNodeId: 'n05',
-    },
-    n05: {
-      id: 'n05',
+    n05a: {
+      id: 'n05a',
       speakerId: 'hiori',
-      text: '你不是这附近的人。',
+      text: '……那是我的名字。你是哪位。',
+      nextNodeId: 'n06',
+    },
+    n05b: {
+      id: 'n05b',
+      text: '她没有说话，重新数起拍子。一遍结束，才回来。',
+      nextNodeId: 'n06',
+    },
+    n05c: {
+      id: 'n05c',
+      speakerId: 'hiori',
+      text: '只是稍微看了下就知道了吗？',
       nextNodeId: 'n06',
     },
     n06: {
       id: 'n06',
       speakerId: 'hiori',
-      text: '……找我干什么。',
-      choices: [
-        {
-          label: '我是 283 的制作人',
-          nextNodeId: 'n07a',
-          effects: [
-            { kind: 'attributeExp', ref: 'trust', tier: 1 },
-            { kind: 'flag', key: 'hiori_knows_producer', value: true },
-          ],
-        },
-        {
-          label: '只是路过',
-          nextNodeId: 'n07b',
-        },
-        {
-          label: '想听你唱歌',
-          nextNodeId: 'n07c',
-          effects: [
-            { kind: 'attributeExp', ref: 'trust', tier: 1 },
-            { kind: 'flag', key: 'hiori_wants_song', value: true },
-          ],
-        },
-      ],
+      text: '我是风野灯织。这边才是——请多关照。',
+      nextNodeId: 'n07',
     },
-    n07a: {
-      id: 'n07a',
-      speakerId: 'hiori',
-      text: '制作人。……所以是来挖人的。',
-      nextNodeId: 'n08',
-    },
-    n07b: {
-      id: 'n07b',
-      speakerId: 'hiori',
-      text: '路过的人不会站这么久。',
-      nextNodeId: 'n08',
-    },
-    n07c: {
-      id: 'n07c',
-      speakerId: 'hiori',
-      text: '现在？在这里？',
+    n07: {
+      id: 'n07',
+      text: '她说完就转身回去，重新数起拍子。这一次，呼吸比刚才更用力。',
       nextNodeId: 'n08',
     },
     n08: {
       id: 'n08',
-      text: '她把笔记本收进包里，站起来。耳机线在手指上绕了一圈。',
+      speakerId: 'hiori',
+      text: '……关于刚才那句话。',
       nextNodeId: 'n09',
     },
     n09: {
       id: 'n09',
       speakerId: 'hiori',
-      text: '我不喜欢被人看过一次就下结论。',
+      text: '你说想让谁做我的制作人，是看什么决定的？',
       nextNodeId: 'n10',
     },
     n10: {
       id: 'n10',
       speakerId: 'hiori',
-      text: '如果下次还在这里遇见，再说吧。',
+      text: '不，现在不要回答。……我还没想好要不要接受。',
       nextNodeId: 'n11',
     },
     n11: {
       id: 'n11',
-      text: '她朝公园出口走去，没有回头。',
+      text: '她继续练。你在门口站着，直到她练完才离开。',
     },
   },
 };
 
-/** 第二次：她自己来了事务所。 */
+/**
+ * 招募第二步：改编自 W.I.N.G. 第一季（`季度1（通过）`）。
+ *
+ * 原作里她后来承认：「第一次见到制作人的时候……我一直在想，你来做我的制作人到底有没有问题」。
+ * 正解是拿出**事先做好的训练清单和甄选资料**——她能接受的是功课，不是鼓励。
+ */
 export const hioriSecond: DialogueDef = {
   id: 'dialogue.hiori.second',
   idolId: 'hiori',
@@ -142,111 +119,109 @@ export const hioriSecond: DialogueDef = {
   nodes: {
     n01: {
       id: 'n01',
-      text: '两天后。事务所的门被敲了三下，间隔一样长。',
+      text: '两天后。她敲了三下事务所的门，间隔一样长。',
       nextNodeId: 'n02',
     },
     n02: {
       id: 'n02',
       speakerId: 'hiori',
-      text: '我查过了。283 是个小事务所，艺人不到十个。',
+      text: '我查过了。283 是个小事务所，还有好几个没人管的练习室。',
       nextNodeId: 'n03',
     },
     n03: {
       id: 'n03',
       speakerId: 'hiori',
-      text: '先说清楚。我不需要别人告诉我"我可以"。',
-      nextNodeId: 'n04',
-    },
-    n04: {
-      id: 'n04',
-      speakerId: 'hiori',
-      text: '我想知道的是，如果我做不好，你们会怎么处理。',
+      text: '所以我想问的是——你来做我的制作人，到底有没有问题。',
       choices: [
         {
-          label: '会告诉你哪里不好，然后一起改',
-          nextNodeId: 'n05a',
+          label: '把准备好的训练清单拿出来',
+          nextNodeId: 'n04a',
+          effects: [
+            { kind: 'attributeExp', ref: 'trust', tier: 5 },
+            { kind: 'flag', key: 'hiori_saw_list', value: true },
+          ],
+        },
+        {
+          label: '因为我相信你的才能',
+          nextNodeId: 'n04b',
           effects: [{ kind: 'attributeExp', ref: 'trust', tier: 3 }],
         },
         {
-          label: '不会替你遮过去',
-          nextNodeId: 'n05b',
-          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 3 }],
-        },
-        {
-          label: '你先做不好一次，我们再谈',
-          nextNodeId: 'n05c',
-          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 3 }],
+          label: '因为你很努力',
+          nextNodeId: 'n04c',
+          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 1 }],
         },
       ],
+    },
+    n04a: {
+      id: 'n04a',
+      speakerId: 'hiori',
+      text: '！ 这是……为我做的？',
+      nextNodeId: 'n05a',
+    },
+    n04b: {
+      id: 'n04b',
+      speakerId: 'hiori',
+      text: '才能。……你看到的是什么才能。',
+      nextNodeId: 'n05b',
+    },
+    n04c: {
+      id: 'n04c',
+      speakerId: 'hiori',
+      text: '请不要用这种话敷衍。努力是我自己知道的事。',
+      nextNodeId: 'n05c',
     },
     n05a: {
       id: 'n05a',
       speakerId: 'hiori',
-      text: '……具体。这点还行。',
+      text: '训练安排到哪一天，甄选会的日期也写了……是什么时候做的这些。',
       nextNodeId: 'n06',
     },
     n05b: {
       id: 'n05b',
       speakerId: 'hiori',
-      text: '那就好。我最讨厌被当成需要保护的人。',
+      text: '……说得再具体一点。我没办法这样相信。',
       nextNodeId: 'n06',
     },
     n05c: {
       id: 'n05c',
       speakerId: 'hiori',
-      text: '你倒是敢说。',
+      text: '……不过，至少你没有说谎。这点我记下了。',
       nextNodeId: 'n06',
     },
     n06: {
       id: 'n06',
       speakerId: 'hiori',
-      text: '还有一个问题。为什么是我。',
-      choices: [
-        {
-          label: '因为你在长椅上写到天黑',
-          nextNodeId: 'n07a',
-          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 3 }],
-        },
-        {
-          label: '因为你唱歌的时候不像在表演',
-          nextNodeId: 'n07b',
-          effects: [{ kind: 'attributeExp', ref: 'trust', tier: 3 }],
-        },
-      ],
+      text: '那你回答我另一个问题。我第一次见到你的时候——',
+      nextNodeId: 'n07',
     },
-    n07a: {
-      id: 'n07a',
+    n07: {
+      id: 'n07',
       speakerId: 'hiori',
-      text: '……那是我自己的事。',
-      nextNodeId: 'n08',
-    },
-    n07b: {
-      id: 'n07b',
-      speakerId: 'hiori',
-      text: '……你听过？',
+      text: '我在想，你来做我的制作人到底有没有问题。',
       nextNodeId: 'n08',
     },
     n08: {
       id: 'n08',
-      text: '她沉默了几秒，把包放到桌上。',
+      speakerId: 'hiori',
+      text: '……现在稍微，不那么想了。',
       nextNodeId: 'n09',
     },
     n09: {
       id: 'n09',
-      speakerId: 'hiori',
-      text: '我答应，是有条件的。我不会因为被选中就高兴。',
+      text: '她把资料收进包里，动作比进来时慢。',
       nextNodeId: 'n10',
     },
     n10: {
       id: 'n10',
       speakerId: 'hiori',
-      text: '我会自己判断值不值得。如果最后觉得不对，我会走。',
+      text: '我有条件的。我不会因为被选中就高兴。',
       nextNodeId: 'n11',
     },
     n11: {
       id: 'n11',
       speakerId: 'hiori',
-      text: '这样也可以的话——风野灯织。请多指教。',
+      text: '如果最后觉得不对，我会走。这样也可以的话——请多关照。',
     },
   },
 };

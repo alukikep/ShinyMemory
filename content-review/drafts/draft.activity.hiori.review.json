@@ -1,0 +1,63 @@
+{
+  "id": "draft.activity.hiori.review",
+  "kind": "activity",
+  "title": "听她复盘",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.hiori.review",
+  "payload": {
+    "id": "activity.hiori.review",
+    "name": "听她复盘",
+    "description": "收工之后，她把自己今天做错的地方一条条说出来。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "hiori"
+    ],
+    "locations": [
+      "studio"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 960,
+        "toMinute": 1080
+      }
+    ],
+    "cost": {
+      "stamina": 4
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "expression",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
+    ],
+    "resultTexts": [
+      "她列了四条，第三条说完停住，说这条不算，是我自己太在意。",
+      "你只是听着，没有安慰。她说完之后道了声谢，语气比平时轻。",
+      "复盘到一半她抬头：你在记吗。你说在记。她没有再问。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:41:08.984Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:41:08.984Z",
+      "note": "B7：灯织专属行动（依 WING 语料）"
+    }
+  ]
+}

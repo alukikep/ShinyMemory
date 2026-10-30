@@ -1,14 +1,14 @@
 {
   "id": "draft.activity.hiori.transposition",
   "kind": "activity",
-  "title": "陪她练转音",
+  "title": "陪她练到满意为止",
   "status": "review",
   "version": 1,
   "rootId": "draft.activity.hiori.transposition",
   "payload": {
     "id": "activity.hiori.transposition",
-    "name": "陪她练转音",
-    "description": "她把同一句唱了二十遍，说还差一点。",
+    "name": "陪她练到满意为止",
+    "description": "她说状态不错，想再多练一会儿。",
     "kind": "bond",
     "target": "present-idol",
     "idolIds": [
@@ -45,19 +45,19 @@
       }
     ],
     "resultTexts": [
-      "第二十一遍，她终于停下来，说这一遍可以录。",
-      "「你听得出区别吗。」她问，然后自己先回答了。「应该听不出。」",
-      "她把谱子上那一小节圈了起来，写上日期。"
+      "又练了一遍。她停下来，说：没有。练到满意为止会没完没了，考虑到明天，到这里该停了。",
+      "「不要勉强自己。」她想了想，回了一句：那我只做必要的练习。",
+      "她把毛巾搭在肩上，说明天再继续。走之前回头看了一眼镜子。"
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-30T13:34:21.284Z",
-  "updatedAt": "2026-10-30T13:34:21.284Z",
+  "createdAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:41:08.984Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-30T13:34:21.284Z",
-      "note": "B7：灯织专属行动"
+      "at": "2026-10-30T13:41:08.984Z",
+      "note": "B7：灯织专属行动（依 WING 语料）"
     }
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "id": "draft.hiori.chat.mistake",
+  "kind": "topic",
+  "title": "失误之后",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.hiori.chat.mistake",
+  "payload": {
+    "id": "hiori.chat.mistake",
+    "actorId": "hiori",
+    "label": "失误之后",
+    "text": "「明明练了那么多次，连一件工作都做不好。」她停了停。「……没什么。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:41:08.984Z",
+  "updatedAt": "2026-10-30T13:41:08.984Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:41:08.984Z",
+      "note": "B7：灯织日常话题（依 WING/S.T.E.P. 语料）"
+    }
+  ]
+}

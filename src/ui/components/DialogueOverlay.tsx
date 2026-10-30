@@ -76,7 +76,7 @@ export function DialogueOverlay({
               {speakerName || '旁白'}
             </p>
             <p className="dialogue-speaker-role">
-              {idol ? idol.unit : actor ? '事务所' : '公园'}
+              {idol ? idol.unit : actor ? '事务所' : ''}
             </p>
           </div>
         </div>

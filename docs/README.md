@@ -10,6 +10,7 @@
 | [未来需求](current/future-requirements.md) | 已确认但暂不实现的功能需求 |
 | [内容数值标准](current/content-standards.md) | 时长、体力、金钱、经验、粉丝的档位表 |
 | [自动验收](current/acceptance.md) | 命令、测试文件、状态桥与编写约定 |
+| [开发约定](current/dev-guide.md) | 本轮踩过的坑、机器约束、测试/截图成本分工、未清的技术债 |
 
 ## 内容生产
 

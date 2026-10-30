@@ -95,6 +95,8 @@ npm run content:guard      # 已接进 content:validate，构建时会跑
 这是"读过语料"能落到机器上的最低保证：造假成本高于读一遍。
 写卡时语料索引要**一行一个完整路径**（`data/story/<角色>/...csv`），否则解析不到。
 
+> 工程侧的约定（测试/截图分工、机器门禁、踩过的坑）在 [dev-guide.md](../current/dev-guide.md)。
+
 ## 2. 新角色接入：一份清单
 
 按顺序做，每一步完成再进下一步。以「真乃」为样板。
@@ -332,6 +334,9 @@ npm run acceptance:prologue      # 正式包 E2E
 | 地点页按钮一多就挤 | 体验崩塌 | 一个入口 + 两级面板 |
 | 专属行动比训练强 | 训练失去意义 | 专属行动给信任，训练给属性 |
 | 变体条件用 `varAtLeast` 写分支 | 分支永远命中第一条（三选一永远显示第一种） | 精确匹配要同时写 `varAtLeast` + `varAtMost` |
+| 重构视图对象字面量时丢字段 | 界面少一个标签，`tsc` 不报（可选字段） | 字段加进 `viewContract.test.ts` 的清单 |
+| 测试断言没限定作用域 | 多偶像后 `getByText('尚未招募')` 命中 3 个，strict mode 报错 | 断言限定容器：`locator('.roster-card', { hasText })` |
+| 用 shell 字符串替换改源码 | CRLF 导致替换静默不生效 | 改源码用编辑工具，见 [dev-guide](../current/dev-guide.md) |
 
 ---
 

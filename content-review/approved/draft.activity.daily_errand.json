@@ -8,7 +8,7 @@
   "payload": {
     "id": "activity.daily_errand",
     "name": "发传单",
-    "description": "商业街的店在找人手，站一个下午，按小时结。",
+    "description": "商业街的店在找人手，站一会儿，按小时结。",
     "kind": "work",
     "target": "none",
     "locations": [
@@ -19,7 +19,7 @@
     "timeWindows": [
       {
         "fromMinute": 540,
-        "toMinute": 1140
+        "toMinute": 1200
       }
     ],
     "cost": {
@@ -31,29 +31,37 @@
         "delta": 280
       },
       {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "producer",
+          "key": "negotiation"
+        },
+        "tier": 3
+      },
+      {
         "kind": "sharedStat",
         "stat": "stress",
         "delta": 3
       }
     ],
     "resultTexts": [
-      "半个下午过去，手里只剩两张。店主还是按说好的数结了。",
       "有人接了传单，有人绕开。你数了数剩下的，够交差。",
-      "风把传单吹跑了几张，你追出去两条街。"
+      "风把传单吹跑了几张，你追出去两条街。",
+      "派到最后，你学会了看人——哪些人不会伸手。"
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-29T20:00:00.000Z",
-  "updatedAt": "2026-10-29T13:47:00.933Z",
-  "reviewedAt": "2026-10-29T13:47:00.933Z",
+  "createdAt": "2026-10-29T21:50:00.000Z",
+  "updatedAt": "2026-10-29T14:14:23.747Z",
+  "reviewedAt": "2026-10-29T14:14:23.747Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-29T20:00:00.000Z"
+      "at": "2026-10-29T21:50:00.000Z"
     },
     {
       "status": "approved",
-      "at": "2026-10-29T13:47:00.933Z"
+      "at": "2026-10-29T14:14:23.747Z"
     }
   ]
 }

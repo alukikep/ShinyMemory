@@ -1,0 +1,60 @@
+{
+  "id": "draft.activity.watch_street.v2",
+  "kind": "activity",
+  "title": "在街上待一会儿",
+  "status": "review",
+  "version": 2,
+  "rootId": "draft.activity.watch_street",
+  "supersedes": "draft.activity.watch_street",
+  "payload": {
+    "id": "activity.watch_street",
+    "name": "在街上待一会儿",
+    "description": "不做什么，只是站在人多的地方看。",
+    "kind": "explore",
+    "target": "none",
+    "locations": [
+      "station",
+      "shopping_street"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 480,
+        "toMinute": 1200
+      }
+    ],
+    "cost": {
+      "stamina": 3
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "producer",
+          "key": "insight"
+        },
+        "tier": 3
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -2
+      }
+    ],
+    "resultTexts": [
+      "一个女生在橱窗前站了很久，最后什么也没买。",
+      "你注意到下班时间的人走路都比早上快半拍。",
+      "有人把伞收起来又撑开，反复了三次。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T10:17:36.924Z",
+  "updatedAt": "2026-10-30T10:17:36.924Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T10:17:36.924Z",
+      "note": "v2：时间窗改为 08:00–20:00，开局就能做"
+    }
+  ]
+}

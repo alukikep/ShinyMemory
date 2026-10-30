@@ -5,9 +5,53 @@ import type { ApprovedContent } from './approvedPacking';
 export const APPROVED_CONTENT: ApprovedContent = {
   activities: [
 {
+  "id": "activity.carry_gear",
+  "name": "帮忙搬器材",
+  "description": "录音棚缺人手，灯架和音箱都得从楼下搬上来。",
+  "kind": "work",
+  "target": "none",
+  "locations": [
+    "studio"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 540,
+      "toMinute": 1200
+    }
+  ],
+  "cost": {
+    "stamina": 12
+  },
+  "effects": [
+    {
+      "kind": "money",
+      "delta": 220
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "producer",
+        "key": "stamina"
+      },
+      "tier": 3
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 2
+    }
+  ],
+  "resultTexts": [
+    "最后一趟上楼的时候，你的手已经在抖了。",
+    "师傅教你怎么抱音箱不伤腰，你试了两次才学会。",
+    "搬完你在楼梯口坐了一会儿，才想起来还有别的事。"
+  ]
+},
+{
   "id": "activity.daily_errand",
   "name": "发传单",
-  "description": "商业街的店在找人手，站一个下午，按小时结。",
+  "description": "商业街的店在找人手，站一会儿，按小时结。",
   "kind": "work",
   "target": "none",
   "locations": [
@@ -18,7 +62,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "timeWindows": [
     {
       "fromMinute": 540,
-      "toMinute": 1140
+      "toMinute": 1200
     }
   ],
   "cost": {
@@ -30,15 +74,149 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "delta": 280
     },
     {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "producer",
+        "key": "negotiation"
+      },
+      "tier": 3
+    },
+    {
       "kind": "sharedStat",
       "stat": "stress",
       "delta": 3
     }
   ],
   "resultTexts": [
-    "半个下午过去，手里只剩两张。店主还是按说好的数结了。",
     "有人接了传单，有人绕开。你数了数剩下的，够交差。",
-    "风把传单吹跑了几张，你追出去两条街。"
+    "风把传单吹跑了几张，你追出去两条街。",
+    "派到最后，你学会了看人——哪些人不会伸手。"
+  ]
+},
+{
+  "id": "activity.office_filing",
+  "name": "整理资料",
+  "description": "把抽屉里那堆通告单和合同按日期重新排一遍。",
+  "kind": "work",
+  "target": "none",
+  "locations": [
+    "office"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 540,
+      "toMinute": 1200
+    }
+  ],
+  "cost": {
+    "stamina": 4
+  },
+  "effects": [
+    {
+      "kind": "money",
+      "delta": 150
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "producer",
+        "key": "planning"
+      },
+      "tier": 3
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 1
+    }
+  ],
+  "resultTexts": [
+    "排到一半你发现三份档期撞在一起，只好重新算了一遍。",
+    "你把过期的通告单挑出来，剩下的按月份夹好。",
+    "整理完你才意识到，这个月的空档比想象中少。"
+  ]
+},
+{
+  "id": "activity.street_photo",
+  "name": "街拍练习",
+  "description": "带着相机在街上走，找一点值得按快门的东西。",
+  "kind": "explore",
+  "target": "none",
+  "locations": [
+    "park",
+    "shopping_street"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 540,
+      "toMinute": 1200
+    }
+  ],
+  "cost": {
+    "stamina": 8
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "producer",
+        "key": "photography"
+      },
+      "tier": 3
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 0
+    }
+  ],
+  "resultTexts": [
+    "你拍了三十几张，回看的时候删掉了二十九张。",
+    "光落在橱窗边上的时候你按了一次快门，之后再也等不到那个角度。",
+    "有个老人问你是不是记者。你说是练习，他笑了一下。"
+  ]
+},
+{
+  "id": "activity.watch_street",
+  "name": "在街上待一会儿",
+  "description": "不做什么，只是站在人多的地方看。",
+  "kind": "explore",
+  "target": "none",
+  "locations": [
+    "station",
+    "shopping_street"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 540,
+      "toMinute": 1200
+    }
+  ],
+  "cost": {
+    "stamina": 3
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "producer",
+        "key": "insight"
+      },
+      "tier": 3
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -2
+    }
+  ],
+  "resultTexts": [
+    "一个女生在橱窗前站了很久，最后什么也没买。",
+    "你注意到下班时间的人走路都比早上快半拍。",
+    "有人把伞收起来又撑开，反复了三次。"
   ]
 }
 ],
@@ -406,42 +584,8 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 }
 ],
-  dialogues: [
-{
-  "id": "dialogue.e2e.review",
-  "idolId": "mano",
-  "startNodeId": "n01",
-  "nodes": {
-    "n01": {
-      "id": "n01",
-      "text": "第一句",
-      "nextNodeId": "n02"
-    },
-    "n02": {
-      "id": "n02",
-      "text": "第二句"
-    }
-  }
-}
-],
-  storyChains: [
-{
-  "id": "story.e2e.review",
-  "idolId": "mano",
-  "steps": [
-    {
-      "id": "step-1",
-      "locationId": "park",
-      "dialogueId": "dialogue.e2e.review",
-      "actionLabel": "E2E 剧情步骤",
-      "timeWindow": {
-        "fromMinute": 600,
-        "toMinute": 1080
-      }
-    }
-  ]
-}
-],
+  dialogues: [],
+  storyChains: [],
   items: [
 {
   "id": "gift.bird_charm",

@@ -1,0 +1,63 @@
+{
+  "id": "draft.activity.carry_gear.v2",
+  "kind": "activity",
+  "title": "帮忙搬器材",
+  "status": "review",
+  "version": 2,
+  "rootId": "draft.activity.carry_gear",
+  "supersedes": "draft.activity.carry_gear",
+  "payload": {
+    "id": "activity.carry_gear",
+    "name": "帮忙搬器材",
+    "description": "录音棚缺人手，灯架和音箱都得从楼下搬上来。",
+    "kind": "work",
+    "target": "none",
+    "locations": [
+      "studio"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 480,
+        "toMinute": 1200
+      }
+    ],
+    "cost": {
+      "stamina": 12
+    },
+    "effects": [
+      {
+        "kind": "money",
+        "delta": 220
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "producer",
+          "key": "stamina"
+        },
+        "tier": 3
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 2
+      }
+    ],
+    "resultTexts": [
+      "最后一趟上楼的时候，你的手已经在抖了。",
+      "师傅教你怎么抱音箱不伤腰，你试了两次才学会。",
+      "搬完你在楼梯口坐了一会儿，才想起来还有别的事。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T10:17:36.924Z",
+  "updatedAt": "2026-10-30T10:17:36.924Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T10:17:36.924Z",
+      "note": "v2：时间窗改为 08:00–20:00，开局就能做"
+    }
+  ]
+}

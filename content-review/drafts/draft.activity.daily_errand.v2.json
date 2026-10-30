@@ -1,10 +1,11 @@
 {
-  "id": "draft.activity.daily_errand",
+  "id": "draft.activity.daily_errand.v2",
   "kind": "activity",
   "title": "发传单",
   "status": "review",
-  "version": 1,
+  "version": 2,
   "rootId": "draft.activity.daily_errand",
+  "supersedes": "draft.activity.daily_errand",
   "payload": {
     "id": "activity.daily_errand",
     "name": "发传单",
@@ -18,7 +19,7 @@
     "durationMinutes": 30,
     "timeWindows": [
       {
-        "fromMinute": 540,
+        "fromMinute": 480,
         "toMinute": 1200
       }
     ],
@@ -51,12 +52,13 @@
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-29T21:50:00.000Z",
-  "updatedAt": "2026-10-29T21:50:00.000Z",
+  "createdAt": "2026-10-30T10:17:36.924Z",
+  "updatedAt": "2026-10-30T10:17:36.924Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-29T21:50:00.000Z"
+      "at": "2026-10-30T10:17:36.924Z",
+      "note": "v2：时间窗改为 08:00–20:00，开局就能做"
     }
   ]
 }

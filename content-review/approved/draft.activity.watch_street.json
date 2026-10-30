@@ -2,7 +2,7 @@
   "id": "draft.activity.watch_street",
   "kind": "activity",
   "title": "在街上待一会儿",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.watch_street",
   "payload": {
@@ -48,11 +48,16 @@
   },
   "annotations": [],
   "createdAt": "2026-10-29T21:50:00.000Z",
-  "updatedAt": "2026-10-29T21:50:00.000Z",
+  "updatedAt": "2026-10-29T14:14:25.287Z",
+  "reviewedAt": "2026-10-29T14:14:25.287Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-29T21:50:00.000Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T14:14:25.287Z"
     }
   ]
 }

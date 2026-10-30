@@ -5,6 +5,7 @@ import {
   getEvent,
   handleCommand,
   newGame,
+  noteNoEffect,
   presentIdolIds,
   pruneScheduleOverrides,
 } from '../core/sim';
@@ -59,8 +60,10 @@ export const useGameStore = create<GameStore>((set, get) => ({
   act: (command) =>
     set((previous) => {
       const next = handleCommand(previous.state, command);
-      repository.save(createSaveEnvelope(next));
-      return { state: next };
+      // 没有变化也要看得见：否则按钮就像坏了。
+      const resolved = next === previous.state ? noteNoEffect(previous.state) : next;
+      repository.save(createSaveEnvelope(resolved));
+      return { state: resolved };
     }),
   restart: () => {
     const next = newGame(makeSeed());

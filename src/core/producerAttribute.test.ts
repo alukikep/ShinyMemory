@@ -14,7 +14,7 @@ const errand: ActivityDef = {
   description: '',
   kind: 'work',
   target: 'none',
-  locations: ['office'],
+  locations: ['office', 'practice_room'],
   durationMinutes: 30,
   timeWindows: [{ fromMinute: 480, toMinute: 1320 }],
   cost: { stamina: 5 },
@@ -38,7 +38,7 @@ function setup(): GameState {
   state.pendingDialogueId = undefined;
   state.dialogueNodeId = undefined;
   state.idols.mano!.status = 'recruited';
-  state.locationId = 'office';
+  state.locationId = 'practice_room';
   state.clock.absoluteMinutes = 12 * 60;
   state.phase = 'plan';
   return state;
@@ -83,11 +83,9 @@ describe('producer attributes', () => {
       type: 'enterIdol',
       idolId: 'mano',
     });
-    // 偶像不在事务所的话进不去；无论如何不该把制作人的活列给她。
-    if (idolPage.phase === 'idol') {
-      const labels = buildScene(idolPage).actions.map((action) => action.label);
-      expect(labels).not.toContain('测试零工');
-    }
+    expect(idolPage.phase).toBe('idol');
+    const idolLabels = buildScene(idolPage).actions.map((action) => action.label);
+    expect(idolLabels).not.toContain('测试零工');
     Object.assign(original, CONTENT_INDEX);
   });
 });

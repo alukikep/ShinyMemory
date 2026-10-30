@@ -787,6 +787,12 @@ export function attendJob(state: GameState, jobId: string): GameState {
   return next;
 }
 
+/** 命令没有产生任何变化时给玩家一句反馈，避免"点了没反应"。 */
+export function noteNoEffect(state: GameState, reason = '现在做不了这个。'): GameState {
+  const next = clone(state);
+  addLog(next, reason, 'bad');
+  return next;
+}
 export function buyItem(state: GameState, itemId: string): GameState {
   if (state.phase !== 'plan') return state;
   const item = CONTENT_INDEX.items.get(itemId);

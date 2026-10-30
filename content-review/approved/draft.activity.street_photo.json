@@ -2,7 +2,7 @@
   "id": "draft.activity.street_photo",
   "kind": "activity",
   "title": "街拍练习",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.street_photo",
   "payload": {
@@ -48,11 +48,16 @@
   },
   "annotations": [],
   "createdAt": "2026-10-29T21:50:00.000Z",
-  "updatedAt": "2026-10-29T21:50:00.000Z",
+  "updatedAt": "2026-10-29T14:14:24.627Z",
+  "reviewedAt": "2026-10-29T14:14:24.627Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-29T21:50:00.000Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T14:14:24.627Z"
     }
   ]
 }

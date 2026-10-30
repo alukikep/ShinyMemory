@@ -2,7 +2,7 @@
   "id": "draft.activity.office_filing",
   "kind": "activity",
   "title": "整理资料",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.office_filing",
   "payload": {
@@ -51,11 +51,16 @@
   },
   "annotations": [],
   "createdAt": "2026-10-29T21:50:00.000Z",
-  "updatedAt": "2026-10-29T21:50:00.000Z",
+  "updatedAt": "2026-10-29T14:14:24.127Z",
+  "reviewedAt": "2026-10-29T14:14:24.127Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-29T21:50:00.000Z"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-29T14:14:24.127Z"
     }
   ]
 }

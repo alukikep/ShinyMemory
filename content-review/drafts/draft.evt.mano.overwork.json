@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.mano.overwork",
+  "kind": "event",
+  "title": "站得不太稳",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.mano.overwork",
+  "payload": {
+    "id": "evt.mano.overwork",
+    "title": "站得不太稳",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mano"
+      ]
+    },
+    "chance": 0.35,
+    "priority": 8,
+    "once": true,
+    "text": "练习结束，她扶着把杆站了一会儿才松开手。看见你在门口，她立刻站直了。",
+    "choices": [
+      {
+        "label": "让她今天就到这里",
+        "hint": "信任 +3、压力 -6",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -6
+          }
+        ],
+        "result": "「没事的呼哇哇哇……」她说完自己也笑了一下，才把手从把杆上拿开。"
+      },
+      {
+        "label": "问她是不是还想再练",
+        "hint": "信任 +1、舞蹈 +1、压力 +4",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 4
+          }
+        ],
+        "result": "「嗯。……就一遍。」她练了三遍，第二遍开始手就在抖。"
+      },
+      {
+        "label": "什么也没说，把水递给她",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "她愣了一下才接过去，喝了两口，说谢谢。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:47:48.503Z",
+  "updatedAt": "2026-10-30T13:47:48.503Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:47:48.503Z",
+      "note": "Mano 回查补缺：太拼（依 頑張りすぎ.csv）"
+    }
+  ]
+}

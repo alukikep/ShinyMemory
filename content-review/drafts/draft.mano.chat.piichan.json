@@ -1,0 +1,32 @@
+{
+  "id": "draft.mano.chat.piichan",
+  "kind": "topic",
+  "title": "家里的鸟",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mano.chat.piichan",
+  "payload": {
+    "id": "mano.chat.piichan",
+    "actorId": "mano",
+    "label": "家里的鸟",
+    "text": "「小P最近好像学会新叫法了。……制作人想听吗。它叫起来是『啾』一下那种。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T13:47:48.503Z",
+  "updatedAt": "2026-10-30T13:47:48.503Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T13:47:48.503Z",
+      "note": "Mano 回查补缺：小P（依 自信のありか.csv）"
+    }
+  ]
+}

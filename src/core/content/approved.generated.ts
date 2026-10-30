@@ -1068,42 +1068,8 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "cooldownDays": 2
 }
 ],
-  dialogues: [
-{
-  "id": "dialogue.e2e.review",
-  "idolId": "mano",
-  "startNodeId": "n01",
-  "nodes": {
-    "n01": {
-      "id": "n01",
-      "text": "第一句",
-      "nextNodeId": "n02"
-    },
-    "n02": {
-      "id": "n02",
-      "text": "第二句"
-    }
-  }
-}
-],
-  storyChains: [
-{
-  "id": "story.e2e.review",
-  "idolId": "mano",
-  "steps": [
-    {
-      "id": "step-1",
-      "locationId": "park",
-      "dialogueId": "dialogue.e2e.review",
-      "actionLabel": "E2E 剧情步骤",
-      "timeWindow": {
-        "fromMinute": 600,
-        "toMinute": 1080
-      }
-    }
-  ]
-}
-],
+  dialogues: [],
+  storyChains: [],
   items: [
 {
   "id": "gift.bird_charm",
@@ -1221,5 +1187,118 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 }
 ],
-  topics: [],
+  topics: [
+{
+  "id": "mano.chat.about_you",
+  "actorId": "mano",
+  "label": "关于制作人",
+  "text": "「制作人先生……您每天都来吗。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mano.chat.favorite",
+  "actorId": "mano",
+  "label": "喜欢的东西",
+  "text": "「喜欢……可以说喜欢吗。那我喜欢甜的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mano.chat.how_was_today",
+  "actorId": "mano",
+  "label": "今天怎么样",
+  "text": "「……嗯。还行。就是刚才把水杯碰倒了，洒了半桌。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mano.chat.lunch",
+  "actorId": "mano",
+  "label": "午饭吃了吗",
+  "text": "「吃了。面包。……其实没吃饱，但没关系。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mano.chat.pigeons",
+  "actorId": "mano",
+  "label": "公园的鸽子",
+  "text": "「好像多了一只。白色的那只不太抢食，总是等别的吃完才过去。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mano.chat.progress",
+  "actorId": "mano",
+  "label": "练习的进度",
+  "text": "「那个转身……还是会在第三步卡一下。我再试试。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mano.chat.sofa",
+  "actorId": "mano",
+  "label": "事务所的沙发",
+  "text": "「这里比家里舒服。……啊，不是那个意思。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mano.chat.tomorrow",
+  "actorId": "mano",
+  "label": "明天的事",
+  "text": "「明天想早点到。上次那段还没练熟，不想拖大家后腿。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+}
+],
 };

@@ -2,7 +2,7 @@
   "id": "draft.mano.chat.tomorrow",
   "kind": "topic",
   "title": "明天的事",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.mano.chat.tomorrow",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T12:08:23.786Z",
-  "updatedAt": "2026-10-30T12:08:23.786Z",
+  "updatedAt": "2026-10-30T12:11:52.958Z",
+  "reviewedAt": "2026-10-30T12:11:52.958Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T12:08:23.786Z",
       "note": "B5：真乃日常话题"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T12:11:52.958Z"
     }
   ]
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { buildJobBoard } from '../../core/scene';
+import { STAT_ABBR } from '../../core/labels';
 import type { ActionCommand, GameState, JobBoardEntry } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 import { GameIcon } from './GameIcon';
@@ -145,7 +146,17 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
                   onClick={() => setDetailId(entry.jobId)}
                 >
                   <span className="job-board-row-main">
-                    <strong>{entry.name}</strong>
+                    <span className="job-board-row-title">
+                      {entry.checkStat ? (
+                        <span
+                          className={`stat-badge stat-${entry.checkStat}`}
+                          title={entry.checkText}
+                        >
+                          {STAT_ABBR[entry.checkStat]}
+                        </span>
+                      ) : null}
+                      <strong>{entry.name}</strong>
+                    </span>
                     <span className="job-board-row-sub">
                       {entry.checkText ?? '无门槛'}
                     </span>

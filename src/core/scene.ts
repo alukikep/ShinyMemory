@@ -10,7 +10,7 @@ import {
   getMinuteOfDay,
 } from './time';
 import { canReplaceDay } from './schedule';
-import { attributeLabel } from './labels';
+import { attributeLabel, STAT_ABBR } from './labels';
 import { describeCondition } from './conditionText';
 import {
   activityAvailability,
@@ -46,6 +46,7 @@ import type {
   JobBoardView,
   JobDef,
   SceneView,
+  StatKey,
   TextBlock,
 } from './types';
 
@@ -300,6 +301,15 @@ export function buildJobBoard(state: GameState): JobBoardView {
       checkText: job.check
         ? `需要${attributeLabel(job.check.ref)} ${job.check.difficulty}`
         : undefined,
+      // 内容里的 ref 常写成字符串（'expression'），按偶像属性处理。
+      checkStat: (() => {
+        if (!job.check) return undefined;
+        const ref = job.check.ref;
+        if (typeof ref === 'string') {
+          return ref in STAT_ABBR ? (ref as StatKey) : undefined;
+        }
+        return ref.scope === 'idol' ? ref.key : undefined;
+      })(),
       lockedReason: lockedReason || undefined,
       offers,
     };

@@ -14,6 +14,16 @@ export const STAT_LABELS: Record<StatKey, string> = {
   trust: '信任',
 };
 
+/** 属性缩写，界面上当小徽标用（Vo / Da / Vi）。 */
+export const STAT_ABBR: Record<StatKey, string> = {
+  vocal: 'Vo',
+  dance: 'Da',
+  expression: 'Vi',
+  stamina: 'St',
+  stress: 'Ps',
+  trust: 'Tr',
+};
+
 export const PRODUCER_STAT_LABELS: Record<ProducerStatKey, string> = {
   photography: '摄影',
   negotiation: '交涉',

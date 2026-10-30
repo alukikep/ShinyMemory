@@ -2,7 +2,7 @@
   "id": "draft.job.recording_demo",
   "kind": "job",
   "title": "录音小样",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.job.recording_demo",
   "payload": {
@@ -71,12 +71,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T11:36:58.170Z",
-  "updatedAt": "2026-10-30T11:36:58.170Z",
+  "updatedAt": "2026-10-30T11:41:05.921Z",
+  "reviewedAt": "2026-10-30T11:41:05.921Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T11:36:58.170Z",
       "note": "新工作：录音小样，歌唱 E，冷却 1 天"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T11:41:05.921Z"
     }
   ]
 }

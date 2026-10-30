@@ -540,6 +540,80 @@ export const APPROVED_CONTENT: ApprovedContent = {
 ],
   jobs: [
 {
+  "id": "job.dance_program",
+  "name": "舞蹈节目收录",
+  "description": "综艺里的一个舞蹈环节，两小时连排带录。",
+  "locationId": "studio",
+  "fromMinute": 840,
+  "toMinute": 960,
+  "pay": 1000,
+  "check": {
+    "ref": "dance",
+    "difficulty": "D",
+    "shift": 0
+  },
+  "failurePayRatio": 0.4,
+  "cooldownDays": 2,
+  "requires": [
+    {
+      "kind": "attributeAtLeast",
+      "ref": {
+        "scope": "idol",
+        "key": "dance"
+      },
+      "rank": "E"
+    }
+  ],
+  "effects": [
+    {
+      "kind": "fans",
+      "value": 90
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "dance"
+      },
+      "tier": 10
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "trust"
+      },
+      "tier": 3
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 8
+    }
+  ],
+  "failureEffects": [
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 14
+    },
+    {
+      "kind": "log",
+      "text": "走位错了两次，重排到很晚才收工。",
+      "tone": "bad"
+    }
+  ],
+  "resultTexts": [
+    "连着录了三条，导演说可以了。她下台时腿还在抖。",
+    "她和伴舞对了一个手势，现场笑了一下，那个反应被留在了成片里。",
+    "收工后她一个人在空舞台上把那段又走了一遍。"
+  ],
+  "failureTexts": [
+    "「我拖慢大家了。」她在后台小声说，然后去把地上的胶带一条条揭掉。",
+    "第三条还是没过。节目组说先用备选方案，她点点头，没再说什么。"
+  ]
+},
+{
   "id": "job.magazine_cover",
   "name": "杂志封面",
   "description": "一整天的外景拍摄，主视觉封面。要求她全程在状态。",
@@ -692,6 +766,70 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "job.recording_demo",
+  "name": "录音小样",
+  "description": "先录一版小样给制作方听。两小时，棚里只有她和你。",
+  "locationId": "studio",
+  "fromMinute": 840,
+  "toMinute": 960,
+  "pay": 600,
+  "check": {
+    "ref": "vocal",
+    "difficulty": "E",
+    "shift": 0
+  },
+  "failurePayRatio": 0.4,
+  "cooldownDays": 1,
+  "effects": [
+    {
+      "kind": "fans",
+      "value": 50
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "vocal"
+      },
+      "tier": 10
+    },
+    {
+      "kind": "attributeExp",
+      "ref": {
+        "scope": "idol",
+        "key": "trust"
+      },
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 3
+    }
+  ],
+  "failureEffects": [
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": 8
+    },
+    {
+      "kind": "log",
+      "text": "录到第四遍，她自己说先停一下。",
+      "tone": "bad"
+    }
+  ],
+  "resultTexts": [
+    "第二遍就过了。录音师说这个声音干净，她愣了一下才道谢。",
+    "棚里很安静，只有她换气的声音。收工时她把耳机绕好放回架子上。",
+    "你隔着玻璃看她唱完最后一句，她抬头确认，看见你点头才笑出来。"
+  ],
+  "failureTexts": [
+    "「对不起，我能再来一次吗。」她说了三次，声音一次比一次小。",
+    "今天状态不对，最后先回去了。她说明天想早点来。"
+  ]
+},
+{
   "id": "job.studio_shoot",
   "name": "摄影棚拍摄",
   "description": "杂志内页的一组拍摄。两个小时，灯光和快门都比想象中吵。",
@@ -757,8 +895,42 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "cooldownDays": 2
 }
 ],
-  dialogues: [],
-  storyChains: [],
+  dialogues: [
+{
+  "id": "dialogue.e2e.review",
+  "idolId": "mano",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "第一句",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "text": "第二句"
+    }
+  }
+}
+],
+  storyChains: [
+{
+  "id": "story.e2e.review",
+  "idolId": "mano",
+  "steps": [
+    {
+      "id": "step-1",
+      "locationId": "park",
+      "dialogueId": "dialogue.e2e.review",
+      "actionLabel": "E2E 剧情步骤",
+      "timeWindow": {
+        "fromMinute": 600,
+        "toMinute": 1080
+      }
+    }
+  ]
+}
+],
   items: [
 {
   "id": "gift.bird_charm",

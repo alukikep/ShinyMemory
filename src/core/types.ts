@@ -503,6 +503,8 @@ export type JobBoardEntry = {
   timeLabel: string;
   pay: number;
   checkText?: string;
+  /** 检定用的偶像属性，界面上用来显示 Vo / Da / Vi 徽标。 */
+  checkStat?: StatKey;
   lockedReason?: string;
   /** 已派出 / 冷却中：这份工作暂时没人能接。 */
   busyReason?: string;

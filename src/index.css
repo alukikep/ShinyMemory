@@ -3579,3 +3579,39 @@ button:focus-visible,
   font-size: 10px;
   color: var(--ink-soft);
 }
+
+.job-board-row-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  border-radius: 6px;
+  padding: 1px 4px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--ink-soft);
+}
+
+.stat-badge.stat-vocal {
+  background: var(--pink);
+}
+
+.stat-badge.stat-dance {
+  background: var(--brand);
+}
+
+.stat-badge.stat-expression {
+  background: var(--gold);
+}
+
+.stat-badge.stat-trust {
+  background: var(--ink-soft);
+}

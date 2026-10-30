@@ -137,6 +137,8 @@ export type ChapterShapeInput = {
    * 有 → 分支必须够厚；没有（选完立即合流）→ 不要求。
    */
   expectBranch?: boolean;
+  /** 原作这一章有几个分支（来自剧本结构）。拿得到就必须一致。 */
+  expectedBranches?: number;
   dialogue?: {
     startNodeId: string;
     nodes: Record<
@@ -173,6 +175,17 @@ export function validateChapterShape(
     const choiceNodes = Object.values(nodes).filter(
       (node) => Array.isArray(node.choices) && node.choices.length > 0,
     );
+
+    if (
+      input.expectedBranches !== undefined &&
+      choiceNodes.length > 0 &&
+      (choiceNodes[0]!.choices?.length ?? 0) !== input.expectedBranches
+    ) {
+      problems.push({
+        chapterId: input.chapterId,
+        message: `分支数与原作不一致：原作 ${input.expectedBranches} 支，这里 ${choiceNodes[0]!.choices?.length ?? 0} 支`,
+      });
+    }
 
     if (choiceNodes.length > 1) {
       problems.push({
@@ -228,6 +241,29 @@ export function validateChapterShape(
 
       // 不要求合流：卡面剧本里三条分支常常各自演到章末（实测 501/503/504 都是），
       // 强行要求"回到主线"会把原作结构改掉。
+    }
+  }
+
+  // 可达性：写了但没接上的节点等于白写。
+  for (const input of inputs) {
+    if (!input.dialogue) continue;
+    const { nodes, startNodeId } = input.dialogue;
+    const seen = new Set<string>();
+    const queue = [startNodeId];
+    while (queue.length > 0) {
+      const id = queue.shift()!;
+      if (seen.has(id) || !nodes[id]) continue;
+      seen.add(id);
+      const node = nodes[id]!;
+      if (node.nextNodeId) queue.push(node.nextNodeId);
+      for (const choice of node.choices ?? []) queue.push(choice.nextNodeId);
+    }
+    const orphans = Object.keys(nodes).filter((id) => !seen.has(id));
+    if (orphans.length > 0) {
+      problems.push({
+        chapterId: input.chapterId,
+        message: `有 ${orphans.length} 个节点接不上（从开头走不到）：${orphans.slice(0, 3).join(', ')}`,
+      });
     }
   }
 

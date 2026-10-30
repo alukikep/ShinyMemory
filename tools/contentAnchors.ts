@@ -116,6 +116,17 @@ function readExpectBranch(relative: string): boolean | undefined {
   return options.some((option) => option === next);
 }
 
+/** 原作这一章有几个分支（读私有缓存；读不到返回 undefined）。 */
+function readExpectedBranches(script: string | undefined): number | undefined {
+  if (!script) return undefined;
+  const file = path.join(process.cwd(), '.cache', 'shiny', `${script}.structure.json`);
+  if (!existsSync(file)) return undefined;
+  const structure = JSON.parse(readFileSync(file, 'utf8')) as {
+    branches?: { label: string }[];
+  };
+  return structure.branches?.length ?? 0;
+}
+
 function readCardOrder(relative: string): { index: number; total: number } | undefined {
   if (!corpusAvailable) return undefined;
   const full = path.join(corpusRoot, relative.split('/').join(path.sep));
@@ -193,6 +204,7 @@ const problems = [
         chapterId: chapter.chapterId,
         stepCount: chain?.steps.length ?? 0,
         expectBranch: readExpectBranch(chapter.source),
+        expectedBranches: readExpectedBranches(chapter.script),
         dialogue: draft
           ? { startNodeId: draft.startNodeId, nodes: draft.nodes }
           : undefined,

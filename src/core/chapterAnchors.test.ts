@@ -181,3 +181,45 @@ describe('chapter shape', () => {
     expect(problems.some((p) => p.message.includes('0 或 1 个'))).toBe(true);
   });
 });
+
+describe('chapter shape: branches and reachability', () => {
+  const branchGraph = (branches: number, branchLength: number) => {
+    const nodes: Record<string, any> = {
+      start: {
+        choices: Array.from({ length: branches }, (_, index) => ({
+          label: `O${index}`,
+          nextNodeId: `b${index}-1`,
+        })),
+      },
+    };
+    for (let b = 0; b < branches; b += 1) {
+      for (let i = 1; i <= branchLength; i += 1) {
+        nodes[`b${b}-${i}`] = {
+          nextNodeId: i === branchLength ? undefined : `b${b}-${i + 1}`,
+        };
+      }
+    }
+    return nodes;
+  };
+
+  it('rejects a branch count that differs from the original', () => {
+    const problems = validateChapterShape([
+      {
+        chapterId: 'c1',
+        stepCount: 1,
+        expectedBranches: 3,
+        dialogue: { startNodeId: 'start', nodes: branchGraph(2, 3) },
+      },
+    ]);
+    expect(problems.some((p) => p.message.includes('分支数与原作不一致'))).toBe(true);
+  });
+
+  it('rejects nodes that cannot be reached from the start', () => {
+    const graph = branchGraph(2, 3);
+    graph.orphan = {};
+    const problems = validateChapterShape([
+      { chapterId: 'c1', stepCount: 1, dialogue: { startNodeId: 'start', nodes: graph } },
+    ]);
+    expect(problems.some((p) => p.message.includes('接不上'))).toBe(true);
+  });
+});

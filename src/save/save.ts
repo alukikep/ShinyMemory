@@ -297,5 +297,13 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     next.gameVersion = GAME_VERSION;
   }
 
+  if (next.schemaVersion === 16) {
+    // 重点偶像成为正式设置：老存档沿用原来的 selectedIdolId。
+    const state = next.state as GameState & { focusIdolId?: string };
+    state.focusIdolId = state.focusIdolId ?? state.selectedIdolId;
+    next.schemaVersion = 17;
+    next.gameVersion = GAME_VERSION;
+  }
+
   return next;
 }

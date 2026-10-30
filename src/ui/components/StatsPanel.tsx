@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
-import { getSelectedIdol, isSelectedIdolRecruited, maxStamina } from '../../core/sim';
+import { getFocusIdol, getFocusIdolId, isIdolRecruited, maxStamina } from '../../core/sim';
 import { FANS_LABEL, STAT_LABELS, STAT_MAX, formatFans } from '../../core/labels';
 import type {
   GameState,
@@ -89,10 +89,12 @@ export function StatsPanel({
   state: GameState;
   hero?: HeroView;
 }) {
-  const recruited = isSelectedIdolRecruited(state);
-  const idol = recruited ? getSelectedIdol(state) : undefined;
+  // 侧边栏跟着「重点偶像」走，而不是最后点进去的那个。
+  const focusId = getFocusIdolId(state);
+  const recruited = isIdolRecruited(state, focusId);
+  const idol = recruited ? getFocusIdol(state) : undefined;
   const idolDef = recruited
-    ? CONTENT_INDEX.idols.get(state.selectedIdolId)
+    ? CONTENT_INDEX.idols.get(focusId)
     : undefined;
 
   return (
@@ -134,7 +136,7 @@ export function StatsPanel({
             </div>
             <div className="idol-summary-copy">
               <span className="idol-summary-name">
-                {idolDef?.name ?? state.selectedIdolId}
+                {idolDef?.name ?? focusId}
               </span>
               <span className="idol-summary-unit">{idolDef?.unit ?? ''}</span>
             </div>

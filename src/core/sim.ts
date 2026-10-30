@@ -282,6 +282,28 @@ export function getSelectedIdol(state: GameState): IdolState {
   return getIdol(state, state.selectedIdolId);
 }
 
+/** 重点培养的偶像；老存档没有这个字段时退回 selectedIdolId。 */
+export function getFocusIdolId(state: GameState): string {
+  return state.focusIdolId ?? state.selectedIdolId;
+}
+
+export function getFocusIdol(state: GameState): IdolState {
+  return getIdol(state, getFocusIdolId(state));
+}
+
+export function setFocusIdol(state: GameState, idolId: string): GameState {
+  if (!isIdolRecruited(state, idolId)) return state;
+  const actor = getActor(idolId);
+  if (!actor || actor.role !== 'idol') return state;
+  if (getFocusIdolId(state) === idolId) return state;
+
+  const next = clone(state);
+  next.focusIdolId = idolId;
+  const name = CONTENT_INDEX.idols.get(idolId)?.name ?? '';
+  addLog(next, `${name} 成为重点培养的对象。`, 'info');
+  return next;
+}
+
 export function isIdolRecruited(
   state: GameState,
   idolId: string,
@@ -589,6 +611,7 @@ export function newGame(seed: number = Date.now()): GameState {
     producer: createInitialProducerStats(),
     idols: createInitialIdolStates(),
     selectedIdolId: CONTENT_INDEX.startingIdolId,
+  focusIdolId: CONTENT_INDEX.startingIdolId,
     money: 3000,
     inventory: {},
     shopPurchases: {},
@@ -646,14 +669,16 @@ export function acceptJob(
   state: GameState,
   jobId: string,
   day: number,
+  idolId?: string,
 ): GameState {
   if (state.phase !== 'plan' || state.locationId !== 'office') {
     return state;
   }
 
+  const targetId = idolId ?? getFocusIdolId(state);
   const job = CONTENT_INDEX.jobs.get(jobId);
-  const actor = getActor(state.selectedIdolId);
-  const actorState = state.actors[state.selectedIdolId];
+  const actor = getActor(targetId);
+  const actorState = state.actors[targetId];
   if (!job || !actor || !actorState) return state;
   // 没招募的偶像不能接工作——工作是她去做的。
   if (!isIdolRecruited(state, actor.id)) return state;
@@ -726,7 +751,7 @@ export function activeJobFor(state: GameState): JobAssignment | undefined {
   const day = getDay(state.clock.absoluteMinutes);
   return state.jobs.find(
     (job) =>
-      job.idolId === state.selectedIdolId &&
+      job.idolId === getFocusIdolId(state) &&
       job.day === day &&
       job.locationId === state.locationId &&
       minute >= job.fromMinute &&
@@ -738,7 +763,6 @@ export function attendJob(state: GameState, jobId: string): GameState {
   if (state.phase !== 'plan') return state;
   const assignment = state.jobs.find((job) => job.id === jobId);
   if (!assignment) return state;
-  if (assignment.idolId !== state.selectedIdolId) return state;
   if (assignment.locationId !== state.locationId) return state;
   // 工作是她去做的：她还没出道就不能替她完成。
   if (!isIdolRecruited(state, assignment.idolId)) return state;
@@ -757,6 +781,7 @@ export function attendJob(state: GameState, jobId: string): GameState {
 
   const next = clone(state);
   next.selectedIdolId = assignment.idolId;
+  next.focusIdolId = assignment.idolId;
 
   // 有检定的工作：出发前掷一次骰，失败按比例结算。
   const rng = new Rng(next.rng.seed, next.rng.counter);
@@ -2054,8 +2079,9 @@ export function activityCheckChance(
 export function jobCheckChance(
   state: GameState,
   job: JobDef,
+  idolId?: string,
 ): number | undefined {
-  return job.check ? checkChance(state, job.check) : undefined;
+  return job.check ? checkChance(state, job.check, idolId) : undefined;
 }
 
 /** 界面用档位；不暴露精确概率。 */
@@ -2823,10 +2849,15 @@ export function handleCommand(
       if (command.type === 'transit') {
         return takeTransit(state, command.routeId);
       }
+      // 打开工作面板是纯 UI 动作，不改变游戏状态。
+      if (command.type === 'openJobBoard') return state;
       if (command.type === 'enterNpc') return enterNpc(state, command.actorId);
       if (command.type === 'enterIdol') return enterIdol(state, command.idolId);
       if (command.type === 'acceptJob') {
-        return acceptJob(state, command.jobId, command.day);
+        return acceptJob(state, command.jobId, command.day, command.idolId);
+      }
+      if (command.type === 'setFocusIdol') {
+        return setFocusIdol(state, command.idolId);
       }
       if (command.type === 'attendJob') {
         return attendJob(state, command.jobId);

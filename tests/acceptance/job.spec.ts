@@ -2,7 +2,8 @@ import { expect, test } from '@playwright/test';
 import { getState, jumpTo, openGame, reset } from './helpers';
 
 async function acceptMagazine(page: import('@playwright/test').Page) {
-  await page.getByRole('button', { name: /接下：杂志拍摄/ }).click();
+  await page.getByRole('button', { name: '查看可以接的工作' }).click();
+  await page.getByRole('button', { name: /派 .* 去/ }).first().click();
 }
 
 test('accepts, attends and rewards a job', async ({ page }, testInfo) => {

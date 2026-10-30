@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildScene } from './scene';
+import { buildJobBoard, buildScene } from './scene';
 import {
   MINUTES_PER_DAY,
 } from './config';
@@ -39,6 +39,14 @@ import {
 import { formatClock, getDay } from './time';
 import type { ActivityDef } from './types';
 
+/** 从工作面板里接一份工作（地点页现在只有一个入口）。 */
+function acceptFromBoard(state: ReturnType<typeof newGame>, jobName: string) {
+  const board = buildJobBoard(state);
+  const entry = board.entries.find((item) => item.name.includes(jobName));
+  const offer = entry?.offers.find((item) => item.command);
+  if (!offer?.command) throw new Error(`no offer for ${jobName}`);
+  return handleCommand(state, offer.command);
+}
 describe('raising sim core', () => {
   it('starts on day 1 at 08:00 with the expected numbers', () => {
     const state = newGame(1);
@@ -184,46 +192,31 @@ describe('raising sim core', () => {
 
   it('accepts a job into a future free day', () => {
     const state = newGame(1);
-    const scene = buildScene(state);
-    const jobAction = scene.actions.find(
-      (action) =>
-        action.command.type === 'acceptJob' &&
-        action.label.includes('杂志拍摄'),
-    );
-    expect(jobAction).toBeDefined();
-    if (!jobAction || jobAction.command.type !== 'acceptJob') return;
+    state.idols.mano!.status = 'recruited';
+    const board = buildJobBoard(state);
+    const entry = board.entries.find((item) => item.name.includes('杂志拍摄'));
+    expect(entry).toBeDefined();
+    expect(entry?.offers[0]?.dayLabel).toContain('4月12日');
 
-    expect(jobAction.hint ?? '').toContain('4月12日');
-    const accepted = handleCommand(state, jobAction.command);
+    const accepted = acceptFromBoard(state, '杂志拍摄');
     const override = accepted.actors.mano.scheduleOverrides?.[0];
     expect(override?.day).toBe(7);
     expect(override?.mode).toBe('replace-day');
     expect(override?.locationId).toBe('studio');
     expect(accepted.jobs).toHaveLength(1);
 
-    const nextScene = buildScene(accepted);
-    expect(
-      nextScene.actions.some(
-        (action) =>
-          action.command.type === 'acceptJob' &&
-          action.label.includes('杂志拍摄'),
-      ),
-    ).toBe(false);
+    // 同一份工作不能再接第二次。
+    const nextBoard = buildJobBoard(accepted);
+    const nextEntry = nextBoard.entries.find((item) =>
+      item.name.includes('杂志拍摄'),
+    );
+    expect(nextEntry?.offers[0]?.command).toBeUndefined();
   });
 
   it('completes an accepted job automatically without reward or log', () => {
     const state = newGame(1);
-    const scene = buildScene(state);
-    const jobAction = scene.actions.find(
-      (action) =>
-        action.command.type === 'acceptJob' &&
-        action.label.includes('杂志拍摄'),
-    );
-    if (!jobAction || jobAction.command.type !== 'acceptJob') {
-      throw new Error('expected magazine offer');
-    }
-
-    const accepted = handleCommand(state, jobAction.command);
+    state.idols.mano!.status = 'recruited';
+    const accepted = acceptFromBoard(state, '杂志拍摄');
     const logLength = accepted.log.length;
     const after = advanceTime(accepted, 6 * 24 * 60 + 8 * 60);
 
@@ -236,17 +229,7 @@ describe('raising sim core', () => {
     const state = newGame(1);
     // 工作要她去做，先让她出道。
     state.idols.mano!.status = 'recruited';
-    const scene = buildScene(state);
-    const jobAction = scene.actions.find(
-      (action) =>
-        action.command.type === 'acceptJob' &&
-        action.label.includes('杂志拍摄'),
-    );
-    if (!jobAction || jobAction.command.type !== 'acceptJob') {
-      throw new Error('expected magazine offer');
-    }
-
-    const accepted = handleCommand(state, jobAction.command);
+    const accepted = acceptFromBoard(state, '杂志拍摄');
     const assignment = accepted.jobs?.[0];
     expect(assignment).toBeDefined();
     if (!assignment) throw new Error('expected assignment');

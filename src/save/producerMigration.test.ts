@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createSaveEnvelope, migrateSave } from './save';
+import { SAVE_VERSION } from './version';
 import { PRODUCER_STAT_KEYS } from '../core/producer';
 import { newGame } from '../core/sim';
 
@@ -16,7 +17,7 @@ describe('producer stats migration', () => {
     } as never;
 
     const migrated = migrateSave(envelope);
-    expect(migrated.schemaVersion).toBe(16);
+    expect(migrated.schemaVersion).toBe(SAVE_VERSION);
     for (const key of PRODUCER_STAT_KEYS) {
       expect(migrated.state.producer[key]).toBeDefined();
     }

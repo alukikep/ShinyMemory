@@ -11,6 +11,7 @@ import {
 } from './time';
 import { canReplaceDay } from './schedule';
 import { attributeLabel } from './labels';
+import { describeCondition } from './conditionText';
 import {
   activityAvailability,
   activityCheckChance,
@@ -25,6 +26,7 @@ import {
   formatIdolText,
   getActivity,
   getActor,
+  getFocusIdolId,
   getEligibleStories,
   getEvent,
   isActorPresent,
@@ -39,6 +41,9 @@ import type {
   ActorView,
   ActivityDef,
   GameState,
+  JobBoardEntry,
+  JobBoardOffer,
+  JobBoardView,
   JobDef,
   SceneView,
   TextBlock,
@@ -206,16 +211,15 @@ function activityActionView(
   };
 }
 
-function jobActionView(
+/** 某个偶像接这份工作最早能被排进哪一天。 */
+function jobOfferFor(
   state: GameState,
   job: JobDef,
-): ActionView | undefined {
-  const actor = CONTENT_INDEX.actors.get(state.selectedIdolId);
-  if (!actor) return undefined;
-  // 没有出道的偶像，就没有人能去做这份工作。
-  if (actor.role !== 'idol' || !isIdolRecruited(state, actor.id)) {
-    return undefined;
-  }
+  idolId: string,
+): { day: number; chance?: number } | undefined {
+  const actor = CONTENT_INDEX.actors.get(idolId);
+  if (!actor || actor.role !== 'idol') return undefined;
+  if (!isIdolRecruited(state, idolId)) return undefined;
   if (
     state.jobs.some(
       (entry) => entry.jobId === job.id && entry.idolId === actor.id,
@@ -223,28 +227,73 @@ function jobActionView(
   ) {
     return undefined;
   }
+
   const overrides = state.actors[actor.id]?.scheduleOverrides;
   const startDay = getDay(state.clock.absoluteMinutes) + 1;
-
   for (let offset = 0; offset < 7; offset += 1) {
     const day = startDay + offset;
     if (!canReplaceDay(actor, day, overrides).ok) continue;
-    const chance = jobCheckChance(state, job);
-    const checkHint =
-      job.check && chance !== undefined
-        ? ` · 需要${attributeLabel(job.check.ref)} ${job.check.difficulty}（${activityCheckLabel(chance)}）`
-        : '';
-    return {
-      id: `job:${job.id}:${day}`,
-      command: { type: 'acceptJob', jobId: job.id, day },
-      label: `接下：${job.name}`,
-      hint: `${formatCalendarDateFromDay(day, false)} · ${formatClock(job.fromMinute)}–${formatClock(job.toMinute)} · ¥${job.pay.toLocaleString('zh-CN')}${checkHint}`,
-      icon: 'star',
-      tone: 'work',
-    };
+    return { day, chance: jobCheckChance(state, job, idolId) };
   }
-
   return undefined;
+}
+
+/**
+ * 工作面板：列出所有工作、解锁状态，以及"谁能去、哪天、成功率多少"。
+ * 地点页只留一个入口，不再把每份工作铺成按钮。
+ */
+export function buildJobBoard(state: GameState): JobBoardView {
+  const focusIdolId = getFocusIdolId(state);
+  const idols = [...CONTENT_INDEX.idols.values()].filter(
+    (idol) => state.idols[idol.id]?.status === 'recruited',
+  );
+
+  const entries: JobBoardEntry[] = [...CONTENT_INDEX.jobs.values()].map((job) => {
+    const lockedReason = (job.requires ?? [])
+      .map((condition) =>
+        describeCondition(condition, state, { idolId: focusIdolId }),
+      )
+      .filter(Boolean)
+      .join('；');
+
+    const offers: JobBoardOffer[] = idols.map((idol) => {
+      const offer = jobOfferFor(state, job, idol.id);
+      const chance = jobCheckChance(state, job, idol.id);
+      const checkLabel =
+        job.check && chance !== undefined
+          ? `需要${attributeLabel(job.check.ref)} ${job.check.difficulty}（${activityCheckLabel(chance)}）`
+          : '';
+      return {
+        idolId: idol.id,
+        idolName: CONTENT_INDEX.idols.get(idol.id)?.name ?? idol.id,
+        day: offer?.day ?? 0,
+        dayLabel: offer
+          ? `${formatCalendarDateFromDay(offer.day, false)} · ${formatClock(job.fromMinute)}–${formatClock(job.toMinute)}`
+          : '未来七天没有可改期的空档',
+        chance,
+        checkLabel,
+        command: offer
+          ? { type: 'acceptJob', jobId: job.id, day: offer.day, idolId: idol.id }
+          : undefined,
+      };
+    });
+
+    return {
+      jobId: job.id,
+      name: job.name,
+      description: job.description,
+      locationName: CONTENT_INDEX.locations.get(job.locationId)?.name ?? job.locationId,
+      timeLabel: `${formatClock(job.fromMinute)}–${formatClock(job.toMinute)}`,
+      pay: job.pay,
+      checkText: job.check
+        ? `需要${attributeLabel(job.check.ref)} ${job.check.difficulty}`
+        : undefined,
+      lockedReason: lockedReason || undefined,
+      offers,
+    };
+  });
+
+  return { entries, focusIdolId };
 }
 
 function buildJobActions(state: GameState): ActionView[] {
@@ -254,21 +303,19 @@ function buildJobActions(state: GameState): ActionView[] {
   const jobs = [...CONTENT_INDEX.jobs.values()];
   if (jobs.length === 0) return [];
 
-  const actions = jobs
-    .map((job) => jobActionView(state, job))
-    .filter((action): action is ActionView => Boolean(action));
-
-  if (actions.length > 0) return actions;
+  const board = buildJobBoard(state);
+  const openCount = board.entries.filter((entry) => !entry.lockedReason).length;
 
   return [
     {
-      id: 'job:none',
-      command: { type: 'acceptJob', jobId: '', day: 0 },
-      label: '暂无工作邀约',
-      hint: '未来七天没有可改期的空档',
+      id: 'job-board',
+      command: { type: 'openJobBoard' },
+      label: '查看可以接的工作',
+      hint: openCount > 0 ? `${openCount} 份在招` : '暂时没有可接的工作',
       icon: 'calendar',
-      disabled: true,
-      disabledReason: '未来七天没有可改期的空档',
+      tone: 'work',
+      disabled: openCount === 0,
+      disabledReason: openCount === 0 ? '暂时没有可接的工作' : undefined,
     },
   ];
 }

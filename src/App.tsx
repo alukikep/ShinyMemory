@@ -18,6 +18,7 @@ import { ProducerPanel } from './ui/components/ProducerPanel';
 import { SavePanel } from './ui/components/SavePanel';
 import { ScenePanel } from './ui/components/ScenePanel';
 import { ShopModal } from './ui/components/ShopModal';
+import { JobBoard } from './ui/components/JobBoard';
 import { StatsPanel } from './ui/components/StatsPanel';
 
 type AcceptanceBridge = {
@@ -58,6 +59,7 @@ export default function App() {
   const [producerOpen, setProducerOpen] = useState(false);
   const [handbookOpen, setHandbookOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
+  const [jobBoardOpen, setJobBoardOpen] = useState(false);
   const [savePanel, setSavePanel] = useState<'save' | 'load' | null>(null);
   const [saveNotice, setSaveNotice] = useState<string | undefined>();
   const debug =
@@ -305,7 +307,14 @@ export default function App() {
             <div className="center-column">
               <ScenePanel
                 scene={scene}
-                onAction={act}
+                onAction={(command) => {
+                  // 工作面板是界面，不动游戏状态。
+                  if (command.type === 'openJobBoard') {
+                    setJobBoardOpen(true);
+                    return;
+                  }
+                  act(command);
+                }}
                 onMove={(locationId) => act({ type: 'move', locationId })}
                 shopEntry={sceneShop}
               />
@@ -341,7 +350,11 @@ export default function App() {
       ) : null}
 
       {rosterOpen ? (
-        <IdolRoster state={state} onClose={() => setRosterOpen(false)} />
+        <IdolRoster
+            state={state}
+            onClose={() => setRosterOpen(false)}
+            onSetFocus={(idolId) => act({ type: 'setFocusIdol', idolId })}
+          />
       ) : null}
 
       {scheduleOpen ? (
@@ -384,6 +397,14 @@ export default function App() {
         <HandbookPanel
           view={handbook}
           onClose={() => setHandbookOpen(false)}
+        />
+      ) : null}
+
+      {jobBoardOpen ? (
+        <JobBoard
+          state={state}
+          onClose={() => setJobBoardOpen(false)}
+          onAccept={(command) => act(command)}
         />
       ) : null}
 

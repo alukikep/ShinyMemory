@@ -181,7 +181,10 @@ export type GameState = {
   shared: SharedStats;
   producer: ProducerStats;
   idols: Record<string, IdolState>;
+  /** 当前打开的偶像页；侧边栏与派活看的是 focusIdolId。 */
   selectedIdolId: string;
+  /** 玩家指定的「重点培养」偶像：侧边栏显示她，工作默认派给她。 */
+  focusIdolId: string;
   money: number;
   inventory: Record<string, number>;
   shopPurchases: Record<string, number>;
@@ -473,6 +476,36 @@ export type JobDef = {
   /** 结果页的描述文本；没有时退回 description。 */
   resultTexts?: string[];
   failureTexts?: string[];
+  /** 全部满足才会出现在工作面板里（交涉、人脉解锁用）。 */
+  requires?: Condition[];
+};
+
+export type JobBoardOffer = {
+  idolId: string;
+  idolName: string;
+  day: number;
+  dayLabel: string;
+  chance?: number;
+  checkLabel?: string;
+  command?: ActionCommand;
+  disabledReason?: string;
+};
+
+export type JobBoardEntry = {
+  jobId: string;
+  name: string;
+  description: string;
+  locationName: string;
+  timeLabel: string;
+  pay: number;
+  checkText?: string;
+  lockedReason?: string;
+  offers: JobBoardOffer[];
+};
+
+export type JobBoardView = {
+  entries: JobBoardEntry[];
+  focusIdolId: string;
 };
 
 export type JobAssignment = {
@@ -670,7 +703,9 @@ export type ActionCommand =
   | { type: 'enterIdol'; idolId: string }
   | { type: 'train'; idolId: string; activityId: string }
   | { type: 'work'; idolId: string; activityId: string }
-  | { type: 'acceptJob'; jobId: string; day: number }
+  | { type: 'acceptJob'; jobId: string; day: number; idolId?: string }
+  | { type: 'setFocusIdol'; idolId: string }
+  | { type: 'openJobBoard' }
   | { type: 'attendJob'; jobId: string }
   | { type: 'buyItem'; itemId: string }
   | { type: 'equip'; equipId: string }

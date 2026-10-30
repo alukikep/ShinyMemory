@@ -54,9 +54,10 @@ function RankRow({
 type IdolRosterProps = {
   state: GameState;
   onClose: () => void;
+  onSetFocus: (idolId: string) => void;
 };
 
-export function IdolRoster({ state, onClose }: IdolRosterProps) {
+export function IdolRoster({ state, onClose, onSetFocus }: IdolRosterProps) {
   const dialogRef = useDialogFocus<HTMLElement>();
 
   useEffect(() => {
@@ -114,7 +115,8 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
           {idols.map((idol) => {
             const def = CONTENT_INDEX.idols.get(idol.id);
             const recruited = idol.status === 'recruited';
-            const active = recruited && idol.id === state.selectedIdolId;
+            const focusId = state.focusIdolId ?? state.selectedIdolId;
+            const active = recruited && idol.id === focusId;
             const actor = recruited ? CONTENT_INDEX.actors.get(idol.id) : undefined;
             const actorState = state.actors[idol.id];
             const locationId = actor
@@ -154,7 +156,7 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
                       <h3>{def?.name ?? idol.id}</h3>
                       <p>{def?.unit ?? ''}</p>
                     </div>
-                    {active ? <span className="roster-current">当前</span> : null}
+                    {active ? <span className="roster-current">重点</span> : null}
                   </div>
                   {def?.profile ? (
                     <p className="roster-profile">{def.profile}</p>
@@ -174,6 +176,15 @@ export function IdolRoster({ state, onClose }: IdolRosterProps) {
                     </p>
                   )}
                 </div>
+                {recruited && !active ? (
+                  <button
+                    type="button"
+                    className="roster-focus-button"
+                    onClick={() => onSetFocus(idol.id)}
+                  >
+                    设为重点
+                  </button>
+                ) : null}
                 {recruited ? (
                   <div className="roster-stats">
                     {IDOL_STAT_ORDER.map((key) => (

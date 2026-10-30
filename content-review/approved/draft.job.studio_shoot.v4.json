@@ -1,11 +1,11 @@
 {
-  "id": "draft.job.studio_shoot.v3",
+  "id": "draft.job.studio_shoot.v4",
   "kind": "job",
   "title": "摄影棚拍摄",
   "status": "approved",
-  "version": 3,
+  "version": 4,
   "rootId": "draft.job.studio_shoot",
-  "supersedes": "draft.job.studio_shoot.v2",
+  "supersedes": "draft.job.studio_shoot.v3",
   "payload": {
     "id": "job.studio_shoot",
     "name": "摄影棚拍摄",
@@ -48,21 +48,30 @@
         "text": "拍摄方说这组不合用，只能按试用价结算。",
         "tone": "bad"
       }
+    ],
+    "resultTexts": [
+      "拍完最后一组，摄影师说今天就到这里。她在卸妆间门口小声说，比想象中累。",
+      "三套衣服换下来，她的肩膀一直没松过。收工的时候才笑出来。",
+      "中途卡了两次，第三次终于过了。staff 鼓掌的时候她愣了一下才反应过来。"
+    ],
+    "failureTexts": [
+      "「对不起……是我没跟上。」她说这句话的时候，声音比平时更小。",
+      "拍到一半她开始出神。最后勉强收工，对方说会用已经拍好的部分。"
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-29T13:42:07.967Z",
-  "updatedAt": "2026-10-29T13:47:05.750Z",
-  "reviewedAt": "2026-10-29T13:47:05.750Z",
+  "createdAt": "2026-10-30T10:32:02.434Z",
+  "updatedAt": "2026-10-30T10:37:19.164Z",
+  "reviewedAt": "2026-10-30T10:37:19.164Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-29T13:42:07.967Z",
-      "note": "v3：加属性门槛与失败分支"
+      "at": "2026-10-30T10:32:02.434Z",
+      "note": "v4：补结果页描述文本（成功 3 条 / 失败 2 条）"
     },
     {
       "status": "approved",
-      "at": "2026-10-29T13:47:05.750Z"
+      "at": "2026-10-30T10:37:19.164Z"
     }
   ]
 }

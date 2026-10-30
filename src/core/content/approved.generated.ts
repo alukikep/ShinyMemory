@@ -581,11 +581,54 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "text": "拍摄方说这组不合用，只能按试用价结算。",
       "tone": "bad"
     }
+  ],
+  "resultTexts": [
+    "拍完最后一组，摄影师说今天就到这里。她在卸妆间门口小声说，比想象中累。",
+    "三套衣服换下来，她的肩膀一直没松过。收工的时候才笑出来。",
+    "中途卡了两次，第三次终于过了。staff 鼓掌的时候她愣了一下才反应过来。"
+  ],
+  "failureTexts": [
+    "「对不起……是我没跟上。」她说这句话的时候，声音比平时更小。",
+    "拍到一半她开始出神。最后勉强收工，对方说会用已经拍好的部分。"
   ]
 }
 ],
-  dialogues: [],
-  storyChains: [],
+  dialogues: [
+{
+  "id": "dialogue.e2e.review",
+  "idolId": "mano",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "第一句",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "text": "第二句"
+    }
+  }
+}
+],
+  storyChains: [
+{
+  "id": "story.e2e.review",
+  "idolId": "mano",
+  "steps": [
+    {
+      "id": "step-1",
+      "locationId": "park",
+      "dialogueId": "dialogue.e2e.review",
+      "actionLabel": "E2E 剧情步骤",
+      "timeWindow": {
+        "fromMinute": 600,
+        "toMinute": 1080
+      }
+    }
+  ]
+}
+],
   items: [
 {
   "id": "gift.bird_charm",

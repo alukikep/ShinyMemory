@@ -142,7 +142,7 @@ describe('app shell', () => {
 
   it('renders only recognized idols in the roster', () => {
     const html = renderToString(
-      <IdolRoster state={newGame(1)} onClose={() => {}} />,
+      <IdolRoster state={newGame(1)} onClose={() => {}} onSetFocus={() => {}} />,
     );
     expect(html).toContain('偶像名册');
     expect(html).toContain('樱木真乃');
@@ -150,14 +150,14 @@ describe('app shell', () => {
     expect(html).toContain('roster-avatar');
     expect(html).toContain('q/mano.png');
     expect(html).toContain('歌唱');
-    expect(html).toContain('当前');
+    expect(html).toContain('重点');
   });
 
   it('shows a known idol without stats or schedule', () => {
     const state = newGame(1);
     state.idols.hiori!.status = 'known';
     const html = renderToString(
-      <IdolRoster state={state} onClose={() => {}} />,
+      <IdolRoster state={state} onClose={() => {}} onSetFocus={() => {}} />,
     );
     expect(html).toContain('风野灯织');
     expect(html).toContain('尚未招募');
@@ -167,7 +167,11 @@ describe('app shell', () => {
     const state = newGame(1);
     state.idols.hiori!.status = 'recruited';
     const html = renderToString(
-      <IdolRoster state={advanceTime(state, 1500)} onClose={() => {}} />,
+      <IdolRoster
+        state={advanceTime(state, 1500)}
+        onClose={() => {}}
+        onSetFocus={() => {}}
+      />,
     );
     expect(html).toContain('现在：学校');
   });

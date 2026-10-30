@@ -8,6 +8,7 @@
     "review": "vite --open /review.html --port 5174",
     "content:validate": "tsx tools/syncApproved.ts && tsx tools/validateContent.ts && tsx tools/contentAudit.ts && vitest run src/core/storyValidation.test.ts src/core/productionStoryValidation.test.ts",
     "content:sync": "tsx tools/syncApproved.ts",
+    "content:coverage": "tsx tools/contentCoverage.ts",
     "content:audit": "tsx tools/contentAudit.ts",
     "build": "tsc --noEmit && npm run content:validate && vite build",
     "build:fixture": "tsc --noEmit && npm run content:validate && vite build --mode fixture",

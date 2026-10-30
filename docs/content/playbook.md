@@ -69,7 +69,7 @@
 | 8 | 训练后事件 | 每个训练行动 1 条 | 审查台批次 |
 | 9 | 工作线 | 她的属性对应的 2–3 份工作 | 审查台批次 |
 | 10 | 长线剧情 | 3 步 + 分支，带一次解锁 | 审查台批次 + 结构 |
-| 11 | 验收 | 游戏里真的走一遍 | `npm run acceptance` |
+| 11 | 验收 | 跑 `npm run content:coverage` 补缺口，再在游戏里走一遍 | `npm run acceptance` |
 | 12 | 记录 | 块表 + 一条经验 | `docs/content/README.md` |
 
 第 2–4 步是结构（直接写 TS，不需要审查）；第 5–10 步全部走审查台。
@@ -203,6 +203,8 @@
 - 对话节点可以有 `textVariants`（按条件换台词）
 - 剧情链每一步：`locationId` + `timeWindow` + `dialogueId` + `actionLabel`
 - 解锁用 `effects: [{ kind: 'flag', key: 'unlocked.xxx', value: true }]`
+- **var / flag 键名要带命名空间**（`mano.slump`，不是 `mano_slump`）——体检规则 `var-namespace` 会拦
+- 分支写进 var，第三步用 `textVariants` + `varAtLeast` 读它
 - 长线剧情要有分支，选项之间**代价不同**而不是都 +1
 
 ### 4.7 物品与商店
@@ -236,6 +238,7 @@
 npx tsc --noEmit                 # 类型
 npm test                         # 单元（跑夹具包）
 npx tsx tools/contentAudit.ts    # 内容体检
+npm run content:coverage         # 覆盖度（每个角色按单元数一遍）
 npm run acceptance               # 引擎 + 内容 E2E
 npm run acceptance:prologue      # 正式包 E2E
 ```
@@ -312,7 +315,21 @@ flag：   unlocked.<工作id> / seen:<话题id>（系统生成的不用手写）
 
 ---
 
-## 10. 一轮生产结束后记什么
+## 10. 已知缺口（研究结论）
+
+这一轮做完 B1–B6 + 系统层后，把流程里还靠人的地方列出来：
+
+| # | 缺口 | 现状 | 方向 |
+|---|---|---|---|
+| 1 | 覆盖度靠人记 | ✅ 已做 `content:coverage`：按单元数一遍，缺什么直接列 | 可考虑接进 `content:validate` 变成硬门 |
+| 2 | 剧情链里的对话写在 TS，没走审查台 | ⚠️ 取舍：链是结构，对话跟着链走更省事 | 方向：对话改为 approved 引用 + 审批顺序守卫 |
+| 3 | 每个角色没有独立的 E2E | ⚠️ 靠 `tests/prologue/*` 手写 | 方向：按角色生成一个冒烟 spec（招募 → 训练 → 闲聊 → 工作） |
+| 4 | 数值回归没有自动化 | ⚠️ `balance.test` 跑的是夹具包 | 方向：用正式包跑一个「第 7 天粉丝数」模拟脚本 |
+| 5 | 打回的内容会落到「待修改」队列 | 已可见，但容易忘 | 每轮开始时先看「待修改」有没有积压 |
+
+第 2、3、4 条不做也不会立刻出错，但**换一个人来生产时最容易在这三处踩空**。
+
+## 11. 一轮生产结束后记什么
 
 在 `docs/content/README.md` 的块记录里追加三行：
 

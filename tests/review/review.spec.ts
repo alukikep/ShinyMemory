@@ -64,7 +64,7 @@ test('creates, revises, resubmits and approves an event', async ({ page }) => {
   await page.getByRole('button', { name: '添加批注' }).click();
   await expect(page.locator('.review-note')).toHaveCount(1);
 
-  await page.getByRole('button', { name: '打回' }).click();
+  await page.getByRole('button', { name: '打回', exact: true }).click();
   await expect(page.locator('.review-flash')).toContainText('待修改');
   await openInTab(page, /待修改/, 'E2E 审查事件');
   await expect(page.locator('.review-toolbar .review-status')).toHaveText(
@@ -78,7 +78,7 @@ test('creates, revises, resubmits and approves an event', async ({ page }) => {
     '待审查',
   );
 
-  await page.getByRole('button', { name: '通过' }).click();
+  await page.getByRole('button', { name: '通过', exact: true }).click();
   await expect(page.locator('.review-flash')).toContainText('已通过');
   await openInTab(page, /已通过/, 'E2E 审查事件');
   await expect(page.locator('.review-toolbar .review-status')).toHaveText(
@@ -104,7 +104,7 @@ test('creates, revises, resubmits and approves an event', async ({ page }) => {
   await expect(page.locator('.review-editor')).toBeVisible();
   await page.getByRole('button', { name: '保存草稿' }).first().click();
   await expect(page.locator('.review-editor')).toHaveCount(0);
-  await page.getByRole('button', { name: '通过' }).click();
+  await page.getByRole('button', { name: '通过', exact: true }).click();
 
   // 旧版本被新版本替换后落到 discarded；用轮询，避免和上一条提示抢时序。
   const discardedDir = path.join(ROOT, 'content-review', 'discarded');
@@ -183,12 +183,12 @@ test('creates and approves dialogue and story drafts', async ({ page }) => {
 
   // 先过对话，剧情链才引用得到它。
   await openInTab(page, /待审查/, 'E2E 审查对话');
-  await page.getByRole('button', { name: '通过' }).click();
+  await page.getByRole('button', { name: '通过', exact: true }).click();
   await expect(page.locator('.review-flash')).toContainText('已通过');
   await openInTab(page, /已通过/, 'E2E 审查对话');
 
   await openInTab(page, /待审查/, 'E2E 审查剧情链');
-  await page.getByRole('button', { name: '通过' }).click();
+  await page.getByRole('button', { name: '通过', exact: true }).click();
 
   // 审批是异步的，落盘会略晚于界面提示；轮询到两条都出现。
   const approvedDir = path.join(ROOT, 'content-review', 'approved');

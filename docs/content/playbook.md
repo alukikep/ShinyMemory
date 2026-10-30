@@ -76,6 +76,23 @@ ShinyGroup/SCTranslationData  →  data/story/<日文名>/
 4. 填角色卡（用 [character-card-template.md](character-card-template.md)，第 2 节必须写清相遇事实）。
 5. 卡里每条判断都要能指回一个文件；指不回去的，标「待核」，别写进内容。
 
+### 1.6 这条规则现在有机器门禁
+
+```bash
+npm run content:guard      # 已接进 content:validate，构建时会跑
+```
+
+它对**每个偶像**检查三件事：
+
+| 检查 | 不通过会怎样 |
+|---|---|
+| 有角色卡 `docs/content/<id>/character.md` | 构建失败 |
+| 卡里有「语料索引」，且**至少一个引用路径真实存在** | 构建失败 |
+| 卡里有「回查记录」 | 构建失败 |
+
+读没读是主观的，但**卡里写不出真实存在的语料路径**是客观的——这就是门禁抓的东西。
+写卡时语料索引要**一行一个完整路径**（`data/story/<角色>/...csv`），否则解析不到。
+
 ## 2. 新角色接入：一份清单
 
 按顺序做，每一步完成再进下一步。以「真乃」为样板。
@@ -262,6 +279,7 @@ ShinyGroup/SCTranslationData  →  data/story/<日文名>/
 npx tsc --noEmit                 # 类型
 npm test                         # 单元（跑夹具包）
 npx tsx tools/contentAudit.ts    # 内容体检
+npm run content:guard            # 角色资料门禁（角色卡 + 语料出处）
 npm run content:coverage         # 覆盖度（每个角色按单元数一遍）
 npm run acceptance               # 引擎 + 内容 E2E
 npm run acceptance:prologue      # 正式包 E2E

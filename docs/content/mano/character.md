@@ -242,12 +242,11 @@
 仓库：[ShinyGroup/SCTranslationData](https://github.com/ShinyGroup/SCTranslationData)
 
 ```text
-data/story/櫻木真乃/
-  W.I.N.G.編/公園の歌声.csv    ← 相遇（必读）
-  W.I.N.G.編/頑張りすぎ.csv    ← 练到摇摇晃晃
-  W.I.N.G.編/自信のありか.csv  ← 对着小P说自己没自信
-  Morning/                日常寒暄（短，最适合学语气）
-  【卡片名】/              单张卡的剧情，每张卡 2–5 段
+data/story/櫻木真乃/W.I.N.G.編/公園の歌声.csv    ← 相遇（必读）
+data/story/櫻木真乃/W.I.N.G.編/頑張りすぎ.csv    ← 练到摇摇晃晃
+data/story/櫻木真乃/W.I.N.G.編/自信のありか.csv  ← 对着小P说自己没自信
+data/story/櫻木真乃/Morning/                       ← 日常寒暄（短，最适合学语气）
+data/story/櫻木真乃/【卡片名】/                     ← 单张卡的剧情，每张卡 2–5 段
   G.R.A.D.篇 / S.T.E.P.編 / W.I.N.G.編 / Landing Point編   主线篇章
   節日剧情 / 誕生日        节日与生日
 ```

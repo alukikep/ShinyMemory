@@ -83,6 +83,9 @@
 
 ## 11. 语料索引
 
+> **格式要求**：一行一个**完整路径**（`data/story/<角色>/W.I.N.G.編/xxx.csv`）。
+> `npm run content:guard` 会解析这些路径并检查文件是否存在——路径被折行或只写文件名都会判不通过。
+
 ```text
 data/story/<日文名>/W.I.N.G.編/<相遇文件>.csv   ← 相遇（必读）
 data/story/<日文名>/W.I.N.G.編/<关键章节>.csv

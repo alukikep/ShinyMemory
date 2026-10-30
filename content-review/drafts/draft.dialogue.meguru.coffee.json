@@ -1,79 +1,84 @@
 {
-  "id": "draft.dialogue.meguru.coffee",
+  "id": "dialogue.meguru.coffee",
   "kind": "dialogue",
   "title": "一杯咖啡",
   "status": "review",
-  "version": 1,
-  "rootId": "draft.dialogue.meguru.coffee",
+  "version": 2,
+  "rootId": "dialogue.meguru.coffee",
   "payload": {
     "id": "dialogue.meguru.coffee",
     "idolId": "meguru",
-    "startNodeId": "1-n01",
+    "startNodeId": "1-01",
     "nodes": {
-      "1-n01": {
-        "id": "1-n01",
-        "text": "事务所的灯还亮着。桌上摊着文件，你趴在上面睡着了。",
-        "nextNodeId": "1-n02"
+      "1-01": {
+        "id": "1-01",
+        "text": "（好，必要的联络差不多都结束了。）",
+        "nextNodeId": "1-02"
       },
-      "1-n02": {
-        "id": "1-n02",
+      "1-02": {
+        "id": "1-02",
+        "text": "（已经这个时间了，得早点回去……）",
+        "nextNodeId": "1-03"
+      },
+      "1-03": {
+        "id": "1-03",
+        "text": "（唉……回去之前先喝一杯咖啡吧。）",
+        "nextNodeId": "1-04"
+      },
+      "1-04": {
+        "id": "1-04",
         "speakerId": "meguru",
         "text": "制作人，制作人……",
-        "nextNodeId": "1-n03"
+        "nextNodeId": "1-05"
       },
-      "1-n03": {
-        "id": "1-n03",
-        "text": "你睁开眼。肩上盖着一条毯子。",
-        "nextNodeId": "1-n04"
-      },
-      "1-n04": {
-        "id": "1-n04",
+      "1-05": {
+        "id": "1-05",
         "speakerId": "meguru",
         "text": "早安！",
-        "nextNodeId": "1-n05"
+        "nextNodeId": "1-06"
       },
-      "1-n05": {
-        "id": "1-n05",
-        "text": "你说早安，问这条毯子是哪儿来的。",
-        "nextNodeId": "1-n06"
+      "1-06": {
+        "id": "1-06",
+        "text": "早安……这样啊，我趴在桌上睡着了。",
+        "nextNodeId": "1-07"
       },
-      "1-n06": {
-        "id": "1-n06",
+      "1-07": {
+        "id": "1-07",
+        "text": "这条毯子是？",
+        "nextNodeId": "1-08"
+      },
+      "1-08": {
+        "id": "1-08",
         "speakerId": "meguru",
-        "text": "是叶月放的。她还说她试着叫醒你，但你没醒。",
-        "nextNodeId": "1-n07"
+        "text": "是叶月放的。她说试着叫过你，但你没醒。",
+        "nextNodeId": "1-09"
       },
-      "1-n07": {
-        "id": "1-n07",
+      "1-09": {
+        "id": "1-09",
         "speakerId": "meguru",
         "text": "工作很忙吧……在家里好好睡一觉更好啊——",
-        "nextNodeId": "1-n08"
+        "nextNodeId": "1-10"
       },
-      "1-n08": {
-        "id": "1-n08",
+      "1-10": {
+        "id": "1-10",
         "speakerId": "meguru",
         "text": "制作人，我最近都没看到你休息啊？",
-        "nextNodeId": "2-n01"
+        "nextNodeId": "1-11"
       },
-      "2-n01": {
-        "id": "2-n01",
+      "1-11": {
+        "id": "1-11",
         "speakerId": "meguru",
         "text": "难道……因为我才这么忙？",
-        "nextNodeId": "2-n02"
+        "nextNodeId": "1-12"
       },
-      "2-n02": {
-        "id": "2-n02",
+      "1-12": {
+        "id": "1-12",
         "speakerId": "meguru",
         "text": "又来看我练习，又来陪我说话……",
-        "nextNodeId": "2-n03"
-      },
-      "2-n03": {
-        "id": "2-n03",
-        "text": "她低着头，手指在毯子边缘来回捏。",
         "choices": [
           {
             "label": "不是你的错",
-            "nextNodeId": "2-n04a",
+            "nextNodeId": "2-01",
             "effects": [
               {
                 "kind": "attributeExp",
@@ -84,7 +89,7 @@
           },
           {
             "label": "我很开心，没问题的",
-            "nextNodeId": "2-n04b",
+            "nextNodeId": "3-01",
             "effects": [
               {
                 "kind": "sharedStat",
@@ -95,7 +100,7 @@
           },
           {
             "label": "其实我有休息",
-            "nextNodeId": "2-n04c",
+            "nextNodeId": "4-01",
             "effects": [
               {
                 "kind": "attributeExp",
@@ -106,123 +111,145 @@
           }
         ]
       },
-      "2-n04a": {
-        "id": "2-n04a",
-        "text": "你说很抱歉让她这么想。她抬起头。",
-        "nextNodeId": "2-n05"
+      "2-01": {
+        "id": "2-01",
+        "text": "让你这么想，抱歉。",
+        "nextNodeId": "2-02"
       },
-      "2-n04b": {
-        "id": "2-n04b",
+      "2-02": {
+        "id": "2-02",
         "speakerId": "meguru",
-        "text": "开心是开心……可是那样也不行啊！",
-        "nextNodeId": "2-n05"
+        "text": "制作人……",
+        "nextNodeId": "2-03"
       },
-      "2-n04c": {
-        "id": "2-n04c",
-        "speakerId": "meguru",
-        "text": "骗人。桌上都是文件。",
-        "nextNodeId": "2-n05"
+      "2-03": {
+        "id": "2-03",
+        "text": "巡每天也都坚持完成严格的课程吧。",
+        "nextNodeId": "2-04"
       },
-      "2-n05": {
-        "id": "2-n05",
-        "text": "你说，巡每天都能坚持完成那么严格的课程吧。站在舞台上发光是她的工作，在背后支持她是你的工作。",
-        "nextNodeId": "2-n06"
+      "2-04": {
+        "id": "2-04",
+        "text": "在舞台上发光是巡的工作，在背后支撑你是我的工作。",
+        "nextNodeId": "2-05"
       },
-      "2-n06": {
-        "id": "2-n06",
+      "2-05": {
+        "id": "2-05",
         "speakerId": "meguru",
         "text": "嗯……",
-        "nextNodeId": "2-n07"
+        "nextNodeId": "2-06"
       },
-      "2-n07": {
-        "id": "2-n07",
-        "text": "你说不过会尽量不让她担心。她用力点头。",
-        "nextNodeId": "2-n08"
+      "2-06": {
+        "id": "2-06",
+        "text": "不过，我会尽量不让你担心。",
+        "nextNodeId": "2-07"
       },
-      "2-n08": {
-        "id": "2-n08",
+      "2-07": {
+        "id": "2-07",
         "speakerId": "meguru",
-        "text": "嗯！要快点好好休息……不是因为我在担心，这是为了制作人的身体哦？",
-        "nextNodeId": "3-n01"
+        "text": "嗯！要快点好好休息……不是为了我担心，是为了制作人的身体哦？",
+        "nextNodeId": "2-08"
       },
-      "3-n01": {
-        "id": "3-n01",
+      "2-08": {
+        "id": "2-08",
+        "text": "嗯。不过巡也没资格说别人吧。",
+        "nextNodeId": "2-09"
+      },
+      "2-09": {
+        "id": "2-09",
+        "text": "以后我会给你接更多更多工作的！",
+        "nextNodeId": "2-10"
+      },
+      "2-10": {
+        "id": "2-10",
         "speakerId": "meguru",
-        "text": "差不多要工作了吧？我去给你泡热咖啡。",
-        "nextNodeId": "3-n02"
+        "text": "没关系！我的忙碌就是快乐的意思嘛！",
+        "nextNodeId": "2-11"
       },
-      "3-n02": {
-        "id": "3-n02",
+      "2-11": {
+        "id": "2-11",
         "speakerId": "meguru",
-        "text": "啊，砂糖和牛奶要加多少……？",
-        "nextNodeId": "3-n03"
+        "text": "放马过来——！"
       },
-      "3-n03": {
-        "id": "3-n03",
-        "text": "你说不用加，直接喝就好。",
-        "nextNodeId": "3-n04"
+      "3-01": {
+        "id": "3-01",
+        "text": "你能这么想我很高兴，不过这样也不行啊。",
+        "nextNodeId": "3-02"
       },
-      "3-n04": {
-        "id": "3-n04",
+      "3-02": {
+        "id": "3-02",
         "speakerId": "meguru",
-        "text": "诶！是这样吗！？可是你明明一直在工作……",
-        "nextNodeId": "3-n05"
+        "text": "开心是开心……可是那样也不行啊！",
+        "nextNodeId": "3-03"
       },
-      "3-n05": {
-        "id": "3-n05",
+      "3-03": {
+        "id": "3-03",
+        "text": "巡每天也都坚持完成严格的课程吧。在舞台上发光是巡的工作，在背后支撑你是我的工作。",
+        "nextNodeId": "3-04"
+      },
+      "3-04": {
+        "id": "3-04",
         "speakerId": "meguru",
-        "text": "啊！嗯，嗯嗯，偶尔也需要休息呢……我会对叶月保密的……",
-        "nextNodeId": "3-n06"
+        "text": "嗯……",
+        "nextNodeId": "3-05"
       },
-      "3-n06": {
-        "id": "3-n06",
-        "text": "你说她是不是搞错了什么。你说的是会在其他天休息。",
-        "nextNodeId": "3-n07"
+      "3-05": {
+        "id": "3-05",
+        "text": "我会尽量不让你担心。",
+        "nextNodeId": "3-06"
       },
-      "3-n07": {
-        "id": "3-n07",
+      "3-06": {
+        "id": "3-06",
         "speakerId": "meguru",
-        "text": "咦？这样吗？呜……我还以为你偶尔偷个懒……",
-        "nextNodeId": "3-n08"
+        "text": "嗯！要快点好好休息……不是为了我担心，是为了制作人的身体哦？",
+        "nextNodeId": "3-07"
       },
-      "3-n08": {
-        "id": "3-n08",
+      "3-07": {
+        "id": "3-07",
         "speakerId": "meguru",
-        "text": "对不起！制作人！",
-        "nextNodeId": "3-n09"
+        "text": "那我也要变得让你不用担心的样子！"
       },
-      "3-n09": {
-        "id": "3-n09",
-        "text": "她慌忙去准备，走到门口又回头。",
-        "nextNodeId": "3-n10"
-      },
-      "3-n10": {
-        "id": "3-n10",
+      "4-01": {
+        "id": "4-01",
         "speakerId": "meguru",
-        "text": "……今天你可以午睡的。",
-        "nextNodeId": "3-n11"
+        "text": "骗人。桌上都是文件。",
+        "nextNodeId": "4-02"
       },
-      "3-n11": {
-        "id": "3-n11",
-        "speakerId": "meguru",
-        "text": "因为我是在离你最近的地方看你努力的！",
-        "nextNodeId": "3-n12"
+      "4-02": {
+        "id": "4-02",
+        "text": "……今天确实拖得晚了点。",
+        "nextNodeId": "4-03"
       },
-      "3-n12": {
-        "id": "3-n12",
+      "4-03": {
+        "id": "4-03",
+        "text": "巡每天也都坚持完成严格的课程吧。在舞台上发光是巡的工作，在背后支撑你是我的工作。",
+        "nextNodeId": "4-04"
+      },
+      "4-04": {
+        "id": "4-04",
         "speakerId": "meguru",
-        "text": "如果制作人累了的话，我可以陪你聊天，行程我也可以自己好好确认！"
+        "text": "嗯……",
+        "nextNodeId": "4-05"
+      },
+      "4-05": {
+        "id": "4-05",
+        "text": "我会尽量不让你担心。",
+        "nextNodeId": "4-06"
+      },
+      "4-06": {
+        "id": "4-06",
+        "speakerId": "meguru",
+        "text": "嗯！要快点好好休息……不是为了我担心，是为了制作人的身体哦？"
       }
     }
   },
   "annotations": [],
-  "createdAt": "2026-10-30T16:14:37.040Z",
-  "updatedAt": "2026-10-30T16:14:37.040Z",
+  "createdAt": "2026-10-30T16:57:39.830Z",
+  "updatedAt": "2026-10-30T16:57:39.830Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-30T16:14:37.040Z",
-      "note": "一章一段：合并且让选择贯穿整章"
+      "at": "2026-10-30T16:57:39.830Z",
+      "note": "按游戏剧本重写（分支按真实结构，内容精简）"
     }
   ]
 }

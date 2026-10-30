@@ -1,109 +1,125 @@
 {
-  "id": "draft.dialogue.meguru.swimsuit",
+  "id": "dialogue.meguru.swimsuit",
   "kind": "dialogue",
   "title": "泳装的颜色",
   "status": "review",
-  "version": 1,
-  "rootId": "draft.dialogue.meguru.swimsuit",
+  "version": 2,
+  "rootId": "dialogue.meguru.swimsuit",
   "payload": {
     "id": "dialogue.meguru.swimsuit",
     "idolId": "meguru",
-    "startNodeId": "1-n01",
+    "startNodeId": "1-01",
     "nodes": {
-      "1-n01": {
-        "id": "1-n01",
-        "text": "事务所的桌上摊着一本杂志。封面上写着「新人偶像特集」。",
-        "nextNodeId": "1-n02"
+      "1-01": {
+        "id": "1-01",
+        "text": "这是一本叫新人偶像特集的杂志。你先看看。",
+        "nextNodeId": "1-02"
       },
-      "1-n02": {
-        "id": "1-n02",
+      "1-02": {
+        "id": "1-02",
         "speakerId": "meguru",
-        "text": "新人偶像特集？",
-        "nextNodeId": "1-n03"
+        "text": "这个杂志！便利店经常有卖的那种！",
+        "nextNodeId": "1-03"
       },
-      "1-n03": {
-        "id": "1-n03",
+      "1-03": {
+        "id": "1-03",
         "speakerId": "meguru",
-        "text": "这个杂志！是便利店一直有的那个！",
-        "nextNodeId": "1-n04"
+        "text": "哇，不同的人感觉完全不一样！大家的衣服也都好可爱——！",
+        "nextNodeId": "1-04"
       },
-      "1-n04": {
-        "id": "1-n04",
-        "text": "对方希望她穿自己的衣服来。除此之外，还会拍一组泳装照。",
-        "nextNodeId": "1-n05"
+      "1-04": {
+        "id": "1-04",
+        "text": "这本杂志的方针，好像是重视偶像的个性。",
+        "nextNodeId": "1-05"
       },
-      "1-n05": {
-        "id": "1-n05",
+      "1-05": {
+        "id": "1-05",
         "speakerId": "meguru",
-        "text": "有学校穿的泳装……嗯——不过要拍照的话还是可爱的泳装更好吧！？",
-        "nextNodeId": "1-n06"
+        "text": "好厉害！！好期待啊……！",
+        "nextNodeId": "1-06"
       },
-      "1-n06": {
-        "id": "1-n06",
+      "1-06": {
+        "id": "1-06",
+        "text": "还有，服装那边说想用巡的私服。",
+        "nextNodeId": "1-07"
+      },
+      "1-07": {
+        "id": "1-07",
+        "text": "平时的衣服我觉得挺好，但也有泳装的镜头。你有吗？",
+        "nextNodeId": "1-08"
+      },
+      "1-08": {
+        "id": "1-08",
         "speakerId": "meguru",
-        "text": "有学校穿的泳装……嗯——不过要拍照的话还是可爱的泳装更好吧！？那就得去买泳装了，制作人！",
-        "nextNodeId": "1-n07"
+        "text": "学校用的那种有……嗯——不过要拍照的话，还是可爱的泳装比较好吧！？",
+        "nextNodeId": "1-09"
       },
-      "1-n07": {
-        "id": "1-n07",
+      "1-09": {
+        "id": "1-09",
         "speakerId": "meguru",
-        "text": "好耶——！谢谢你，制作人！要选什么泳装好呢，诶嘿嘿！",
-        "nextNodeId": "2-n01"
+        "text": "那得去买泳装才行，制作人！",
+        "nextNodeId": "1-10"
       },
-      "2-n01": {
-        "id": "2-n01",
-        "text": "店里整整一面墙都是泳装。她从这头走到那头，又走回来。",
-        "nextNodeId": "2-n02"
+      "1-10": {
+        "id": "1-10",
+        "text": "好，那就出去一趟吧。课程之后的安排我来定。",
+        "nextNodeId": "1-11"
       },
-      "2-n02": {
-        "id": "2-n02",
+      "1-11": {
+        "id": "1-11",
         "speakerId": "meguru",
-        "text": "哇——……！每一件都很可爱啊——……！",
-        "nextNodeId": "2-n03"
+        "text": "好耶——！谢谢你，制作人！要挑什么样的呢，诶嘿嘿！",
+        "nextNodeId": "1-12"
       },
-      "2-n03": {
-        "id": "2-n03",
+      "1-12": {
+        "id": "1-12",
         "speakerId": "meguru",
-        "text": "有花图案和蝴蝶结……制作人觉得哪种比较好？",
-        "nextNodeId": "2-n04"
+        "text": "制作人，来这边来这边！好多种泳装——",
+        "nextNodeId": "1-13"
       },
-      "2-n04": {
-        "id": "2-n04",
-        "text": "你说，不是要选巡喜欢的款式吗。她愣了一下，然后笑起来。",
-        "nextNodeId": "2-n05"
-      },
-      "2-n05": {
-        "id": "2-n05",
+      "1-13": {
+        "id": "1-13",
         "speakerId": "meguru",
-        "text": "我和朋友买东西的时候，一边聊天一边逛街超开心的。",
-        "nextNodeId": "2-n06"
+        "text": "哇——……！每一件都可爱啊——……！",
+        "nextNodeId": "1-14"
       },
-      "2-n06": {
-        "id": "2-n06",
+      "1-14": {
+        "id": "1-14",
         "speakerId": "meguru",
-        "text": "之前也有过聊到入迷结果什么都没买就结束了行程的情况！诶嘿嘿。",
-        "nextNodeId": "2-n07"
+        "text": "有花图案的、还有蝴蝶结……制作人觉得哪种好？",
+        "nextNodeId": "1-15"
       },
-      "2-n07": {
-        "id": "2-n07",
-        "speakerId": "meguru",
-        "text": "……不过能上杂志的只有一件吧……嗯——……好难选——！",
-        "nextNodeId": "2-n08"
+      "1-15": {
+        "id": "1-15",
+        "text": "不是该选巡自己喜欢的吗？",
+        "nextNodeId": "1-16"
       },
-      "2-n08": {
-        "id": "2-n08",
+      "1-16": {
+        "id": "1-16",
         "speakerId": "meguru",
-        "text": "我要怎么办啊，制作人……！",
-        "nextNodeId": "3-n01"
+        "text": "和朋友逛街的时候，一边聊天一边看，超开心的。",
+        "nextNodeId": "1-17"
       },
-      "3-n01": {
-        "id": "3-n01",
+      "1-17": {
+        "id": "1-17",
         "speakerId": "meguru",
-        "text": "我要怎么办啊，制作人……！",
+        "text": "也有过聊得太投入，什么都没买就回家了！诶嘿嘿。",
+        "nextNodeId": "1-18"
+      },
+      "1-18": {
+        "id": "1-18",
+        "speakerId": "meguru",
+        "text": "……不过能上杂志的只有一件吧……嗯——好难选——！",
+        "nextNodeId": "1-19"
+      },
+      "1-19": {
+        "id": "1-19",
+        "speakerId": "meguru",
+        "text": "怎么办啊，制作人……！",
         "choices": [
           {
-            "label": "看起来精神的会不会更适合你",
-            "nextNodeId": "3-a1",
+            "label": "有精神的会不会更适合你",
+            "nextNodeId": "2-01",
             "effects": [
               {
                 "kind": "attributeExp",
@@ -114,7 +130,7 @@
           },
           {
             "label": "试试搭配吧",
-            "nextNodeId": "3-b1",
+            "nextNodeId": "3-01",
             "effects": [
               {
                 "kind": "attributeExp",
@@ -125,7 +141,7 @@
           },
           {
             "label": "交给运气来吧",
-            "nextNodeId": "3-c1",
+            "nextNodeId": "4-01",
             "effects": [
               {
                 "kind": "sharedStat",
@@ -136,168 +152,134 @@
           }
         ]
       },
-      "3-n05": {
-        "id": "3-n05",
-        "text": "那就挑一些好看的，然后从里面选择适合自己的尺寸吧。",
-        "nextNodeId": "3-n05b"
+      "2-01": {
+        "id": "2-01",
+        "text": "有精神的会不会更适合你？",
+        "nextNodeId": "2-02"
       },
-      "3-n06": {
-        "id": "3-n06",
+      "2-02": {
+        "id": "2-02",
         "speakerId": "meguru",
-        "text": "真是的——！能全部都穿到就好了——！",
-        "nextNodeId": "4-n01"
+        "text": "比如……这样的？",
+        "nextNodeId": "2-03"
       },
-      "4-n01": {
-        "id": "4-n01",
-        "text": "从店里出来，天已经开始暗了。她抱着纸袋走在旁边。",
-        "nextNodeId": "4-n02"
-      },
-      "4-n02": {
-        "id": "4-n02",
-        "speakerId": "meguru",
-        "text": "制作人，今天谢谢你。",
-        "nextNodeId": "4-n03"
-      },
-      "4-n03": {
-        "id": "4-n03",
-        "speakerId": "meguru",
-        "text": "……那个。下次，要是还有这种事的话……",
-        "nextNodeId": "4-n03b"
-      },
-      "4-n04a": {
-        "id": "4-n04a",
-        "speakerId": "meguru",
-        "text": "真的？诶嘿嘿，那就说好了！",
-        "nextNodeId": "4-n05"
-      },
-      "4-n05": {
-        "id": "4-n05",
-        "text": "她把纸袋抱得更紧了。路口的灯亮起来，映在她脸上。"
-      },
-      "3-a1": {
-        "id": "3-a1",
-        "text": "你指了几件，说感觉很有精神、和巡很搭。",
-        "nextNodeId": "3-a2"
-      },
-      "3-a2": {
-        "id": "3-a2",
+      "2-03": {
+        "id": "2-03",
         "speakerId": "meguru",
         "text": "哇！这个好！好可爱……！",
-        "nextNodeId": "3-a3"
+        "nextNodeId": "2-04"
       },
-      "3-a3": {
-        "id": "3-a3",
+      "2-04": {
+        "id": "2-04",
         "speakerId": "meguru",
-        "text": "那这件呢……！？……会不会有点成熟？",
-        "nextNodeId": "3-a4"
+        "text": "那这件呢……！？会不会有点成熟？",
+        "nextNodeId": "2-05"
       },
-      "3-a4": {
-        "id": "3-a4",
+      "2-05": {
+        "id": "2-05",
         "speakerId": "meguru",
-        "text": "不是，虽然我很想变得适合穿这种，但还是等再大点吧！",
-        "nextNodeId": "3-a5"
+        "text": "不是，虽然想变得适合穿这种，但还是等再大一点吧！",
+        "nextNodeId": "2-06"
       },
-      "3-a5": {
-        "id": "3-a5",
-        "text": "这样啊。也可能一下子就长大了啊？",
-        "nextNodeId": "3-a6"
-      },
-      "3-a6": {
-        "id": "3-a6",
+      "2-06": {
+        "id": "2-06",
         "speakerId": "meguru",
-        "text": "嗯！只要一下子哦？",
-        "nextNodeId": "3-n05"
+        "text": "嗯！只要一下子哦？"
       },
-      "3-b1": {
-        "id": "3-b1",
-        "text": "你说可以搭配发饰或者项链试试。",
-        "nextNodeId": "3-b2"
+      "3-01": {
+        "id": "3-01",
+        "text": "试试搭配吧。",
+        "nextNodeId": "3-02"
       },
-      "3-b2": {
-        "id": "3-b2",
+      "3-02": {
+        "id": "3-02",
         "speakerId": "meguru",
         "text": "诶？什么意思……啊！那样也可以啊！",
-        "nextNodeId": "3-b3"
+        "nextNodeId": "3-03"
       },
-      "3-b3": {
-        "id": "3-b3",
+      "3-03": {
+        "id": "3-03",
+        "text": "发饰啊项链之类的……",
+        "nextNodeId": "3-04"
+      },
+      "3-04": {
+        "id": "3-04",
         "speakerId": "meguru",
-        "text": "把我喜欢的都搭配起来，一定会很开心！",
-        "nextNodeId": "3-b4"
+        "text": "嗯！把喜欢的都配起来，一定会很开心！",
+        "nextNodeId": "3-05"
       },
-      "3-b4": {
-        "id": "3-b4",
+      "3-05": {
+        "id": "3-05",
         "speakerId": "meguru",
-        "text": "谢谢你制作人！好，搭配搭配！我看看……",
-        "nextNodeId": "3-b5"
+        "text": "谢谢你制作人！好，搭配搭配！我看看……"
       },
-      "3-b5": {
-        "id": "3-b5",
+      "4-01": {
+        "id": "4-01",
+        "text": "试试闭上眼睛随手抓一件，赌在偶然的相遇上如何？",
+        "nextNodeId": "4-02"
+      },
+      "4-02": {
+        "id": "4-02",
         "speakerId": "meguru",
-        "text": "哇——一兴奋起来又要头疼了！",
-        "nextNodeId": "3-n05"
+        "text": "啊哈哈，好像游戏！那——……好——……这件！",
+        "nextNodeId": "4-03"
       },
-      "3-c1": {
-        "id": "3-c1",
-        "text": "你说不如闭上眼睛抓一件，赌在这种偶然的相遇上。",
-        "nextNodeId": "3-c2"
-      },
-      "3-c2": {
-        "id": "3-c2",
+      "4-03": {
+        "id": "4-03",
         "speakerId": "meguru",
-        "text": "啊哈哈，好像游戏！……好——这件！",
-        "nextNodeId": "3-c3"
+        "text": "哇，好时尚……！可是奇怪……好像有点大。",
+        "nextNodeId": "4-04"
       },
-      "3-c3": {
-        "id": "3-c3",
-        "speakerId": "meguru",
-        "text": "哇，好时尚……！可是奇怪……好像有点大了。",
-        "nextNodeId": "3-c4"
-      },
-      "3-c4": {
-        "id": "3-c4",
+      "4-04": {
+        "id": "4-04",
         "speakerId": "meguru",
         "text": "嗯，好像没有适合我的尺寸。",
-        "nextNodeId": "3-c5"
+        "nextNodeId": "4-05"
       },
-      "3-c5": {
-        "id": "3-c5",
+      "4-05": {
+        "id": "4-05",
         "speakerId": "meguru",
-        "text": "……这么大的尺寸应该比较适合制作人了——",
-        "nextNodeId": "3-c6"
+        "text": "……这么大的尺寸，应该比较适合制作人了——",
+        "nextNodeId": "4-06"
       },
-      "3-c6": {
-        "id": "3-c6",
-        "text": "喂喂，别往我身上比。",
-        "nextNodeId": "3-c7"
+      "4-06": {
+        "id": "4-06",
+        "text": "喂，别往我身上比。",
+        "nextNodeId": "4-07"
       },
-      "3-c7": {
-        "id": "3-c7",
+      "4-07": {
+        "id": "4-07",
         "speakerId": "meguru",
         "text": "诶嘿嘿，开个玩笑！",
-        "nextNodeId": "3-n05"
+        "nextNodeId": "4-08"
       },
-      "3-n05b": {
-        "id": "3-n05b",
+      "4-08": {
+        "id": "4-08",
         "speakerId": "meguru",
-        "text": "对哦！太多了会困扰……那一点一点缩小范围确实会好点！",
-        "nextNodeId": "3-n06"
+        "text": "那就挑一些好看的，再从里面选合适的尺寸吧。",
+        "nextNodeId": "4-09"
       },
-      "4-n03b": {
-        "id": "4-n03b",
-        "text": "你说下次也一起去。",
-        "nextNodeId": "4-n04a"
+      "4-09": {
+        "id": "4-09",
+        "speakerId": "meguru",
+        "text": "对哦！太多会困扰……一点点缩小范围确实更好！",
+        "nextNodeId": "4-10"
+      },
+      "4-10": {
+        "id": "4-10",
+        "speakerId": "meguru",
+        "text": "真是的——！能全部都穿到就好了——！"
       }
     }
   },
   "annotations": [],
-  "createdAt": "2026-10-30T16:14:37.040Z",
-  "updatedAt": "2026-10-30T16:14:37.040Z",
+  "createdAt": "2026-10-30T16:57:39.830Z",
+  "updatedAt": "2026-10-30T16:57:39.830Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-30T16:14:37.040Z",
-      "note": "一章一段：合并且让选择贯穿整章"
+      "at": "2026-10-30T16:57:39.830Z",
+      "note": "按游戏剧本重写（分支按真实结构，内容精简）"
     }
   ]
 }

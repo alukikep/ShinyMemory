@@ -119,7 +119,10 @@ function parseScript(entries: Entry[]) {
       seen.add(cursor);
       const entry = entries[cursor]!;
       if (entry.nextLabel && stopAtLabels.has(entry.nextLabel)) break;
-      nodes.push(toNode(cursor, branch));
+      // 跳过没有正文的演出指令（wait/effect 之类），只留台词和选项
+      if (entry.select || (entry.text && entry.text.trim())) {
+        nodes.push(toNode(cursor, branch));
+      }
       if (entry.select) break;
       cursor = nextOf(cursor);
     }
@@ -149,7 +152,10 @@ function parseScript(entries: Entry[]) {
       }
       break;
     }
-    main.push(toNode(cursor));
+    const entry = entries[cursor]!;
+    if (entry.select || (entry.text && entry.text.trim())) {
+      main.push(toNode(cursor));
+    }
     cursor = nextOf(cursor);
   }
 

@@ -764,7 +764,14 @@ export function ReviewApp() {
   const chapterIndex = useMemo(() => {
     const map = new Map<
       string,
-      { chapterId: string; title: string; step: number; total: number; anchors: string[] }
+      {
+        chapterId: string;
+        title: string;
+        step: number;
+        total: number;
+        anchors: string[];
+        card?: { title: string; index: number; total: number };
+      }
     >();
     const chains = [...CONTENT_INDEX.storyChains.values(), ...PENDING_CHAPTERS];
     for (const chain of chains) {
@@ -776,6 +783,7 @@ export function ReviewApp() {
           step: index + 1,
           total: chain.steps.length,
           anchors: source?.anchors ?? [],
+          card: source?.card,
         });
       });
     }
@@ -1065,15 +1073,23 @@ export function ReviewApp() {
                 list.push(draft);
                 groups.set(info.chapterId, list);
               }
-              const orderedGroups = [...groups.entries()].map(([id, list]) => ({
+              const orderedGroups = [...groups.entries()]
+                .map(([id, list]) => ({
                 id,
                 title: chapterOf(list[0]!)?.title ?? id,
                 total: chapterOf(list[0]!)?.total ?? list.length,
-                drafts: [...list].sort(
+                card: chapterOf(list[0]!)?.card,
+                  drafts: [...list].sort(
+                    (a, b) =>
+                      (chapterOf(a)?.step ?? 0) - (chapterOf(b)?.step ?? 0),
+                  ),
+                }))
+                // 按"卡内第几节"排，让 1→5 顺着看
+                .sort(
                   (a, b) =>
-                    (chapterOf(a)?.step ?? 0) - (chapterOf(b)?.step ?? 0),
-                ),
-              }));
+                    (a.card?.index ?? 999) - (b.card?.index ?? 999) ||
+                    a.title.localeCompare(b.title, 'zh-CN'),
+                );
 
               const renderItem = (draft: ReviewDraft, stepLabel?: string) => (
                 <button
@@ -1113,6 +1129,9 @@ export function ReviewApp() {
                           <div>
                             <strong>{group.title}</strong>
                             <small>
+                              {group.card
+                                ? `${group.card.title} · 第 ${group.card.index}/${group.card.total} 节 · `
+                                : ''}
                               {group.drafts.length}/{group.total} 段待审
                             </small>
                           </div>

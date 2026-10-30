@@ -13,6 +13,7 @@ import type { ChapterSource } from '../chapterAnchors';
 export const CHAPTER_SOURCES: ChapterSource[] = [
   {
     chapterId: 'meguru-swimsuit',
+    card: { title: '夏に恋するピチカート！', index: 1, total: 5 },
     source:
       'data/story/八宮めぐる/【夏に恋するピチカート！】八宮めぐる/カラフルサマー.csv',
     anchors: [
@@ -23,6 +24,7 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
   },
   {
     chapterId: 'meguru-sunshine',
+    card: { title: '夏に恋するピチカート！', index: 2, total: 5 },
     source:
       'data/story/八宮めぐる/【夏に恋するピチカート！】八宮めぐる/太陽のしずく.csv',
     anchors: [
@@ -33,6 +35,7 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
   },
   {
     chapterId: 'meguru-purity',
+    card: { title: '夏に恋するピチカート！', index: 3, total: 5 },
     source:
       'data/story/八宮めぐる/【夏に恋するピチカート！】八宮めぐる/それはまだ純白な.csv',
     anchors: [
@@ -43,6 +46,7 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
   },
   {
     chapterId: 'meguru-coffee',
+    card: { title: '夏に恋するピチカート！', index: 4, total: 5 },
     source:
       'data/story/八宮めぐる/【夏に恋するピチカート！】八宮めぐる/淹れたてコーヒー.csv',
     anchors: [
@@ -53,6 +57,7 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
   },
   {
     chapterId: 'meguru-stars',
+    card: { title: '夏に恋するピチカート！', index: 5, total: 5 },
     source:
       'data/story/八宮めぐる/【夏に恋するピチカート！】八宮めぐる/なんでもない日の星空.csv',
     anchors: [

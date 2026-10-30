@@ -354,6 +354,10 @@ npm run content:card -- "data/story/八宮めぐる/【夏に恋するピチカ�
 | **段 / 场** | **一个 csv = 一章** | **368 段** |
 | 步 | 一章里的剧情步骤 | 2–4 步 |
 
+**卡内节号**：`chapterSources` 每条要写 `card: { title, index, total }`。
+`content:anchors` 会用 commu id 的第 7–8 位**重新算一遍**再比对——填错会报红。
+审查台靠它显示「夏に恋するピチカート！ · 第 1/5 节」，并按节号排序。
+
 **交付顺序**：对话先送审 → 通过 → 再把章节链加进 `STORY_CHAINS`。
 反过来（先接链）会让 `BASE_PACK` 引用不存在的对话，每个草稿预检都报 `dialogue-ref`。
 

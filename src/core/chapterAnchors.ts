@@ -14,6 +14,11 @@ export type ChapterSource = {
   chapterId: string;
   /** 语料文件路径，相对 SCTranslationData（如 data/story/.../xxx.csv）。 */
   source: string;
+  /**
+   * 这张卡里的第几节。index/total 由 content:anchors 按 commu 序号核对，
+   * 手填错会直接报红——顺序靠猜会出事（见 playbook §4.9）。
+   */
+  card?: { title: string; index: number; total: number };
   /** 必须逐字保留的原文台词，至少 3 句。 */
   anchors: string[];
 };
@@ -23,7 +28,12 @@ export type AnchorProblem = {
   message: string;
 };
 
+/** 按 commu id 的第 7–8 位排序后，某一段在卡里的位置。 */
+export type CardOrder = { index: number; total: number };
+
 export type AnchorValidatorOptions = {
+  /** 给一个章节源文件，返回它在卡里的顺序（拿不到就不校验）。 */
+  readCardOrder?: (source: string) => CardOrder | undefined;
   /** 读语料文件；不存在时返回 undefined。 */
   readSource: (source: string) => string | undefined;
   /** 判断一段文字是否出现在游戏内容里（对话正文）。调用方自行归一化。 */
@@ -53,6 +63,16 @@ export function validateChapterAnchors(
         chapterId: chapter.chapterId,
         message: `锚点不足 ${MIN_ANCHORS} 句（现在 ${chapter.anchors.length} 句）`,
       });
+    }
+
+    if (chapter.card && options.readCardOrder) {
+      const order = options.readCardOrder(chapter.source);
+      if (order && (order.index !== chapter.card.index || order.total !== chapter.card.total)) {
+        problems.push({
+          chapterId: chapter.chapterId,
+          message: `卡内序号与语料不一致：写的是第 ${chapter.card.index}/${chapter.card.total} 节，实际是第 ${order.index}/${order.total} 节`,
+        });
+      }
     }
 
     const source = options.readSource(chapter.source);

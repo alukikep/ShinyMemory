@@ -68,6 +68,32 @@ const allContentText = `${gameText}\n${pendingDialogueText}`;
 
 const cache = new Map<string, string | undefined>();
 
+/** 用 commu id 的第 7–8 位还原"这是卡里第几节"。 */
+function readCardOrder(relative: string): { index: number; total: number } | undefined {
+  if (!corpusAvailable) return undefined;
+  const full = path.join(corpusRoot, relative.split('/').join(path.sep));
+  const folder = path.dirname(full);
+  if (!existsSync(folder)) return undefined;
+  const file = path.basename(full);
+
+  const seqOf = (name: string): number | undefined => {
+    const text = readFileSync(path.join(folder, name), 'utf8');
+    const ids = [...text.matchAll(/(\\d{13})/g)]
+      .map((entry) => entry[1] ?? '')
+      .filter((id) => id !== '0000000000000');
+    if (ids.length === 0) return undefined;
+    return Number(ids[0]!.slice(7, 9));
+  };
+
+  const names = readdirSync(folder).filter((name) => name.endsWith('.csv'));
+  const seqs = names.map((name) => ({ name, seq: seqOf(name) }));
+  const valid = seqs.filter((entry): entry is { name: string; seq: number } => entry.seq !== undefined);
+  valid.sort((a, b) => a.seq - b.seq);
+  const index = valid.findIndex((entry) => entry.name === file) + 1;
+  if (index === 0) return undefined;
+  return { index, total: valid.length };
+}
+
 function readSource(relative: string): string | undefined {
   if (!corpusAvailable) return undefined;
   if (cache.has(relative)) return cache.get(relative);
@@ -112,6 +138,7 @@ const problems = [
   // 锚点对「全部登记章节」都校验：待审草稿也算内容，没理由跳过。
   ...validateChapterAnchors(CHAPTER_SOURCES, {
     readSource,
+    readCardOrder,
     hasInGame: (text, normalize) =>
       normalize(allContentText).includes(normalize(text)),
   }),

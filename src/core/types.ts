@@ -93,6 +93,8 @@ export type StoryChainState = {
   chainId: string;
   stepIndex: number;
   nextEligibleDay?: number;
+  /** 上一步完成的日期。剧情日由它推算（旧档没有这个字段也能跑）。 */
+  lastStepDay?: number;
   completed?: boolean;
 };
 
@@ -150,6 +152,10 @@ export type StoryChainDef = {
   priority?: number;
   /** 手册条目标题；缺省回退到「偶像名 · 首步标签」。 */
   title?: string;
+  /** 剧情日多久出现一次。默认 1（每天）。 */
+  cadenceDays?: number;
+  /** 章进行期间该偶像能不能接工作。默认 'open'。 */
+  workPolicy?: 'open' | 'blocked';
   /** 链尚未启动时，满足它就允许出现在手册里。 */
   revealWhen?: Condition[];
   steps: StoryChainStep[];

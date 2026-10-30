@@ -1132,6 +1132,7 @@ function finishDialogue(state: GameState): GameState {
       ...chainState,
       stepIndex,
       nextEligibleDay: day + (step?.complete?.nextStepDelayDays ?? 0),
+      lastStepDay: day,
     };
   }
 
@@ -1339,6 +1340,39 @@ function storyBlockText(
     default:
       return '可以触发';
   }
+}
+
+
+/**
+ * 这条链的"剧情日"——下一次该演它的那一天。
+ *
+ * 规则（与 cadenceDays 有关）：
+ *   - 未开始（没有 storyChains 记录）或已完成 → undefined，不占用任何东西
+ *   - 第一次候选 = 上一步完成日 + max(nextStepDelayDays, cadenceDays)
+ *   - 已经过了候选日 → 按 cadenceDays 往后顺延，**不是明天**
+ *
+ * 纯函数：不写状态，所以"提前订了未来的工作"不会把剧情日挤走。
+ */
+export function storyDayFor(
+  state: GameState,
+  chain: StoryChainDef,
+): number | undefined {
+  const chainState = state.storyChains[chain.id];
+  if (!chainState || chainState.completed) return undefined;
+
+  const cadence = Math.max(1, chain.cadenceDays ?? 1);
+  const step = chain.steps[chainState.stepIndex];
+  if (!step) return undefined;
+
+  const anchor = chainState.lastStepDay ?? getDay(state.clock.absoluteMinutes);
+  const delay = Math.max(chainState.nextEligibleDay ? chainState.nextEligibleDay - anchor : 0, 0);
+  let day = anchor + Math.max(delay, cadence);
+
+  const today = getDay(state.clock.absoluteMinutes);
+  if (today > day) {
+    day += cadence * Math.ceil((today - day) / cadence);
+  }
+  return day;
 }
 
 /**

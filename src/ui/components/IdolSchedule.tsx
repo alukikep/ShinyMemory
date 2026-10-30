@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { getScheduleWindow } from '../../core/schedule';
+import { storyScheduleSlots } from '../../core/scene';
 import { getActor } from '../../core/sim';
 import { formatClock, getDay } from '../../core/time';
 import type { GameState } from '../../core/types';
@@ -51,6 +52,10 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
         getDay(state.clock.absoluteMinutes),
         7,
         actorState?.scheduleOverrides,
+        (day) =>
+          storyScheduleSlots(state, actor.id).filter(
+            (slot) => (slot as { day?: number }).day === day,
+          ),
       )
     : [];
 

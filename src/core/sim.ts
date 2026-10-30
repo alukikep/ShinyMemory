@@ -1375,6 +1375,43 @@ export function storyDayFor(
   return day;
 }
 
+
+/**
+ * 这个偶像在 day 这天能不能被派去工作。
+ *
+ * 两种占用：
+ *   - workPolicy 'blocked'：整章进行期间都不能接
+ *   - 其他：只挡剧情日那一天
+ */
+export function storyWorkBlock(
+  state: GameState,
+  idolId: string,
+  day?: number,
+): { blocked: boolean; reason?: string } {
+  return storyWorkBlockFor(CONTENT_INDEX.storyChains.values(), state, idolId, day);
+}
+
+/** 纯函数版本，便于测试注入自己的链。 */
+export function storyWorkBlockFor(
+  chains: Iterable<StoryChainDef>,
+  state: GameState,
+  idolId: string,
+  day?: number,
+): { blocked: boolean; reason?: string } {
+  for (const chain of chains) {
+    if (chain.idolId !== idolId) continue;
+    const chainState = state.storyChains[chain.id];
+    if (!chainState || chainState.completed) continue;
+    if (chain.workPolicy === 'blocked') {
+      return { blocked: true, reason: '剧情进行中，暂不接新工作' };
+    }
+    if (day !== undefined && storyDayFor(state, chain) === day) {
+      return { blocked: true, reason: '那天有剧情' };
+    }
+  }
+  return { blocked: false };
+}
+
 /**
  * 每条剧情链当前卡在哪。给调试面板用——链条的失败模式是静默的，
  * 没有这个就只能靠读代码猜。

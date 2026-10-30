@@ -10,6 +10,7 @@ import {
   getMinuteOfDay,
 } from './time';
 import { canReplaceDay } from './schedule';
+import type { ResolvedSchedule } from './schedule';
 import { attributeLabel, STAT_ABBR } from './labels';
 import { describeCondition } from './conditionText';
 import {
@@ -33,6 +34,8 @@ import {
   isActorPresent,
   isIdolRecruited,
   presentActors,
+  storyDayFor,
+  storyWorkBlock,
   topicAvailability,
   workRewardSummary,
   workRiskSummary,
@@ -230,14 +233,48 @@ function jobOfferFor(
     return undefined;
   }
 
+  // 剧情占用：整个章封锁（workPolicy 'blocked'）或只挡剧情日那一天。
+  if (storyWorkBlock(state, idolId).blocked) return undefined;
+
   const overrides = state.actors[actor.id]?.scheduleOverrides;
   const startDay = getDay(state.clock.absoluteMinutes) + 1;
   for (let offset = 0; offset < 7; offset += 1) {
     const day = startDay + offset;
     if (!canReplaceDay(actor, day, overrides).ok) continue;
+    if (storyWorkBlock(state, idolId, day).blocked) continue;
     return { day, chance: jobCheckChance(state, job, idolId) };
   }
   return undefined;
+}
+
+/**
+ * 该偶像的派生日程：剧情日显示成一条「剧情」时段。
+ * 不写进存档——链结束时它自动消失。
+ */
+export function storyScheduleSlots(
+  state: GameState,
+  actorId: string,
+): ResolvedSchedule[] {
+  const slots: ResolvedSchedule[] = [];
+  for (const chain of CONTENT_INDEX.storyChains.values()) {
+    if (chain.idolId !== actorId) continue;
+    const day = storyDayFor(state, chain);
+    if (day === undefined) continue;
+    const step = chain.steps[state.storyChains[chain.id]?.stepIndex ?? 0];
+    if (!step) continue;
+    slots.push({
+      day,
+      fromMinute: step.timeWindow?.fromMinute ?? 0,
+      toMinute: step.timeWindow?.toMinute ?? 24 * 60,
+      locationId: step.locationId,
+      label: `剧情：${chain.title ?? step.actionLabel}`,
+      source: 'story',
+      mode: 'replace-day',
+      visibility: 'public',
+      protected: true,
+    } as ResolvedSchedule & { day: number });
+  }
+  return slots;
 }
 
 /**

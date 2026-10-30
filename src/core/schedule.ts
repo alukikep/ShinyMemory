@@ -14,7 +14,8 @@ import type {
 import type { CalendarDate } from './time';
 
 export type ResolvedSchedule = ActorSchedule & {
-  source: 'weekly' | 'override';
+  /** story = 派生的剧情日，不写进存档。 */
+  source: 'weekly' | 'override' | 'story';
   dynamic?: boolean;
   mode?: 'add' | 'replace-day';
 };
@@ -110,10 +111,14 @@ export function getSchedulesForDay(
   actor: ActorDef,
   day: number,
   stateOverrides: ActorScheduleOverride[] = [],
+  /** 派生日程（例如剧情日）。不写进存档，只影响显示与判定。 */
+  extraSlots: ResolvedSchedule[] = [],
 ): ResolvedSchedule[] {
   const weekday = getWeekdayFromDay(day);
   const overrides = overridesForDay(actor, day, stateOverrides);
-  const replaceDay = overrides.some((entry) => entry.mode === 'replace-day');
+  const replaceDay =
+    overrides.some((entry) => entry.mode === 'replace-day') ||
+    extraSlots.some((entry) => entry.mode === 'replace-day');
 
   const weekly = replaceDay
     ? []
@@ -121,7 +126,8 @@ export function getSchedulesForDay(
         .filter((entry) => matchesWeekday(entry, weekday))
         .map((entry) => toResolved(entry, 'weekly'));
 
-  return sortSlots([...overrides, ...weekly]);
+  const extras = extraSlots;
+  return sortSlots([...extras, ...overrides, ...weekly]);
 }
 
 export function getScheduleSlot(
@@ -140,22 +146,25 @@ export function getScheduleWindow(
   startDay: number,
   count = 7,
   stateOverrides: ActorScheduleOverride[] = [],
+  extraSlotsByDay: (day: number) => ResolvedSchedule[] = () => [],
 ): ScheduleDayView[] {
   return Array.from({ length: count }, (_, index) => {
     const day = startDay + index;
     const weekday = getWeekdayFromDay(day);
+    const extraSlots = extraSlotsByDay(day);
     return {
       day,
       date: getCalendarDateFromDay(day),
       weekday,
       weekdayLabel: WEEKDAY_LABELS[weekday] ?? '',
       slots: sortChronological(
-        getSchedulesForDay(actor, day, stateOverrides),
+        getSchedulesForDay(actor, day, stateOverrides, extraSlots),
       ),
       isToday: index === 0,
       hasOverride:
         (actor.overrides ?? []).some((entry) => entry.day === day) ||
-        stateOverrides.some((entry) => entry.day === day),
+        stateOverrides.some((entry) => entry.day === day) ||
+        extraSlots.length > 0,
     };
   });
 }

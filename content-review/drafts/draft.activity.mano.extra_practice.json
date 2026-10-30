@@ -1,0 +1,69 @@
+{
+  "id": "draft.activity.mano.extra_practice",
+  "kind": "activity",
+  "title": "陪她加练",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.mano.extra_practice",
+  "payload": {
+    "id": "activity.mano.extra_practice",
+    "name": "陪她加练",
+    "description": "她说最后那两拍还不对，问你能不能再看一遍。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "mano"
+    ],
+    "locations": [
+      "practice_room"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 480,
+        "toMinute": 810
+      }
+    ],
+    "cost": {
+      "stamina": 8
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "trust"
+        },
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "expression"
+        },
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 3
+      }
+    ],
+    "resultTexts": [
+      "她数着拍子走了第七遍，终于停下来，说这次好像对了。",
+      "你站在镜子侧边看她的脚。她说被看着会更紧张，但还是继续了。",
+      "跳到一半她突然笑出来，说刚才那个动作自己都觉得奇怪。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T11:55:19.505Z",
+  "updatedAt": "2026-10-30T11:55:19.505Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T11:55:19.505Z",
+      "note": "B3：真乃专属行动·练习室加练"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "draft.activity.mano.pigeons",
+  "kind": "activity",
+  "title": "一起喂鸽子",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.mano.pigeons",
+  "payload": {
+    "id": "activity.mano.pigeons",
+    "name": "一起喂鸽子",
+    "description": "傍晚的公园，她蹲在长椅边上，手心里还剩一点面包屑。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "mano"
+    ],
+    "locations": [
+      "park"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 1080,
+        "toMinute": 1170
+      }
+    ],
+    "cost": {
+      "stamina": 5
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "trust"
+        },
+        "tier": 5
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -6
+      }
+    ],
+    "resultTexts": [
+      "她把手摊平不动，等了很久，才有一只鸽子跳上来。",
+      "「它们认得我吗。」她小声问，没等你回答就自己点了头。",
+      "面包屑用完以后她还在原地蹲着，看鸽子散开。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T11:55:19.505Z",
+  "updatedAt": "2026-10-30T11:55:19.505Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T11:55:19.505Z",
+      "note": "B3：真乃专属行动·公园喂鸽子（周日晚）"
+    }
+  ]
+}

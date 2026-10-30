@@ -25,6 +25,15 @@ const actor: ActorDef = {
       protected: false,
     },
     {
+      // 收工后回事务所吃晚饭：专属行动的挂载点。
+      fromMinute: 20 * 60,
+      toMinute: 22 * 60,
+      locationId: 'office',
+      weekdays: [1, 2, 3, 4, 5],
+      label: '晚饭',
+      protected: false,
+    },
+    {
       fromMinute: 10 * 60,
       toMinute: 14 * 60,
       locationId: 'practice_room',

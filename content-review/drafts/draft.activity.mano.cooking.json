@@ -1,0 +1,66 @@
+{
+  "id": "draft.activity.mano.cooking",
+  "kind": "activity",
+  "title": "看她做饭",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.mano.cooking",
+  "payload": {
+    "id": "activity.mano.cooking",
+    "name": "看她做饭",
+    "description": "事务所的小厨房，她把袖子卷到手肘，问你吃不吃得下。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "mano"
+    ],
+    "locations": [
+      "office"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 1200,
+        "toMinute": 1290
+      }
+    ],
+    "cost": {
+      "stamina": 3
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "trust"
+        },
+        "tier": 5
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -8
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stamina",
+        "delta": 6
+      }
+    ],
+    "resultTexts": [
+      "「可能有点咸。」她先把碗推过来，自己才动筷子。",
+      "锅里的水开得太急，她手忙脚乱地关火，回头跟你道歉。",
+      "吃完她把碗收走，说下次会做得更好一点。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T11:55:19.505Z",
+  "updatedAt": "2026-10-30T11:55:19.505Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T11:55:19.505Z",
+      "note": "B3：真乃专属行动·看她做饭（工作日晚）"
+    }
+  ]
+}

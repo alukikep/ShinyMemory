@@ -655,6 +655,9 @@ export function acceptJob(
   const actor = getActor(state.selectedIdolId);
   const actorState = state.actors[state.selectedIdolId];
   if (!job || !actor || !actorState) return state;
+  // 没招募的偶像不能接工作——工作是她去做的。
+  if (!isIdolRecruited(state, actor.id)) return state;
+  if (actor.role !== 'idol') return state;
   if (
     state.jobs.some(
       (entry) => entry.jobId === job.id && entry.idolId === actor.id,
@@ -737,6 +740,8 @@ export function attendJob(state: GameState, jobId: string): GameState {
   if (!assignment) return state;
   if (assignment.idolId !== state.selectedIdolId) return state;
   if (assignment.locationId !== state.locationId) return state;
+  // 工作是她去做的：她还没出道就不能替她完成。
+  if (!isIdolRecruited(state, assignment.idolId)) return state;
 
   const minute = getMinuteOfDay(state.clock.absoluteMinutes);
   if (
@@ -757,7 +762,6 @@ export function attendJob(state: GameState, jobId: string): GameState {
   const rng = new Rng(next.rng.seed, next.rng.counter);
   const chance = jobCheckChance(next, job);
   const passed = chance === undefined ? true : rng.chance(chance);
-  next.rng.counter = rng.counter;
 
   const ratio = passed ? 1 : Math.min(1, Math.max(0, job.failurePayRatio ?? 0.5));
   const pay = Math.round(job.pay * ratio);
@@ -765,6 +769,12 @@ export function attendJob(state: GameState, jobId: string): GameState {
   applyEffects(next, (passed ? job.effects : job.failureEffects) ?? [], {
     idolId: assignment.idolId,
   });
+
+  // 和行动一致：走结果页，而不是把一句日志直接塞回安排页。
+  const texts = passed ? job.resultTexts : job.failureTexts;
+  const flavour = texts?.length ? rng.pick(texts) : '';
+  next.rng.counter = rng.counter;
+
   next.clock.absoluteMinutes = Math.max(
     next.clock.absoluteMinutes,
     (assignment.day - 1) * MINUTES_PER_DAY + assignment.toMinute,
@@ -772,17 +782,20 @@ export function attendJob(state: GameState, jobId: string): GameState {
   next.jobs = next.jobs.filter((entry) => entry.id !== jobId);
 
   const idolName = CONTENT_INDEX.idols.get(assignment.idolId)?.name ?? '';
-  if (chance === undefined) {
-    addLog(next, `你参与了《${job.name}》，拿到 ¥${pay}。`, 'good');
-  } else if (passed) {
-    addLog(next, `《${job.name}》顺利完成，拿到 ¥${pay}。`, 'good');
-  } else {
-    addLog(
-      next,
-      `《${job.name}》没有达到要求，只结算了 ¥${pay}。${idolName}在回程的路上没有说话。`,
-      'bad',
-    );
-  }
+  const head = chance === undefined || passed
+    ? `《${job.name}》结束`
+    : `《${job.name}》没有达到要求`;
+  next.lastResult = `${flavour || job.description} 收入 ¥${pay}。`;
+  next.pendingResults = undefined;
+  next.pendingActivityId = undefined;
+  next.pendingActivityPassed = undefined;
+  next.phase = 'activityResult';
+
+  addLog(
+    next,
+    `${head}，收入 ¥${pay}。${passed ? '' : `${idolName}在回程的路上没有说话。`}`.trim(),
+    passed ? 'good' : 'bad',
+  );
 
   return next;
 }

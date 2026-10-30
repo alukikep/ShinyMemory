@@ -26,7 +26,9 @@ test('accepts, attends and rewards a job', async ({ page }, testInfo) => {
   state = await getState(page);
   expect(state.jobs).toHaveLength(0);
   expect(state.money).toBe(4200);
-  expect(state.log.some((entry) => entry.text.includes('参与了'))).toBe(true);
+  // 工作现在走结果页，日志措辞也一起改了。
+  expect(state.phase).toBe('activityResult');
+  expect(state.log.some((entry) => entry.text.includes('收入 ¥'))).toBe(true);
 
   await testInfo.attach('job-attended', {
     body: await page.screenshot({ fullPage: true }),
@@ -51,7 +53,7 @@ test('does not reward or log an unattended job', async ({ page }) => {
   expect(after.shared.stamina).toBe(before.shared.stamina);
   expect(after.shared.stress).toBe(before.shared.stress);
   expect(
-    after.log.some((entry) => entry.text.includes('参与了')),
+    after.log.some((entry) => entry.text.includes('收入 ¥')),
   ).toBe(false);
 });
 

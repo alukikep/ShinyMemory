@@ -234,6 +234,8 @@ describe('raising sim core', () => {
 
   it('participating in a job pays and advances to the end', () => {
     const state = newGame(1);
+    // 工作要她去做，先让她出道。
+    state.idols.mano!.status = 'recruited';
     const scene = buildScene(state);
     const jobAction = scene.actions.find(
       (action) =>
@@ -263,9 +265,10 @@ describe('raising sim core', () => {
 
     expect(attended.jobs).toHaveLength(0);
     expect(attended.money).toBe(4200);
-    expect(attended.log.some((entry) => entry.text.includes('参与了'))).toBe(
-      true,
-    );
+    // 工作现在和行动一样走结果页，而不是把一句日志丢回安排页。
+    expect(attended.phase).toBe('activityResult');
+    expect(attended.lastResult).toContain('收入 ¥');
+    expect(attended.log.some((entry) => entry.text.includes('收入'))).toBe(true);
     expect(attended.idols.mano?.stats.expression.exp).toBeGreaterThan(0);
     expect(formatClock(attended.clock.absoluteMinutes)).toBe('16:00');
   });

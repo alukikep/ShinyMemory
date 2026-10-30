@@ -2,7 +2,7 @@
   "id": "draft.activity.carry_gear",
   "kind": "activity",
   "title": "帮忙搬器材",
-  "status": "approved",
+  "status": "discarded",
   "version": 1,
   "rootId": "draft.activity.carry_gear",
   "payload": {
@@ -51,8 +51,8 @@
   },
   "annotations": [],
   "createdAt": "2026-10-29T21:50:00.000Z",
-  "updatedAt": "2026-10-29T14:14:23.077Z",
-  "reviewedAt": "2026-10-29T14:14:23.077Z",
+  "updatedAt": "2026-10-30T10:26:52.573Z",
+  "reviewedAt": "2026-10-30T10:26:52.573Z",
   "history": [
     {
       "status": "review",
@@ -61,6 +61,11 @@
     {
       "status": "approved",
       "at": "2026-10-29T14:14:23.077Z"
+    },
+    {
+      "status": "discarded",
+      "at": "2026-10-30T10:26:52.573Z",
+      "note": "已被 draft.activity.carry_gear.v2（v2）替换"
     }
   ]
 }

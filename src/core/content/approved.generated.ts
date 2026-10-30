@@ -16,7 +16,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "durationMinutes": 30,
   "timeWindows": [
     {
-      "fromMinute": 540,
+      "fromMinute": 480,
       "toMinute": 1200
     }
   ],
@@ -61,7 +61,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "durationMinutes": 30,
   "timeWindows": [
     {
-      "fromMinute": 540,
+      "fromMinute": 480,
       "toMinute": 1200
     }
   ],
@@ -105,7 +105,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "durationMinutes": 30,
   "timeWindows": [
     {
-      "fromMinute": 540,
+      "fromMinute": 480,
       "toMinute": 1200
     }
   ],
@@ -150,7 +150,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "durationMinutes": 30,
   "timeWindows": [
     {
-      "fromMinute": 540,
+      "fromMinute": 480,
       "toMinute": 1200
     }
   ],
@@ -191,7 +191,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "durationMinutes": 30,
   "timeWindows": [
     {
-      "fromMinute": 540,
+      "fromMinute": 480,
       "toMinute": 1200
     }
   ],
@@ -584,42 +584,8 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 }
 ],
-  dialogues: [
-{
-  "id": "dialogue.e2e.review",
-  "idolId": "mano",
-  "startNodeId": "n01",
-  "nodes": {
-    "n01": {
-      "id": "n01",
-      "text": "第一句",
-      "nextNodeId": "n02"
-    },
-    "n02": {
-      "id": "n02",
-      "text": "第二句"
-    }
-  }
-}
-],
-  storyChains: [
-{
-  "id": "story.e2e.review",
-  "idolId": "mano",
-  "steps": [
-    {
-      "id": "step-1",
-      "locationId": "park",
-      "dialogueId": "dialogue.e2e.review",
-      "actionLabel": "E2E 剧情步骤",
-      "timeWindow": {
-        "fromMinute": 600,
-        "toMinute": 1080
-      }
-    }
-  ]
-}
-],
+  dialogues: [],
+  storyChains: [],
   items: [
 {
   "id": "gift.bird_charm",

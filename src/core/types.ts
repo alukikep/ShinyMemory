@@ -470,6 +470,9 @@ export type JobDef = {
   /** 失败时的报酬比例，缺省 0.5。 */
   failurePayRatio?: number;
   failureEffects?: Effect[];
+  /** 结果页的描述文本；没有时退回 description。 */
+  resultTexts?: string[];
+  failureTexts?: string[];
 };
 
 export type JobAssignment = {

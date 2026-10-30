@@ -2,7 +2,7 @@
   "id": "draft.activity.carry_gear.v2",
   "kind": "activity",
   "title": "帮忙搬器材",
-  "status": "review",
+  "status": "approved",
   "version": 2,
   "rootId": "draft.activity.carry_gear",
   "supersedes": "draft.activity.carry_gear",
@@ -52,12 +52,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T10:17:36.924Z",
-  "updatedAt": "2026-10-30T10:17:36.924Z",
+  "updatedAt": "2026-10-30T10:26:52.543Z",
+  "reviewedAt": "2026-10-30T10:26:52.543Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T10:17:36.924Z",
       "note": "v2：时间窗改为 08:00–20:00，开局就能做"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T10:26:52.543Z"
     }
   ]
 }

@@ -28,6 +28,7 @@ import {
   getEligibleStories,
   getEvent,
   isActorPresent,
+  isIdolRecruited,
   presentActors,
   topicAvailability,
   workRewardSummary,
@@ -211,6 +212,10 @@ function jobActionView(
 ): ActionView | undefined {
   const actor = CONTENT_INDEX.actors.get(state.selectedIdolId);
   if (!actor) return undefined;
+  // 没有出道的偶像，就没有人能去做这份工作。
+  if (actor.role !== 'idol' || !isIdolRecruited(state, actor.id)) {
+    return undefined;
+  }
   if (
     state.jobs.some(
       (entry) => entry.jobId === job.id && entry.idolId === actor.id,

@@ -223,7 +223,18 @@ const problems = [
         index.storyChains.get(chapter.chapterId) ??
         PENDING_CHAPTERS.find((entry) => entry.id === chapter.chapterId);
       const dialogueId = chain?.steps[0]?.dialogueId;
-      const draft = pendingDialogues.find((entry) => entry.id === dialogueId);
+      const draft =
+        pendingDialogues.find((entry) => entry.id === dialogueId) ??
+        (dialogueId && index.dialogues.has(dialogueId)
+          ? {
+              id: dialogueId,
+              startNodeId: index.dialogues.get(dialogueId)!.startNodeId,
+              nodes: index.dialogues.get(dialogueId)!.nodes as Record<
+                string,
+                { nextNodeId?: string; choices?: { label: string; nextNodeId: string }[] }
+              >,
+            }
+          : undefined);
       return {
         chapterId: chapter.chapterId,
         stepCount: chain?.steps.length ?? 0,

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { APPROVED_CONTENT } from './content/approved.generated';
+import { PENDING_CHAPTERS } from './content/chapters';
 import { BASE_PACK, PRODUCTION_PACK } from './productionPack';
 
 /**
@@ -28,8 +29,11 @@ describe('production pack', () => {
     expect(PRODUCTION_PACK.dialogues).toHaveLength(
       BASE_PACK.dialogues.length + APPROVED_CONTENT.dialogues.length,
     );
+    // 卡面章节的结构在生产包里拼（对话是 approved 内容，base 里没有）
     expect(PRODUCTION_PACK.storyChains).toHaveLength(
-      BASE_PACK.storyChains.length + APPROVED_CONTENT.storyChains.length,
+      BASE_PACK.storyChains.length +
+        APPROVED_CONTENT.storyChains.length +
+        PENDING_CHAPTERS.length,
     );
   });
 

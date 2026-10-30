@@ -2,7 +2,7 @@
   "id": "draft.dialogue.meguru.purity",
   "kind": "dialogue",
   "title": "纯白",
-  "status": "review",
+  "status": "approved",
   "version": 2,
   "rootId": "draft.dialogue.meguru.purity",
   "payload": {
@@ -417,12 +417,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T16:54:36.530Z",
-  "updatedAt": "2026-10-30T16:54:36.530Z",
+  "updatedAt": "2026-10-30T17:07:22.400Z",
+  "reviewedAt": "2026-10-30T17:07:22.400Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T16:54:36.530Z",
       "note": "按游戏剧本重写：三分支各自独立，无共同合流"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T17:07:22.400Z"
     }
   ]
 }

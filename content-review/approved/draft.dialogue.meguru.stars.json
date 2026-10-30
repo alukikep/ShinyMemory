@@ -2,7 +2,7 @@
   "id": "draft.dialogue.meguru.stars",
   "kind": "dialogue",
   "title": "星空",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.meguru.stars",
   "payload": {
@@ -176,12 +176,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T16:14:37.040Z",
-  "updatedAt": "2026-10-30T16:14:37.040Z",
+  "updatedAt": "2026-10-30T17:07:23.096Z",
+  "reviewedAt": "2026-10-30T17:07:23.096Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T16:14:37.040Z",
       "note": "一章一段：合并且让选择贯穿整章"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T17:07:23.096Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "dialogue.meguru.coffee",
   "kind": "dialogue",
   "title": "一杯咖啡",
-  "status": "review",
+  "status": "approved",
   "version": 2,
   "rootId": "dialogue.meguru.coffee",
   "payload": {
@@ -109,7 +109,7 @@
             "effects": [
               {
                 "kind": "attributeExp",
-                "ref": "insight",
+                "ref": "expression",
                 "tier": 1
               }
             ]
@@ -261,12 +261,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T16:57:39.830Z",
-  "updatedAt": "2026-10-30T16:57:39.830Z",
+  "updatedAt": "2026-10-30T17:07:22.742Z",
+  "reviewedAt": "2026-10-30T17:07:22.742Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T16:57:39.830Z",
       "note": "按游戏剧本重写（分支按真实结构，内容精简）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T17:07:22.742Z"
     }
   ]
 }

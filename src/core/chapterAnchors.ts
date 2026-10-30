@@ -360,13 +360,6 @@ export function validateChapterStructure(
       continue;
     }
 
-    if (chain.stepCount < 2) {
-      problems.push({
-        chapterId: chapter.chapterId,
-        message: `章节只有 ${chain.stepCount} 步，至少 2 步`,
-      });
-    }
-
     for (const [index, step] of chain.steps.entries()) {
       if (!probe.dialogueIds.has(step.dialogueId)) {
         problems.push({

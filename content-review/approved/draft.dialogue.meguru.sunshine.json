@@ -2,7 +2,7 @@
   "id": "draft.dialogue.meguru.sunshine",
   "kind": "dialogue",
   "title": "拍摄当天",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.meguru.sunshine",
   "payload": {
@@ -201,12 +201,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T16:14:37.040Z",
-  "updatedAt": "2026-10-30T16:14:37.040Z",
+  "updatedAt": "2026-10-30T17:07:22.026Z",
+  "reviewedAt": "2026-10-30T17:07:22.026Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T16:14:37.040Z",
       "note": "一章一段：合并且让选择贯穿整章"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T17:07:22.026Z"
     }
   ]
 }

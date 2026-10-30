@@ -2,7 +2,7 @@
   "id": "dialogue.meguru.swimsuit",
   "kind": "dialogue",
   "title": "泳装的颜色",
-  "status": "review",
+  "status": "approved",
   "version": 2,
   "rootId": "dialogue.meguru.swimsuit",
   "payload": {
@@ -285,12 +285,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-30T16:57:39.830Z",
-  "updatedAt": "2026-10-30T16:57:39.830Z",
+  "updatedAt": "2026-10-30T17:07:21.348Z",
+  "reviewedAt": "2026-10-30T17:07:21.348Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-30T16:57:39.830Z",
       "note": "按游戏剧本重写（分支按真实结构，内容精简）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-30T17:07:21.348Z"
     }
   ]
 }

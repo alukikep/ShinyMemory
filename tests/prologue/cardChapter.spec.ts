@@ -2,12 +2,14 @@ import { expect, test } from '@playwright/test';
 import { getState, jumpTo, openGame, reset, watchConsole } from '../acceptance/helpers';
 
 /**
- * 卡面章「泳装的颜色」：四步、cadence 2、工作面板挡剧情日。
- * 素材：巡【夏に恋するピチカート！】。
+ * 巡的卡面五章，按真实结构串跑一遍。
+ *
+ * 一章 = 1 步 = 1 段对话（选项在对话内部，选完各自演到章末）。
+ * 顺序：商业街 → 泳池 → 练习室 → 事务所 → 公园，各自有最早天数。
  */
 
 async function finishDialogue(page: import('@playwright/test').Page) {
-  for (let index = 0; index < 90; index += 1) {
+  for (let index = 0; index < 120; index += 1) {
     if ((await page.locator('.dialogue-panel').count()) === 0) return;
     const choices = page.locator('.dialogue-choice');
     if ((await choices.count()) > 0) {
@@ -15,23 +17,20 @@ async function finishDialogue(page: import('@playwright/test').Page) {
     } else {
       await page.getByRole('button', { name: '继续' }).click();
     }
-    await page.waitForTimeout(20);
+    await page.waitForTimeout(15);
   }
   throw new Error('dialogue did not finish');
 }
 
-test('Meguru card chapter: four steps on a two-day cadence', async ({ page }) => {
-  // 这一章的 4 段对话在审查台待审；通过之前游戏里没有它们，跳过。
-  test.skip(
-    process.env.CARD_CHAPTER_APPROVED !== '1',
-    '卡面章对话尚未通过审查（通过后设 CARD_CHAPTER_APPROVED=1 再跑）',
-  );
+test('Meguru card chapters: five sittings in order', async ({ page }) => {
+  test.setTimeout(120_000);
   const errors = watchConsole(page);
+
   await openGame(page);
   await reset(page, 1);
   await finishDialogue(page);
 
-  // 招募巡（公园 → 事务所）
+  // 招募巡
   await jumpTo(page, 1, 14 * 60, 'park');
   await page.getByRole('button', { name: '球场上有人在喊' }).click();
   await finishDialogue(page);
@@ -40,42 +39,29 @@ test('Meguru card chapter: four steps on a two-day cadence', async ({ page }) =>
   await finishDialogue(page);
   expect((await getState(page)).idols.meguru?.status).toBe('recruited');
 
-  // 第 5 天：第一步
-  await jumpTo(page, 5, 12 * 60, 'shopping_street');
-  await page.getByRole('button', { name: '杂志那边约了新人特集' }).click();
-  await finishDialogue(page);
+  const chapters = [
+    { day: 5, minute: 12 * 60, place: 'shopping_street', action: '杂志那边约了新人特集', flag: 'completed.meguru.swimsuit' },
+    { day: 8, minute: 12 * 60, place: 'pool', action: '拍摄结束了', flag: 'completed.meguru.sunshine' },
+    { day: 12, minute: 10 * 60, place: 'practice_room', action: '她比集合时间早到', flag: 'completed.meguru.purity' },
+    { day: 14, minute: 19 * 60, place: 'office', action: '有人把你叫醒', flag: 'completed.meguru.coffee' },
+    { day: 16, minute: 20 * 60, place: 'park', action: '她抬头看星星', flag: 'completed.meguru.stars' },
+  ];
 
-  // 第 6 天：节奏 2，第二步还没到
-  await jumpTo(page, 6, 12 * 60, 'shopping_street');
-  await expect(
-    page.getByRole('button', { name: '去看看泳装' }),
-  ).toHaveCount(0);
+  for (const [index, chapter] of chapters.entries()) {
+    await jumpTo(page, chapter.day, chapter.minute, chapter.place);
+    await page.getByRole('button', { name: chapter.action }).click();
+    await finishDialogue(page);
 
-  // 第 7 天：第二步可触发
-  await jumpTo(page, 7, 12 * 60, 'shopping_street');
-  await page.getByRole('button', { name: '去看看泳装' }).click();
-  await finishDialogue(page);
-
-  // 第 9 天：第三步（含三选一），挑「试试搭配吧」
-  await jumpTo(page, 9, 12 * 60, 'shopping_street');
-  await page.getByRole('button', { name: '她挑不出来了' }).click();
-  for (let index = 0; index < 30; index += 1) {
-    const choice = page.getByRole('button', { name: /试试搭配吧/ });
-    if ((await choice.count()) > 0) {
-      await choice.first().click();
-      break;
-    }
-    await page.getByRole('button', { name: '继续' }).click();
-    await page.waitForTimeout(20);
+    const state = await getState(page);
+    expect(
+      state.flags[chapter.flag],
+      `第 ${index + 1} 章应写入 ${chapter.flag}`,
+    ).toBe(true);
   }
-  await finishDialogue(page);
 
-  // 锚点句必须真的出现在这一章里
-  await jumpTo(page, 11, 12 * 60, 'shopping_street');
-  await page.getByRole('button', { name: '从店里出来' }).click();
-  await finishDialogue(page);
-
-  const state = await getState(page);
-  expect(state.flags['completed.meguru.swimsuit']).toBe(true);
+  const done = await getState(page);
+  for (const chapter of chapters) {
+    expect(done.flags[chapter.flag]).toBe(true);
+  }
   expect(errors).toEqual([]);
 });

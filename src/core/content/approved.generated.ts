@@ -1670,7 +1670,1313 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "cooldownDays": 2
 }
 ],
-  dialogues: [],
+  dialogues: [
+{
+  "id": "dialogue.meguru.coffee",
+  "idolId": "meguru",
+  "startNodeId": "1-01",
+  "nodes": {
+    "1-01": {
+      "id": "1-01",
+      "text": "（好，必要的联络差不多都结束了。）",
+      "nextNodeId": "1-02",
+      "speakerId": "producer"
+    },
+    "1-02": {
+      "id": "1-02",
+      "text": "（已经这个时间了，得早点回去……）",
+      "nextNodeId": "1-03",
+      "speakerId": "producer"
+    },
+    "1-03": {
+      "id": "1-03",
+      "text": "（唉……回去之前先喝一杯咖啡吧。）",
+      "nextNodeId": "1-04",
+      "speakerId": "producer"
+    },
+    "1-04": {
+      "id": "1-04",
+      "speakerId": "meguru",
+      "text": "制作人，制作人……",
+      "nextNodeId": "1-05"
+    },
+    "1-05": {
+      "id": "1-05",
+      "speakerId": "meguru",
+      "text": "早安！",
+      "nextNodeId": "1-06"
+    },
+    "1-06": {
+      "id": "1-06",
+      "text": "早安……这样啊，我趴在桌上睡着了。",
+      "nextNodeId": "1-07",
+      "speakerId": "producer"
+    },
+    "1-07": {
+      "id": "1-07",
+      "text": "这条毯子是？",
+      "nextNodeId": "1-08",
+      "speakerId": "producer"
+    },
+    "1-08": {
+      "id": "1-08",
+      "speakerId": "meguru",
+      "text": "是叶月放的。她说试着叫过你，但你没醒。",
+      "nextNodeId": "1-09"
+    },
+    "1-09": {
+      "id": "1-09",
+      "speakerId": "meguru",
+      "text": "工作很忙吧……在家里好好睡一觉更好啊——",
+      "nextNodeId": "1-10"
+    },
+    "1-10": {
+      "id": "1-10",
+      "speakerId": "meguru",
+      "text": "制作人，我最近都没看到你休息啊？",
+      "nextNodeId": "1-11"
+    },
+    "1-11": {
+      "id": "1-11",
+      "speakerId": "meguru",
+      "text": "难道……因为我才这么忙？",
+      "nextNodeId": "1-12"
+    },
+    "1-12": {
+      "id": "1-12",
+      "speakerId": "meguru",
+      "text": "又来看我练习，又来陪我说话……",
+      "choices": [
+        {
+          "label": "不是你的错",
+          "nextNodeId": "2-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "我很开心，没问题的",
+          "nextNodeId": "3-01",
+          "effects": [
+            {
+              "kind": "sharedStat",
+              "stat": "stress",
+              "delta": -2
+            }
+          ]
+        },
+        {
+          "label": "其实我有休息",
+          "nextNodeId": "4-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "expression",
+              "tier": 1
+            }
+          ]
+        }
+      ]
+    },
+    "2-01": {
+      "id": "2-01",
+      "text": "让你这么想，抱歉。",
+      "nextNodeId": "2-02",
+      "speakerId": "producer"
+    },
+    "2-02": {
+      "id": "2-02",
+      "speakerId": "meguru",
+      "text": "制作人……",
+      "nextNodeId": "2-03"
+    },
+    "2-03": {
+      "id": "2-03",
+      "text": "巡每天也都坚持完成严格的课程吧。",
+      "nextNodeId": "2-04",
+      "speakerId": "producer"
+    },
+    "2-04": {
+      "id": "2-04",
+      "text": "在舞台上发光是巡的工作，在背后支撑你是我的工作。",
+      "nextNodeId": "2-05",
+      "speakerId": "producer"
+    },
+    "2-05": {
+      "id": "2-05",
+      "speakerId": "meguru",
+      "text": "嗯……",
+      "nextNodeId": "2-06"
+    },
+    "2-06": {
+      "id": "2-06",
+      "text": "不过，我会尽量不让你担心。",
+      "nextNodeId": "2-07",
+      "speakerId": "producer"
+    },
+    "2-07": {
+      "id": "2-07",
+      "speakerId": "meguru",
+      "text": "嗯！要快点好好休息……不是为了我担心，是为了制作人的身体哦？",
+      "nextNodeId": "2-08"
+    },
+    "2-08": {
+      "id": "2-08",
+      "text": "嗯。不过巡也没资格说别人吧。",
+      "nextNodeId": "2-09",
+      "speakerId": "producer"
+    },
+    "2-09": {
+      "id": "2-09",
+      "text": "以后我会给你接更多更多工作的！",
+      "nextNodeId": "2-10",
+      "speakerId": "producer"
+    },
+    "2-10": {
+      "id": "2-10",
+      "speakerId": "meguru",
+      "text": "没关系！我的忙碌就是快乐的意思嘛！",
+      "nextNodeId": "2-11"
+    },
+    "2-11": {
+      "id": "2-11",
+      "speakerId": "meguru",
+      "text": "放马过来——！"
+    },
+    "3-01": {
+      "id": "3-01",
+      "text": "你能这么想我很高兴，不过这样也不行啊。",
+      "nextNodeId": "3-02",
+      "speakerId": "producer"
+    },
+    "3-02": {
+      "id": "3-02",
+      "speakerId": "meguru",
+      "text": "开心是开心……可是那样也不行啊！",
+      "nextNodeId": "3-03"
+    },
+    "3-03": {
+      "id": "3-03",
+      "text": "巡每天也都坚持完成严格的课程吧。在舞台上发光是巡的工作，在背后支撑你是我的工作。",
+      "nextNodeId": "3-04",
+      "speakerId": "producer"
+    },
+    "3-04": {
+      "id": "3-04",
+      "speakerId": "meguru",
+      "text": "嗯……",
+      "nextNodeId": "3-05"
+    },
+    "3-05": {
+      "id": "3-05",
+      "text": "我会尽量不让你担心。",
+      "nextNodeId": "3-06",
+      "speakerId": "producer"
+    },
+    "3-06": {
+      "id": "3-06",
+      "speakerId": "meguru",
+      "text": "嗯！要快点好好休息……不是为了我担心，是为了制作人的身体哦？",
+      "nextNodeId": "3-07"
+    },
+    "3-07": {
+      "id": "3-07",
+      "speakerId": "meguru",
+      "text": "那我也要变得让你不用担心的样子！"
+    },
+    "4-01": {
+      "id": "4-01",
+      "speakerId": "meguru",
+      "text": "骗人。桌上都是文件。",
+      "nextNodeId": "4-02"
+    },
+    "4-02": {
+      "id": "4-02",
+      "text": "……今天确实拖得晚了点。",
+      "nextNodeId": "4-03",
+      "speakerId": "producer"
+    },
+    "4-03": {
+      "id": "4-03",
+      "text": "巡每天也都坚持完成严格的课程吧。在舞台上发光是巡的工作，在背后支撑你是我的工作。",
+      "nextNodeId": "4-04",
+      "speakerId": "producer"
+    },
+    "4-04": {
+      "id": "4-04",
+      "speakerId": "meguru",
+      "text": "嗯……",
+      "nextNodeId": "4-05"
+    },
+    "4-05": {
+      "id": "4-05",
+      "text": "我会尽量不让你担心。",
+      "nextNodeId": "4-06",
+      "speakerId": "producer"
+    },
+    "4-06": {
+      "id": "4-06",
+      "speakerId": "meguru",
+      "text": "嗯！要快点好好休息……不是为了我担心，是为了制作人的身体哦？"
+    }
+  }
+},
+{
+  "id": "dialogue.meguru.swimsuit",
+  "idolId": "meguru",
+  "startNodeId": "1-01",
+  "nodes": {
+    "1-01": {
+      "id": "1-01",
+      "text": "这是一本叫新人偶像特集的杂志。你先看看。",
+      "nextNodeId": "1-02",
+      "speakerId": "producer"
+    },
+    "1-02": {
+      "id": "1-02",
+      "speakerId": "meguru",
+      "text": "这个杂志！便利店经常有卖的那种！",
+      "nextNodeId": "1-03"
+    },
+    "1-03": {
+      "id": "1-03",
+      "speakerId": "meguru",
+      "text": "哇，不同的人感觉完全不一样！大家的衣服也都好可爱——！",
+      "nextNodeId": "1-04"
+    },
+    "1-04": {
+      "id": "1-04",
+      "text": "这本杂志的方针，好像是重视偶像的个性。",
+      "nextNodeId": "1-05",
+      "speakerId": "producer"
+    },
+    "1-05": {
+      "id": "1-05",
+      "speakerId": "meguru",
+      "text": "好厉害！！好期待啊……！",
+      "nextNodeId": "1-06"
+    },
+    "1-06": {
+      "id": "1-06",
+      "text": "还有，服装那边说想用巡的私服。",
+      "nextNodeId": "1-07",
+      "speakerId": "producer"
+    },
+    "1-07": {
+      "id": "1-07",
+      "text": "平时的衣服我觉得挺好，但也有泳装的镜头。你有吗？",
+      "nextNodeId": "1-08",
+      "speakerId": "producer"
+    },
+    "1-08": {
+      "id": "1-08",
+      "speakerId": "meguru",
+      "text": "学校用的那种有……嗯——不过要拍照的话，还是可爱的泳装比较好吧！？",
+      "nextNodeId": "1-09"
+    },
+    "1-09": {
+      "id": "1-09",
+      "speakerId": "meguru",
+      "text": "那得去买泳装才行，制作人！",
+      "nextNodeId": "1-10"
+    },
+    "1-10": {
+      "id": "1-10",
+      "text": "好，那就出去一趟吧。课程之后的安排我来定。",
+      "nextNodeId": "1-11",
+      "speakerId": "producer"
+    },
+    "1-11": {
+      "id": "1-11",
+      "speakerId": "meguru",
+      "text": "好耶——！谢谢你，制作人！要挑什么样的呢，诶嘿嘿！",
+      "nextNodeId": "1-12"
+    },
+    "1-12": {
+      "id": "1-12",
+      "speakerId": "meguru",
+      "text": "制作人，来这边来这边！好多种泳装——",
+      "nextNodeId": "1-13"
+    },
+    "1-13": {
+      "id": "1-13",
+      "speakerId": "meguru",
+      "text": "哇——……！每一件都可爱啊——……！",
+      "nextNodeId": "1-14"
+    },
+    "1-14": {
+      "id": "1-14",
+      "speakerId": "meguru",
+      "text": "有花图案的、还有蝴蝶结……制作人觉得哪种好？",
+      "nextNodeId": "1-15"
+    },
+    "1-15": {
+      "id": "1-15",
+      "text": "不是该选巡自己喜欢的吗？",
+      "nextNodeId": "1-16",
+      "speakerId": "producer"
+    },
+    "1-16": {
+      "id": "1-16",
+      "speakerId": "meguru",
+      "text": "和朋友逛街的时候，一边聊天一边看，超开心的。",
+      "nextNodeId": "1-17"
+    },
+    "1-17": {
+      "id": "1-17",
+      "speakerId": "meguru",
+      "text": "也有过聊得太投入，什么都没买就回家了！诶嘿嘿。",
+      "nextNodeId": "1-18"
+    },
+    "1-18": {
+      "id": "1-18",
+      "speakerId": "meguru",
+      "text": "……不过能上杂志的只有一件吧……嗯——好难选——！",
+      "nextNodeId": "1-19"
+    },
+    "1-19": {
+      "id": "1-19",
+      "speakerId": "meguru",
+      "text": "怎么办啊，制作人……！",
+      "choices": [
+        {
+          "label": "有精神的会不会更适合你",
+          "nextNodeId": "2-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "expression",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "试试搭配吧",
+          "nextNodeId": "3-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "交给运气来吧",
+          "nextNodeId": "4-01",
+          "effects": [
+            {
+              "kind": "sharedStat",
+              "stat": "stress",
+              "delta": -2
+            }
+          ]
+        }
+      ]
+    },
+    "2-01": {
+      "id": "2-01",
+      "text": "有精神的会不会更适合你？",
+      "nextNodeId": "2-02",
+      "speakerId": "producer"
+    },
+    "2-02": {
+      "id": "2-02",
+      "speakerId": "meguru",
+      "text": "比如……这样的？",
+      "nextNodeId": "2-03"
+    },
+    "2-03": {
+      "id": "2-03",
+      "speakerId": "meguru",
+      "text": "哇！这个好！好可爱……！",
+      "nextNodeId": "2-04"
+    },
+    "2-04": {
+      "id": "2-04",
+      "speakerId": "meguru",
+      "text": "那这件呢……！？会不会有点成熟？",
+      "nextNodeId": "2-05"
+    },
+    "2-05": {
+      "id": "2-05",
+      "speakerId": "meguru",
+      "text": "不是，虽然想变得适合穿这种，但还是等再大一点吧！",
+      "nextNodeId": "2-06"
+    },
+    "2-06": {
+      "id": "2-06",
+      "speakerId": "meguru",
+      "text": "嗯！只要一下子哦？"
+    },
+    "3-01": {
+      "id": "3-01",
+      "text": "试试搭配吧。",
+      "nextNodeId": "3-02",
+      "speakerId": "producer"
+    },
+    "3-02": {
+      "id": "3-02",
+      "speakerId": "meguru",
+      "text": "诶？什么意思……啊！那样也可以啊！",
+      "nextNodeId": "3-03"
+    },
+    "3-03": {
+      "id": "3-03",
+      "text": "发饰啊项链之类的……",
+      "nextNodeId": "3-04",
+      "speakerId": "producer"
+    },
+    "3-04": {
+      "id": "3-04",
+      "speakerId": "meguru",
+      "text": "嗯！把喜欢的都配起来，一定会很开心！",
+      "nextNodeId": "3-05"
+    },
+    "3-05": {
+      "id": "3-05",
+      "speakerId": "meguru",
+      "text": "谢谢你制作人！好，搭配搭配！我看看……"
+    },
+    "4-01": {
+      "id": "4-01",
+      "text": "试试闭上眼睛随手抓一件，赌在偶然的相遇上如何？",
+      "nextNodeId": "4-02",
+      "speakerId": "producer"
+    },
+    "4-02": {
+      "id": "4-02",
+      "speakerId": "meguru",
+      "text": "啊哈哈，好像游戏！那——……好——……这件！",
+      "nextNodeId": "4-03"
+    },
+    "4-03": {
+      "id": "4-03",
+      "speakerId": "meguru",
+      "text": "哇，好时尚……！可是奇怪……好像有点大。",
+      "nextNodeId": "4-04"
+    },
+    "4-04": {
+      "id": "4-04",
+      "speakerId": "meguru",
+      "text": "嗯，好像没有适合我的尺寸。",
+      "nextNodeId": "4-05"
+    },
+    "4-05": {
+      "id": "4-05",
+      "speakerId": "meguru",
+      "text": "……这么大的尺寸，应该比较适合制作人了——",
+      "nextNodeId": "4-06"
+    },
+    "4-06": {
+      "id": "4-06",
+      "text": "喂，别往我身上比。",
+      "nextNodeId": "4-07",
+      "speakerId": "producer"
+    },
+    "4-07": {
+      "id": "4-07",
+      "speakerId": "meguru",
+      "text": "诶嘿嘿，开个玩笑！",
+      "nextNodeId": "4-08"
+    },
+    "4-08": {
+      "id": "4-08",
+      "speakerId": "meguru",
+      "text": "那就挑一些好看的，再从里面选合适的尺寸吧。",
+      "nextNodeId": "4-09"
+    },
+    "4-09": {
+      "id": "4-09",
+      "speakerId": "meguru",
+      "text": "对哦！太多会困扰……一点点缩小范围确实更好！",
+      "nextNodeId": "4-10"
+    },
+    "4-10": {
+      "id": "4-10",
+      "speakerId": "meguru",
+      "text": "真是的——！能全部都穿到就好了——！"
+    }
+  }
+},
+{
+  "id": "dialogue.meguru.purity",
+  "idolId": "meguru",
+  "startNodeId": "1-01",
+  "nodes": {
+    "1-01": {
+      "id": "1-01",
+      "text": "其他人好像还没到。巡每次都来这么早吗？",
+      "nextNodeId": "1-02",
+      "speakerId": "producer"
+    },
+    "1-02": {
+      "id": "1-02",
+      "speakerId": "meguru",
+      "text": "今天是碰巧啦！学校那边的事情结束得早。",
+      "nextNodeId": "1-03"
+    },
+    "1-03": {
+      "id": "1-03",
+      "speakerId": "meguru",
+      "text": "你看你看，我的身体比之前柔软了吧——！",
+      "nextNodeId": "1-04"
+    },
+    "1-04": {
+      "id": "1-04",
+      "text": "真的，腿抬得很干净。",
+      "nextNodeId": "1-05",
+      "speakerId": "producer"
+    },
+    "1-05": {
+      "id": "1-05",
+      "speakerId": "meguru",
+      "text": "诶嘿嘿，谢谢夸奖！",
+      "nextNodeId": "1-06"
+    },
+    "1-06": {
+      "id": "1-06",
+      "speakerId": "meguru",
+      "text": "啊，我想拉伸一下，能帮我压着背吗？",
+      "nextNodeId": "1-07"
+    },
+    "1-07": {
+      "id": "1-07",
+      "text": "好。这样？",
+      "nextNodeId": "1-08",
+      "speakerId": "producer"
+    },
+    "1-08": {
+      "id": "1-08",
+      "speakerId": "meguru",
+      "text": "嗯！谢谢——！",
+      "nextNodeId": "1-09"
+    },
+    "1-09": {
+      "id": "1-09",
+      "speakerId": "meguru",
+      "text": "说起来，制作人谈过恋爱吗？",
+      "nextNodeId": "1-10"
+    },
+    "1-10": {
+      "id": "1-10",
+      "text": "嗯？",
+      "nextNodeId": "1-11",
+      "speakerId": "producer"
+    },
+    "1-11": {
+      "id": "1-11",
+      "speakerId": "meguru",
+      "text": "前几天舞蹈课来了外面的老师吧？",
+      "nextNodeId": "1-12"
+    },
+    "1-12": {
+      "id": "1-12",
+      "speakerId": "meguru",
+      "text": "他说我虽然跳得认真，但感情表现不够。",
+      "nextNodeId": "1-13"
+    },
+    "1-13": {
+      "id": "1-13",
+      "speakerId": "meguru",
+      "text": "让我回想起恋爱时的心动，把感情放进去……",
+      "nextNodeId": "1-14"
+    },
+    "1-14": {
+      "id": "1-14",
+      "speakerId": "meguru",
+      "text": "可是，我……根本不知道那种东西啊——！",
+      "nextNodeId": "1-15"
+    },
+    "1-15": {
+      "id": "1-15",
+      "speakerId": "meguru",
+      "text": "制作人知道吗？恋爱是什么感觉？",
+      "choices": [
+        {
+          "label": "心跳加速的感觉",
+          "nextNodeId": "2-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "expression",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "心头一紧的感觉",
+          "nextNodeId": "3-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "你可以看看书",
+          "nextNodeId": "4-01",
+          "effects": [
+            {
+              "kind": "sharedStat",
+              "stat": "stress",
+              "delta": -2
+            }
+          ]
+        }
+      ]
+    },
+    "2-01": {
+      "id": "2-01",
+      "speakerId": "meguru",
+      "text": "这样啊……",
+      "nextNodeId": "2-02"
+    },
+    "2-02": {
+      "id": "2-02",
+      "text": "巡没有心跳加速过吗？",
+      "nextNodeId": "2-03",
+      "speakerId": "producer"
+    },
+    "2-03": {
+      "id": "2-03",
+      "speakerId": "meguru",
+      "text": "有啊。站在舞台上的时候！",
+      "nextNodeId": "2-04"
+    },
+    "2-04": {
+      "id": "2-04",
+      "speakerId": "meguru",
+      "text": "在后台，真乃和灯织就在旁边，等出场的那一刻最……",
+      "nextNodeId": "2-05"
+    },
+    "2-05": {
+      "id": "2-05",
+      "speakerId": "meguru",
+      "text": "明明特别兴奋，可有时候心还是会揪一下……",
+      "nextNodeId": "2-06"
+    },
+    "2-06": {
+      "id": "2-06",
+      "text": "那就用那时候的心情去跳，怎么样？",
+      "nextNodeId": "2-07",
+      "speakerId": "producer"
+    },
+    "2-07": {
+      "id": "2-07",
+      "speakerId": "meguru",
+      "text": "那样也可以？就算不是恋爱？",
+      "nextNodeId": "2-08"
+    },
+    "2-08": {
+      "id": "2-08",
+      "text": "老师想说的，大概是像恋爱那样强烈的心意吧。",
+      "nextNodeId": "2-09",
+      "speakerId": "producer"
+    },
+    "2-09": {
+      "id": "2-09",
+      "speakerId": "meguru",
+      "text": "是吗……！",
+      "nextNodeId": "2-10"
+    },
+    "2-10": {
+      "id": "2-10",
+      "speakerId": "meguru",
+      "text": "我还在想，要是必须马上去谈恋爱可怎么办。",
+      "nextNodeId": "2-11"
+    },
+    "2-11": {
+      "id": "2-11",
+      "text": "哈哈，不用勉强。",
+      "nextNodeId": "2-12",
+      "speakerId": "producer"
+    },
+    "2-12": {
+      "id": "2-12",
+      "speakerId": "meguru",
+      "text": "嗯嗯，一定是这样！",
+      "nextNodeId": "2-13"
+    },
+    "2-13": {
+      "id": "2-13",
+      "speakerId": "meguru",
+      "text": "好，我现在就来试试看……！"
+    },
+    "3-01": {
+      "id": "3-01",
+      "speakerId": "meguru",
+      "text": "嘿……恋爱是件好事啊……",
+      "nextNodeId": "3-02"
+    },
+    "3-02": {
+      "id": "3-02",
+      "speakerId": "meguru",
+      "text": "学校的朋友聊恋爱话题的时候，看起来确实很开心。",
+      "nextNodeId": "3-03"
+    },
+    "3-03": {
+      "id": "3-03",
+      "text": "巡也想谈一次吗？",
+      "nextNodeId": "3-04",
+      "speakerId": "producer"
+    },
+    "3-04": {
+      "id": "3-04",
+      "speakerId": "meguru",
+      "text": "嗯——……",
+      "nextNodeId": "3-05"
+    },
+    "3-05": {
+      "id": "3-05",
+      "speakerId": "meguru",
+      "text": "……我最喜欢大家了。",
+      "nextNodeId": "3-06"
+    },
+    "3-06": {
+      "id": "3-06",
+      "speakerId": "meguru",
+      "text": "可是，喜欢到什么程度才算恋爱呢……",
+      "nextNodeId": "3-07"
+    },
+    "3-07": {
+      "id": "3-07",
+      "speakerId": "meguru",
+      "text": "是在我的\"最喜欢\"更前面，还是完全在别的地方呢……",
+      "nextNodeId": "3-08"
+    },
+    "3-08": {
+      "id": "3-08",
+      "speakerId": "meguru",
+      "text": "就是不知道这个，才连想不想谈都不清楚……诶嘿嘿。",
+      "nextNodeId": "3-09"
+    },
+    "3-09": {
+      "id": "3-09",
+      "text": "按你的步调来就好。",
+      "nextNodeId": "3-10",
+      "speakerId": "producer"
+    },
+    "3-10": {
+      "id": "3-10",
+      "text": "跳舞的时候，试着想一想你最喜欢的那些人正看着你。",
+      "nextNodeId": "3-11",
+      "speakerId": "producer"
+    },
+    "3-11": {
+      "id": "3-11",
+      "speakerId": "meguru",
+      "text": "哇，好像很有趣……！",
+      "nextNodeId": "3-12"
+    },
+    "3-12": {
+      "id": "3-12",
+      "speakerId": "meguru",
+      "text": "把心意传达给最喜欢的大家的那种感觉……嗯……嗯……",
+      "nextNodeId": "3-13"
+    },
+    "3-13": {
+      "id": "3-13",
+      "speakerId": "meguru",
+      "text": "可以现在试一下吗！？我去放音乐……！",
+      "nextNodeId": "3-14"
+    },
+    "3-14": {
+      "id": "3-14",
+      "speakerId": "meguru",
+      "text": "……啊，可是。",
+      "nextNodeId": "3-15"
+    },
+    "3-15": {
+      "id": "3-15",
+      "speakerId": "meguru",
+      "text": "如果有一天我对谁心跳了一下，",
+      "nextNodeId": "3-16"
+    },
+    "3-16": {
+      "id": "3-16",
+      "speakerId": "meguru",
+      "text": "那到时候要好好向制作人报告才行！"
+    },
+    "4-01": {
+      "id": "4-01",
+      "text": "这不是别人教你就能懂的。要不要试着代入书或者电影里的主角？",
+      "nextNodeId": "4-02",
+      "speakerId": "producer"
+    },
+    "4-02": {
+      "id": "4-02",
+      "speakerId": "meguru",
+      "text": "这样啊……",
+      "nextNodeId": "4-03"
+    },
+    "4-03": {
+      "id": "4-03",
+      "speakerId": "meguru",
+      "text": "果然还是，知道真正的恋爱会比较好吗……",
+      "nextNodeId": "4-04"
+    },
+    "4-04": {
+      "id": "4-04",
+      "text": "……巡很喜欢跳舞吧。",
+      "nextNodeId": "4-05",
+      "speakerId": "producer"
+    },
+    "4-05": {
+      "id": "4-05",
+      "speakerId": "meguru",
+      "text": "嗯！我想跳得更好……！",
+      "nextNodeId": "4-06"
+    },
+    "4-06": {
+      "id": "4-06",
+      "speakerId": "meguru",
+      "text": "最开始只是觉得开心而已。",
+      "nextNodeId": "4-07"
+    },
+    "4-07": {
+      "id": "4-07",
+      "speakerId": "meguru",
+      "text": "但成了偶像之后见到很多粉丝……",
+      "nextNodeId": "4-08"
+    },
+    "4-08": {
+      "id": "4-08",
+      "speakerId": "meguru",
+      "text": "现在，我想让看我表演的大家也觉得开心。",
+      "nextNodeId": "4-09"
+    },
+    "4-09": {
+      "id": "4-09",
+      "speakerId": "meguru",
+      "text": "所以，我能做的我都想努力做到……！",
+      "nextNodeId": "4-10"
+    },
+    "4-10": {
+      "id": "4-10",
+      "text": "嗯……",
+      "nextNodeId": "4-11",
+      "speakerId": "meguru"
+    },
+    "4-11": {
+      "id": "4-11",
+      "speakerId": "meguru",
+      "text": "诶嘿嘿。不过我知道，恋爱不是想做到就能做到的事。",
+      "nextNodeId": "4-12"
+    },
+    "4-12": {
+      "id": "4-12",
+      "speakerId": "meguru",
+      "text": "我去看看书！虽然要理解主角的心情可能还要很久……",
+      "nextNodeId": "4-13"
+    },
+    "4-13": {
+      "id": "4-13",
+      "speakerId": "meguru",
+      "text": "啊。",
+      "nextNodeId": "4-14"
+    },
+    "4-14": {
+      "id": "4-14",
+      "text": "怎么了？",
+      "nextNodeId": "4-15",
+      "speakerId": "producer"
+    },
+    "4-15": {
+      "id": "4-15",
+      "speakerId": "meguru",
+      "text": "……制作人！我想跳一下，你帮我看看！",
+      "nextNodeId": "4-16"
+    },
+    "4-16": {
+      "id": "4-16",
+      "text": "你明白什么了吗？",
+      "nextNodeId": "4-17",
+      "speakerId": "producer"
+    },
+    "4-17": {
+      "id": "4-17",
+      "speakerId": "meguru",
+      "text": "我想让制作人记住现在的我！这样哪天我变了，你随时都能发现。",
+      "nextNodeId": "4-18"
+    },
+    "4-18": {
+      "id": "4-18",
+      "speakerId": "meguru",
+      "text": "对吧，是个好主意吧！？我去放音乐！"
+    }
+  }
+},
+{
+  "id": "dialogue.meguru.stars",
+  "idolId": "meguru",
+  "startNodeId": "1-n01",
+  "nodes": {
+    "1-n01": {
+      "id": "1-n01",
+      "text": "晚上的公园。路灯很暗，抬头能看到星星。",
+      "nextNodeId": "1-n02"
+    },
+    "1-n02": {
+      "id": "1-n02",
+      "speakerId": "meguru",
+      "text": "哇——！制作人快看！",
+      "nextNodeId": "1-n03"
+    },
+    "1-n03": {
+      "id": "1-n03",
+      "speakerId": "meguru",
+      "text": "星星真的很漂亮……！",
+      "nextNodeId": "1-n04"
+    },
+    "1-n04": {
+      "id": "1-n04",
+      "speakerId": "meguru",
+      "text": "好多一闪一闪的！诶嘿嘿，好像我们一样。",
+      "nextNodeId": "1-n05"
+    },
+    "1-n05": {
+      "id": "1-n05",
+      "text": "你问她指的是 illumination STARS 吗。",
+      "nextNodeId": "1-n06",
+      "speakerId": "producer"
+    },
+    "1-n06": {
+      "id": "1-n06",
+      "speakerId": "meguru",
+      "text": "对！诶嘿嘿……",
+      "nextNodeId": "2-n01"
+    },
+    "2-n01": {
+      "id": "2-n01",
+      "speakerId": "meguru",
+      "text": "我就是在这个公园第一次遇到制作人的，还记得吗？",
+      "nextNodeId": "2-n02"
+    },
+    "2-n02": {
+      "id": "2-n02",
+      "text": "当然记得。那时候她在打篮球。",
+      "nextNodeId": "2-n03",
+      "speakerId": "producer"
+    },
+    "2-n03": {
+      "id": "2-n03",
+      "speakerId": "meguru",
+      "text": "然后制作人说，自己不是怪人！",
+      "nextNodeId": "2-n04"
+    },
+    "2-n04": {
+      "id": "2-n04",
+      "text": "……你说过吗？你有点不确定。",
+      "nextNodeId": "2-n05"
+    },
+    "2-n05": {
+      "id": "2-n05",
+      "speakerId": "meguru",
+      "text": "说过！",
+      "nextNodeId": "2-n06"
+    },
+    "2-n06": {
+      "id": "2-n06",
+      "speakerId": "meguru",
+      "text": "对了，现在的我和相遇的时候比起来怎么样？变帅了吗？",
+      "nextNodeId": "2-n07"
+    },
+    "2-n07": {
+      "id": "2-n07",
+      "text": "你想了想，说成长得令人惊讶。",
+      "nextNodeId": "2-n08a"
+    },
+    "2-n08a": {
+      "id": "2-n08a",
+      "speakerId": "meguru",
+      "text": "诶嘿嘿，好耶——！",
+      "nextNodeId": "2-n09"
+    },
+    "2-n09": {
+      "id": "2-n09",
+      "speakerId": "meguru",
+      "text": "到那天为止，我每天都在期待什么时候能遇到制作人。",
+      "nextNodeId": "2-n10"
+    },
+    "2-n10": {
+      "id": "2-n10",
+      "speakerId": "meguru",
+      "text": "然后在公园看到了穿西装的人……是我的制作人！这个想法一闪而过，我就跑起来了！",
+      "nextNodeId": "2-n11"
+    },
+    "2-n11": {
+      "id": "2-n11",
+      "speakerId": "meguru",
+      "text": "真的很开心……！我那时候真的很兴奋吧？",
+      "nextNodeId": "3-n01"
+    },
+    "3-n01": {
+      "id": "3-n01",
+      "text": "你说和平常没什么两样吧，然后补了一句是在夸她。",
+      "nextNodeId": "3-n02",
+      "speakerId": "producer"
+    },
+    "3-n02": {
+      "id": "3-n02",
+      "speakerId": "meguru",
+      "text": "这么认真的表情说这些，我有点害羞了……不过……谢谢你！",
+      "nextNodeId": "3-n03"
+    },
+    "3-n03": {
+      "id": "3-n03",
+      "speakerId": "meguru",
+      "text": "到现在发生的这么多事，对我来说全部都是不想忘记的重要的回忆……",
+      "nextNodeId": "3-n04"
+    },
+    "3-n04": {
+      "id": "3-n04",
+      "speakerId": "meguru",
+      "text": "今后也拜托你了，我最喜欢你了，制作人！",
+      "nextNodeId": "3-n05"
+    },
+    "3-n05": {
+      "id": "3-n05",
+      "text": "她说完就往前跑。你说跑起来很危险。",
+      "nextNodeId": "3-n06"
+    },
+    "3-n06": {
+      "id": "3-n06",
+      "speakerId": "meguru",
+      "text": "嗯，我会注意！稍微等一下……！",
+      "nextNodeId": "3-n07"
+    },
+    "3-n07": {
+      "id": "3-n07",
+      "text": "她举起手机，对着天空。过了一会儿放下来。",
+      "nextNodeId": "3-n08"
+    },
+    "3-n08": {
+      "id": "3-n08",
+      "speakerId": "meguru",
+      "text": "……啊——，好像不行啊。",
+      "nextNodeId": "3-n09"
+    },
+    "3-n09": {
+      "id": "3-n09",
+      "speakerId": "meguru",
+      "text": "我就是想拍今晚的星空，可是手机的镜头好像拍不出来。",
+      "nextNodeId": "3-n10"
+    },
+    "3-n10": {
+      "id": "3-n10",
+      "speakerId": "meguru",
+      "text": "工作和课程虽然也一样，但是我还想记住更多这种什么都没有的日子。",
+      "nextNodeId": "3-n11"
+    },
+    "3-n11": {
+      "id": "3-n11",
+      "speakerId": "meguru",
+      "text": "……今天的事我也会好好藏在心底的……好吗，制作人！"
+    }
+  }
+},
+{
+  "id": "dialogue.meguru.sunshine",
+  "idolId": "meguru",
+  "startNodeId": "1-n01",
+  "nodes": {
+    "1-n01": {
+      "id": "1-n01",
+      "text": "泳池边，器材正在撤。太阳把白瓷砖照得发亮。",
+      "nextNodeId": "1-n02"
+    },
+    "1-n02": {
+      "id": "1-n02",
+      "speakerId": "meguru",
+      "text": "非常感谢——！",
+      "nextNodeId": "1-n03"
+    },
+    "1-n03": {
+      "id": "1-n03",
+      "speakerId": "meguru",
+      "text": "制作人！",
+      "nextNodeId": "1-n04"
+    },
+    "1-n04": {
+      "id": "1-n04",
+      "text": "你说辛苦了，表情很好。她笑起来。",
+      "nextNodeId": "1-n05",
+      "speakerId": "producer"
+    },
+    "1-n05": {
+      "id": "1-n05",
+      "speakerId": "meguru",
+      "text": "嗯，我拍得很开心——！",
+      "nextNodeId": "1-n06"
+    },
+    "1-n06": {
+      "id": "1-n06",
+      "speakerId": "meguru",
+      "text": "啊……明明在工作，说开心真的好吗。",
+      "nextNodeId": "1-n07"
+    },
+    "1-n07": {
+      "id": "1-n07",
+      "text": "你说当然好，这很重要。而且她确实做到了摄影师要的东西。",
+      "nextNodeId": "1-n09",
+      "speakerId": "producer"
+    },
+    "1-n09": {
+      "id": "1-n09",
+      "speakerId": "meguru",
+      "text": "诶嘿嘿，制作人真温柔——",
+      "nextNodeId": "1-n10"
+    },
+    "1-n10": {
+      "id": "1-n10",
+      "speakerId": "meguru",
+      "text": "谢谢你一直看着我！你很热吧？",
+      "nextNodeId": "1-n11"
+    },
+    "1-n11": {
+      "id": "1-n11",
+      "text": "你说完全没事。她盯着你手里的水瓶看了两秒。",
+      "nextNodeId": "1-n12",
+      "speakerId": "producer"
+    },
+    "1-n12": {
+      "id": "1-n12",
+      "speakerId": "meguru",
+      "text": "……那个水看起来也温温的啊？",
+      "nextNodeId": "1-n13"
+    },
+    "1-n13": {
+      "id": "1-n13",
+      "speakerId": "meguru",
+      "text": "到下一段采访之前还有点时间。巡也去玩玩水吧？",
+      "nextNodeId": "1-n14"
+    },
+    "1-n14": {
+      "id": "1-n14",
+      "speakerId": "meguru",
+      "text": "那我先休息一下吧。一起去阳伞下休息吧！",
+      "nextNodeId": "2-n01"
+    },
+    "2-n01": {
+      "id": "2-n01",
+      "text": "阳伞下摆着两张折叠椅。她去拿毛巾了。",
+      "nextNodeId": "2-n02"
+    },
+    "2-n02": {
+      "id": "2-n02",
+      "text": "你坐下，想着不要迷路就好了。阴凉处确实凉快。",
+      "nextNodeId": "2-n03"
+    },
+    "2-n03": {
+      "id": "2-n03",
+      "text": "不知道过了多久，忽然有人叫你。",
+      "nextNodeId": "2-n04"
+    },
+    "2-n04": {
+      "id": "2-n04",
+      "speakerId": "meguru",
+      "text": "……制作人！",
+      "nextNodeId": "2-n05"
+    },
+    "2-n05": {
+      "id": "2-n05",
+      "text": "你被冰了一下，醒过来。",
+      "nextNodeId": "2-n06"
+    },
+    "2-n06": {
+      "id": "2-n06",
+      "speakerId": "meguru",
+      "text": "诶嘿嘿，醒啦？给你果汁——",
+      "nextNodeId": "2-n07"
+    },
+    "2-n07": {
+      "id": "2-n07",
+      "speakerId": "meguru",
+      "text": "制作人，这个就可以吗？虽然我选了我想喝的！",
+      "nextNodeId": "2-n08"
+    },
+    "2-n08": {
+      "id": "2-n08",
+      "text": "你接过来道谢。瓶身上还挂着一层水。",
+      "nextNodeId": "2-n09"
+    },
+    "2-n09": {
+      "id": "2-n09",
+      "speakerId": "meguru",
+      "text": "我已经喝过了！我去下泳池！",
+      "nextNodeId": "3-n01"
+    },
+    "3-n01": {
+      "id": "3-n01",
+      "text": "她几步跑到池边，跳了进去。水面碎开又合上。",
+      "nextNodeId": "3-n02"
+    },
+    "3-n02": {
+      "id": "3-n02",
+      "speakerId": "meguru",
+      "text": "……制作人！快看——！",
+      "nextNodeId": "3-n03"
+    },
+    "3-n03": {
+      "id": "3-n03",
+      "speakerId": "meguru",
+      "text": "是不是闪闪发亮的——！",
+      "nextNodeId": "3-n04"
+    },
+    "3-n04": {
+      "id": "3-n04",
+      "speakerId": "meguru",
+      "text": "太阳耀眼的时候溅起的水花，超漂亮的……！",
+      "nextNodeId": "3-n05"
+    },
+    "3-n05": {
+      "id": "3-n05",
+      "text": "你说是啊，让她别跌倒了。",
+      "nextNodeId": "3-n06",
+      "speakerId": "producer"
+    },
+    "3-n06": {
+      "id": "3-n06",
+      "speakerId": "meguru",
+      "text": "没关系的——！你看你看——",
+      "nextNodeId": "3-n07"
+    },
+    "3-n07": {
+      "id": "3-n07",
+      "text": "水花溅到脚边。凉凉的很舒服。",
+      "nextNodeId": "3-n08"
+    },
+    "3-n08": {
+      "id": "3-n08",
+      "speakerId": "meguru",
+      "text": "啊，泼到你了？对不起！",
+      "nextNodeId": "3-n09"
+    },
+    "3-n09": {
+      "id": "3-n09",
+      "text": "她趴在池边，仰头看着你。头发贴在脸上，还在滴水。",
+      "nextNodeId": "3-n10"
+    },
+    "3-n10": {
+      "id": "3-n10",
+      "speakerId": "meguru",
+      "text": "制作人，下次也一起来泳池里玩吧。",
+      "nextNodeId": "3-n11"
+    },
+    "3-n11": {
+      "id": "3-n11",
+      "text": "远处工作人员在喊集合。她应了一声，又回头看了你一眼。"
+    }
+  }
+}
+],
   storyChains: [],
   items: [
 {

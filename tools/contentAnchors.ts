@@ -81,7 +81,7 @@ const problems = [
   }),
   ...validateChapterAnchors(CHAPTER_SOURCES, {
     readSource,
-    hasInGame: (text) => gameText.includes(text),
+    hasInGame: (text, normalize) => normalize(gameText).includes(normalize(text)),
   }),
 ];
 

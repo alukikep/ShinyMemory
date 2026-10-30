@@ -1216,6 +1216,13 @@ export function evaluateStoryChain(
   if (chainState.nextEligibleDay && day < chainState.nextEligibleDay) {
     blocks.push({ kind: 'waiting', earliestDay: chainState.nextEligibleDay });
   }
+  // 节奏：已开始的链只在"剧情日"那天能推进，其余日子等下一个剧情日。
+  if (state.storyChains[chain.id] && !chainState.completed) {
+    const storyDay = storyDayFor(state, chain);
+    if (storyDay !== undefined && day < storyDay) {
+      blocks.push({ kind: 'waiting', earliestDay: storyDay });
+    }
+  }
 
   if (step) {
     const failed = (step.when ?? []).filter(
@@ -1360,13 +1367,15 @@ export function storyDayFor(
   const chainState = state.storyChains[chain.id];
   if (!chainState || chainState.completed) return undefined;
 
+  // cadence 只在显式设成 >1 时才作为"间隔"；默认 1 不改变原有同日推进的链。
   const cadence = Math.max(1, chain.cadenceDays ?? 1);
+  const spacing = cadence > 1 ? cadence : 0;
   const step = chain.steps[chainState.stepIndex];
   if (!step) return undefined;
 
   const anchor = chainState.lastStepDay ?? getDay(state.clock.absoluteMinutes);
   const delay = Math.max(chainState.nextEligibleDay ? chainState.nextEligibleDay - anchor : 0, 0);
-  let day = anchor + Math.max(delay, cadence);
+  let day = anchor + Math.max(delay, spacing);
 
   const today = getDay(state.clock.absoluteMinutes);
   if (today > day) {

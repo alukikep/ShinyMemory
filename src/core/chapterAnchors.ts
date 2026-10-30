@@ -26,11 +26,20 @@ export type AnchorProblem = {
 export type AnchorValidatorOptions = {
   /** 读语料文件；不存在时返回 undefined。 */
   readSource: (source: string) => string | undefined;
-  /** 判断一段文字是否出现在游戏内容里（对话正文）。 */
-  hasInGame: (text: string) => boolean;
+  /** 判断一段文字是否出现在游戏内容里（对话正文）。调用方自行归一化。 */
+  hasInGame: (text: string, normalize: (value: string) => string) => boolean;
 };
 
 const MIN_ANCHORS = 3;
+
+/**
+ * 归一化后再比较。
+ * 语料 CSV 里的换行是字面的 "\n"，锚点跨行时直接 includes 会失败；
+ * 空格同理。所以两边都去掉 "\n" 和空白再比。
+ */
+function normalize(text: string): string {
+  return text.replace(/\\n/g, '').replace(/\s+/g, '');
+}
 
 export function validateChapterAnchors(
   chapters: ChapterSource[],
@@ -63,13 +72,13 @@ export function validateChapterAnchors(
         });
         continue;
       }
-      if (!source.includes(anchor)) {
+      if (!normalize(source).includes(normalize(anchor))) {
         problems.push({
           chapterId: chapter.chapterId,
           message: `锚点在语料里找不到（可能改写过了）：「${anchor}」`,
         });
       }
-      if (!options.hasInGame(anchor)) {
+      if (!options.hasInGame(anchor, normalize)) {
         problems.push({
           chapterId: chapter.chapterId,
           message: `锚点没进游戏内容（改编时丢了）：「${anchor}」`,

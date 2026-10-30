@@ -1,0 +1,70 @@
+{
+  "id": "draft.dialogue.meguru.swimsuit.shop",
+  "kind": "dialogue",
+  "title": "泳装的颜色 · 逛店",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.swimsuit.shop",
+  "payload": {
+    "id": "dialogue.meguru.swimsuit.shop",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "店里整整一面墙都是泳装。她从这头走到那头，又走回来。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "meguru",
+        "text": "哇——……！每一件都很可爱啊——……！",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "meguru",
+        "text": "有花图案和蝴蝶结……制作人觉得哪种比较好？",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "text": "你说，不是要选巡喜欢的款式吗。她愣了一下，然后笑起来。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "speakerId": "meguru",
+        "text": "我和朋友买东西的时候，一边聊天一边逛街超开心的。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "meguru",
+        "text": "之前也有过聊到入迷结果什么都没买就结束了行程的情况！诶嘿嘿。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "speakerId": "meguru",
+        "text": "……不过能上杂志的只有一件吧……嗯——……好难选——！",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "speakerId": "meguru",
+        "text": "我要怎么办啊，制作人……！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-30T15:32:05.167Z",
+  "updatedAt": "2026-10-30T15:32:05.167Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-30T15:32:05.167Z",
+      "note": "B11：卡面章「泳装的颜色」（夏に恋するピチカート！改编）"
+    }
+  ]
+}

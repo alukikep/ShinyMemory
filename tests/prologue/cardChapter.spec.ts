@@ -21,6 +21,11 @@ async function finishDialogue(page: import('@playwright/test').Page) {
 }
 
 test('Meguru card chapter: four steps on a two-day cadence', async ({ page }) => {
+  // 这一章的 4 段对话在审查台待审；通过之前游戏里没有它们，跳过。
+  test.skip(
+    process.env.CARD_CHAPTER_APPROVED !== '1',
+    '卡面章对话尚未通过审查（通过后设 CARD_CHAPTER_APPROVED=1 再跑）',
+  );
   const errors = watchConsole(page);
   await openGame(page);
   await reset(page, 1);

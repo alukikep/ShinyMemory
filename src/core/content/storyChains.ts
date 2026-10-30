@@ -272,6 +272,10 @@ export const meguruBurden: StoryChainDef = {
  *
  * cadenceDays 2：剧情日每两天出现一次——试点用它验证"错过顺延一个周期"。
  * workPolicy 'open'：只挡剧情日那一天，玩家可以一边接活一边推进。
+ *
+ * ⚠️ 暂时**不接入 STORY_CHAINS**：它引用的 4 段对话还在审查台待审。
+ * 内容过审后再把它加进数组——顺序是"先过审，再接结构"，反过来会让
+ * 每个草稿的预检都报 dialogue-ref（因为 BASE_PACK 引用了不存在的对话）。
  */
 export const meguruSwimsuit: StoryChainDef = {
   id: 'meguru-swimsuit',
@@ -325,7 +329,6 @@ export const meguruSwimsuit: StoryChainDef = {
 };
 
 export const STORY_CHAINS = [
-  meguruSwimsuit,
   manoEncounter,
   manoSlump,
   hioriEncounter,

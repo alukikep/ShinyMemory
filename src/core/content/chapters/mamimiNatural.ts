@@ -7,7 +7,7 @@ import type { StoryChainDef } from '../../types';
 const mamimiNatural: StoryChainDef = {
   id: 'mamimi-side',
   idolId: 'mamimi',
-  title: 'まだ知らない one side',
+  title: '夕つ方まみみチック',
   kind: 'card',
   priority: 5,
   cadenceDays: 1,

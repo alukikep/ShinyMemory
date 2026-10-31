@@ -2806,6 +2806,240 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.mamimi.first",
+  "idolId": "mamimi",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "mamimi",
+      "text": "283 Production……这也太突然了吧ー？你是认真的吗？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "我看了一眼，就觉得你有素质──",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "要不要和我一起，以顶级偶像为目标？我想你能看到新的世界！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "mamimi",
+      "text": "……唔，可是偶像啊，每天放学后都要练习吧ー？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "mamimi",
+      "text": "那不是很麻烦吗？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "那个……你是学生吗？大学生？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "mamimi",
+      "text": "不是ー。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "诶！？那……高中生？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "mamimi",
+      "text": "是啊，看不出来吗？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "看不出来……不对，那不重要。这个时间一个人在外面，很危险吧。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "mamimi",
+      "text": "我一直都这样啊……而且话说，挖人的哥哥你才更可疑吧。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "mamimi",
+      "text": "算了，话说完了吧？我要走了。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "啊，等一下！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "mamimi",
+      "text": "……还有什么事吗？偶像我不当哦ー。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "不是那个。这个时间把你一个人放着，我做不到。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "mamimi",
+      "text": "…………哥哥，你还真奇怪呢ー。"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（让我去挖苗子……今天也没遇到合适的。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "（已经这个时间了，差不多该回去了──）",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "mamimi",
+      "text": "……",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "（嗯？那孩子穿得挺有派头……气质很特别，也很漂亮。）",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "（──只能上去搭话了！）",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "不好意思，能打扰一下吗？",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "mamimi",
+      "text": "……有什么事吗？",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "我在艺能事务所做制作人……啊，这是我的名片。方便的话请收下。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "其实，我想挖你。要不要来我们事务所当偶像？",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.mamimi.second",
+  "idolId": "mamimi",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "mamimi",
+      "text": "怎么样呢ー。不过，说不定那要看哥哥的表现哦？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "那我就得作为制作人好好干了。今后请多关照！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "mamimi",
+      "text": "我叫田中摩美々ー。我是个坏孩子，会给你添很多麻烦的哦。制作人。"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（那天之后就没了消息……她真的会来吗。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "mamimi",
+      "text": "你好ー。上次那个哥哥在吗？",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "啊，你是……那时候的！",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "mamimi",
+      "text": "啊，在呢在呢。哥哥的脸我记得很清楚哦ー。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "mamimi",
+      "text": "被那么啰嗦地训一顿，还是第一次。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "mamimi",
+      "text": "跟在哥哥身边好像挺有意思的ー，所以我想，当个偶像也行吧。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "真的吗？我还以为你完全没兴趣──",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "（不过，我确实还没遇到过比她更有魅力的孩子……虽然也有担心的地方──好！）",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "……以后不要在深夜到处晃了。这个约定必须遵守。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
   "id": "dialogue.mano.afterglow",
   "idolId": "mano",
   "startNodeId": "01",

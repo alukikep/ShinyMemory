@@ -2,7 +2,7 @@
   "id": "dialogue.mamimi.first",
   "kind": "dialogue",
   "title": "街边的她",
-  "status": "review",
+  "status": "approved",
   "version": 2,
   "rootId": "draft.dialogue.mamimi.first",
   "payload": {
@@ -163,12 +163,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T10:26:09.152Z",
-  "updatedAt": "2026-10-31T10:26:09.152Z",
+  "updatedAt": "2026-10-31T10:35:41.966Z",
+  "reviewedAt": "2026-10-31T10:35:41.966Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T10:26:09.152Z",
       "note": "摩美々 招募 1/2（按 100500101 重写）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T10:35:41.966Z"
     }
   ]
 }

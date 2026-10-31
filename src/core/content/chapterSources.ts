@@ -55,14 +55,14 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     chapterId: 'mamimi-yukata',
     script: '200500501',
     source: '剧本 200500501',
-    card: { title: 'まだ知らない one side', index: 1, total: 2 },
+    card: { title: '夕つ方まみみチック', index: 1, total: 2 },
     anchors: ['2005005010010', '2005005010070', '2005005010240'],
   },
   {
     chapterId: 'mamimi-purple',
     script: '200500511',
     source: '剧本 200500511',
-    card: { title: 'まだ知らない one side', index: 2, total: 2 },
+    card: { title: '夕つ方まみみチック', index: 2, total: 2 },
     anchors: ['2005005110040', '2005005110120', '2005005110220'],
   },
   {

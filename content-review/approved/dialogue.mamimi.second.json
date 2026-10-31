@@ -2,7 +2,7 @@
   "id": "dialogue.mamimi.second",
   "kind": "dialogue",
   "title": "她自己来了",
-  "status": "review",
+  "status": "approved",
   "version": 3,
   "rootId": "draft.dialogue.mamimi.second",
   "payload": {
@@ -85,12 +85,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T10:34:34.368Z",
-  "updatedAt": "2026-10-31T10:34:34.368Z",
+  "updatedAt": "2026-10-31T10:35:41.996Z",
+  "reviewedAt": "2026-10-31T10:35:41.996Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T10:34:34.368Z",
       "note": "按 WING 调整：第二段改到事务所，删掉与上一段重复的\"送往车站\"开头"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T10:35:41.996Z"
     }
   ]
 }

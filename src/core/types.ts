@@ -131,6 +131,11 @@ export type DialogueDef = {
 
 export type StoryChainStep = {
   id: string;
+  /**
+   * 这一步的出处：剧本编号（如 100500101 / 200500501）。
+   * 没有出处的步骤 = 凭空写的，`content:board` 会拦。
+   */
+  source?: string;
   locationId: string;
   timeWindow?: TimeWindow;
   minDaysAfterPrevious?: number;

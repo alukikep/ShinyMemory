@@ -181,6 +181,35 @@ console.log('');
 
 const live = rows.filter((row) => row.state === '已上线').length;
 const waiting = rows.filter((row) => row.state === '待审').length;
+// 每一步都要有出处：step.source 或有 chapterSources 条目。
+// 旧的三条长线和招募链是在这条规则之前写的，先豁免（记为技术债）。
+const LEGACY_CHAINS = new Set([
+  'mano-encounter',
+  'hiori-encounter',
+  'meguru-encounter',
+  'mano-slump',
+  'hiori-gap',
+  'meguru-burden',
+]);
+
+for (const chain of PENDING_CHAPTERS) {
+  if (LEGACY_CHAINS.has(chain.id)) continue;
+  for (const step of chain.steps) {
+    const source =
+      step.source ??
+      CHAPTER_SOURCES.find((entry) => entry.chapterId === step.id)?.script;
+    if (!source) {
+      problems.push(
+        `${chain.id}：步骤 ${step.id} 没有出处（step.source 或 chapterSources）`,
+      );
+      continue;
+    }
+    if (/^\d{9}$/.test(source) && !existsSync(path.join('.cache', 'shiny', `${source}.json`))) {
+      problems.push(`${chain.id}：步骤 ${step.id} 的出处 ${source} 没有导出过`);
+    }
+  }
+}
+
 // 一张卡 = 一条链：步数必须等于登记的总段数，每步都要有出处表条目
 for (const chain of cardChains) {
   const sources = CHAPTER_SOURCES.filter((entry) =>

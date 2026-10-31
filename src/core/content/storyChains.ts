@@ -294,6 +294,8 @@ export const mamimiEncounter: StoryChainDef = {
       timeWindow: { fromMinute: 1140, toMinute: 1380 },
       dialogueId: 'dialogue.mamimi.first',
       actionLabel: '夜里有个穿得很特别的女孩',
+      // WING 第一章 My hidden heart
+      source: '100500101',
       complete: { status: 'known', nextStepDelayDays: 2 },
     },
     {
@@ -302,6 +304,7 @@ export const mamimiEncounter: StoryChainDef = {
       timeWindow: { fromMinute: 960, toMinute: 1260 },
       dialogueId: 'dialogue.mamimi.second',
       actionLabel: '她主动来找你了',
+      source: '100500101',
       complete: { status: 'recruited' },
     },
   ],

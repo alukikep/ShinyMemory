@@ -359,6 +359,16 @@ export function storyHints(state: GameState): StoryHint[];
 
 **② 出处表**（`src/core/content/chapterSources.ts`）
 
+每一步还要写 `source`（剧本编号），这是"这段是读出来的，不是编的"的唯一凭证：
+
+```ts
+{
+  id: 'mano-hover',
+  dialogueId: 'dialogue.mano.hover',
+  source: '200100401',   // ← 缺了 content:board 会红
+}
+```
+
 ```ts
 {
   chapterId: 'meguru-swimsuit',

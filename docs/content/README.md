@@ -13,6 +13,7 @@
 docs/content/
   README.md              本文件：规范 + 流程 + 块清单 + 进度
   new-idol.md            新角色接入全流程（资料选择 / 门禁 / 批量顺序）
+  _materials/            28 人资料包（API 元数据 + 剧本编号索引）
   playbook.md            内容生产手册（交付协议 / 覆盖矩阵 / 写作配方）
   <idol>/
     character.md         角色卡（写作时逐条对照）

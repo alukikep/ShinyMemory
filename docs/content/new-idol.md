@@ -59,6 +59,20 @@ npx tsx tools/scriptExport.ts 200500501 200500511
 | 授权 | 来源是萌娘共享，原作者保留权利；**内部开发可用，公开分发前需另行确认** |
 | 没头像时 | 名册/侧边栏显示名字首字——能跑，但「看着像没做」 |
 
+### 1.4 资料包（28 人索引，先看这个）
+
+```bash
+npm run content:materials   # 重新抓取/更新索引（有缓存，幂等）
+```
+
+产物：[`_materials/index.md`](_materials/index.md)（可提交）+ `.cache/shiny/materials/*.json`（不提交）。
+说明见 [`_materials/README.md`](_materials/README.md)。
+
+- 索引里有每位偶像的 **WING 相遇剧本编号**、**首张卡的每一段剧本编号**、头像/facts 是否就绪。
+- 人设细节可先读 eidolon-sc 的 `characters/facts/<id>.md`（带 `.sources.md`），
+  但它记到"话名"级，**不是行 id**——写进角色卡前必须回剧本核对。
+- `_materials` 里的"首张卡"只是最早发售的 P 卡；实际改编可以换卡（`pCardInfo` 查任意卡）。
+
 ---
 
 ## 2. 全流程（12 步）

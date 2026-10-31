@@ -11,6 +11,7 @@
     "content:coverage": "tsx tools/contentCoverage.ts",
     "content:drafts": "tsx tools/checkDrafts.ts",
     "content:new-idol": "tsx tools/newIdol.ts",
+    "content:materials": "tsx tools/collectIdolMaterials.ts",
     "content:guard": "tsx tools/contentGuard.ts",
     "content:anchors": "tsx tools/contentAnchors.ts",
     "content:board": "tsx tools/chapterBoard.ts",

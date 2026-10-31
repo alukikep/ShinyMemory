@@ -2,7 +2,7 @@
   "id": "draft.dialogue.mano.hiking",
   "kind": "dialogue",
   "title": "自然とはずむ心",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.mano.hiking",
   "payload": {
@@ -223,12 +223,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T09:58:59.911Z",
-  "updatedAt": "2026-10-31T09:58:59.911Z",
+  "updatedAt": "2026-10-31T10:01:57.330Z",
+  "reviewedAt": "2026-10-31T10:01:57.330Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T09:58:59.911Z",
       "note": "ナチュラルモード 第 2 章（剧本 200100302）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T10:01:57.330Z"
     }
   ]
 }

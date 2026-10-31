@@ -2,7 +2,7 @@
   "id": "draft.dialogue.mano.shopping",
   "kind": "dialogue",
   "title": "ショッピング日和",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.mano.shopping",
   "payload": {
@@ -363,12 +363,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T09:58:59.911Z",
-  "updatedAt": "2026-10-31T09:58:59.911Z",
+  "updatedAt": "2026-10-31T10:01:57.275Z",
+  "reviewedAt": "2026-10-31T10:01:57.275Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T09:58:59.911Z",
       "note": "ナチュラルモード 第 1 章（剧本 200100301）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T10:01:57.275Z"
     }
   ]
 }

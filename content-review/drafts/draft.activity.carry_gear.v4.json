@@ -1,11 +1,11 @@
 {
-  "id": "draft.activity.carry_gear.v3",
+  "id": "draft.activity.carry_gear.v4",
   "supersedes": "activity.carry_gear",
   "kind": "activity",
-  "title": "帮忙搬器材（基础报酬 220 → 44）",
+  "title": "帮忙搬器材（体力 10 · 压力 1 · ¥52）",
   "status": "review",
-  "version": 3,
-  "rootId": "draft.activity.carry_gear.v3",
+  "version": 4,
+  "rootId": "draft.activity.carry_gear.v4",
   "payload": {
     "id": "activity.carry_gear",
     "name": "帮忙搬器材",
@@ -23,12 +23,12 @@
       }
     ],
     "cost": {
-      "stamina": 12
+      "stamina": 10
     },
     "effects": [
       {
         "kind": "money",
-        "delta": 44
+        "delta": 52
       },
       {
         "kind": "attributeExp",
@@ -41,7 +41,7 @@
       {
         "kind": "sharedStat",
         "stat": "stress",
-        "delta": 2
+        "delta": 1
       }
     ],
     "resultTexts": [
@@ -51,13 +51,13 @@
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-31T04:25:21.531Z",
-  "updatedAt": "2026-10-31T04:25:21.531Z",
+  "createdAt": "2026-10-31T04:29:39.062Z",
+  "updatedAt": "2026-10-31T04:29:39.062Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-31T04:25:21.531Z",
-      "note": "零工收入要让位给偶像工作：S 级单次上限 ¥100"
+      "at": "2026-10-31T04:29:39.062Z",
+      "note": "统一兑换率：¥4.5 / 综合成本点，S 级上限 ¥100"
     }
   ]
 }

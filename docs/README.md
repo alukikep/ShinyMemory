@@ -20,6 +20,7 @@
 | [内容生产](content/README.md) | 块的划分、生产流程、块清单与进度 |
 | [内容生产手册](content/playbook.md) | 交付协议、新角色接入清单、覆盖矩阵、写作配方、卡面改编规则、质量门 |
 | [长线剧情执行手册](content/long-arc.md) | 多步剧情：大纲、步与节奏、var 分支、收束、审查顺序 |
+| [数值设计](content/numbers.md) | 兑换基准、零工/训练/工作的数值表、购买力与待定项 |
 | [卡面改编执行手册](content/card-adaptation.md) | 素材来源、找剧本编号、生产看板、修订流程、E2E 断言、全部事故 |
 | [卡面剧情实现计划](content/card-story-plan.md) | 试点一章的选材、结构、锚点、成本与验收（待确认） |
 | [卡面剧情实现计划（详细）](content/card-story-implementation.md) | 引擎改动、剧情日/接活策略、分三次提交与验收（待审） |

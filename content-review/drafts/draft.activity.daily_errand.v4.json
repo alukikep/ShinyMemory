@@ -1,11 +1,11 @@
 {
-  "id": "draft.activity.daily_errand.v3",
+  "id": "draft.activity.daily_errand.v4",
   "supersedes": "activity.daily_errand",
   "kind": "activity",
-  "title": "发传单（基础报酬 280 → 56）",
+  "title": "发传单（体力 8 · 压力 3 · ¥56）",
   "status": "review",
-  "version": 3,
-  "rootId": "draft.activity.daily_errand.v3",
+  "version": 4,
+  "rootId": "draft.activity.daily_errand.v4",
   "payload": {
     "id": "activity.daily_errand",
     "name": "发传单",
@@ -52,13 +52,13 @@
     ]
   },
   "annotations": [],
-  "createdAt": "2026-10-31T04:25:21.531Z",
-  "updatedAt": "2026-10-31T04:25:21.531Z",
+  "createdAt": "2026-10-31T04:29:39.062Z",
+  "updatedAt": "2026-10-31T04:29:39.062Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-31T04:25:21.531Z",
-      "note": "零工收入要让位给偶像工作：S 级单次上限 ¥100"
+      "at": "2026-10-31T04:29:39.062Z",
+      "note": "统一兑换率：¥4.5 / 综合成本点，S 级上限 ¥100"
     }
   ]
 }

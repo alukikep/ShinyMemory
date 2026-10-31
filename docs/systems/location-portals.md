@@ -1,7 +1,6 @@
 # 地点入口（区）
 
 > 已实现（2026-10-31）。**规则以本文为准。**
-> 旧稿 `location-districts.md`（分区层）与 `location-merge-plan.md`（合并地点）都已作废。
 
 ---
 

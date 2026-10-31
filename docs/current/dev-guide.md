@@ -80,7 +80,7 @@ npm run build             # 上面全部 + 类型 + 打包
 | `tsc --noEmit` | 类型 | `build` |
 | `content:guard` | 角色卡存在、语料路径真实、≥3 条逐字引文、回查记录 | `content:validate` |
 | `content:audit` | 结构/数值/引用完整性 | `content:validate` |
-| `content:coverage` | 每个偶像的内容单元是否齐全 | 手动（建议每轮跑） |
+| `content:coverage` | 每个偶像的内容单元是否齐全（`PENDING_IDOLS` 里的标"接入中"） | `content:validate` |
 | `viewContract.test` | 界面读的字段从对象上消失 | `npm test` |
 | `content:anchors` | 卡面改编的锚点句（语料里有 + 游戏里也有） | `content:validate` |
 | E2E（prologue / content / review） | 流程真的能走通 | `npm run acceptance*` |

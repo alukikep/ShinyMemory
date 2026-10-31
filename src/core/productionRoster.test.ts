@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { PRODUCTION_PACK } from './productionPack';
+import { PENDING_IDOLS } from './content/pending';
 
 /**
  * 新角色接进来之后，名册和日程表必须看得到她。
@@ -46,6 +47,7 @@ describe('production roster', () => {
 
   it('every idol can actually be recruited', () => {
     for (const idol of idols) {
+      if (PENDING_IDOLS.includes(idol.id)) continue;
       const recruitable = PRODUCTION_PACK.storyChains.some(
         (chain) =>
           chain.idolId === idol.id &&
@@ -54,6 +56,15 @@ describe('production roster', () => {
       expect(
         recruitable,
         `${idol.id} 没有把状态推到 recruited 的剧情步骤`,
+      ).toBe(true);
+    }
+  });
+
+  it('keeps the in-progress list pointing at real idols', () => {
+    for (const id of PENDING_IDOLS) {
+      expect(
+        PRODUCTION_PACK.idols.some((idol) => idol.id === id),
+        `PENDING_IDOLS 里的 ${id} 不在内容包里`,
       ).toBe(true);
     }
   });

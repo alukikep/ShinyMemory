@@ -2,6 +2,7 @@ import { BASE_PACK } from '../src/core/content/basePack.js';
 import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
 import { buildContentIndex } from '../src/core/contentIndexCore.js';
 import { PENDING_CHAPTERS } from '../src/core/content/chapters/index.js';
+import { PENDING_IDOLS } from '../src/core/content/pending.js';
 import { mergeApprovedContent } from '../src/review/approval.js';
 import { readApprovedDrafts } from './approvedFiles.js';
 
@@ -84,6 +85,7 @@ let ok = true;
 
 for (const idol of [...index.idols.values()]) {
   const counts = countFor(idol.id);
+  const pending = PENDING_IDOLS.includes(idol.id);
   const rows: Row[] = [
     { unit: '训练行动', count: counts.get('训练行动') ?? 0, min: 3 },
     { unit: '专属行动', count: counts.get('专属行动') ?? 0, min: 1 },
@@ -94,11 +96,13 @@ for (const idol of [...index.idols.values()]) {
     { unit: '工作（全角色共享）', count: index.jobs.size, min: 2 },
   ];
 
-  console.log(`\n${idol.name}（${idol.id}）`);
+  console.log(`\n${idol.name}（${idol.id}）${pending ? ' · 接入中' : ''}`);
   for (const row of rows) {
     const short = row.count < row.min;
-    if (short) ok = false;
-    console.log(`  ${short ? '×' : '✓'} ${row.unit}：${row.count} / ${row.min}`);
+    if (short && !pending) ok = false;
+    console.log(
+      `  ${short ? '×' : '✓'} ${row.unit}：${row.count} / ${row.min}${short && pending ? '（接入中，不算失败）' : ''}`,
+    );
   }
 }
 

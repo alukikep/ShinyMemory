@@ -19,6 +19,7 @@ export const STARTING_STATE = {
     meguru: 'known',
     // 摩美々是偶遇型：制作人先在街上撞见她，她才进入名单。
     mamimi: 'unknown',
+    kiriko: 'unknown',
   } as Record<string, IdolStatus>,
   dialogueId: 'dialogue.prologue.office',
 } as const;

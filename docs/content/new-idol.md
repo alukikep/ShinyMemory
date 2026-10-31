@@ -85,6 +85,11 @@ npm run content:materials   # 重新抓取/更新索引（有缓存，幂等）
 | 1 | 资料包 | 3 本以上剧本在 `.cache/shiny/`；记下 cardUuid → eventId | 剧本能打开、行 id 在 | AI 自检 |
 | 2 | 角色卡 | `docs/content/<id>/character.md`（9 节，事实逐条带 13 位行 id） | `npm run content:guard` | 人（看语气） |
 | 3 | 骨架 | `npm run content:new-idol` 生成 idols/actors/角色卡空壳 + 登记两个 index、starting | `npm run build` | 代码评审 |
+
+> **接入中登记**：角色刚进包、内容还没做满时，把 id 写进
+> `src/core/content/pending.ts` 的 `PENDING_IDOLS`。覆盖度会把缺项标成
+> 「接入中，不算失败」，`productionRoster.test` 也会跳过"必须有招募步骤"。
+> **全部内容做完、`PENDING_IDOLS` 清空**，才算是正式上线。
 | 4 | 招募链 | 2 步剧情链 + 2 段对话草稿 | `npm run content:drafts` | 审查台 |
 | 5 | 日常内容 | 专属行动 1–3、话题 6–8、训练后事件 3、（可选）地点事件 2–4 | `npm run content:drafts` | 审查台 |
 | 6 | 首张卡 | `chapterSources` 登记 + 1 条链 N 章 + 每章 1 段对话 | `content:anchors`、`content:board` | 审查台 |

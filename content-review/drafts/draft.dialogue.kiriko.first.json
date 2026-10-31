@@ -1,0 +1,168 @@
+{
+  "id": "draft.dialogue.kiriko.first",
+  "kind": "dialogue",
+  "title": "会客室里的绷带",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.kiriko.first",
+  "payload": {
+    "id": "dialogue.kiriko.first",
+    "idolId": "kiriko",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（今天起就要带偶像了。听说她已经在会客室等着——）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（……门开了一条缝。）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kiriko",
+        "text": "……嗯、嗯……",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kiriko",
+        "text": "……好了……！……呵呵，绷带，这次卷得比平时好一点……♪",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "kiriko",
+        "text": "……啊……",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "（……啊，不小心看入神了。）抱歉，没敲门就进来了。我是——",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "kiriko",
+        "text": "プ、プロデューサー……さん……",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "幽谷霧子小姐，对吧？从试镜那天之后就没见了。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kiriko",
+        "text": "……！你、你还记得我的名字呢……",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "当然记得。你愿意来，我很高兴。以后请多关照。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "kiriko",
+        "text": "好、好的……！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "话说回来，你刚才是在缠绷带……手臂受伤了吗？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "kiriko",
+        "text": "……不，那个……只是稍微撞了一下。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "这样啊……保险起见，要不要让医生看看？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "kiriko",
+        "text": "不、不用了，不是什么大伤……真的，没关系……！",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "……是吗。那如果有变化，一定要告诉我。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "kiriko",
+        "text": "好、好的……！……那个……谢、谢谢你……！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "哈哈，不用这么紧张。不过……你绷带卷得真好。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "kiriko",
+        "text": "是的……！那个……这样缠着，会安心一点。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "kiriko",
+        "text": "见制作人先生之前……我想让自己别那么紧张……",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "（……？缠绷带能让人不紧张吗。）",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "kiriko",
+        "text": "……プ、プロデューサーさん。接下来……请多指教……！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "嗯。一起加油吧。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "（绷带缠得那么认真……她说的「安心」，大概不是随口说的。）"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:00:00.000Z",
+  "updatedAt": "2026-10-31T23:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T23:00:00.000Z",
+      "note": "对照 100800101 改编"
+    }
+  ]
+}

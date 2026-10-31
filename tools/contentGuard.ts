@@ -31,7 +31,8 @@ const cacheAvailable = existsSync(cacheRoot);
 
 /** 角色卡里引用的剧本编号，如 200300501。 */
 function readScriptIds(card: string): string[] {
-  const ids = [...card.matchAll(/(?:^|[^0-9])(2\d{8})(?![0-9])/g)].map((m) => m[1]!);
+  // 卡面/剧本编号是 2xxxxxxxx；W.I.N.G. 剧本是 1xxxxxxxx，两种都认。
+  const ids = [...card.matchAll(/(?:^|[^0-9])([12]\d{8})(?![0-9])/g)].map((m) => m[1]!);
   return [...new Set(ids)];
 }
 
@@ -68,10 +69,11 @@ for (const idol of [...index.idols.values()]) {
 
   const card = readFileSync(cardPath, 'utf8');
 
-  if (!card.includes('语料')) {
+  // "语料"是旧叫法；现在素材是游戏剧本，两种说法都算数。
+  if (!card.includes('语料') && !card.includes('剧本')) {
     problems.push({
       idol: idol.id,
-      message: '角色卡里没有「语料」相关内容——先读语料再写卡',
+      message: '角色卡里没有「剧本 / 语料」相关内容——先读剧本再写卡',
     });
   }
 

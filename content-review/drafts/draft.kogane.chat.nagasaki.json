@@ -1,0 +1,22 @@
+{
+  "id": "draft.kogane.chat.nagasaki",
+  "kind": "topic",
+  "title": "聊天 · 长崎的事",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kogane.chat.nagasaki",
+  "payload": {
+    "id": "kogane.chat.nagasaki",
+    "actorId": "kogane",
+    "label": "长崎的事",
+    "text": "「长崎啊……海、坡道、ちゃんぽん的味道……都是想家的时候会想起来的东西ばい」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T00:10:00.000Z",
+  "updatedAt": "2026-11-01T00:10:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-01T00:10:00.000Z", "note": "恋鐘日常话题（200400311）" }
+  ]
+}

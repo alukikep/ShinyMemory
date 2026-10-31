@@ -1,0 +1,80 @@
+{
+  "id": "draft.dialogue.kogane.second",
+  "kind": "dialogue",
+  "title": "她第一天上班",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.kogane.second",
+  "payload": {
+    "id": "dialogue.kogane.second",
+    "idolId": "kogane",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "今天是你作为偶像的第一份工作。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kogane",
+        "text": "嗯！终于到这一天了～好兴奋！",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kogane",
+        "text": "L'Antica 也快正式动起来了……我真的成了偶像呢",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "最后确认一下，这次是宣传小姐的工作。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "kogane",
+        "text": "知道～宣传小姐就是给商品当招牌的嘛？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kogane",
+        "text": "我在自家定食屋也常被夸，宣传绝对没问题！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "kogane",
+        "text": "当招牌娘，没人比得过我ばい！交给我！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "（好厉害……第一次工作，居然完全不紧张。）",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "那就拜托了。上吧，恋鐘。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "kogane",
+        "text": "好！看我的～！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T00:00:00.000Z",
+  "updatedAt": "2026-11-01T00:00:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-01T00:00:00.000Z", "note": "对照 100400102 改编" }
+  ]
+}

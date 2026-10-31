@@ -1,0 +1,22 @@
+{
+  "id": "draft.kogane.chat.dorm",
+  "kind": "topic",
+  "title": "聊天 · 宿舍生活",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kogane.chat.dorm",
+  "payload": {
+    "id": "kogane.chat.dorm",
+    "actorId": "kogane",
+    "label": "宿舍生活",
+    "text": "「宿舍的大家会一起做火锅哦～我负责调味！这个我还是有自信的ばい」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T00:10:00.000Z",
+  "updatedAt": "2026-11-01T00:10:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-01T00:10:00.000Z", "note": "恋鐘日常话题（宿舍，待核）" }
+  ]
+}

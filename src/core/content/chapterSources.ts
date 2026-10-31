@@ -187,4 +187,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: '包・帯・組・曲', index: 3, total: 3 },
     anchors: ['2008003110110', '2008003110140', '2008003110200'],
   },
+  {
+    chapterId: 'kogane-cook',
+    script: '200400301',
+    source: '剧本 200400301',
+    card: { title: 'ばってん長崎恋岬', index: 1, total: 3 },
+    anchors: ['2004003010010', '2004003010140', '2004003010190'],
+  },
+  {
+    chapterId: 'kogane-fair',
+    script: '200400302',
+    source: '剧本 200400302',
+    card: { title: 'ばってん長崎恋岬', index: 2, total: 3 },
+    anchors: ['2004003020010', '2004003020060', '2004003020150'],
+  },
+  {
+    chapterId: 'kogane-live',
+    script: '200400311',
+    source: '剧本 200400311',
+    card: { title: 'ばってん長崎恋岬', index: 3, total: 3 },
+    anchors: ['2004003110100', '2004003110180', '2004003110220'],
+  },
 ];

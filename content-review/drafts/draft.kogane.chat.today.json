@@ -1,0 +1,22 @@
+{
+  "id": "draft.kogane.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天怎么样",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kogane.chat.today",
+  "payload": {
+    "id": "kogane.chat.today",
+    "actorId": "kogane",
+    "label": "今天怎么样",
+    "text": "「今天啊～……普通地好！中午做了饭，大家都说好吃ばい！」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T00:10:00.000Z",
+  "updatedAt": "2026-11-01T00:10:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-01T00:10:00.000Z", "note": "恋鐘日常话题" }
+  ]
+}

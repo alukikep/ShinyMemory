@@ -1,0 +1,236 @@
+{
+  "id": "draft.dialogue.kogane.live",
+  "kind": "dialogue",
+  "title": "live 结束以后",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.kogane.live",
+  "payload": {
+    "id": "dialogue.kogane.live",
+    "idolId": "kogane",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "恋鐘，辛苦了。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kogane",
+        "text": "啊，制作人！你看了吗！？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "嗯，今天的 live 也很棒。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kogane",
+        "text": "谢谢……我一直憧憬着这个世界……",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "kogane",
+        "text": "现在，居然能站上这么大的舞台了呢",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "是啊。不过恋鐘还能站上更大的舞台。所以，继续往上走吧！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "kogane",
+        "text": "……嗯……是啊！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kogane",
+        "text": "让我当偶像的话，没人比得过我！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kogane",
+        "text": "…………",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "kogane",
+        "text": "不过……要是我一个人的话，肯定来不到这里",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "嗯，偶像要有粉丝的期待和支持才行。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "kogane",
+        "text": "嗯……不过，不只是这样",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "kogane",
+        "text": "在老家夸我的歌和舞、说我能当偶像的食堂客人……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "kogane",
+        "text": "我想对那些人说谢谢",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "我也很感谢那些把这么棒的偶像送来的人。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "kogane",
+        "text": "诶嘿嘿……然后，我要道谢的人里，还有从我来东京之后一直陪在身边的……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "kogane",
+        "text": "制作人ばい",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "恋鐘……该道谢的是我。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "kogane",
+        "text": "……制作人。我能走到这里也是托制作人的福，你也稍微骄傲一点嘛！",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "可是我只是做了理所当然的事，没什么特别的。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "kogane",
+        "text": "真是的……你完全不了解自己呢！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "诶？是吗？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "kogane",
+        "text": "不过，就是那种地方……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "kogane",
+        "text": "…………",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "……怎么了？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "kogane",
+        "text": "没、没什么！",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "这样啊……？那就好。……不过，不只是我，也想让老家的人看到恋鐘的舞台啊。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "kogane",
+        "text": "嗯！让大家看到我的感谢……为了这个，长崎凯旋 live！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "原来如此，凯旋 live 啊……确实是个好主意。好，虽然不知道什么时候，但一定要办。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "我也想看到恋鐘在长崎舞台上发光的样子。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "kogane",
+        "text": "嗯！我和制作人的话，马上就能实现长崎 live ばい！",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "kogane",
+        "text": "我们两个人，没有实现不了的愿望！",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "kogane",
+        "text": "然后……如果那个实现了的话……",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "kogane",
+        "text": "……会让你更喜欢长崎的",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "诶？",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "kogane",
+        "text": "长崎的事……让你喜欢得和我一样！期待吧！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T00:00:00.000Z",
+  "updatedAt": "2026-11-01T00:00:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-01T00:00:00.000Z", "note": "对照 200400311 改编" }
+  ]
+}

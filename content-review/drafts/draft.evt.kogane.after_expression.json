@@ -1,0 +1,48 @@
+{
+  "id": "draft.evt.kogane.after_expression",
+  "kind": "event",
+  "title": "笑得太大",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.kogane.after_expression",
+  "payload": {
+    "id": "evt.kogane.after_expression",
+    "title": "笑得太大",
+    "when": [],
+    "after": { "ids": ["expression"] },
+    "afterIdol": { "ids": ["kogane"] },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表现课结束了。老师说她笑得太大，收一点会更好看。她对着镜子试了几次，越试越不像自己。",
+    "choices": [
+      {
+        "label": "这样笑就很像她",
+        "hint": "信任 +3、表现 +1",
+        "effects": [
+          { "kind": "attributeExp", "ref": "trust", "tier": 3 },
+          { "kind": "attributeExp", "ref": "expression", "tier": 1 }
+        ],
+        "result": "「……真的？」她愣了一下，然后笑得比刚才还大。"
+      },
+      {
+        "label": "问她要不要试着收一点",
+        "hint": "信任 +1",
+        "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }],
+        "result": "「嗯……工作的时候收一点，平时就这样！」她自己给自己定了规矩。"
+      },
+      {
+        "label": "让她别太在意",
+        "hint": "压力 -3",
+        "effects": [{ "kind": "sharedStat", "stat": "stress", "delta": -3 }],
+        "result": "「说得也是～」她把镜子前的椅子推开，说去泡杯茶。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T00:10:00.000Z",
+  "updatedAt": "2026-11-01T00:10:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-01T00:10:00.000Z", "note": "恋鐘表现课后事件" }
+  ]
+}

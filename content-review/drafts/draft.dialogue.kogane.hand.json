@@ -1,0 +1,188 @@
+{
+  "id": "draft.dialogue.kogane.hand",
+  "kind": "dialogue",
+  "title": "事务所的晚饭",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.kogane.hand",
+  "payload": {
+    "id": "dialogue.kogane.hand",
+    "idolId": "kogane",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（……呼。先休息一下吧。……肚子饿了。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kogane",
+        "text": "制作人，工作辛苦了～！",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kogane",
+        "text": "肚子饿了吧？那，我给你做点什么！",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "不用了，随便对付一下就行，麻烦你不太好。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "kogane",
+        "text": "这种事不用在意啦～",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kogane",
+        "text": "制作人最近都没好好吃饭吧？身体垮了，我和大家都会困扰的ばい！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "……那就，难得，麻烦你了。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kogane",
+        "text": "好～！马上做，稍等一下！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "……啊！要用火的话小心点，万一引起火灾——",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "kogane",
+        "text": "不用担那种心～安心交给我～！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "（话说她要做什么……事务所里应该没什么像样的材料。）",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "kogane",
+        "text": "哼哼～哼哼～♪",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "（……好香。）",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "kogane",
+        "text": "制作人，快好了～再等一会儿哦～",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "这么快？手脚真利落啊。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "kogane",
+        "text": "诶嘿嘿……这么夸我，味道也不会变的哦～",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "kogane",
+        "text": "……好，让您久等了～！做好了ばい！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "这、这是……",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "kogane",
+        "text": "很厉害吧～！？",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "……真想不到，这是用事务所现有的东西做出来的。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "kogane",
+        "text": "んふふー♪　这种事，早饭前就搞定啦！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "kogane",
+        "text": "来，趁热吃吧。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "那我就不客气了。……好、好吃……真的很好吃！",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "kogane",
+        "text": "んふふー♪　对吧～？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "kogane",
+        "text": "让我做饭的话，没人比得过我哦！",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "……有这手艺，说不定能开一条新路线。料理节目、美食外景之类的。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "kogane",
+        "text": "哦哦！那事就交给我吧～！什么工作我都能干得漂漂亮亮！",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "kogane",
+        "text": "来，筷子要停了哦～？还有添饭，多吃点，再干一轮活！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T00:00:00.000Z",
+  "updatedAt": "2026-11-01T00:00:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-01T00:00:00.000Z", "note": "对照 200400301 改编" }
+  ]
+}

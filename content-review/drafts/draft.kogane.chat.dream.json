@@ -1,0 +1,22 @@
+{
+  "id": "draft.kogane.chat.dream",
+  "kind": "topic",
+  "title": "聊天 · 想做的事",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kogane.chat.dream",
+  "payload": {
+    "id": "kogane.chat.dream",
+    "actorId": "kogane",
+    "label": "想做的事",
+    "text": "「想办凯旋 live！让长崎的人看到我现在的样子……嗯，这是最大的愿望」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T00:10:00.000Z",
+  "updatedAt": "2026-11-01T00:10:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-01T00:10:00.000Z", "note": "恋鐘日常话题（200400311）" }
+  ]
+}

@@ -31,7 +31,14 @@ async function basePackFor(excludeIds: string[]) {
   const approved = packApprovedFiles(
     Object.fromEntries(
       drafts
-        .filter(({ draft }) => !skip.has(draft.id))
+        .filter(
+          ({ draft }) =>
+            // supersedes 里写的可能是"内容 id"（activity.daily_errand），
+            // 也可能是"草稿 id"（draft.activity.daily_errand.v2）——两种都要排除，
+            // 否则旧版还留在基准包里，报"ID 与现有内容重复"。
+            !skip.has(draft.id) &&
+            !skip.has(String((draft.payload as { id?: string } | undefined)?.id ?? '')),
+        )
         .map(({ file, draft }) => [file, draft]),
     ),
   );

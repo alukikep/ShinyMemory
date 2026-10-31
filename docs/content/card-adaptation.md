@@ -120,6 +120,112 @@ curl 'https://api.shinycolors.moe/info/pCardInfo?cardId=<cardUuid>'
 
 ---
 
+## 2.5 发现机制：卡的开头要玩家自己找到
+
+### 为什么
+
+手册（制作人手记）的条目来自剧情链。如果每张卡的每一章都提前列进去，
+偶像一多手册就变成一张几十条的待办清单——既读不下去，也毁掉"慢慢探索"的感觉。
+
+而且这批章本来就是"日常里撞见"的事件，不是任务。
+
+### 规则：只拦第一道门
+
+| 章节 | 手册 | 地图提示 |
+|---|---|---|
+| **每张卡的第 1 章** | 触发前**不出现**；触发后进归档（看过的回忆） | ✅ 有（一句线索） |
+| **第 2–5 章** | 第 1 章完成后**照常显示**，可以追踪 | 无 |
+
+也就是：**发现一次，之后就能追踪。** 玩家找到卡的开头，剩下的交给手册。
+
+### 数据结构
+
+```ts
+// StoryChainDef
+revealMode?: 'conditions' | 'triggered';  // 默认 conditions
+hint?: string;                            // 只在 triggered 时有意义
+```
+
+第一段这样写：
+
+```ts
+{
+  id: 'mano-hover',
+  revealMode: 'triggered',
+  hint: '公园里有鸽子聚过来',
+  revealWhen: [{ kind: 'idolStatus', idolId: 'mano', status: 'recruited' }],
+  // …
+}
+```
+
+### 手册判定
+
+```ts
+const revealed =
+  Boolean(state.storyChains[chain.id]) ||                  // 触发过就有
+  (chain.revealMode !== 'triggered' &&                      // triggered 的章
+    chain.revealWhen?.every((condition) => checkCondition(condition, state, ctx)) === true);
+```
+
+`revealMode: 'triggered'` 的章**永远不靠条件揭示**，只能靠"已经触发过"。
+条件（`revealWhen`）仍然参与触发判定，只是不再决定"手册里说不说"。
+
+### 地图提示
+
+新模块 `src/core/storyHints.ts`：
+
+```ts
+export type StoryHint = {
+  locationId: string;
+  inWindow: boolean;   // 现在是不是她的时间
+  text: string;        // 一句不剧透的线索
+};
+
+export function storyHints(state: GameState): StoryHint[];
+```
+
+判定顺序：
+
+```text
+1. 这条链是 revealMode='triggered' 的卡面章
+2. 还没触发（state.storyChains 里没有）
+3. 步骤的前置条件已满足（flag / 已招募等）—— 只是还没遇到
+4. → 在它的 locationId 显示标记
+   inWindow = 当前分钟在 timeWindow 内
+```
+
+界面表现：
+
+```text
+地图上「商业街」旁边一个小点
+  时间对   → 亮点，鼠标悬停显示线索
+  时间不对 → 灰点，显示"这个时间她不在"
+```
+
+**不显示**：章节标题、剧情内容、还差几章。
+
+### 线索文本怎么写
+
+一条一句，满足三点：
+
+1. **指向地点**（玩家据此走过去）
+2. **不剧透内容**（不写"她要和你聊恋爱观"）
+3. **像一个日常观察**（不是任务提示）
+
+| 好 | 不好 |
+|---|---|
+| 公园里有鸽子聚过来 | 真乃第一章：和鸽子玩 |
+| 商业街的杂志摊前有人 | 去商业街触发「泳装的颜色」 |
+| 练习室的灯还亮着 | 20:00 去练习室 |
+
+### 验收
+
+- [ ] 开局手册里没有卡面章
+- [ ] 满足前置后，地图对应地点出现标记
+- [ ] 时间窗外 `inWindow = false`（标记变灰）
+- [ ] 触发第 1 章后，手册出现第 2 章
+- [ ] 手册里不出现章节标题以外的剧透
+
 ## 3. 写对话：结构固定
 
 ```text

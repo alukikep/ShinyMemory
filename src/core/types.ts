@@ -384,6 +384,11 @@ export type ActorSchedule = {
   toMinute: number;
   locationId?: string;
   weekdays?: Weekday[];
+  /**
+   * 双周轮换：'first' = 第 1 周（day 1–7），'second' = 第 2 周（day 8–14）。
+   * 不写就是每周都生效。见 `src/core/time.ts` 的 `getWeekParity`。
+   */
+  weekParity?: 'first' | 'second';
   label?: string;
   priority?: number;
   visibility?: 'public' | 'private';

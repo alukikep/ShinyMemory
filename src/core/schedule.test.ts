@@ -162,4 +162,65 @@ describe('actor schedule resolver', () => {
       expect(check.reason).toBe('override');
     }
   });
+
+  it('rotates fortnight slots between week 1 and week 2', () => {
+    const rotating: ActorDef = {
+      id: 'rotating',
+      name: '轮换测试',
+      role: 'idol',
+      description: '只用来测双周轮换的假角色。',
+      schedule: [
+        {
+          fromMinute: 9 * 60,
+          toMinute: 12 * 60,
+          locationId: 'practice_room',
+          weekdays: [2],
+          label: '练习',
+        },
+        {
+          // 第 1 周的周二：下午收录
+          fromMinute: 13 * 60,
+          toMinute: 17 * 60,
+          locationId: 'studio',
+          weekdays: [2],
+          weekParity: 'first',
+          label: '收录',
+        },
+        {
+          // 第 2 周的周二：同一段时间去医院
+          fromMinute: 13 * 60,
+          toMinute: 17 * 60,
+          locationId: 'hospital',
+          weekdays: [2],
+          weekParity: 'second',
+          label: '医院',
+        },
+      ],
+      topics: [],
+    };
+
+    // day 2 = 第 1 周的周二，day 9 = 第 2 周的周二
+    expect(getSchedulesForDay(rotating, 2).map((slot) => slot.locationId)).toEqual(
+      ['studio', 'practice_room'],
+    );
+    expect(getSchedulesForDay(rotating, 9).map((slot) => slot.locationId)).toEqual(
+      ['hospital', 'practice_room'],
+    );
+    // 第 3 周（day 16）又回到第 1 周的安排
+    expect(getSchedulesForDay(rotating, 16).map((slot) => slot.locationId)).toEqual(
+      ['studio', 'practice_room'],
+    );
+
+    // 静态周表要能分别给出两周的样子
+    const weekOne = getWeeklySchedule(rotating, 'first')[1];
+    const weekTwo = getWeeklySchedule(rotating, 'second')[1];
+    expect(weekOne?.slots.map((slot) => slot.locationId)).toEqual([
+      'practice_room',
+      'studio',
+    ]);
+    expect(weekTwo?.slots.map((slot) => slot.locationId)).toEqual([
+      'practice_room',
+      'hospital',
+    ]);
+  });
 });

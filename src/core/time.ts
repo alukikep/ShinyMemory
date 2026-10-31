@@ -48,6 +48,18 @@ export function getWeekdayFromDay(day: number): Weekday {
   return utcDateForDay(day).getUTCDay() as Weekday;
 }
 
+/**
+ * 双周轮换：第 1 周是 day 1–7，第 2 周是 day 8–14，之后交替。
+ *
+ * 用来写"这周和下周长得不一样"的日程（例如周二这周收录、下周去医院），
+ * 免得整张日程表每周一模一样。日程项写了 `weekParity` 就只在对应那周生效。
+ */
+export type WeekParity = 'first' | 'second';
+
+export function getWeekParity(day: number): WeekParity {
+  return Math.floor((day - 1) / 7) % 2 === 0 ? 'first' : 'second';
+}
+
 export function getWeekday(absoluteMinutes: number): Weekday {
   return getWeekdayFromDay(getDay(absoluteMinutes));
 }

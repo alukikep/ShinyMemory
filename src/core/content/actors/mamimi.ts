@@ -28,11 +28,41 @@ const actor: ActorDef = {
       protected: true,
     },
     {
-      fromMinute: 16 * 60,
-      toMinute: 19 * 60,
+      // 收录收工之后才上街：之前 16–19 和 15–18 的收录重叠，日程表会打出两格。
+      fromMinute: 18 * 60 + 30,
+      toMinute: 20 * 60 + 30,
       locationId: 'shopping_street',
-      weekdays: [1, 3, 5],
+      weekdays: [1, 5],
       label: '在街上晃',
+      protected: false,
+    },
+    {
+      // 周三收工直接去公园：一周里总得有一天不一样。
+      // 双周轮换：第 2 周改成继续在街上晃。
+      fromMinute: 18 * 60 + 30,
+      toMinute: 20 * 60 + 30,
+      locationId: 'park',
+      weekdays: [3],
+      weekParity: 'first',
+      label: '夜里的街',
+      protected: false,
+    },
+    {
+      fromMinute: 18 * 60 + 30,
+      toMinute: 20 * 60 + 30,
+      locationId: 'shopping_street',
+      weekdays: [3],
+      weekParity: 'second',
+      label: '在街上晃',
+      protected: false,
+    },
+    {
+      // 周五是周末前夜，街上待到很晚。
+      fromMinute: 20 * 60 + 30,
+      toMinute: 23 * 60,
+      locationId: 'park',
+      weekdays: [5],
+      label: '夜里的街',
       protected: false,
     },
     {
@@ -44,7 +74,7 @@ const actor: ActorDef = {
       protected: false,
     },
     {
-      fromMinute: 13 * 60,
+      fromMinute: 15 * 60,
       toMinute: 17 * 60,
       locationId: 'park',
       weekdays: [2, 4],
@@ -71,10 +101,35 @@ const actor: ActorDef = {
       protected: false,
     },
     {
+      // 周六：逛到下午被抓去练习，练完接着逛。
+      fromMinute: 12 * 60,
+      toMinute: 15 * 60,
+      locationId: 'shopping_street',
+      weekdays: [6],
+      label: '闲逛',
+      protected: false,
+    },
+    {
+      fromMinute: 15 * 60,
+      toMinute: 17 * 60,
+      locationId: 'practice_room',
+      weekdays: [6],
+      label: '练习',
+      protected: false,
+    },
+    {
+      fromMinute: 17 * 60,
+      toMinute: 19 * 60,
+      locationId: 'shopping_street',
+      weekdays: [6],
+      label: '闲逛',
+      protected: false,
+    },
+    {
       fromMinute: 12 * 60,
       toMinute: 18 * 60,
       locationId: 'shopping_street',
-      weekdays: [0, 6],
+      weekdays: [0],
       label: '闲逛',
       protected: false,
     },

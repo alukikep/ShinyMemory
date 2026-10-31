@@ -2,9 +2,11 @@ import {
   getCalendarDateFromDay,
   getDay,
   getWeekdayFromDay,
+  getWeekParity,
   isMinuteInWindow,
   WEEKDAY_LABELS,
 } from './time';
+import type { WeekParity } from './time';
 import type {
   ActorDef,
   ActorSchedule,
@@ -44,7 +46,12 @@ export type DayReplacementCheck =
       conflicts: ResolvedSchedule[];
     };
 
-function matchesWeekday(entry: ActorSchedule, weekday: Weekday): boolean {
+function matchesWeekday(
+  entry: ActorSchedule,
+  weekday: Weekday,
+  parity: WeekParity,
+): boolean {
+  if (entry.weekParity && entry.weekParity !== parity) return false;
   return !entry.weekdays || entry.weekdays.length === 0
     ? true
     : entry.weekdays.includes(weekday);
@@ -115,6 +122,7 @@ export function getSchedulesForDay(
   extraSlots: ResolvedSchedule[] = [],
 ): ResolvedSchedule[] {
   const weekday = getWeekdayFromDay(day);
+  const parity = getWeekParity(day);
   const overrides = overridesForDay(actor, day, stateOverrides);
   const replaceDay =
     overrides.some((entry) => entry.mode === 'replace-day') ||
@@ -123,7 +131,7 @@ export function getSchedulesForDay(
   const weekly = replaceDay
     ? []
     : actor.schedule
-        .filter((entry) => matchesWeekday(entry, weekday))
+        .filter((entry) => matchesWeekday(entry, weekday, parity))
         .map((entry) => toResolved(entry, 'weekly'));
 
   const extras = extraSlots;
@@ -169,14 +177,17 @@ export function getScheduleWindow(
   });
 }
 
-export function getWeeklySchedule(actor: ActorDef): WeeklyScheduleDay[] {
+export function getWeeklySchedule(
+  actor: ActorDef,
+  parity: WeekParity = 'first',
+): WeeklyScheduleDay[] {
   const weekdays: Weekday[] = [1, 2, 3, 4, 5, 6, 0];
   return weekdays.map((weekday) => ({
     weekday,
     label: WEEKDAY_LABELS[weekday] ?? '',
     slots: sortChronological(
       actor.schedule
-        .filter((entry) => matchesWeekday(entry, weekday))
+        .filter((entry) => matchesWeekday(entry, weekday, parity))
         .map((entry) => toResolved(entry, 'weekly')),
     ),
   }));
@@ -197,8 +208,9 @@ export function canReplaceDay(
   }
 
   const weekday = getWeekdayFromDay(day);
+  const parity = getWeekParity(day);
   const protectedSlots = actor.schedule
-    .filter((entry) => matchesWeekday(entry, weekday))
+    .filter((entry) => matchesWeekday(entry, weekday, parity))
     .filter((entry) => entry.protected !== false)
     .map((entry) => toResolved(entry, 'weekly'));
 

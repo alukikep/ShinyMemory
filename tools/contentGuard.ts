@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { BASE_PACK } from '../src/core/content/basePack.js';
 import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
@@ -91,6 +91,51 @@ for (const idol of [...index.idols.values()]) {
       problems.push({
         idol: idol.id,
         message: `角色卡引用的剧本一个都没导出过：${missing.slice(0, 3).join(', ')}`,
+      });
+    }
+  }
+
+  // 每条事实都要有出处：以 "- " 开头的行必须带一个 13 位行 id，
+  // 而且那个 id 必须在缓存剧本里真实存在。只贴三个编号糊弄不过去。
+  // 旧卡（真乃/灯织/巡）是在这条规则之前写的，事实行没有行 id。
+  // 这类卡先免责，等重读剧本时逐条补——记为技术债，不要让新卡照抄。
+  const GRANDFATHERED = new Set(['hiori', 'mano', 'meguru']);
+
+  const bulletLines = card
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith('- '))
+    // "剧本编号"小节就是一行一个编号，本来就是出处，不用再带出处
+    .filter((line) => !/^- `?[12]\d{8}`?$/.test(line))
+    // 旧卡里的「原文 —— CSV 路径」是历史格式，先放行；新卡一律用行 id。
+    .filter((line) => !line.includes('data/story/'))
+    // 自查清单不是事实，不需要出处
+    .filter((line) => !/^- \[[ x]\]/.test(line));
+  const cachedIds = new Set<string>();
+  if (cacheAvailable) {
+    for (const name of readdirSync(cacheRoot)) {
+      if (!name.endsWith('.json') || name.includes('structure')) continue;
+      const entries = JSON.parse(
+        readFileSync(path.join(cacheRoot, name), 'utf8'),
+      ) as { id?: number }[];
+      for (const entry of entries) {
+        if (entry.id) cachedIds.add(String(entry.id));
+      }
+    }
+  }
+  for (const line of GRANDFATHERED.has(idol.id) ? [] : bulletLines) {
+    const id = line.match(/(\d{13})/)?.[1];
+    if (!id) {
+      problems.push({
+        idol: idol.id,
+        message: `事实行没有出处（缺行 id）：${line.slice(0, 30)}`,
+      });
+      continue;
+    }
+    if (cacheAvailable && cachedIds.size > 0 && !cachedIds.has(id)) {
+      problems.push({
+        idol: idol.id,
+        message: `出处行 id 不存在：${id}`,
       });
     }
   }

@@ -13,6 +13,7 @@ import {
   STARTING_STATE,
   STORY_CHAIN_DEFS,
   TRANSIT_ROUTES,
+  WALK_EDGES,
 } from './index';
 
 // Frozen test content. It is intentionally independent from src/core/content,
@@ -30,7 +31,8 @@ export const FIXTURE_CONTENT_PACK: ContentPack = {
   storyChains: STORY_CHAIN_DEFS,
   locations: LOCATIONS,
   transitRoutes: TRANSIT_ROUTES,
+  walkEdges: WALK_EDGES,
   starting: STARTING_STATE,
 };
 
-export const ACTIVE_CONTENT_PACK = FIXTURE_CONTENT_PACK;
+export const ACTIVE_CONTENT_PACK: ContentPack = FIXTURE_CONTENT_PACK;

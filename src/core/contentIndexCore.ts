@@ -10,6 +10,7 @@ import type {
   ItemDef,
   JobDef,
   LocationDef,
+  MapEdgeDef,
   ShopDef,
   StoryChainDef,
   TransitRouteDef,
@@ -30,6 +31,7 @@ export type ContentIndex = {
   locations: Map<string, LocationDef>;
   transitRoutes: Map<string, TransitRouteDef>;
   transitRoutesByLocation: Map<string, TransitRouteDef[]>;
+  walkEdges: MapEdgeDef[];
   activitiesByLocation: Map<string, ActivityDef[]>;
   eventsByLocation: Map<string, EventDef[]>;
   eventsByActivityId: Map<string, EventDef[]>;
@@ -56,6 +58,7 @@ export type ContentPack = {
   storyChains: StoryChainDef[];
   locations: LocationDef[];
   transitRoutes: TransitRouteDef[];
+  walkEdges: MapEdgeDef[];
   starting: {
     activeIdolId: string;
     idolStatus: Record<string, IdolStatus>;
@@ -76,6 +79,7 @@ export function buildContentIndex({
   storyChains: STORY_CHAIN_DEFS,
   locations: LOCATIONS,
   transitRoutes: TRANSIT_ROUTES,
+  walkEdges: WALK_EDGES,
   starting: STARTING_STATE,
 }: ContentPack): ContentIndex {
   const activities = new Map(ACTIVITIES.map((activity) => [activity.id, activity]));
@@ -205,6 +209,7 @@ export function buildContentIndex({
     locations,
     transitRoutes,
     transitRoutesByLocation,
+    walkEdges: WALK_EDGES,
     activitiesByLocation,
     eventsByLocation,
     eventsByActivityId,

@@ -3,7 +3,7 @@ import type { LocationDef } from '../../types.js';
 const location: LocationDef = {
   id: 'park',
   name: '公园',
-  description: '车站旁的公园。长椅、喷泉和一群不怕人的鸽子。',
+  description: '海边的公园。长椅、喷泉和一群不怕人的鸽子。',
   kind: 'place',
   mapX: 430,
   mapY: 50,

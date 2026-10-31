@@ -13,6 +13,7 @@ import {
   STARTING_STATE,
   STORY_CHAIN_DEFS,
   TRANSIT_ROUTES,
+  WALK_EDGES,
 } from './index';
 
 /**
@@ -35,5 +36,6 @@ export const BASE_PACK: ContentPack = {
   storyChains: STORY_CHAIN_DEFS,
   locations: LOCATIONS,
   transitRoutes: TRANSIT_ROUTES,
+  walkEdges: WALK_EDGES,
   starting: STARTING_STATE,
 };

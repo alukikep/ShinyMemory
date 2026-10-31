@@ -37,7 +37,10 @@ const merged = mergeApprovedContent(
 const index = buildContentIndex(merged.pack);
 
 // 待审的对话草稿也算"内容"——章节在过审之前不该让构建变红。
-const pendingDialogues = readdirSync('content-review/drafts')
+// drafts 目录可能还没有（刚清空过），不存在就当没有草稿。
+const pendingDialogues = (
+  existsSync('content-review/drafts') ? readdirSync('content-review/drafts') : []
+)
   .filter((name) => name.startsWith('draft.dialogue.') && name.endsWith('.json'))
   .map((name) => {
     const draft = JSON.parse(

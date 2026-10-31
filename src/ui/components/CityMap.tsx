@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
-import { WALK_EDGES, neighborsOf } from '../../core/content/map';
+import { neighborsOf } from '../../core/content/map';
+import { parentAreaId, visibleLocations } from '../../core/areas';
 import { locationHints } from '../../core/storyHints';
 import type { GameState } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
@@ -14,6 +15,10 @@ const LOCATION_ICONS: Record<string, string> = {
   studio: 'mic',
   park: 'tree',
   shopping_street: 'bag',
+  ekimae: 'train',
+  studio_district: 'music',
+  seaside: 'tree',
+  university: 'book',
 };
 
 type CityMapProps = {
@@ -23,29 +28,32 @@ type CityMapProps = {
 };
 
 export function CityMap({ state, onMove, onTransit }: CityMapProps) {
-  const [transitKind, setTransitKind] = useState<'bus' | 'taxi' | null>(null);
+  const [transitKind, setTransitKind] = useState<'bus' | null>(null);
   const transitDialogRef = useDialogFocus<HTMLElement>(transitKind !== null);
   const current = state.locationId;
+  // 地图画的是入口与独立地点；站在楼里时，以它所属的入口为"当前"。
+  const currentAreaId = parentAreaId(current) ?? current;
   const adjacent = new Map(
-    neighborsOf(current).map((edge) => [
-      edge.from === current ? edge.to : edge.from,
-      edge.minutes,
+    neighborsOf(CONTENT_INDEX.walkEdges, currentAreaId)
+      .filter((edge) => edge.minutes > 0)
+      .map((edge) => [
+        edge.from === currentAreaId ? edge.to : edge.from,
+        edge.minutes,
+      ]),
+  );
+  const locations = visibleLocations();
+  // 还没遇见的卡面章：一个地点一个标记（不列标题、不剧透）
+  const hints = new Map(
+    locationHints(state).map((hint) => [
+      parentAreaId(hint.locationId) ?? hint.locationId,
+      hint,
     ]),
   );
-  const locations = [...CONTENT_INDEX.locations.values()];
-  // 还没遇见的卡面章：一个地点一个标记（不列标题、不剧透）
-  const hints = new Map(locationHints(state).map((hint) => [hint.locationId, hint]));
-  const currentLocation = CONTENT_INDEX.locations.get(current);
+  const currentLocation = CONTENT_INDEX.locations.get(currentAreaId);
   const routesHere = CONTENT_INDEX.transitRoutesByLocation.get(current) ?? [];
   const busRoutes = routesHere.filter((route) => route.kind === 'bus');
-  const taxiRoutes = routesHere.filter((route) => route.kind === 'taxi');
-  const activeRoutes =
-    transitKind === 'bus'
-      ? busRoutes
-      : transitKind === 'taxi'
-        ? taxiRoutes
-        : [];
-  const transitLabel = transitKind === 'taxi' ? '出租车' : '公交';
+  const activeRoutes = transitKind === 'bus' ? busRoutes : [];
+  const transitLabel = '公共交通';
 
   useEffect(() => {
     if (!transitKind) return;
@@ -57,6 +65,8 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
   }, [transitKind]);
 
   if (state.phase !== 'plan') return null;
+  // 站在楼里（入口的成员）时隐藏地图：地图只能点入口，留着容易让人以为点了没反应。
+  if (parentAreaId(current)) return null;
 
   const moveTo = (locationId: string) => {
     if (!adjacent.has(locationId)) return;
@@ -88,19 +98,8 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
               onClick={() => setTransitKind('bus')}
             >
               <GameIcon name="bus" size={14} />
-              公交
-              <small>{`${busRoutes.length} 条线路`}</small>
-            </button>
-          ) : null}
-          {taxiRoutes.length > 0 ? (
-            <button
-              type="button"
-              className="map-transit-trigger taxi"
-              onClick={() => setTransitKind('taxi')}
-            >
-              <GameIcon name="taxi" size={14} />
-              出租车
-              <small>{`${taxiRoutes.length} 个目的地`}</small>
+              公共交通
+              <small>{`${busRoutes.length} 个目的地`}</small>
             </button>
           ) : null}
         </div>
@@ -149,9 +148,14 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
             N ↑
           </text>
 
-          {WALK_EDGES.map((edge) => {
+          {CONTENT_INDEX.walkEdges.map((edge) => {
             const from = CONTENT_INDEX.locations.get(edge.from);
             const to = CONTENT_INDEX.locations.get(edge.to);
+            // 只画地图上画得出的节点之间的边（进楼边不画）。
+            if (!locations.some((entry) => entry.id === edge.from) ||
+                !locations.some((entry) => entry.id === edge.to)) {
+              return null;
+            }
             if (
               from?.mapX === undefined ||
               from.mapY === undefined ||
@@ -160,7 +164,8 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
             ) {
               return null;
             }
-            const active = edge.from === current || edge.to === current;
+            const active =
+              edge.from === currentAreaId || edge.to === currentAreaId;
             return (
               <g key={`${edge.from}-${edge.to}`}>
                 <line
@@ -188,7 +193,7 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
             ) {
               return null;
             }
-            const isCurrent = location.id === current;
+            const isCurrent = location.id === currentAreaId;
             const isAdjacent = adjacent.has(location.id);
             const className = [
               'map-node',
@@ -319,14 +324,10 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
           >
             <header className="transit-dialog-head">
               <div>
-                <p className="eyebrow">
-                  {transitKind === 'taxi' ? 'TAXI' : 'BUS'}
-                </p>
+                <p className="eyebrow">TRANSIT</p>
                 <h2>{transitLabel}</h2>
                 <p className="transit-dialog-note">
-                  {transitKind === 'taxi'
-                    ? '全城直达 · 固定车费'
-                    : `从${currentLocation?.name ?? current}出发 · 固定车费`}
+                  {`从${currentLocation?.name ?? current}出发 · 5 分钟 · 固定车费`}
                 </p>
               </div>
               <button
@@ -352,10 +353,7 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
                     onClick={() => ride(route.id)}
                   >
                     <span className="transit-row-icon">
-                      <GameIcon
-                        name={transitKind === 'taxi' ? 'taxi' : 'bus'}
-                        size={18}
-                      />
+                      <GameIcon name="bus" size={18} />
                     </span>
                     <span className="transit-row-main">
                       <span className="transit-destination">

@@ -123,6 +123,11 @@ docs/content/<id>/character.md
 脚手架**不写**招募链和任何内容——那要读完剧本再写（`--dry-run` 可先看会动哪些文件）。
 成长曲线、日程、简介都按角色卡改，别照抄默认值。
 
+**地点现在分两层**（见 [location-portals.md](../systems/location-portals.md)）：
+行动、事件、日程、章节**一律写成员地点 id**（`practice_room`、`park`…），
+入口（`studio_district`、`seaside`）只负责地图导航和"进入"。
+新增一带时，要同时建入口 + 成员 + 0 分钟边，别直接把孤立节点塞进地图。
+
 **Step 5 内容条数与数值**
 
 | 单元 | 建议条数 | 挂载 | 关键约束 |

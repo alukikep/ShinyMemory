@@ -664,7 +664,7 @@ export type EventDef = {
   choices: EventChoice[];
 };
 
-export type LocationKind = 'place' | 'station' | 'street';
+export type LocationKind = 'place' | 'station' | 'street' | 'area';
 
 export type LocationDef = {
   id: string;
@@ -672,6 +672,8 @@ export type LocationDef = {
   description: string;
   isStart?: boolean;
   kind?: LocationKind;
+  /** 入口（kind: 'area'）里的地点 id；进入是 0 分钟移动。 */
+  members?: string[];
   mapX?: number;
   mapY?: number;
   reachable?: boolean;

@@ -39,7 +39,8 @@ test('two cards for one idol: hints, lock and handbook', async ({ page }) => {
   await finishDialogue(page);
 
   // 第 3 天：两张卡的第一章都还没触发，地图上应该各有一个提示
-  await jumpTo(page, 3, 14 * 60, 'park');
+  // （提示挂在地图节点上；公园在入口里面，所以先站到入口页看地图）
+  await jumpTo(page, 3, 14 * 60, 'seaside');
   const parkNode = page.locator('.map-node-hint');
   await expect(parkNode.first()).toBeVisible();
 

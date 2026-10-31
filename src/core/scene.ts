@@ -1,5 +1,6 @@
 import { neighborsOf } from './content/map';
 import { CONTENT_INDEX } from './contentIndex';
+import { areaMembers, parentArea } from './areas';
 import {
   formatCalendarDateFromDay,
   formatClock,
@@ -495,6 +496,35 @@ function buildPlan(state: GameState): SceneView {
     }
   }
 
+  // 入口页：选择进入哪一处（0 分钟）。
+  if (location?.kind === 'area') {
+    for (const memberId of areaMembers(state.locationId)) {
+      const member = CONTENT_INDEX.locations.get(memberId);
+      if (!member) continue;
+      actions.push({
+        id: `enter:${memberId}`,
+        command: { type: 'move', locationId: memberId },
+        label: `进入 ${member.name}`,
+        hint: '0 分钟',
+        icon: 'map',
+        tone: 'secondary',
+      });
+    }
+  }
+
+  // 成员页：回到所在的入口。
+  const parent = parentArea(state.locationId);
+  if (parent) {
+    actions.push({
+      id: `leave:${parent.id}`,
+      command: { type: 'move', locationId: parent.id },
+      label: `回到${parent.name}`,
+      hint: '0 分钟',
+      icon: 'map',
+      tone: 'secondary',
+    });
+  }
+
   if (actions.length === 0 && actors.length === 0) {
     blocks.push({
       kind: 'system',
@@ -505,15 +535,18 @@ function buildPlan(state: GameState): SceneView {
     });
   }
 
-  const locations = neighborsOf(state.locationId).map((edge) => {
-    const id = edge.from === state.locationId ? edge.to : edge.from;
-    return {
-      id,
-      name: CONTENT_INDEX.locations.get(id)?.name ?? id,
-      current: false,
-      minutes: edge.minutes,
-    };
-  });
+  const locations = neighborsOf(CONTENT_INDEX.walkEdges, state.locationId)
+    // 0 分钟的边是"进楼/出楼"，由上面的「进入 / 回到」动作负责，不重复列。
+    .filter((edge) => edge.minutes > 0)
+    .map((edge) => {
+      const id = edge.from === state.locationId ? edge.to : edge.from;
+      return {
+        id,
+        name: CONTENT_INDEX.locations.get(id)?.name ?? id,
+        current: false,
+        minutes: edge.minutes,
+      };
+    });
 
   return {
     id: sceneId(state),

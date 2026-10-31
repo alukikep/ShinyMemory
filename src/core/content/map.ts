@@ -1,44 +1,66 @@
 import type { MapEdgeDef } from '../types';
 
+/**
+ * 步行网络（正式内容）。
+ *
+ * 两层：
+ * - 入口之间、入口与独立地点之间：正常分钟数。
+ * - 入口 ↔ 入口里的地点：0 分钟（"进楼"不花时间）。
+ *
+ * 助手都接收 edges 参数——夹具包有自己的地图，引擎不能写死正式包的边。
+ */
 export const WALK_EDGES: MapEdgeDef[] = [
-  { from: 'home', to: 'station', minutes: 10 },
-  { from: 'station', to: 'office', minutes: 5 },
-  { from: 'office', to: 'park', minutes: 8 },
-  { from: 'home', to: 'shopping_street', minutes: 6 },
-  { from: 'station', to: 'practice_room', minutes: 10 },
-  { from: 'practice_room', to: 'studio', minutes: 4 },
-  // 地图东南角的一片：公园 → 泳池 → 医院。
-  // 泳池以前没有接进步行网络（有坐标、没有边），只能靠巴士/出租车，
-  // 地图上看就是一座孤岛；医院顺着它接在这条线上。
-  { from: 'park', to: 'pool', minutes: 14 },
-  { from: 'pool', to: 'hospital', minutes: 8 },
+  // 地区之间统一 15 分钟（不然公交 5 分钟就没意义了）。
+  { from: 'home', to: 'ekimae', minutes: 15 },
+  { from: 'ekimae', to: 'office', minutes: 15 },
+  { from: 'office', to: 'university', minutes: 15 },
+  { from: 'ekimae', to: 'studio_district', minutes: 15 },
+  { from: 'studio_district', to: 'office', minutes: 15 },
+  { from: 'office', to: 'seaside', minutes: 15 },
+  { from: 'university', to: 'seaside', minutes: 15 },
+  // 进楼：0 分钟
+  { from: 'ekimae', to: 'station', minutes: 0 },
+  { from: 'ekimae', to: 'shopping_street', minutes: 0 },
+  { from: 'studio_district', to: 'practice_room', minutes: 0 },
+  { from: 'studio_district', to: 'studio', minutes: 0 },
+  { from: 'seaside', to: 'park', minutes: 0 },
+  { from: 'seaside', to: 'pool', minutes: 0 },
+  { from: 'seaside', to: 'hospital', minutes: 0 },
 ];
 
-export function neighborsOf(locationId: string): MapEdgeDef[] {
-  return WALK_EDGES.filter(
+export function neighborsOf(
+  edges: MapEdgeDef[],
+  locationId: string,
+): MapEdgeDef[] {
+  return edges.filter(
     (edge) => edge.from === locationId || edge.to === locationId,
   );
 }
 
 export function walkEdge(
+  edges: MapEdgeDef[],
   from: string,
   to: string,
 ): MapEdgeDef | undefined {
-  return WALK_EDGES.find(
+  return edges.find(
     (edge) =>
       (edge.from === from && edge.to === to) ||
       (edge.from === to && edge.to === from),
   );
 }
 
-export function walkPath(from: string, to: string): string[] {
+export function walkPath(
+  edges: MapEdgeDef[],
+  from: string,
+  to: string,
+): string[] {
   if (from === to) return [from];
   const queue = [from];
   const previous = new Map<string, string | undefined>([[from, undefined]]);
 
   while (queue.length > 0) {
     const current = queue.shift()!;
-    for (const edge of neighborsOf(current)) {
+    for (const edge of neighborsOf(edges, current)) {
       const next = edge.from === current ? edge.to : edge.from;
       if (previous.has(next)) continue;
       previous.set(next, current);

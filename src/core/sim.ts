@@ -2072,6 +2072,8 @@ export function activityAvailability(
 
 /** 移动实际占用的时间。步行与交通都走这里。 */
 export function travelMinutes(state: GameState, base: number): number {
+  // 0 分钟的边是"进楼/出楼"：不耗时间，也不该被交通修正抬成 1 分钟。
+  if (base <= 0) return 0;
   return Math.max(1, Math.round(base * resolveModifiers(state, 'travel')));
 }
 
@@ -2092,7 +2094,7 @@ export function moveTo(state: GameState, locationId: string): GameState {
   if (state.phase !== 'plan') return state;
   const location = CONTENT_INDEX.locations.get(locationId);
   if (!location || state.locationId === locationId) return state;
-  const edge = walkEdge(state.locationId, locationId);
+  const edge = walkEdge(CONTENT_INDEX.walkEdges, state.locationId, locationId);
   if (!edge) return state;
 
   const next = clone(state);
@@ -2107,7 +2109,7 @@ export function moveTo(state: GameState, locationId: string): GameState {
 }
 
 export function travelTo(state: GameState, locationId: string): GameState {
-  const path = walkPath(state.locationId, locationId);
+  const path = walkPath(CONTENT_INDEX.walkEdges, state.locationId, locationId);
   if (path.length === 0) return state;
   let current = state;
   for (const step of path.slice(1)) {

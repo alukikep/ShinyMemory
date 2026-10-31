@@ -233,10 +233,9 @@ describe('app shell', () => {
         onTransit={() => {}}
       />,
     );
-    expect(html).toContain('公交');
-    expect(html).toContain('6 条线路');
-    expect(html).toContain('出租车');
+    expect(html).toContain('公共交通');
     expect(html).toContain('6 个目的地');
+    expect(html).not.toContain('出租车');
   });
 
   it('renders the city map with adjacent destinations', () => {

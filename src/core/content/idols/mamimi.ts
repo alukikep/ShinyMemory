@@ -5,7 +5,7 @@ const idol: IdolDef = {
   name: '田中摩美々',
   unit: "L'Antica",
   color: '#b79bd1',
-  profile: "L'Antica 的成员。不登校，白天在街上放浪，说话总带拖长音。",
+  profile: "L'Antica 的成员。高中生，放学后要练习；说话总带拖长音。",
   avatar: './assets/idols/q/mamimi.png',
   quote: 'ふふー、まぁいいですけどー',
   growth: {

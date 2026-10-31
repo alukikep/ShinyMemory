@@ -1,18 +1,21 @@
 # 内容生产
 
 > 这里放**生产规范、流程、块清单与进度**。  
-> 批量生产一个角色时先看 [playbook.md](playbook.md)——交付协议、覆盖矩阵、写作配方都在那儿。
+> 加新角色先看 [new-idol.md](new-idol.md)——资料从哪取、12 步流程、门禁与批量顺序。
+> 批量生产一个角色的内容时看 [playbook.md](playbook.md)——交付协议、覆盖矩阵、写作配方都在那儿。
 > 数值档位在 [`docs/current/content-standards.md`](../current/content-standards.md)。
 > 审查系统在 [`docs/systems/content-review.md`](../systems/content-review.md)。
-> 角色语气以 **官方剧情中译语料库** 为准，见各角色卡第 12 节。
+> 角色语气以**游戏原始剧本**为准（`npx tsx tools/scriptExport.ts`），对照各角色卡 §2–§3。
 
 ## 1. 目录
 
 ```text
 docs/content/
   README.md              本文件：规范 + 流程 + 块清单 + 进度
-  mano/
-    character.md         真乃的角色卡（写作时逐条对照）
+  new-idol.md            新角色接入全流程（资料选择 / 门禁 / 批量顺序）
+  playbook.md            内容生产手册（交付协议 / 覆盖矩阵 / 写作配方）
+  <idol>/
+    character.md         角色卡（写作时逐条对照）
 ```
 
 一个角色一个目录。第二个偶像上线时新建 `docs/content/<idol>/`。

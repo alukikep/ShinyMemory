@@ -6,7 +6,10 @@ import type { ReviewDraft } from './types.js';
 
 export type ReviewValidation = {
   ok: boolean;
+  /** 阻塞性问题：有它就不能通过。 */
   errors: string[];
+  /** 提示性问题：不影响通过（如"变量由另一条还没批的草稿写入"）。 */
+  warnings: string[];
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -421,6 +424,7 @@ export function validateReviewDraft(
   base: ContentPack,
 ): ReviewValidation {
   const errors = validateDraftShape(draft);
+  const warnings: string[] = [];
   const approved = packApprovedFiles({ [draft.id]: draft });
 
   try {
@@ -431,9 +435,9 @@ export function validateReviewDraft(
     for (const issue of auditPack(buildContentIndex(pack), {
       skipPackRules: true,
     })) {
-      errors.push(
-        `${issue.level === 'error' ? '[错误]' : '[警告]'} ${issue.code}: ${issue.message}`,
-      );
+      const line = `${issue.level === 'error' ? '[错误]' : '[警告]'} ${issue.code}: ${issue.message}`;
+      if (issue.level === 'error') errors.push(line);
+      else warnings.push(line);
     }
   } catch (error) {
     // 结构坏到体检跑不动时，结构错误已经在上面了，这里只补一句说明。
@@ -442,5 +446,5 @@ export function validateReviewDraft(
     );
   }
 
-  return { ok: errors.length === 0, errors };
+  return { ok: errors.length === 0, errors, warnings };
 }

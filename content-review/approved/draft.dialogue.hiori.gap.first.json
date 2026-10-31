@@ -2,7 +2,7 @@
   "id": "draft.dialogue.hiori.gap.first",
   "kind": "dialogue",
   "title": "灯织 · 千里的距离 · first",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.hiori.gap.first",
   "payload": {
@@ -139,12 +139,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T02:26:00.805Z",
-  "updatedAt": "2026-10-31T02:26:00.805Z",
+  "updatedAt": "2026-10-31T02:34:11.907Z",
+  "reviewedAt": "2026-10-31T02:34:11.907Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T02:26:00.805Z",
       "note": "从 TS 迁移：让长线对话也走审查"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T02:34:11.907Z"
     }
   ]
 }

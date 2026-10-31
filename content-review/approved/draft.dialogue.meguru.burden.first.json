@@ -2,7 +2,7 @@
   "id": "draft.dialogue.meguru.burden.first",
   "kind": "dialogue",
   "title": "巡 · 不重要的事，选不出来 · first",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.meguru.burden.first",
   "payload": {
@@ -123,12 +123,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T02:26:00.805Z",
-  "updatedAt": "2026-10-31T02:26:00.805Z",
+  "updatedAt": "2026-10-31T02:34:10.226Z",
+  "reviewedAt": "2026-10-31T02:34:10.226Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T02:26:00.805Z",
       "note": "从 TS 迁移：让长线对话也走审查"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T02:34:10.226Z"
     }
   ]
 }

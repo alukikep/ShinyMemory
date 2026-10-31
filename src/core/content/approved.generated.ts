@@ -2204,6 +2204,1129 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.hiori.gap.first",
+  "idolId": "hiori",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "商业街的橱窗前站了几个人。玻璃里是新一期的海报。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "hiori",
+      "text": "……真乃的广告牌。",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "hiori",
+      "text": "巡也在。杂志的样刊前天寄到事务所了。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "hiori",
+      "text": "个人的工作，两个人都在努力呢。",
+      "nextNodeId": "n05"
+    },
+    "n05": {
+      "id": "n05",
+      "text": "旁边的两个女生在讨论海报上的发型。她听着，也接了一句。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "hiori",
+      "text": "我懂。那个发型很适合巡。……杂志我也买吧。",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "text": "她说完就安静了。橱窗的灯把她的侧脸照得很白。",
+      "choices": [
+        {
+          "label": "你注意到了。只是没说。",
+          "nextNodeId": "n08a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "什么也不说，陪她站一会儿",
+          "nextNodeId": "n08b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            },
+            {
+              "kind": "flag",
+              "key": "hiori_stood_quietly",
+              "value": true
+            }
+          ]
+        },
+        {
+          "label": "她们确实很厉害",
+          "nextNodeId": "n08c",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        }
+      ]
+    },
+    "n08a": {
+      "id": "n08a",
+      "speakerId": "hiori",
+      "text": "……你今天说话很讨厌。",
+      "nextNodeId": "n09"
+    },
+    "n08b": {
+      "id": "n08b",
+      "text": "她没说话。过了很久，才低声开口。",
+      "nextNodeId": "n09"
+    },
+    "n08c": {
+      "id": "n08c",
+      "speakerId": "hiori",
+      "text": "是啊。",
+      "nextNodeId": "n09"
+    },
+    "n09": {
+      "id": "n09",
+      "speakerId": "hiori",
+      "text": "今天是经常看到两人名字的日子呢。",
+      "nextNodeId": "n10"
+    },
+    "n10": {
+      "id": "n10",
+      "speakerId": "hiori",
+      "text": "\"只是\"今天吗。……其实并不是这样的。是我没有注意到。",
+      "nextNodeId": "n11"
+    },
+    "n11": {
+      "id": "n11",
+      "text": "她转过身，往车站的方向走，走了两步停下。",
+      "nextNodeId": "n12"
+    },
+    "n12": {
+      "id": "n12",
+      "speakerId": "hiori",
+      "text": "……我回去练习了。",
+      "effects": [
+        {
+          "kind": "var",
+          "key": "hiori.gap",
+          "op": "set",
+          "value": 1
+        }
+      ]
+    }
+  }
+},
+{
+  "id": "dialogue.hiori.gap.second",
+  "idolId": "hiori",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "收录结束，棚里只剩设备散热的嗡声。她没有走。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "hiori",
+      "text": "制作人。我想问一件事。",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "hiori",
+      "text": "两人有的，而我没有的东西，是什么。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "hiori",
+      "text": "技术？……不。她们也不是每次都做到完美。",
+      "nextNodeId": "n05"
+    },
+    "n05": {
+      "id": "n05",
+      "speakerId": "hiori",
+      "text": "笑容？像真乃那样治愈人的笑，像巡那样让人有精神的笑，我都做不到。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "hiori",
+      "text": "人气？……人气不是越多越好。理由不够。",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "speakerId": "hiori",
+      "text": "不知道。为什么。",
+      "choices": [
+        {
+          "label": "我也没答案。但我知道你一直在往前走",
+          "nextNodeId": "n08a",
+          "effects": [
+            {
+              "kind": "var",
+              "key": "hiori.gapApproach",
+              "op": "set",
+              "value": 1
+            },
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "你有一样她们没有的：你从不敷衍自己",
+          "nextNodeId": "n08b",
+          "effects": [
+            {
+              "kind": "var",
+              "key": "hiori.gapApproach",
+              "op": "set",
+              "value": 2
+            },
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "先不谈这个。你今天有没有好好休息",
+          "nextNodeId": "n08c",
+          "effects": [
+            {
+              "kind": "var",
+              "key": "hiori.gapApproach",
+              "op": "set",
+              "value": 3
+            },
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        }
+      ]
+    },
+    "n08a": {
+      "id": "n08a",
+      "speakerId": "hiori",
+      "text": "……制作人也没有答案啊。",
+      "nextNodeId": "n09"
+    },
+    "n08b": {
+      "id": "n08b",
+      "speakerId": "hiori",
+      "text": "不敷衍自己。……这算优点吗。",
+      "nextNodeId": "n09"
+    },
+    "n08c": {
+      "id": "n08c",
+      "speakerId": "hiori",
+      "text": "……有。吃了饭才来的。",
+      "nextNodeId": "n09"
+    },
+    "n09": {
+      "id": "n09",
+      "text": "她把耳机收进盒里，动作很慢。",
+      "nextNodeId": "n10"
+    },
+    "n10": {
+      "id": "n10",
+      "speakerId": "hiori",
+      "text": "……我先回去了。明天见。",
+      "effects": [
+        {
+          "kind": "var",
+          "key": "hiori.gap",
+          "op": "set",
+          "value": 2
+        }
+      ]
+    }
+  }
+},
+{
+  "id": "dialogue.hiori.gap.third",
+  "idolId": "hiori",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "第二天。练习室的音响没开，只有她数拍子的声音。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "hiori",
+      "text": "我昨天想了一路。",
+      "textVariants": [
+        {
+          "when": [
+            {
+              "kind": "varAtLeast",
+              "key": "hiori.gapApproach",
+              "value": 1
+            },
+            {
+              "kind": "varAtMost",
+              "key": "hiori.gapApproach",
+              "value": 1
+            }
+          ],
+          "text": "我昨天想了一路。制作人也没有答案的话，那就一起找。"
+        },
+        {
+          "when": [
+            {
+              "kind": "varAtLeast",
+              "key": "hiori.gapApproach",
+              "value": 2
+            },
+            {
+              "kind": "varAtMost",
+              "key": "hiori.gapApproach",
+              "value": 2
+            }
+          ],
+          "text": "我昨天想了一路。不敷衍自己——如果是这个，那确实是我有的。"
+        },
+        {
+          "when": [
+            {
+              "kind": "varAtLeast",
+              "key": "hiori.gapApproach",
+              "value": 3
+            },
+            {
+              "kind": "varAtMost",
+              "key": "hiori.gapApproach",
+              "value": 3
+            }
+          ],
+          "text": "我昨天想了一路，然后就睡着了。……难得睡得那么好。"
+        }
+      ],
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "hiori",
+      "text": "不过，我没有想通。两人有什么、我缺什么，还是不知道。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "hiori",
+      "text": "不知道也没关系。我不打算停下来等答案。",
+      "nextNodeId": "n05"
+    },
+    "n05": {
+      "id": "n05",
+      "text": "她按下播放键，从第一拍开始。这一次没有停。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "hiori",
+      "text": "制作人。明天也继续吧。",
+      "choices": [
+        {
+          "label": "当然。我一直在。",
+          "nextNodeId": "n07a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 5
+            }
+          ]
+        },
+        {
+          "label": "你已经在走了，不用等谁",
+          "nextNodeId": "n07b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 5
+            }
+          ]
+        }
+      ]
+    },
+    "n07a": {
+      "id": "n07a",
+      "speakerId": "hiori",
+      "text": "……嗯。那就这样。",
+      "nextNodeId": "n08"
+    },
+    "n07b": {
+      "id": "n07b",
+      "speakerId": "hiori",
+      "text": "这句话，我记下了。",
+      "nextNodeId": "n08"
+    },
+    "n08": {
+      "id": "n08",
+      "text": "她重新戴上耳机。窗外的光落在镜子上，晃了一下。"
+    }
+  }
+},
+{
+  "id": "dialogue.mano.slump.first",
+  "idolId": "mano",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "练习室的门半开着。音响里那一段已经循环到第四遍，还是没有声音。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "mano",
+      "text": "……对不起。再来一次。",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "text": "她按下播放键，张了张嘴，又停下。第五遍。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "mano",
+      "text": "明明练过很多次了。为什么今天唱不出来。",
+      "nextNodeId": "n05"
+    },
+    "n05": {
+      "id": "n05",
+      "speakerId": "mano",
+      "text": "……是不是我本来就不适合站在前面。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "mano",
+      "text": "抱歉，说了奇怪的话。我继续练。",
+      "choices": [
+        {
+          "label": "今天先到这里",
+          "nextNodeId": "n07a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "我在这儿听你唱",
+          "nextNodeId": "n07b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "你刚才那句，是真的吗",
+          "nextNodeId": "n07c",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        }
+      ]
+    },
+    "n07a": {
+      "id": "n07a",
+      "speakerId": "mano",
+      "text": "……可以吗。那我明天早点来。",
+      "nextNodeId": "n08"
+    },
+    "n07b": {
+      "id": "n07b",
+      "speakerId": "mano",
+      "text": "会很难听。",
+      "nextNodeId": "n08"
+    },
+    "n07c": {
+      "id": "n07c",
+      "speakerId": "mano",
+      "text": "……不知道。可能是。",
+      "nextNodeId": "n08"
+    },
+    "n08": {
+      "id": "n08",
+      "text": "她没有说完，把耳机摘下来绕好，放回架子上。走的时候没有回头。",
+      "effects": [
+        {
+          "kind": "var",
+          "key": "mano.slump",
+          "op": "set",
+          "value": 1
+        }
+      ]
+    }
+  }
+},
+{
+  "id": "dialogue.mano.slump.second",
+  "idolId": "mano",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "事务所的灯只开了一盏。她坐在桌边，面前那碗面几乎没有动过。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "mano",
+      "text": "制作人先生。今天的事，我想了一路。",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "mano",
+      "text": "如果我做不到，早点说会比较好吧。这样大家还能换人。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "mano",
+      "text": "……我不是在赌气。我是真的这么想。",
+      "choices": [
+        {
+          "label": "把问题拆开：到底是哪一句唱不出来",
+          "nextNodeId": "n05a",
+          "effects": [
+            {
+              "kind": "var",
+              "key": "mano.slumpApproach",
+              "op": "set",
+              "value": 1
+            },
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "先休息一天，什么都别想",
+          "nextNodeId": "n05b",
+          "effects": [
+            {
+              "kind": "var",
+              "key": "mano.slumpApproach",
+              "op": "set",
+              "value": 2
+            },
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "陪她把今天那段重听一遍",
+          "nextNodeId": "n05c",
+          "effects": [
+            {
+              "kind": "var",
+              "key": "mano.slumpApproach",
+              "op": "set",
+              "value": 3
+            },
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        }
+      ]
+    },
+    "n05a": {
+      "id": "n05a",
+      "speakerId": "mano",
+      "text": "哪一句……是第二段最后那句。每次到那里，我就开始想别的。",
+      "nextNodeId": "n06"
+    },
+    "n05b": {
+      "id": "n05b",
+      "speakerId": "mano",
+      "text": "休息。……好。那我明天什么都不做。",
+      "nextNodeId": "n06"
+    },
+    "n05c": {
+      "id": "n05c",
+      "speakerId": "mano",
+      "text": "要听吗。……会很糟糕。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "text": "她终于拿起筷子，吃了一口。面已经凉了。",
+      "effects": [
+        {
+          "kind": "var",
+          "key": "mano.slump",
+          "op": "set",
+          "value": 2
+        }
+      ]
+    }
+  }
+},
+{
+  "id": "dialogue.mano.slump.third",
+  "idolId": "mano",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "第二天。练习室的窗帘拉开了，光落在地板中间。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "mano",
+      "text": "我准备好了。",
+      "textVariants": [
+        {
+          "when": [
+            {
+              "kind": "varAtLeast",
+              "key": "mano.slumpApproach",
+              "value": 1
+            },
+            {
+              "kind": "varAtMost",
+              "key": "mano.slumpApproach",
+              "value": 1
+            }
+          ],
+          "text": "我数过了。第二段最后那句，一共 11 个字，我拆成了三段练。"
+        },
+        {
+          "when": [
+            {
+              "kind": "varAtLeast",
+              "key": "mano.slumpApproach",
+              "value": 2
+            },
+            {
+              "kind": "varAtMost",
+              "key": "mano.slumpApproach",
+              "value": 2
+            }
+          ],
+          "text": "昨天什么都没想，睡了一整天。……好像有点用。"
+        },
+        {
+          "when": [
+            {
+              "kind": "varAtLeast",
+              "key": "mano.slumpApproach",
+              "value": 3
+            },
+            {
+              "kind": "varAtMost",
+              "key": "mano.slumpApproach",
+              "value": 3
+            }
+          ],
+          "text": "我把那段重听了。听了七遍。……然后发现自己一直在抢拍。"
+        }
+      ],
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "text": "她按下播放键。这一次，从头到尾没有停。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "mano",
+      "text": "……唱完了。",
+      "nextNodeId": "n05"
+    },
+    "n05": {
+      "id": "n05",
+      "speakerId": "mano",
+      "text": "制作人先生。昨天那些话，我想收回。",
+      "choices": [
+        {
+          "label": "不用收回，那也是你的一部分",
+          "nextNodeId": "n06a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 5
+            }
+          ]
+        },
+        {
+          "label": "下次卡住的时候，也告诉我",
+          "nextNodeId": "n06b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 5
+            }
+          ]
+        }
+      ]
+    },
+    "n06a": {
+      "id": "n06a",
+      "speakerId": "mano",
+      "text": "……嗯。那我要连着好的部分一起收下。",
+      "nextNodeId": "n07"
+    },
+    "n06b": {
+      "id": "n06b",
+      "speakerId": "mano",
+      "text": "好。下次……我会在更早的时候说。",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "text": "她重新戴上耳机。窗外的鸽子落在窗台上，这次没有飞走。"
+    }
+  }
+},
+{
+  "id": "dialogue.meguru.burden.first",
+  "idolId": "meguru",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "练习时间已经过了。球场上只剩她一个人，对着篮板投球。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "meguru",
+      "text": "啊，制作人！……等一下，我马上收拾！",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "text": "她跑过去捡球，脚步比前几天慢。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "meguru",
+      "text": "诶嘿嘿，今天也是陪朋友练习。只奉陪到今天为止哦？",
+      "nextNodeId": "n05"
+    },
+    "n05": {
+      "id": "n05",
+      "speakerId": "meguru",
+      "text": "……啊。手机。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "text": "她接起电话，说了几句\"嗯\"\"我知道了\"\"那就下个休息日\"。挂掉以后，笑了一下。",
+      "choices": [
+        {
+          "label": "又是去帮忙？",
+          "nextNodeId": "n07a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "（什么也没问，把水递过去）",
+          "nextNodeId": "n07b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            },
+            {
+              "kind": "flag",
+              "key": "meguru_got_water",
+              "value": true
+            }
+          ]
+        },
+        {
+          "label": "你今天看起来很累",
+          "nextNodeId": "n07c",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        }
+      ]
+    },
+    "n07a": {
+      "id": "n07a",
+      "speakerId": "meguru",
+      "text": "嗯！朋友的比赛，人手不够！",
+      "nextNodeId": "n08"
+    },
+    "n07b": {
+      "id": "n07b",
+      "speakerId": "meguru",
+      "text": "……谢谢。啊，我确实有点渴了。",
+      "nextNodeId": "n08"
+    },
+    "n07c": {
+      "id": "n07c",
+      "speakerId": "meguru",
+      "text": "诶！？没、没有哦！你看！很有精神，别担心！",
+      "nextNodeId": "n08"
+    },
+    "n08": {
+      "id": "n08",
+      "speakerId": "meguru",
+      "text": "啊哈哈……比起以前，去的次数已经减少了。",
+      "nextNodeId": "n09"
+    },
+    "n09": {
+      "id": "n09",
+      "speakerId": "meguru",
+      "text": "所以，安排没有冲突的时候，我想努力一下。想帮上大家的忙……！",
+      "effects": [
+        {
+          "kind": "var",
+          "key": "meguru.burden",
+          "op": "set",
+          "value": 1
+        }
+      ]
+    }
+  }
+},
+{
+  "id": "dialogue.meguru.burden.second",
+  "idolId": "meguru",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "事务所的灯还亮着。她趴在桌上，听见开门声立刻坐直。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "meguru",
+      "text": "制作人！我没睡！",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "meguru",
+      "text": "……那个。最近工作有点多呢，啊哈哈。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "text": "你说要不要取消几件，先休息一下。她立刻摇头。",
+      "nextNodeId": "n05"
+    },
+    "n05": {
+      "id": "n05",
+      "speakerId": "meguru",
+      "text": "不要。我不想取消。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "meguru",
+      "text": "因为这些都是自己说了想做的工作……而且，制作人好不容易争取来了工作。",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "speakerId": "meguru",
+      "text": "要是取消的话……",
+      "choices": [
+        {
+          "label": "把下周的表摊开：你自己看，哪一格是空的",
+          "nextNodeId": "n08a",
+          "effects": [
+            {
+              "kind": "var",
+              "key": "meguru.burdenApproach",
+              "op": "set",
+              "value": 1
+            },
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "我担心的不是工作，是你",
+          "nextNodeId": "n08b",
+          "effects": [
+            {
+              "kind": "var",
+              "key": "meguru.burdenApproach",
+              "op": "set",
+              "value": 2
+            },
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "那你自己选一件最想做的，其他先放下",
+          "nextNodeId": "n08c",
+          "effects": [
+            {
+              "kind": "var",
+              "key": "meguru.burdenApproach",
+              "op": "set",
+              "value": 3
+            },
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        }
+      ]
+    },
+    "n08a": {
+      "id": "n08a",
+      "speakerId": "meguru",
+      "text": "……真的，一格都没有。",
+      "nextNodeId": "n09"
+    },
+    "n08b": {
+      "id": "n08b",
+      "speakerId": "meguru",
+      "text": "我？……我没事的。真的。",
+      "nextNodeId": "n09"
+    },
+    "n08c": {
+      "id": "n08c",
+      "speakerId": "meguru",
+      "text": "选一件……诶，只有一件吗？",
+      "nextNodeId": "n09"
+    },
+    "n09": {
+      "id": "n09",
+      "speakerId": "meguru",
+      "text": "……对不起。我今天有点困了。",
+      "effects": [
+        {
+          "kind": "var",
+          "key": "meguru.burden",
+          "op": "set",
+          "value": 2
+        }
+      ]
+    }
+  }
+},
+{
+  "id": "dialogue.meguru.burden.third",
+  "idolId": "meguru",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "第二天。练习室的地板上摆着她的水壶和一条毛巾。她坐在地上，没在练。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "meguru",
+      "text": "制作人。我昨天想了很久。",
+      "textVariants": [
+        {
+          "when": [
+            {
+              "kind": "varAtLeast",
+              "key": "meguru.burdenApproach",
+              "value": 1
+            },
+            {
+              "kind": "varAtMost",
+              "key": "meguru.burdenApproach",
+              "value": 1
+            }
+          ],
+          "text": "制作人。我昨天想了很久。……那个表，确实一格都没有空。"
+        },
+        {
+          "when": [
+            {
+              "kind": "varAtLeast",
+              "key": "meguru.burdenApproach",
+              "value": 2
+            },
+            {
+              "kind": "varAtMost",
+              "key": "meguru.burdenApproach",
+              "value": 2
+            }
+          ],
+          "text": "制作人。我昨天想了很久。你担心的不是工作……那我要怎么办才好。"
+        },
+        {
+          "when": [
+            {
+              "kind": "varAtLeast",
+              "key": "meguru.burdenApproach",
+              "value": 3
+            },
+            {
+              "kind": "varAtMost",
+              "key": "meguru.burdenApproach",
+              "value": 3
+            }
+          ],
+          "text": "制作人。我昨天想了很久。选一件——我想了一晚上，选不出来。"
+        }
+      ],
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "meguru",
+      "text": "我一直以为，能帮上忙就是好事。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "meguru",
+      "text": "但是昨天……我第一次觉得，好像有什么地方不对。",
+      "nextNodeId": "n05"
+    },
+    "n05": {
+      "id": "n05",
+      "text": "她低下头，捏着毛巾的边角。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "meguru",
+      "text": "……那。下个休息日的比赛，我可以不去吗。",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "text": "她说完立刻抬头，像是怕你误会。",
+      "nextNodeId": "n08"
+    },
+    "n08": {
+      "id": "n08",
+      "speakerId": "meguru",
+      "text": "就这一次！我会好好跟朋友说的！只是……只是我想试一次。",
+      "choices": [
+        {
+          "label": "当然可以。这是你自己的事。",
+          "nextNodeId": "n09a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 5
+            }
+          ]
+        },
+        {
+          "label": "你已经做得够多了。",
+          "nextNodeId": "n09b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 5
+            }
+          ]
+        }
+      ]
+    },
+    "n09a": {
+      "id": "n09a",
+      "speakerId": "meguru",
+      "text": "……嗯。谢谢你。",
+      "nextNodeId": "n10"
+    },
+    "n09b": {
+      "id": "n09b",
+      "speakerId": "meguru",
+      "text": "诶嘿嘿……被这么说，好像有点想哭。奇怪。",
+      "nextNodeId": "n10"
+    },
+    "n10": {
+      "id": "n10",
+      "speakerId": "meguru",
+      "text": "原来选东西这么难啊。……那我以后，慢慢学。",
+      "nextNodeId": "n11"
+    },
+    "n11": {
+      "id": "n11",
+      "text": "她站起来，拍了拍裙子，把毛巾搭在肩上。"
+    }
+  }
+},
+{
   "id": "dialogue.meguru.purity",
   "idolId": "meguru",
   "startNodeId": "1-01",

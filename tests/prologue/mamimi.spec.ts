@@ -66,6 +66,22 @@ test('Mamimi: recruit, card, bond action, topic and a post-lesson event', async 
   await pick(page, '她来事务所找你了');
   expect((await getState(page)).idols[MAMIMI]?.status).toBe('recruited');
 
+  // ---- 招募后：名册和日程表都要看得到她 ----
+  await page.getByRole('button', { name: /偶像名册/ }).first().click();
+  const roster = page.getByRole('dialog', { name: '偶像名册' });
+  const card = roster.locator('.roster-card', { hasText: '田中摩美々' });
+  await expect(card).toBeVisible();
+  await expect(card).toContainText('L\'Antica');
+  await expect(card).toContainText('粉丝');
+  await page.getByRole('button', { name: '关闭偶像名册' }).click();
+
+  await page.getByRole('button', { name: /日程表/ }).first().click();
+  const schedule = page.getByRole('dialog', { name: '偶像日程表' });
+  await expect(schedule.getByRole('tab', { name: /田中摩美々/ })).toBeVisible();
+  // 练习室是她做舞蹈课/表演课的地方，日程里没有就说明训练不可达。
+  await expect(schedule).toContainText('练习室');
+  await page.getByRole('button', { name: '关闭日程表' }).click();
+
   // ---- 卡面第一章：浴衣 ----
   await jumpTo(page, 4, 11 * 60, 'shopping_street');
   await pick(page, '她在改一件浴衣');

@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { existsSync } from 'node:fs';
 import { getState, jumpTo, openGame, reset, watchConsole } from '../acceptance/helpers';
 
 /**
@@ -21,6 +22,13 @@ async function finishDialogue(page: import('@playwright/test').Page) {
   }
   throw new Error('dialogue did not finish');
 }
+
+// 招募链的对话已迁到审查台；通过之前游戏里没有这些链，跳过。
+// 通过后草稿文件消失，测试自动恢复。
+const RECRUIT_PENDING = existsSync(
+  'content-review/drafts/draft.dialogue.mano.first.json',
+);
+test.skip(RECRUIT_PENDING, '招募链对话待审');
 
 test('a story step unlocks a job that was hidden before', async ({ page }) => {
   const errors = watchConsole(page);

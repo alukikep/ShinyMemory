@@ -1,0 +1,110 @@
+{
+  "id": "draft.dialogue.mano.third",
+  "kind": "dialogue",
+  "title": "真乃 · 相遇 · third",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.third",
+  "payload": {
+    "id": "dialogue.mano.third",
+    "idolId": "mano",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "事务所的灯只开了半排。她把包放在桌上，站得笔直，像在等谁先开口。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "mano",
+        "text": "抱歉，这么晚还来打扰……",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "mano",
+        "text": "我一直在想一件事。我这样的人，真的可以站到台上去吗。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "mano",
+        "text": "不是不想。是怕上去以后，让别人失望。",
+        "choices": [
+          {
+            "label": "那就先站一次小的",
+            "nextNodeId": "n05a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "失望也是我们自己的事",
+            "nextNodeId": "n05b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "你已经在准备了，我看得见",
+            "nextNodeId": "n05c",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          }
+        ]
+      },
+      "n05a": {
+        "id": "n05a",
+        "speakerId": "mano",
+        "text": "小的……像那种只有几十个人的场子吗。",
+        "nextNodeId": "n06"
+      },
+      "n05b": {
+        "id": "n05b",
+        "speakerId": "mano",
+        "text": "我们……您说\"我们\"。",
+        "nextNodeId": "n06"
+      },
+      "n05c": {
+        "id": "n05c",
+        "speakerId": "mano",
+        "text": "被看见了。有点不好意思，但也有点高兴。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "mano",
+        "text": "那……我可以试试吗。哪怕只有一次。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "text": "她说这句话的时候没有低头。窗外有鸽子落在窗台上，停了一下又飞走。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:37:58.995Z",
+  "updatedAt": "2026-10-31T02:37:58.995Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:37:58.995Z",
+      "note": "从 TS 迁移：招募链对话也走审查"
+    }
+  ]
+}

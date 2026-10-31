@@ -1,0 +1,121 @@
+{
+  "id": "draft.dialogue.meguru.second",
+  "kind": "dialogue",
+  "title": "巡 · 相遇 · second",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.second",
+  "payload": {
+    "id": "dialogue.meguru.second",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "第二天，她提前到了事务所，手里还拿着一副护腕。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "meguru",
+        "text": "制作人！我想先问一件事！",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "meguru",
+        "text": "当偶像，是不是就不能像以前那样，随便去帮朋友的忙了？",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "meguru",
+        "text": "之前我跟朋友说过，只奉陪到我要工作的时间为止。所以……应该没关系吧？",
+        "choices": [
+          {
+            "label": "没关系。但你的时间要自己划清",
+            "nextNodeId": "n05a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 5
+              },
+              {
+                "kind": "flag",
+                "key": "meguru_drew_line",
+                "value": true
+              }
+            ]
+          },
+          {
+            "label": "没关系。你想帮就帮",
+            "nextNodeId": "n05b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "最好还是少去一点",
+            "nextNodeId": "n05c",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          }
+        ]
+      },
+      "n05a": {
+        "id": "n05a",
+        "speakerId": "meguru",
+        "text": "自己划清……嗯。我知道了，我会试试看！",
+        "nextNodeId": "n06"
+      },
+      "n05b": {
+        "id": "n05b",
+        "speakerId": "meguru",
+        "text": "太好了！那我会加油的！……不过好像会变得很忙诶，诶嘿嘿。",
+        "nextNodeId": "n06"
+      },
+      "n05c": {
+        "id": "n05c",
+        "speakerId": "meguru",
+        "text": "诶……啊，嗯。也是哦。……我会尽量少去一点。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "text": "她把护腕塞进包里，又抬起头，笑了一下。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "speakerId": "meguru",
+        "text": "那我就是这个事务所的偶像了？诶嘿嘿，有点不真实！",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "speakerId": "meguru",
+        "text": "制作人，请多关照！我会努力的！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:37:58.995Z",
+  "updatedAt": "2026-10-31T02:37:58.995Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:37:58.995Z",
+      "note": "从 TS 迁移：招募链对话也走审查"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import type { StoryChainDef } from '../types';
 
 export const manoEncounter: StoryChainDef = {
   id: 'mano-encounter',
+  kind: 'arc',
   idolId: 'mano',
   priority: 10,
   title: '公园的歌声',
@@ -100,6 +101,7 @@ export const manoSlump: StoryChainDef = {
 /** 风野灯织的招募链：公园偶遇 → 她自己来事务所。 */
 export const hioriEncounter: StoryChainDef = {
   id: 'hiori-encounter',
+  kind: 'arc',
   idolId: 'hiori',
   priority: 10,
   title: '练习室里的人在数拍子',
@@ -186,6 +188,7 @@ export const hioriGap: StoryChainDef = {
 /** 八宫巡的招募链：公园球场 → 她提前到事务所问了一件事。 */
 export const meguruEncounter: StoryChainDef = {
   id: 'meguru-encounter',
+  kind: 'arc',
   idolId: 'meguru',
   priority: 10,
   title: '球场边的人',
@@ -268,7 +271,4 @@ export const meguruBurden: StoryChainDef = {
 
 
 export const STORY_CHAINS = [
-  manoEncounter,
-  hioriEncounter,
-  meguruEncounter,
 ];

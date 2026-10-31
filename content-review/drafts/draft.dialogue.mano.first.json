@@ -1,0 +1,113 @@
+{
+  "id": "draft.dialogue.mano.first",
+  "kind": "dialogue",
+  "title": "真乃 · 相遇 · first",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.first",
+  "payload": {
+    "id": "dialogue.mano.first",
+    "idolId": "mano",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "公园的午后。长椅旁落着几只鸽子，一个女孩正低着头，小声哼着歌。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "mano",
+        "text": "……ほわっ。",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "mano",
+        "text": "啊、对不起。我没有注意到有人。",
+        "choices": [
+          {
+            "label": "刚才的歌，很好听",
+            "nextNodeId": "n04a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              },
+              {
+                "kind": "flag",
+                "key": "mano_heard_song",
+                "value": true
+              }
+            ]
+          },
+          {
+            "label": "你经常在这里唱歌吗？",
+            "nextNodeId": "n04b"
+          },
+          {
+            "label": "抱歉，打扰到你了",
+            "nextNodeId": "n04c"
+          }
+        ]
+      },
+      "n04a": {
+        "id": "n04a",
+        "speakerId": "mano",
+        "text": "……真的吗？我只是随便哼的。",
+        "nextNodeId": "n05"
+      },
+      "n04b": {
+        "id": "n04b",
+        "speakerId": "mano",
+        "text": "嗯。这里很安静，鸽子也不会笑我。",
+        "nextNodeId": "n05"
+      },
+      "n04c": {
+        "id": "n04c",
+        "speakerId": "mano",
+        "text": "没有关系。是我自己在这里唱歌。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "speakerId": "mano",
+        "text": "我叫樱木真乃。那个……你不是这附近的人吧？",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "mano",
+        "text": "刚才的歌，其实是我自己想着写的。还没有给别人听过。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "speakerId": "mano",
+        "text": "制作人……？",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "speakerId": "mano",
+        "text": "对不起。我还没有想过要成为偶像。",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "text": "她低下头，手指轻轻攥住裙角。风把她的声音吹得很轻。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:37:58.995Z",
+  "updatedAt": "2026-10-31T02:37:58.995Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:37:58.995Z",
+      "note": "从 TS 迁移：招募链对话也走审查"
+    }
+  ]
+}

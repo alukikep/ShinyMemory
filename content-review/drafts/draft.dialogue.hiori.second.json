@@ -1,0 +1,151 @@
+{
+  "id": "draft.dialogue.hiori.second",
+  "kind": "dialogue",
+  "title": "灯织 · 相遇 · second",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hiori.second",
+  "payload": {
+    "id": "dialogue.hiori.second",
+    "idolId": "hiori",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "两天后。她敲了三下事务所的门，间隔一样长。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "hiori",
+        "text": "我查过了。283 是个小事务所，还有好几个没人管的练习室。",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "hiori",
+        "text": "所以我想问的是——你来做我的制作人，到底有没有问题。",
+        "choices": [
+          {
+            "label": "把准备好的训练清单拿出来",
+            "nextNodeId": "n04a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 5
+              },
+              {
+                "kind": "flag",
+                "key": "hiori_saw_list",
+                "value": true
+              }
+            ]
+          },
+          {
+            "label": "因为我相信你的才能",
+            "nextNodeId": "n04b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "因为你很努力",
+            "nextNodeId": "n04c",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          }
+        ]
+      },
+      "n04a": {
+        "id": "n04a",
+        "speakerId": "hiori",
+        "text": "！ 这是……为我做的？",
+        "nextNodeId": "n05a"
+      },
+      "n04b": {
+        "id": "n04b",
+        "speakerId": "hiori",
+        "text": "才能。……你看到的是什么才能。",
+        "nextNodeId": "n05b"
+      },
+      "n04c": {
+        "id": "n04c",
+        "speakerId": "hiori",
+        "text": "请不要用这种话敷衍。努力是我自己知道的事。",
+        "nextNodeId": "n05c"
+      },
+      "n05a": {
+        "id": "n05a",
+        "speakerId": "hiori",
+        "text": "训练安排到哪一天，甄选会的日期也写了……是什么时候做的这些。",
+        "nextNodeId": "n06"
+      },
+      "n05b": {
+        "id": "n05b",
+        "speakerId": "hiori",
+        "text": "……说得再具体一点。我没办法这样相信。",
+        "nextNodeId": "n06"
+      },
+      "n05c": {
+        "id": "n05c",
+        "speakerId": "hiori",
+        "text": "……不过，至少你没有说谎。这点我记下了。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "hiori",
+        "text": "那你回答我另一个问题。我第一次见到你的时候——",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "speakerId": "hiori",
+        "text": "我在想，你来做我的制作人到底有没有问题。",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "speakerId": "hiori",
+        "text": "……现在稍微，不那么想了。",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "text": "她把资料收进包里，动作比进来时慢。",
+        "nextNodeId": "n10"
+      },
+      "n10": {
+        "id": "n10",
+        "speakerId": "hiori",
+        "text": "我有条件的。我不会因为被选中就高兴。",
+        "nextNodeId": "n11"
+      },
+      "n11": {
+        "id": "n11",
+        "speakerId": "hiori",
+        "text": "如果最后觉得不对，我会走。这样也可以的话——请多关照。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:37:58.995Z",
+  "updatedAt": "2026-10-31T02:37:58.995Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:37:58.995Z",
+      "note": "从 TS 迁移：招募链对话也走审查"
+    }
+  ]
+}

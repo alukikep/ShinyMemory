@@ -12,9 +12,6 @@ import { TRANSIT_ROUTES } from './transit';
 import { ACTORS } from './actors';
 import { IDOLS } from './idols';
 import { EQUIPS as BASE_EQUIPS } from './equips';
-import { MANO_DIALOGUES } from './dialogues/mano';
-import { HIORI_DIALOGUES } from './dialogues/hiori';
-import { MEGURU_DIALOGUES } from './dialogues/meguru';
 import { PROLOGUE_DIALOGUES } from './dialogues/prologue';
 import { STORY_CHAINS } from './storyChains';
 import { STARTING_STATE } from './starting';
@@ -55,9 +52,6 @@ export const SHOPS: ShopDef[] = [];
 
 export const DIALOGUES: DialogueDef[] = [
   ...PROLOGUE_DIALOGUES,
-  ...MANO_DIALOGUES,
-  ...HIORI_DIALOGUES,
-  ...MEGURU_DIALOGUES,
 ];
 
 export const STORY_CHAIN_DEFS = STORY_CHAINS;

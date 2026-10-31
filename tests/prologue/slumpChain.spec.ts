@@ -54,6 +54,13 @@ async function recruit(page: import('@playwright/test').Page) {
 const pendingReview = existsSync(`content-review/drafts/draft.dialogue.mano.slump.first.json`);
 test.skip(pendingReview, '对话在审查台待审：通过后自动启用');
 
+// 招募链的对话已迁到审查台；通过之前游戏里没有这些链，跳过。
+// 通过后草稿文件消失，测试自动恢复。
+const RECRUIT_PENDING = existsSync(
+  'content-review/drafts/draft.dialogue.mano.first.json',
+);
+test.skip(RECRUIT_PENDING, '招募链对话待审');
+
 test('the slump arc branches on how the producer handles it', async ({ page }) => {
   const errors = watchConsole(page);
   await openGame(page);

@@ -1,0 +1,136 @@
+{
+  "id": "draft.dialogue.hiori.first",
+  "kind": "dialogue",
+  "title": "灯织 · 相遇 · first",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hiori.first",
+  "payload": {
+    "id": "dialogue.hiori.first",
+    "idolId": "hiori",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "练习室的镜墙里，一个人正在数拍子。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "hiori",
+        "text": "1，2，3，4……1，2，3，4……",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "text": "她停下来，从镜子里看见门口的人。然后转过身。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "hiori",
+        "text": "……有事吗。",
+        "choices": [
+          {
+            "label": "你就是风野灯织吧",
+            "nextNodeId": "n05a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "先等她这一遍练完",
+            "nextNodeId": "n05b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              },
+              {
+                "kind": "flag",
+                "key": "hiori_waited",
+                "value": true
+              }
+            ]
+          },
+          {
+            "label": "你是个努力家啊",
+            "nextNodeId": "n05c",
+            "effects": [
+              {
+                "kind": "flag",
+                "key": "hiori_judged_quickly",
+                "value": true
+              }
+            ]
+          }
+        ]
+      },
+      "n05a": {
+        "id": "n05a",
+        "speakerId": "hiori",
+        "text": "……那是我的名字。你是哪位。",
+        "nextNodeId": "n06"
+      },
+      "n05b": {
+        "id": "n05b",
+        "text": "她没有说话，重新数起拍子。一遍结束，才回来。",
+        "nextNodeId": "n06"
+      },
+      "n05c": {
+        "id": "n05c",
+        "speakerId": "hiori",
+        "text": "只是稍微看了下就知道了吗？",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "hiori",
+        "text": "我是风野灯织。这边才是——请多关照。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "text": "她说完就转身回去，重新数起拍子。这一次，呼吸比刚才更用力。",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "speakerId": "hiori",
+        "text": "……关于刚才那句话。",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "speakerId": "hiori",
+        "text": "你说想让谁做我的制作人，是看什么决定的？",
+        "nextNodeId": "n10"
+      },
+      "n10": {
+        "id": "n10",
+        "speakerId": "hiori",
+        "text": "不，现在不要回答。……我还没想好要不要接受。",
+        "nextNodeId": "n11"
+      },
+      "n11": {
+        "id": "n11",
+        "text": "她继续练。你在门口站着，直到她练完才离开。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:37:58.995Z",
+  "updatedAt": "2026-10-31T02:37:58.995Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:37:58.995Z",
+      "note": "从 TS 迁移：招募链对话也走审查"
+    }
+  ]
+}

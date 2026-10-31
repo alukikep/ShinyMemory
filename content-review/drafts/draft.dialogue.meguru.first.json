@@ -1,0 +1,138 @@
+{
+  "id": "draft.dialogue.meguru.first",
+  "kind": "dialogue",
+  "title": "巡 · 相遇 · first",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.first",
+  "payload": {
+    "id": "dialogue.meguru.first",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "公园的球场上，一个女生刚投进一球，被朋友们围着拍手。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "meguru",
+        "text": "要上了哦！嘿……！",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "text": "她转身捡球，正好和站在场边的你对了眼。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "meguru",
+        "text": "……我说！",
+        "choices": [
+          {
+            "label": "（先开口）你是八宫巡吧",
+            "nextNodeId": "n05a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "（站着等她过来）",
+            "nextNodeId": "n05b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "（不知道该说什么）",
+            "nextNodeId": "n05c",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          }
+        ]
+      },
+      "n05a": {
+        "id": "n05a",
+        "speakerId": "meguru",
+        "text": "诶！？你怎么知道我的名字？",
+        "nextNodeId": "n06"
+      },
+      "n05b": {
+        "id": "n05b",
+        "speakerId": "meguru",
+        "text": "……果然！我就觉得是！",
+        "nextNodeId": "n06"
+      },
+      "n05c": {
+        "id": "n05c",
+        "speakerId": "meguru",
+        "text": "那个！你是不是有什么话要说？",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "meguru",
+        "text": "难道你是制作人吗！？",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "text": "她把球往朋友那边一抛，几步就跑到你面前。",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "speakerId": "meguru",
+        "text": "我刚才就在想，说不定是这样呢～\"这个人肯定就是我的制作人\"，刚见到的时候就有这感觉了！",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "speakerId": "meguru",
+        "text": "我一直期待着能跟制作人说上话的这天哦！",
+        "nextNodeId": "n10"
+      },
+      "n10": {
+        "id": "n10",
+        "text": "她说着已经迈开步子，往车站的方向走。",
+        "nextNodeId": "n11"
+      },
+      "n11": {
+        "id": "n11",
+        "speakerId": "meguru",
+        "text": "走吧走吧！因为有很开心的事情在等着吧？",
+        "nextNodeId": "n12"
+      },
+      "n12": {
+        "id": "n12",
+        "speakerId": "meguru",
+        "text": "啊，对了。叫我巡就可以了！今后请多关照哦，制作人！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:37:58.995Z",
+  "updatedAt": "2026-10-31T02:37:58.995Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:37:58.995Z",
+      "note": "从 TS 迁移：招募链对话也走审查"
+    }
+  ]
+}

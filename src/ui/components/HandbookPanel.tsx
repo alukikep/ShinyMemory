@@ -79,12 +79,18 @@ export function HandbookPanel({ view, onClose }: HandbookPanelProps) {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [onClose]);
 
-  const archiveByIdol = new Map<string, HandbookEntryView[]>();
-  for (const entry of view.archive) {
-    const list = archiveByIdol.get(entry.idolName) ?? [];
-    list.push(entry);
-    archiveByIdol.set(entry.idolName, list);
-  }
+  // 两个分区都按偶像分组：手册里永远能一眼看出"这是谁的剧情"。
+  const groupByIdol = (entries: HandbookEntryView[]) => {
+    const map = new Map<string, HandbookEntryView[]>();
+    for (const entry of entries) {
+      const list = map.get(entry.idolName) ?? [];
+      list.push(entry);
+      map.set(entry.idolName, list);
+    }
+    return [...map.entries()].sort(([a], [b]) => a.localeCompare(b, 'zh-CN'));
+  };
+  const activeByIdol = groupByIdol(view.active);
+  const archiveByIdol = groupByIdol(view.archive);
 
   return (
     <div
@@ -124,8 +130,16 @@ export function HandbookPanel({ view, onClose }: HandbookPanelProps) {
         {view.active.length > 0 ? (
           <section className="handbook-section" aria-label="进行中">
             <h3 className="handbook-section-title">进行中</h3>
-            {view.active.map((entry) => (
-              <EntryCard entry={entry} key={entry.id} />
+            {activeByIdol.map(([idolName, entries]) => (
+              <details className="handbook-archive-group" key={idolName} open>
+                <summary>
+                  {idolName}
+                  <small>{entries.length}</small>
+                </summary>
+                {entries.map((entry) => (
+                  <EntryCard entry={entry} key={entry.id} />
+                ))}
+              </details>
             ))}
           </section>
         ) : null}
@@ -133,7 +147,7 @@ export function HandbookPanel({ view, onClose }: HandbookPanelProps) {
         {view.archive.length > 0 ? (
           <section className="handbook-section" aria-label="归档">
             <h3 className="handbook-section-title">归档</h3>
-            {[...archiveByIdol.entries()].map(([idolName, entries]) => (
+            {archiveByIdol.map(([idolName, entries]) => (
               <details className="handbook-archive-group" key={idolName}>
                 <summary>
                   {idolName}

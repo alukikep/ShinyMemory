@@ -1,11 +1,11 @@
 {
   "id": "draft.job.magazine_cover.v2",
-  "supersedes": "job.magazine_cover",
   "kind": "job",
   "title": "杂志封面（门槛改：事务所总粉丝 1200）",
-  "status": "review",
+  "status": "approved",
   "version": 2,
   "rootId": "draft.job.magazine_cover.v2",
+  "supersedes": "job.magazine_cover",
   "payload": {
     "id": "job.magazine_cover",
     "name": "杂志封面",
@@ -86,12 +86,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T04:49:46.912Z",
-  "updatedAt": "2026-10-31T04:49:46.912Z",
+  "updatedAt": "2026-10-31T04:54:28.998Z",
+  "reviewedAt": "2026-10-31T04:54:28.998Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T04:49:46.912Z",
       "note": "粉丝门槛改成事务所总粉丝，从 500 提到 1200"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T04:54:28.998Z"
     }
   ]
 }

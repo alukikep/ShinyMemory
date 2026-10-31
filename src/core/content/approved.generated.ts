@@ -21,12 +21,12 @@ export const APPROVED_CONTENT: ApprovedContent = {
     }
   ],
   "cost": {
-    "stamina": 12
+    "stamina": 10
   },
   "effects": [
     {
       "kind": "money",
-      "delta": 220
+      "delta": 52
     },
     {
       "kind": "attributeExp",
@@ -39,7 +39,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
     {
       "kind": "sharedStat",
       "stat": "stress",
-      "delta": 2
+      "delta": 1
     }
   ],
   "resultTexts": [
@@ -71,7 +71,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "effects": [
     {
       "kind": "money",
-      "delta": 280
+      "delta": 56
     },
     {
       "kind": "attributeExp",
@@ -384,7 +384,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "effects": [
     {
       "kind": "money",
-      "delta": 150
+      "delta": 25
     },
     {
       "kind": "attributeExp",
@@ -1406,7 +1406,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "requires": [
     {
       "kind": "fansAtLeast",
-      "value": 500
+      "value": 1200
     }
   ],
   "effects": [

@@ -1,11 +1,11 @@
 {
   "id": "draft.activity.daily_errand.v4",
-  "supersedes": "activity.daily_errand",
   "kind": "activity",
   "title": "发传单（体力 8 · 压力 3 · ¥56）",
-  "status": "review",
+  "status": "approved",
   "version": 4,
   "rootId": "draft.activity.daily_errand.v4",
+  "supersedes": "activity.daily_errand",
   "payload": {
     "id": "activity.daily_errand",
     "name": "发传单",
@@ -53,12 +53,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T04:29:39.062Z",
-  "updatedAt": "2026-10-31T04:29:39.062Z",
+  "updatedAt": "2026-10-31T04:54:31.100Z",
+  "reviewedAt": "2026-10-31T04:54:31.100Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T04:29:39.062Z",
       "note": "统一兑换率：¥4.5 / 综合成本点，S 级上限 ¥100"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T04:54:31.100Z"
     }
   ]
 }

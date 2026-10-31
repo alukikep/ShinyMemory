@@ -1,11 +1,11 @@
 {
   "id": "draft.activity.carry_gear.v4",
-  "supersedes": "activity.carry_gear",
   "kind": "activity",
   "title": "帮忙搬器材（体力 10 · 压力 1 · ¥52）",
-  "status": "review",
+  "status": "approved",
   "version": 4,
   "rootId": "draft.activity.carry_gear.v4",
+  "supersedes": "activity.carry_gear",
   "payload": {
     "id": "activity.carry_gear",
     "name": "帮忙搬器材",
@@ -52,12 +52,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T04:29:39.062Z",
-  "updatedAt": "2026-10-31T04:29:39.062Z",
+  "updatedAt": "2026-10-31T04:54:30.178Z",
+  "reviewedAt": "2026-10-31T04:54:30.178Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T04:29:39.062Z",
       "note": "统一兑换率：¥4.5 / 综合成本点，S 级上限 ¥100"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T04:54:30.178Z"
     }
   ]
 }

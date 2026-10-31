@@ -1,0 +1,69 @@
+{
+  "id": "draft.activity.daily_errand.v4",
+  "kind": "activity",
+  "title": "发传单（体力 8 · 压力 3 · ¥56）",
+  "status": "approved",
+  "version": 4,
+  "rootId": "draft.activity.daily_errand.v4",
+  "supersedes": "activity.daily_errand",
+  "payload": {
+    "id": "activity.daily_errand",
+    "name": "发传单",
+    "description": "商业街的店在找人手，站一会儿，按小时结。",
+    "kind": "work",
+    "target": "none",
+    "locations": [
+      "shopping_street",
+      "station"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 480,
+        "toMinute": 1200
+      }
+    ],
+    "cost": {
+      "stamina": 8
+    },
+    "effects": [
+      {
+        "kind": "money",
+        "delta": 56
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "producer",
+          "key": "negotiation"
+        },
+        "tier": 3
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 3
+      }
+    ],
+    "resultTexts": [
+      "有人接了传单，有人绕开。你数了数剩下的，够交差。",
+      "风把传单吹跑了几张，你追出去两条街。",
+      "派到最后，你学会了看人——哪些人不会伸手。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T04:29:39.062Z",
+  "updatedAt": "2026-10-31T04:54:31.100Z",
+  "reviewedAt": "2026-10-31T04:54:31.100Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T04:29:39.062Z",
+      "note": "统一兑换率：¥4.5 / 综合成本点，S 级上限 ¥100"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T04:54:31.100Z"
+    }
+  ]
+}

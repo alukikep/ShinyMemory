@@ -267,6 +267,7 @@ export function reviewApiPlugin(): Plugin {
                 return;
               }
             }
+            const approvedBefore = new Set(await readdir('content-review/approved'));
             const draft = await moveReviewDraft(
               id,
               body.status as ReviewStatus,
@@ -278,6 +279,9 @@ export function reviewApiPlugin(): Plugin {
               const approvedDir = 'content-review/approved';
               for (const name of await readdir(approvedDir)) {
                 if (!name.endsWith('.json')) continue;
+                // 只清理"批准前就在"的文件——刚批的这份 payload.id 和 supersedes 相同，
+                // 不排除就会把自己删掉（真实事故：零工选项全部消失）。
+                if (!approvedBefore.has(name)) continue;
                 const file = path.join(approvedDir, name);
                 const raw = JSON.parse(await readFile(file, 'utf8')) as {
                   id?: string;

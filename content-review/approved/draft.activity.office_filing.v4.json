@@ -1,11 +1,11 @@
 {
   "id": "draft.activity.office_filing.v4",
-  "supersedes": "activity.office_filing",
   "kind": "activity",
   "title": "整理资料（体力 4 · 压力 1 · ¥25）",
-  "status": "review",
+  "status": "approved",
   "version": 4,
   "rootId": "draft.activity.office_filing.v4",
+  "supersedes": "activity.office_filing",
   "payload": {
     "id": "activity.office_filing",
     "name": "整理资料",
@@ -52,12 +52,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T04:29:39.062Z",
-  "updatedAt": "2026-10-31T04:29:39.062Z",
+  "updatedAt": "2026-10-31T04:54:31.703Z",
+  "reviewedAt": "2026-10-31T04:54:31.703Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T04:29:39.062Z",
       "note": "统一兑换率：¥4.5 / 综合成本点，S 级上限 ¥100"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T04:54:31.703Z"
     }
   ]
 }

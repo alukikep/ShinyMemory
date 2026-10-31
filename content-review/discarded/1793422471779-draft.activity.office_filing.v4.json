@@ -1,0 +1,68 @@
+{
+  "id": "draft.activity.office_filing.v4",
+  "kind": "activity",
+  "title": "整理资料（体力 4 · 压力 1 · ¥25）",
+  "status": "approved",
+  "version": 4,
+  "rootId": "draft.activity.office_filing.v4",
+  "supersedes": "activity.office_filing",
+  "payload": {
+    "id": "activity.office_filing",
+    "name": "整理资料",
+    "description": "把抽屉里那堆通告单和合同按日期重新排一遍。",
+    "kind": "work",
+    "target": "none",
+    "locations": [
+      "office"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 480,
+        "toMinute": 1200
+      }
+    ],
+    "cost": {
+      "stamina": 4
+    },
+    "effects": [
+      {
+        "kind": "money",
+        "delta": 25
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "producer",
+          "key": "planning"
+        },
+        "tier": 3
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 1
+      }
+    ],
+    "resultTexts": [
+      "排到一半你发现三份档期撞在一起，只好重新算了一遍。",
+      "你把过期的通告单挑出来，剩下的按月份夹好。",
+      "整理完你才意识到，这个月的空档比想象中少。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T04:29:39.062Z",
+  "updatedAt": "2026-10-31T04:54:31.703Z",
+  "reviewedAt": "2026-10-31T04:54:31.703Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T04:29:39.062Z",
+      "note": "统一兑换率：¥4.5 / 综合成本点，S 级上限 ¥100"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T04:54:31.703Z"
+    }
+  ]
+}

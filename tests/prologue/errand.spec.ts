@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { getState, jumpTo, openGame, reset, watchConsole } from '../acceptance/helpers';
+import { PRODUCTION_PACK } from '../../src/core/productionPack';
 
 /**
  * 制作人零工必须"点得动"。
@@ -42,9 +43,10 @@ test('producer errand responds to a click', async ({ page }) => {
     .toBe('activityResult');
 
   const after = await getState(page);
-  // 零工按制作人熟练度缩放（企划 F 时 ×0.55），所以不写死金额：
-  // 内容里的基础报酬改了，这条测试也不该跟着改。
-  const base = 150; // activity.office_filing 的基础报酬
+  // 零工按制作人熟练度缩放（企划 F 时 ×0.55），所以金额从内容里读：
+  // 基础报酬改了，这条测试不用跟着改。
+  const filing = PRODUCTION_PACK.activities.find((a) => a.id === 'activity.office_filing')!;
+  const base = (filing.effects.find((e) => e.kind === 'money') as { delta: number }).delta;
   const expected = Math.round(base * 0.55);
   expect(after.money - before.money).toBe(expected);
   expect(after.producer.planning.exp).toBe(3);

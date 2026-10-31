@@ -1,0 +1,102 @@
+{
+  "id": "draft.job.magazine_cover.v2",
+  "kind": "job",
+  "title": "杂志封面（门槛改：事务所总粉丝 1200）",
+  "status": "approved",
+  "version": 2,
+  "rootId": "draft.job.magazine_cover.v2",
+  "supersedes": "job.magazine_cover",
+  "payload": {
+    "id": "job.magazine_cover",
+    "name": "杂志封面",
+    "description": "一整天的外景拍摄，主视觉封面。要求她全程在状态。",
+    "locationId": "studio",
+    "fromMinute": 600,
+    "toMinute": 960,
+    "pay": 2000,
+    "check": {
+      "ref": "expression",
+      "difficulty": "C",
+      "shift": 0
+    },
+    "failurePayRatio": 0.4,
+    "cooldownDays": 4,
+    "requires": [
+      {
+        "kind": "fansAtLeast",
+        "value": 1200
+      }
+    ],
+    "effects": [
+      {
+        "kind": "fans",
+        "value": 250
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "expression"
+        },
+        "tier": 10
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "vocal"
+        },
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": {
+          "scope": "idol",
+          "key": "trust"
+        },
+        "tier": 5
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 12
+      }
+    ],
+    "failureEffects": [
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": 20
+      },
+      {
+        "kind": "log",
+        "text": "封面组最后换了备选方案。她在车里一句话都没说。",
+        "tone": "bad"
+      }
+    ],
+    "resultTexts": [
+      "拍到日落才收工。摄影师说这组不用修太多。",
+      "她站在海边被风吹了六个小时，回程时头发还没顺过来。",
+      "最后一版打样出来时，staff 围在一起看了很久。"
+    ],
+    "failureTexts": [
+      "「我是不是拖慢了进度。」她小声问，然后自己摇了摇头。",
+      "状态一直没找回来。封面组礼貌地说会再看看，她听懂了下半句。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T04:49:46.912Z",
+  "updatedAt": "2026-10-31T04:54:28.998Z",
+  "reviewedAt": "2026-10-31T04:54:28.998Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T04:49:46.912Z",
+      "note": "粉丝门槛改成事务所总粉丝，从 500 提到 1200"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T04:54:28.998Z"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "id": "dialogue.hiori.gift",
   "kind": "dialogue",
   "title": "幸福に満ちる",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.hiori.gift",
   "payload": {
@@ -297,12 +297,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T03:20:46.824Z",
-  "updatedAt": "2026-10-31T03:20:46.824Z",
+  "updatedAt": "2026-10-31T03:25:18.021Z",
+  "reviewedAt": "2026-10-31T03:25:18.021Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T03:20:46.824Z",
       "note": "卡面第三章（剧本 200200403）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T03:25:18.021Z"
     }
   ]
 }

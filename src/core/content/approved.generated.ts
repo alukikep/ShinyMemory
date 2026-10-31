@@ -1672,6 +1672,1140 @@ export const APPROVED_CONTENT: ApprovedContent = {
 ],
   dialogues: [
 {
+  "id": "dialogue.hiori.answer",
+  "idolId": "hiori",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "hiori",
+      "text": "……？好，我知道了。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "hiori",
+      "text": "接下来……兴趣是听音乐，特长是做饭……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "hiori",
+      "text": "下面是……嗯……啊，这个问题是……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……嗯？怎么了？有不想回答的问题吗？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "hiori",
+      "text": "不……不是那样。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "我看看……「成为偶像的契机」？说起来，我也没详细听过。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hiori",
+      "text": "那不是什么大不了的事。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "不过我有兴趣。能说给我听吗？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "hiori",
+      "text": "……中学的时候，学园祭上有偶像来过。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "hiori",
+      "text": "舞台上的偶像闪闪发光，看着的人都在笑……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "hiori",
+      "text": "我想，如果能变成那样，连我自己都会喜欢上自己吧。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "这样啊……这就是灯织的契机啊。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "hiori",
+      "text": "……不过，总觉得有点不可思议。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "嗯？为什么？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "hiori",
+      "text": "这么点事，不久之前我应该还说不出口。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "那正说明，这件事对灯织来说很重要。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "hiori",
+      "text": "也许……是这样。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "那么，现在的你喜欢上了什么呢——",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "……不，这个答案，等你站上那个舞台之后再告诉我吧。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "hiori",
+      "text": "……好，我知道了。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "灯织，接下来的舞台……",
+      "choices": [
+        {
+          "label": "不留遗憾",
+          "nextNodeId": "2-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "一定要赢",
+          "nextNodeId": "3-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "expression",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "按你的想法来",
+          "nextNodeId": "4-01",
+          "effects": [
+            {
+              "kind": "sharedStat",
+              "stat": "stress",
+              "delta": -2
+            }
+          ]
+        }
+      ]
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "灯织，采访辛苦了。",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "hiori",
+      "text": "制作人才辛苦。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "我只是在一旁看着你好好说话而已。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "对了……杂志的事前问卷也寄来了。稍微休息一下再写可以吗？",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "hiori",
+      "text": "不用，浪费时间，我现在就写。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "这样啊。那填在这里，我去调整一下日程。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "hiori",
+      "text": "谢谢。那个……",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "hiori",
+      "text": "「重要的东西」……可以写\"制作人送的发饰\"吗？",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "啊，嗯。写是可以……不过，请只写\"镶诞生石的发饰\"。",
+      "nextNodeId": "10"
+    },
+    "2-01": {
+      "id": "2-01",
+      "speakerId": "producer",
+      "text": "不留遗憾地去。",
+      "nextNodeId": "2-02"
+    },
+    "2-02": {
+      "id": "2-02",
+      "speakerId": "hiori",
+      "text": "好，我会全力以赴。",
+      "nextNodeId": "2-03"
+    },
+    "2-03": {
+      "id": "2-03",
+      "speakerId": "producer",
+      "text": "就是这股气势！",
+      "nextNodeId": "2-04"
+    },
+    "2-04": {
+      "id": "2-04",
+      "speakerId": "hiori",
+      "text": "好。……那个，制作人，我今天本来打算马上回去的……",
+      "nextNodeId": "2-05"
+    },
+    "2-05": {
+      "id": "2-05",
+      "speakerId": "producer",
+      "text": "要练课吧？我就知道，已经排好了。"
+    },
+    "3-01": {
+      "id": "3-01",
+      "speakerId": "producer",
+      "text": "一定要赢。",
+      "nextNodeId": "3-02"
+    },
+    "3-02": {
+      "id": "3-02",
+      "speakerId": "hiori",
+      "text": "好，我不想输。会把积累的东西全都使出来。",
+      "nextNodeId": "3-03"
+    },
+    "3-03": {
+      "id": "3-03",
+      "speakerId": "producer",
+      "text": "嗯。你的努力我最清楚，所以一定没问题。",
+      "nextNodeId": "3-04"
+    },
+    "3-04": {
+      "id": "3-04",
+      "speakerId": "hiori",
+      "text": "被制作人这么说，就真的会那样觉得，真不可思议。",
+      "nextNodeId": "3-05"
+    },
+    "3-05": {
+      "id": "3-05",
+      "speakerId": "hiori",
+      "text": "……请看到最后。"
+    },
+    "4-01": {
+      "id": "4-01",
+      "speakerId": "producer",
+      "text": "按你的想法去做。",
+      "nextNodeId": "4-02"
+    },
+    "4-02": {
+      "id": "4-02",
+      "speakerId": "hiori",
+      "text": "是让我自由发挥的意思吗？",
+      "nextNodeId": "4-03"
+    },
+    "4-03": {
+      "id": "4-03",
+      "speakerId": "producer",
+      "text": "嗯。这次的舞台对灯织来说，一定会成为难忘的东西。",
+      "nextNodeId": "4-04"
+    },
+    "4-04": {
+      "id": "4-04",
+      "speakerId": "producer",
+      "text": "所以不用套模板，按你想的去做就好。",
+      "nextNodeId": "4-05"
+    },
+    "4-05": {
+      "id": "4-05",
+      "speakerId": "hiori",
+      "text": "……好，我明白了！"
+    }
+  }
+},
+{
+  "id": "dialogue.hiori.gift",
+  "idolId": "hiori",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "这个嘛……",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "对我来说，最能让你发光的东西，是灯织自己喜欢的东西。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "hiori",
+      "text": "我自己喜欢的……吗。原来如此，还有这种想法。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "嗯，换个角度看看。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "hiori",
+      "text": "可是……我喜欢的那些东西，真的找得到吗……？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "别露出那种表情。难得出来，就享受一下吧。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "啊，那边的摊子也去看看吧？说不定有和之前不一样的东西。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "hiori",
+      "text": "好，我去稍微看看。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "怎么样？有找到喜欢的吗？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "hiori",
+      "text": "每一个都很好看，但要说喜欢的话……果然还是很难。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "hiori",
+      "text": "……制作人在这之中，最喜欢哪一个？",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "我想想……这边这些镶诞生石的怎么样？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "hiori",
+      "text": "诞生石……原来如此。我是 3 月 4 日……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "就是这个镶了蓝色石头的发夹。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "hiori",
+      "text": "哇……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "喜欢吗？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "hiori",
+      "text": "……不，只是稍微有点在意而已。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "能遇到在意的东西，就已经很不错了。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "hiori",
+      "text": "那……好吧，确实是这样。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "听说诞生石还能当护身符。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "hiori",
+      "text": "……是这样啊。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "hiori",
+      "text": "……我决定了。就买这个。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "hiori",
+      "text": "非常感谢，制作人。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "（她看起来很高兴……带她来是对的。）",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "方便的话，现在就戴上让我看看？",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "hiori",
+      "text": "……那就。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "hiori",
+      "text": "我戴在后面了……感觉，怎么样？",
+      "choices": [
+        {
+          "label": "很适合你",
+          "nextNodeId": "2-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "很像灯织",
+          "nextNodeId": "3-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "expression",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "和服装也搭",
+          "nextNodeId": "4-01",
+          "effects": [
+            {
+              "kind": "sharedStat",
+              "stat": "stress",
+              "delta": -2
+            }
+          ]
+        }
+      ]
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "hiori",
+      "text": "……制作人，这边。",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "明明是我约的，让你等了，抱歉。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "hiori",
+      "text": "不会。既然是要找和我的服装相配的小饰物，一起过来是当然的。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "（其实是想让灯织放松一下……不过这么说她一定会拒绝。）",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "那，我们出发吧。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "hiori",
+      "text": "好。那么，走吧。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "怎么样？跑了几家，有找到合适的吗？",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "hiori",
+      "text": "……没有。哪一个都差一点。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "hiori",
+      "text": "所谓\"像偶像的小饰物\"……到底是什么样的东西呢？",
+      "nextNodeId": "10"
+    },
+    "2-01": {
+      "id": "2-01",
+      "speakerId": "hiori",
+      "text": "……谢、谢谢您。",
+      "nextNodeId": "2-02"
+    },
+    "2-02": {
+      "id": "2-02",
+      "speakerId": "producer",
+      "text": "这样一来，舞台上的灯织会更耀眼。"
+    },
+    "3-01": {
+      "id": "3-01",
+      "speakerId": "hiori",
+      "text": "像我……？怎么说呢？",
+      "nextNodeId": "3-02"
+    },
+    "3-02": {
+      "id": "3-02",
+      "speakerId": "producer",
+      "text": "嗯。那清澈的蓝色很漂亮，和灯织给人的感觉正好相合。"
+    },
+    "4-01": {
+      "id": "4-01",
+      "speakerId": "hiori",
+      "text": "这样啊。那么，选了它真是太好了。",
+      "nextNodeId": "4-02"
+    },
+    "4-02": {
+      "id": "4-02",
+      "speakerId": "producer",
+      "text": "嗯。两个人转了一圈，没有白费。"
+    }
+  }
+},
+{
+  "id": "dialogue.hiori.ideal",
+  "idolId": "hiori",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "就是把灯织引上这条路的那个人吗。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "hiori",
+      "text": "是的。那时候的我只是看着……现在觉得，好像靠近了一点。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "hiori",
+      "text": "不过，离理想还是很远……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……说起来，还有件事一直没听到答案。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "你说过想要喜欢上什么。现在呢？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "hiori",
+      "text": "现在……喜欢上了很多东西。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hiori",
+      "text": "事务所的伙伴、应援的粉丝。为了回应他们而站上舞台……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "hiori",
+      "text": "……还有，制作人的事。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "……！？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "hiori",
+      "text": "啊，不是，那个……！不是恋爱的感情，是作为可以信赖的搭档，是这个意思。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "嗯，我当然明白。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "能被灯织信任我很高兴，而且……你找到了自己喜欢的东西，这比什么都好。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "hiori",
+      "text": "说实话……我以前觉得，自己什么都不会喜欢上。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "hiori",
+      "text": "如果还是以前一个人的我，一定会一直那样……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "hiori",
+      "text": "可是，制作人改变了我。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "hiori",
+      "text": "……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "hiori",
+      "text": "制作人……",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "hiori",
+      "text": "真的，非常感谢……！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "不，我只是帮了一点忙。改变的是灯织自己。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "所以……你可以更喜欢自己一点。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "hiori",
+      "text": "……好！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "hiori",
+      "text": "现在，我一点点……能感觉到自己在喜欢自己。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "hiori",
+      "text": "那种时候，我会觉得非常幸福——",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "hiori",
+      "text": "我明白了，原来我从一开始就想这样喜欢自己。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "……这样啊。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "hiori",
+      "text": "……制作人。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "嗯？",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "hiori",
+      "text": "和制作人一起，我觉得能学会更喜欢自己。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "hiori",
+      "text": "所以，今后也请对我多多关照。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "嗯……！当然！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "hiori",
+      "text": "呼……",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "辛苦了。水，带来了。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "hiori",
+      "text": "制作人，非常感谢。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "首次演出的反响真大啊，工作邀约蜂拥而至。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "杂志封面、采访、音乐节目……忙得不可开交！……怎么了，灯织？",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "hiori",
+      "text": "啊……对不起，稍微走神了。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "怎么了？是累了吗？",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "hiori",
+      "text": "不，不是那样……",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "hiori",
+      "text": "……我想起了中学时看到的那个偶像。想着，那个人是不是也这样。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.hiori.support",
+  "idolId": "hiori",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "这样啊。不过今天已经很晚了，得回去了。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "hiori",
+      "text": "不……还有时间。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "有干劲是好事，但把身体搞坏了就什么都没了。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "休息也是偶像的工作。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "hiori",
+      "text": "……我明白了。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "好。那太晚了，我送你。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hiori",
+      "text": "……好。谢谢您。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "不过，练到这么晚，真的很了不起。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "hiori",
+      "text": "不，这是必要的事。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "hiori",
+      "text": "……制作人您才是，工作到这么晚，不累吗？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "这点程度没什么。工作本身也挺开心的。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "hiori",
+      "text": "开心……吗？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "嗯……怎么了？一脸不可思议的样子。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "hiori",
+      "text": "啊，不……我不太懂\"工作很开心\"是什么意思。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "是吗？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "嗯，虽说不是只有开心的事，不过我的工作是……",
+      "choices": [
+        {
+          "label": "是为了灯织",
+          "nextNodeId": "2-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "我自己决定的事",
+          "nextNodeId": "3-01",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "expression",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "有值得做的事",
+          "nextNodeId": "4-01",
+          "effects": [
+            {
+              "kind": "sharedStat",
+              "stat": "stress",
+              "delta": -2
+            }
+          ]
+        }
+      ]
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "好——！工作总算告一段落了……！",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "总之今天就到这里，回去吧。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "……回去之前，得确认一下门窗。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "（嗯？练习室那边还亮着灯……？）",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "hiori",
+      "text": "呼……呼……",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "灯织……？这么晚还在练，辛苦了。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "hiori",
+      "text": "啊，制作人……辛苦了。",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "你在练之前说不太擅长的那个舞步？",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "hiori",
+      "text": "是的。还有点不放心……",
+      "nextNodeId": "10"
+    },
+    "2-01": {
+      "id": "2-01",
+      "speakerId": "producer",
+      "text": "是为了灯织啊。",
+      "nextNodeId": "2-02"
+    },
+    "2-02": {
+      "id": "2-02",
+      "speakerId": "hiori",
+      "text": "为了我，吗？",
+      "nextNodeId": "2-03"
+    },
+    "2-03": {
+      "id": "2-03",
+      "speakerId": "producer",
+      "text": "嗯。我努力一分，就会变成你的结果。",
+      "nextNodeId": "2-04"
+    },
+    "2-04": {
+      "id": "2-04",
+      "speakerId": "producer",
+      "text": "所以才会觉得开心，也不会想放弃。",
+      "nextNodeId": "2-05"
+    },
+    "2-05": {
+      "id": "2-05",
+      "speakerId": "hiori",
+      "text": "……是这样吗。",
+      "nextNodeId": "2-06"
+    },
+    "2-06": {
+      "id": "2-06",
+      "speakerId": "hiori",
+      "text": "那我也得能回应这份期待才行。",
+      "nextNodeId": "2-07"
+    },
+    "2-07": {
+      "id": "2-07",
+      "speakerId": "producer",
+      "text": "我期待着，灯织。明天也一起加油！"
+    },
+    "3-01": {
+      "id": "3-01",
+      "speakerId": "producer",
+      "text": "因为是我自己决定要做的事。",
+      "nextNodeId": "3-02"
+    },
+    "3-02": {
+      "id": "3-02",
+      "speakerId": "producer",
+      "text": "有不顺利的时候，但不能半途而废。",
+      "nextNodeId": "3-03"
+    },
+    "3-03": {
+      "id": "3-03",
+      "speakerId": "producer",
+      "text": "认真起来才开心……大概是这种感觉吧。",
+      "nextNodeId": "3-04"
+    },
+    "3-04": {
+      "id": "3-04",
+      "speakerId": "hiori",
+      "text": "……那种心情，我好像有点明白。",
+      "nextNodeId": "3-05"
+    },
+    "3-05": {
+      "id": "3-05",
+      "speakerId": "hiori",
+      "text": "我最讨厌半途而废了。",
+      "nextNodeId": "3-06"
+    },
+    "3-06": {
+      "id": "3-06",
+      "speakerId": "producer",
+      "text": "这样啊……灯织一直都那么认真。"
+    },
+    "4-01": {
+      "id": "4-01",
+      "speakerId": "producer",
+      "text": "因为越是努力，回报就越明显，所以很开心。",
+      "nextNodeId": "4-02"
+    },
+    "4-02": {
+      "id": "4-02",
+      "speakerId": "hiori",
+      "text": "……以前我不明白，最近有点懂了。",
+      "nextNodeId": "4-03"
+    },
+    "4-03": {
+      "id": "4-03",
+      "speakerId": "producer",
+      "text": "这样啊……那真是太好了！",
+      "nextNodeId": "4-04"
+    },
+    "4-04": {
+      "id": "4-04",
+      "speakerId": "hiori",
+      "text": "……您为什么看起来那么高兴？",
+      "nextNodeId": "4-05"
+    },
+    "4-05": {
+      "id": "4-05",
+      "speakerId": "producer",
+      "text": "因为知道你在享受工作，我就特别高兴。"
+    }
+  }
+},
+{
   "id": "dialogue.mano.afterglow",
   "idolId": "mano",
   "startNodeId": "01",
@@ -2078,240 +3212,6 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "4-15",
       "speakerId": "mano",
       "text": "我会加油的！嗯！"
-    }
-  }
-},
-{
-  "id": "dialogue.mano.dream",
-  "idolId": "mano",
-  "startNodeId": "01",
-  "nodes": {
-    "10": {
-      "id": "10",
-      "speakerId": "mano",
-      "text": "也没怎么和鸽子先生玩……",
-      "nextNodeId": "11"
-    },
-    "11": {
-      "id": "11",
-      "speakerId": "mano",
-      "text": "但那并不代表我开始讨厌当偶像了。硬要说的话……该怎么说呢？",
-      "nextNodeId": "12"
-    },
-    "12": {
-      "id": "12",
-      "speakerId": "mano",
-      "text": "充实……对的，我现在很充实。每天都非常开心。",
-      "nextNodeId": "13"
-    },
-    "13": {
-      "id": "13",
-      "speakerId": "producer",
-      "text": "嗯，这是好事。",
-      "nextNodeId": "14"
-    },
-    "14": {
-      "id": "14",
-      "speakerId": "mano",
-      "text": "是的，谢谢您。",
-      "nextNodeId": "15"
-    },
-    "15": {
-      "id": "15",
-      "speakerId": "mano",
-      "text": "……刚才我做了个梦。",
-      "nextNodeId": "16"
-    },
-    "16": {
-      "id": "16",
-      "speakerId": "producer",
-      "text": "嗯？什么样的梦？",
-      "nextNodeId": "17"
-    },
-    "17": {
-      "id": "17",
-      "speakerId": "mano",
-      "text": "那个……是我开演唱会的梦。",
-      "nextNodeId": "18"
-    },
-    "18": {
-      "id": "18",
-      "speakerId": "mano",
-      "text": "和灯织、巡一起，站在很大的舞台上。观众一直到很远的地方……大家都在笑。",
-      "nextNodeId": "19"
-    },
-    "19": {
-      "id": "19",
-      "speakerId": "producer",
-      "text": "这样啊。是个好梦。",
-      "nextNodeId": "20"
-    },
-    "20": {
-      "id": "20",
-      "speakerId": "mano",
-      "text": "……是的。但是——",
-      "nextNodeId": "21"
-    },
-    "21": {
-      "id": "21",
-      "speakerId": "mano",
-      "text": "我站在那么大舞台上的那一天……会来吗……？",
-      "nextNodeId": "22"
-    },
-    "22": {
-      "id": "22",
-      "speakerId": "producer",
-      "text": "你好像觉得那是很遥远的事。不是那样的。",
-      "nextNodeId": "23"
-    },
-    "23": {
-      "id": "23",
-      "speakerId": "producer",
-      "text": "真乃已经实现了很多梦想吧？当偶像时抱着的梦。",
-      "nextNodeId": "24"
-    },
-    "24": {
-      "id": "24",
-      "speakerId": "mano",
-      "text": "是的。我想和其他人关系更好……",
-      "nextNodeId": "25"
-    },
-    "25": {
-      "id": "25",
-      "speakerId": "mano",
-      "text": "这样想着，就交到了朋友。",
-      "nextNodeId": "26"
-    },
-    "26": {
-      "id": "26",
-      "speakerId": "mano",
-      "text": "想着想要更有自信。",
-      "nextNodeId": "27"
-    },
-    "27": {
-      "id": "27",
-      "speakerId": "mano",
-      "text": "现在也还是迷迷糊糊的……但我开始觉得，我没问题。",
-      "nextNodeId": "28"
-    },
-    "28": {
-      "id": "28",
-      "speakerId": "mano",
-      "text": "虽然还差得远……我是不是，稍微开始改变了呢……",
-      "nextNodeId": "29"
-    },
-    "29": {
-      "id": "29",
-      "speakerId": "producer",
-      "text": "何止是稍微。真乃在飞快地成长。",
-      "nextNodeId": "30"
-    },
-    "30": {
-      "id": "30",
-      "speakerId": "mano",
-      "text": "……是这样吗？",
-      "nextNodeId": "31"
-    },
-    "31": {
-      "id": "31",
-      "speakerId": "producer",
-      "text": "当了偶像之后，又有了 W.I.N.G. 夺冠这个梦。",
-      "nextNodeId": "32"
-    },
-    "32": {
-      "id": "32",
-      "speakerId": "producer",
-      "text": "那个你也实现了。",
-      "nextNodeId": "33"
-    },
-    "33": {
-      "id": "33",
-      "speakerId": "producer",
-      "text": "真乃已经实现过好几个梦想了。再抱一个新的梦，不也挺好吗？",
-      "nextNodeId": "34"
-    },
-    "34": {
-      "id": "34",
-      "speakerId": "mano",
-      "text": "至今为止的梦能实现……是因为制作人一直在我身边。",
-      "nextNodeId": "35"
-    },
-    "35": {
-      "id": "35",
-      "speakerId": "mano",
-      "text": "制作人……今后也请一直和我在一起。",
-      "nextNodeId": "36"
-    },
-    "36": {
-      "id": "36",
-      "speakerId": "producer",
-      "text": "嗯，当然。一起实现梦想吧。",
-      "nextNodeId": "37"
-    },
-    "37": {
-      "id": "37",
-      "speakerId": "mano",
-      "text": "好的。下一个梦想，再下一个梦想。",
-      "nextNodeId": "38"
-    },
-    "38": {
-      "id": "38",
-      "speakerId": "mano",
-      "text": "我想一直和制作人一起实现……！"
-    },
-    "01": {
-      "id": "01",
-      "speakerId": "mano",
-      "text": "……呼",
-      "nextNodeId": "02"
-    },
-    "02": {
-      "id": "02",
-      "speakerId": "producer",
-      "text": "……嗯。",
-      "nextNodeId": "03"
-    },
-    "03": {
-      "id": "03",
-      "speakerId": "producer",
-      "text": "醒了啊，真乃。",
-      "nextNodeId": "04"
-    },
-    "04": {
-      "id": "04",
-      "speakerId": "mano",
-      "text": "制作人……？啊，我……",
-      "nextNodeId": "05"
-    },
-    "05": {
-      "id": "05",
-      "speakerId": "mano",
-      "text": "呼哇哇！对、对不起……不知不觉就睡着了……",
-      "nextNodeId": "06"
-    },
-    "06": {
-      "id": "06",
-      "speakerId": "producer",
-      "text": "没有，来公园之后没过多久。",
-      "nextNodeId": "07"
-    },
-    "07": {
-      "id": "07",
-      "speakerId": "mano",
-      "text": "是吗？那太好了……不对，这也不太好……",
-      "nextNodeId": "08"
-    },
-    "08": {
-      "id": "08",
-      "speakerId": "producer",
-      "text": "W.I.N.G. 夺冠之后，几乎没休息过。累也是正常的。",
-      "nextNodeId": "09"
-    },
-    "09": {
-      "id": "09",
-      "speakerId": "mano",
-      "text": "是的……就算来公园休息，也经常迷迷糊糊的。",
-      "nextNodeId": "10"
     }
   }
 },
@@ -4133,6 +5033,240 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "09",
       "speakerId": "producer",
       "text": "这、这样啊……",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.mano.dream",
+  "idolId": "mano",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "mano",
+      "text": "也没怎么和鸽子先生玩……",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "mano",
+      "text": "但那并不代表我开始讨厌当偶像了。硬要说的话……该怎么说呢？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "mano",
+      "text": "充实……对的，我现在很充实。每天都非常开心。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "嗯，这是好事。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "mano",
+      "text": "是的，谢谢您。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "mano",
+      "text": "……刚才我做了个梦。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "嗯？什么样的梦？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "mano",
+      "text": "那个……是我开演唱会的梦。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "mano",
+      "text": "和灯织、巡一起，站在很大的舞台上。观众一直到很远的地方……大家都在笑。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "这样啊。是个好梦。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "mano",
+      "text": "……是的。但是——",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "mano",
+      "text": "我站在那么大舞台上的那一天……会来吗……？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "你好像觉得那是很遥远的事。不是那样的。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "真乃已经实现了很多梦想吧？当偶像时抱着的梦。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "mano",
+      "text": "是的。我想和其他人关系更好……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "mano",
+      "text": "这样想着，就交到了朋友。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "mano",
+      "text": "想着想要更有自信。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "mano",
+      "text": "现在也还是迷迷糊糊的……但我开始觉得，我没问题。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "mano",
+      "text": "虽然还差得远……我是不是，稍微开始改变了呢……",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "何止是稍微。真乃在飞快地成长。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "mano",
+      "text": "……是这样吗？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "当了偶像之后，又有了\"想站上更大的舞台\"这个梦。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "那一步，你也已经迈出去了。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "真乃已经实现过好几个梦想了。再抱一个新的梦，不也挺好吗？",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "mano",
+      "text": "至今为止的梦能实现……是因为制作人一直在我身边。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "mano",
+      "text": "制作人……今后也请一直和我在一起。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "嗯，当然。一起实现梦想吧。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "mano",
+      "text": "好的。下一个梦想，再下一个梦想。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "mano",
+      "text": "我想一直和制作人一起实现……！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "mano",
+      "text": "……呼",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "……嗯。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "醒了啊，真乃。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "mano",
+      "text": "制作人……？啊，我……",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "mano",
+      "text": "呼哇哇！对、对不起……不知不觉就睡着了……",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "没有，来公园之后没过多久。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "mano",
+      "text": "是吗？那太好了……不对，这也不太好……",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "第一次正式演出之后，几乎没休息过。累也是正常的。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "mano",
+      "text": "是的……就算来公园休息，也经常迷迷糊糊的。",
       "nextNodeId": "10"
     }
   }

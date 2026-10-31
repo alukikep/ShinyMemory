@@ -1,4 +1,6 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
+import { readdir, readFile, rename } from 'node:fs/promises';
+import path from 'node:path';
 import type { Plugin } from 'vite';
 import type { ReviewDraft, ReviewKind, ReviewStatus } from '../src/review/types.js';
 import { REVIEW_KINDS } from '../src/review/types.js';
@@ -264,6 +266,19 @@ export function reviewApiPlugin(): Plugin {
               typeof body.note === 'string' ? body.note : undefined,
             );
             if (body.status === 'approved' && current.supersedes) {
+              // 按 payload.id 扫一遍：旧版本可能已经被改名成内容 id 存在 approved 里，
+              // 只按 draft id 找会漏掉（真实踩过：approved 里留下两份同一 id 的对话）。
+              const approvedDir = 'content-review/approved';
+              for (const name of await readdir(approvedDir)) {
+                if (!name.endsWith('.json')) continue;
+                const file = path.join(approvedDir, name);
+                const raw = JSON.parse(await readFile(file, 'utf8')) as {
+                  id?: string;
+                  payload?: { id?: string };
+                };
+                if (raw.payload?.id !== current.supersedes) continue;
+                await rename(file, path.join('content-review', 'discarded', `${Date.now()}-${name}`));
+              }
               const previous = await getReviewDraft(current.supersedes);
               if (previous?.status === 'approved') {
                 await moveReviewDraft(

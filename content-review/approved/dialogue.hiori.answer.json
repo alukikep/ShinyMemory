@@ -2,7 +2,7 @@
   "id": "dialogue.hiori.answer",
   "kind": "dialogue",
   "title": "かつて夢見た眩しい姿",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.hiori.answer",
   "payload": {
@@ -315,12 +315,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T03:20:46.824Z",
-  "updatedAt": "2026-10-31T03:20:46.824Z",
+  "updatedAt": "2026-10-31T03:25:19.617Z",
+  "reviewedAt": "2026-10-31T03:25:19.617Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T03:20:46.824Z",
       "note": "卡面第四章（剧本 200200404）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T03:25:19.617Z"
     }
   ]
 }

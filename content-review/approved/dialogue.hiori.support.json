@@ -2,7 +2,7 @@
   "id": "dialogue.hiori.support",
   "kind": "dialogue",
   "title": "支えていきたい",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.hiori.support",
   "payload": {
@@ -303,12 +303,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T03:20:46.824Z",
-  "updatedAt": "2026-10-31T03:20:46.824Z",
+  "updatedAt": "2026-10-31T03:25:16.366Z",
+  "reviewedAt": "2026-10-31T03:25:16.366Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T03:20:46.824Z",
       "note": "卡面第二章（剧本 200200402）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T03:25:16.366Z"
     }
   ]
 }

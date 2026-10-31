@@ -1,11 +1,11 @@
 {
   "id": "draft.dialogue.mano.dream.v2",
-  "supersedes": "dialogue.mano.dream",
   "kind": "dialogue",
   "title": "ずっと続く夢の先へ（改：去掉 W.I.N.G.）",
-  "status": "review",
+  "status": "approved",
   "version": 2,
   "rootId": "draft.dialogue.mano.dream.v2",
+  "supersedes": "dialogue.mano.dream",
   "payload": {
     "id": "dialogue.mano.dream",
     "idolId": "mano",
@@ -242,12 +242,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T03:21:15.564Z",
-  "updatedAt": "2026-10-31T03:21:15.564Z",
+  "updatedAt": "2026-10-31T03:25:25.903Z",
+  "reviewedAt": "2026-10-31T03:25:25.903Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T03:21:15.564Z",
       "note": "初始卡不该提 W.I.N.G.：改成\"第一次正式演出\"与\"想站上更大的舞台\""
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T03:25:25.903Z"
     }
   ]
 }

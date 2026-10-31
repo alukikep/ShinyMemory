@@ -2,15 +2,23 @@
   "id": "draft.evt.kogane.after_dance",
   "kind": "event",
   "title": "动作太大了",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.kogane.after_dance",
   "payload": {
     "id": "evt.kogane.after_dance",
     "title": "动作太大了",
     "when": [],
-    "after": { "ids": ["dance"] },
-    "afterIdol": { "ids": ["kogane"] },
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "kogane"
+      ]
+    },
     "chance": 0.4,
     "priority": 5,
     "once": true,
@@ -20,29 +28,58 @@
         "label": "夸她有气势",
         "hint": "信任 +3、舞蹈 +1",
         "effects": [
-          { "kind": "attributeExp", "ref": "trust", "tier": 3 },
-          { "kind": "attributeExp", "ref": "dance", "tier": 1 }
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          }
         ],
         "result": "「诶嘿嘿～对吧！气势可是我的长处ばい！」她说着又摆了一次姿势。"
       },
       {
         "label": "陪她对着镜子收一收",
         "hint": "信任 +1",
-        "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }],
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
         "result": "「原来如此……这样会好看一点呢」她认真地看了很久自己的影子。"
       },
       {
         "label": "让她先歇一会儿",
         "hint": "压力 -3",
-        "effects": [{ "kind": "sharedStat", "stat": "stress", "delta": -3 }],
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
         "result": "「好～」她直接坐在地板上，说跳完肚子饿了。"
       }
     ]
   },
   "annotations": [],
   "createdAt": "2026-11-01T00:10:00.000Z",
-  "updatedAt": "2026-11-01T00:10:00.000Z",
+  "updatedAt": "2026-10-31T15:27:22.679Z",
+  "reviewedAt": "2026-10-31T15:27:22.679Z",
   "history": [
-    { "status": "review", "at": "2026-11-01T00:10:00.000Z", "note": "恋鐘舞蹈课后事件" }
+    {
+      "status": "review",
+      "at": "2026-11-01T00:10:00.000Z",
+      "note": "恋鐘舞蹈课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:27:22.679Z"
+    }
   ]
 }

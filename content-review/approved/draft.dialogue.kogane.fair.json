@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kogane.fair",
   "kind": "dialogue",
   "title": "长崎物产展",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kogane.fair",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "kogane",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "kogane",
-        "text": "制作人，今天工作结束得好早呢～",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "离下一个安排还有点时间，找个地方打发一下吧。",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "kogane",
-        "text": "啊，那……我想去那边的商场看看～可以吗？",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "可以啊。有什么想买的吗？",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "kogane",
-        "text": "那边在办长崎物产展，我超在意的～！",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "啊，是你的故乡啊……喂，别跑，危险。",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "kogane",
-        "text": "哇～好怀念～！",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "producer",
-        "text": "哦……长崎的特产还挺多的。有什么推荐吗？",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "kogane",
-        "text": "当然是全部！",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "kogane",
@@ -153,9 +99,18 @@
         "speakerId": "producer",
         "text": "（她是认真在邀请。那就——）",
         "choices": [
-          { "label": "说不定会因为工作去。", "nextNodeId": "30" },
-          { "label": "听起来是个开心的家。", "nextNodeId": "40" },
-          { "label": "索性带事务所的大家一起去。", "nextNodeId": "50" }
+          {
+            "label": "说不定会因为工作去。",
+            "nextNodeId": "30"
+          },
+          {
+            "label": "听起来是个开心的家。",
+            "nextNodeId": "40"
+          },
+          {
+            "label": "索性带事务所的大家一起去。",
+            "nextNodeId": "50"
+          }
         ]
       },
       "30": {
@@ -250,13 +205,76 @@
         "id": "54",
         "speakerId": "producer",
         "text": "哈哈哈，那就困扰了。"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "kogane",
+        "text": "制作人，今天工作结束得好早呢～",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "离下一个安排还有点时间，找个地方打发一下吧。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kogane",
+        "text": "啊，那……我想去那边的商场看看～可以吗？",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "可以啊。有什么想买的吗？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "kogane",
+        "text": "那边在办长崎物产展，我超在意的～！",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "啊，是你的故乡啊……喂，别跑，危险。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "kogane",
+        "text": "哇～好怀念～！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "哦……长崎的特产还挺多的。有什么推荐吗？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kogane",
+        "text": "当然是全部！",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-01T00:00:00.000Z",
-  "updatedAt": "2026-11-01T00:00:00.000Z",
+  "updatedAt": "2026-10-31T15:27:20.108Z",
+  "reviewedAt": "2026-10-31T15:27:20.108Z",
   "history": [
-    { "status": "review", "at": "2026-11-01T00:00:00.000Z", "note": "对照 200400302 改编，保留三个选项" }
+    {
+      "status": "review",
+      "at": "2026-11-01T00:00:00.000Z",
+      "note": "对照 200400302 改编，保留三个选项"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:27:20.108Z"
+    }
   ]
 }

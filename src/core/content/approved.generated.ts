@@ -229,6 +229,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.kogane.cook",
+  "name": "陪她做晚饭",
+  "description": "她说事务所的冰箱里还有东西，做一桌再走。你在旁边打下手。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "kogane"
+  ],
+  "locations": [
+    "office"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 1080,
+      "toMinute": 1260
+    }
+  ],
+  "cost": {
+    "stamina": 7
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -4
+    }
+  ],
+  "resultTexts": [
+    "她一边切菜一边说长崎的事，说到一半自己先笑了。",
+    "端上桌的时候她盯着你看，等你吃完第一口才肯坐下。",
+    "她把最后一点汤都分给你，说「剩下的才最好喝ばい」。"
+  ]
+},
+{
   "id": "activity.mamimi.walk",
   "name": "陪她在街上走",
   "description": "她说随便走走，结果带着你拐进了一条没走过的小巷。",
@@ -1254,6 +1299,197 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「……好。」她把谱架合上，抱着膝盖坐在墙边，很小声地哼了一段。"
+    }
+  ]
+},
+{
+  "id": "evt.kogane.after_dance",
+  "title": "动作太大了",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "kogane"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她的动作比谁都大，收尾时还差点撞到把杆。",
+  "choices": [
+    {
+      "label": "夸她有气势",
+      "hint": "信任 +3、舞蹈 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        }
+      ],
+      "result": "「诶嘿嘿～对吧！气势可是我的长处ばい！」她说着又摆了一次姿势。"
+    },
+    {
+      "label": "陪她对着镜子收一收",
+      "hint": "信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「原来如此……这样会好看一点呢」她认真地看了很久自己的影子。"
+    },
+    {
+      "label": "让她先歇一会儿",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「好～」她直接坐在地板上，说跳完肚子饿了。"
+    }
+  ]
+},
+{
+  "id": "evt.kogane.after_expression",
+  "title": "笑得太大",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "kogane"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表现课结束了。老师说她笑得太大，收一点会更好看。她对着镜子试了几次，越试越不像自己。",
+  "choices": [
+    {
+      "label": "这样笑就很像她",
+      "hint": "信任 +3、表现 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        }
+      ],
+      "result": "「……真的？」她愣了一下，然后笑得比刚才还大。"
+    },
+    {
+      "label": "问她要不要试着收一点",
+      "hint": "信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「嗯……工作的时候收一点，平时就这样！」她自己给自己定了规矩。"
+    },
+    {
+      "label": "让她别太在意",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「说得也是～」她把镜子前的椅子推开，说去泡杯茶。"
+    }
+  ]
+},
+{
+  "id": "evt.kogane.after_vocal",
+  "title": "唱成方言了",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "kogane"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她一首歌唱到一半，歌词就滑成了方言。",
+  "choices": [
+    {
+      "label": "这样也很有她的味道",
+      "hint": "信任 +3、表现 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        }
+      ],
+      "result": "「诶，真的吗！？……那，我再唱一遍ばい！」她这次是笑着唱的。"
+    },
+    {
+      "label": "帮她把发音改回来",
+      "hint": "信任 +1、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "「唔……好难啊～」她跟着念了几遍，最后还是漏了一点口音。"
+    },
+    {
+      "label": "让她先喝口水",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「谢谢～」她把水瓶递回来，说长崎的水更好喝，然后自己先笑了。"
     }
   ]
 },
@@ -7433,6 +7669,827 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.kogane.fair",
+  "idolId": "kogane",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "kogane",
+      "text": "ちゃんぽん料多又营养，吃了肚子也饱……",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "kogane",
+      "text": "五島うどん面条有嚼劲，高汤的味道也最棒！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "kogane",
+      "text": "佐世保バーガー每一家店都有自己的讲究，特别好～吃！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "（听她这么一说，什么都想吃了……）那，难得，给事务所的大家带点特产回去吧。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "恋鐘，能帮我挑吗？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "kogane",
+      "text": "交给我～！",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "kogane",
+      "text": "嗯——全部买下来倒是想，不过不行呢……哪个好呢～",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "kogane",
+      "text": "哎呀——结果几乎都买了呢～",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "每个都很有吸引力，也没办法。长崎好吃的东西真多啊。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "kogane",
+      "text": "厉害吧～！？不过长崎的好处不只是吃的。温泉也很棒哦！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "……听你这么一说，真的想去看看了。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "kogane",
+      "text": "哦哦！来嘛来嘛！一定要来ばい～！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "kogane",
+      "text": "然后，制作人总有一天……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "kogane",
+      "text": "也想来我家看看吧！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "（她是认真在邀请。那就——）",
+      "choices": [
+        {
+          "label": "说不定会因为工作去。",
+          "nextNodeId": "30"
+        },
+        {
+          "label": "听起来是个开心的家。",
+          "nextNodeId": "40"
+        },
+        {
+          "label": "索性带事务所的大家一起去。",
+          "nextNodeId": "50"
+        }
+      ]
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "现在还没那个安排，不过总会有去长崎的时候吧。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "kogane",
+      "text": "那就轮到我出场了！长崎的导游，没人比得过我！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "kogane",
+      "text": "交给我！一起想想去哪儿好呢～",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "kogane",
+      "text": "附近的海也很漂亮，还有温泉……还有，夜景不能错过呢～",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "……光看你的表情，就知道是好地方了。"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "kogane",
+      "text": "嗯，最棒了！我可喜欢家里人了！",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "kogane",
+      "text": "港口的人也喜欢，长崎的人全都是好人ばい",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "既然你这么说了，那一定真的是这样。长崎是个好地方啊。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "kogane",
+      "text": "んふふー♪　那是我的故乡嘛，当然的ばい！",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "kogane",
+      "text": "啊——好想快点带制作人回家啊～",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "kogane",
+      "text": "不过，回家之前……得先在这里作为偶像成功才行呢！"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "producer",
+      "text": "事务所的大家一起去，也能越过组合加深交情吧。",
+      "nextNodeId": "51"
+    },
+    "51": {
+      "id": "51",
+      "speakerId": "kogane",
+      "text": "真好～和大家一起的话，肯定特别开心！",
+      "nextNodeId": "52"
+    },
+    "52": {
+      "id": "52",
+      "speakerId": "kogane",
+      "text": "那时候我带大家到处逛，肯定开心得忘了时间～",
+      "nextNodeId": "53"
+    },
+    "53": {
+      "id": "53",
+      "speakerId": "kogane",
+      "text": "所以大家会不想回东京的ばい！",
+      "nextNodeId": "54"
+    },
+    "54": {
+      "id": "54",
+      "speakerId": "producer",
+      "text": "哈哈哈，那就困扰了。"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "kogane",
+      "text": "制作人，今天工作结束得好早呢～",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "离下一个安排还有点时间，找个地方打发一下吧。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "kogane",
+      "text": "啊，那……我想去那边的商场看看～可以吗？",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "可以啊。有什么想买的吗？",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "kogane",
+      "text": "那边在办长崎物产展，我超在意的～！",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "啊，是你的故乡啊……喂，别跑，危险。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "kogane",
+      "text": "哇～好怀念～！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "哦……长崎的特产还挺多的。有什么推荐吗？",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "kogane",
+      "text": "当然是全部！",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.kogane.first",
+  "idolId": "kogane",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "kogane",
+      "text": "嗯。不过没关系！我是为了当偶像才出生的，落选这点事不算什么！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "kogane",
+      "text": "有沮丧的工夫，不如练习练习ばい～！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "（……这份劲头，不是装出来的。）那，要不要一起以顶级偶像为目标？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "kogane",
+      "text": "诶……真的？真的真的？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "kogane",
+      "text": "太好了！终于，我也是偶像たい～！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "哈哈，请多指教。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "kogane",
+      "text": "是！请多指教～！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（今天要见的，是面试室里那位。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "kogane",
+      "text": "失礼了！月冈恋钟，19岁ばい！……啊，是、是！今天请多指教！",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "请多指教。听说你从长崎来？",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "kogane",
+      "text": "嗯！我是长崎佐世保来的！刚上京，口音还没改掉呢",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "kogane",
+      "text": "不过长崎真是很好的地方啊～！鱼新鲜又好吃，人也都温柔！",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "听起来不错。……试镜的时候，我就记住你了。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "kogane",
+      "text": "真的吗！？好开心～！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "kogane",
+      "text": "不过……其实我试镜全都落选了。一个都没过……",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "……全部？",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.kogane.hand",
+  "idolId": "kogane",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "kogane",
+      "text": "不用担那种心～安心交给我～！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "（话说她要做什么……事务所里应该没什么像样的材料。）",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "kogane",
+      "text": "哼哼～哼哼～♪",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "（……好香。）",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "kogane",
+      "text": "制作人，快好了～再等一会儿哦～",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "这么快？手脚真利落啊。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "kogane",
+      "text": "诶嘿嘿……这么夸我，味道也不会变的哦～",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "kogane",
+      "text": "……好，让您久等了～！做好了ばい！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "这、这是……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "kogane",
+      "text": "很厉害吧～！？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "……真想不到，这是用事务所现有的东西做出来的。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "kogane",
+      "text": "んふふー♪　这种事，早饭前就搞定啦！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "kogane",
+      "text": "来，趁热吃吧。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "那我就不客气了。……好、好吃……真的很好吃！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "kogane",
+      "text": "んふふー♪　对吧～？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "kogane",
+      "text": "让我做饭的话，没人比得过我哦！",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "……有这手艺，说不定能开一条新路线。料理节目、美食外景之类的。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "kogane",
+      "text": "哦哦！那事就交给我吧～！什么工作我都能干得漂漂亮亮！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "kogane",
+      "text": "来，筷子要停了哦～？还有添饭，多吃点，再干一轮活！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（……呼。先休息一下吧。……肚子饿了。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "kogane",
+      "text": "制作人，工作辛苦了～！",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "kogane",
+      "text": "肚子饿了吧？那，我给你做点什么！",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "不用了，随便对付一下就行，麻烦你不太好。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "kogane",
+      "text": "这种事不用在意啦～",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "kogane",
+      "text": "制作人最近都没好好吃饭吧？身体垮了，我和大家都会困扰的ばい！",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "……那就，难得，麻烦你了。",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "kogane",
+      "text": "好～！马上做，稍等一下！",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "……啊！要用火的话小心点，万一引起火灾——",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.kogane.live",
+  "idolId": "kogane",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "kogane",
+      "text": "不过……要是我一个人的话，肯定来不到这里",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "嗯，偶像要有粉丝的期待和支持才行。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "kogane",
+      "text": "嗯……不过，不只是这样",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "kogane",
+      "text": "在老家夸我的歌和舞、说我能当偶像的食堂客人……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "kogane",
+      "text": "我想对那些人说谢谢",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "我也很感谢那些把这么棒的偶像送来的人。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "kogane",
+      "text": "诶嘿嘿……然后，我要道谢的人里，还有从我来东京之后一直陪在身边的……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "kogane",
+      "text": "制作人ばい",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "恋鐘……该道谢的是我。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "kogane",
+      "text": "……制作人。我能走到这里也是托制作人的福，你也稍微骄傲一点嘛！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "可是我只是做了理所当然的事，没什么特别的。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "kogane",
+      "text": "真是的……你完全不了解自己呢！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "诶？是吗？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "kogane",
+      "text": "不过，就是那种地方……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "kogane",
+      "text": "…………",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "……怎么了？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "kogane",
+      "text": "没、没什么！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "这样啊……？那就好。……不过，不只是我，也想让老家的人看到恋鐘的舞台啊。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "kogane",
+      "text": "嗯！让大家看到我的感谢……为了这个，长崎凯旋 live！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "原来如此，凯旋 live 啊……确实是个好主意。好，虽然不知道什么时候，但一定要办。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "我也想看到恋鐘在长崎舞台上发光的样子。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "kogane",
+      "text": "嗯！我和制作人的话，马上就能实现长崎 live ばい！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "kogane",
+      "text": "我们两个人，没有实现不了的愿望！",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "kogane",
+      "text": "然后……如果那个实现了的话……",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "kogane",
+      "text": "……会让你更喜欢长崎的",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "诶？",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "kogane",
+      "text": "长崎的事……让你喜欢得和我一样！期待吧！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "恋鐘，辛苦了。",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "kogane",
+      "text": "啊，制作人！你看了吗！？",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "嗯，今天的 live 也很棒。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "kogane",
+      "text": "谢谢……我一直憧憬着这个世界……",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "kogane",
+      "text": "现在，居然能站上这么大的舞台了呢",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "是啊。不过恋鐘还能站上更大的舞台。所以，继续往上走吧！",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "kogane",
+      "text": "……嗯……是啊！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "kogane",
+      "text": "让我当偶像的话，没人比得过我！",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "kogane",
+      "text": "…………",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.kogane.second",
+  "idolId": "kogane",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "kogane",
+      "text": "好！看我的～！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "今天是你作为偶像的第一份工作。",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "kogane",
+      "text": "嗯！终于到这一天了～好兴奋！",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "kogane",
+      "text": "L'Antica 也快正式动起来了……我真的成了偶像呢",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "最后确认一下，这次是宣传小姐的工作。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "kogane",
+      "text": "知道～宣传小姐就是给商品当招牌的嘛？",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "kogane",
+      "text": "我在自家定食屋也常被夸，宣传绝对没问题！",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "kogane",
+      "text": "当招牌娘，没人比得过我ばい！交给我！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "（好厉害……第一次工作，居然完全不紧张。）",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "那就拜托了。上吧，恋鐘。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
   "id": "dialogue.mano.dream",
   "idolId": "mano",
   "startNodeId": "01",
@@ -11403,6 +12460,90 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "kiriko",
   "label": "唱歌的事",
   "text": "「唱歌……喜欢……听着听着，就会忘了紧张……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kogane.chat.dish",
+  "actorId": "kogane",
+  "label": "拿手菜",
+  "text": "「拿手菜？那当然是ちゃんぽん！说到我就想到它嘛～！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kogane.chat.dorm",
+  "actorId": "kogane",
+  "label": "宿舍生活",
+  "text": "「宿舍的大家会一起做火锅哦～我负责调味！这个我还是有自信的ばい」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kogane.chat.dream",
+  "actorId": "kogane",
+  "label": "想做的事",
+  "text": "「想办凯旋 live！让长崎的人看到我现在的样子……嗯，这是最大的愿望」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kogane.chat.nagasaki",
+  "actorId": "kogane",
+  "label": "长崎的事",
+  "text": "「长崎啊……海、坡道、ちゃんぽん的味道……都是想家的时候会想起来的东西ばい」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kogane.chat.today",
+  "actorId": "kogane",
+  "label": "今天怎么样",
+  "text": "「今天啊～……普通地好！中午做了饭，大家都说好吃ばい！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kogane.chat.tokyo",
+  "actorId": "kogane",
+  "label": "为什么来东京",
+  "text": "「因为想当偶像啊！……还有，想让更多人吃到好吃的，露出那种吃饱了的表情」",
   "cooldownMinutes": 1440,
   "effects": [
     {

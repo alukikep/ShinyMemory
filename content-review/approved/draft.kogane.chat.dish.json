@@ -2,7 +2,7 @@
   "id": "draft.kogane.chat.dish",
   "kind": "topic",
   "title": "聊天 · 拿手菜",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.kogane.chat.dish",
   "payload": {
@@ -11,12 +11,27 @@
     "label": "拿手菜",
     "text": "「拿手菜？那当然是ちゃんぽん！说到我就想到它嘛～！」",
     "cooldownMinutes": 1440,
-    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
   },
   "annotations": [],
   "createdAt": "2026-11-01T00:10:00.000Z",
-  "updatedAt": "2026-11-01T00:10:00.000Z",
+  "updatedAt": "2026-10-31T15:27:24.750Z",
+  "reviewedAt": "2026-10-31T15:27:24.750Z",
   "history": [
-    { "status": "review", "at": "2026-11-01T00:10:00.000Z", "note": "恋鐘日常话题（200400302）" }
+    {
+      "status": "review",
+      "at": "2026-11-01T00:10:00.000Z",
+      "note": "恋鐘日常话题（200400302）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:27:24.750Z"
+    }
   ]
 }

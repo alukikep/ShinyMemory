@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kogane.live",
   "kind": "dialogue",
   "title": "live 结束以后",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kogane.live",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "kogane",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "恋鐘，辛苦了。",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "kogane",
-        "text": "啊，制作人！你看了吗！？",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "嗯，今天的 live 也很棒。",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "kogane",
-        "text": "谢谢……我一直憧憬着这个世界……",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "kogane",
-        "text": "现在，居然能站上这么大的舞台了呢",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "是啊。不过恋鐘还能站上更大的舞台。所以，继续往上走吧！",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "kogane",
-        "text": "……嗯……是啊！",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "kogane",
-        "text": "让我当偶像的话，没人比得过我！",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "kogane",
-        "text": "…………",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "kogane",
@@ -224,13 +170,76 @@
         "id": "36",
         "speakerId": "kogane",
         "text": "长崎的事……让你喜欢得和我一样！期待吧！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "恋鐘，辛苦了。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kogane",
+        "text": "啊，制作人！你看了吗！？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "嗯，今天的 live 也很棒。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kogane",
+        "text": "谢谢……我一直憧憬着这个世界……",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "kogane",
+        "text": "现在，居然能站上这么大的舞台了呢",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "是啊。不过恋鐘还能站上更大的舞台。所以，继续往上走吧！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "kogane",
+        "text": "……嗯……是啊！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kogane",
+        "text": "让我当偶像的话，没人比得过我！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kogane",
+        "text": "…………",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-01T00:00:00.000Z",
-  "updatedAt": "2026-11-01T00:00:00.000Z",
+  "updatedAt": "2026-10-31T15:27:20.148Z",
+  "reviewedAt": "2026-10-31T15:27:20.148Z",
   "history": [
-    { "status": "review", "at": "2026-11-01T00:00:00.000Z", "note": "对照 200400311 改编" }
+    {
+      "status": "review",
+      "at": "2026-11-01T00:00:00.000Z",
+      "note": "对照 200400311 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:27:20.148Z"
+    }
   ]
 }

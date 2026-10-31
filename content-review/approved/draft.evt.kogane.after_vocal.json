@@ -2,15 +2,23 @@
   "id": "draft.evt.kogane.after_vocal",
   "kind": "event",
   "title": "唱成方言了",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.kogane.after_vocal",
   "payload": {
     "id": "evt.kogane.after_vocal",
     "title": "唱成方言了",
     "when": [],
-    "after": { "ids": ["vocal"] },
-    "afterIdol": { "ids": ["kogane"] },
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "kogane"
+      ]
+    },
     "chance": 0.4,
     "priority": 5,
     "once": true,
@@ -20,8 +28,16 @@
         "label": "这样也很有她的味道",
         "hint": "信任 +3、表现 +1",
         "effects": [
-          { "kind": "attributeExp", "ref": "trust", "tier": 3 },
-          { "kind": "attributeExp", "ref": "expression", "tier": 1 }
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          }
         ],
         "result": "「诶，真的吗！？……那，我再唱一遍ばい！」她这次是笑着唱的。"
       },
@@ -29,23 +45,46 @@
         "label": "帮她把发音改回来",
         "hint": "信任 +1、歌唱 +1",
         "effects": [
-          { "kind": "attributeExp", "ref": "trust", "tier": 1 },
-          { "kind": "attributeExp", "ref": "vocal", "tier": 1 }
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          }
         ],
         "result": "「唔……好难啊～」她跟着念了几遍，最后还是漏了一点口音。"
       },
       {
         "label": "让她先喝口水",
         "hint": "压力 -3",
-        "effects": [{ "kind": "sharedStat", "stat": "stress", "delta": -3 }],
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
         "result": "「谢谢～」她把水瓶递回来，说长崎的水更好喝，然后自己先笑了。"
       }
     ]
   },
   "annotations": [],
   "createdAt": "2026-11-01T00:10:00.000Z",
-  "updatedAt": "2026-11-01T00:10:00.000Z",
+  "updatedAt": "2026-10-31T15:27:23.540Z",
+  "reviewedAt": "2026-10-31T15:27:23.540Z",
   "history": [
-    { "status": "review", "at": "2026-11-01T00:10:00.000Z", "note": "恋鐘声乐课后事件" }
+    {
+      "status": "review",
+      "at": "2026-11-01T00:10:00.000Z",
+      "note": "恋鐘声乐课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:27:23.540Z"
+    }
   ]
 }

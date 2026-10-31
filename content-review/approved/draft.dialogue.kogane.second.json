@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kogane.second",
   "kind": "dialogue",
   "title": "她第一天上班",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kogane.second",
   "payload": {
@@ -10,6 +10,11 @@
     "idolId": "kogane",
     "startNodeId": "01",
     "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "kogane",
+        "text": "好！看我的～！"
+      },
       "01": {
         "id": "01",
         "speakerId": "producer",
@@ -63,18 +68,22 @@
         "speakerId": "producer",
         "text": "那就拜托了。上吧，恋鐘。",
         "nextNodeId": "10"
-      },
-      "10": {
-        "id": "10",
-        "speakerId": "kogane",
-        "text": "好！看我的～！"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-01T00:00:00.000Z",
-  "updatedAt": "2026-11-01T00:00:00.000Z",
+  "updatedAt": "2026-10-31T15:27:19.348Z",
+  "reviewedAt": "2026-10-31T15:27:19.348Z",
   "history": [
-    { "status": "review", "at": "2026-11-01T00:00:00.000Z", "note": "对照 100400102 改编" }
+    {
+      "status": "review",
+      "at": "2026-11-01T00:00:00.000Z",
+      "note": "对照 100400102 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:27:19.348Z"
+    }
   ]
 }

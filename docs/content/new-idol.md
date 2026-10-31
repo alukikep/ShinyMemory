@@ -8,7 +8,7 @@
 > 2. **按组合补完**：下一批是 L'Antica（恋钟、咲耶、结华、雾子）。
 > 3. **先补工具再批量**：`content:drafts`、`content:new-idol`、coverage 进构建（已就位，见 §6）。
 >
-> 现状：已接入 5 人（真乃、灯织、巡、摩美々、霧子），可接入 28 人（见 §5 顺序）。
+> 现状：已接入 6 人（真乃、灯织、巡、摩美々、霧子、恋鐘），可接入 28 人（见 §5 顺序）。
 
 ---
 
@@ -43,7 +43,7 @@ curl 'https://api.shinycolors.moe/info/pCardInfo?cardId=<cardUuid>'
 npx tsx tools/scriptExport.ts 200500501 200500511
 ```
 
-- **id 取 `nickName`**（`mano` / `hiori` / `meguru` / `mamimi` / `kiriko`），和现有 5 人一致。
+- **id 取 `nickName`**（`mano` / `hiori` / `meguru` / `mamimi` / `kiriko` / `kogane`），和现有 6 人一致。
 - **角色色取 `color1`**（UI 主色），单位色见 `unit.color1`。
 - **剧本编号规律**：`1xxxxxxxx` = W.I.N.G.（相遇 / 主线，语气基准）；`2xxxxxxxx` = 卡面 commu。
 - 每个角色**至少导出 3 本**：相遇那本、第一张卡的每一段、和你接下来要写的场景最接近的一本。

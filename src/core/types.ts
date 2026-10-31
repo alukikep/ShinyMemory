@@ -168,6 +168,20 @@ export type StoryChainDef = {
   workPolicy?: 'open' | 'blocked';
   /** 链尚未启动时，满足它就允许出现在手册里。 */
   revealWhen?: Condition[];
+  /**
+   * 手册怎么揭示。
+   * - 'conditions'（默认）：revealWhen 满足就出现在手册里
+   * - 'triggered'：**只在你已经触发过之后**才出现（卡的开头靠玩家自己找）
+   */
+  revealMode?: 'conditions' | 'triggered';
+  /** 地图上的一句线索（只在 revealMode='triggered' 且未触发时用）。不剧透。 */
+  hint?: string;
+  /**
+   * 这条链会不会占住偶像（同一偶像同时只进一条链）。
+   * - 'idol'（默认）：进行中时，她的其他链不能开
+   * - 'none'：不占位（招募链这种"主线引导"不该锁死后续内容）
+   */
+  lockScope?: 'idol' | 'none';
   steps: StoryChainStep[];
 };
 

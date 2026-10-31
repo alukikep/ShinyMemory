@@ -1199,6 +1199,7 @@ export type StoryChainEntry = {
 export type StoryStepBlock =
   | { kind: 'completed' }
   | { kind: 'busy' }
+  | { kind: 'idol-busy'; chainId: string }
   | { kind: 'not-revealed' }
   | { kind: 'waiting'; earliestDay: number }
   | { kind: 'location'; expected: string; actual: string }
@@ -1231,17 +1232,35 @@ export function evaluateStoryChain(
   const ctx = { idolId: chain.idolId };
 
   // revealWhen 只决定"手册里说不说"，不决定能不能触发。
+  // revealMode='triggered' 的链（卡的开头）只能靠"已经触发过"揭示。
+  const triggered = Boolean(state.storyChains[chain.id]);
   const revealed =
-    Boolean(state.storyChains[chain.id]) ||
-    Boolean(
-      chain.revealWhen?.every((condition) =>
-        checkCondition(condition, state, ctx),
-      ) ?? false,
-    );
+    triggered ||
+    (chain.revealMode !== 'triggered' &&
+      Boolean(
+        chain.revealWhen?.every((condition) =>
+          checkCondition(condition, state, ctx),
+        ) ?? false,
+      ));
 
   const blocks: StoryStepBlock[] = [];
   if (!step || chainState.completed) {
     blocks.push({ kind: 'completed' });
+  }
+  // 一个偶像同时只进一条链：她自己有别的链没走完，这条就不能开。
+  const busyChain = Object.values(state.storyChains ?? {}).find((entry) => {
+    if (entry.completed || entry.chainId === chain.id) return false;
+    const other = CONTENT_INDEX.storyChains.get(entry.chainId);
+    // 招募链这类引导不占位：否则她只要不把尾声做完，就永远锁着后续剧情。
+    return (other?.lockScope ?? 'idol') !== 'none';
+  });
+  const busyForThisIdol = busyChain
+    ? (CONTENT_INDEX.storyChains.get(busyChain.chainId)?.idolId ?? '') === chain.idolId
+    : false;
+  if (chain.lockScope === 'none') {
+    // 自己也不受锁影响
+  } else if (busyForThisIdol && !chainState.completed) {
+    blocks.push({ kind: 'idol-busy', chainId: busyChain!.chainId });
   }
   if (state.pendingDialogueId || state.flags.forced_rest) {
     blocks.push({ kind: 'busy' });

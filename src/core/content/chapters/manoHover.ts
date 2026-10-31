@@ -13,6 +13,9 @@ const manoHover: StoryChainDef = {
   kind: 'card',
   priority: 5,
   workPolicy: 'open',
+  // 卡的开头藏起来：靠地图提示被发现，触发后才进手册
+  revealMode: 'triggered',
+  hint: '公园里有鸽子聚过来',
   revealWhen: [
     { kind: 'idolStatus', idolId: 'mano', status: 'recruited' },
   ],

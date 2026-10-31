@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { WALK_EDGES, neighborsOf } from '../../core/content/map';
+import { locationHints } from '../../core/storyHints';
 import type { GameState } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 import { GameIcon, getIconPaths } from './GameIcon';
@@ -32,6 +33,8 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
     ]),
   );
   const locations = [...CONTENT_INDEX.locations.values()];
+  // 还没遇见的卡面章：一个地点一个标记（不列标题、不剧透）
+  const hints = new Map(locationHints(state).map((hint) => [hint.locationId, hint]));
   const currentLocation = CONTENT_INDEX.locations.get(current);
   const routesHere = CONTENT_INDEX.transitRoutesByLocation.get(current) ?? [];
   const busRoutes = routesHere.filter((route) => route.kind === 'bus');
@@ -229,6 +232,29 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
                     <path key={index} d={path} />
                   ))}
                 </g>
+                {hints.has(location.id) ? (
+                  <g
+                    className={
+                      hints.get(location.id)!.inWindowCount > 0
+                        ? 'map-node-hint on'
+                        : 'map-node-hint off'
+                    }
+                    pointerEvents="none"
+                  >
+                    <circle
+                      cx={location.mapX + 38}
+                      cy={location.mapY - 12}
+                      r={8}
+                    />
+                    <text
+                      x={location.mapX + 38}
+                      y={location.mapY - 9}
+                      textAnchor="middle"
+                    >
+                      {hints.get(location.id)!.count}
+                    </text>
+                  </g>
+                ) : null}
                 <text
                   x={location.mapX + 8}
                   y={location.mapY + 4}
@@ -244,6 +270,9 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
                     : isCurrent
                       ? ' · 当前地点'
                       : ''}
+                  {hints.has(location.id)
+                    ? ` · 有 ${hints.get(location.id)!.count} 段还没遇见的剧情`
+                    : ''}
                 </title>
               </g>
             );

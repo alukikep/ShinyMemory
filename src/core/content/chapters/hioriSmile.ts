@@ -13,6 +13,9 @@ const hioriSmile: StoryChainDef = {
   kind: 'card',
   priority: 5,
   workPolicy: 'open',
+  // 卡的开头藏起来：靠地图提示被发现，触发后才进手册
+  revealMode: 'triggered',
+  hint: '去面试会场的路上，她走得很快',
   revealWhen: [
     { kind: 'idolStatus', idolId: 'hiori', status: 'recruited' },
   ],

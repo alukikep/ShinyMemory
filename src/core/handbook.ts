@@ -84,6 +84,9 @@ function statusOf(
 
   if (has('completed')) return { status: 'done' };
   if (has('busy')) return { status: 'blocked', reason: BUSY_REASON };
+  if (has('idol-busy')) {
+    return { status: 'blocked', reason: '她正在经历另一段剧情' };
+  }
   if (has('waiting')) return { status: 'waiting' };
   if (has('conditions')) {
     return { status: 'blocked', reason: gapText(evaluation, state) };

@@ -1491,6 +1491,27 @@ button:focus-visible,
   pointer-events: none;
 }
 
+.map-node-hint circle {
+  fill: #fff3c4;
+  stroke: #e2b93b;
+  stroke-width: 1.5;
+}
+
+.map-node-hint.off circle {
+  fill: #eef1f4;
+  stroke: #b9c4cf;
+}
+
+.map-node-hint text {
+  font-size: 9px;
+  font-weight: 700;
+  fill: #8a6d1f;
+}
+
+.map-node-hint.off text {
+  fill: #8a97a4;
+}
+
 .map-node.current rect {
   fill: #eaf7fd;
   stroke: var(--accent);

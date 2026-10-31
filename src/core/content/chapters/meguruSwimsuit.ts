@@ -18,6 +18,9 @@ const meguruSwimsuit: StoryChainDef = {
   priority: 30,
   cadenceDays: 2,
   workPolicy: 'open',
+  // 卡的开头藏起来：靠地图提示被发现，触发后才进手册
+  revealMode: 'triggered',
+  hint: '商业街的杂志摊前有人在翻版样',
   revealWhen: [{ kind: 'idolStatus', idolId: 'meguru', status: 'recruited' }],
   steps: [
     {

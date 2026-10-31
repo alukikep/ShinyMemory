@@ -22,6 +22,7 @@ import {
 } from './growth';
 import { STAT_LABELS, STAT_MAX, attributeLabel, formatFans } from './labels';
 import { createInitialProducerStats, staminaCapForRank, staminaCostMultiplierForRank, PRODUCER_STAT_KEYS } from './producer';
+import { oddJobScale } from './oddJob';
 import { Rng } from './rng';
 import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, getWeekdayFromDay, isMinuteInWindow } from './time';
 import { describeCondition } from './conditionText';
@@ -214,9 +215,11 @@ export function activityStaminaCost(
 ): number {
   const base = activity.cost.stamina ?? 0;
   if (base <= 0) return 0;
+  // 零工按制作人对应属性的熟练度再缩放一次（越熟练越省力）。
+  const oddJob = oddJobScale(state, activity)?.stamina ?? 1;
   return Math.max(
     1,
-    Math.ceil(base * resolveModifiers(state, 'staminaCost', { idolId })),
+    Math.ceil(base * oddJob * resolveModifiers(state, 'staminaCost', { idolId })),
   );
 }
 
@@ -240,10 +243,11 @@ export function activityDuration(
   state: GameState,
   activity: ActivityDef,
 ): number {
+  const oddJob = oddJobScale(state, activity)?.duration ?? 1;
   return Math.max(
     1,
     Math.round(
-      activity.durationMinutes * resolveModifiers(state, 'duration'),
+      activity.durationMinutes * oddJob * resolveModifiers(state, 'duration'),
     ),
   );
 }
@@ -2395,8 +2399,21 @@ export function applyActivityDef(
 
   const checkChance = activityCheckChance(state, activity, idolId);
   const passed = checkChance === undefined ? undefined : rng.chance(checkChance);
-  const activeEffects =
+  const rawEffects =
     passed === false ? (activity.failureEffects ?? []) : activity.effects;
+  // 零工的报酬与压力跟着熟练度走：同一个行动，老手拿得多、也更不累。
+  const oddJob = oddJobScale(state, activity);
+  const activeEffects = oddJob
+    ? rawEffects.map((effect) => {
+        if (effect.kind === 'money') {
+          return { ...effect, delta: Math.round(effect.delta * oddJob.pay) };
+        }
+        if (effect.kind === 'sharedStat' && effect.stat === 'stress') {
+          return { ...effect, delta: Math.round(effect.delta * oddJob.stress) };
+        }
+        return effect;
+      })
+    : rawEffects;
 
   if (activity.kind === 'sleep') {
     const current = next.clock.absoluteMinutes;

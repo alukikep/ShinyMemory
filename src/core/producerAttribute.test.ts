@@ -62,7 +62,8 @@ describe('producer attributes', () => {
 
     const after = applyActivity(before, ERRAND_ID);
     expect(after.producer.planning.exp).toBe(3);
-    expect(after.money - before.money).toBe(200);
+    // 零工按制作人熟练度缩放：企划 F 时报酬 ×0.55（见 core/oddJob.ts）
+    expect(after.money - before.money).toBe(110);
   });
 
   it('shows a target-none work activity on the location page only', () => {

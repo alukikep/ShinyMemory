@@ -65,9 +65,9 @@ const rows: Row[] = [];
 const problems: string[] = [];
 
 for (const chain of cardChains) {
-  const step = chain.steps[0];
+  for (const [stepIndex, step] of chain.steps.entries()) {
   const dialogueId = step?.dialogueId ?? '';
-  const source = CHAPTER_SOURCES.find((entry) => entry.chapterId === chain.id);
+  const source = CHAPTER_SOURCES.find((entry) => entry.chapterId === step.id);
   const isApproved = approvedDialogueIds.has(dialogueId);
   const draft = pendingDrafts.get(dialogueId);
   const nodes = isApproved
@@ -87,7 +87,7 @@ for (const chain of cardChains) {
 
   rows.push({
     idol: chain.idolId,
-    index: source?.card ? `${source.card.index}/${source.card.total}` : '—',
+    index: `${stepIndex + 1}/${chain.steps.length}`,
     title: chain.title,
     script: source?.script ?? '—',
     place: step?.locationId ?? '—',
@@ -113,17 +113,19 @@ for (const chain of cardChains) {
   if (!source) problems.push(`${chain.id}：没在 chapterSources 登记剧本编号`);
   if (!step?.locationId) problems.push(`${chain.id}：没有触发地点`);
   if ((step?.effects ?? []).filter((e) => e.kind === 'flag').length === 0) {
-    problems.push(`${chain.id}：结束没有写 flag`);
+    problems.push(`${step?.id ?? chain.id}：结束没有写 flag`);
+  }
   }
 }
 
 // 同一地点 + 同一动作名 = 测试和玩家都会点错（真实踩过：她提前来了 是巡的）
 const byAction = new Map<string, string[]>();
 for (const chain of cardChains) {
-  const step = chain.steps[0];
-  if (!step?.actionLabel) continue;
-  const key = `${step.locationId}::${step.actionLabel}`;
-  byAction.set(key, [...(byAction.get(key) ?? []), chain.id]);
+  for (const step of chain.steps) {
+    if (!step?.actionLabel) continue;
+    const key = `${step.locationId}::${step.actionLabel}`;
+    byAction.set(key, [...(byAction.get(key) ?? []), step.id ?? chain.id]);
+  }
 }
 for (const [key, owners] of byAction) {
   if (owners.length > 1) {

@@ -35,9 +35,9 @@ describe('discovery', () => {
     const state = playableState();
     const handbook = buildHandbook(state);
     const ids = [...handbook.active, ...handbook.archive].map((entry) => entry.id);
-    expect(ids).not.toContain('chain:mano-hover');
-    expect(ids).not.toContain('chain:hiori-smile');
-    expect(ids).not.toContain('chain:meguru-swimsuit');
+    expect(ids).not.toContain('chain:mano-smile');
+    expect(ids).not.toContain('chain:hiori-smile-card');
+    expect(ids).not.toContain('chain:meguru-picarte');
   });
 
   it('shows a hint for each unfound card opening', () => {
@@ -45,7 +45,7 @@ describe('discovery', () => {
     const hints = storyHints(state);
     const chains = hints.map((hint) => hint.chainId).sort();
     // 三个偶像的第一章都还没遇见
-    expect(chains).toEqual(['hiori-smile', 'mano-hover', 'meguru-swimsuit']);
+    expect(chains).toEqual(['hiori-smile-card', 'mano-smile', 'meguru-picarte']);
   });
 
   it('aggregates hints per location', () => {
@@ -59,12 +59,12 @@ describe('discovery', () => {
 
   it('drops the hint once the chapter is triggered', () => {
     const state = playableState();
-    state.storyChains['mano-hover'] = {
-      chainId: 'mano-hover',
+    state.storyChains['mano-smile'] = {
+      chainId: 'mano-smile',
       stepIndex: 1,
       completed: true,
     };
     const hints = storyHints(state).map((hint) => hint.chainId);
-    expect(hints).not.toContain('mano-hover');
+    expect(hints).not.toContain('mano-smile');
   });
 });

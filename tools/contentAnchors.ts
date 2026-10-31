@@ -106,6 +106,17 @@ if (!corpusAvailable) {
 // 还没接入 STORY_CHAINS 的章节只提示——过审后再接。
 const cardChains = PENDING_CHAPTERS.filter((chain) => (chain.kind ?? 'card') === 'card');
 
+/** 步骤 id → (链, 步骤序, 步骤)。一张卡是多步链，所以按步骤查。 */
+const stepIndex = new Map<
+  string,
+  { chain: (typeof PENDING_CHAPTERS)[number]; stepIndex: number }
+>();
+for (const chain of cardChains) {
+  chain.steps.forEach((step, index) => {
+    if (step.id) stepIndex.set(step.id, { chain, stepIndex: index });
+  });
+}
+
 const pendingChapters = CHAPTER_SOURCES.filter(
   (chapter) => !index.storyChains.has(chapter.chapterId),
 );
@@ -132,8 +143,8 @@ const problems = [
     locationIds: new Set(index.locations.keys()),
   }),
   ...validateChapterTriggers(
-    [...cardChains].map((chain) => {
-      const step = chain.steps[0];
+    cardChains.flatMap((chain) =>
+      chain.steps.map((step, index) => {
       const needsFlags = (step?.when ?? [])
         .filter((condition) => condition.kind === 'flag')
         .map((condition) => String((condition as { key?: string }).key ?? ''));
@@ -144,7 +155,7 @@ const problems = [
         | { day?: number }
         | undefined;
       return {
-        chapterId: chain.id,
+        chapterId: step.id ?? `${chain.id}#${index}`,
         idolId: chain.idolId,
         needsFlags,
         setsFlags,
@@ -154,13 +165,16 @@ const problems = [
         toMinute: step?.timeWindow?.toMinute,
       };
     }),
+    ),
   ),
   ...validateChapterShape(
     CHAPTER_SOURCES.map((chapter) => {
+      const located = stepIndex.get(chapter.chapterId);
       const chain =
-        index.storyChains.get(chapter.chapterId) ??
-        cardChains.find((entry) => entry.id === chapter.chapterId);
-      const dialogueId = chain?.steps[0]?.dialogueId;
+        index.storyChains.get(chapter.chapterId) ?? located?.chain;
+      const step =
+        located !== undefined ? located.chain.steps[located.stepIndex] : chain?.steps[0];
+      const dialogueId = step?.dialogueId;
       const draft =
         pendingDialogues.find((entry) => entry.id === dialogueId) ??
         (dialogueId && index.dialogues.has(dialogueId)
@@ -175,7 +189,8 @@ const problems = [
           : undefined);
       return {
         chapterId: chapter.chapterId,
-        stepCount: chain?.steps.length ?? 0,
+        // 一段 commu = 一步（一张卡是多步链，但每步仍是一口气读完）
+        stepCount: step ? 1 : 0,
         expectedBranches: readExpectedBranches(chapter.script),
         dialogue: draft
           ? { startNodeId: draft.startNodeId, nodes: draft.nodes }
@@ -206,10 +221,11 @@ const problems = [
 
 // 登记过的章节（哪怕还没接进 base）也要检查地点存在
 for (const chapter of CHAPTER_SOURCES) {
+  const located = stepIndex.get(chapter.chapterId);
   const chain =
-    index.storyChains.get(chapter.chapterId) ??
-    PENDING_CHAPTERS.find((entry) => entry.id === chapter.chapterId);
-  const step = chain?.steps[0];
+    index.storyChains.get(chapter.chapterId) ?? located?.chain;
+  const step =
+    located !== undefined ? located.chain.steps[located.stepIndex] : chain?.steps[0];
   if (step && !index.locations.has(step.locationId)) {
     problems.push({
       chapterId: chapter.chapterId,

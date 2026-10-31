@@ -242,6 +242,9 @@ docs/content/<id>/character.md
 - 每个角色做完跑一次全量回归（`npm test` + `build` + 序章 E2E）。
 - 不要两个角色同时改 `storyChains.ts` / `chapterSources.ts`（同一文件冲突）。
 - 每 3 个角色做一次：旧档回填回归 + `content:balance`。
+  - 回填回归现在是**全自动覆盖**的：`src/save/idolBackfill.test.ts` 对正式包每个偶像跑
+    "删条目→迁移→补回/补状态"，`tests/prologue/saveBackfill.spec.ts` 一次删掉后加的
+    五个角色再逐个招回来（名册 + 日程表都断言）。**加了新角色不用改这两个测试**。
 
 ---
 

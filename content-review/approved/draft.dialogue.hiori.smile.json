@@ -2,7 +2,7 @@
   "id": "draft.dialogue.hiori.smile",
   "kind": "dialogue",
   "title": "君のことを教えてほしい",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.hiori.smile",
   "payload": {
@@ -301,12 +301,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T02:59:31.473Z",
-  "updatedAt": "2026-10-31T02:59:31.473Z",
+  "updatedAt": "2026-10-31T03:12:00.498Z",
+  "reviewedAt": "2026-10-31T03:12:00.498Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T02:59:31.473Z",
       "note": "卡面第一章（剧本 200200401）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T03:12:00.498Z"
     }
   ]
 }

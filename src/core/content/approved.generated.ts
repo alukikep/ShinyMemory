@@ -2850,6 +2850,300 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.hiori.smile",
+  "idolId": "hiori",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "hiori",
+      "text": "制作人……？怎么了？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "啊，不……倒也不是出了什么事。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "只是一直没找到和灯织好好说话的机会，想留一点这样的时间。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "hiori",
+      "text": "说话，是吗？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "嗯。为了今后的制作，我想了解灯织。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "所以，能让我先问几个问题吗？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hiori",
+      "text": "可以，没问题……答案会改变制作的方针吗？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "不能说完全没有，但希望你能轻松地回答。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "hiori",
+      "text": "……我明白了。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "那么……先说说兴趣之类？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "hiori",
+      "text": "兴趣……大概是听音乐吧。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "休息日会做什么？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "hiori",
+      "text": "做饭，或者反复练习自己不擅长的舞步……大概是这样。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "还有……学校生活怎么样？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "hiori",
+      "text": "……抱歉，能停一下吗？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "嗯？怎么了，灯织？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "hiori",
+      "text": "我不觉得这些对偶像活动有帮助。希望问更有建设性的问题。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "是、是啊，抱歉……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "hiori",
+      "text": "……不。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "hiori",
+      "text": "是我这边才对，抱歉……我说得有点过了。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "不，没关系。你肯把真实想法说出来，我很高兴。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "hiori",
+      "text": "诶……？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "今后要一直一起走下去，坦白最要紧！",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "hiori",
+      "text": "这样……吗。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "hiori",
+      "text": "……没想到您会那样理解我的话。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "我们是搭档。作为交换，我也直接问一句，可以吗？",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "hiori",
+      "text": "好，请。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "灯织想成为什么样的偶像？",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "hiori",
+      "text": "我想成为……闪耀的偶像。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "闪耀的偶像啊……原来如此。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "hiori",
+      "text": "很抽象吧……抱歉。",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "没有这种事。我觉得这是很了不起的目标。",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "hiori",
+      "text": "……谢谢。还有其他问题吗？",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "producer",
+      "text": "不用了，重要的事已经听到了，足够了。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "hiori",
+      "text": "这样啊……",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "hiori",
+      "text": "……制作人。再说一次，今后请多关照。",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "producer",
+      "text": "嗯。一起加油吧。",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "producer",
+      "text": "……哦，快到时间了……喂，灯织！等等我！",
+      "nextNodeId": "48"
+    },
+    "48": {
+      "id": "48",
+      "speakerId": "hiori",
+      "text": "来，快走吧，制作人。"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "hiori",
+      "text": "……",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "马上就到面试会场了。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "hiori",
+      "text": "……是的，确实。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "hiori",
+      "text": "……",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "……我说，能不能走慢一点？",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "hiori",
+      "text": "为什么呢？",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "这样下去，会到得相当早。",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "hiori",
+      "text": "确实是这样……但我想早点到，先做热身。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "这、这样啊……",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
   "id": "dialogue.mano.first",
   "idolId": "mano",
   "startNodeId": "n01",

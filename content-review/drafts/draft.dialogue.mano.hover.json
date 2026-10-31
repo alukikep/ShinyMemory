@@ -1,0 +1,216 @@
+{
+  "id": "draft.dialogue.mano.hover",
+  "kind": "dialogue",
+  "title": "ほわほわアイドル",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.hover",
+  "payload": {
+    "id": "dialogue.mano.hover",
+    "idolId": "mano",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "mano",
+        "text": "呼哇哇……好多鸽子先生……",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "真厉害，只要真乃在，鸽子就会聚过来。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "你是真的被鸟喜欢啊。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "mano",
+        "text": "是的，我和鸽子先生关系很好，一不小心就忘了时间。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "mano",
+        "text": "可是，那个样子被制作人看到……呼哇哇哇……",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "mano",
+        "text": "那个……鸽子先生，我要走了，明天再来，再一起玩吧？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "mano",
+        "text": "呼哇……怎么说呢……刚才让您看到我很不像样的一面……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "鸽子的事？我觉得没什么好难为情的。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "mano",
+        "text": "和鸽子先生慢慢说话、待在一起，真的非常开心。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "mano",
+        "text": "可是，在别人看来，也许会觉得我太悠哉了……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "mano",
+        "text": "我从小就被说，有点迷糊、有点呼呼的。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "mano",
+        "text": "我想改变这样的自己……所以才当了偶像。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "……你知道偶像是什么样的工作吗？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "mano",
+        "text": "呼哇？唱歌、跳舞……？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "还有，被人喜欢。我刚才就看到了真乃被喜欢的样子。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "mano",
+        "text": "被……鸽子先生吗？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "嗯。你有做偶像的素质。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "如果是你，一定能成为自己喜欢的自己。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "mano",
+        "text": "谢谢您。听您这么说，我很高兴。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "今后一起努力吧。我也会好好做制作人的工作。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "mano",
+        "text": "好！那，差不多该到练习的时间了吧？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "诶……啊，真的！我忘了算怎么回事！？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "mano",
+        "text": "今天的练习，我也会加油的，呣嗯！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "真乃，原来你在这里，我找了一阵。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "mano",
+        "text": "呼哇……制作人？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "mano",
+        "text": "啊！难道是，已经到练习的时间了吗！？",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "mano",
+        "text": "对不起，我和鸽子先生玩得太投入了……",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "时间还够，吓到你了，抱歉。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "mano",
+        "text": "还来得及吗，呼哇～太好了。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "mano",
+        "text": "我这个人总是发呆，一不留神就真的会入迷。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "mano",
+        "text": "不好好注意可不行，呣嗯！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "……说着话的工夫，真乃身边就……",
+        "nextNodeId": "10"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:59:31.473Z",
+  "updatedAt": "2026-10-31T02:59:31.473Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:59:31.473Z",
+      "note": "卡面第一章（剧本 200100401）"
+    }
+  ]
+}

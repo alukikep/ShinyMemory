@@ -145,6 +145,7 @@ const problems = [
         | undefined;
       return {
         chapterId: chain.id,
+        idolId: chain.idolId,
         needsFlags,
         setsFlags,
         day: day?.day,

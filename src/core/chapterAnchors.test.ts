@@ -236,6 +236,7 @@ describe('chapter triggers', () => {
     const problems = validateChapterTriggers([
       {
         ...base,
+        idolId: 'mano',
         chapterId: 'c1',
         needsFlags: ['done.c1'],
         setsFlags: ['done.c1'],
@@ -247,16 +248,16 @@ describe('chapter triggers', () => {
 
   it('rejects a chapter that does not chain to the previous one', () => {
     const problems = validateChapterTriggers([
-      { ...base, chapterId: 'c1', needsFlags: [], setsFlags: ['done.c1'], day: 5 },
-      { ...base, chapterId: 'c2', needsFlags: [], setsFlags: ['done.c2'], day: 8 },
+      { ...base, idolId: 'mano', chapterId: 'c1', needsFlags: [], setsFlags: ['done.c1'], day: 5 },
+      { ...base, idolId: 'mano', chapterId: 'c2', needsFlags: [], setsFlags: ['done.c2'], day: 8 },
     ]);
     expect(problems.some((p) => p.message.includes('没有承接'))).toBe(true);
   });
 
   it('accepts a properly chained sequence', () => {
     const problems = validateChapterTriggers([
-      { ...base, chapterId: 'c1', needsFlags: [], setsFlags: ['done.c1'], day: 5 },
-      { ...base, chapterId: 'c2', needsFlags: ['done.c1'], setsFlags: ['done.c2'], day: 8 },
+      { ...base, idolId: 'mano', chapterId: 'c1', needsFlags: [], setsFlags: ['done.c1'], day: 5 },
+      { ...base, idolId: 'mano', chapterId: 'c2', needsFlags: ['done.c1'], setsFlags: ['done.c2'], day: 8 },
     ]);
     expect(problems).toEqual([]);
   });

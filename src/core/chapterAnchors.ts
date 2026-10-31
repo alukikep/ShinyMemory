@@ -123,6 +123,8 @@ export type ChapterStructureProbe = {
  */
 export type ChapterTrigger = {
   chapterId: string;
+  /** 每个偶像各自一条序列，互不承接。 */
+  idolId: string;
   /** 第一步要求的 flag */
   needsFlags: string[];
   /** 第一步设置（effects）的 flag */
@@ -138,7 +140,9 @@ export function validateChapterTriggers(
 ): ChapterStructureProblem[] {
   const problems: ChapterStructureProblem[] = [];
 
-  chapters.forEach((chapter, index) => {
+  const previousByIdol = new Map<string, ChapterTrigger>();
+
+  for (const chapter of chapters) {
     // 自引用：要求自己设置的 flag
     for (const flag of chapter.needsFlags) {
       if (chapter.setsFlags.includes(flag)) {
@@ -160,8 +164,8 @@ export function validateChapterTriggers(
       problems.push({ chapterId: chapter.chapterId, message: '时间窗不合法' });
     }
 
-    if (index > 0) {
-      const previous = chapters[index - 1]!;
+    const previous = previousByIdol.get(chapter.idolId);
+    if (previous) {
       const chained = previous.setsFlags.some((flag) =>
         chapter.needsFlags.includes(flag),
       );
@@ -182,7 +186,8 @@ export function validateChapterTriggers(
         });
       }
     }
-  });
+    previousByIdol.set(chapter.idolId, chapter);
+  }
 
   return problems;
 }

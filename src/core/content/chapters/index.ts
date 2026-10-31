@@ -3,6 +3,8 @@ import meguruCoffee from './meguruCoffee';
 import meguruPurity from './meguruPurity';
 import meguruStars from './meguruStars';
 import meguruSunshine from './meguruSunshine';
+import hioriSmile from './hioriSmile';
+import manoHover from './manoHover';
 import meguruSwimsuit from './meguruSwimsuit';
 import { hioriEncounter, manoEncounter, meguruEncounter, manoSlump } from '../storyChains';
 import { hioriGap } from '../storyChains';
@@ -25,6 +27,8 @@ import { meguruBurden } from '../storyChains';
  *     这样"批到一半"不会让游戏引用不存在的对话。
  */
 export const PENDING_CHAPTERS: StoryChainDef[] = [
+  manoHover,
+  hioriSmile,
   manoEncounter,
   hioriEncounter,
   meguruEncounter,

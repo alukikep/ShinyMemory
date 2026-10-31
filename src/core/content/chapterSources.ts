@@ -51,4 +51,18 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     script: '200300511',
     anchors: ['2003005110010', '2003005110150', '2003005110290'],
   },
+  {
+    chapterId: 'mano-hover',
+    script: '200100401',
+    source: '剧本 200100401',
+    card: { title: 'ほわっとスマイル', index: 1, total: 5 },
+    anchors: ['2001004010010', '2001004010150', '2001004010200'],
+  },
+  {
+    chapterId: 'hiori-smile',
+    script: '200200401',
+    source: '剧本 200200401',
+    card: { title: '柔らかな微笑み', index: 1, total: 5 },
+    anchors: ['2002004010010', '2002004010130', '2002004010250'],
+  },
 ];

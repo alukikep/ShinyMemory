@@ -16,8 +16,18 @@ const actor: ActorDef = {
   color: '#b79bd1',
   schedule: [
     {
-      fromMinute: 11 * 60,
+      // 她是高中生（1005001010030–1005001010070）：白天要上学，不能被工作顶掉。
+      fromMinute: 8 * 60,
       toMinute: 15 * 60,
+      locationId: 'school',
+      weekdays: [1, 2, 3, 4, 5],
+      label: '上学',
+      visibility: 'private',
+      protected: true,
+    },
+    {
+      fromMinute: 16 * 60,
+      toMinute: 19 * 60,
       locationId: 'shopping_street',
       weekdays: [1, 3, 5],
       label: '在街上晃',

@@ -42,7 +42,11 @@ test('producer errand responds to a click', async ({ page }) => {
     .toBe('activityResult');
 
   const after = await getState(page);
-  expect(after.money - before.money).toBe(150);
+  // 零工按制作人熟练度缩放（企划 F 时 ×0.55），所以不写死金额：
+  // 内容里的基础报酬改了，这条测试也不该跟着改。
+  const base = 150; // activity.office_filing 的基础报酬
+  const expected = Math.round(base * 0.55);
+  expect(after.money - before.money).toBe(expected);
   expect(after.producer.planning.exp).toBe(3);
   expect(errors).toEqual([]);
 });

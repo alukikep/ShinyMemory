@@ -1,0 +1,162 @@
+{
+  "id": "draft.dialogue.meguru.burden.third",
+  "kind": "dialogue",
+  "title": "巡 · 不重要的事，选不出来 · third",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.burden.third",
+  "payload": {
+    "id": "dialogue.meguru.burden.third",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "第二天。练习室的地板上摆着她的水壶和一条毛巾。她坐在地上，没在练。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "meguru",
+        "text": "制作人。我昨天想了很久。",
+        "textVariants": [
+          {
+            "when": [
+              {
+                "kind": "varAtLeast",
+                "key": "meguru.burdenApproach",
+                "value": 1
+              },
+              {
+                "kind": "varAtMost",
+                "key": "meguru.burdenApproach",
+                "value": 1
+              }
+            ],
+            "text": "制作人。我昨天想了很久。……那个表，确实一格都没有空。"
+          },
+          {
+            "when": [
+              {
+                "kind": "varAtLeast",
+                "key": "meguru.burdenApproach",
+                "value": 2
+              },
+              {
+                "kind": "varAtMost",
+                "key": "meguru.burdenApproach",
+                "value": 2
+              }
+            ],
+            "text": "制作人。我昨天想了很久。你担心的不是工作……那我要怎么办才好。"
+          },
+          {
+            "when": [
+              {
+                "kind": "varAtLeast",
+                "key": "meguru.burdenApproach",
+                "value": 3
+              },
+              {
+                "kind": "varAtMost",
+                "key": "meguru.burdenApproach",
+                "value": 3
+              }
+            ],
+            "text": "制作人。我昨天想了很久。选一件——我想了一晚上，选不出来。"
+          }
+        ],
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "meguru",
+        "text": "我一直以为，能帮上忙就是好事。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "meguru",
+        "text": "但是昨天……我第一次觉得，好像有什么地方不对。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "text": "她低下头，捏着毛巾的边角。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "meguru",
+        "text": "……那。下个休息日的比赛，我可以不去吗。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "text": "她说完立刻抬头，像是怕你误会。",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "speakerId": "meguru",
+        "text": "就这一次！我会好好跟朋友说的！只是……只是我想试一次。",
+        "choices": [
+          {
+            "label": "当然可以。这是你自己的事。",
+            "nextNodeId": "n09a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 5
+              }
+            ]
+          },
+          {
+            "label": "你已经做得够多了。",
+            "nextNodeId": "n09b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 5
+              }
+            ]
+          }
+        ]
+      },
+      "n09a": {
+        "id": "n09a",
+        "speakerId": "meguru",
+        "text": "……嗯。谢谢你。",
+        "nextNodeId": "n10"
+      },
+      "n09b": {
+        "id": "n09b",
+        "speakerId": "meguru",
+        "text": "诶嘿嘿……被这么说，好像有点想哭。奇怪。",
+        "nextNodeId": "n10"
+      },
+      "n10": {
+        "id": "n10",
+        "speakerId": "meguru",
+        "text": "原来选东西这么难啊。……那我以后，慢慢学。",
+        "nextNodeId": "n11"
+      },
+      "n11": {
+        "id": "n11",
+        "text": "她站起来，拍了拍裙子，把毛巾搭在肩上。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:26:00.805Z",
+  "updatedAt": "2026-10-31T02:26:00.805Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:26:00.805Z",
+      "note": "从 TS 迁移：让长线对话也走审查"
+    }
+  ]
+}

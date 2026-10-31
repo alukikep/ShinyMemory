@@ -1,0 +1,139 @@
+{
+  "id": "draft.dialogue.mano.slump.third",
+  "kind": "dialogue",
+  "title": "真乃 · 唱不出来的那天 · third",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.slump.third",
+  "payload": {
+    "id": "dialogue.mano.slump.third",
+    "idolId": "mano",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "第二天。练习室的窗帘拉开了，光落在地板中间。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "mano",
+        "text": "我准备好了。",
+        "textVariants": [
+          {
+            "when": [
+              {
+                "kind": "varAtLeast",
+                "key": "mano.slumpApproach",
+                "value": 1
+              },
+              {
+                "kind": "varAtMost",
+                "key": "mano.slumpApproach",
+                "value": 1
+              }
+            ],
+            "text": "我数过了。第二段最后那句，一共 11 个字，我拆成了三段练。"
+          },
+          {
+            "when": [
+              {
+                "kind": "varAtLeast",
+                "key": "mano.slumpApproach",
+                "value": 2
+              },
+              {
+                "kind": "varAtMost",
+                "key": "mano.slumpApproach",
+                "value": 2
+              }
+            ],
+            "text": "昨天什么都没想，睡了一整天。……好像有点用。"
+          },
+          {
+            "when": [
+              {
+                "kind": "varAtLeast",
+                "key": "mano.slumpApproach",
+                "value": 3
+              },
+              {
+                "kind": "varAtMost",
+                "key": "mano.slumpApproach",
+                "value": 3
+              }
+            ],
+            "text": "我把那段重听了。听了七遍。……然后发现自己一直在抢拍。"
+          }
+        ],
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "text": "她按下播放键。这一次，从头到尾没有停。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "mano",
+        "text": "……唱完了。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "speakerId": "mano",
+        "text": "制作人先生。昨天那些话，我想收回。",
+        "choices": [
+          {
+            "label": "不用收回，那也是你的一部分",
+            "nextNodeId": "n06a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 5
+              }
+            ]
+          },
+          {
+            "label": "下次卡住的时候，也告诉我",
+            "nextNodeId": "n06b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 5
+              }
+            ]
+          }
+        ]
+      },
+      "n06a": {
+        "id": "n06a",
+        "speakerId": "mano",
+        "text": "……嗯。那我要连着好的部分一起收下。",
+        "nextNodeId": "n07"
+      },
+      "n06b": {
+        "id": "n06b",
+        "speakerId": "mano",
+        "text": "好。下次……我会在更早的时候说。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "text": "她重新戴上耳机。窗外的鸽子落在窗台上，这次没有飞走。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:26:00.805Z",
+  "updatedAt": "2026-10-31T02:26:00.805Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:26:00.805Z",
+      "note": "从 TS 迁移：让长线对话也走审查"
+    }
+  ]
+}

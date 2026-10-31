@@ -20,9 +20,14 @@ const merged = mergeApprovedContent(BASE_PACK, APPROVED_CONTENT).pack;
  * 它们的对话是审查台通过的内容，BASE_PACK 里没有，放进去会让
  * 每个草稿的预检都报 dialogue-ref（真实踩过）。
  */
+const approvedDialogueIds = new Set(merged.dialogues.map((dialogue) => dialogue.id));
+
 export const PRODUCTION_PACK: ContentPack = {
   ...merged,
-  storyChains: [...merged.storyChains, ...PENDING_CHAPTERS],
+  // 只挂上"对话已经批过"的链——批到一半时不会引用不存在的对话。
+  storyChains: [...merged.storyChains, ...PENDING_CHAPTERS].filter((chain) =>
+    chain.steps.every((step) => approvedDialogueIds.has(step.dialogueId)),
+  ),
 };
 
 export const ACTIVE_CONTENT_PACK = PRODUCTION_PACK;

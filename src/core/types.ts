@@ -157,6 +157,11 @@ export type StoryChainDef = {
   priority?: number;
   /** 手册条目标题；缺省回退到「偶像名 · 首步标签」。 */
   title?: string;
+  /**
+   * 'card' = 卡面章（1 步、一坐读完）；'arc' = 长线（3–5 步、跨天）。
+   * 默认 'card'。
+   */
+  kind?: 'card' | 'arc';
   /** 剧情日多久出现一次。默认 1（每天）。 */
   cadenceDays?: number;
   /** 章进行期间该偶像能不能接工作。默认 'open'。 */

@@ -1,0 +1,130 @@
+{
+  "id": "draft.dialogue.mano.slump.second",
+  "kind": "dialogue",
+  "title": "真乃 · 唱不出来的那天 · second",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.slump.second",
+  "payload": {
+    "id": "dialogue.mano.slump.second",
+    "idolId": "mano",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "事务所的灯只开了一盏。她坐在桌边，面前那碗面几乎没有动过。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "mano",
+        "text": "制作人先生。今天的事，我想了一路。",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "mano",
+        "text": "如果我做不到，早点说会比较好吧。这样大家还能换人。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "mano",
+        "text": "……我不是在赌气。我是真的这么想。",
+        "choices": [
+          {
+            "label": "把问题拆开：到底是哪一句唱不出来",
+            "nextNodeId": "n05a",
+            "effects": [
+              {
+                "kind": "var",
+                "key": "mano.slumpApproach",
+                "op": "set",
+                "value": 1
+              },
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "先休息一天，什么都别想",
+            "nextNodeId": "n05b",
+            "effects": [
+              {
+                "kind": "var",
+                "key": "mano.slumpApproach",
+                "op": "set",
+                "value": 2
+              },
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "陪她把今天那段重听一遍",
+            "nextNodeId": "n05c",
+            "effects": [
+              {
+                "kind": "var",
+                "key": "mano.slumpApproach",
+                "op": "set",
+                "value": 3
+              },
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          }
+        ]
+      },
+      "n05a": {
+        "id": "n05a",
+        "speakerId": "mano",
+        "text": "哪一句……是第二段最后那句。每次到那里，我就开始想别的。",
+        "nextNodeId": "n06"
+      },
+      "n05b": {
+        "id": "n05b",
+        "speakerId": "mano",
+        "text": "休息。……好。那我明天什么都不做。",
+        "nextNodeId": "n06"
+      },
+      "n05c": {
+        "id": "n05c",
+        "speakerId": "mano",
+        "text": "要听吗。……会很糟糕。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "text": "她终于拿起筷子，吃了一口。面已经凉了。",
+        "effects": [
+          {
+            "kind": "var",
+            "key": "mano.slump",
+            "op": "set",
+            "value": 2
+          }
+        ]
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:26:00.805Z",
+  "updatedAt": "2026-10-31T02:26:00.805Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:26:00.805Z",
+      "note": "从 TS 迁移：让长线对话也走审查"
+    }
+  ]
+}

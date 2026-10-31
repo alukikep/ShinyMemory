@@ -1,0 +1,134 @@
+{
+  "id": "draft.dialogue.meguru.burden.first",
+  "kind": "dialogue",
+  "title": "巡 · 不重要的事，选不出来 · first",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.burden.first",
+  "payload": {
+    "id": "dialogue.meguru.burden.first",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "练习时间已经过了。球场上只剩她一个人，对着篮板投球。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "meguru",
+        "text": "啊，制作人！……等一下，我马上收拾！",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "text": "她跑过去捡球，脚步比前几天慢。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "meguru",
+        "text": "诶嘿嘿，今天也是陪朋友练习。只奉陪到今天为止哦？",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "speakerId": "meguru",
+        "text": "……啊。手机。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "text": "她接起电话，说了几句\"嗯\"\"我知道了\"\"那就下个休息日\"。挂掉以后，笑了一下。",
+        "choices": [
+          {
+            "label": "又是去帮忙？",
+            "nextNodeId": "n07a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "（什么也没问，把水递过去）",
+            "nextNodeId": "n07b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              },
+              {
+                "kind": "flag",
+                "key": "meguru_got_water",
+                "value": true
+              }
+            ]
+          },
+          {
+            "label": "你今天看起来很累",
+            "nextNodeId": "n07c",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          }
+        ]
+      },
+      "n07a": {
+        "id": "n07a",
+        "speakerId": "meguru",
+        "text": "嗯！朋友的比赛，人手不够！",
+        "nextNodeId": "n08"
+      },
+      "n07b": {
+        "id": "n07b",
+        "speakerId": "meguru",
+        "text": "……谢谢。啊，我确实有点渴了。",
+        "nextNodeId": "n08"
+      },
+      "n07c": {
+        "id": "n07c",
+        "speakerId": "meguru",
+        "text": "诶！？没、没有哦！你看！很有精神，别担心！",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "speakerId": "meguru",
+        "text": "啊哈哈……比起以前，去的次数已经减少了。",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "speakerId": "meguru",
+        "text": "所以，安排没有冲突的时候，我想努力一下。想帮上大家的忙……！",
+        "effects": [
+          {
+            "kind": "var",
+            "key": "meguru.burden",
+            "op": "set",
+            "value": 1
+          }
+        ]
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:26:00.805Z",
+  "updatedAt": "2026-10-31T02:26:00.805Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:26:00.805Z",
+      "note": "从 TS 迁移：让长线对话也走审查"
+    }
+  ]
+}

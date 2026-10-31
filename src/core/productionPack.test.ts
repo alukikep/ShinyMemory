@@ -29,11 +29,16 @@ describe('production pack', () => {
     expect(PRODUCTION_PACK.dialogues).toHaveLength(
       BASE_PACK.dialogues.length + APPROVED_CONTENT.dialogues.length,
     );
-    // 卡面章节的结构在生产包里拼（对话是 approved 内容，base 里没有）
+    // 卡面章节 / 迁出的长线的结构在生产包里拼，但只挂"对话已批过"的链。
+    const attached = PENDING_CHAPTERS.filter((chain) =>
+      chain.steps.every((step) =>
+        PRODUCTION_PACK.dialogues.some((dialogue) => dialogue.id === step.dialogueId),
+      ),
+    );
     expect(PRODUCTION_PACK.storyChains).toHaveLength(
       BASE_PACK.storyChains.length +
         APPROVED_CONTENT.storyChains.length +
-        PENDING_CHAPTERS.length,
+        attached.length,
     );
   });
 

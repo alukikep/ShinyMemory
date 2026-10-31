@@ -50,6 +50,7 @@ export const manoEncounter: StoryChainDef = {
  */
 export const manoSlump: StoryChainDef = {
   id: 'mano-slump',
+  kind: 'arc',
   idolId: 'mano',
   priority: 20,
   title: '唱不出来的那天',
@@ -139,6 +140,7 @@ export const hioriEncounter: StoryChainDef = {
  */
 export const hioriGap: StoryChainDef = {
   id: 'hiori-gap',
+  kind: 'arc',
   idolId: 'hiori',
   priority: 20,
   title: '千里的距离',
@@ -222,6 +224,7 @@ export const meguruEncounter: StoryChainDef = {
  */
 export const meguruBurden: StoryChainDef = {
   id: 'meguru-burden',
+  kind: 'arc',
   idolId: 'meguru',
   priority: 20,
   title: '不重要的事，选不出来',
@@ -266,9 +269,6 @@ export const meguruBurden: StoryChainDef = {
 
 export const STORY_CHAINS = [
   manoEncounter,
-  manoSlump,
   hioriEncounter,
-  hioriGap,
   meguruEncounter,
-  meguruBurden,
 ];

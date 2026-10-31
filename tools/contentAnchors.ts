@@ -169,6 +169,8 @@ if (!corpusAvailable) {
 }
 
 // 还没接入 STORY_CHAINS 的章节只提示——过审后再接。
+const cardChains = PENDING_CHAPTERS.filter((chain) => (chain.kind ?? 'card') === 'card');
+
 const pendingChapters = CHAPTER_SOURCES.filter(
   (chapter) => !index.storyChains.has(chapter.chapterId),
 );
@@ -195,7 +197,7 @@ const problems = [
     locationIds: new Set(index.locations.keys()),
   }),
   ...validateChapterTriggers(
-    [...PENDING_CHAPTERS].map((chain) => {
+    [...cardChains].map((chain) => {
       const step = chain.steps[0];
       const needsFlags = (step?.when ?? [])
         .filter((condition) => condition.kind === 'flag')
@@ -221,7 +223,7 @@ const problems = [
     CHAPTER_SOURCES.map((chapter) => {
       const chain =
         index.storyChains.get(chapter.chapterId) ??
-        PENDING_CHAPTERS.find((entry) => entry.id === chapter.chapterId);
+        cardChains.find((entry) => entry.id === chapter.chapterId);
       const dialogueId = chain?.steps[0]?.dialogueId;
       const draft =
         pendingDialogues.find((entry) => entry.id === dialogueId) ??

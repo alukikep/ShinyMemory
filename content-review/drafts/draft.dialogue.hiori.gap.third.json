@@ -1,0 +1,145 @@
+{
+  "id": "draft.dialogue.hiori.gap.third",
+  "kind": "dialogue",
+  "title": "灯织 · 千里的距离 · third",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hiori.gap.third",
+  "payload": {
+    "id": "dialogue.hiori.gap.third",
+    "idolId": "hiori",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "第二天。练习室的音响没开，只有她数拍子的声音。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "hiori",
+        "text": "我昨天想了一路。",
+        "textVariants": [
+          {
+            "when": [
+              {
+                "kind": "varAtLeast",
+                "key": "hiori.gapApproach",
+                "value": 1
+              },
+              {
+                "kind": "varAtMost",
+                "key": "hiori.gapApproach",
+                "value": 1
+              }
+            ],
+            "text": "我昨天想了一路。制作人也没有答案的话，那就一起找。"
+          },
+          {
+            "when": [
+              {
+                "kind": "varAtLeast",
+                "key": "hiori.gapApproach",
+                "value": 2
+              },
+              {
+                "kind": "varAtMost",
+                "key": "hiori.gapApproach",
+                "value": 2
+              }
+            ],
+            "text": "我昨天想了一路。不敷衍自己——如果是这个，那确实是我有的。"
+          },
+          {
+            "when": [
+              {
+                "kind": "varAtLeast",
+                "key": "hiori.gapApproach",
+                "value": 3
+              },
+              {
+                "kind": "varAtMost",
+                "key": "hiori.gapApproach",
+                "value": 3
+              }
+            ],
+            "text": "我昨天想了一路，然后就睡着了。……难得睡得那么好。"
+          }
+        ],
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "hiori",
+        "text": "不过，我没有想通。两人有什么、我缺什么，还是不知道。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "hiori",
+        "text": "不知道也没关系。我不打算停下来等答案。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "text": "她按下播放键，从第一拍开始。这一次没有停。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "hiori",
+        "text": "制作人。明天也继续吧。",
+        "choices": [
+          {
+            "label": "当然。我一直在。",
+            "nextNodeId": "n07a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 5
+              }
+            ]
+          },
+          {
+            "label": "你已经在走了，不用等谁",
+            "nextNodeId": "n07b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 5
+              }
+            ]
+          }
+        ]
+      },
+      "n07a": {
+        "id": "n07a",
+        "speakerId": "hiori",
+        "text": "……嗯。那就这样。",
+        "nextNodeId": "n08"
+      },
+      "n07b": {
+        "id": "n07b",
+        "speakerId": "hiori",
+        "text": "这句话，我记下了。",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "text": "她重新戴上耳机。窗外的光落在镜子上，晃了一下。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:26:00.805Z",
+  "updatedAt": "2026-10-31T02:26:00.805Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:26:00.805Z",
+      "note": "从 TS 迁移：让长线对话也走审查"
+    }
+  ]
+}

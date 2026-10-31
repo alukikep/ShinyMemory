@@ -1,0 +1,148 @@
+{
+  "id": "draft.dialogue.meguru.burden.second",
+  "kind": "dialogue",
+  "title": "巡 · 不重要的事，选不出来 · second",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.meguru.burden.second",
+  "payload": {
+    "id": "dialogue.meguru.burden.second",
+    "idolId": "meguru",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "事务所的灯还亮着。她趴在桌上，听见开门声立刻坐直。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "meguru",
+        "text": "制作人！我没睡！",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "meguru",
+        "text": "……那个。最近工作有点多呢，啊哈哈。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "text": "你说要不要取消几件，先休息一下。她立刻摇头。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "speakerId": "meguru",
+        "text": "不要。我不想取消。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "meguru",
+        "text": "因为这些都是自己说了想做的工作……而且，制作人好不容易争取来了工作。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "speakerId": "meguru",
+        "text": "要是取消的话……",
+        "choices": [
+          {
+            "label": "把下周的表摊开：你自己看，哪一格是空的",
+            "nextNodeId": "n08a",
+            "effects": [
+              {
+                "kind": "var",
+                "key": "meguru.burdenApproach",
+                "op": "set",
+                "value": 1
+              },
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "我担心的不是工作，是你",
+            "nextNodeId": "n08b",
+            "effects": [
+              {
+                "kind": "var",
+                "key": "meguru.burdenApproach",
+                "op": "set",
+                "value": 2
+              },
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "那你自己选一件最想做的，其他先放下",
+            "nextNodeId": "n08c",
+            "effects": [
+              {
+                "kind": "var",
+                "key": "meguru.burdenApproach",
+                "op": "set",
+                "value": 3
+              },
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          }
+        ]
+      },
+      "n08a": {
+        "id": "n08a",
+        "speakerId": "meguru",
+        "text": "……真的，一格都没有。",
+        "nextNodeId": "n09"
+      },
+      "n08b": {
+        "id": "n08b",
+        "speakerId": "meguru",
+        "text": "我？……我没事的。真的。",
+        "nextNodeId": "n09"
+      },
+      "n08c": {
+        "id": "n08c",
+        "speakerId": "meguru",
+        "text": "选一件……诶，只有一件吗？",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "speakerId": "meguru",
+        "text": "……对不起。我今天有点困了。",
+        "effects": [
+          {
+            "kind": "var",
+            "key": "meguru.burden",
+            "op": "set",
+            "value": 2
+          }
+        ]
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:26:00.805Z",
+  "updatedAt": "2026-10-31T02:26:00.805Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:26:00.805Z",
+      "note": "从 TS 迁移：让长线对话也走审查"
+    }
+  ]
+}

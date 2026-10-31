@@ -1,0 +1,154 @@
+{
+  "id": "draft.dialogue.hiori.gap.second",
+  "kind": "dialogue",
+  "title": "灯织 · 千里的距离 · second",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hiori.gap.second",
+  "payload": {
+    "id": "dialogue.hiori.gap.second",
+    "idolId": "hiori",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "收录结束，棚里只剩设备散热的嗡声。她没有走。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "hiori",
+        "text": "制作人。我想问一件事。",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "speakerId": "hiori",
+        "text": "两人有的，而我没有的东西，是什么。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "hiori",
+        "text": "技术？……不。她们也不是每次都做到完美。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "speakerId": "hiori",
+        "text": "笑容？像真乃那样治愈人的笑，像巡那样让人有精神的笑，我都做不到。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "hiori",
+        "text": "人气？……人气不是越多越好。理由不够。",
+        "nextNodeId": "n07"
+      },
+      "n07": {
+        "id": "n07",
+        "speakerId": "hiori",
+        "text": "不知道。为什么。",
+        "choices": [
+          {
+            "label": "我也没答案。但我知道你一直在往前走",
+            "nextNodeId": "n08a",
+            "effects": [
+              {
+                "kind": "var",
+                "key": "hiori.gapApproach",
+                "op": "set",
+                "value": 1
+              },
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "你有一样她们没有的：你从不敷衍自己",
+            "nextNodeId": "n08b",
+            "effects": [
+              {
+                "kind": "var",
+                "key": "hiori.gapApproach",
+                "op": "set",
+                "value": 2
+              },
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "先不谈这个。你今天有没有好好休息",
+            "nextNodeId": "n08c",
+            "effects": [
+              {
+                "kind": "var",
+                "key": "hiori.gapApproach",
+                "op": "set",
+                "value": 3
+              },
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          }
+        ]
+      },
+      "n08a": {
+        "id": "n08a",
+        "speakerId": "hiori",
+        "text": "……制作人也没有答案啊。",
+        "nextNodeId": "n09"
+      },
+      "n08b": {
+        "id": "n08b",
+        "speakerId": "hiori",
+        "text": "不敷衍自己。……这算优点吗。",
+        "nextNodeId": "n09"
+      },
+      "n08c": {
+        "id": "n08c",
+        "speakerId": "hiori",
+        "text": "……有。吃了饭才来的。",
+        "nextNodeId": "n09"
+      },
+      "n09": {
+        "id": "n09",
+        "text": "她把耳机收进盒里，动作很慢。",
+        "nextNodeId": "n10"
+      },
+      "n10": {
+        "id": "n10",
+        "speakerId": "hiori",
+        "text": "……我先回去了。明天见。",
+        "effects": [
+          {
+            "kind": "var",
+            "key": "hiori.gap",
+            "op": "set",
+            "value": 2
+          }
+        ]
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:26:00.805Z",
+  "updatedAt": "2026-10-31T02:26:00.805Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:26:00.805Z",
+      "note": "从 TS 迁移：让长线对话也走审查"
+    }
+  ]
+}

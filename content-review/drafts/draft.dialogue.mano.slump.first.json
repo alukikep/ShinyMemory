@@ -1,0 +1,123 @@
+{
+  "id": "draft.dialogue.mano.slump.first",
+  "kind": "dialogue",
+  "title": "真乃 · 唱不出来的那天 · first",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.slump.first",
+  "payload": {
+    "id": "dialogue.mano.slump.first",
+    "idolId": "mano",
+    "startNodeId": "n01",
+    "nodes": {
+      "n01": {
+        "id": "n01",
+        "text": "练习室的门半开着。音响里那一段已经循环到第四遍，还是没有声音。",
+        "nextNodeId": "n02"
+      },
+      "n02": {
+        "id": "n02",
+        "speakerId": "mano",
+        "text": "……对不起。再来一次。",
+        "nextNodeId": "n03"
+      },
+      "n03": {
+        "id": "n03",
+        "text": "她按下播放键，张了张嘴，又停下。第五遍。",
+        "nextNodeId": "n04"
+      },
+      "n04": {
+        "id": "n04",
+        "speakerId": "mano",
+        "text": "明明练过很多次了。为什么今天唱不出来。",
+        "nextNodeId": "n05"
+      },
+      "n05": {
+        "id": "n05",
+        "speakerId": "mano",
+        "text": "……是不是我本来就不适合站在前面。",
+        "nextNodeId": "n06"
+      },
+      "n06": {
+        "id": "n06",
+        "speakerId": "mano",
+        "text": "抱歉，说了奇怪的话。我继续练。",
+        "choices": [
+          {
+            "label": "今天先到这里",
+            "nextNodeId": "n07a",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "我在这儿听你唱",
+            "nextNodeId": "n07b",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          },
+          {
+            "label": "你刚才那句，是真的吗",
+            "nextNodeId": "n07c",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 3
+              }
+            ]
+          }
+        ]
+      },
+      "n07a": {
+        "id": "n07a",
+        "speakerId": "mano",
+        "text": "……可以吗。那我明天早点来。",
+        "nextNodeId": "n08"
+      },
+      "n07b": {
+        "id": "n07b",
+        "speakerId": "mano",
+        "text": "会很难听。",
+        "nextNodeId": "n08"
+      },
+      "n07c": {
+        "id": "n07c",
+        "speakerId": "mano",
+        "text": "……不知道。可能是。",
+        "nextNodeId": "n08"
+      },
+      "n08": {
+        "id": "n08",
+        "text": "她没有说完，把耳机摘下来绕好，放回架子上。走的时候没有回头。",
+        "effects": [
+          {
+            "kind": "var",
+            "key": "mano.slump",
+            "op": "set",
+            "value": 1
+          }
+        ]
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T02:26:00.805Z",
+  "updatedAt": "2026-10-31T02:26:00.805Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T02:26:00.805Z",
+      "note": "从 TS 迁移：让长线对话也走审查"
+    }
+  ]
+}

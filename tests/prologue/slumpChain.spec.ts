@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { existsSync } from 'node:fs';
 import { getState, jumpTo, openGame, reset, watchConsole } from '../acceptance/helpers';
 
 /**
@@ -47,6 +48,11 @@ async function recruit(page: import('@playwright/test').Page) {
   await page.getByRole('button', { name: '再次听见歌声' }).click();
   await finishDialogue(page);
 }
+
+// 这条长线的对话已迁到审查台；未通过之前游戏里没有这些链，跳过。
+// 通过后草稿文件消失，测试自动恢复。
+const pendingReview = existsSync(`content-review/drafts/draft.dialogue.mano.slump.first.json`);
+test.skip(pendingReview, '对话在审查台待审：通过后自动启用');
 
 test('the slump arc branches on how the producer handles it', async ({ page }) => {
   const errors = watchConsole(page);

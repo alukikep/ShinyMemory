@@ -817,9 +817,12 @@ function settleJob(
   const passed = chance === undefined ? true : rng.chance(chance);
 
   const attendanceRatio = attended ? 1 : 0.2;
+  // 信任高的时候失败也没那么惨：底 0.4，B 级信任抬到 0.7。
+  const failureBase = job.failurePayRatio ?? 0.5;
+  const trustCushion = (trustJobBonus(state, assignment.idolId) / 0.06) * 0.3;
   const failureRatio = passed
     ? 1
-    : Math.min(1, Math.max(0, job.failurePayRatio ?? 0.5));
+    : Math.min(1, Math.max(0, failureBase + trustCushion));
   const pay = Math.round(job.pay * attendanceRatio * failureRatio);
 
   const base = (passed ? job.effects : job.failureEffects) ?? [];
@@ -2342,15 +2345,30 @@ export function activityCheckChance(
  * 压力 ≥ 70 时再 −15%：她已经绷到头了，这时候还要她上节目，
  * 出错是必然的。训练不受这条影响（训练有它自己的降档惩罚）。
  */
+/**
+ * 信任给工作的加成。
+ *
+ * 信 E 起算，每高一级 +2%，B 级封顶 +6%。
+ * 幅度刻意压得很小：专业属性差一级就是 15%，信任不该盖过"她练了什么"。
+ * 只作用于工作检定，训练不吃这条。
+ */
+export function trustJobBonus(state: GameState, idolId?: string): number {
+  const targetId = idolId ?? state.selectedIdolId;
+  const trust = resolveAttribute(state, { scope: 'idol', key: 'trust' }, targetId).rank;
+  const levels = Math.max(0, rankIndex(trust) - rankIndex('E'));
+  return Math.min(0.06, levels * 0.02);
+}
+
 export function jobCheckChance(
   state: GameState,
   job: JobDef,
   idolId?: string,
 ): number | undefined {
   if (!job.check) return undefined;
-  const base = checkChance(state, job.check, idolId);
-  if (state.shared.stress < 70) return base;
-  return Math.max(0.05, base - 0.15);
+  let chance = checkChance(state, job.check, idolId) + trustJobBonus(state, idolId);
+  // 压力 ≥ 70：她已经绷到头了，再扣 15%。
+  if (state.shared.stress >= 70) chance -= 0.15;
+  return Math.min(0.95, Math.max(0.05, chance));
 }
 
 /** 界面用档位；不暴露精确概率。 */

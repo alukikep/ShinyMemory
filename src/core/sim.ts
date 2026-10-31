@@ -1613,6 +1613,22 @@ export function getVar(state: GameState, key: string): number {
 }
 
 /** 粉丝数。`idolId` 省略时取当前偶像。未知偶像读作 0。 */
+/**
+ * 事务所总粉丝数。
+ *
+ * **门槛用它，显示用个人。**
+ * 工作邀约是发到事务所的，不是发到某个偶像手机上；
+ * 按个人算会出现"聚焦谁就判谁"的歧义（真实踩过）。
+ */
+export function totalFans(state: GameState): number {
+  let sum = 0;
+  for (const idol of Object.values(state.idols ?? {})) {
+    if (idol.status === 'unknown') continue;
+    sum += idol.fans ?? 0;
+  }
+  return Math.round(sum);
+}
+
 export function getFans(state: GameState, idolId?: string): number {
   const id = idolId ?? state.selectedIdolId;
   return state.idols[id]?.fans ?? 0;
@@ -1693,13 +1709,9 @@ export function checkCondition(
     case 'varAtMost':
       return getVar(state, condition.key) <= condition.value;
     case 'fansAtLeast':
-      return (
-        getFans(state, condition.idolId ?? ctx.idolId) >= condition.value
-      );
+      return totalFans(state) >= condition.value;
     case 'fansAtMost':
-      return (
-        getFans(state, condition.idolId ?? ctx.idolId) <= condition.value
-      );
+      return totalFans(state) <= condition.value;
     case 'all':
       return condition.of.every((child) => checkCondition(child, state, ctx));
     case 'any':

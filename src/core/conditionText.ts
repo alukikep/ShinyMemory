@@ -1,5 +1,6 @@
 import { CONTENT_INDEX } from './contentIndex';
 import { attributeLabel, formatFans } from './labels';
+import { totalFans } from './sim';
 import type { CheckContext, Condition, GameState } from './types';
 
 /**
@@ -60,14 +61,10 @@ export function describeCondition(
     case 'dayAtLeast':
       return '过两天再说';
     case 'fansAtLeast': {
-      const idolId = condition.idolId ?? ctx.idolId ?? state.selectedIdolId;
-      const idol = CONTENT_INDEX.idols.get(idolId);
-      const current = state.idols[idolId];
-      // 泄露护栏：还没认识的人不写进手记
-      if (!idol || !current || current.status === 'unknown') return undefined;
-      const gap = condition.value - (current.fans ?? 0);
+      // 门槛按事务所总粉丝（见 sim.totalFans）
+      const gap = condition.value - totalFans(state);
       if (gap <= 0) return undefined;
-      return `${idol.name}的粉丝还差 ${formatFans(gap)}`;
+      return `事务所粉丝还差 ${formatFans(gap)}`;
     }
     case 'varAtLeast': {
       const gap = condition.value - (state.vars?.[condition.key] ?? 0);

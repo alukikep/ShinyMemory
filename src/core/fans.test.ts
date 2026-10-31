@@ -5,8 +5,10 @@ import { formatFans } from './labels';
 import {
   applyActivity,
   applyActivityDef,
+  checkCondition,
   getFans,
   newGame,
+  totalFans,
 } from './sim';
 import { migrateSave, createSaveEnvelope } from '../save/save';
 import type { ActivityDef, Effect, GameState, IdolState } from './types';
@@ -164,10 +166,22 @@ describe('fans', () => {
   it('describes a fans gate in the handbook', () => {
     const state = twoIdolsAtPracticeRoom();
     state.idols.mano!.fans = 400;
+    state.idols.hiori!.fans = 200;
+    // 门槛按事务所总粉丝（400 + 200 = 600）
     const text = describeCondition(
-      { kind: 'fansAtLeast', idolId: 'mano', value: 1000 },
+      { kind: 'fansAtLeast', value: 1000 },
       state,
     );
-    expect(text).toBe('樱木真乃的粉丝还差 600');
+    expect(text).toBe('事务所粉丝还差 400');
+  });
+
+  it('counts every recruited idol toward the gate', () => {
+    const state = twoIdolsAtPracticeRoom();
+    state.idols.mano!.fans = 700;
+    state.idols.hiori!.fans = 700;
+    expect(totalFans(state)).toBe(1400);
+    expect(
+      checkCondition({ kind: 'fansAtLeast', value: 1200 }, state, {}),
+    ).toBe(true);
   });
 });

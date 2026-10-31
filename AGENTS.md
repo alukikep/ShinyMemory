@@ -56,10 +56,14 @@
 ## 四、提交前
 
 ```bash
+npm run content:board   # 看板：哪些章上线了、配置有没有问题
 npm test
-npm run build          # 内含 content:validate（锚点/触发/形状）+ 类型检查
-npx playwright test -c playwright.prologue.config.ts
+npm run build           # 内含 content:validate（锚点/触发/形状/地点）+ 类型检查
+npx playwright test -c playwright.prologue.config.ts --retries=0
 ```
+
+**写剧情的时候再加一条**：E2E 要同时断言"动作出现"和"flag 写入"——
+只断一半，点进去可能是别的链（真实踩过）。
 
 三个都绿再提交。**构建失败时不要 `.catch` 掉**——这轮有一次 `npm run build | tail -1`
 把失败信息吞了，最后拿着旧产物跑了半天测试。

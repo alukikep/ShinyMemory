@@ -11,6 +11,7 @@
     "content:coverage": "tsx tools/contentCoverage.ts",
     "content:guard": "tsx tools/contentGuard.ts",
     "content:anchors": "tsx tools/contentAnchors.ts",
+    "content:board": "tsx tools/chapterBoard.ts",
     "content:audit": "tsx tools/contentAudit.ts",
     "build": "tsc --noEmit && npm run content:validate && vite build",
     "build:fixture": "tsc --noEmit && npm run content:validate && vite build --mode fixture",

@@ -250,7 +250,7 @@ describe('review validation', () => {
           {
             id: 'step-1',
             locationId: 'park',
-            dialogueId: 'dialogue.mano.first',
+            dialogueId: 'dialogue.prologue.office',
             actionLabel: '去公园',
             timeWindow: { fromMinute: 600, toMinute: 1080 },
           },

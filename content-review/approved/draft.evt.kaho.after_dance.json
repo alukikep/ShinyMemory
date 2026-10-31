@@ -2,15 +2,23 @@
   "id": "draft.evt.kaho.after_dance",
   "kind": "event",
   "title": "特训过头",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.kaho.after_dance",
   "payload": {
     "id": "evt.kaho.after_dance",
     "title": "特训过头",
     "when": [],
-    "after": { "ids": ["dance"] },
-    "afterIdol": { "ids": ["kaho"] },
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "kaho"
+      ]
+    },
     "chance": 0.4,
     "priority": 5,
     "once": true,
@@ -20,8 +28,16 @@
         "label": "今天就到这里。",
         "hint": "压力 -3、信任 +1",
         "effects": [
-          { "kind": "sharedStat", "stat": "stress", "delta": -3 },
-          { "kind": "attributeExp", "ref": "trust", "tier": 1 }
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
         ],
         "result": "「诶——还想跳的……不过，英雄也要休息吧！」她把毛巾挂在脖子上。"
       },
@@ -29,8 +45,16 @@
         "label": "再来一次。",
         "hint": "舞蹈 +1、压力 +2",
         "effects": [
-          { "kind": "attributeExp", "ref": "dance", "tier": 1 },
-          { "kind": "sharedStat", "stat": "stress", "delta": 2 }
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
         ],
         "result": "「好！特训第二回合！」第二次她跳得很稳，就是结尾有点晃。"
       },
@@ -38,8 +62,16 @@
         "label": "这个拍子我陪你数。",
         "hint": "舞蹈 +1、信任 +3",
         "effects": [
-          { "kind": "attributeExp", "ref": "dance", "tier": 1 },
-          { "kind": "attributeExp", "ref": "trust", "tier": 3 }
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
         ],
         "result": "「诶嘿嘿，两个人一起数就不容易错！」她数得很大声，最后一句还喊成了口号。"
       }
@@ -47,8 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T02:41:00.000Z",
-  "updatedAt": "2026-11-02T02:41:00.000Z",
+  "updatedAt": "2026-10-31T16:27:37.753Z",
+  "reviewedAt": "2026-10-31T16:27:37.753Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T02:41:00.000Z", "note": "果穂舞蹈课后事件（1009001020210 たんれん）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T02:41:00.000Z",
+      "note": "果穂舞蹈课后事件（1009001020210 たんれん）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:27:37.753Z"
+    }
   ]
 }

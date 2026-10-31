@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kaho.first",
   "kind": "dialogue",
   "title": "公园里的英雄",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kaho.first",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "kaho",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（社长说要我自己去挖人……可哪有那么容易碰上。）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "（……哦？那孩子在公园里跑得可真凶。还带着一群小孩。）",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "（笑声好大。不过看起来像高中生啊……这么大还在公园里玩，挺少见的。）",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "kaho",
-        "text": "啊哈哈！……哇——！",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "（刚才那个笑容，说不定能让很多人打起精神……）",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "kaho",
-        "text": "……诶？",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "kaho",
-        "text": "怎么了吗？",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "producer",
-        "text": "你……要不要当偶像？",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "kaho",
-        "text": "偶像……吗？",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "producer",
@@ -212,13 +158,76 @@
         "id": "34",
         "speakerId": "producer",
         "text": "（……她的眼睛一点都没有躲。）"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（社长说要我自己去挖人……可哪有那么容易碰上。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（……哦？那孩子在公园里跑得可真凶。还带着一群小孩。）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "（笑声好大。不过看起来像高中生啊……这么大还在公园里玩，挺少见的。）",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kaho",
+        "text": "啊哈哈！……哇——！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "（刚才那个笑容，说不定能让很多人打起精神……）",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kaho",
+        "text": "……诶？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "kaho",
+        "text": "怎么了吗？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "你……要不要当偶像？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kaho",
+        "text": "偶像……吗？",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T02:00:00.000Z",
-  "updatedAt": "2026-11-02T02:00:00.000Z",
+  "updatedAt": "2026-10-31T16:27:30.663Z",
+  "reviewedAt": "2026-10-31T16:27:30.663Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T02:00:00.000Z", "note": "对照 100900101 改编（公园 → 第二天事务所）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T02:00:00.000Z",
+      "note": "对照 100900101 改编（公园 → 第二天事务所）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:27:30.663Z"
+    }
   ]
 }

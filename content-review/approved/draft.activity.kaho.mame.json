@@ -1,0 +1,68 @@
+{
+  "id": "draft.activity.kaho.mame",
+  "kind": "activity",
+  "title": "陪她遛マメ丸",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.activity.kaho.mame",
+  "payload": {
+    "id": "activity.kaho.mame",
+    "name": "陪她遛マメ丸",
+    "description": "她说今天轮到她遛狗。柴犬在前面拉着绳子，她在后面一直说话。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "kaho"
+    ],
+    "locations": [
+      "park"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 900,
+        "toMinute": 1140
+      }
+    ],
+    "cost": {
+      "stamina": 6
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "expression",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -4
+      }
+    ],
+    "resultTexts": [
+      "マメ丸走两步就回头看她一次，像在确认她还在。",
+      "她蹲下来跟マメ丸说了很长一段话，说完自己先笑起来。",
+      "回去的路上她说，下次要让制作人也牵一会儿绳子。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T02:25:00.000Z",
+  "updatedAt": "2026-10-31T16:27:42.982Z",
+  "reviewedAt": "2026-10-31T16:27:42.982Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T02:25:00.000Z",
+      "note": "果穂专属行动（遛狗，200900301）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:27:42.982Z"
+    }
+  ]
+}

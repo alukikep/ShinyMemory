@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kaho.home",
   "kind": "dialogue",
   "title": "下校路上她背着书包",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kaho.home",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "kaho",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（呼。总算告一段落了……那是……？）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "kaho",
-        "text": "啊，制作人先生！你好！在工作吗？",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "不，结束了正要回事务所。果穗怎么了？",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "kaho",
-        "text": "我在放学路上！啊，不过因为值日留晚了，所以不回家，想直接去事务所！",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "这样啊。那，一起走吧。",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "kaho",
-        "text": "是！诶嘿嘿，和制作人先生一起好开心。",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "producer",
-        "text": "我也开心。今天学校里有什么事吗？",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "kaho",
-        "text": "早上开始，就在和朋友聊电视！大家不太看英雄……",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "kaho",
-        "text": "可是可是，我说了这里很帅、很有趣，他们好像也有兴趣了！",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "kaho",
@@ -141,9 +87,18 @@
         "speakerId": "producer",
         "text": "那是因为……",
         "choices": [
-          { "label": "是不是发烧了。", "nextNodeId": "30" },
-          { "label": "是不是累着了。", "nextNodeId": "40" },
-          { "label": "因为我想见マメ丸。", "nextNodeId": "50" }
+          {
+            "label": "是不是发烧了。",
+            "nextNodeId": "30"
+          },
+          {
+            "label": "是不是累着了。",
+            "nextNodeId": "40"
+          },
+          {
+            "label": "因为我想见マメ丸。",
+            "nextNodeId": "50"
+          }
         ]
       },
       "30": {
@@ -322,13 +277,76 @@
         "id": "60",
         "speakerId": "kaho",
         "text": "诶嘿嘿！哇……制作人先生的手好大啊。总觉得很安心。"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（呼。总算告一段落了……那是……？）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kaho",
+        "text": "啊，制作人先生！你好！在工作吗？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "不，结束了正要回事务所。果穗怎么了？",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kaho",
+        "text": "我在放学路上！啊，不过因为值日留晚了，所以不回家，想直接去事务所！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "这样啊。那，一起走吧。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kaho",
+        "text": "是！诶嘿嘿，和制作人先生一起好开心。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "我也开心。今天学校里有什么事吗？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kaho",
+        "text": "早上开始，就在和朋友聊电视！大家不太看英雄……",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kaho",
+        "text": "可是可是，我说了这里很帅、很有趣，他们好像也有兴趣了！",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T02:15:00.000Z",
-  "updatedAt": "2026-11-02T02:15:00.000Z",
+  "updatedAt": "2026-10-31T16:27:33.170Z",
+  "reviewedAt": "2026-10-31T16:27:33.170Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T02:15:00.000Z", "note": "对照 200900302 改编，保留三个选项（旧格式剧本）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T02:15:00.000Z",
+      "note": "对照 200900302 改编，保留三个选项（旧格式剧本）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:27:33.170Z"
+    }
   ]
 }

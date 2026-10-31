@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kaho.walk",
   "kind": "dialogue",
   "title": "收工路上遇到一只小狗",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kaho.walk",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "kaho",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "……辛苦了，果穗。今天状态相当好啊。",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "kaho",
-        "text": "诶嘿嘿。总觉得，特别集中！",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "嗯，很努力。托你的福拍摄也提前收工了……先回一次事务所吧。",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "kaho",
-        "text": "是！",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "工作忙起来了吧。和学校两边兼顾，不辛苦吗？",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "kaho",
-        "text": "不会！超——开心的！",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "kaho",
-        "text": "偶像的工作也好，学校的学习也好，对我来说都是重要的……",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "kaho",
-        "text": "英雄的话，两边都必须努力！",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "哈哈，是吗。嗯，别太勉强啊。难受了要马上说。",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "kaho",
@@ -242,13 +188,76 @@
         "id": "39",
         "speakerId": "kaho",
         "text": "是！和マメ丸、和制作人先生一起的话……我无论什么时候都会笑出来！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "……辛苦了，果穗。今天状态相当好啊。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kaho",
+        "text": "诶嘿嘿。总觉得，特别集中！",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "嗯，很努力。托你的福拍摄也提前收工了……先回一次事务所吧。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kaho",
+        "text": "是！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "工作忙起来了吧。和学校两边兼顾，不辛苦吗？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kaho",
+        "text": "不会！超——开心的！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "kaho",
+        "text": "偶像的工作也好，学校的学习也好，对我来说都是重要的……",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kaho",
+        "text": "英雄的话，两边都必须努力！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "哈哈，是吗。嗯，别太勉强啊。难受了要马上说。",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T02:10:00.000Z",
-  "updatedAt": "2026-11-02T02:10:00.000Z",
+  "updatedAt": "2026-10-31T16:27:33.122Z",
+  "reviewedAt": "2026-10-31T16:27:33.122Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T02:10:00.000Z", "note": "对照 200900301 改编（旧格式剧本，锚点用日文原句）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T02:10:00.000Z",
+      "note": "对照 200900301 改编（旧格式剧本，锚点用日文原句）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:27:33.122Z"
+    }
   ]
 }

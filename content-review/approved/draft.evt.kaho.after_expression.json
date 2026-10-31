@@ -2,15 +2,23 @@
   "id": "draft.evt.kaho.after_expression",
   "kind": "event",
   "title": "英雄的姿势",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.kaho.after_expression",
   "payload": {
     "id": "evt.kaho.after_expression",
     "title": "英雄的姿势",
     "when": [],
-    "after": { "ids": ["expression"] },
-    "afterIdol": { "ids": ["kaho"] },
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "kaho"
+      ]
+    },
     "chance": 0.4,
     "priority": 5,
     "once": true,
@@ -20,8 +28,16 @@
         "label": "很帅。",
         "hint": "信任 +3、表现 +1",
         "effects": [
-          { "kind": "attributeExp", "ref": "trust", "tier": 3 },
-          { "kind": "attributeExp", "ref": "expression", "tier": 1 }
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          }
         ],
         "result": "「真的吗！那这个呢——『正义的、铁拳！』……怎么样？」"
       },
@@ -29,23 +45,46 @@
         "label": "再来一个。",
         "hint": "表现 +1、信任 +3",
         "effects": [
-          { "kind": "attributeExp", "ref": "expression", "tier": 1 },
-          { "kind": "attributeExp", "ref": "trust", "tier": 3 }
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
         ],
         "result": "「好——！那这个，是必杀技前的那个！」她一口气摆了三个。"
       },
       {
         "label": "今天先收工。",
         "hint": "压力 -4",
-        "effects": [{ "kind": "sharedStat", "stat": "stress", "delta": -4 }],
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -4
+          }
+        ],
         "result": "「诶——……好吧！英雄也是要回家的嘛！」她自己给自己点了头。"
       }
     ]
   },
   "annotations": [],
   "createdAt": "2026-11-02T02:42:00.000Z",
-  "updatedAt": "2026-11-02T02:42:00.000Z",
+  "updatedAt": "2026-10-31T16:27:36.759Z",
+  "reviewedAt": "2026-10-31T16:27:36.759Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T02:42:00.000Z", "note": "果穂表演课后事件（1009001020130 カッコいいポーズ）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T02:42:00.000Z",
+      "note": "果穂表演课后事件（1009001020130 カッコいいポーズ）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:27:36.759Z"
+    }
   ]
 }

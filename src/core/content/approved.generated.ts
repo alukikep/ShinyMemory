@@ -184,6 +184,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.kaho.mame",
+  "name": "陪她遛マメ丸",
+  "description": "她说今天轮到她遛狗。柴犬在前面拉着绳子，她在后面一直说话。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "kaho"
+  ],
+  "locations": [
+    "park"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 900,
+      "toMinute": 1140
+    }
+  ],
+  "cost": {
+    "stamina": 6
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -4
+    }
+  ],
+  "resultTexts": [
+    "マメ丸走两步就回头看她一次，像在确认她还在。",
+    "她蹲下来跟マメ丸说了很长一段话，说完自己先笑起来。",
+    "回去的路上她说，下次要让制作人也牵一会儿绳子。"
+  ]
+},
+{
   "id": "activity.kiriko.flowers",
   "name": "陪她照顾花坛",
   "description": "医院中庭的花坛。她说这些花没人管也活得很好，但还是想来看看。",
@@ -1203,6 +1248,212 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "她想了想：不是技巧，是我不敢把最后那一句放开。"
+    }
+  ]
+},
+{
+  "id": "evt.kaho.after_dance",
+  "title": "特训过头",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "kaho"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她说这是「特训」，还在镜子前一拍一拍地数着。",
+  "choices": [
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「诶——还想跳的……不过，英雄也要休息吧！」她把毛巾挂在脖子上。"
+    },
+    {
+      "label": "再来一次。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好！特训第二回合！」第二次她跳得很稳，就是结尾有点晃。"
+    },
+    {
+      "label": "这个拍子我陪你数。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「诶嘿嘿，两个人一起数就不容易错！」她数得很大声，最后一句还喊成了口号。"
+    }
+  ]
+},
+{
+  "id": "evt.kaho.after_expression",
+  "title": "英雄的姿势",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "kaho"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。她对着镜子练必杀技的姿势，停不下来。",
+  "choices": [
+    {
+      "label": "很帅。",
+      "hint": "信任 +3、表现 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        }
+      ],
+      "result": "「真的吗！那这个呢——『正义的、铁拳！』……怎么样？」"
+    },
+    {
+      "label": "再来一个。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「好——！那这个，是必杀技前的那个！」她一口气摆了三个。"
+    },
+    {
+      "label": "今天先收工。",
+      "hint": "压力 -4",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -4
+        }
+      ],
+      "result": "「诶——……好吧！英雄也是要回家的嘛！」她自己给自己点了头。"
+    }
+  ]
+},
+{
+  "id": "evt.kaho.after_vocal",
+  "title": "唱到没气",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "kaho"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她把主题曲从头唱到尾，最后一句几乎是用喊的。",
+  "choices": [
+    {
+      "label": "最后那句很好。",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "「真的吗！因为那里是英雄要出场的地方嘛！」她说完自己又哼了一遍。"
+    },
+    {
+      "label": "换气再练一下。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「换气……就是英雄也要好好呼吸的意思吧！」她认真地吸了一口气。"
+    },
+    {
+      "label": "先喝口水吧。",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「谢谢！……啊，被我喝掉半瓶了。对不起！」"
     }
   ]
 },
@@ -6930,6 +7181,1276 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "09",
       "speakerId": "producer",
       "text": "这、这样啊……",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.kaho.first",
+  "idolId": "kaho",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "嗯，我是做这个的——",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "kaho",
+      "text": "哇！名片！我第一次收到名片！感觉好有大人的样子！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "嗯……？那个……你几岁了？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "kaho",
+      "text": "是！小宫果穗，12 岁！小学六年级！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "……诶！你是小学生吗！？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "kaho",
+      "text": "是！因为我比大家都高，常常被当成大人。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "难怪……我也以为你是高中生呢。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "（确实是个有魅力的孩子，但就在这儿挖一个小学生，合适吗……？）",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "……可以的话，把这张名片给爸爸妈妈看看，跟他们说被星探搭话了，行吗？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "我觉得你这份精神，能给大家带来梦想。如果可以，请你也想想偶像的事。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "kaho",
+      "text": "好，我知道了！诶嘿嘿！爸爸妈妈会不会吓一跳呢——",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "（……她跑走了。跑得真快。）",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "好，今天也精神满满地去找偶像吧。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "kaho",
+      "text": "你好——！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "哇！……啊，你是昨天的——",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "kaho",
+      "text": "是！我是小宫果穗！……哇，这里就是工作的地方！好厉害！",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "只是普通的办公室而已。话说回来，你今天来了，也就是说……",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "kaho",
+      "text": "啊，对了！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "kaho",
+      "text": "我本来不太了解偶像，回去以后查了很多！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "kaho",
+      "text": "然后发现，偶像好像能让所有人笑起来！",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "kaho",
+      "text": "这和最喜欢的英雄很像啊——我是这么想的！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "英雄啊……嗯，确实偶像也能让所有人笑起来！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "kaho",
+      "text": "果然！然后我跟爸爸妈妈说了，他们说要支持我！",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "kaho",
+      "text": "所以，我想试试当偶像！！",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "（……她的眼睛一点都没有躲。）"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（社长说要我自己去挖人……可哪有那么容易碰上。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "（……哦？那孩子在公园里跑得可真凶。还带着一群小孩。）",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "（笑声好大。不过看起来像高中生啊……这么大还在公园里玩，挺少见的。）",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "kaho",
+      "text": "啊哈哈！……哇——！",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "（刚才那个笑容，说不定能让很多人打起精神……）",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "kaho",
+      "text": "……诶？",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "kaho",
+      "text": "怎么了吗？",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "你……要不要当偶像？",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "kaho",
+      "text": "偶像……吗？",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.kaho.home",
+  "idolId": "kaho",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "kaho",
+      "text": "下次大家要聚到我家，看英雄的名场面特集！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "那真期待啊。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "kaho",
+      "text": "是！还有，今天的午饭是咖喱饭，非常好吃！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "kaho",
+      "text": "可是不小心吃多了，之后的体育课，比平时动不了……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "哈哈哈，那下次努力就好。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "kaho",
+      "text": "是！……阿嚏！",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "（嗯？怎么感觉有点不对劲……）",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "果穗，你该不会身体不舒服吧？没事吧……？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "kaho",
+      "text": "……诶？没事哦？我很有精神！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "（样子有点怪啊……）",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "今天别去事务所了，直接回去比较好吧。本来也只是小事。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "kaho",
+      "text": "诶？为什么？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "那是因为……",
+      "choices": [
+        {
+          "label": "是不是发烧了。",
+          "nextNodeId": "30"
+        },
+        {
+          "label": "是不是累着了。",
+          "nextNodeId": "40"
+        },
+        {
+          "label": "因为我想见マメ丸。",
+          "nextNodeId": "50"
+        }
+      ]
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "kaho",
+      "text": "发烧……？嗯——我自己不太清楚。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "kaho",
+      "text": "制作人先生，你确认一下看看！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "（……嗯。果然有点烫。也许只是低烧……）",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "kaho",
+      "text": "我自己都没注意到……好厉害，制作人先生！",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "kaho",
+      "text": "制作人先生，一直有在好好看着我呢。诶嘿嘿。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "不，要能更早发现就好了……总之今天回去吧。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "偶像的日程很紧，能休息的时候就要好好休息。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "kaho",
+      "text": "这样啊……英雄也不是一直在战斗呢！",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "嗯。来，回家吧。我送你。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "kaho",
+      "text": "是！麻烦你了！"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "kaho",
+      "text": "嗯——我自己不觉得是那样……",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "最近偶像的工作也慢慢多起来了……学校也每天都好好去吧？",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "kaho",
+      "text": "是。可是完全不会辛苦哦？工作和学校，我都喜欢！",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "producer",
+      "text": "那比什么都好……不过累了的话不能勉强。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "producer",
+      "text": "为了今后能作为偶像成长，今天该好好休息。",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "kaho",
+      "text": "为了成长而休息……原来如此！我完全没想到！还有这种想法啊。",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "kaho",
+      "text": "制作人先生果然是大人的，好厉害！",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "producer",
+      "text": "没那回事。那今天，就回家吧？",
+      "nextNodeId": "48"
+    },
+    "48": {
+      "id": "48",
+      "speakerId": "kaho",
+      "text": "是，我知道了！"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "kaho",
+      "text": "哇！真的吗？这么说来，我们一次都没见过呢。",
+      "nextNodeId": "51"
+    },
+    "51": {
+      "id": "51",
+      "speakerId": "producer",
+      "text": "嗯。所以想送果穗回去，顺便见见マメ丸。",
+      "nextNodeId": "52"
+    },
+    "52": {
+      "id": "52",
+      "speakerId": "kaho",
+      "text": "那非常开心……不过，事务所有工作的事要谈吧？",
+      "nextNodeId": "53"
+    },
+    "53": {
+      "id": "53",
+      "speakerId": "producer",
+      "text": "工作的事边走边说也行。不一定要在事务所。",
+      "nextNodeId": "54"
+    },
+    "54": {
+      "id": "54",
+      "speakerId": "kaho",
+      "text": "我知道了！那，我带路到我家！",
+      "nextNodeId": "55"
+    },
+    "55": {
+      "id": "55",
+      "speakerId": "producer",
+      "text": "嗯，拜托了。",
+      "nextNodeId": "56"
+    },
+    "56": {
+      "id": "56",
+      "speakerId": "kaho",
+      "text": "是！像这样和制作人先生一起走回家……",
+      "nextNodeId": "57"
+    },
+    "57": {
+      "id": "57",
+      "speakerId": "kaho",
+      "text": "诶嘿嘿，总觉得很新鲜，好开心。",
+      "nextNodeId": "58"
+    },
+    "58": {
+      "id": "58",
+      "speakerId": "kaho",
+      "text": "对了，像爸爸妈妈对我那样，可以牵手吗？",
+      "nextNodeId": "59"
+    },
+    "59": {
+      "id": "59",
+      "speakerId": "producer",
+      "text": "诶？我是没关系……",
+      "nextNodeId": "60"
+    },
+    "60": {
+      "id": "60",
+      "speakerId": "kaho",
+      "text": "诶嘿嘿！哇……制作人先生的手好大啊。总觉得很安心。"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（呼。总算告一段落了……那是……？）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "kaho",
+      "text": "啊，制作人先生！你好！在工作吗？",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "不，结束了正要回事务所。果穗怎么了？",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "kaho",
+      "text": "我在放学路上！啊，不过因为值日留晚了，所以不回家，想直接去事务所！",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "这样啊。那，一起走吧。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "kaho",
+      "text": "是！诶嘿嘿，和制作人先生一起好开心。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "我也开心。今天学校里有什么事吗？",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "kaho",
+      "text": "早上开始，就在和朋友聊电视！大家不太看英雄……",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "kaho",
+      "text": "可是可是，我说了这里很帅、很有趣，他们好像也有兴趣了！",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.kaho.red",
+  "idolId": "kaho",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "（台词也很稳，而且很会看观众……果然。）",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "kaho",
+      "text": "——有困难的时候，再叫我们！我们随时都是你们这边的！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "辛苦了。很努力啊！观众也很热烈。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "kaho",
+      "text": "制作人先生！怎么样，我的红战士！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "最棒了。观众、工作人员、大人小孩，全都看入迷了。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "正因为是憧憬英雄的果穗，才能做出这样的舞台。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "kaho",
+      "text": "真的吗？我……有好好地成为红战士吗？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "嗯。不管谁看，果穗都是个出色的红战士。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "kaho",
+      "text": "制作人先生这么说的话……诶嘿嘿，谢谢！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "kaho",
+      "text": "我一直一直喜欢、憧憬的英雄，自己居然能成为……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "kaho",
+      "text": "我好像还在梦里……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "不是梦。果穗在现实世界里，成为了英雄。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "kaho",
+      "text": "制作人先生……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "kaho",
+      "text": "一开始，我也满是「我能当好那个红战士吗」的不安。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "kaho",
+      "text": "但是『ジャスティスV』里也说，「正义的英雄需要的不是身体的强大，而是心的强大」……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "（『ジャスティスV』……是果穗喜欢的作品啊。）",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "kaho",
+      "text": "所以我也觉得，必须努力站上舞台。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "确实如此。是果穗「要当好红战士」的强烈心意让舞台成功了。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "kaho",
+      "text": "是！拥有强烈的意志，真的是非常重要的事呢！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "嗯。果穗和『ジャスティスV』都很厉害。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "kaho",
+      "text": "啊，不过。我能成为红战士……果然还是托了制作人先生的福！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "我只是稍微推了推一直在努力的果穗一把。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "kaho",
+      "text": "诶嘿嘿，那也就是说，一个人做不到的事……",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "kaho",
+      "text": "和制作人先生一起就能做到吧……好厉害！",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "kaho",
+      "text": "对我来说最、最喜欢的英雄是——制作人先生！",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "果穗……",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "谢谢。今后也一起加油吧！",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "kaho",
+      "text": "是！我想成为能让更多更多人笑起来的、最强的英雄偶像！",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "kaho",
+      "text": "和制作人先生一起的话，一定能成为的！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "kaho",
+      "text": "制作人先生！",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "果穗，准备好了吗？",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "kaho",
+      "text": "是！当然！憧憬的英雄角色……",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "kaho",
+      "text": "而且还是红战士！诶嘿嘿，都是因为制作人先生教了我很多！",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "没那回事。是果穗比谁都喜欢英雄……努力的结果，才把红战士交给你。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "kaho",
+      "text": "制作人先生……谢谢你！那我去了！",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "（她跑上舞台。灯一亮，她的声音就变了。）",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "kaho",
+      "text": "——大家，不用再害怕了！我们，一定会保护你们！",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "kaho",
+      "text": "——接招吧，正义的铁拳！！",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.kaho.second",
+  "idolId": "kaho",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "kaho",
+      "text": "明明平时总是困困的样子，好厉害！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "kaho",
+      "text": "总觉得……像是去救遇险英雄的正义伙伴！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "原来如此……那个我也懂。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "kaho",
+      "text": "对吧！好帅啊——",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "kaho",
+      "text": "在这里的话，我觉得真的能成为英雄！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "果穗是偶像，不是英雄啊……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "kaho",
+      "text": "诶，英雄吗！？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "嗯。刚才我们正说，果穗说不定能成为像英雄那样的人。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "kaho",
+      "text": "我总有一天也能成为英雄那样吗！？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "这个嘛……",
+      "choices": [
+        {
+          "label": "正因为能，我才会挖你。",
+          "nextNodeId": "20"
+        },
+        {
+          "label": "果穗是想成为吧？",
+          "nextNodeId": "30"
+        },
+        {
+          "label": "只有练习一条路！",
+          "nextNodeId": "40"
+        }
+      ]
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "果穗能像英雄一样让所有人笑起来……我觉得你能成为这样的偶像。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "kaho",
+      "text": "真的吗！？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "嗯。为了这个，我也会好好带你的。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "kaho",
+      "text": "我像英雄一样……那，帅气的姿势也需要吧！！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "kaho",
+      "text": "现在就得想好！什么样的姿势才帅呢——",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "哈哈。姿势也重要，不过先从练习开始。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "今后，一起加油吧。"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "kaho",
+      "text": "是，我想成为！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "嗯，很好的回答。那份心情的强度很重要。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "kaho",
+      "text": "啊。那个，我听过！",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "kaho",
+      "text": "我最喜欢的特摄节目里也说过，向上心很重要！",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "kaho",
+      "text": "果然偶像和英雄很像呢！",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "确实如此。偶像和英雄，要让所有人一直笑下去，都需要向上心。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "所以，朝着更高的地方，一起战斗吧。"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "想像英雄一样，每天的练习就少不了。",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "kaho",
+      "text": "英雄也说每天的特训很重要！说为了保护大家的笑容，每天的训练是必要的！",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "kaho",
+      "text": "为了保护大家的笑容，偶像也需要每天练习呢！",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "producer",
+      "text": "嗯。而且，果穗身上应该还睡着很厉害的力量。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "kaho",
+      "text": "潜在能力！我知道！是沉睡的力量！",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "producer",
+      "text": "对。为了解放那份力量，首先也是练习。",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "kaho",
+      "text": "是！为了成为能让所有人笑起来的、像英雄一样的偶像……"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "果穗——差不多到上课的时间了……",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "kaho",
+      "text": "哇……！",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "怎么了？",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "kaho",
+      "text": "啊，制作人先生！果然办公室好厉害啊！",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "kaho",
+      "text": "像英雄的秘密基地一样，好开心！",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "是、是吗。对果穗来说确实很稀奇吧。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "kaho",
+      "text": "是！……啊！制作人先生，你看你看！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "……叶月小姐怎么了？",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "kaho",
+      "text": "她打字的速度好快！",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.kaho.walk",
+  "idolId": "kaho",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "kaho",
+      "text": "是！现在精神满满……那时候我会好好说的！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "嗯。跟我说也行，跟家里人说也行。别一个人憋着。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "话说回来，最近和父母聊工作的事吗？还是一样支持你吗？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "kaho",
+      "text": "是！爸爸和妈妈，我的工作变多，他们就很高兴！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "kaho",
+      "text": "上次，妈妈她——啊！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "嗯……？……哦，是小狗啊。这一带遛狗的人挺多。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "kaho",
+      "text": "小小的尾巴摇啊摇的——超——可爱！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "嗯，是啊。果穗喜欢狗吗？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "kaho",
+      "text": "是！我家也有一只超可爱的マメ丸！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "マメ丸……？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "kaho",
+      "text": "啊，那个……マメ丸是我家养的柴犬。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "kaho",
+      "text": "真的真的很可爱！很有精神，又亲人……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "kaho",
+      "text": "我和マメ丸，从小就一直在一起！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "这样啊。那已经是兄弟一样了吧。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "kaho",
+      "text": "是！……要是能和制作人先生一起遛マメ丸，一定很开心！",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "kaho",
+      "text": "制作人先生的话，马上就能和マメ丸成为好朋友！",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "哈哈，那我会很高兴。我也期待见到它。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "kaho",
+      "text": "是！因为マメ丸真的是个好孩子！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "……マメ丸和果穗，说不定很像。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "kaho",
+      "text": "诶？为什么？",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "果穗也精神满满，又亲人，不是吗？我说的是这一点像。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "kaho",
+      "text": "是吗……？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "kaho",
+      "text": "……啊，不过……确实可能很像！",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "kaho",
+      "text": "哇！我都没注意到！这样啊，我和マメ丸有一样的地方！",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "kaho",
+      "text": "诶嘿嘿！不愧是制作人先生！比我自己还了解我！",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "不，这也不值得那么夸……",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "下次，也许可以试着和マメ丸一起拍照。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "kaho",
+      "text": "我和マメ丸……？哇，制作人先生，那超——开心的！",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "嗯。到时候给我看最好的合照。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "kaho",
+      "text": "是！和マメ丸、和制作人先生一起的话……我无论什么时候都会笑出来！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "……辛苦了，果穗。今天状态相当好啊。",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "kaho",
+      "text": "诶嘿嘿。总觉得，特别集中！",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "嗯，很努力。托你的福拍摄也提前收工了……先回一次事务所吧。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "kaho",
+      "text": "是！",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "工作忙起来了吧。和学校两边兼顾，不辛苦吗？",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "kaho",
+      "text": "不会！超——开心的！",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "kaho",
+      "text": "偶像的工作也好，学校的学习也好，对我来说都是重要的……",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "kaho",
+      "text": "英雄的话，两边都必须努力！",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "哈哈，是吗。嗯，别太勉强啊。难受了要马上说。",
       "nextNodeId": "10"
     }
   }
@@ -15594,6 +17115,104 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "hiori",
   "label": "为什么想当偶像",
   "text": "「……那时候只是自我满足。现在不一样了。大概。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kaho.chat.brother",
+  "actorId": "kaho",
+  "label": "哥哥",
+  "text": "「哥哥他啊，嘴上说『随便你』，结果把节目录下来了。他就是这种人！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kaho.chat.hero",
+  "actorId": "kaho",
+  "label": "英雄",
+  "text": "「『ジャスティスV』？……那个，从头讲起可以吗？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kaho.chat.mame",
+  "actorId": "kaho",
+  "label": "マメ丸",
+  "text": "「マメ丸是柴犬。尾巴摇起来，像小旗子一样！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kaho.chat.math",
+  "actorId": "kaho",
+  "label": "算数",
+  "text": "「算数？……那个，下次考试我会努力的。真的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kaho.chat.mission",
+  "actorId": "kaho",
+  "label": "作战会议",
+  "text": "「有事要决定的时候，就要开『作战会议』！制作人先生也一起！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kaho.chat.school",
+  "actorId": "kaho",
+  "label": "学校",
+  "text": "「学校啊，まおちゃん今天也来跟我说话了。我们是同班！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "kaho.chat.today",
+  "actorId": "kaho",
+  "label": "今天",
+  "text": "「今天？我啊，早上看了英雄节目才来的！所以是满分的心情！」",
   "cooldownMinutes": 1440,
   "effects": [
     {

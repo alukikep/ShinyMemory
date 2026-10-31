@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kaho.red",
   "kind": "dialogue",
   "title": "英雄秀开演前",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kaho.red",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "kaho",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "kaho",
-        "text": "制作人先生！",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "果穗，准备好了吗？",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "kaho",
-        "text": "是！当然！憧憬的英雄角色……",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "kaho",
-        "text": "而且还是红战士！诶嘿嘿，都是因为制作人先生教了我很多！",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "没那回事。是果穗比谁都喜欢英雄……努力的结果，才把红战士交给你。",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "kaho",
-        "text": "制作人先生……谢谢你！那我去了！",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "producer",
-        "text": "（她跑上舞台。灯一亮，她的声音就变了。）",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "kaho",
-        "text": "——大家，不用再害怕了！我们，一定会保护你们！",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "kaho",
-        "text": "——接招吧，正义的铁拳！！",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "producer",
@@ -236,13 +182,76 @@
         "id": "38",
         "speakerId": "kaho",
         "text": "和制作人先生一起的话，一定能成为的！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "kaho",
+        "text": "制作人先生！",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "果穗，准备好了吗？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kaho",
+        "text": "是！当然！憧憬的英雄角色……",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kaho",
+        "text": "而且还是红战士！诶嘿嘿，都是因为制作人先生教了我很多！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "没那回事。是果穗比谁都喜欢英雄……努力的结果，才把红战士交给你。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kaho",
+        "text": "制作人先生……谢谢你！那我去了！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "（她跑上舞台。灯一亮，她的声音就变了。）",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kaho",
+        "text": "——大家，不用再害怕了！我们，一定会保护你们！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kaho",
+        "text": "——接招吧，正义的铁拳！！",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T02:20:00.000Z",
-  "updatedAt": "2026-11-02T02:20:00.000Z",
+  "updatedAt": "2026-10-31T16:27:33.217Z",
+  "reviewedAt": "2026-10-31T16:27:33.217Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T02:20:00.000Z", "note": "对照 200900311 改编（旧格式剧本，锚点用日文原句）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T02:20:00.000Z",
+      "note": "对照 200900311 改编（旧格式剧本，锚点用日文原句）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:27:33.217Z"
+    }
   ]
 }

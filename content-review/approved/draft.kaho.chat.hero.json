@@ -1,0 +1,37 @@
+{
+  "id": "draft.kaho.chat.hero",
+  "kind": "topic",
+  "title": "聊天 · 英雄",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.kaho.chat.hero",
+  "payload": {
+    "id": "kaho.chat.hero",
+    "actorId": "kaho",
+    "label": "英雄",
+    "text": "「『ジャスティスV』？……那个，从头讲起可以吗？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T02:31:00.000Z",
+  "updatedAt": "2026-10-31T16:27:41.953Z",
+  "reviewedAt": "2026-10-31T16:27:41.953Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T02:31:00.000Z",
+      "note": "果穂日常话题（200900311『ジャスティスV』）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:27:41.953Z"
+    }
+  ]
+}

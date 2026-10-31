@@ -2,7 +2,7 @@
   "id": "draft.kaho.chat.mission",
   "kind": "topic",
   "title": "聊天 · 作战会议",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.kaho.chat.mission",
   "payload": {
@@ -11,12 +11,27 @@
     "label": "作战会议",
     "text": "「有事要决定的时候，就要开『作战会议』！制作人先生也一起！」",
     "cooldownMinutes": 1440,
-    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
   },
   "annotations": [],
   "createdAt": "2026-11-02T02:35:00.000Z",
-  "updatedAt": "2026-11-02T02:35:00.000Z",
+  "updatedAt": "2026-10-31T16:27:39.830Z",
+  "reviewedAt": "2026-10-31T16:27:39.830Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T02:35:00.000Z", "note": "果穂日常话题（1009005040080 作戦会議）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T02:35:00.000Z",
+      "note": "果穂日常话题（1009005040080 作戦会議）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:27:39.830Z"
+    }
   ]
 }

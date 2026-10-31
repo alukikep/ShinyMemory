@@ -1,0 +1,138 @@
+{
+  "id": "dialogue.mamimi.second",
+  "kind": "dialogue",
+  "title": "她说有意思",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mamimi.second",
+  "payload": {
+    "id": "dialogue.mamimi.second",
+    "idolId": "mamimi",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "mamimi",
+        "text": "偶像啊ー。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "mamimi",
+        "text": "まみみは、不太适合那种闪闪发光的东西吧。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "（她说\"まみみ\"……）",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "适不适合，试过才知道。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "mamimi",
+        "text": "……へぇ。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "mamimi",
+        "text": "大叔说话，总是有点强人所难呢。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "mamimi",
+        "text": "……好吧。反正，最近也确实没什么有意思的事。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "mamimi",
+        "text": "不过先说好ー。我只是来玩的。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "嗯。这样就够了。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "mamimi",
+        "text": "ふふー。那就这样吧，制作人。"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（又是这条街……嗯？）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "mamimi",
+        "text": "啊，大叔。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "……你还在啊。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "mamimi",
+        "text": "在啊ー。反正没事做。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "mamimi",
+        "text": "话说，大叔上次说的那个「在意」，是什么意思？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "就是字面意思。你站在那的样子，让我觉得可惜。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "mamimi",
+        "text": "可惜？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "mamimi",
+        "text": "……ふふー。大叔说话真怪。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "要不要来试试？当偶像。",
+        "nextNodeId": "10"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:21:42.901Z",
+  "updatedAt": "2026-10-31T10:21:42.901Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:21:42.901Z",
+      "note": "摩美々 招募链 2/2（原创，语气对照 100500102）"
+    }
+  ]
+}

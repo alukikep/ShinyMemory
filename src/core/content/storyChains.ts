@@ -273,5 +273,40 @@ export const meguruBurden: StoryChainDef = {
 };
 
 
+/**
+ * 摩美々的招募链（偶遇型）。
+ *
+ * 依据：她在街边无所事事被制作人撞见；第二次她自己出现，
+ * 对"要不要当偶像"答应得含糊（「まみみは、不太适合那种闪闪发光的东西吧」）。
+ * 招募链不占位（lockScope: 'none'）。
+ */
+export const mamimiEncounter: StoryChainDef = {
+  id: 'mamimi-encounter',
+  kind: 'arc',
+  lockScope: 'none',
+  idolId: 'mamimi',
+  priority: 10,
+  title: '街边的她',
+  steps: [
+    {
+      id: 'mamimi-street-1',
+      locationId: 'shopping_street',
+      timeWindow: { fromMinute: 600, toMinute: 1080 },
+      dialogueId: 'dialogue.mamimi.first',
+      actionLabel: '橱窗前有个女孩',
+      complete: { status: 'known', nextStepDelayDays: 2 },
+    },
+    {
+      id: 'mamimi-street-2',
+      locationId: 'shopping_street',
+      timeWindow: { fromMinute: 600, toMinute: 1080 },
+      dialogueId: 'dialogue.mamimi.second',
+      actionLabel: '她还在那条街上',
+      complete: { status: 'recruited' },
+    },
+  ],
+};
+
 export const STORY_CHAINS = [
 ];
+

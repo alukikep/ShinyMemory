@@ -1,0 +1,120 @@
+{
+  "id": "dialogue.mamimi.first",
+  "kind": "dialogue",
+  "title": "街边的她",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mamimi.first",
+  "payload": {
+    "id": "dialogue.mamimi.first",
+    "idolId": "mamimi",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "路过。倒是你，一直站在这家店门口。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "mamimi",
+        "text": "在看啊。反正也没别的地方去。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "mamimi",
+        "text": "大叔才是，盯着女孩子看，不太好吧ー？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "不，我只是觉得有点在意。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "mamimi",
+        "text": "在意？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "mamimi",
+        "text": "……ふぅん。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "mamimi",
+        "text": "在意的话，就去别处在意吧。我还要继续发呆。"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（商店街……这时间人不多。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（……嗯？橱窗前那个女孩，站了很久了。）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "mamimi",
+        "text": "……唔，好无聊啊。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "……你在等人吗？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "mamimi",
+        "text": "……ん？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "mamimi",
+        "text": "呼哇……大叔，你是谁啊？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "（大叔……）不，我是制作人。283 Production 的。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "mamimi",
+        "text": "へぇー。283……就是那个事务所啊。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "mamimi",
+        "text": "所以呢？大叔在这里做什么？",
+        "nextNodeId": "10"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:21:42.901Z",
+  "updatedAt": "2026-10-31T10:21:42.901Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:21:42.901Z",
+      "note": "摩美々 招募链 1/2（原创，语气对照 100500102）"
+    }
+  ]
+}

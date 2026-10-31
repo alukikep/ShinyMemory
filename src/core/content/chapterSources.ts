@@ -52,6 +52,20 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     anchors: ['2003005110010', '2003005110150', '2003005110290'],
   },
   {
+    chapterId: 'mamimi-yukata',
+    script: '200500501',
+    source: '剧本 200500501',
+    card: { title: 'まだ知らない one side', index: 1, total: 2 },
+    anchors: ['2005005010010', '2005005010070', '2005005010240'],
+  },
+  {
+    chapterId: 'mamimi-purple',
+    script: '200500511',
+    source: '剧本 200500511',
+    card: { title: 'まだ知らない one side', index: 2, total: 2 },
+    anchors: ['2005005110040', '2005005110120', '2005005110220'],
+  },
+  {
     chapterId: 'mano-shopping',
     script: '200100301',
     source: '剧本 200100301',

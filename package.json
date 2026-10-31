@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "review": "vite --open /review.html --port 5174",
-    "content:validate": "tsx tools/syncApproved.ts && tsx tools/validateContent.ts && tsx tools/contentGuard.ts && tsx tools/contentAnchors.ts && tsx tools/contentAudit.ts && vitest run src/core/storyValidation.test.ts src/core/productionStoryValidation.test.ts",
+    "content:validate": "tsx tools/syncApproved.ts && tsx tools/validateContent.ts && tsx tools/contentGuard.ts && tsx tools/contentAnchors.ts && tsx tools/contentAudit.ts && tsx tools/chapterBoard.ts && vitest run src/core/storyValidation.test.ts src/core/productionStoryValidation.test.ts",
     "content:sync": "tsx tools/syncApproved.ts",
     "content:coverage": "tsx tools/contentCoverage.ts",
     "content:guard": "tsx tools/contentGuard.ts",

@@ -2,7 +2,7 @@
   "id": "draft.sakuya.chat.act",
   "kind": "topic",
   "title": "聊天 · 运动",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.sakuya.chat.act",
   "payload": {
@@ -11,12 +11,27 @@
     "label": "运动",
     "text": "「运动我很擅长。就算跑一段，也不至于喘——看起来那么不可靠吗？」",
     "cooldownMinutes": 1440,
-    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
   },
   "annotations": [],
   "createdAt": "2026-11-02T00:35:00.000Z",
-  "updatedAt": "2026-11-02T00:35:00.000Z",
+  "updatedAt": "2026-10-31T15:42:40.670Z",
+  "reviewedAt": "2026-10-31T15:42:40.670Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T00:35:00.000Z", "note": "咲耶日常话题（2006003020270）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T00:35:00.000Z",
+      "note": "咲耶日常话题（2006003020270）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:42:40.670Z"
+    }
   ]
 }

@@ -2,15 +2,23 @@
   "id": "draft.evt.sakuya.after_expression",
   "kind": "event",
   "title": "表情的开关",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.sakuya.after_expression",
   "payload": {
     "id": "evt.sakuya.after_expression",
     "title": "表情的开关",
     "when": [],
-    "after": { "ids": ["expression"] },
-    "afterIdol": { "ids": ["sakuya"] },
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "sakuya"
+      ]
+    },
     "chance": 0.4,
     "priority": 5,
     "once": true,
@@ -18,34 +26,65 @@
     "choices": [
       {
         "label": "不笑的时候也很有魅力。",
-        "hint": "信任 +4、表现 +1",
+        "hint": "信任 +5、表现 +1",
         "effects": [
-          { "kind": "attributeExp", "ref": "trust", "tier": 4 },
-          { "kind": "attributeExp", "ref": "expression", "tier": 1 }
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 5
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          }
         ],
         "result": "「……那是，说我看起来可怕的意思吗？」她说完自己先笑了。"
       },
       {
         "label": "明天的拍摄，按你喜欢的方式来。",
-        "hint": "表现 +1、信任 +2",
+        "hint": "表现 +1、信任 +3",
         "effects": [
-          { "kind": "attributeExp", "ref": "expression", "tier": 1 },
-          { "kind": "attributeExp", "ref": "trust", "tier": 2 }
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
         ],
         "result": "「我喜欢的方式……嗯，那我想试试看。」她把台本合上，像是已经在想了。"
       },
       {
         "label": "累了吧，今天早点回去。",
         "hint": "压力 -4",
-        "effects": [{ "kind": "sharedStat", "stat": "stress", "delta": -4 }],
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -4
+          }
+        ],
         "result": "「……被看穿了啊。」她把包背好，走到门口才回头说「那我先回去了」。"
       }
     ]
   },
   "annotations": [],
   "createdAt": "2026-11-02T00:42:00.000Z",
-  "updatedAt": "2026-11-02T00:42:00.000Z",
+  "updatedAt": "2026-10-31T15:42:39.166Z",
+  "reviewedAt": "2026-10-31T15:42:39.166Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T00:42:00.000Z", "note": "咲耶表演课后事件（100600502 镜头前 vs 私下的咲耶様）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T00:42:00.000Z",
+      "note": "咲耶表演课后事件（100600502 镜头前 vs 私下的咲耶様）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:42:39.166Z"
+    }
   ]
 }

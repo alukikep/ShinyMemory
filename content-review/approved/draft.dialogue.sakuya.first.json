@@ -2,7 +2,7 @@
   "id": "draft.dialogue.sakuya.first",
   "kind": "dialogue",
   "title": "街边的拍摄现场",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.sakuya.first",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "sakuya",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（社长说要我「去挖一个人回来」……总之，先去人多的地方看看。）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "（嗯，那家店门口围了不少人。在拍杂志吗？那个模特……总觉得让人移不开眼。）",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "（拍摄结束了。工作人员在收器材。）",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "sakuya",
-        "text": "辛苦了，非常感谢。",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "（那个模特……凛然得让人挪不开眼，真是帅气。）",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "sakuya",
-        "text": "呀，请问找我有事吗？",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "producer",
-        "text": "呃，啊，那个……",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "sakuya",
-        "text": "我还以为你一直在看我呢……是我多心了吗？",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "不，不是多心。我确实在看。我是演艺事务所的人——",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "sakuya",
@@ -182,13 +128,76 @@
         "id": "29",
         "speakerId": "sakuya",
         "text": "重新自我介绍一下，我是白瀬咲耶。我们一起迈出新的第一步吧。"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（社长说要我「去挖一个人回来」……总之，先去人多的地方看看。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（嗯，那家店门口围了不少人。在拍杂志吗？那个模特……总觉得让人移不开眼。）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "（拍摄结束了。工作人员在收器材。）",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "sakuya",
+        "text": "辛苦了，非常感谢。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "（那个模特……凛然得让人挪不开眼，真是帅气。）",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "sakuya",
+        "text": "呀，请问找我有事吗？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "呃，啊，那个……",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "sakuya",
+        "text": "我还以为你一直在看我呢……是我多心了吗？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "不，不是多心。我确实在看。我是演艺事务所的人——",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T00:00:00.000Z",
-  "updatedAt": "2026-11-02T00:00:00.000Z",
+  "updatedAt": "2026-10-31T15:42:36.371Z",
+  "reviewedAt": "2026-10-31T15:42:36.371Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T00:00:00.000Z", "note": "对照 100600101 改编" }
+    {
+      "status": "review",
+      "at": "2026-11-02T00:00:00.000Z",
+      "note": "对照 100600101 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:42:36.371Z"
+    }
   ]
 }

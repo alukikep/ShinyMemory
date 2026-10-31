@@ -2,7 +2,7 @@
   "id": "draft.dialogue.sakuya.night",
   "kind": "dialogue",
   "title": "演出结束以后",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.sakuya.night",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "sakuya",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "sakuya",
-        "text": "好久不见了。像这样和制作人两个人在一起。",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "嗯。最近你的人气也上来了，还参加了『W.I.N.G.』。",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "明明那么忙那么辛苦……咲耶真的很努力了。",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "sakuya",
-        "text": "フフ。被制作人这样夸，也感觉是好久没有的事了。",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "喂喂，哪有那种事。",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "sakuya",
-        "text": "クス。开玩笑的。",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "sakuya",
-        "text": "不过，能像这样两个人独处、慢慢说话，真的很久没有了呢。",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "producer",
-        "text": "是啊。咲耶身边，一不留神就总是围满了人。",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "能两个人独处的机会，平时也不常有。",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "sakuya",
@@ -248,13 +194,76 @@
         "id": "40",
         "speakerId": "sakuya",
         "text": "和制作人在一起的时间，比什么都，是我最重要的东西……"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "sakuya",
+        "text": "好久不见了。像这样和制作人两个人在一起。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "嗯。最近你的人气也上来了，还参加了『W.I.N.G.』。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "明明那么忙那么辛苦……咲耶真的很努力了。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "sakuya",
+        "text": "フフ。被制作人这样夸，也感觉是好久没有的事了。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "喂喂，哪有那种事。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "sakuya",
+        "text": "クス。开玩笑的。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "sakuya",
+        "text": "不过，能像这样两个人独处、慢慢说话，真的很久没有了呢。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "是啊。咲耶身边，一不留神就总是围满了人。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "能两个人独处的机会，平时也不常有。",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T00:20:00.000Z",
-  "updatedAt": "2026-11-02T00:20:00.000Z",
+  "updatedAt": "2026-10-31T15:42:37.450Z",
+  "reviewedAt": "2026-10-31T15:42:37.450Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T00:20:00.000Z", "note": "对照 200600311 改编" }
+    {
+      "status": "review",
+      "at": "2026-11-02T00:20:00.000Z",
+      "note": "对照 200600311 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:42:37.450Z"
+    }
   ]
 }

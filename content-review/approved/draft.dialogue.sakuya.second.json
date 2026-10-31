@@ -2,7 +2,7 @@
   "id": "draft.dialogue.sakuya.second",
   "kind": "dialogue",
   "title": "她在准备第一支广告",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.sakuya.second",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "sakuya",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "今天是作为偶像的第一份工作。",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "sakuya",
-        "text": "今天的拍摄，用的是这支润唇膏呢。",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "嗯。广告版面不大，但会登在女性杂志上。",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "L'Antica 还只是刚起步，能接到这样的工作已经很厉害了。",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "sakuya",
-        "text": "フフ。这都要归功于制作人在努力。",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "sakuya",
-        "text": "只靠我一个人的力量，这样的工作根本接不到。",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "sakuya",
-        "text": "正因为有制作人在，才接得到的。",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "sakuya",
-        "text": "所以，为了回应アナタ的期待，我会努力的。",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "嗯，我期待着呢！",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "sakuya",
@@ -105,9 +51,18 @@
         "speakerId": "producer",
         "text": "所以今天的咲耶……",
         "choices": [
-          { "label": "就保持自然的样子。", "nextNodeId": "20" },
-          { "label": "还是冷淡的表情最好。", "nextNodeId": "30" },
-          { "label": "试试有女人味的姿势？", "nextNodeId": "40" }
+          {
+            "label": "就保持自然的样子。",
+            "nextNodeId": "20"
+          },
+          {
+            "label": "还是冷淡的表情最好。",
+            "nextNodeId": "30"
+          },
+          {
+            "label": "试试有女人味的姿势？",
+            "nextNodeId": "40"
+          }
         ]
       },
       "20": {
@@ -282,13 +237,76 @@
         "id": "55",
         "speakerId": "producer",
         "text": "（说完她自己先迈开了步子。回去的路上，她一次都没有回头。）"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "今天是作为偶像的第一份工作。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "sakuya",
+        "text": "今天的拍摄，用的是这支润唇膏呢。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "嗯。广告版面不大，但会登在女性杂志上。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "L'Antica 还只是刚起步，能接到这样的工作已经很厉害了。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "sakuya",
+        "text": "フフ。这都要归功于制作人在努力。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "sakuya",
+        "text": "只靠我一个人的力量，这样的工作根本接不到。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "sakuya",
+        "text": "正因为有制作人在，才接得到的。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "sakuya",
+        "text": "所以，为了回应アナタ的期待，我会努力的。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "嗯，我期待着呢！",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T00:05:00.000Z",
-  "updatedAt": "2026-11-02T00:05:00.000Z",
+  "updatedAt": "2026-10-31T15:42:36.420Z",
+  "reviewedAt": "2026-10-31T15:42:36.420Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T00:05:00.000Z", "note": "对照 100600102 改编，保留三个选项" }
+    {
+      "status": "review",
+      "at": "2026-11-02T00:05:00.000Z",
+      "note": "对照 100600102 改编，保留三个选项"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:42:36.420Z"
+    }
   ]
 }

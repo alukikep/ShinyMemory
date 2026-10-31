@@ -2,7 +2,7 @@
   "id": "draft.dialogue.sakuya.crowd",
   "kind": "dialogue",
   "title": "人潮里她找不到你",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.sakuya.crowd",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "sakuya",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（人太多了，找不到应该在等我的咲耶……麻烦了。）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "sakuya",
-        "text": "制作人！太好了，我还以为这样下去就碰不上了。",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "啊！咲、咲耶！找到你太好了……！",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "抱歉，不知道是什么活动，没想到会有这么多人。",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "这样下去要迟到了。快走吧，咲耶。",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "sakuya",
-        "text": "好，知道了。",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "sakuya",
-        "text": "不过真的好多的人啊。这样连走路都很难吧。",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "producer",
-        "text": "唔，没办法了……",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "sakuya",
-        "text": "……诶？制作人？",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "sakuya",
@@ -117,9 +63,18 @@
         "speakerId": "sakuya",
         "text": "呐，制作人。我们现在，在旁人眼里是什么样子呢？",
         "choices": [
-          { "label": "大小姐和她的随从吧。", "nextNodeId": "30" },
-          { "label": "亲子？", "nextNodeId": "40" },
-          { "label": "咲耶怎么想？", "nextNodeId": "50" }
+          {
+            "label": "大小姐和她的随从吧。",
+            "nextNodeId": "30"
+          },
+          {
+            "label": "亲子？",
+            "nextNodeId": "40"
+          },
+          {
+            "label": "咲耶怎么想？",
+            "nextNodeId": "50"
+          }
         ]
       },
       "30": {
@@ -286,13 +241,76 @@
         "id": "60",
         "speakerId": "producer",
         "text": "嗯？怎么了？"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（人太多了，找不到应该在等我的咲耶……麻烦了。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "sakuya",
+        "text": "制作人！太好了，我还以为这样下去就碰不上了。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "啊！咲、咲耶！找到你太好了……！",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "抱歉，不知道是什么活动，没想到会有这么多人。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "这样下去要迟到了。快走吧，咲耶。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "sakuya",
+        "text": "好，知道了。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "sakuya",
+        "text": "不过真的好多的人啊。这样连走路都很难吧。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "唔，没办法了……",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "sakuya",
+        "text": "……诶？制作人？",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T00:15:00.000Z",
-  "updatedAt": "2026-11-02T00:15:00.000Z",
+  "updatedAt": "2026-10-31T15:42:37.407Z",
+  "reviewedAt": "2026-10-31T15:42:37.407Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T00:15:00.000Z", "note": "对照 200600302 改编，保留三个选项" }
+    {
+      "status": "review",
+      "at": "2026-11-02T00:15:00.000Z",
+      "note": "对照 200600302 改编，保留三个选项"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:42:37.407Z"
+    }
   ]
 }

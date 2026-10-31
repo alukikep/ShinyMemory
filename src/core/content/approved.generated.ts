@@ -542,6 +542,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.sakuya.treats",
+  "name": "陪她挑点心",
+  "description": "收工顺路，她说要给打合せ带点点心。你在旁边帮她拿纸袋。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "sakuya"
+  ],
+  "locations": [
+    "shopping_street"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 660,
+      "toMinute": 1260
+    }
+  ],
+  "cost": {
+    "stamina": 7
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -4
+    }
+  ],
+  "resultTexts": [
+    "她在点心柜前站了很久，最后挑了三样「看起来大家都会喜欢」的。",
+    "结账的时候她才说这是给打合せ的谢礼，说完又补一句「顺便而已」。",
+    "回去的路上她把纸袋抱在胸前，怕压坏，走得比平时慢。"
+  ]
+},
+{
   "id": "activity.street_photo",
   "name": "街拍练习",
   "description": "带着相机在街上走，找一点值得按快门的东西。",
@@ -1917,6 +1962,212 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "她愣了一下：「因为我怕停下来啊。」"
+    }
+  ]
+},
+{
+  "id": "evt.sakuya.after_dance",
+  "title": "镜子前的姿势",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "sakuya"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她还留在镜子前，一个人把刚才的动作又做了一遍。",
+  "choices": [
+    {
+      "label": "刚才那段很帅。",
+      "hint": "信任 +3、舞蹈 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        }
+      ],
+      "result": "「クス。被你这么直白地夸，我反而不知道该怎么反应了。」镜子里她的表情松了一下。"
+    },
+    {
+      "label": "再来一次，我看着。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好。……那你可要好好看着。」她重新站到镜子前，这次一次都没有笑。"
+    },
+    {
+      "label": "今天就到这里吧。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……嗯。也好。」她关掉音乐的时候，还回头看了一眼镜子。"
+    }
+  ]
+},
+{
+  "id": "evt.sakuya.after_expression",
+  "title": "表情的开关",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "sakuya"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。镜头前的笑她一次就能做出来；收工之后的那张脸，却总是慢半拍才回来。",
+  "choices": [
+    {
+      "label": "不笑的时候也很有魅力。",
+      "hint": "信任 +5、表现 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 5
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        }
+      ],
+      "result": "「……那是，说我看起来可怕的意思吗？」她说完自己先笑了。"
+    },
+    {
+      "label": "明天的拍摄，按你喜欢的方式来。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「我喜欢的方式……嗯，那我想试试看。」她把台本合上，像是已经在想了。"
+    },
+    {
+      "label": "累了吧，今天早点回去。",
+      "hint": "压力 -4",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -4
+        }
+      ],
+      "result": "「……被看穿了啊。」她把包背好，走到门口才回头说「那我先回去了」。"
+    }
+  ]
+},
+{
+  "id": "evt.sakuya.after_vocal",
+  "title": "低音唱过头了",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "sakuya"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她一整首都用低音唱，收尾的时候连指导老师都笑了。",
+  "choices": [
+    {
+      "label": "低音很适合你。",
+      "hint": "信任 +3、表现 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        }
+      ],
+      "result": "「フフ。谢谢。不过下次，我会把高音也唱好给你听。」她说完又补一句：「这样被人说，我会当真的哦。」"
+    },
+    {
+      "label": "再把高音那段唱一遍。",
+      "hint": "歌唱 +1、信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "她清了清嗓子，第二次唱上去了，然后自己先说了句「……好险」。"
+    },
+    {
+      "label": "先喝口水吧。",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「谢谢。アナタ总是记得这种事呢。」她把水瓶递回来，说自己今天唱得有点用力。"
     }
   ]
 }
@@ -12180,6 +12431,1314 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "text": "远处工作人员在喊集合。她应了一声，又回头看了你一眼。"
     }
   }
+},
+{
+  "id": "dialogue.sakuya.crowd",
+  "idolId": "sakuya",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "sakuya",
+      "text": "为什么、手……",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "走吧，先冲出人群！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "sakuya",
+      "text": "……！好、好！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "呼……人总算少下来了。到这里应该没问题了。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "突然抓住你的手，抱歉。疼吗？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "sakuya",
+      "text": "……没、没事。只是突然被抓住手……吓了一跳而已。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "对、对不起……应该先跟你说一声的。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "sakuya",
+      "text": "クス……制作人也有相当强硬的一面呢。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "sakuya",
+      "text": "呐，制作人。我们现在，在旁人眼里是什么样子呢？",
+      "choices": [
+        {
+          "label": "大小姐和她的随从吧。",
+          "nextNodeId": "30"
+        },
+        {
+          "label": "亲子？",
+          "nextNodeId": "40"
+        },
+        {
+          "label": "咲耶怎么想？",
+          "nextNodeId": "50"
+        }
+      ]
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "sakuya",
+      "text": "……大小姐吗。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "sakuya",
+      "text": "クス……不坏呢。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "sakuya",
+      "text": "不过，制作人是随从，这可说不过去吧？",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "不，对上咲耶，我只能看成那样。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "sakuya",
+      "text": "那是不是谦虚过头了？制作人也相当有看头哦。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "唔……是吗？",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "sakuya",
+      "text": "フフ。何不多一点自信呢？不过，也是呢……",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "sakuya",
+      "text": "既然你说大小姐……那就机会难得，能把我送到会场吗，随从先生？",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "（……结果还是被她的步调带着走了。）"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "sakuya",
+      "text": "フフ。再怎么说，也不至于看起来差那么多岁吧。",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "哈哈哈。确实也许是这样。那就是兄弟……不，年纪差得多的朋友更接近？唔……",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "sakuya",
+      "text": "真是的……アナタ真是一点都不懂女人心呢。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "producer",
+      "text": "什么意思？",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "sakuya",
+      "text": "那谁知道呢。不过……",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "sakuya",
+      "text": "那也算是制作人的优点吧。",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "producer",
+      "text": "唔。完全听不懂。",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "sakuya",
+      "text": "是说你诚实。好了，走吧。我可不想迟到。"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "sakuya",
+      "text": "咦？……フフ……原来如此。",
+      "nextNodeId": "51"
+    },
+    "51": {
+      "id": "51",
+      "speakerId": "sakuya",
+      "text": "我怎么会问出这么坏心眼的问题呢。",
+      "nextNodeId": "52"
+    },
+    "52": {
+      "id": "52",
+      "speakerId": "producer",
+      "text": "比起那个，咲耶，擦擦汗吧。明明工作前，还让你跑了，抱歉。",
+      "nextNodeId": "53"
+    },
+    "53": {
+      "id": "53",
+      "speakerId": "sakuya",
+      "text": "没事的，我运动很擅长。看起来那么不可靠吗？",
+      "nextNodeId": "54"
+    },
+    "54": {
+      "id": "54",
+      "speakerId": "producer",
+      "text": "不，没有那回事。我是信赖咲耶的。",
+      "nextNodeId": "55"
+    },
+    "55": {
+      "id": "55",
+      "speakerId": "producer",
+      "text": "但是，把偶像以最好的状态送到现场，才是制作人的工作。",
+      "nextNodeId": "56"
+    },
+    "56": {
+      "id": "56",
+      "speakerId": "sakuya",
+      "text": "クス。还是一样热爱工作呢。能被アナタ带着，我是个幸运的人。",
+      "nextNodeId": "57"
+    },
+    "57": {
+      "id": "57",
+      "speakerId": "sakuya",
+      "text": "制作人和偶像…………嗯，这就是我们现在最好的关系。",
+      "nextNodeId": "58"
+    },
+    "58": {
+      "id": "58",
+      "speakerId": "producer",
+      "text": "是啊。那么，走吧。",
+      "nextNodeId": "59"
+    },
+    "59": {
+      "id": "59",
+      "speakerId": "sakuya",
+      "text": "呐，制作人……",
+      "nextNodeId": "60"
+    },
+    "60": {
+      "id": "60",
+      "speakerId": "producer",
+      "text": "嗯？怎么了？"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（人太多了，找不到应该在等我的咲耶……麻烦了。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "sakuya",
+      "text": "制作人！太好了，我还以为这样下去就碰不上了。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "啊！咲、咲耶！找到你太好了……！",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "抱歉，不知道是什么活动，没想到会有这么多人。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "这样下去要迟到了。快走吧，咲耶。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "sakuya",
+      "text": "好，知道了。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "sakuya",
+      "text": "不过真的好多的人啊。这样连走路都很难吧。",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "唔，没办法了……",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "sakuya",
+      "text": "……诶？制作人？",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.sakuya.fans",
+  "idolId": "sakuya",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "sakuya",
+      "text": "おや，这不是制作人吗。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "sakuya",
+      "text": "辛苦了。碰头会已经结束了吗？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "嗯，算是结束了……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "话、话说回来，刚才那个女孩子是……？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "sakuya",
+      "text": "フフ。她说她是我的粉丝。在我去事务所的路上，她跟我打了招呼。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "sakuya",
+      "text": "听说她一直都在支持我。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "这样啊。能在这里遇上，说明咲耶的粉丝确实在变多啊！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "sakuya",
+      "text": "クス。那样的话我会很高兴的。……对了制作人，我有个提案。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "sakuya",
+      "text": "能和粉丝这样直接交流的机会，可不是常有的。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "sakuya",
+      "text": "把那个孩子也叫上，三个人一起去喝杯茶，怎么样？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "心情我理解……不过咲耶接下来有课吧？",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "sakuya",
+      "text": "时间的话，还有富余。可以吧，アナタ？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "唔——被你这么一说……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "不、不行。咲耶，抱歉……上课之前我想先说明一下下一份工作。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "sakuya",
+      "text": "おや，这样吗？虽然遗憾，但那就没办法了。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "也对不起你。下次有机会的话……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "（那个女孩子小声说，那……那个，咲耶さん！）",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "sakuya",
+      "text": "嗯，怎么了？",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "（她说，那个……请您今后也加油！我一直都在支持您！）",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "sakuya",
+      "text": "フフ……谢谢你。我们还会再见的吧。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "（人群散开了。她看着女孩子走远的方向，过了一会儿才转身。）",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "sakuya",
+      "text": "フフ。真开心啊。能被粉丝那样打招呼。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "……上课前能有这样的刺激，太好了，咲耶。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "sakuya",
+      "text": "嗯。真的正是如此。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "（……咲耶今天比平时还要高兴。她是真的把和粉丝的联系，当作很重要的东西。）",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "sakuya",
+      "text": "话说回来，制作人。刚才那件事，怎么样？",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "刚才那件，是说想和粉丝一起去喝茶的那件？",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "唔，如果是那种企划倒可以……但像今天这样突然去喝，是不行的。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "sakuya",
+      "text": "……果然很难吗？",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "sakuya",
+      "text": "我只是想好好珍惜粉丝而已啊。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "那心意是好的，不过……",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "sakuya",
+      "text": "今天跟我打招呼的那个孩子，一定也是鼓起勇气才跟我说话的。",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "sakuya",
+      "text": "我想好好地回应那份心情。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "producer",
+      "text": "嗯，那我知道。可是，突然和刚见面的粉丝去喝茶的话……",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "sakuya",
+      "text": "……你担心吗？",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "producer",
+      "text": "是啊。今天碰巧是个好孩子，但万一是有坏心思的人呢？",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "sakuya",
+      "text": "那种时候，制作人会保护我的，所以没问题吧？",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "producer",
+      "text": "不，不是那个问题……",
+      "nextNodeId": "48"
+    },
+    "48": {
+      "id": "48",
+      "speakerId": "sakuya",
+      "text": "クス……让你为难了，抱歉啊，制作人。",
+      "nextNodeId": "49"
+    },
+    "49": {
+      "id": "49",
+      "speakerId": "producer",
+      "text": "真是的，我说不过咲耶。"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（碰头会结束了，回一次事务所吧……）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "（嗯？那是什么，围了一圈人……全是女孩子啊……）",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "等等，那是……！",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "sakuya",
+      "text": "……你怎么哭了？是遇到什么难过的事了吗？",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "（那个女孩子一边哭一边说，被憧憬的咲耶さん这样对待，实在太……）",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "sakuya",
+      "text": "能让キミ这样可爱的孩子高兴……我真的好开心。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "sakuya",
+      "text": "如果可以的话，也让我听听キミ的事吧？",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "（周围一下子炸开了，欢呼声把半条街都盖住了。）",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "咲、咲耶！？在这种地方干什么呢！",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.sakuya.first",
+  "idolId": "sakuya",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "sakuya",
+      "text": "フフ。原来如此。也就是说，你想挖我？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "是的。刚才的拍摄我看了，觉得你有那份素质。你……有没有想过当偶像？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "sakuya",
+      "text": "……哦。我当偶像啊。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "对。我真想以偶像的身份带你！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "sakuya",
+      "text": "可是，你也看到了，我不太像偶像吧？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "sakuya",
+      "text": "比我更合适的孩子多得是。为什么偏偏是我？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "正因为是你，我才想带。你身上有十足的偶像素质！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "你落落大方，而且知道怎么把自己最好的一面拿出来——光这一点，就已经是很强的武器了！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "所以，请让我来带你！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "sakuya",
+      "text": "……原来如此。フフ，好……这个邀请，我接受了。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "真的吗！？不过，这么快就决定没问题吗？",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "sakuya",
+      "text": "クス。明明是你自己来挖我的，说的话真奇怪。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "抱、抱歉。因为你答应得太干脆了，我一时……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "sakuya",
+      "text": "フフ。我只是想回应アナタ为我着想的这份心情。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "sakuya",
+      "text": "也就是说，我对选中我的アナタ，起了兴趣。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "那真是荣幸……（不过，总觉得距离有点近……）",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "sakuya",
+      "text": "怎么了？",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "没、没什么。那，能到事务所详细谈谈吗？",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "sakuya",
+      "text": "好，那就拜托了。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "sakuya",
+      "text": "重新自我介绍一下，我是白瀬咲耶。我们一起迈出新的第一步吧。"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（社长说要我「去挖一个人回来」……总之，先去人多的地方看看。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "（嗯，那家店门口围了不少人。在拍杂志吗？那个模特……总觉得让人移不开眼。）",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "（拍摄结束了。工作人员在收器材。）",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "sakuya",
+      "text": "辛苦了，非常感谢。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "（那个模特……凛然得让人挪不开眼，真是帅气。）",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "sakuya",
+      "text": "呀，请问找我有事吗？",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "呃，啊，那个……",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "sakuya",
+      "text": "我还以为你一直在看我呢……是我多心了吗？",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "不，不是多心。我确实在看。我是演艺事务所的人——",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.sakuya.night",
+  "idolId": "sakuya",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "sakuya",
+      "text": "确实，能和谁两个人独处的机会，也许不多呢。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "sakuya",
+      "text": "我自己，也一直想着要和各种各样的人建立联系。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "sakuya",
+      "text": "那真的是很棒的事……你不这么想吗，制作人？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "嗯，是啊。我也这么想。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "sakuya",
+      "text": "フフ……对吧？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "sakuya",
+      "text": "在那个舞台上，我和至今为止从未有过的那么多的人连上了。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "sakuya",
+      "text": "那个瞬间，最美的世界在我面前展开了。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "sakuya",
+      "text": "我真的非常感谢你，制作人。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "sakuya",
+      "text": "谢谢你，让我成为偶像。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "该道谢的是我。谢谢你陪我一直走到这里。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "sakuya",
+      "text": "制作人……我……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "sakuya",
+      "text": "我有回应到アナタ的期待吗？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "当然了，咲耶。今后也一起朝着顶级偶像努力吧！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "sakuya",
+      "text": "顶级偶像吗……和制作人在一起的话，我感觉能成为呢！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "sakuya",
+      "text": "一想到今后还能更多更多地品味那个最棒的瞬间，胸口就激动起来。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "sakuya",
+      "text": "フフ……我真的是个幸运的人。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "sakuya",
+      "text": "今后也请多指教。制作人。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "嗯。今后也请多指教，咲耶。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "sakuya",
+      "text": "……话说回来，真是不可思议的心情。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "sakuya",
+      "text": "我明明是为了和许多许多人连上，才当偶像的。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "sakuya",
+      "text": "现在却在想，只有两个人的这段时间，要是一直持续下去就好了。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "这样啊……",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "sakuya",
+      "text": "……呐，制作人。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "sakuya",
+      "text": "……再稍微……就这样待一会儿，可以吗？",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "嗯……",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "sakuya",
+      "text": "……谢谢你。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "（嗯？咲耶……？靠到我背上来了，真少见啊。）",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "哦、咲耶，你看，星星很漂亮。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "sakuya",
+      "text": "……真的，很漂亮……",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "sakuya",
+      "text": "……制作人，今后也一直，留在我身边好吗？",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "sakuya",
+      "text": "和制作人在一起的时间，比什么都，是我最重要的东西……"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "sakuya",
+      "text": "好久不见了。像这样和制作人两个人在一起。",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "嗯。最近你的人气也上来了，还参加了『W.I.N.G.』。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "明明那么忙那么辛苦……咲耶真的很努力了。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "sakuya",
+      "text": "フフ。被制作人这样夸，也感觉是好久没有的事了。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "喂喂，哪有那种事。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "sakuya",
+      "text": "クス。开玩笑的。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "sakuya",
+      "text": "不过，能像这样两个人独处、慢慢说话，真的很久没有了呢。",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "是啊。咲耶身边，一不留神就总是围满了人。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "能两个人独处的机会，平时也不常有。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.sakuya.second",
+  "idolId": "sakuya",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "sakuya",
+      "text": "フフ。谢谢你，制作人。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "sakuya",
+      "text": "……不过，虽然有模特的经验，拍广告还是第一次呢。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "sakuya",
+      "text": "广告的重点不是自己，而是要把商品的魅力传达出去。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "sakuya",
+      "text": "要让商品看起来有魅力，该用什么姿势、什么表情去拍呢……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "sakuya",
+      "text": "制作人，你怎么看？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "我想，只要咲耶的魅力传达到了，商品的魅力自然也会传达出去。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "所以今天的咲耶……",
+      "choices": [
+        {
+          "label": "就保持自然的样子。",
+          "nextNodeId": "20"
+        },
+        {
+          "label": "还是冷淡的表情最好。",
+          "nextNodeId": "30"
+        },
+        {
+          "label": "试试有女人味的姿势？",
+          "nextNodeId": "40"
+        }
+      ]
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "sakuya",
+      "text": "クス。你说了让人高兴的话呢。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "sakuya",
+      "text": "那，就照制作人说的，我用最原本的样子去拍。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "辛苦了。第一次拍广告，感觉怎么样？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "sakuya",
+      "text": "幸运的是，摄影师夸了我。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "sakuya",
+      "text": "他说「沉静的眼神和化妆品很搭，拍出了让人印象很深的照片」。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "很厉害啊！这次的摄影师是出了名的严格。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "sakuya",
+      "text": "嗯，好像是这样。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "sakuya",
+      "text": "拍得顺利，是托了制作人建议的福。",
+      "nextNodeId": "50"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "sakuya",
+      "text": "原来如此。商品也是沉稳的色调，那样确实更搭。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "嗯，而且咲耶的帅气也会更突出。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "sakuya",
+      "text": "フフ。听你这么说，我有自信了。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "sakuya",
+      "text": "那，我就带着制作人的话去拍。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "辛苦了！拍得很好啊。现场的女工作人员都在尖叫呢。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "sakuya",
+      "text": "クス，那真是荣幸。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "sakuya",
+      "text": "这都是因为有制作人准确的建议。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "不，能让女工作人员那么高兴，是因为咲耶有那份帅气的魅力。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "商品的目标人群是女性。这是只有咲耶才做得到的工作。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "sakuya",
+      "text": "フフ。听你这么说，我很高兴……",
+      "nextNodeId": "50"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "这次是化妆品的广告，把女人味的魅力推出来会更好吧。",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "sakuya",
+      "text": "……有女人味……的吗……",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "不用想得太复杂。原本的咲耶，就已经是很有魅力的女性了。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "sakuya",
+      "text": "……フフ。被你这么直白地说，我有点不好意思呢。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "sakuya",
+      "text": "谢谢你。这样我就能毫不犹豫地去拍了。",
+      "nextNodeId": "50"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "producer",
+      "text": "太好了，咲耶。客户那边的评价那么好。",
+      "nextNodeId": "51"
+    },
+    "51": {
+      "id": "51",
+      "speakerId": "sakuya",
+      "text": "嗯。下次想要更大的广告——虽然这么说，我很高兴，但也吃了一惊。",
+      "nextNodeId": "52"
+    },
+    "52": {
+      "id": "52",
+      "speakerId": "sakuya",
+      "text": "不过那样的话，也许得把女人味的魅力再提高一点才行呢。",
+      "nextNodeId": "53"
+    },
+    "53": {
+      "id": "53",
+      "speakerId": "producer",
+      "text": "我觉得咲耶现在这样就已经很有魅力了……",
+      "nextNodeId": "54"
+    },
+    "54": {
+      "id": "54",
+      "speakerId": "sakuya",
+      "text": "不，还差得远。为了让大家高兴，我会继续追求更多更多的女人味！",
+      "nextNodeId": "55"
+    },
+    "55": {
+      "id": "55",
+      "speakerId": "producer",
+      "text": "（说完她自己先迈开了步子。回去的路上，她一次都没有回头。）"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "今天是作为偶像的第一份工作。",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "sakuya",
+      "text": "今天的拍摄，用的是这支润唇膏呢。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "嗯。广告版面不大，但会登在女性杂志上。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "L'Antica 还只是刚起步，能接到这样的工作已经很厉害了。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "sakuya",
+      "text": "フフ。这都要归功于制作人在努力。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "sakuya",
+      "text": "只靠我一个人的力量，这样的工作根本接不到。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "sakuya",
+      "text": "正因为有制作人在，才接得到的。",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "sakuya",
+      "text": "所以，为了回应アナタ的期待，我会努力的。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "嗯，我期待着呢！",
+      "nextNodeId": "10"
+    }
+  }
 }
 ],
   storyChains: [],
@@ -12838,6 +14397,104 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "meguru",
   "label": "被担心的时候",
   "text": "「诶？我没事哦！真的！……制作人，你刚才是不是在担心我？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "sakuya.chat.act",
+  "actorId": "sakuya",
+  "label": "运动",
+  "text": "「运动我很擅长。就算跑一段，也不至于喘——看起来那么不可靠吗？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "sakuya.chat.fan",
+  "actorId": "sakuya",
+  "label": "粉丝",
+  "text": "「被粉丝打招呼，不管多少次我都会高兴。那份勇气，可不是随便就能拿出来的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "sakuya.chat.greeting",
+  "actorId": "sakuya",
+  "label": "打招呼",
+  "text": "「打招呼的时候，有人把『欢迎回来』和『早上好』说混了——我其实觉得挺有趣的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "sakuya.chat.model",
+  "actorId": "sakuya",
+  "label": "模特的工作",
+  "text": "「模特的工作，从高一那年开始就一直没断过。怎么让自己看起来最好看——这个我还挺有自信的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "sakuya.chat.sama",
+  "actorId": "sakuya",
+  "label": "「咲耶様」",
+  "text": "「『咲耶様』……嗯，被那样叫的话，我会好好回应的。毕竟那是给我的称呼嘛。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "sakuya.chat.sweets",
+  "actorId": "sakuya",
+  "label": "点心",
+  "text": "「来的时候会顺手买点点心。好歹算是，让现场气氛缓和一点的礼物吧。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "sakuya.chat.today",
+  "actorId": "sakuya",
+  "label": "今天",
+  "text": "「今天？本来打算第一个到的。看来我又来早过头了。」",
   "cooldownMinutes": 1440,
   "effects": [
     {

@@ -44,6 +44,7 @@
 | 31 | **新角色接进来，没人验名册/日程表** | 有人问"偶像名册和日程表是不是没做"——面板其实在，但没有任何测试保证"新角色接进来一定看得见"；她名册上的简介还留着没出处的"不登校" | `productionRoster.test` 对正式包每个偶像断言：有 ActorDef、日程非空、名册字段齐、有招募步骤；`mamimi.spec` 真开两个面板断言能看到她；简介改成 101 剧本里有出处的事实 |
 | 32 | **旧存档里没有新偶像的条目** | 摩美々在存档纪元 3 之后加进来、纪元没变 → 旧档照常加载但没有 `idols.mamimi`；招募链的 `complete.status` 被"条目不存在的守卫"静默跳过，剧情演完她也不进名册/日程表 | `migrateSave` 末尾补偶像/角色条目，并按已完成剧情步骤补回状态；`complete.status` 改为缺条目时现场建；`idolBackfill.test`（迁移+状态修复）+ `saveBackfill.spec`（删档→刷新→招募） |
 | 33 | **地点有坐标、没接步行网络** | 泳池有坐标、有卡面剧情要用，但 `WALK_EDGES` 里没有它的边、坐标 (610,300) 还在 `CityMap` 的 viewBox 外——地图上既看不见也走不到，只能靠巴士/出租车；加医院时才发现 | `productionMap.test`：每个可去地点都要有坐标、接进步行网络、从家走得到、坐标不许重叠；viewBox 扩到 560×250 |
+| 34 | **审查台放过非法属性档位** | 咲耶的表演课事件写了 `tier: 4 / 2`（`ExpTier` 只有 1/3/5/10/20）。审查台不做类型检查，16 条一路"通过"；直到 `build` 的 tsc 才红，而且报错位置在 `approved.generated.ts`，看起来像生成代码的锅 | `tools/approvedFiles.ts` 读 approved 时先查档位，报错**指名 JSON 与字段路径**（`content-review/approved/x.json 的 payload.choices[0]…tier = 4`）；已用"故意改坏→sync 报错→改回"验证过 |
 
 ---
 

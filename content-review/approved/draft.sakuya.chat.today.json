@@ -1,0 +1,37 @@
+{
+  "id": "draft.sakuya.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.sakuya.chat.today",
+  "payload": {
+    "id": "sakuya.chat.today",
+    "actorId": "sakuya",
+    "label": "今天",
+    "text": "「今天？本来打算第一个到的。看来我又来早过头了。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:30:00.000Z",
+  "updatedAt": "2026-10-31T15:42:42.598Z",
+  "reviewedAt": "2026-10-31T15:42:42.598Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T00:30:00.000Z",
+      "note": "咲耶日常话题（1006005060100 总是最早到）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:42:42.598Z"
+    }
+  ]
+}

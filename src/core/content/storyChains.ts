@@ -300,10 +300,12 @@ export const mamimiEncounter: StoryChainDef = {
     },
     {
       id: 'mamimi-street-2',
-      locationId: 'shopping_street',
-      timeWindow: { fromMinute: 960, toMinute: 1260 },
+      // 原作第二章她出现在**事务所**（100500102：睡眼惺忪地打招呼）。
+      // 这里把"她回来找你"改编成"她找上门来"，所以地点放事务所。
+      locationId: 'office',
+      timeWindow: { fromMinute: 540, toMinute: 1080 },
       dialogueId: 'dialogue.mamimi.second',
-      actionLabel: '她主动来找你了',
+      actionLabel: '她来事务所找你了',
       source: '100500101',
       complete: { status: 'recruited' },
     },

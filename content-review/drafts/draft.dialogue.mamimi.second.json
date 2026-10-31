@@ -3,7 +3,7 @@
   "kind": "dialogue",
   "title": "她自己来了",
   "status": "review",
-  "version": 2,
+  "version": 3,
   "rootId": "draft.dialogue.mamimi.second",
   "payload": {
     "id": "dialogue.mamimi.second",
@@ -12,91 +12,85 @@
     "nodes": {
       "10": {
         "id": "10",
-        "speakerId": "producer",
-        "text": "……以后不要在深夜到处晃了。这个约定必须遵守。",
+        "speakerId": "mamimi",
+        "text": "怎么样呢ー。不过，说不定那要看哥哥的表现哦？",
         "nextNodeId": "11"
       },
       "11": {
         "id": "11",
-        "speakerId": "mamimi",
-        "text": "怎么样呢ー。不过，说不定那要看哥哥的表现哦？",
+        "speakerId": "producer",
+        "text": "那我就得作为制作人好好干了。今后请多关照！",
         "nextNodeId": "12"
       },
       "12": {
         "id": "12",
-        "speakerId": "producer",
-        "text": "那我就得作为制作人好好干了。今后请多关照！",
-        "nextNodeId": "13"
-      },
-      "13": {
-        "id": "13",
         "speakerId": "mamimi",
         "text": "我叫田中摩美々ー。我是个坏孩子，会给你添很多麻烦的哦。制作人。"
       },
       "01": {
         "id": "01",
         "speakerId": "producer",
-        "text": "（……往车站方向走了。希望她好好回家。）",
+        "text": "（那天之后就没了消息……她真的会来吗。）",
         "nextNodeId": "02"
       },
       "02": {
         "id": "02",
-        "speakerId": "producer",
-        "text": "（好，今天也去挖苗子吧……希望能再遇到那样的孩子。）",
+        "speakerId": "mamimi",
+        "text": "你好ー。上次那个哥哥在吗？",
         "nextNodeId": "03"
       },
       "03": {
         "id": "03",
-        "speakerId": "mamimi",
-        "text": "你好ー。上次那个哥哥在吗？",
+        "speakerId": "producer",
+        "text": "啊，你是……那时候的！",
         "nextNodeId": "04"
       },
       "04": {
         "id": "04",
-        "speakerId": "producer",
-        "text": "啊，你是……那时候的！",
+        "speakerId": "mamimi",
+        "text": "啊，在呢在呢。哥哥的脸我记得很清楚哦ー。",
         "nextNodeId": "05"
       },
       "05": {
         "id": "05",
         "speakerId": "mamimi",
-        "text": "啊，在呢在呢。哥哥的脸我记得很清楚哦ー。",
+        "text": "被那么啰嗦地训一顿，还是第一次。",
         "nextNodeId": "06"
       },
       "06": {
         "id": "06",
         "speakerId": "mamimi",
-        "text": "被那么啰嗦地训一顿，还是第一次。",
+        "text": "跟在哥哥身边好像挺有意思的ー，所以我想，当个偶像也行吧。",
         "nextNodeId": "07"
       },
       "07": {
         "id": "07",
-        "speakerId": "mamimi",
-        "text": "跟在哥哥身边好像挺有意思的ー，所以我想，当个偶像也行吧。",
+        "speakerId": "producer",
+        "text": "真的吗？我还以为你完全没兴趣──",
         "nextNodeId": "08"
       },
       "08": {
         "id": "08",
         "speakerId": "producer",
-        "text": "真的吗？我还以为你完全没兴趣──",
+        "text": "（不过，我确实还没遇到过比她更有魅力的孩子……虽然也有担心的地方──好！）",
         "nextNodeId": "09"
       },
       "09": {
         "id": "09",
         "speakerId": "producer",
-        "text": "（不过，我确实还没遇到过比她更有魅力的孩子……虽然也有担心的地方──好！）",
+        "text": "……以后不要在深夜到处晃了。这个约定必须遵守。",
         "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
-  "createdAt": "2026-10-31T10:26:09.152Z",
-  "updatedAt": "2026-10-31T10:26:09.152Z",
+  "createdAt": "2026-10-31T10:34:34.368Z",
+  "updatedAt": "2026-10-31T10:34:34.368Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-31T10:26:09.152Z",
-      "note": "摩美々 招募 2/2（按 100500101 重写）"
+      "at": "2026-10-31T10:34:34.368Z",
+      "note": "按 WING 调整：第二段改到事务所，删掉与上一段重复的\"送往车站\"开头"
     }
   ]
 }

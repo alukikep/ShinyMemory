@@ -2,7 +2,7 @@
   "id": "draft.evt.mamimi.after_free",
   "kind": "event",
   "title": "陪我去买个东西",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.mamimi.after_free",
   "payload": {
@@ -63,12 +63,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T10:42:57.529Z",
-  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:45:24.315Z",
+  "reviewedAt": "2026-10-31T10:45:24.315Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T10:42:57.529Z",
       "note": "摩美々事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T10:45:24.315Z"
     }
   ]
 }

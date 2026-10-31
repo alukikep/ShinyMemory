@@ -50,6 +50,17 @@ const actor: ActorDef = {
       protected: false,
     },
     {
+      // 原作：「当偶像要每天放学后练习」，她嫌「めんどくさそー」[1005001010040]。
+      // 放学校区之后的空档给练习室——没有这一段，舞蹈课/表演课对她永远不可用，
+      // 挂在课后的两个事件就成了死内容（事故 #30）。
+      fromMinute: 17 * 60,
+      toMinute: 19 * 60,
+      locationId: 'practice_room',
+      weekdays: [2, 4],
+      label: '练习',
+      protected: false,
+    },
+    {
       fromMinute: 19 * 60,
       toMinute: 23 * 60,
       locationId: 'park',

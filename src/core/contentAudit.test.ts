@@ -104,6 +104,29 @@ describe('content audit', () => {
     ).toHaveLength(2);
   });
 
+  it('flags an event whose trigger action the idol can never do', () => {
+    // 摩美々的舞蹈课/表演课事件曾经就是这样：她排不出练习室时段。
+    // 这里用真乃的专属行动挂到灯织身上，保证永远做不到。
+    const unreachable: EventDef = {
+      id: 'audit.unreachable.event',
+      title: '做不到的行动之后',
+      when: [],
+      after: { ids: ['activity.mano.extra_practice'] },
+      afterIdol: { ids: ['hiori'] },
+      text: '正文',
+      choices: [{ label: '好', effects: [], result: '嗯。' }],
+    };
+    CONTENT_INDEX.events.set(unreachable.id, unreachable);
+    registered.push(unreachable.id);
+
+    const issues = auditPack(CONTENT_INDEX);
+    const found = issues.find((issue) => issue.code === 'event-unreachable');
+
+    expect(found?.level).toBe('error');
+    expect(found?.message).toContain('audit.unreachable.event');
+    expect(found?.message).toContain('hiori');
+  });
+
   it('reports a malformed event instead of throwing', () => {
     const broken = {
       id: 'audit.broken.event',

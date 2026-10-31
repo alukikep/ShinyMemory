@@ -184,6 +184,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.mamimi.walk",
+  "name": "陪她在街上走",
+  "description": "她说随便走走，结果带着你拐进了一条没走过的小巷。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "mamimi"
+  ],
+  "locations": [
+    "shopping_street"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 960,
+      "toMinute": 1320
+    }
+  ],
+  "cost": {
+    "stamina": 7
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -4
+    }
+  ],
+  "resultTexts": [
+    "她一路说着没什么意义的话，走到路口才停下来：「今天就到这吧ー。」",
+    "巷子里没有灯，她走在前面，回头看了一眼确认你还跟着。",
+    "她在一家关门的店前站了一会儿，说这条街她从小走到大。"
+  ]
+},
+{
   "id": "activity.mano.extra_practice",
   "name": "陪她加练",
   "description": "她说最后那两拍还不对，问你能不能再看一遍。",
@@ -978,6 +1023,181 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "她想了想：不是技巧，是我不敢把最后那一句放开。"
+    }
+  ]
+},
+{
+  "id": "evt.mamimi.after_dance",
+  "title": "跳得太随便了吧",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "mamimi"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她没有立刻停下，而是把那段又跳了一遍，动作比刚才随意得多。",
+  "choices": [
+    {
+      "label": "这遍比刚才好",
+      "hint": "信任 +3、舞蹈 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        }
+      ],
+      "result": "「……你这样说，我倒有点难跳了ー。」她嘴上抱怨，还是又跳了一遍。"
+    },
+    {
+      "label": "问她为什么改动作",
+      "hint": "信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「照老师说的跳很无聊啊ー。而且这样跳比较像我。」"
+    },
+    {
+      "label": "让她歇一会儿",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「好ー。」她直接坐在地板上，背靠着镜子。"
+    }
+  ]
+},
+{
+  "id": "evt.mamimi.after_expression",
+  "title": "表情太假了吧",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "mamimi"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束，她对着镜子练了几次笑，每次都在笑到一半的时候自己先放弃。",
+  "choices": [
+    {
+      "label": "刚才那个不怎么像你",
+      "hint": "信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……我也觉得。」她难得没有开玩笑，又对着镜子看了一会儿。"
+    },
+    {
+      "label": "问她平时怎么笑",
+      "hint": "信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「平时？平时不怎么笑啊ー。」她说得很干脆。"
+    },
+    {
+      "label": "不打扰她",
+      "hint": "压力 -2",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -2
+        }
+      ],
+      "result": "你在门口站了一会儿，她自己练完了才回头。"
+    }
+  ]
+},
+{
+  "id": "evt.mamimi.after_free",
+  "title": "陪我去买个东西",
+  "when": [],
+  "after": {
+    "ids": [
+      "free"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "mamimi"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "自由时间刚要开始，她就已经站在门口了：「制作人，陪我去个地方ー。」",
+  "choices": [
+    {
+      "label": "陪她去",
+      "hint": "信任 +3、压力 -3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "结果只是去买了个面包。她边走边吃，吃得很认真。"
+    },
+    {
+      "label": "问她去哪",
+      "hint": "信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「秘密ー。反正你也没事吧？」她笑了一下，先走了出去。"
+    },
+    {
+      "label": "说还有工作",
+      "hint": "没什么变化",
+      "effects": [],
+      "result": "「这样啊ー。」她摆摆手走了，脚步比刚才慢了一点。"
     }
   ]
 },
@@ -9632,6 +9852,90 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "hiori",
   "label": "为什么想当偶像",
   "text": "「……那时候只是自我满足。现在不一样了。大概。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mamimi.chat.dream",
+  "actorId": "mamimi",
+  "label": "有想做的事吗",
+  "text": "「想做的事？没有ー。……为什么那样看我？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mamimi.chat.food",
+  "actorId": "mamimi",
+  "label": "喜欢吃什么",
+  "text": "「那种可以边走边吃的。省事ー。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mamimi.chat.night",
+  "actorId": "mamimi",
+  "label": "晚上在做什么",
+  "text": "「晚上？在街上晃啊。夜里的街比较安静，也不会有人管我。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mamimi.chat.school",
+  "actorId": "mamimi",
+  "label": "学校怎么样",
+  "text": "「学校啊ー……去了啊。只是不太说话而已。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mamimi.chat.shopping",
+  "actorId": "mamimi",
+  "label": "最近买了什么",
+  "text": "「没什么。看看而已ー……不过有时候看看就会想买。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mamimi.chat.today",
+  "actorId": "mamimi",
+  "label": "今天怎么样",
+  "text": "「今天啊ー……普通吧。普通得像没发生过一样。」",
   "cooldownMinutes": 1440,
   "effects": [
     {

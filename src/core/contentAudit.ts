@@ -1,7 +1,10 @@
 import type { ContentIndex } from './contentIndexCore';
 import { isKnownConditionKind, isKnownEffectKind } from './contentSchema';
 import { RANK_ORDER } from './growth';
+import { getSchedulesForDay } from './schedule';
+import { isMinuteInWindow } from './time';
 import type {
+  ActivityDef,
   Condition,
   Effect,
   EventDef,
@@ -16,6 +19,63 @@ export type ContentIssue = {
 
 const PAIR_CAST_BUDGET = 10;
 const PAIR_GENERIC_BUDGET = 3;
+
+/**
+ * 某个偶像在 28 天里真的做得成的行动。
+ *
+ * 只按"日程地点 + 行动地点 + 时段 + 归属"推，不模拟金钱/体力/flag；
+ * 目的只有一个：拦住"事件挂在某个偶像永远做不到的行动上"这种死内容。
+ */
+function reachableActivityIds(
+  index: ContentIndex,
+  idolId: string,
+  cache: Map<string, Set<string>>,
+): Set<string> {
+  const cached = cache.get(idolId);
+  if (cached) return cached;
+
+  const reachable = new Set<string>();
+  const allActivities: ActivityDef[] = [...index.activities.values()];
+  // 地点页行动（制作人自己的活、多偶像行动）不需要这个偶像在场，谁都能触发。
+  for (const activity of allActivities) {
+    if (activity.target === 'none' || activity.target === 'all-present-idols') {
+      reachable.add(activity.id);
+    }
+  }
+
+  const actor = index.actors.get(idolId);
+  if (actor) {
+    for (let day = 1; day <= 28; day += 1) {
+      const slots = getSchedulesForDay(actor, day);
+      if (slots.length === 0) continue;
+      for (let minute = 0; minute < 1440; minute += 15) {
+        const absolute = (day - 1) * 1440 + minute;
+        const slot = slots.find((entry) => isMinuteInWindow(absolute, entry));
+        if (!slot?.locationId) continue;
+        const slotLocationId = slot.locationId;
+        for (const activity of index.activitiesByLocation.get(slotLocationId) ??
+          []) {
+          if (activity.locations && !activity.locations.includes(slotLocationId)) {
+            continue;
+          }
+          if (activity.idolIds && !activity.idolIds.includes(idolId)) continue;
+          if (
+            activity.timeWindows &&
+            !activity.timeWindows.some((window) =>
+              isMinuteInWindow(absolute, window),
+            )
+          ) {
+            continue;
+          }
+          reachable.add(activity.id);
+        }
+      }
+    }
+  }
+
+  cache.set(idolId, reachable);
+  return reachable;
+}
 
 function walkConditions(
   conditions: Condition[] | undefined,
@@ -171,6 +231,31 @@ export function auditPack(
           `${activity.id} 是 ${activity.kind}，不该做专属`,
         );
       }
+    }
+  }
+
+  // ---- 事件要真的做得到 ----
+  // 事故 #30：摩美々的舞蹈课/表演课事件挂在她永远做不到的行动上
+  // （她的日程里没有练习室），覆盖率却按"事件写了 3 条"算通过。
+  const reachCache = new Map<string, Set<string>>();
+  for (const event of eventIds.values()) {
+    const afterIds =
+      event.after && 'ids' in event.after ? event.after.ids : undefined;
+    const idolIdsAfter = event.afterIdol?.ids ?? [];
+    if (!afterIds || afterIds.length === 0 || idolIdsAfter.length === 0) {
+      continue;
+    }
+    const reachable = idolIdsAfter.some((idolId) =>
+      afterIds.some((id) =>
+        reachableActivityIds(index, idolId, reachCache).has(id),
+      ),
+    );
+    if (!reachable) {
+      push(
+        'error',
+        'event-unreachable',
+        `${event.id}：${idolIdsAfter.join('/')} 永远做不到 ${afterIds.join('/')}，这个事件不会触发`,
+      );
     }
   }
 

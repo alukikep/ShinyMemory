@@ -59,6 +59,13 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     anchors: ['2001004010010', '2001004010150', '2001004010200'],
   },
   {
+    chapterId: 'mano-dream',
+    script: '200100411',
+    source: '剧本 200100411',
+    card: { title: 'ほわっとスマイル', index: 5, total: 5 },
+    anchors: ['2001004110010', '2001004110190', '2001004110240'],
+  },
+  {
     chapterId: 'mano-afterglow',
     script: '200100404',
     source: '剧本 200100404',

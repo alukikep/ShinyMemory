@@ -2,15 +2,23 @@
   "id": "draft.evt.yuika.after_dance",
   "kind": "event",
   "title": "体力是硬伤",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.yuika.after_dance",
   "payload": {
     "id": "evt.yuika.after_dance",
     "title": "体力是硬伤",
     "when": [],
-    "after": { "ids": ["dance"] },
-    "afterIdol": { "ids": ["yuika"] },
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "yuika"
+      ]
+    },
     "chance": 0.4,
     "priority": 5,
     "once": true,
@@ -20,8 +28,16 @@
         "label": "今天就到这里。",
         "hint": "压力 -3、信任 +1",
         "effects": [
-          { "kind": "sharedStat", "stat": "stress", "delta": -3 },
-          { "kind": "attributeExp", "ref": "trust", "tier": 1 }
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
         ],
         "result": "「诶——还想跳的……算了，听制作人的。」她把毛巾搭在肩上，走得很慢。"
       },
@@ -29,8 +45,16 @@
         "label": "再来一遍，我陪着。",
         "hint": "舞蹈 +1、压力 +2",
         "effects": [
-          { "kind": "attributeExp", "ref": "dance", "tier": 1 },
-          { "kind": "sharedStat", "stat": "stress", "delta": 2 }
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
         ],
         "result": "「好！……那你看到了哦，我刚才那个转身。」第二遍比第一遍稳。"
       },
@@ -38,8 +62,16 @@
         "label": "基础本来就要慢慢来。",
         "hint": "舞蹈 +1、信任 +3",
         "effects": [
-          { "kind": "attributeExp", "ref": "dance", "tier": 1 },
-          { "kind": "attributeExp", "ref": "trust", "tier": 3 }
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
         ],
         "result": "「……嗯。那种话，被说出来还是会松一口气啊。」"
       }
@@ -47,8 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:41:00.000Z",
-  "updatedAt": "2026-11-02T01:41:00.000Z",
+  "updatedAt": "2026-10-31T16:04:42.490Z",
+  "reviewedAt": "2026-10-31T16:04:42.490Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:41:00.000Z", "note": "結華舞蹈课后事件（1007005040140 体力被点出来）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:41:00.000Z",
+      "note": "結華舞蹈课后事件（1007005040140 体力被点出来）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:42.490Z"
+    }
   ]
 }

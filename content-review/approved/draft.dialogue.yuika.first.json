@@ -2,7 +2,7 @@
   "id": "draft.dialogue.yuika.first",
   "kind": "dialogue",
   "title": "雨里的那条街",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.yuika.first",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "yuika",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（雨越下越大了……找个人少的地方躲一下吧。）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "（这家店的屋檐……应该淋不到。）",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "yuika",
-        "text": "哇——！没人说今天会下雨啊！",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "yuika",
-        "text": "周边没淋湿吧？没事吧？我想想……",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "（那个女孩子也在躲雨……）",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "（……嗯？哇，那个包，里面塞满了人气偶像的演唱会限定品……）",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "yuika",
-        "text": "这边没事，这个也没事……！嗯，全都 OK！太好了——",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "yuika",
-        "text": "啊，不好意思，吵到您了吧？",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "嗯？啊，没有。没关系。",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "yuika",
@@ -218,13 +164,76 @@
         "id": "35",
         "speakerId": "producer",
         "text": "（……她报名字的时候，停了一下。）"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（雨越下越大了……找个人少的地方躲一下吧。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（这家店的屋檐……应该淋不到。）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "yuika",
+        "text": "哇——！没人说今天会下雨啊！",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "yuika",
+        "text": "周边没淋湿吧？没事吧？我想想……",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "（那个女孩子也在躲雨……）",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "（……嗯？哇，那个包，里面塞满了人气偶像的演唱会限定品……）",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "yuika",
+        "text": "这边没事，这个也没事……！嗯，全都 OK！太好了——",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "yuika",
+        "text": "啊，不好意思，吵到您了吧？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "嗯？啊，没有。没关系。",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:00:00.000Z",
-  "updatedAt": "2026-11-02T01:00:00.000Z",
+  "updatedAt": "2026-10-31T16:04:35.942Z",
+  "reviewedAt": "2026-10-31T16:04:35.942Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:00:00.000Z", "note": "对照 100700101 改编" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:00:00.000Z",
+      "note": "对照 100700101 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:35.942Z"
+    }
   ]
 }

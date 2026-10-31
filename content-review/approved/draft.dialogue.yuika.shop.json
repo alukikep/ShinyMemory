@@ -2,7 +2,7 @@
   "id": "draft.dialogue.yuika.shop",
   "kind": "dialogue",
   "title": "她说要带我去挑眼镜",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.yuika.shop",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "yuika",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（哦……！现在的女孩子都在这种地方买东西吗……！）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "yuika",
-        "text": "当然！……重新看一遍，还是好厉害呢。",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "……果然请你带路是对的。一个人来，我可能就有点缩了。",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "yuika",
-        "text": "偶尔也得孝敬一下制作人嘛。这也算偶像的职责？",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "yuika",
-        "text": "……不过，『想学习最近的时尚』，制作人还真是认真啊。",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "是工作需要的。我对流行也不算了解，得好好看看。",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "yuika",
-        "text": "哦哦，很有制作人的发言！不愧是！那赶紧走吧！",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "producer",
-        "text": "从哪儿开始逛好呢……？",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "yuika",
-        "text": "不用想那么复杂也没关系，总之，随心所欲！",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "producer",
@@ -254,13 +200,76 @@
         "id": "41",
         "speakerId": "producer",
         "text": "（……结果一路上都是她在带我。回去的路上，她一直在说镜框的事。）"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（哦……！现在的女孩子都在这种地方买东西吗……！）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "yuika",
+        "text": "当然！……重新看一遍，还是好厉害呢。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "……果然请你带路是对的。一个人来，我可能就有点缩了。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "yuika",
+        "text": "偶尔也得孝敬一下制作人嘛。这也算偶像的职责？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "yuika",
+        "text": "……不过，『想学习最近的时尚』，制作人还真是认真啊。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "是工作需要的。我对流行也不算了解，得好好看看。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "yuika",
+        "text": "哦哦，很有制作人的发言！不愧是！那赶紧走吧！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "从哪儿开始逛好呢……？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "yuika",
+        "text": "不用想那么复杂也没关系，总之，随心所欲！",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:10:00.000Z",
-  "updatedAt": "2026-11-02T01:10:00.000Z",
+  "updatedAt": "2026-10-31T16:04:37.006Z",
+  "reviewedAt": "2026-10-31T16:04:37.006Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:10:00.000Z", "note": "对照 200700301 改编" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:10:00.000Z",
+      "note": "对照 200700301 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:37.006Z"
+    }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.yuika.chat.baito",
   "kind": "topic",
   "title": "聊天 · 打工",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.yuika.chat.baito",
   "payload": {
@@ -11,12 +11,27 @@
     "label": "打工",
     "text": "「打工我只接单发的。被绑在某一家，会觉得有点……麻烦嘛。」",
     "cooldownMinutes": 1440,
-    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:33:00.000Z",
-  "updatedAt": "2026-11-02T01:33:00.000Z",
+  "updatedAt": "2026-10-31T16:04:45.051Z",
+  "reviewedAt": "2026-10-31T16:04:45.051Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:33:00.000Z", "note": "結華日常话题（1007005010120 / 1007005010170）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:33:00.000Z",
+      "note": "結華日常话题（1007005010120 / 1007005010170）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:45.051Z"
+    }
   ]
 }

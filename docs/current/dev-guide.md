@@ -45,6 +45,7 @@
 | 32 | **旧存档里没有新偶像的条目** | 摩美々在存档纪元 3 之后加进来、纪元没变 → 旧档照常加载但没有 `idols.mamimi`；招募链的 `complete.status` 被"条目不存在的守卫"静默跳过，剧情演完她也不进名册/日程表 | `migrateSave` 末尾补偶像/角色条目，并按已完成剧情步骤补回状态；`complete.status` 改为缺条目时现场建；`idolBackfill.test`（迁移+状态修复）+ `saveBackfill.spec`（删档→刷新→招募） |
 | 33 | **地点有坐标、没接步行网络** | 泳池有坐标、有卡面剧情要用，但 `WALK_EDGES` 里没有它的边、坐标 (610,300) 还在 `CityMap` 的 viewBox 外——地图上既看不见也走不到，只能靠巴士/出租车；加医院时才发现 | `productionMap.test`：每个可去地点都要有坐标、接进步行网络、从家走得到、坐标不许重叠；viewBox 扩到 560×250 |
 | 34 | **审查台放过非法属性档位** | 咲耶的表演课事件写了 `tier: 4 / 2`（`ExpTier` 只有 1/3/5/10/20）。审查台不做类型检查，16 条一路"通过"；直到 `build` 的 tsc 才红，而且报错位置在 `approved.generated.ts`，看起来像生成代码的锅 | `tools/approvedFiles.ts` 读 approved 时先查档位，报错**指名 JSON 与字段路径**（`content-review/approved/x.json 的 payload.choices[0]…tier = 4`）；已用"故意改坏→sync 报错→改回"验证过 |
+| 35 | **通过之后没重建就跑 E2E** | 結華 15 条批完后直接 `npm run e2e:one`，Playwright 的 webServer 是 `npm run preview`（服务 `dist/`），跑的是**审批前的旧构建**——剧情链被"对话未批"过滤掉了，测试卡在"按钮不存在"，还白等 3 分钟超时 | 用 `npm run acceptance:prologue`（= `npm run build && playwright`），或至少先 `npm run build`；失败时先看调试面板的"剧情链"表里有没有这条链，能立刻分辨是内容问题还是构建过期 |
 
 ---
 

@@ -667,6 +667,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
     "你注意到下班时间的人走路都比早上快半拍。",
     "有人把伞收起来又撑开，反复了三次。"
   ]
+},
+{
+  "id": "activity.yuika.photo",
+  "name": "陪她拍一张照",
+  "description": "她把手机递过来，说这条街的光正好。你帮她按快门，她帮你按一次。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "yuika"
+  ],
+  "locations": [
+    "shopping_street"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 780,
+      "toMinute": 1260
+    }
+  ],
+  "cost": {
+    "stamina": 7
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -4
+    }
+  ],
+  "resultTexts": [
+    "她举起手机前先问「可以拍吗？」，得到答复才按快门。",
+    "拍完她翻着相册说「这张留给我」，然后飞快地把手机收了回去。",
+    "她说下次要在能看到海的地方拍，说完自己先笑了。"
+  ]
 }
 ],
   events: [
@@ -2168,6 +2213,212 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「谢谢。アナタ总是记得这种事呢。」她把水瓶递回来，说自己今天唱得有点用力。"
+    }
+  ]
+},
+{
+  "id": "evt.yuika.after_dance",
+  "title": "体力是硬伤",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "yuika"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她扶着膝盖喘气，缓过来以后又说想再来一遍。",
+  "choices": [
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「诶——还想跳的……算了，听制作人的。」她把毛巾搭在肩上，走得很慢。"
+    },
+    {
+      "label": "再来一遍，我陪着。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好！……那你看到了哦，我刚才那个转身。」第二遍比第一遍稳。"
+    },
+    {
+      "label": "基础本来就要慢慢来。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……嗯。那种话，被说出来还是会松一口气啊。」"
+    }
+  ]
+},
+{
+  "id": "evt.yuika.after_expression",
+  "title": "笑到脸僵",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "yuika"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。她一整节课都维持着笑，收工以后才揉了揉脸。",
+  "choices": [
+    {
+      "label": "不笑的样子也很好。",
+      "hint": "信任 +5、表现 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 5
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        }
+      ],
+      "result": "「……那、那是说，我平时笑得太多？」她说完自己也笑了，这次是真的。"
+    },
+    {
+      "label": "刚才那个表情再来一次。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「诶，刚才哪个？……啊，这个？」她重新摆好表情，一半就破功了。"
+    },
+    {
+      "label": "别硬撑，休息一下。",
+      "hint": "压力 -4",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -4
+        }
+      ],
+      "result": "「被看出来了啊。……三峰，其实不太擅长让人看见累的样子。」"
+    }
+  ]
+},
+{
+  "id": "evt.yuika.after_vocal",
+  "title": "高音溜走了",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "yuika"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她在高音那一段折了一次，重来的时候自己先笑了。",
+  "choices": [
+    {
+      "label": "低音那段很好。",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "「低音？哦，那是我擅长的部分嘛。……不过被夸还是开心，谢谢。」"
+    },
+    {
+      "label": "再来一次。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好，再来一次。」第二次她上去了，然后小声说「……刚刚那一口气，差点没接上」。"
+    },
+    {
+      "label": "先喝口水吧。",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「谢谢……啊，被照顾了。平常都是我在照顾人的说。」"
     }
   ]
 }
@@ -13739,6 +13990,1414 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "nextNodeId": "10"
     }
   }
+},
+{
+  "id": "dialogue.yuika.first",
+  "idolId": "yuika",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "yuika",
+      "text": "那就好。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "（……她自己倒比包淋得更湿。手帕在哪儿呢——）",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "……啊。你的徽章掉了哦？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "yuika",
+      "text": "诶？啊，真的！不好意思，谢谢您！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "yuika",
+      "text": "太好了……！这个是限定款，帮大忙了！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "（……笑得好开心啊。）",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "（那么喜欢偶像，会为一个徽章高兴成这样……）",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "（……这个孩子的话，说不定——）",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "那个……不好意思，突然这么说你可能会困惑……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "你对偶像……有兴趣吗？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "yuika",
+      "text": "……诶？偶像？",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "是的。我想让你去当偶像。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "yuika",
+      "text": "……呃，那个……这话题跳得也太突然了吧……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "yuika",
+      "text": "……啊。这位大哥其实也是偶像宅？找到能聊的人所以很开心——这种感觉？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "yuika",
+      "text": "还是说，这是委婉的搭讪？『做我一个人的偶像』，那种的。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "不是那样。我是这边的人——",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "yuika",
+      "text": "283……制作公司？",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "我觉得你一定能成为很棒的偶像。怎么样？",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "yuika",
+      "text": "……啊、啊哈哈……这个玩笑，今天最好笑。其实你是搞笑艺人吧？",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "不，我是认真的。我真的希望你能当偶像。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "yuika",
+      "text": "……我，当偶像……",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "yuika",
+      "text": "也不是，我是说我很感兴趣……但是……诶？真的假的？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "真的。能不能和我一起，以偶像为目标？",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "yuika",
+      "text": "……既、既然您都说到这个份上了……",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "yuika",
+      "text": "……三峰，结华。接下来，请多指教。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "（……她报名字的时候，停了一下。）"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（雨越下越大了……找个人少的地方躲一下吧。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "（这家店的屋檐……应该淋不到。）",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "yuika",
+      "text": "哇——！没人说今天会下雨啊！",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "yuika",
+      "text": "周边没淋湿吧？没事吧？我想想……",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "（那个女孩子也在躲雨……）",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "（……嗯？哇，那个包，里面塞满了人气偶像的演唱会限定品……）",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "yuika",
+      "text": "这边没事，这个也没事……！嗯，全都 OK！太好了——",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "yuika",
+      "text": "啊，不好意思，吵到您了吧？",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "嗯？啊，没有。没关系。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.yuika.hide",
+  "idolId": "yuika",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "yuika",
+      "text": "那就好。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "yuika",
+      "text": "我还以为你是来突击检查我有没有偷懒呢。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "哈哈，不是那种。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……哦。放在那里的，是你刚才在听的 CD 吗？那个偶像，你说过喜欢来着。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "yuika",
+      "text": "诶？啊，嗯……今天发售，所以想听听。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "yuika",
+      "text": "嘛，这个话题就算了吧。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "不，难得的机会，让我听听结华喜欢的偶像的事吧。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "yuika",
+      "text": "啊哈哈……制作人，不用勉强照顾我。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "yuika",
+      "text": "三峰喜欢的东西，说出来也没什么意思吧。",
+      "choices": [
+        {
+          "label": "没那回事。",
+          "nextNodeId": "20"
+        },
+        {
+          "label": "作为制作人，我想知道。",
+          "nextNodeId": "30"
+        },
+        {
+          "label": "不了解别的偶像可不行。",
+          "nextNodeId": "40"
+        }
+      ]
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "谁在认真做某件事、说着自己喜欢的东西，我不会觉得没意思。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "yuika",
+      "text": "直球啊。被这么正面地来一下，反而不好说了呢。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "这样啊，抱歉……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "yuika",
+      "text": "……不过，像刚才那样被说，说不定会开心，也有可能哦。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "诶？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "yuika",
+      "text": "啊，不是说三峰，是世间一般论。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "yuika",
+      "text": "……好啦好啦，勤奋的三峰该回去上课了！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "总觉得打扰你了，抱歉。加油。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "yuika",
+      "text": "嗯！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "yuika",
+      "text": "……谢谢你。"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "不是那样。我只是想好好了解自己带的偶像。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "结华真的不愿意的话，我不会勉强。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "yuika",
+      "text": "…………！",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "yuika",
+      "text": "……嗯。既然制作人都说到这份上，不说的话偶像也没面子呢。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "yuika",
+      "text": "——Ｐたん，『想了解三峰』这句话，不是随口说的吧！？",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "不是！",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "yuika",
+      "text": "好——那我知道了！那，刚才那张 CD，要听听看吗？",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "可以吗？",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "yuika",
+      "text": "那样更容易明白吧。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "这样啊，谢谢。"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "不了解别的偶像可不行。",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "yuika",
+      "text": "啊哈，Ｐたん是工作狂呢～。那样的话，好不容易立起来的旗子也要折了哦？",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "yuika",
+      "text": "这种时候，就算说谎，也得说『我想知道你喜欢的东西』才行。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "producer",
+      "text": "是、是这样吗。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "yuika",
+      "text": "是这样的。……少女心其实意外地纤细哦～？三峰没事，但对别的孩子可能就不行。",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "yuika",
+      "text": "所以，刚才那场戏，要不要重拍一次？",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "producer",
+      "text": "啊，不，那个。当然，我也想知道结华喜欢的东西，只是……",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "yuika",
+      "text": "啊哈哈！慌了慌了！",
+      "nextNodeId": "48"
+    },
+    "48": {
+      "id": "48",
+      "speakerId": "yuika",
+      "text": "骗你的骗你的。制作人认真才是制作人，现在这样就好。",
+      "nextNodeId": "49"
+    },
+    "49": {
+      "id": "49",
+      "speakerId": "producer",
+      "text": "是、是吗。",
+      "nextNodeId": "50"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "yuika",
+      "text": "能看到Ｐたん手忙脚乱的样子，我个人挺满足的！",
+      "nextNodeId": "51"
+    },
+    "51": {
+      "id": "51",
+      "speakerId": "producer",
+      "text": "别太捉弄我……",
+      "nextNodeId": "52"
+    },
+    "52": {
+      "id": "52",
+      "speakerId": "yuika",
+      "text": "抱歉抱歉，太好玩了就忍不住。",
+      "nextNodeId": "53"
+    },
+    "53": {
+      "id": "53",
+      "speakerId": "yuika",
+      "text": "当作赔礼吧，三峰喜欢的偶像的事，我告诉你。"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（……哦，是结华。在自主练习吗？）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "结华，辛苦了。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "yuika",
+      "text": "……哼哼哼……♪",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "？结华——",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "（没注意到啊，怎么了……？）",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "……结华？喂——",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "yuika",
+      "text": "……诶，制作人！？吓我一跳……！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "yuika",
+      "text": "怎么啦怎么啦，突然？有事吗？抱歉，我完全没听到……",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "啊，抱歉，你在听音乐啊。是我打扰了。没什么事，只是看到你了。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.yuika.live",
+  "idolId": "yuika",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "yuika",
+      "text": "什、什么啊……！？我露出那种表情了……！？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "嗯，露出来了。别小看制作人的眼睛。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "……话说回来，你会这么吃惊，真少见。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "yuika",
+      "text": "……不、不不！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "yuika",
+      "text": "刚才那个，是我故意让你说中的、让你能说中的那种！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "好好好，知道了。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "yuika",
+      "text": "什……！那个、一脸从容的大哥的样子，我很不喜欢哦……！？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "yuika",
+      "text": "……咳！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "yuika",
+      "text": "比起那个！制作人，你也该多点紧张感才对……！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "yuika",
+      "text": "就算在『W.I.N.G.』拿了优胜，也不能一直飘着哦？明白吗？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "是啊……想让更多人知道结华，今后也得努力才行。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "yuika",
+      "text": "唔，不行……！说什么都打不中——",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "yuika",
+      "text": "……啊，对了。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "怎么了？找到反击的线索了？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "yuika",
+      "text": "不是，不是那种。是有件事一直想说，结果忘光了。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "yuika",
+      "text": "——呐，制作人。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "yuika",
+      "text": "『W.I.N.G.』拿优胜这种事，一个人是做不到的。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "yuika",
+      "text": "一直支持我到这一步，真的非常感谢……我的制作人是你，真的太好了。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "yuika",
+      "text": "被发掘的那天，在那边躲雨的自己，我都想夸一夸。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "yuika",
+      "text": "到那种程度，和你相遇这件事，对我来说是幸运。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "yuika",
+      "text": "制作人，谢谢。还有今后，也请多指教。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "……诶？……啊，嗯，那个……我才是，请多指教……？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "yuika",
+      "text": "……噗。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "yuika",
+      "text": "……啊哈哈！Ｐたん，这个反应真的最棒了ー！",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "yuika",
+      "text": "吓到了？和平时的三峰不一样，吓到了？",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "yuika",
+      "text": "刚才是三峰被你捉弄的回礼——哎呀，你收得这么彻底，我真的很高兴。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "还以为你要说什么难得的话……结果还是和平时一样被捉弄了。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "yuika",
+      "text": "说什么捉弄，没有没有！万万不敢当！",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "yuika",
+      "text": "……不过，制作人刚才眼睛瞪得圆圆的，好有趣呢？",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "真是的……就用这股劲，今天的工作也拜托了。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "yuika",
+      "text": "OK，了解！也把三峰的气势分给大家吧！",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "yuika",
+      "text": "……啊，不过刚才那些，是真的哦？",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "……诶？",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "yuika",
+      "text": "哎呀制作人！比起那个，不快一点不行！",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "yuika",
+      "text": "下一份工作还在等着三峰她们哦？来，快点快点！",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "yuika",
+      "text": "不然的话，三峰会先走掉哦！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "yuika",
+      "text": "哼哼哼～♪ 下一份工作是什么呢——在哪儿呢——",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "看起来相当开心啊。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "yuika",
+      "text": "算吧！当偶像果然有很多让人兴奋的事嘛。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "yuika",
+      "text": "能见到各种偶像，看布景也很有意思！真是占便宜，太划算了～",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "而且，自己的工作也让你兴奋吧？",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "yuika",
+      "text": "嗯嗯，是啊——诶？",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "yuika",
+      "text": "诶！诶！？为什么……",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "看就知道。你工作的时候总是很开心。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "那不是从外面看着玩的开心，是把它当作自己的事在积累经验的人的脸，结华。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.yuika.second",
+  "idolId": "yuika",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "看这状态，也不像紧张。正式录的时候也这样——",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "yuika",
+      "text": "比起那个，制作人你听我说！刚才走廊上，有我在追的那个偶像！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "yuika",
+      "text": "好厉害啊……！会不会就在隔壁的棚……！万一运气好能打个招呼……！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……一点都不动摇啊……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "（……本来觉得她挺稳的，可能还是『客人』的意识更强。）",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "马上就要轮到你了。差不多该集中了。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "yuika",
+      "text": "咦？不接我的话啊……真是爱操心呢。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "yuika",
+      "text": "おっけおっけ，我知道的。切换很重要！……好，现在进入工作模式了！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "……你真的知道吧？虽然是新人，但结华已经是一个合格的——",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "（工作人员探头：三峰結華小姐，请准备。）",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "yuika",
+      "text": "哎呀呀，三峰被叫了。听不到宝贵的说教了，真遗憾呢……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "yuika",
+      "text": "我先走啦，Ｐたん！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "啊，喂——",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "没问题吧……？——我也得去棚里了。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "yuika",
+      "text": "呼，结束了结束了。制作人也辛苦了ー",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "yuika",
+      "text": "三峰的第一次广播，怎么样？",
+      "choices": [
+        {
+          "label": "很开心的节目。",
+          "nextNodeId": "30"
+        },
+        {
+          "label": "听着很放心。",
+          "nextNodeId": "40"
+        },
+        {
+          "label": "我笑得不行。",
+          "nextNodeId": "60"
+        }
+      ]
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "是我瞎担心了。对话也接得很好，结华自己也挺有把握吧？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "yuika",
+      "text": "怎么了制作人，这不是在猛夸我吗！等等等等，夸我也不会有什么好处哦ー？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "不是，真的。完全看不出来是第一次。也不像紧张。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "yuika",
+      "text": "比起紧张，是入迷的时候就已经结束了的感觉吧。很开心，但感觉还能多说一点。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "yuika",
+      "text": "变成只顾着回答主持人的提问了，下次我会做得更好。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "原来如此。结华自己也有要反省的地方啊。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "不过，第一次就能那么流畅地说，我觉得可以骄傲一下。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "yuika",
+      "text": "哦哦……反应这么好……！三峰，干脆走广播偶像路线也可以？"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "yuika",
+      "text": "哦，稳定感十足的三峰式谈话，制作人也给了好评？",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "是啊。……不过，你不听人说完就冲出去的时候，我还以为要出什么事。",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "开始之后，应答也很扎实，根本不用我担心。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "yuika",
+      "text": "那里嘛，我不是说了进入工作模式了？三峰看着这样，切换其实挺快的哦～",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "producer",
+      "text": "嗯，真的被惊到了。不愧是结华。",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "yuika",
+      "text": "哎ー，对吧对吧！三峰，觉得自己才能有点可怕呢！",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "yuika",
+      "text": "……刚才那些先当玩笑，不过这种工作，三峰觉得自己还挺适合的。",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "yuika",
+      "text": "所以，能不能多接一些这样的工作？",
+      "nextNodeId": "48"
+    },
+    "48": {
+      "id": "48",
+      "speakerId": "yuika",
+      "text": "啊！那干脆，和制作人一起开网络广播也行哦？",
+      "nextNodeId": "49"
+    },
+    "49": {
+      "id": "49",
+      "speakerId": "producer",
+      "text": "我出场算怎么回事……",
+      "nextNodeId": "50"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "producer",
+      "text": "不过，让 L'Antica 一起做倒是挺有意思的。"
+    },
+    "60": {
+      "id": "60",
+      "speakerId": "yuika",
+      "text": "诶，有那么夸张吗？",
+      "nextNodeId": "61"
+    },
+    "61": {
+      "id": "61",
+      "speakerId": "producer",
+      "text": "嗯，结华的反应太有趣了，我一直在笑。",
+      "nextNodeId": "62"
+    },
+    "62": {
+      "id": "62",
+      "speakerId": "yuika",
+      "text": "嗯ー……？有那么好笑的地方吗……？",
+      "nextNodeId": "63"
+    },
+    "63": {
+      "id": "63",
+      "speakerId": "yuika",
+      "text": "……哈！三峰，好像明白了！这是制作人式的体贴吧！？",
+      "nextNodeId": "64"
+    },
+    "64": {
+      "id": "64",
+      "speakerId": "producer",
+      "text": "没那回事，真的很好。",
+      "nextNodeId": "65"
+    },
+    "65": {
+      "id": "65",
+      "speakerId": "yuika",
+      "text": "是不是说得太夸张了？太宠我可不好哦ー？",
+      "nextNodeId": "66"
+    },
+    "66": {
+      "id": "66",
+      "speakerId": "producer",
+      "text": "这次不是我，是结华在爱操心啊。",
+      "nextNodeId": "67"
+    },
+    "67": {
+      "id": "67",
+      "speakerId": "yuika",
+      "text": "……原来如此。既然你都说到这份上了，这次就这么算了吧！",
+      "nextNodeId": "68"
+    },
+    "68": {
+      "id": "68",
+      "speakerId": "yuika",
+      "text": "好——！下次要让三峰也能心服口服地，把制作人笑到肚子疼！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "最后确认一下。今天的工作是在广播节目里的一个环节。",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "yuika",
+      "text": "宣传 L'Antica，我会做得漂漂亮亮的吧？交给我交给我。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "yuika",
+      "text": "……话说回来，能上广播这种事，总觉得真的像偶像了呢ー",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "都到现在了还说什么。不是『像』，你就是偶像。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "yuika",
+      "text": "不不，三峰还没放弃『其实是整人节目』的说法，所以随时被揭穿都做好心理准备了。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "如果真是整人节目，最吃惊的是我。我挖人的理由也没了。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "……今天是一个人上的工作，能行吗？",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "yuika",
+      "text": "总是大家一起，你担心过头啦，制作人。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "yuika",
+      "text": "那这样，三峰一个人就不行——诶，被看穿了～！",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.yuika.shop",
+  "idolId": "yuika",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "这里是杂货店啊……哦，还卖眼镜。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "结华的话，实用也是需要的，但从时尚的角度看也很重要吧……？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "yuika",
+      "text": "哦！制作人眼光不错嘛～！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "yuika",
+      "text": "眼镜换一副，印象会变很多，所以很重要哦。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "这样啊……",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "yuika",
+      "text": "毕竟，三峰要是换了副眼镜，不就完全变个人了？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "原来如此……？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "yuika",
+      "text": "啊。制作人完全没 get 到吧？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "yuika",
+      "text": "来啦来啦，看好了——",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "yuika",
+      "text": "当当～！怎么样？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "哦……挺合适的。这个镜框，猫的形状……吧？嗯，不错。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "yuika",
+      "text": "对对！很有趣吧～？戴上这个，就能带着两只猫走路了！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "yuika",
+      "text": "而且，这个和平时那副，感觉看起来不一样吧？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "是啊，确实挺少见。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "yuika",
+      "text": "您能明白就好。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "左右颜色不同，也是重点吗？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "yuika",
+      "text": "理解得真快呢Ｐくん，很好～答案是 YES！可爱吧？",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "嗯。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "yuika",
+      "text": "哦？制作人也喜欢这个？要不要戴戴看？",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "我、我就不用了。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "yuika",
+      "text": "哎呀呀，真遗憾。我还以为能凑成一对呢。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "yuika",
+      "text": "……啊，那那边的眼镜呢？看起来挺适合你的吧？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "不，等等，结华……！",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "yuika",
+      "text": "哈——好开心！和制作人一起逛店，可不常有！",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "结华也开心就好。陪我逛，帮大忙了。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "今天没逛完，不过也有收获……时尚真是深奥啊。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "yuika",
+      "text": "噗……啊哈哈！制作人，太认真了！",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "是吗？……总之，下次还得来学。你有空的话，还想请你陪我。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "yuika",
+      "text": "好好好，ｏｋ。三峰也觉得挺有意思的。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "yuika",
+      "text": "……啊，对了。那就布置个作业，到下次来之前。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "yuika",
+      "text": "三峰觉得最适合的眼镜是哪副，制作人你自己想想看！",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "（……结果一路上都是她在带我。回去的路上，她一直在说镜框的事。）"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（哦……！现在的女孩子都在这种地方买东西吗……！）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "yuika",
+      "text": "当然！……重新看一遍，还是好厉害呢。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "……果然请你带路是对的。一个人来，我可能就有点缩了。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "yuika",
+      "text": "偶尔也得孝敬一下制作人嘛。这也算偶像的职责？",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "yuika",
+      "text": "……不过，『想学习最近的时尚』，制作人还真是认真啊。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "是工作需要的。我对流行也不算了解，得好好看看。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "yuika",
+      "text": "哦哦，很有制作人的发言！不愧是！那赶紧走吧！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "从哪儿开始逛好呢……？",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "yuika",
+      "text": "不用想那么复杂也没关系，总之，随心所欲！",
+      "nextNodeId": "10"
+    }
+  }
 }
 ],
   storyChains: [],
@@ -14495,6 +16154,90 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "sakuya",
   "label": "今天",
   "text": "「今天？本来打算第一个到的。看来我又来早过头了。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "yuika.chat.baito",
+  "actorId": "yuika",
+  "label": "打工",
+  "text": "「打工我只接单发的。被绑在某一家，会觉得有点……麻烦嘛。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "yuika.chat.glasses",
+  "actorId": "yuika",
+  "label": "眼镜",
+  "text": "「眼镜嘛，换一副就像换个人。……不过被认出来比较开心，所以还是常用这副。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "yuika.chat.goods",
+  "actorId": "yuika",
+  "label": "周边",
+  "text": "「这枚徽章是限定款。捡到的那天，我还以为运气用光了呢。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "yuika.chat.home",
+  "actorId": "yuika",
+  "label": "老家",
+  "text": "「老家在福岛。……嗯，回去一趟挺远的，所以我妈都是过来看我。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "yuika.chat.idol",
+  "actorId": "yuika",
+  "label": "偶像",
+  "text": "「我是先当观众，才站到这边的。所以台下的人在喊什么，我大概都知道。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "yuika.chat.today",
+  "actorId": "yuika",
+  "label": "今天",
+  "text": "「今天？课上完了就来啦。……诶，你说我看起来有点困？那是、那是你看错了啦～」",
   "cooldownMinutes": 1440,
   "effects": [
     {

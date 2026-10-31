@@ -2,7 +2,7 @@
   "id": "draft.yuika.chat.home",
   "kind": "topic",
   "title": "聊天 · 老家",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.yuika.chat.home",
   "payload": {
@@ -11,12 +11,27 @@
     "label": "老家",
     "text": "「老家在福岛。……嗯，回去一趟挺远的，所以我妈都是过来看我。」",
     "cooldownMinutes": 1440,
-    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:34:00.000Z",
-  "updatedAt": "2026-11-02T01:34:00.000Z",
+  "updatedAt": "2026-10-31T16:04:44.526Z",
+  "reviewedAt": "2026-10-31T16:04:44.526Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:34:00.000Z", "note": "結華日常话题（1007005030190 / 1007005050130）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:34:00.000Z",
+      "note": "結華日常话题（1007005030190 / 1007005050130）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:44.526Z"
+    }
   ]
 }

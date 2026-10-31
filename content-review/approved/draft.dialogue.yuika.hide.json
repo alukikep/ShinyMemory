@@ -2,7 +2,7 @@
   "id": "draft.dialogue.yuika.hide",
   "kind": "dialogue",
   "title": "练习室里有人在听 CD",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.yuika.hide",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "yuika",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（……哦，是结华。在自主练习吗？）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "结华，辛苦了。",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "yuika",
-        "text": "……哼哼哼……♪",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "？结华——",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "（没注意到啊，怎么了……？）",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "……结华？喂——",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "yuika",
-        "text": "……诶，制作人！？吓我一跳……！",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "yuika",
-        "text": "怎么啦怎么啦，突然？有事吗？抱歉，我完全没听到……",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "啊，抱歉，你在听音乐啊。是我打扰了。没什么事，只是看到你了。",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "yuika",
@@ -117,9 +63,18 @@
         "speakerId": "yuika",
         "text": "三峰喜欢的东西，说出来也没什么意思吧。",
         "choices": [
-          { "label": "没那回事。", "nextNodeId": "20" },
-          { "label": "作为制作人，我想知道。", "nextNodeId": "30" },
-          { "label": "不了解别的偶像可不行。", "nextNodeId": "40" }
+          {
+            "label": "没那回事。",
+            "nextNodeId": "20"
+          },
+          {
+            "label": "作为制作人，我想知道。",
+            "nextNodeId": "30"
+          },
+          {
+            "label": "不了解别的偶像可不行。",
+            "nextNodeId": "40"
+          }
         ]
       },
       "20": {
@@ -322,13 +277,76 @@
         "id": "53",
         "speakerId": "yuika",
         "text": "当作赔礼吧，三峰喜欢的偶像的事，我告诉你。"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（……哦，是结华。在自主练习吗？）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "结华，辛苦了。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "yuika",
+        "text": "……哼哼哼……♪",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "？结华——",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "（没注意到啊，怎么了……？）",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "……结华？喂——",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "yuika",
+        "text": "……诶，制作人！？吓我一跳……！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "yuika",
+        "text": "怎么啦怎么啦，突然？有事吗？抱歉，我完全没听到……",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "啊，抱歉，你在听音乐啊。是我打扰了。没什么事，只是看到你了。",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:15:00.000Z",
-  "updatedAt": "2026-11-02T01:15:00.000Z",
+  "updatedAt": "2026-10-31T16:04:37.061Z",
+  "reviewedAt": "2026-10-31T16:04:37.061Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:15:00.000Z", "note": "对照 200700302 改编，保留三个选项" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:15:00.000Z",
+      "note": "对照 200700302 改编，保留三个选项"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:37.061Z"
+    }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.dialogue.yuika.second",
   "kind": "dialogue",
   "title": "她第一次进录音间",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.yuika.second",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "yuika",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "最后确认一下。今天的工作是在广播节目里的一个环节。",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "yuika",
-        "text": "宣传 L'Antica，我会做得漂漂亮亮的吧？交给我交给我。",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "yuika",
-        "text": "……话说回来，能上广播这种事，总觉得真的像偶像了呢ー",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "都到现在了还说什么。不是『像』，你就是偶像。",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "yuika",
-        "text": "不不，三峰还没放弃『其实是整人节目』的说法，所以随时被揭穿都做好心理准备了。",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "如果真是整人节目，最吃惊的是我。我挖人的理由也没了。",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "producer",
-        "text": "……今天是一个人上的工作，能行吗？",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "yuika",
-        "text": "总是大家一起，你担心过头啦，制作人。",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "yuika",
-        "text": "那这样，三峰一个人就不行——诶，被看穿了～！",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "producer",
@@ -159,9 +105,18 @@
         "speakerId": "yuika",
         "text": "三峰的第一次广播，怎么样？",
         "choices": [
-          { "label": "很开心的节目。", "nextNodeId": "30" },
-          { "label": "听着很放心。", "nextNodeId": "40" },
-          { "label": "我笑得不行。", "nextNodeId": "60" }
+          {
+            "label": "很开心的节目。",
+            "nextNodeId": "30"
+          },
+          {
+            "label": "听着很放心。",
+            "nextNodeId": "40"
+          },
+          {
+            "label": "我笑得不行。",
+            "nextNodeId": "60"
+          }
         ]
       },
       "30": {
@@ -328,13 +283,76 @@
         "id": "68",
         "speakerId": "yuika",
         "text": "好——！下次要让三峰也能心服口服地，把制作人笑到肚子疼！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "最后确认一下。今天的工作是在广播节目里的一个环节。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "yuika",
+        "text": "宣传 L'Antica，我会做得漂漂亮亮的吧？交给我交给我。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "yuika",
+        "text": "……话说回来，能上广播这种事，总觉得真的像偶像了呢ー",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "都到现在了还说什么。不是『像』，你就是偶像。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "yuika",
+        "text": "不不，三峰还没放弃『其实是整人节目』的说法，所以随时被揭穿都做好心理准备了。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "如果真是整人节目，最吃惊的是我。我挖人的理由也没了。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "……今天是一个人上的工作，能行吗？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "yuika",
+        "text": "总是大家一起，你担心过头啦，制作人。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "yuika",
+        "text": "那这样，三峰一个人就不行——诶，被看穿了～！",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:05:00.000Z",
-  "updatedAt": "2026-11-02T01:05:00.000Z",
+  "updatedAt": "2026-10-31T16:04:35.991Z",
+  "reviewedAt": "2026-10-31T16:04:35.991Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:05:00.000Z", "note": "对照 100700102 改编，保留三个选项" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:05:00.000Z",
+      "note": "对照 100700102 改编，保留三个选项"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:35.991Z"
+    }
   ]
 }

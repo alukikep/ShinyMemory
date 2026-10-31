@@ -2,7 +2,7 @@
   "id": "draft.dialogue.yuika.live",
   "kind": "dialogue",
   "title": "优胜之后她还有工作",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.yuika.live",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "yuika",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "yuika",
-        "text": "哼哼哼～♪ 下一份工作是什么呢——在哪儿呢——",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "看起来相当开心啊。",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "yuika",
-        "text": "算吧！当偶像果然有很多让人兴奋的事嘛。",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "yuika",
-        "text": "能见到各种偶像，看布景也很有意思！真是占便宜，太划算了～",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "而且，自己的工作也让你兴奋吧？",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "yuika",
-        "text": "嗯嗯，是啊——诶？",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "yuika",
-        "text": "诶！诶！？为什么……",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "producer",
-        "text": "看就知道。你工作的时候总是很开心。",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "那不是从外面看着玩的开心，是把它当作自己的事在积累经验的人的脸，结华。",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "yuika",
@@ -278,13 +224,76 @@
         "id": "45",
         "speakerId": "yuika",
         "text": "不然的话，三峰会先走掉哦！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "yuika",
+        "text": "哼哼哼～♪ 下一份工作是什么呢——在哪儿呢——",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "看起来相当开心啊。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "yuika",
+        "text": "算吧！当偶像果然有很多让人兴奋的事嘛。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "yuika",
+        "text": "能见到各种偶像，看布景也很有意思！真是占便宜，太划算了～",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "而且，自己的工作也让你兴奋吧？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "yuika",
+        "text": "嗯嗯，是啊——诶？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "yuika",
+        "text": "诶！诶！？为什么……",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "看就知道。你工作的时候总是很开心。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "那不是从外面看着玩的开心，是把它当作自己的事在积累经验的人的脸，结华。",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:20:00.000Z",
-  "updatedAt": "2026-11-02T01:20:00.000Z",
+  "updatedAt": "2026-10-31T16:04:37.119Z",
+  "reviewedAt": "2026-10-31T16:04:37.119Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:20:00.000Z", "note": "对照 200700311 改编" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:20:00.000Z",
+      "note": "对照 200700311 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:37.119Z"
+    }
   ]
 }

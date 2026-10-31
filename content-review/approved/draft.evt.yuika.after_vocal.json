@@ -2,15 +2,23 @@
   "id": "draft.evt.yuika.after_vocal",
   "kind": "event",
   "title": "高音溜走了",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.yuika.after_vocal",
   "payload": {
     "id": "evt.yuika.after_vocal",
     "title": "高音溜走了",
     "when": [],
-    "after": { "ids": ["vocal"] },
-    "afterIdol": { "ids": ["yuika"] },
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "yuika"
+      ]
+    },
     "chance": 0.4,
     "priority": 5,
     "once": true,
@@ -20,8 +28,16 @@
         "label": "低音那段很好。",
         "hint": "信任 +3、歌唱 +1",
         "effects": [
-          { "kind": "attributeExp", "ref": "trust", "tier": 3 },
-          { "kind": "attributeExp", "ref": "vocal", "tier": 1 }
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          }
         ],
         "result": "「低音？哦，那是我擅长的部分嘛。……不过被夸还是开心，谢谢。」"
       },
@@ -29,23 +45,46 @@
         "label": "再来一次。",
         "hint": "歌唱 +1、压力 +2",
         "effects": [
-          { "kind": "attributeExp", "ref": "vocal", "tier": 1 },
-          { "kind": "sharedStat", "stat": "stress", "delta": 2 }
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
         ],
         "result": "「好，再来一次。」第二次她上去了，然后小声说「……刚刚那一口气，差点没接上」。"
       },
       {
         "label": "先喝口水吧。",
         "hint": "压力 -3",
-        "effects": [{ "kind": "sharedStat", "stat": "stress", "delta": -3 }],
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
         "result": "「谢谢……啊，被照顾了。平常都是我在照顾人的说。」"
       }
     ]
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:40:00.000Z",
-  "updatedAt": "2026-11-02T01:40:00.000Z",
+  "updatedAt": "2026-10-31T16:04:43.246Z",
+  "reviewedAt": "2026-10-31T16:04:43.246Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:40:00.000Z", "note": "結華声乐课后事件（100700504 基础不足的自觉）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:40:00.000Z",
+      "note": "結華声乐课后事件（100700504 基础不足的自觉）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:43.246Z"
+    }
   ]
 }

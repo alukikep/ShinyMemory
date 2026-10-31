@@ -2,7 +2,7 @@
   "id": "draft.yuika.chat.glasses",
   "kind": "topic",
   "title": "聊天 · 眼镜",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.yuika.chat.glasses",
   "payload": {
@@ -11,12 +11,27 @@
     "label": "眼镜",
     "text": "「眼镜嘛，换一副就像换个人。……不过被认出来比较开心，所以还是常用这副。」",
     "cooldownMinutes": 1440,
-    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:32:00.000Z",
-  "updatedAt": "2026-11-02T01:32:00.000Z",
+  "updatedAt": "2026-10-31T16:04:45.510Z",
+  "reviewedAt": "2026-10-31T16:04:45.510Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:32:00.000Z", "note": "結華日常话题（2007003010070/0080）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:32:00.000Z",
+      "note": "結華日常话题（2007003010070/0080）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:45.510Z"
+    }
   ]
 }

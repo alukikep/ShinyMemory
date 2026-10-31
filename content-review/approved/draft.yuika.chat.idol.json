@@ -2,7 +2,7 @@
   "id": "draft.yuika.chat.idol",
   "kind": "topic",
   "title": "聊天 · 偶像",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.yuika.chat.idol",
   "payload": {
@@ -11,12 +11,27 @@
     "label": "偶像",
     "text": "「我是先当观众，才站到这边的。所以台下的人在喊什么，我大概都知道。」",
     "cooldownMinutes": 1440,
-    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
   },
   "annotations": [],
   "createdAt": "2026-11-02T01:35:00.000Z",
-  "updatedAt": "2026-11-02T01:35:00.000Z",
+  "updatedAt": "2026-10-31T16:04:43.925Z",
+  "reviewedAt": "2026-10-31T16:04:43.925Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T01:35:00.000Z", "note": "結華日常话题（100700101 / 200700311）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T01:35:00.000Z",
+      "note": "結華日常话题（100700101 / 200700311）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T16:04:43.925Z"
+    }
   ]
 }

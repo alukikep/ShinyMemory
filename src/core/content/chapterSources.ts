@@ -166,4 +166,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: '柔らかな微笑み', index: 1, total: 5 },
     anchors: ['2002004010010', '2002004010130', '2002004010250'],
   },
+  {
+    chapterId: 'kiriko-hand',
+    script: '200800301',
+    source: '剧本 200800301',
+    card: { title: '包・帯・組・曲', index: 1, total: 3 },
+    anchors: ['2008003010010', '2008003010140', '2008003010210'],
+  },
+  {
+    chapterId: 'kiriko-worry',
+    script: '200800302',
+    source: '剧本 200800302',
+    card: { title: '包・帯・組・曲', index: 2, total: 3 },
+    anchors: ['2008003020050', '2008003020080', '2008003020360'],
+  },
+  {
+    chapterId: 'kiriko-charm',
+    script: '200800311',
+    source: '剧本 200800311',
+    card: { title: '包・帯・組・曲', index: 3, total: 3 },
+    anchors: ['2008003110110', '2008003110140', '2008003110200'],
+  },
 ];

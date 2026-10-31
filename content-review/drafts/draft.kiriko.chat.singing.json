@@ -1,0 +1,22 @@
+{
+  "id": "draft.kiriko.chat.singing",
+  "kind": "topic",
+  "title": "聊天 · 唱歌",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kiriko.chat.singing",
+  "payload": {
+    "id": "kiriko.chat.singing",
+    "actorId": "kiriko",
+    "label": "唱歌的事",
+    "text": "「唱歌……喜欢……听着听着，就会忘了紧张……」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:40:00.000Z",
+  "updatedAt": "2026-10-31T23:40:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-10-31T23:40:00.000Z", "note": "霧子日常话题（唱歌/100800502）" }
+  ]
+}

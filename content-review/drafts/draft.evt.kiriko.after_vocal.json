@@ -1,0 +1,48 @@
+{
+  "id": "draft.evt.kiriko.after_vocal",
+  "kind": "event",
+  "title": "声音太小了",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.kiriko.after_vocal",
+  "payload": {
+    "id": "evt.kiriko.after_vocal",
+    "title": "声音太小了",
+    "when": [],
+    "after": { "ids": ["vocal"] },
+    "afterIdol": { "ids": ["kiriko"] },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束了。她站在谱架前，嘴唇动了几下，但没有发出声音。",
+    "choices": [
+      {
+        "label": "让她再唱一遍",
+        "hint": "信任 +3、歌唱 +1",
+        "effects": [
+          { "kind": "attributeExp", "ref": "trust", "tier": 3 },
+          { "kind": "attributeExp", "ref": "vocal", "tier": 1 }
+        ],
+        "result": "「……好、好的……！」她吸了一口气，这次声音一直唱到了最后。"
+      },
+      {
+        "label": "问她喜欢什么歌",
+        "hint": "信任 +1",
+        "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }],
+        "result": "「喜欢的歌……有很多……不过，唱的时候会忘记紧张……所以，喜欢。」"
+      },
+      {
+        "label": "让她先歇一会儿",
+        "hint": "压力 -3",
+        "effects": [{ "kind": "sharedStat", "stat": "stress", "delta": -3 }],
+        "result": "「……好。」她把谱架合上，抱着膝盖坐在墙边，很小声地哼了一段。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:40:00.000Z",
+  "updatedAt": "2026-10-31T23:40:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-10-31T23:40:00.000Z", "note": "霧子声乐课后事件" }
+  ]
+}

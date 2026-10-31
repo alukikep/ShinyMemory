@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kiriko.second",
   "kind": "dialogue",
   "title": "清晨的练习室",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kiriko.second",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "kiriko",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（嗯？练习室里好像有人。）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "kiriko",
-        "text": "……きゅっきゅ♪",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "kiriko",
-        "text": "……ごし、ごし♪",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "早上好，霧子。怎么这么早？今天应该没有早课。",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "其他人好像也还没到——",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "kiriko",
-        "text": "……あ、制作人先生。お、おはようございます……！",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "kiriko",
-        "text": "我、我稍微早到了一点……！",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "producer",
-        "text": "所以……你在打扫？",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "kiriko",
-        "text": "是、是的……我想，大家能舒舒服服地练习就好了……",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "producer",
@@ -267,17 +213,76 @@
         "id": "41",
         "speakerId": "producer",
         "text": "（她小声重复了一遍，然后把抹布重新叠好。）"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（嗯？练习室里好像有人。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kiriko",
+        "text": "……きゅっきゅ♪",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kiriko",
+        "text": "……ごし、ごし♪",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "早上好，霧子。怎么这么早？今天应该没有早课。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "其他人好像也还没到——",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kiriko",
+        "text": "……あ、制作人先生。お、おはようございます……！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "kiriko",
+        "text": "我、我稍微早到了一点……！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "所以……你在打扫？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kiriko",
+        "text": "是、是的……我想，大家能舒舒服服地练习就好了……",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-10-31T23:00:00.000Z",
-  "updatedAt": "2026-10-31T23:00:00.000Z",
+  "updatedAt": "2026-10-31T15:00:30.037Z",
+  "reviewedAt": "2026-10-31T15:00:30.037Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T23:00:00.000Z",
       "note": "对照 100800102 改编，保留原作的三个选项"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:00:30.037Z"
     }
   ]
 }

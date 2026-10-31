@@ -1,0 +1,22 @@
+{
+  "id": "draft.kiriko.chat.bandage",
+  "kind": "topic",
+  "title": "聊天 · 那个绷带是",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kiriko.chat.bandage",
+  "payload": {
+    "id": "kiriko.chat.bandage",
+    "actorId": "kiriko",
+    "label": "那个绷带是",
+    "text": "「这个……是护身符一样的东西……缠着的话，会比较安心……」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:40:00.000Z",
+  "updatedAt": "2026-10-31T23:40:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-10-31T23:40:00.000Z", "note": "霧子日常话题" }
+  ]
+}

@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kiriko.first",
   "kind": "dialogue",
   "title": "会客室里的绷带",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kiriko.first",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "kiriko",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（今天起就要带偶像了。听说她已经在会客室等着——）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "（……门开了一条缝。）",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "kiriko",
-        "text": "……嗯、嗯……",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "kiriko",
-        "text": "……好了……！……呵呵，绷带，这次卷得比平时好一点……♪",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "kiriko",
-        "text": "……啊……",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "（……啊，不小心看入神了。）抱歉，没敲门就进来了。我是——",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "kiriko",
-        "text": "プ、プロデューサー……さん……",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "producer",
-        "text": "幽谷霧子小姐，对吧？从试镜那天之后就没见了。",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "kiriko",
-        "text": "……！你、你还记得我的名字呢……",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "producer",
@@ -152,17 +98,76 @@
         "id": "24",
         "speakerId": "producer",
         "text": "（绷带缠得那么认真……她说的「安心」，大概不是随口说的。）"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（今天起就要带偶像了。听说她已经在会客室等着——）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（……门开了一条缝。）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kiriko",
+        "text": "……嗯、嗯……",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kiriko",
+        "text": "……好了……！……呵呵，绷带，这次卷得比平时好一点……♪",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "kiriko",
+        "text": "……啊……",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "（……啊，不小心看入神了。）抱歉，没敲门就进来了。我是——",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "kiriko",
+        "text": "プ、プロデューサー……さん……",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "幽谷霧子小姐，对吧？从试镜那天之后就没见了。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kiriko",
+        "text": "……！你、你还记得我的名字呢……",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-10-31T23:00:00.000Z",
-  "updatedAt": "2026-10-31T23:00:00.000Z",
+  "updatedAt": "2026-10-31T15:00:28.277Z",
+  "reviewedAt": "2026-10-31T15:00:28.277Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T23:00:00.000Z",
       "note": "对照 100800101 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:00:28.277Z"
     }
   ]
 }

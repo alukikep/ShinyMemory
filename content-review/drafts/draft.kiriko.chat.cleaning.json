@@ -1,0 +1,22 @@
+{
+  "id": "draft.kiriko.chat.cleaning",
+  "kind": "topic",
+  "title": "聊天 · 为什么那么早来",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kiriko.chat.cleaning",
+  "payload": {
+    "id": "kiriko.chat.cleaning",
+    "actorId": "kiriko",
+    "label": "为什么那么早来",
+    "text": "「早点来……可以先把地擦干净……大家来的时候，就能直接开始……」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:40:00.000Z",
+  "updatedAt": "2026-10-31T23:40:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-10-31T23:40:00.000Z", "note": "霧子日常话题（100800102）" }
+  ]
+}

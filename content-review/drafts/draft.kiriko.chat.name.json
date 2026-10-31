@@ -1,0 +1,22 @@
+{
+  "id": "draft.kiriko.chat.name",
+  "kind": "topic",
+  "title": "聊天 · 名字",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kiriko.chat.name",
+  "payload": {
+    "id": "kiriko.chat.name",
+    "actorId": "kiriko",
+    "label": "被记住的名字",
+    "text": "「被人记住名字……是那么让人高兴的事啊……我，之前不知道……」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:40:00.000Z",
+  "updatedAt": "2026-10-31T23:40:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-10-31T23:40:00.000Z", "note": "霧子日常话题（100800101 名字）" }
+  ]
+}

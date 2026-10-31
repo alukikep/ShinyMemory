@@ -1,0 +1,377 @@
+{
+  "id": "draft.dialogue.kiriko.worry",
+  "kind": "dialogue",
+  "title": "她看出你有点累",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.kiriko.worry",
+  "payload": {
+    "id": "dialogue.kiriko.worry",
+    "idolId": "kiriko",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（……呼。果然不休息还是不行，身体动不起来。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kiriko",
+        "text": "……制作人先生？早上好……！",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "啊，早上好，霧子。状态怎么样？",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kiriko",
+        "text": "……是的，没问题……！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "那就好。就算是小事，有什么也一定要说。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kiriko",
+        "text": "好……谢谢您……那个……那、那么……",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "怎么了，这么快就有事？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kiriko",
+        "text": "……",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "……嗯？怎么了，霧子？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "kiriko",
+        "text": "那个……制作人先生……您是不是有点累……？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "kiriko",
+        "text": "如、如果是我多想了……对不起……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "……嗯，不愧是霧子。本来想藏着的……是有点。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "kiriko",
+        "text": "果然……是这样……您脸色比平时……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "kiriko",
+        "text": "那个、那个……！今天还是休息一下比较好……！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "（她是认真在担心我。……那就——）",
+        "choices": [
+          {
+            "label": "我去买点营养饮料。",
+            "nextNodeId": "20"
+          },
+          {
+            "label": "当休息，去散散步吧。",
+            "nextNodeId": "40"
+          },
+          {
+            "label": "那就稍微休息一下吧。",
+            "nextNodeId": "60"
+          }
+        ]
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "……让你担心了，抱歉。我去买点营养饮料。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "kiriko",
+        "text": "那、那么，我也……一起去……！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "kiriko",
+        "text": "只买营养饮料……我不放心……还得买点正经的营养食品……！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "kiriko",
+        "text": "如果可以……也让我来选……！",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "也好……就当换换心情。一起去吧？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "kiriko",
+        "text": "好……！……人、人好多……制作人先生，那、那边……！要撞上了……！",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "哈哈，不用那么拉……我看得到。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "kiriko",
+        "text": "可、可是……人这么多，走不直呢……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "顾虑太多反而会撞上哦……来，看前面。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "kiriko",
+        "text": "啊……！呜、对不起……",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "kiriko",
+        "text": "终于……到药局了……！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "嗯，有霧子在真是帮了大忙。来，帮我挑挑吧。"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "哈哈。该担心的是霧子那边吧……不过，难得，一起走走吧。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "……谢谢。",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "kiriko",
+        "text": "空气很好，心情也舒服呢……♪",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "嗯，出来是对的。（……啊，那边拴着一只大狗……绳子好像快开了？）",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "kiriko",
+        "text": "啊……危险！",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "kiriko",
+        "text": "呜、呜呜……制作人先生，请逃……！",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "producer",
+        "text": "霧、霧子……？",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "kiriko",
+        "text": "我、我在这里看着……制作人先生请继续散步……！",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "producer",
+        "text": "哈哈，哪有让偶像保护的制作人。（我伸手摸了摸狗的头）……没事，它很乖。",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "kiriko",
+        "text": "好、好厉害……制作人先生……完全没被咬……",
+        "nextNodeId": "50"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "kiriko",
+        "text": "呵呵……真可爱，尾巴在摇……好像很舒服……♪",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "producer",
+        "text": "霧子，谢谢。休息得很值。",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "kiriko",
+        "text": "真、真的吗……？帮上忙了吗……？",
+        "nextNodeId": "53"
+      },
+      "53": {
+        "id": "53",
+        "speakerId": "producer",
+        "text": "当然。特别安心。"
+      },
+      "60": {
+        "id": "60",
+        "speakerId": "producer",
+        "text": "……嗯，那就休息一下吧。",
+        "nextNodeId": "61"
+      },
+      "61": {
+        "id": "61",
+        "speakerId": "kiriko",
+        "text": "好……制作人先生……！",
+        "nextNodeId": "62"
+      },
+      "62": {
+        "id": "62",
+        "speakerId": "producer",
+        "text": "先眯一会儿好了。",
+        "nextNodeId": "63"
+      },
+      "63": {
+        "id": "63",
+        "speakerId": "kiriko",
+        "text": "那、那么……毯子、靠垫……还有贴在额头上的退热贴也有……！",
+        "nextNodeId": "64"
+      },
+      "64": {
+        "id": "64",
+        "speakerId": "kiriko",
+        "text": "请好好躺下休息……！",
+        "nextNodeId": "65"
+      },
+      "65": {
+        "id": "65",
+        "speakerId": "kiriko",
+        "text": "呃……这边这张沙发的话，可能能休息得更舒服……！",
+        "nextNodeId": "66"
+      },
+      "66": {
+        "id": "66",
+        "speakerId": "producer",
+        "text": "（霧子真是细心的孩子啊……）霧子，谢谢。不过不用做到这个地步。",
+        "nextNodeId": "67"
+      },
+      "67": {
+        "id": "67",
+        "speakerId": "kiriko",
+        "text": "不……有事的时候我会叫您的……请安心……休息……！",
+        "nextNodeId": "68"
+      },
+      "68": {
+        "id": "68",
+        "speakerId": "producer",
+        "text": "……嗯。不过霧子也别太勉强，坐下休息一会儿吧。",
+        "nextNodeId": "69"
+      },
+      "69": {
+        "id": "69",
+        "speakerId": "kiriko",
+        "text": "好、好的……",
+        "nextNodeId": "70"
+      },
+      "70": {
+        "id": "70",
+        "speakerId": "kiriko",
+        "text": "啊……对、对不起……！不自觉地……坐到旁边了……！",
+        "nextNodeId": "71"
+      },
+      "71": {
+        "id": "71",
+        "speakerId": "producer",
+        "text": "哈哈，没关系，不用在意，歇着吧。",
+        "nextNodeId": "72"
+      },
+      "72": {
+        "id": "72",
+        "speakerId": "kiriko",
+        "text": "是、是吗……那么……",
+        "nextNodeId": "73"
+      },
+      "73": {
+        "id": "73",
+        "speakerId": "kiriko",
+        "text": "那么，毯子一起……",
+        "nextNodeId": "74"
+      },
+      "74": {
+        "id": "74",
+        "speakerId": "producer",
+        "text": "啊……抱歉，好像要睡着了。",
+        "nextNodeId": "75"
+      },
+      "75": {
+        "id": "75",
+        "speakerId": "kiriko",
+        "text": "今天……一天，我都在旁边……"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:30:00.000Z",
+  "updatedAt": "2026-10-31T23:30:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T23:30:00.000Z",
+      "note": "对照 200800302 改编，保留原作三个选项"
+    }
+  ]
+}

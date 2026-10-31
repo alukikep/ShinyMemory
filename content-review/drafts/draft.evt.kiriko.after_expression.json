@@ -1,0 +1,48 @@
+{
+  "id": "draft.evt.kiriko.after_expression",
+  "kind": "event",
+  "title": "对着镜子练笑",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.kiriko.after_expression",
+  "payload": {
+    "id": "evt.kiriko.after_expression",
+    "title": "对着镜子练笑",
+    "when": [],
+    "after": { "ids": ["expression"] },
+    "afterIdol": { "ids": ["kiriko"] },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表现课结束了，她还留在镜子前，对着自己练一个很小的笑。",
+    "choices": [
+      {
+        "label": "陪她一起练",
+        "hint": "信任 +3、表现 +1",
+        "effects": [
+          { "kind": "attributeExp", "ref": "trust", "tier": 3 },
+          { "kind": "attributeExp", "ref": "expression", "tier": 1 }
+        ],
+        "result": "「一起……吗……」她看着镜子里的两个人，笑了一下，这次是真的。"
+      },
+      {
+        "label": "告诉她现在的笑就很好",
+        "hint": "信任 +1",
+        "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }],
+        "result": "「现在……的……」她愣了一会儿，才慢慢把手从脸上放下来。"
+      },
+      {
+        "label": "让她早点回去休息",
+        "hint": "压力 -3",
+        "effects": [{ "kind": "sharedStat", "stat": "stress", "delta": -3 }],
+        "result": "「……好。那我，明天再来练。」她关灯之前，又回头看了一眼镜子。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:40:00.000Z",
+  "updatedAt": "2026-10-31T23:40:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-10-31T23:40:00.000Z", "note": "霧子表现课后事件" }
+  ]
+}

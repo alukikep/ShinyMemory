@@ -1,0 +1,22 @@
+{
+  "id": "draft.kiriko.chat.flowers",
+  "kind": "topic",
+  "title": "聊天 · 喜欢什么花",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kiriko.chat.flowers",
+  "payload": {
+    "id": "kiriko.chat.flowers",
+    "actorId": "kiriko",
+    "label": "喜欢什么花",
+    "text": "「花……都很可爱……不过，不用人管也能开的那种，我更喜欢……」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:40:00.000Z",
+  "updatedAt": "2026-10-31T23:40:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-10-31T23:40:00.000Z", "note": "霧子日常话题（花/200800301）" }
+  ]
+}

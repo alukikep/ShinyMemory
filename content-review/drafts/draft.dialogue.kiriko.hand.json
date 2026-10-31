@@ -1,0 +1,252 @@
+{
+  "id": "draft.dialogue.kiriko.hand",
+  "kind": "dialogue",
+  "title": "贩卖会前的绷带",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.kiriko.hand",
+  "payload": {
+    "id": "dialogue.kiriko.hand",
+    "idolId": "kiriko",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "kiriko",
+        "text": "哇……！这是 L'Antica 的新周边……呢……！",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "嗯，做得挺好的吧？今天贩卖会就要亮相了。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kiriko",
+        "text": "嗯……和想象的一样……！大家应该会喜欢的……",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "我先去准备。霧子再等一会儿就好。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "kiriko",
+        "text": "那个……如果不麻烦的话……",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kiriko",
+        "text": "我也……能帮忙吗……？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "本来想让你待机的……不过，只是简单的事的话没关系。谢谢。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kiriko",
+        "text": "好、好的……！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kiriko",
+        "text": "那个……这些花……要摆在哪里呢……？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "放在那边桌子旁边吧。……等等，这跟刚才的是同一种花吧？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "kiriko",
+        "text": "啊，那个……不一样的。虽然都是蔷薇科……但种类是──",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "……原来是这样。那就都放同一张桌子吧。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "kiriko",
+        "text": "……对、对不起……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "（……糟了，时间好像不够了。）",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "kiriko",
+        "text": "制作人先生，不好意思……又是我……这个架子要放在哪里……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "这种事你自己判断就好，不用每次都问我。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "kiriko",
+        "text": "可、可是……如果放错地方，会给您添麻烦的……",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "不会添麻烦。先按霧子觉得对的方式做做看。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "kiriko",
+        "text": "好、好的……我明白了……！",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "（……是不是说得太重了。她是在替我着想啊。）",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "……嘶、好痛。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "kiriko",
+        "text": "制作人先生……！怎么了……！血、流了好多……！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "没事，只是被刀划了一下而已。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "kiriko",
+        "text": "应、应急处理……！急救箱……还有湿毛巾……！",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "kiriko",
+        "text": "不、不行！万一细菌进去、变得更严重的话……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "kiriko",
+        "text": "……太好了，止住血了……",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "kiriko",
+        "text": "最后……把绷带缠上……这样……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "（动作很利落……霧子真厉害啊。）",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "kiriko",
+        "text": "痛痛……飞走吧……！",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "kiriko",
+        "text": "好、好了……！可能还会痛一会儿……",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "哦……缠得真漂亮。第一次因为绷带佩服一个人。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "kiriko",
+        "text": "没、没有那种事……不过……太好了……",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "……还有，刚才对不起。我有点急，话说重了。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "kiriko",
+        "text": "那、那种事……！",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "kiriko",
+        "text": "我……很多事情都做不好，所以……",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "kiriko",
+        "text": "现在只想着……制作人先生的伤能快点好起来……",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "kiriko",
+        "text": "不过……如果能帮上忙的话，我很高兴……♪",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "……嗯，真的帮了大忙。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:30:00.000Z",
+  "updatedAt": "2026-10-31T23:30:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T23:30:00.000Z",
+      "note": "对照 200800301 改编"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "id": "draft.dialogue.kiriko.charm",
+  "kind": "dialogue",
+  "title": "交流会结束以后",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.kiriko.charm",
+  "payload": {
+    "id": "dialogue.kiriko.charm",
+    "idolId": "kiriko",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "辛苦了，霧子。交流会气氛很好啊。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kiriko",
+        "text": "制作人先生……是的……谢谢您……！",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kiriko",
+        "text": "非常……开心……感觉和大家的心意也通了……",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "嗯，我也这么觉得。霧子成长了呢。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "（甚至有点寂寞。）",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kiriko",
+        "text": "那个，我马上收拾，可以等我一下吗……？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "没关系，之后没有安排，慢慢来。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kiriko",
+        "text": "好、好的……！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kiriko",
+        "text": "让、让您久等了……！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "啊……哈哈，不用那么急。那，我送你到车站——",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "……霧子？手臂上的创可贴，快掉了。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "kiriko",
+        "text": "……哇哇！真的……！那、那个，这是……",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "怎么了？……疼吗？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "kiriko",
+        "text": "没、没什么……！……请别在意。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "还是让我看看，我给你换一张。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "kiriko",
+        "text": "不、不能看……！",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "……？这不是伤，是字……？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "kiriko",
+        "text": "呜呜……",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "咦？这是……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "kiriko",
+        "text": "是……制作人先生的名字……",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "……原、原来。为什么写在那种地方？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "kiriko",
+        "text": "嗯、嗯……算是一种护身符……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "kiriko",
+        "text": "我把制作人先生的名字写上，用创可贴护着……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "kiriko",
+        "text": "这样……就觉得制作人先生一直在身边……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "kiriko",
+        "text": "紧张、不安……就会咻地消失……大舞台上也能笑着站住……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "kiriko",
+        "text": "擅自写了……对不起……",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "（做这种像咒语一样的事……霧子也在拼命努力啊。）",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "霧子，完全不用道歉。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "kiriko",
+        "text": "……真的吗……？不会觉得……不舒服吗……？",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "完全不会……为什么这么问？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "kiriko",
+        "text": "不会……变得讨厌我吗……？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "哈哈，怎么会……如果能鼓励到霧子，我很高兴。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "不过……就算不做这种事，我也会一直在霧子身边的。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "kiriko",
+        "text": "制作人先生……！我……",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "kiriko",
+        "text": "能被制作人先生找到……真的……太好了……",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "我也是，能遇见霧子真好。霧子，以后也一起加油吧。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "kiriko",
+        "text": "好、好的……！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T23:30:00.000Z",
+  "updatedAt": "2026-10-31T23:30:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T23:30:00.000Z",
+      "note": "对照 200800311 改编"
+    }
+  ]
+}

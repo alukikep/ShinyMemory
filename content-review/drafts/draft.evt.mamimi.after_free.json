@@ -1,0 +1,74 @@
+{
+  "id": "draft.evt.mamimi.after_free",
+  "kind": "event",
+  "title": "陪我去买个东西",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.mamimi.after_free",
+  "payload": {
+    "id": "evt.mamimi.after_free",
+    "title": "陪我去买个东西",
+    "when": [],
+    "after": {
+      "ids": [
+        "free"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mamimi"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "自由时间刚要开始，她就已经站在门口了：「制作人，陪我去个地方ー。」",
+    "choices": [
+      {
+        "label": "陪她去",
+        "hint": "信任 +3、压力 -3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "结果只是去买了个面包。她边走边吃，吃得很认真。"
+      },
+      {
+        "label": "问她去哪",
+        "hint": "信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「秘密ー。反正你也没事吧？」她笑了一下，先走了出去。"
+      },
+      {
+        "label": "说还有工作",
+        "hint": "没什么变化",
+        "effects": [],
+        "result": "「这样啊ー。」她摆摆手走了，脚步比刚才慢了一点。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:42:57.529Z",
+      "note": "摩美々事件"
+    }
+  ]
+}

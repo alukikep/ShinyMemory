@@ -1,6 +1,7 @@
 import { BASE_PACK } from '../src/core/content/basePack.js';
 import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
 import { buildContentIndex } from '../src/core/contentIndexCore.js';
+import { PENDING_CHAPTERS } from '../src/core/content/chapters/index.js';
 import { mergeApprovedContent } from '../src/review/approval.js';
 import { readApprovedDrafts } from './approvedFiles.js';
 
@@ -26,7 +27,19 @@ const merged = mergeApprovedContent(
     Object.fromEntries(approved.map(({ file, draft }) => [file, draft])),
   ),
 );
-const index = buildContentIndex(merged.pack);
+// 卡面/长线的链只在生产包里拼（对话是 approved 内容），
+// 覆盖率也得算上它们，否则"剧情链"永远是 0。
+const approvedDialogueIds = new Set(merged.pack.dialogues.map((d) => d.id));
+const pack = {
+  ...merged.pack,
+  storyChains: [
+    ...merged.pack.storyChains,
+    ...PENDING_CHAPTERS.filter((chain) =>
+      chain.steps.every((step) => approvedDialogueIds.has(step.dialogueId)),
+    ),
+  ],
+};
+const index = buildContentIndex(pack);
 
 function countFor(idolId: string): Map<string, number> {
   const counts = new Map<string, number>();

@@ -1,0 +1,32 @@
+{
+  "id": "draft.mamimi.chat.night",
+  "kind": "topic",
+  "title": "聊天 · 晚上在做什么",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mamimi.chat.night",
+  "payload": {
+    "id": "mamimi.chat.night",
+    "actorId": "mamimi",
+    "label": "晚上在做什么",
+    "text": "「晚上？在街上晃啊。夜里的街比较安静，也不会有人管我。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:42:57.529Z",
+      "note": "摩美々日常话题"
+    }
+  ]
+}

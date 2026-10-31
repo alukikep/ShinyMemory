@@ -1,0 +1,80 @@
+{
+  "id": "draft.evt.mamimi.after_dance",
+  "kind": "event",
+  "title": "跳得太随便了吧",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.mamimi.after_dance",
+  "payload": {
+    "id": "evt.mamimi.after_dance",
+    "title": "跳得太随便了吧",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mamimi"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她没有立刻停下，而是把那段又跳了一遍，动作比刚才随意得多。",
+    "choices": [
+      {
+        "label": "这遍比刚才好",
+        "hint": "信任 +3、舞蹈 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          }
+        ],
+        "result": "「……你这样说，我倒有点难跳了ー。」她嘴上抱怨，还是又跳了一遍。"
+      },
+      {
+        "label": "问她为什么改动作",
+        "hint": "信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「照老师说的跳很无聊啊ー。而且这样跳比较像我。」"
+      },
+      {
+        "label": "让她歇一会儿",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「好ー。」她直接坐在地板上，背靠着镜子。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:42:57.529Z",
+      "note": "摩美々事件"
+    }
+  ]
+}

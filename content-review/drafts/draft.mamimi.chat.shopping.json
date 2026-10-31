@@ -1,0 +1,32 @@
+{
+  "id": "draft.mamimi.chat.shopping",
+  "kind": "topic",
+  "title": "聊天 · 最近买了什么",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mamimi.chat.shopping",
+  "payload": {
+    "id": "mamimi.chat.shopping",
+    "actorId": "mamimi",
+    "label": "最近买了什么",
+    "text": "「没什么。看看而已ー……不过有时候看看就会想买。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:42:57.529Z",
+      "note": "摩美々日常话题"
+    }
+  ]
+}

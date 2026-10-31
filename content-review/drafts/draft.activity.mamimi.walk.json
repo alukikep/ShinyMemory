@@ -1,0 +1,63 @@
+{
+  "id": "draft.activity.mamimi.walk",
+  "kind": "activity",
+  "title": "陪她在街上走",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.mamimi.walk",
+  "payload": {
+    "id": "activity.mamimi.walk",
+    "name": "陪她在街上走",
+    "description": "她说随便走走，结果带着你拐进了一条没走过的小巷。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "mamimi"
+    ],
+    "locations": [
+      "shopping_street"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 960,
+        "toMinute": 1320
+      }
+    ],
+    "cost": {
+      "stamina": 7
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "expression",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -4
+      }
+    ],
+    "resultTexts": [
+      "她一路说着没什么意义的话，走到路口才停下来：「今天就到这吧ー。」",
+      "巷子里没有灯，她走在前面，回头看了一眼确认你还跟着。",
+      "她在一家关门的店前站了一会儿，说这条街她从小走到大。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:42:57.529Z",
+      "note": "摩美々专属行动（语气对照 100500101）"
+    }
+  ]
+}

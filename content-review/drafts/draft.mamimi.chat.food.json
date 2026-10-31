@@ -1,0 +1,32 @@
+{
+  "id": "draft.mamimi.chat.food",
+  "kind": "topic",
+  "title": "聊天 · 喜欢吃什么",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mamimi.chat.food",
+  "payload": {
+    "id": "mamimi.chat.food",
+    "actorId": "mamimi",
+    "label": "喜欢吃什么",
+    "text": "「那种可以边走边吃的。省事ー。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:42:57.529Z",
+      "note": "摩美々日常话题"
+    }
+  ]
+}

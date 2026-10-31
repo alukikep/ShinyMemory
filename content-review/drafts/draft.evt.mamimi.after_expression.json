@@ -1,0 +1,75 @@
+{
+  "id": "draft.evt.mamimi.after_expression",
+  "kind": "event",
+  "title": "表情太假了吧",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.mamimi.after_expression",
+  "payload": {
+    "id": "evt.mamimi.after_expression",
+    "title": "表情太假了吧",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mamimi"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束，她对着镜子练了几次笑，每次都在笑到一半的时候自己先放弃。",
+    "choices": [
+      {
+        "label": "刚才那个不怎么像你",
+        "hint": "信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……我也觉得。」她难得没有开玩笑，又对着镜子看了一会儿。"
+      },
+      {
+        "label": "问她平时怎么笑",
+        "hint": "信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「平时？平时不怎么笑啊ー。」她说得很干脆。"
+      },
+      {
+        "label": "不打扰她",
+        "hint": "压力 -2",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -2
+          }
+        ],
+        "result": "你在门口站了一会儿，她自己练完了才回头。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:42:57.529Z",
+      "note": "摩美々事件"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.mamimi.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天怎么样",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mamimi.chat.today",
+  "payload": {
+    "id": "mamimi.chat.today",
+    "actorId": "mamimi",
+    "label": "今天怎么样",
+    "text": "「今天啊ー……普通吧。普通得像没发生过一样。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:42:57.529Z",
+      "note": "摩美々日常话题"
+    }
+  ]
+}

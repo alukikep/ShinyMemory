@@ -1,0 +1,32 @@
+{
+  "id": "draft.mamimi.chat.school",
+  "kind": "topic",
+  "title": "聊天 · 学校怎么样",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mamimi.chat.school",
+  "payload": {
+    "id": "mamimi.chat.school",
+    "actorId": "mamimi",
+    "label": "学校怎么样",
+    "text": "「学校啊ー……去了啊。只是不太说话而已。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:42:57.529Z",
+      "note": "摩美々日常话题"
+    }
+  ]
+}

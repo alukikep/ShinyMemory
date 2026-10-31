@@ -1,0 +1,32 @@
+{
+  "id": "draft.mamimi.chat.dream",
+  "kind": "topic",
+  "title": "聊天 · 有想做的事吗",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mamimi.chat.dream",
+  "payload": {
+    "id": "mamimi.chat.dream",
+    "actorId": "mamimi",
+    "label": "有想做的事吗",
+    "text": "「想做的事？没有ー。……为什么那样看我？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T10:42:57.529Z",
+  "updatedAt": "2026-10-31T10:42:57.529Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T10:42:57.529Z",
+      "note": "摩美々日常话题"
+    }
+  ]
+}

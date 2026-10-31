@@ -2,15 +2,23 @@
   "id": "draft.evt.kiriko.after_dance",
   "kind": "event",
   "title": "动作记得很准",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.kiriko.after_dance",
   "payload": {
     "id": "evt.kiriko.after_dance",
     "title": "动作记得很准",
     "when": [],
-    "after": { "ids": ["dance"] },
-    "afterIdol": { "ids": ["kiriko"] },
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "kiriko"
+      ]
+    },
     "chance": 0.4,
     "priority": 5,
     "once": true,
@@ -20,29 +28,58 @@
         "label": "夸她动作很准",
         "hint": "信任 +3、舞蹈 +1",
         "effects": [
-          { "kind": "attributeExp", "ref": "trust", "tier": 3 },
-          { "kind": "attributeExp", "ref": "dance", "tier": 1 }
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          }
         ],
         "result": "「……诶……我、我吗……？」她低头看了看自己的脚，好像第一次确认它们真的动对了。"
       },
       {
         "label": "问她为什么站最后一排",
         "hint": "信任 +1",
-        "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }],
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
         "result": "「因为……站在前面的话，会挡到别人……」她说完，又补了一句，「……大概是，这样。」"
       },
       {
         "label": "让她别太绷着",
         "hint": "压力 -3",
-        "effects": [{ "kind": "sharedStat", "stat": "stress", "delta": -3 }],
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
         "result": "「好、好的……」她试着松了松肩膀，自己先笑了一下。"
       }
     ]
   },
   "annotations": [],
   "createdAt": "2026-10-31T23:40:00.000Z",
-  "updatedAt": "2026-10-31T23:40:00.000Z",
+  "updatedAt": "2026-10-31T15:06:36.243Z",
+  "reviewedAt": "2026-10-31T15:06:36.243Z",
   "history": [
-    { "status": "review", "at": "2026-10-31T23:40:00.000Z", "note": "霧子舞蹈课后事件" }
+    {
+      "status": "review",
+      "at": "2026-10-31T23:40:00.000Z",
+      "note": "霧子舞蹈课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:06:36.243Z"
+    }
   ]
 }

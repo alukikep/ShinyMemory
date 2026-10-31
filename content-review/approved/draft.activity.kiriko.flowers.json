@@ -2,7 +2,7 @@
   "id": "draft.activity.kiriko.flowers",
   "kind": "activity",
   "title": "陪她照顾花坛",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.kiriko.flowers",
   "payload": {
@@ -11,15 +11,38 @@
     "description": "医院中庭的花坛。她说这些花没人管也活得很好，但还是想来看看。",
     "kind": "bond",
     "target": "present-idol",
-    "idolIds": ["kiriko"],
-    "locations": ["hospital"],
+    "idolIds": [
+      "kiriko"
+    ],
+    "locations": [
+      "hospital"
+    ],
     "durationMinutes": 30,
-    "timeWindows": [{ "fromMinute": 1080, "toMinute": 1260 }],
-    "cost": { "stamina": 7 },
+    "timeWindows": [
+      {
+        "fromMinute": 1080,
+        "toMinute": 1260
+      }
+    ],
+    "cost": {
+      "stamina": 7
+    },
     "effects": [
-      { "kind": "attributeExp", "ref": "trust", "tier": 5 },
-      { "kind": "attributeExp", "ref": "expression", "tier": 1 },
-      { "kind": "sharedStat", "stat": "stress", "delta": -5 }
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "expression",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
     ],
     "resultTexts": [
       "她给花瓣上的灰一一擦掉，动作轻得像在碰什么会疼的东西。",
@@ -29,8 +52,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T23:40:00.000Z",
-  "updatedAt": "2026-10-31T23:40:00.000Z",
+  "updatedAt": "2026-10-31T15:06:35.162Z",
+  "reviewedAt": "2026-10-31T15:06:35.162Z",
   "history": [
-    { "status": "review", "at": "2026-10-31T23:40:00.000Z", "note": "霧子专属行动（花/医院，200800301 / 100800502）" }
+    {
+      "status": "review",
+      "at": "2026-10-31T23:40:00.000Z",
+      "note": "霧子专属行动（花/医院，200800301 / 100800502）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:06:35.162Z"
+    }
   ]
 }

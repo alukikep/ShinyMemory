@@ -32,7 +32,7 @@ eidolon-sc 的 facts 质量高、且每份配 `.sources.md`（记到"目录 / �
 - 想做别的卡：`curl 'https://api.shinycolors.moe/info/pCardInfo?cardId=<cardUuid>'`，
   `cardUuid` 从 `idolInfo` 的 `cardLists` 里挑，`cardIdolEvents[].eventId` 就是剧本编号。
 - 选卡建议：优先 **3 段以上**（commu + after story）的卡，内容量够一章一链。
-- 现有 4 人的实际改编卡与"首张卡"不完全一致（巡、摩美々），属于正常选择。
+- 现有 5 人的实际改编卡与"首张卡"不完全一致（巡、摩美々），属于正常选择。
 
 ## 4. 已知缺口
 

@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kiriko.worry",
   "kind": "dialogue",
   "title": "她看出你有点累",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kiriko.worry",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "kiriko",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（……呼。果然不休息还是不行，身体动不起来。）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "kiriko",
-        "text": "……制作人先生？早上好……！",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "啊，早上好，霧子。状态怎么样？",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "kiriko",
-        "text": "……是的，没问题……！",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "那就好。就算是小事，有什么也一定要说。",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "kiriko",
-        "text": "好……谢谢您……那个……那、那么……",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "producer",
-        "text": "怎么了，这么快就有事？",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "kiriko",
-        "text": "……",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "……嗯？怎么了，霧子？",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "kiriko",
@@ -361,17 +307,76 @@
         "id": "75",
         "speakerId": "kiriko",
         "text": "今天……一天，我都在旁边……"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（……呼。果然不休息还是不行，身体动不起来。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kiriko",
+        "text": "……制作人先生？早上好……！",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "啊，早上好，霧子。状态怎么样？",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kiriko",
+        "text": "……是的，没问题……！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "那就好。就算是小事，有什么也一定要说。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kiriko",
+        "text": "好……谢谢您……那个……那、那么……",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "怎么了，这么快就有事？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kiriko",
+        "text": "……",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "……嗯？怎么了，霧子？",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-10-31T23:30:00.000Z",
-  "updatedAt": "2026-10-31T23:30:00.000Z",
+  "updatedAt": "2026-10-31T15:06:32.739Z",
+  "reviewedAt": "2026-10-31T15:06:32.739Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T23:30:00.000Z",
       "note": "对照 200800302 改编，保留原作三个选项"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:06:32.739Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.kiriko.chat.hospital",
   "kind": "topic",
   "title": "聊天 · 医院",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.kiriko.chat.hospital",
   "payload": {
@@ -11,12 +11,27 @@
     "label": "医院的事",
     "text": "「医院的中庭……风很舒服……孩子们也会来，我就给他们念绘本……」",
     "cooldownMinutes": 1440,
-    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
   },
   "annotations": [],
   "createdAt": "2026-10-31T23:40:00.000Z",
-  "updatedAt": "2026-10-31T23:40:00.000Z",
+  "updatedAt": "2026-10-31T15:06:40.746Z",
+  "reviewedAt": "2026-10-31T15:06:40.746Z",
   "history": [
-    { "status": "review", "at": "2026-10-31T23:40:00.000Z", "note": "霧子日常话题（医院/100800502，绘本会待核）" }
+    {
+      "status": "review",
+      "at": "2026-10-31T23:40:00.000Z",
+      "note": "霧子日常话题（医院/100800502，绘本会待核）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:06:40.746Z"
+    }
   ]
 }

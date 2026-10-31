@@ -2,7 +2,7 @@
   "id": "draft.dialogue.kiriko.hand",
   "kind": "dialogue",
   "title": "贩卖会前的绷带",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.kiriko.hand",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "kiriko",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "kiriko",
-        "text": "哇……！这是 L'Antica 的新周边……呢……！",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "嗯，做得挺好的吧？今天贩卖会就要亮相了。",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "kiriko",
-        "text": "嗯……和想象的一样……！大家应该会喜欢的……",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "我先去准备。霧子再等一会儿就好。",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "kiriko",
-        "text": "那个……如果不麻烦的话……",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "kiriko",
-        "text": "我也……能帮忙吗……？",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "producer",
-        "text": "本来想让你待机的……不过，只是简单的事的话没关系。谢谢。",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "kiriko",
-        "text": "好、好的……！",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "kiriko",
-        "text": "那个……这些花……要摆在哪里呢……？",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "producer",
@@ -236,17 +182,76 @@
         "id": "38",
         "speakerId": "producer",
         "text": "……嗯，真的帮了大忙。"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "kiriko",
+        "text": "哇……！这是 L'Antica 的新周边……呢……！",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "嗯，做得挺好的吧？今天贩卖会就要亮相了。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kiriko",
+        "text": "嗯……和想象的一样……！大家应该会喜欢的……",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "我先去准备。霧子再等一会儿就好。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "kiriko",
+        "text": "那个……如果不麻烦的话……",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kiriko",
+        "text": "我也……能帮忙吗……？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "本来想让你待机的……不过，只是简单的事的话没关系。谢谢。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kiriko",
+        "text": "好、好的……！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kiriko",
+        "text": "那个……这些花……要摆在哪里呢……？",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-10-31T23:30:00.000Z",
-  "updatedAt": "2026-10-31T23:30:00.000Z",
+  "updatedAt": "2026-10-31T15:06:32.680Z",
+  "reviewedAt": "2026-10-31T15:06:32.680Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T23:30:00.000Z",
       "note": "对照 200800301 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T15:06:32.680Z"
     }
   ]
 }

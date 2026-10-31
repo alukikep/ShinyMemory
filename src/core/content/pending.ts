@@ -9,4 +9,4 @@
  * - `productionRoster.test` 会跳过"必须有招募步骤"的断言；
  * - 上线前必须清空这个列表（构建会一直提示）。
  */
-export const PENDING_IDOLS: readonly string[] = ['kiriko'];
+export const PENDING_IDOLS: readonly string[] = [];

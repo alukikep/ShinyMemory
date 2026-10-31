@@ -4,6 +4,7 @@ import meguruPurity from './meguruPurity';
 import meguruStars from './meguruStars';
 import meguruSunshine from './meguruSunshine';
 import hioriSmile from './hioriSmile';
+import manoAfterglow from './manoAfterglow';
 import manoGrowth from './manoGrowth';
 import manoHover from './manoHover';
 import manoPlainclothes from './manoPlainclothes';
@@ -32,6 +33,7 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   manoHover,
   manoPlainclothes,
   manoGrowth,
+  manoAfterglow,
   hioriSmile,
   manoEncounter,
   hioriEncounter,

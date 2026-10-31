@@ -1,0 +1,428 @@
+{
+  "id": "dialogue.mano.afterglow",
+  "kind": "dialogue",
+  "title": "いつかの気持ち",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.afterglow",
+  "payload": {
+    "id": "dialogue.mano.afterglow",
+    "idolId": "mano",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "……嗯？我也去？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "mano",
+        "text": "呼哇……是的，一不小心就……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "mano",
+        "text": "呼哇哇……因为和制作人在一起的机会变多了，就自己以为……",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "mano",
+        "text": "以为我们会一直在一起……我这个人，真是的……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "啊，是这样啊。那，一起出门吧。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "mano",
+        "text": "诶，可以吗……您其实很忙吧？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "只有随时都能做的文书工作而已。有想去的地方吗？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "mano",
+        "text": "谢谢您！那个……制作人觉得哪里好？",
+        "choices": [
+          {
+            "label": "去公园吧",
+            "nextNodeId": "2-01",
+            "effects": [
+              {
+                "kind": "sharedStat",
+                "stat": "stress",
+                "delta": -3
+              }
+            ]
+          },
+          {
+            "label": "去商场吧",
+            "nextNodeId": "3-01",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "去百货商店的楼顶吧",
+            "nextNodeId": "4-01",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "expression",
+                "tier": 1
+              }
+            ]
+          }
+        ]
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "好，今天的拍摄结束了。真乃，辛苦了。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "mano",
+        "text": "嗯，今天因为是外景，很开心。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "那今天的课和工作都结束了，早点回去休息吧。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "mano",
+        "text": "好的……不过，那个。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "嗯？怎么了？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "mano",
+        "text": "今天天气特别好，我还想在太阳底下动一动身体……",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "mano",
+        "text": "所以，可以先不回去，在外面转转吗？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "这样啊……嗯，这倒没关系。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "mano",
+        "text": "谢谢！那，我们走吧。",
+        "nextNodeId": "10"
+      },
+      "2-01": {
+        "id": "2-01",
+        "speakerId": "producer",
+        "text": "去公园吧。",
+        "nextNodeId": "2-02"
+      },
+      "2-02": {
+        "id": "2-02",
+        "speakerId": "producer",
+        "text": "……不过走过去有点距离吧。",
+        "nextNodeId": "2-03"
+      },
+      "2-03": {
+        "id": "2-03",
+        "speakerId": "mano",
+        "text": "我没关系的。走了很多路，从太阳那里得到了精神。",
+        "nextNodeId": "2-04"
+      },
+      "2-04": {
+        "id": "2-04",
+        "speakerId": "producer",
+        "text": "那就好……哦，鸽子聚过来了。",
+        "nextNodeId": "2-05"
+      },
+      "2-05": {
+        "id": "2-05",
+        "speakerId": "mano",
+        "text": "呼呼……你们好呀，鸽子先生。大家也很精神呢。",
+        "nextNodeId": "2-06"
+      },
+      "2-06": {
+        "id": "2-06",
+        "speakerId": "producer",
+        "text": "那就在那边的长椅上和鸽子一起休息吧。",
+        "nextNodeId": "2-07"
+      },
+      "2-07": {
+        "id": "2-07",
+        "speakerId": "producer",
+        "text": "在公园里慢慢待着也不错。难怪真乃常来公园。",
+        "nextNodeId": "2-08"
+      },
+      "2-08": {
+        "id": "2-08",
+        "speakerId": "mano",
+        "text": "今天特别是……有制作人在，我很安心。",
+        "nextNodeId": "2-09"
+      },
+      "2-09": {
+        "id": "2-09",
+        "speakerId": "producer",
+        "text": "是吗？那以后偶尔也一起来公园吧？",
+        "nextNodeId": "2-10"
+      },
+      "2-10": {
+        "id": "2-10",
+        "speakerId": "mano",
+        "text": "真的吗……很高兴。",
+        "nextNodeId": "2-11"
+      },
+      "2-11": {
+        "id": "2-11",
+        "speakerId": "producer",
+        "text": "没事吧，真乃？声音听起来快睡着了。",
+        "nextNodeId": "2-12"
+      },
+      "2-12": {
+        "id": "2-12",
+        "speakerId": "mano",
+        "text": "呼……呼……",
+        "nextNodeId": "2-13"
+      },
+      "2-13": {
+        "id": "2-13",
+        "speakerId": "producer",
+        "text": "（睡着了吗。辛苦了，真乃。）"
+      },
+      "3-01": {
+        "id": "3-01",
+        "speakerId": "producer",
+        "text": "去商场吧。",
+        "nextNodeId": "3-02"
+      },
+      "3-02": {
+        "id": "3-02",
+        "speakerId": "mano",
+        "text": "太好了！这一带有很多可爱的店哦。",
+        "nextNodeId": "3-03"
+      },
+      "3-03": {
+        "id": "3-03",
+        "speakerId": "producer",
+        "text": "你常来买东西？",
+        "nextNodeId": "3-04"
+      },
+      "3-04": {
+        "id": "3-04",
+        "speakerId": "mano",
+        "text": "是的。看衣服、看和鸟有关的小东西……喜欢在各个店里慢慢逛。",
+        "nextNodeId": "3-05"
+      },
+      "3-05": {
+        "id": "3-05",
+        "speakerId": "producer",
+        "text": "这样啊。那今天我就陪你逛。",
+        "nextNodeId": "3-06"
+      },
+      "3-06": {
+        "id": "3-06",
+        "speakerId": "mano",
+        "text": "诶，但是……我买东西要花很多时间的哦？",
+        "nextNodeId": "3-07"
+      },
+      "3-07": {
+        "id": "3-07",
+        "speakerId": "mano",
+        "text": "所以逛街的时候，我总是一个人。和别人一起的话，会担心让人家等太久……",
+        "nextNodeId": "3-08"
+      },
+      "3-08": {
+        "id": "3-08",
+        "speakerId": "producer",
+        "text": "这样啊。那最近呢？",
+        "nextNodeId": "3-09"
+      },
+      "3-09": {
+        "id": "3-09",
+        "speakerId": "mano",
+        "text": "呼哇……？",
+        "nextNodeId": "3-10"
+      },
+      "3-10": {
+        "id": "3-10",
+        "speakerId": "producer",
+        "text": "当了偶像之后，同伴多了吧。不会和事务所的大家一起去吗？",
+        "nextNodeId": "3-11"
+      },
+      "3-11": {
+        "id": "3-11",
+        "speakerId": "mano",
+        "text": "啊，说起来……最近有时会被巡邀。",
+        "nextNodeId": "3-12"
+      },
+      "3-12": {
+        "id": "3-12",
+        "speakerId": "mano",
+        "text": "虽然有点担心会不会让她等……但是非常开心。",
+        "nextNodeId": "3-13"
+      },
+      "3-13": {
+        "id": "3-13",
+        "speakerId": "producer",
+        "text": "这样啊。巡一定也是觉得开心才邀你的。",
+        "nextNodeId": "3-14"
+      },
+      "3-14": {
+        "id": "3-14",
+        "speakerId": "producer",
+        "text": "和真乃在一起，我也很开心。所以不用那么客气。",
+        "nextNodeId": "3-15"
+      },
+      "3-15": {
+        "id": "3-15",
+        "speakerId": "mano",
+        "text": "既然制作人这么说……其实，我有一家想去的店。",
+        "nextNodeId": "3-16"
+      },
+      "3-16": {
+        "id": "3-16",
+        "speakerId": "producer",
+        "text": "那我们现在就去吧。",
+        "nextNodeId": "3-17"
+      },
+      "3-17": {
+        "id": "3-17",
+        "speakerId": "mano",
+        "text": "好的，请多指教！"
+      },
+      "4-01": {
+        "id": "4-01",
+        "speakerId": "producer",
+        "text": "去百货商店的楼顶吧。",
+        "nextNodeId": "4-02"
+      },
+      "4-02": {
+        "id": "4-02",
+        "speakerId": "mano",
+        "text": "阳光正好，风也很舒服。",
+        "nextNodeId": "4-03"
+      },
+      "4-03": {
+        "id": "4-03",
+        "speakerId": "producer",
+        "text": "是啊。",
+        "nextNodeId": "4-04"
+      },
+      "4-04": {
+        "id": "4-04",
+        "speakerId": "producer",
+        "text": "——哦，好像要开始英雄秀了。",
+        "nextNodeId": "4-05"
+      },
+      "4-05": {
+        "id": "4-05",
+        "speakerId": "mano",
+        "text": "呼呼……孩子们看起来好开心。英雄真受欢迎。",
+        "nextNodeId": "4-06"
+      },
+      "4-06": {
+        "id": "4-06",
+        "speakerId": "producer",
+        "text": "真乃也能成为孩子们喜欢的人。",
+        "nextNodeId": "4-07"
+      },
+      "4-07": {
+        "id": "4-07",
+        "speakerId": "mano",
+        "text": "呼哇？我……吗？",
+        "nextNodeId": "4-08"
+      },
+      "4-08": {
+        "id": "4-08",
+        "speakerId": "producer",
+        "text": "孩子们不只是喜欢英雄，也喜欢偶像。",
+        "nextNodeId": "4-09"
+      },
+      "4-09": {
+        "id": "4-09",
+        "speakerId": "producer",
+        "text": "真乃呢？小时候喜欢偶像吗？",
+        "nextNodeId": "4-10"
+      },
+      "4-10": {
+        "id": "4-10",
+        "speakerId": "mano",
+        "text": "小时候看过的偶像……是的！轻飘飘、亮闪闪的，我很喜欢。",
+        "nextNodeId": "4-11"
+      },
+      "4-11": {
+        "id": "4-11",
+        "speakerId": "producer",
+        "text": "带着和真乃一样心情的孩子，一定还有。",
+        "nextNodeId": "4-12"
+      },
+      "4-12": {
+        "id": "4-12",
+        "speakerId": "mano",
+        "text": "是这样吗？",
+        "nextNodeId": "4-13"
+      },
+      "4-13": {
+        "id": "4-13",
+        "speakerId": "producer",
+        "text": "真乃只要珍惜小时候的心情，这次把梦想送给大家就好。",
+        "nextNodeId": "4-14"
+      },
+      "4-14": {
+        "id": "4-14",
+        "speakerId": "mano",
+        "text": "……呼哇。如果我的歌和舞，能传到谁那里的话……",
+        "nextNodeId": "4-15"
+      },
+      "4-15": {
+        "id": "4-15",
+        "speakerId": "mano",
+        "text": "我会加油的！嗯！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T03:13:12.997Z",
+  "updatedAt": "2026-10-31T03:13:12.997Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T03:13:12.997Z",
+      "note": "卡面第四章（剧本 200100404）"
+    }
+  ]
+}

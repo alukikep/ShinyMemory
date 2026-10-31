@@ -198,6 +198,20 @@ const problems = [
   }),
 ];
 
+// 登记过的章节（哪怕还没接进 base）也要检查地点存在
+for (const chapter of CHAPTER_SOURCES) {
+  const chain =
+    index.storyChains.get(chapter.chapterId) ??
+    PENDING_CHAPTERS.find((entry) => entry.id === chapter.chapterId);
+  const step = chain?.steps[0];
+  if (step && !index.locations.has(step.locationId)) {
+    problems.push({
+      chapterId: chapter.chapterId,
+      message: `地点不存在：${step.locationId}`,
+    });
+  }
+}
+
 for (const chapter of pendingChapters) {
   console.log(
     `  · ${chapter.chapterId}：对话待审，尚未接入 STORY_CHAINS（过审后再加）`,

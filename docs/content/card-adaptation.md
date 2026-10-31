@@ -170,6 +170,50 @@ const revealed =
 `revealMode: 'triggered'` 的章**永远不靠条件揭示**，只能靠"已经触发过"。
 条件（`revealWhen`）仍然参与触发判定，只是不再决定"手册里说不说"。
 
+### 一个偶像同时只进一条链
+
+现在`evaluateStoryChain`是逐链独立判定的，**没有任何跨链检查**——
+同一偶像可以同时有多条链可用。卡片多了就会冲突（真乃同时开出两个卡面剧情）。
+
+规则：**全局锁**。
+
+```ts
+// 她有任何一条链未完成 → 其他链一律不能开
+const inProgress = Object.values(state.storyChains).find(
+  (chainState) => !chainState.completed && 链属于这个偶像,
+);
+if (inProgress && inProgress.chainId !== chain.id) {
+  blocks.push({ kind: 'idol-busy', chainId: inProgress.chainId });
+}
+```
+
+要注意的三点：
+
+1. **只挡"开新链"**，不挡"推进当前链"——进行中的那条继续走
+2. **卡面章是 1 步**，触发即完成，锁的窗口只有那一瞬间；真正会被锁住的是**多步长线**
+3. 锁是按**偶像**算的，不是按玩家——真乃在做长线时，灯织的卡面章不受影响
+
+### 地图提示的聚合
+
+28 个偶像 × 每张卡 1 个提示 = 28 个提示，散在 8 个地点，一个地点 3–4 个。
+**不能一个地点挂 4 个亮点**。
+
+```text
+商业街 ●3      ← 一个标记 + 数量
+  点开 → 列出 3 条线索（每条仍只有一句、不剧透）
+```
+
+```ts
+export type LocationHint = {
+  locationId: string;
+  count: number;          // 这个地点有几段未遇见的剧情
+  inWindowCount: number;  // 其中现在时间对的几条
+  hints: StoryHint[];     // 点开才展开
+};
+```
+
+标记颜色只看`inWindowCount > 0`：有时间对的就亮，全是时间不对就灰。
+
 ### 地图提示
 
 新模块 `src/core/storyHints.ts`：
@@ -225,6 +269,8 @@ export function storyHints(state: GameState): StoryHint[];
 - [ ] 时间窗外 `inWindow = false`（标记变灰）
 - [ ] 触发第 1 章后，手册出现第 2 章
 - [ ] 手册里不出现章节标题以外的剧透
+- [ ] 长线进行中时，同一偶像的其他卡面章**不可触发**（idol-busy）
+- [ ] 一个地点有多条提示时，只显示一个标记 + 数字
 
 ## 3. 写对话：结构固定
 

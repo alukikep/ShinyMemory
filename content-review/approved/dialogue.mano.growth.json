@@ -2,7 +2,7 @@
   "id": "dialogue.mano.growth",
   "kind": "dialogue",
   "title": "成長の証",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.mano.growth",
   "payload": {
@@ -357,12 +357,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T03:12:10.559Z",
-  "updatedAt": "2026-10-31T03:12:10.559Z",
+  "updatedAt": "2026-10-31T03:16:33.403Z",
+  "reviewedAt": "2026-10-31T03:16:33.403Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T03:12:10.559Z",
       "note": "卡面第三章（剧本 200100403）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T03:16:33.403Z"
     }
   ]
 }

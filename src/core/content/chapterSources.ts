@@ -87,6 +87,44 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     anchors: ['2001004020010', '2001004020100', '2001004020110'],
   },
   {
+    chapterId: 'hiori-support',
+    script: '200200402',
+    source: '剧本 200200402',
+    card: { title: '柔らかな微笑み', index: 2, total: 5 },
+    // 这个剧本是旧格式（没有行 id），锚点用日文原句
+    anchors: [
+      '苦手だって言ってたステップ',
+      '休むことだってアイドルの仕事',
+      '仕事が楽しいっていうのもあるけどな',
+    ],
+  },
+  {
+    chapterId: 'hiori-gift',
+    script: '200200403',
+    source: '剧本 200200403',
+    card: { title: '柔らかな微笑み', index: 3, total: 5 },
+    anchors: ['2002004030010', '2002004030150', '2002004030250'],
+  },
+  {
+    chapterId: 'hiori-answer',
+    script: '200200404',
+    source: '剧本 200200404',
+    card: { title: '柔らかな微笑み', index: 4, total: 5 },
+    // 旧格式剧本：锚点用日文原句
+    anchors: [
+      '雑誌のインタビューの事前アンケート',
+      '『W.I.N.G.』でのステージは灯織にとって',
+      '俺も、灯織のステージが見られるのを楽しみにしてるよ',
+    ],
+  },
+  {
+    chapterId: 'hiori-ideal',
+    script: '200200411',
+    source: '剧本 200200411',
+    card: { title: '柔らかな微笑み', index: 5, total: 5 },
+    anchors: ['2002004110010', '2002004110190', '2002004110230'],
+  },
+  {
     chapterId: 'hiori-smile',
     script: '200200401',
     source: '剧本 200200401',

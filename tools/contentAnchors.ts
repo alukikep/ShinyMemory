@@ -185,6 +185,12 @@ const problems = [
   ),
   // 锚点对「全部登记章节」都校验：待审草稿也算内容，没理由跳过。
   ...validateChapterAnchors(CHAPTER_SOURCES, {
+    readScriptText(script) {
+      const file = path.join(process.cwd(), '.cache', 'shiny', `${script}.json`);
+      if (!existsSync(file)) return undefined;
+      const entries = JSON.parse(readFileSync(file, 'utf8')) as { text?: string }[];
+      return entries.map((entry) => entry.text ?? '').join('\n');
+    },
     readScriptIds(script) {
       const file = path.join(process.cwd(), '.cache', 'shiny', `${script}.json`);
       if (!existsSync(file)) return undefined;

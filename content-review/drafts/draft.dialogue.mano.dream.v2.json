@@ -1,10 +1,11 @@
 {
-  "id": "dialogue.mano.dream",
+  "id": "draft.dialogue.mano.dream.v2",
+  "supersedes": "dialogue.mano.dream",
   "kind": "dialogue",
-  "title": "ずっと続く夢の先へ",
+  "title": "ずっと続く夢の先へ（改：去掉 W.I.N.G.）",
   "status": "review",
-  "version": 1,
-  "rootId": "draft.dialogue.mano.dream",
+  "version": 2,
+  "rootId": "draft.dialogue.mano.dream.v2",
   "payload": {
     "id": "dialogue.mano.dream",
     "idolId": "mano",
@@ -139,13 +140,13 @@
       "31": {
         "id": "31",
         "speakerId": "producer",
-        "text": "当了偶像之后，又有了 W.I.N.G. 夺冠这个梦。",
+        "text": "当了偶像之后，又有了\"想站上更大的舞台\"这个梦。",
         "nextNodeId": "32"
       },
       "32": {
         "id": "32",
         "speakerId": "producer",
-        "text": "那个你也实现了。",
+        "text": "那一步，你也已经迈出去了。",
         "nextNodeId": "33"
       },
       "33": {
@@ -228,7 +229,7 @@
       "08": {
         "id": "08",
         "speakerId": "producer",
-        "text": "W.I.N.G. 夺冠之后，几乎没休息过。累也是正常的。",
+        "text": "第一次正式演出之后，几乎没休息过。累也是正常的。",
         "nextNodeId": "09"
       },
       "09": {
@@ -240,13 +241,13 @@
     }
   },
   "annotations": [],
-  "createdAt": "2026-10-31T03:14:27.996Z",
-  "updatedAt": "2026-10-31T03:14:27.996Z",
+  "createdAt": "2026-10-31T03:21:15.564Z",
+  "updatedAt": "2026-10-31T03:21:15.564Z",
   "history": [
     {
       "status": "review",
-      "at": "2026-10-31T03:14:27.996Z",
-      "note": "卡面第五章（剧本 200100411）"
+      "at": "2026-10-31T03:21:15.564Z",
+      "note": "初始卡不该提 W.I.N.G.：改成\"第一次正式演出\"与\"想站上更大的舞台\""
     }
   ]
 }

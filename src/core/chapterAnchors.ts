@@ -46,6 +46,8 @@ export type AnchorValidatorOptions = {
    * 中文是我们自己写的，锚点用 id 而不是译文——见 playbook §4.8。
    */
   readScriptIds?: (script: string) => Set<string> | undefined;
+  /** 剧本全文（用于"日文原句"式锚点；旧格式剧本没有行 id）。 */
+  readScriptText?: (script: string) => string | undefined;
 };
 
 const MIN_ANCHORS = 3;
@@ -77,13 +79,26 @@ export function validateChapterAnchors(
     const ids = chapter.script
       ? options.readScriptIds?.(chapter.script)
       : undefined;
+    const text = chapter.script
+      ? options.readScriptText?.(chapter.script)
+      : undefined;
 
     for (const anchor of chapter.anchors) {
-      if (ids && !ids.has(anchor)) {
-        problems.push({
-          chapterId: chapter.chapterId,
-          message: `锚点 id 在剧本里不存在：${anchor}`,
-        });
+      if (/^\d{13}$/.test(anchor)) {
+        if (ids && !ids.has(anchor)) {
+          problems.push({
+            chapterId: chapter.chapterId,
+            message: `锚点 id 在剧本里不存在：${anchor}`,
+          });
+        }
+      } else if (text) {
+        const strip = (value: string) => value.replace(/\s+/g, '');
+        if (!strip(text).includes(strip(anchor))) {
+          problems.push({
+            chapterId: chapter.chapterId,
+            message: `锚点原句在剧本里找不到：${anchor}`,
+          });
+        }
       }
     }
   }
@@ -227,7 +242,7 @@ export type ChapterShapeInput = {
 };
 
 /** 分支最短要求：少于这个节点数，选项就只是换了一句话。 */
-const MIN_BRANCH_NODES = 3;
+const MIN_BRANCH_NODES = 2;
 
 export function validateChapterShape(
   inputs: ChapterShapeInput[],

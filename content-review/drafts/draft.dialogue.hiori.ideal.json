@@ -1,0 +1,258 @@
+{
+  "id": "dialogue.hiori.ideal",
+  "kind": "dialogue",
+  "title": "歩む先には理想の自分",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hiori.ideal",
+  "payload": {
+    "id": "dialogue.hiori.ideal",
+    "idolId": "hiori",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "就是把灯织引上这条路的那个人吗。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "hiori",
+        "text": "是的。那时候的我只是看着……现在觉得，好像靠近了一点。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "hiori",
+        "text": "不过，离理想还是很远……",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "……说起来，还有件事一直没听到答案。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "你说过想要喜欢上什么。现在呢？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "hiori",
+        "text": "现在……喜欢上了很多东西。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "hiori",
+        "text": "事务所的伙伴、应援的粉丝。为了回应他们而站上舞台……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "hiori",
+        "text": "……还有，制作人的事。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "……！？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "hiori",
+        "text": "啊，不是，那个……！不是恋爱的感情，是作为可以信赖的搭档，是这个意思。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "嗯，我当然明白。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "能被灯织信任我很高兴，而且……你找到了自己喜欢的东西，这比什么都好。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "hiori",
+        "text": "说实话……我以前觉得，自己什么都不会喜欢上。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "hiori",
+        "text": "如果还是以前一个人的我，一定会一直那样……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "hiori",
+        "text": "可是，制作人改变了我。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "hiori",
+        "text": "……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "hiori",
+        "text": "制作人……",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "hiori",
+        "text": "真的，非常感谢……！",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "不，我只是帮了一点忙。改变的是灯织自己。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "所以……你可以更喜欢自己一点。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "hiori",
+        "text": "……好！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "hiori",
+        "text": "现在，我一点点……能感觉到自己在喜欢自己。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "hiori",
+        "text": "那种时候，我会觉得非常幸福——",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "hiori",
+        "text": "我明白了，原来我从一开始就想这样喜欢自己。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "……这样啊。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "hiori",
+        "text": "……制作人。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "嗯？",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "hiori",
+        "text": "和制作人一起，我觉得能学会更喜欢自己。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "hiori",
+        "text": "所以，今后也请对我多多关照。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "producer",
+        "text": "嗯……！当然！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "hiori",
+        "text": "呼……",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "辛苦了。水，带来了。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "hiori",
+        "text": "制作人，非常感谢。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "首次演出的反响真大啊，工作邀约蜂拥而至。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "杂志封面、采访、音乐节目……忙得不可开交！……怎么了，灯织？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "hiori",
+        "text": "啊……对不起，稍微走神了。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "怎么了？是累了吗？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "hiori",
+        "text": "不，不是那样……",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "hiori",
+        "text": "……我想起了中学时看到的那个偶像。想着，那个人是不是也这样。",
+        "nextNodeId": "10"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T03:20:46.824Z",
+  "updatedAt": "2026-10-31T03:20:46.824Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T03:20:46.824Z",
+      "note": "卡面第五章（剧本 200200411）"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "id": "dialogue.mano.afterglow",
   "kind": "dialogue",
   "title": "いつかの気持ち",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.mano.afterglow",
   "payload": {
@@ -417,12 +417,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T03:13:12.997Z",
-  "updatedAt": "2026-10-31T03:13:12.997Z",
+  "updatedAt": "2026-10-31T03:16:33.957Z",
+  "reviewedAt": "2026-10-31T03:16:33.957Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T03:13:12.997Z",
       "note": "卡面第四章（剧本 200100404）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T03:16:33.957Z"
     }
   ]
 }

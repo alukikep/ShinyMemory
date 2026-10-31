@@ -1,0 +1,308 @@
+{
+  "id": "dialogue.hiori.gift",
+  "kind": "dialogue",
+  "title": "幸福に満ちる",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hiori.gift",
+  "payload": {
+    "id": "dialogue.hiori.gift",
+    "idolId": "hiori",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "这个嘛……",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "对我来说，最能让你发光的东西，是灯织自己喜欢的东西。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "hiori",
+        "text": "我自己喜欢的……吗。原来如此，还有这种想法。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "嗯，换个角度看看。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "hiori",
+        "text": "可是……我喜欢的那些东西，真的找得到吗……？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "别露出那种表情。难得出来，就享受一下吧。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "啊，那边的摊子也去看看吧？说不定有和之前不一样的东西。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "hiori",
+        "text": "好，我去稍微看看。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "怎么样？有找到喜欢的吗？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "hiori",
+        "text": "每一个都很好看，但要说喜欢的话……果然还是很难。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "hiori",
+        "text": "……制作人在这之中，最喜欢哪一个？",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "我想想……这边这些镶诞生石的怎么样？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "hiori",
+        "text": "诞生石……原来如此。我是 3 月 4 日……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "就是这个镶了蓝色石头的发夹。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "hiori",
+        "text": "哇……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "喜欢吗？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "hiori",
+        "text": "……不，只是稍微有点在意而已。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "能遇到在意的东西，就已经很不错了。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "hiori",
+        "text": "那……好吧，确实是这样。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "听说诞生石还能当护身符。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "hiori",
+        "text": "……是这样啊。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "hiori",
+        "text": "……我决定了。就买这个。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "hiori",
+        "text": "非常感谢，制作人。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "（她看起来很高兴……带她来是对的。）",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "方便的话，现在就戴上让我看看？",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "hiori",
+        "text": "……那就。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "hiori",
+        "text": "我戴在后面了……感觉，怎么样？",
+        "choices": [
+          {
+            "label": "很适合你",
+            "nextNodeId": "2-01",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "很像灯织",
+            "nextNodeId": "3-01",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "expression",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "和服装也搭",
+            "nextNodeId": "4-01",
+            "effects": [
+              {
+                "kind": "sharedStat",
+                "stat": "stress",
+                "delta": -2
+              }
+            ]
+          }
+        ]
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "hiori",
+        "text": "……制作人，这边。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "明明是我约的，让你等了，抱歉。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "hiori",
+        "text": "不会。既然是要找和我的服装相配的小饰物，一起过来是当然的。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "（其实是想让灯织放松一下……不过这么说她一定会拒绝。）",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "那，我们出发吧。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "hiori",
+        "text": "好。那么，走吧。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "怎么样？跑了几家，有找到合适的吗？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "hiori",
+        "text": "……没有。哪一个都差一点。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "hiori",
+        "text": "所谓\"像偶像的小饰物\"……到底是什么样的东西呢？",
+        "nextNodeId": "10"
+      },
+      "2-01": {
+        "id": "2-01",
+        "speakerId": "hiori",
+        "text": "……谢、谢谢您。",
+        "nextNodeId": "2-02"
+      },
+      "2-02": {
+        "id": "2-02",
+        "speakerId": "producer",
+        "text": "这样一来，舞台上的灯织会更耀眼。"
+      },
+      "3-01": {
+        "id": "3-01",
+        "speakerId": "hiori",
+        "text": "像我……？怎么说呢？",
+        "nextNodeId": "3-02"
+      },
+      "3-02": {
+        "id": "3-02",
+        "speakerId": "producer",
+        "text": "嗯。那清澈的蓝色很漂亮，和灯织给人的感觉正好相合。"
+      },
+      "4-01": {
+        "id": "4-01",
+        "speakerId": "hiori",
+        "text": "这样啊。那么，选了它真是太好了。",
+        "nextNodeId": "4-02"
+      },
+      "4-02": {
+        "id": "4-02",
+        "speakerId": "producer",
+        "text": "嗯。两个人转了一圈，没有白费。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T03:20:46.824Z",
+  "updatedAt": "2026-10-31T03:20:46.824Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T03:20:46.824Z",
+      "note": "卡面第三章（剧本 200200403）"
+    }
+  ]
+}

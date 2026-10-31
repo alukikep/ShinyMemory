@@ -1,0 +1,326 @@
+{
+  "id": "dialogue.hiori.answer",
+  "kind": "dialogue",
+  "title": "かつて夢見た眩しい姿",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hiori.answer",
+  "payload": {
+    "id": "dialogue.hiori.answer",
+    "idolId": "hiori",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "hiori",
+        "text": "……？好，我知道了。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "hiori",
+        "text": "接下来……兴趣是听音乐，特长是做饭……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "hiori",
+        "text": "下面是……嗯……啊，这个问题是……",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "……嗯？怎么了？有不想回答的问题吗？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "hiori",
+        "text": "不……不是那样。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "我看看……「成为偶像的契机」？说起来，我也没详细听过。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "hiori",
+        "text": "那不是什么大不了的事。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "不过我有兴趣。能说给我听吗？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "hiori",
+        "text": "……中学的时候，学园祭上有偶像来过。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "hiori",
+        "text": "舞台上的偶像闪闪发光，看着的人都在笑……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "hiori",
+        "text": "我想，如果能变成那样，连我自己都会喜欢上自己吧。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "这样啊……这就是灯织的契机啊。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "hiori",
+        "text": "……不过，总觉得有点不可思议。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "嗯？为什么？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "hiori",
+        "text": "这么点事，不久之前我应该还说不出口。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "那正说明，这件事对灯织来说很重要。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "hiori",
+        "text": "也许……是这样。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "那么，现在的你喜欢上了什么呢——",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "……不，这个答案，等你站上那个舞台之后再告诉我吧。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "hiori",
+        "text": "……好，我知道了。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "灯织，接下来的舞台……",
+        "choices": [
+          {
+            "label": "不留遗憾",
+            "nextNodeId": "2-01",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "一定要赢",
+            "nextNodeId": "3-01",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "expression",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "按你的想法来",
+            "nextNodeId": "4-01",
+            "effects": [
+              {
+                "kind": "sharedStat",
+                "stat": "stress",
+                "delta": -2
+              }
+            ]
+          }
+        ]
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "灯织，采访辛苦了。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "hiori",
+        "text": "制作人才辛苦。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "我只是在一旁看着你好好说话而已。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "对了……杂志的事前问卷也寄来了。稍微休息一下再写可以吗？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "hiori",
+        "text": "不用，浪费时间，我现在就写。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "这样啊。那填在这里，我去调整一下日程。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "hiori",
+        "text": "谢谢。那个……",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "hiori",
+        "text": "「重要的东西」……可以写\"制作人送的发饰\"吗？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "啊，嗯。写是可以……不过，请只写\"镶诞生石的发饰\"。",
+        "nextNodeId": "10"
+      },
+      "2-01": {
+        "id": "2-01",
+        "speakerId": "producer",
+        "text": "不留遗憾地去。",
+        "nextNodeId": "2-02"
+      },
+      "2-02": {
+        "id": "2-02",
+        "speakerId": "hiori",
+        "text": "好，我会全力以赴。",
+        "nextNodeId": "2-03"
+      },
+      "2-03": {
+        "id": "2-03",
+        "speakerId": "producer",
+        "text": "就是这股气势！",
+        "nextNodeId": "2-04"
+      },
+      "2-04": {
+        "id": "2-04",
+        "speakerId": "hiori",
+        "text": "好。……那个，制作人，我今天本来打算马上回去的……",
+        "nextNodeId": "2-05"
+      },
+      "2-05": {
+        "id": "2-05",
+        "speakerId": "producer",
+        "text": "要练课吧？我就知道，已经排好了。"
+      },
+      "3-01": {
+        "id": "3-01",
+        "speakerId": "producer",
+        "text": "一定要赢。",
+        "nextNodeId": "3-02"
+      },
+      "3-02": {
+        "id": "3-02",
+        "speakerId": "hiori",
+        "text": "好，我不想输。会把积累的东西全都使出来。",
+        "nextNodeId": "3-03"
+      },
+      "3-03": {
+        "id": "3-03",
+        "speakerId": "producer",
+        "text": "嗯。你的努力我最清楚，所以一定没问题。",
+        "nextNodeId": "3-04"
+      },
+      "3-04": {
+        "id": "3-04",
+        "speakerId": "hiori",
+        "text": "被制作人这么说，就真的会那样觉得，真不可思议。",
+        "nextNodeId": "3-05"
+      },
+      "3-05": {
+        "id": "3-05",
+        "speakerId": "hiori",
+        "text": "……请看到最后。"
+      },
+      "4-01": {
+        "id": "4-01",
+        "speakerId": "producer",
+        "text": "按你的想法去做。",
+        "nextNodeId": "4-02"
+      },
+      "4-02": {
+        "id": "4-02",
+        "speakerId": "hiori",
+        "text": "是让我自由发挥的意思吗？",
+        "nextNodeId": "4-03"
+      },
+      "4-03": {
+        "id": "4-03",
+        "speakerId": "producer",
+        "text": "嗯。这次的舞台对灯织来说，一定会成为难忘的东西。",
+        "nextNodeId": "4-04"
+      },
+      "4-04": {
+        "id": "4-04",
+        "speakerId": "producer",
+        "text": "所以不用套模板，按你想的去做就好。",
+        "nextNodeId": "4-05"
+      },
+      "4-05": {
+        "id": "4-05",
+        "speakerId": "hiori",
+        "text": "……好，我明白了！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T03:20:46.824Z",
+  "updatedAt": "2026-10-31T03:20:46.824Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T03:20:46.824Z",
+      "note": "卡面第四章（剧本 200200404）"
+    }
+  ]
+}

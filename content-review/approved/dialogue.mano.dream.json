@@ -1,0 +1,257 @@
+{
+  "id": "dialogue.mano.dream",
+  "kind": "dialogue",
+  "title": "ずっと続く夢の先へ",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.dream",
+  "payload": {
+    "id": "dialogue.mano.dream",
+    "idolId": "mano",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "mano",
+        "text": "也没怎么和鸽子先生玩……",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "mano",
+        "text": "但那并不代表我开始讨厌当偶像了。硬要说的话……该怎么说呢？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "mano",
+        "text": "充实……对的，我现在很充实。每天都非常开心。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "嗯，这是好事。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "mano",
+        "text": "是的，谢谢您。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "mano",
+        "text": "……刚才我做了个梦。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "嗯？什么样的梦？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "mano",
+        "text": "那个……是我开演唱会的梦。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "mano",
+        "text": "和灯织、巡一起，站在很大的舞台上。观众一直到很远的地方……大家都在笑。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "这样啊。是个好梦。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "mano",
+        "text": "……是的。但是——",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "mano",
+        "text": "我站在那么大舞台上的那一天……会来吗……？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "你好像觉得那是很遥远的事。不是那样的。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "真乃已经实现了很多梦想吧？当偶像时抱着的梦。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "mano",
+        "text": "是的。我想和其他人关系更好……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "mano",
+        "text": "这样想着，就交到了朋友。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "mano",
+        "text": "想着想要更有自信。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "mano",
+        "text": "现在也还是迷迷糊糊的……但我开始觉得，我没问题。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "mano",
+        "text": "虽然还差得远……我是不是，稍微开始改变了呢……",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "何止是稍微。真乃在飞快地成长。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "mano",
+        "text": "……是这样吗？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "当了偶像之后，又有了 W.I.N.G. 夺冠这个梦。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "那个你也实现了。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "真乃已经实现过好几个梦想了。再抱一个新的梦，不也挺好吗？",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "mano",
+        "text": "至今为止的梦能实现……是因为制作人一直在我身边。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "mano",
+        "text": "制作人……今后也请一直和我在一起。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "嗯，当然。一起实现梦想吧。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "mano",
+        "text": "好的。下一个梦想，再下一个梦想。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "mano",
+        "text": "我想一直和制作人一起实现……！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "mano",
+        "text": "……呼",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "……嗯。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "醒了啊，真乃。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "mano",
+        "text": "制作人……？啊，我……",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "mano",
+        "text": "呼哇哇！对、对不起……不知不觉就睡着了……",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "没有，来公园之后没过多久。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "mano",
+        "text": "是吗？那太好了……不对，这也不太好……",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "W.I.N.G. 夺冠之后，几乎没休息过。累也是正常的。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "mano",
+        "text": "是的……就算来公园休息，也经常迷迷糊糊的。",
+        "nextNodeId": "10"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T03:14:27.996Z",
+  "updatedAt": "2026-10-31T03:16:34.542Z",
+  "reviewedAt": "2026-10-31T03:16:34.542Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T03:14:27.996Z",
+      "note": "卡面第五章（剧本 200100411）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T03:16:34.542Z"
+    }
+  ]
+}

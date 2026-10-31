@@ -60,3 +60,5 @@ WING 相遇   100400101   佐世保出身 / 方言 / 全部落选 / 被选中—
 
 按 [new-idol.md](../new-idol.md) §2 的 12 步走。
 写角色卡时从 facts 节选，但**每条事实都要换成剧本行 id**；指不回去的不写。
+
+L'Antica 四人的具体方案（招募地点、日程、首卡、内容草案）见 [lantica-plan.md](lantica-plan.md)，待审。

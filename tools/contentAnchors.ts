@@ -157,6 +157,7 @@ const problems = [
       return {
         chapterId: step.id ?? `${chain.id}#${index}`,
         idolId: chain.idolId,
+        chainId: chain.id,
         needsFlags,
         setsFlags,
         day: day?.day,

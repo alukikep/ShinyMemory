@@ -140,6 +140,8 @@ export type ChapterTrigger = {
   chapterId: string;
   /** 每个偶像各自一条序列，互不承接。 */
   idolId: string;
+  /** 同一条链才承接：一个偶像的两张卡互不相关。 */
+  chainId?: string;
   /** 第一步要求的 flag */
   needsFlags: string[];
   /** 第一步设置（effects）的 flag */
@@ -179,7 +181,8 @@ export function validateChapterTriggers(
       problems.push({ chapterId: chapter.chapterId, message: '时间窗不合法' });
     }
 
-    const previous = previousByIdol.get(chapter.idolId);
+    const key = `${chapter.idolId}::${chapter.chainId ?? ''}`;
+    const previous = previousByIdol.get(key);
     if (previous) {
       const chained = previous.setsFlags.some((flag) =>
         chapter.needsFlags.includes(flag),
@@ -201,7 +204,7 @@ export function validateChapterTriggers(
         });
       }
     }
-    previousByIdol.set(chapter.idolId, chapter);
+    previousByIdol.set(key, chapter);
   }
 
   return problems;

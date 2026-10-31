@@ -1,6 +1,7 @@
 import type { StoryChainDef } from '../../types';
 import { hioriEncounter, manoEncounter, meguruEncounter, manoSlump, hioriGap, meguruBurden } from '../storyChains';
 import hioriSmileCard from './hioriSmileCard';
+import manoNatural from './manoNatural';
 import manoSmile from './manoSmile';
 import meguruPicarte from './meguruPicarte';
 
@@ -15,6 +16,7 @@ import meguruPicarte from './meguruPicarte';
  */
 export const PENDING_CHAPTERS: StoryChainDef[] = [
   manoSmile,
+  manoNatural,
   hioriSmileCard,
   meguruPicarte,
   manoEncounter,

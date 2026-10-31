@@ -1,0 +1,234 @@
+{
+  "id": "draft.dialogue.mano.hiking",
+  "kind": "dialogue",
+  "title": "自然とはずむ心",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.hiking",
+  "payload": {
+    "id": "dialogue.mano.hiking",
+    "idolId": "mano",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "真的。水很清，连河底都看得见。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "mano",
+        "text": "踩着那些踏脚石，好像能走到更前面去。我去一下！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "脚下小心点！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "mano",
+        "text": "好……我会小心的……嘿。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "mano",
+        "text": "呼哇……真的好漂亮……制作人，有好多鱼！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "（真乃看起来很开心，不过身子是不是太往前倾了？）",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "喂——真乃！别掉下去——",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "mano",
+        "text": "呀。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "真乃，没事吧！？——来，抓住我的手！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "mano",
+        "text": "啊，谢谢您……稍微有点湿了……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "还在浅水处，算走运。快上岸把身上弄干。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "……这里能坐。没事吧，真乃？有没有哪里疼？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "mano",
+        "text": "好、好的，哪里都不疼……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "mano",
+        "text": "对不起，让您担心了……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "别放在心上。总之没受伤就好。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "mano",
+        "text": "可是，我把鱼吓跑了。大家都逃走了……大失败……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "鱼的事别担心，很快就会像什么都没发生一样回来的。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "（先让她平静一下再说吧。）",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "mano",
+        "text": "……啊，有鸟……",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "哦，真的。什么时候到附近的……",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "mano",
+        "text": "呼哇，好漂亮……",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "那是很稀有的鸟吗，真乃？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "mano",
+        "text": "是的，是只住在山里的鸟……能遇到真开心。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "这样啊…………来山里是对的。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "mano",
+        "text": "是的！",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "mano",
+        "text": "……呵呵。制作人果然很温柔呢。"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "mano",
+        "text": "制作人，今天带大家远足，谢谢你！",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "mano",
+        "text": "灯织和巡也都在……能一起来，我真的很高兴。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "哪里，我也能和大家一起松口气。天气放晴真是太好了。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "mano",
+        "text": "是的！正适合出门，心情特别好。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "真乃今天笑得比平时还好看。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "mano",
+        "text": "是、是吗……？谢谢您……",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "哦……你看，前面能看到河了！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "mano",
+        "text": "……呼哇。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "mano",
+        "text": "好厉害……非常漂亮！",
+        "nextNodeId": "10"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T09:58:59.911Z",
+  "updatedAt": "2026-10-31T09:58:59.911Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T09:58:59.911Z",
+      "note": "ナチュラルモード 第 2 章（剧本 200100302）"
+    }
+  ]
+}

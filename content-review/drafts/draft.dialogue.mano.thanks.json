@@ -1,0 +1,240 @@
+{
+  "id": "draft.dialogue.mano.thanks",
+  "kind": "dialogue",
+  "title": "感謝を形に",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.thanks",
+  "payload": {
+    "id": "dialogue.mano.thanks",
+    "idolId": "mano",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "mano",
+        "text": "请收下这个！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "这是……石头穿了绳子的挂饰？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "嗯，很漂亮。上面还有花纹。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "mano",
+        "text": "那块石头，是我和制作人一起去的那条河边捡到的。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "mano",
+        "text": "我正看着觉得漂亮，它就掉进河里了……想起来还觉得丢脸。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "啊，那时候你是在看石头啊。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "mano",
+        "text": "是的！后来查了一下，知道那是玛瑙。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "mano",
+        "text": "因为是能做饰品的石头，就请店里帮忙加工了。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "这就是这个挂饰啊。可以吗，我收下？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "mano",
+        "text": "好的……制作人一直很照顾我。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "mano",
+        "text": "总是推着我往前走，我真的很感谢。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "mano",
+        "text": "我好好地道谢，可光用话说觉得传不到。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "mano",
+        "text": "所以想把这份心情，至少做成一点形状。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "这样啊，真乃的心意……谢谢，我会珍惜的。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "mano",
+        "text": "──太好了！谢谢您！",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "我才要谢谢。拿着这块石头，就能感觉到真乃的心意。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "不过这样可以吗？这么漂亮的东西只有我拿着。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "mano",
+        "text": "……其实，那个挂饰不止一个。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "mano",
+        "text": "我也有。就是这个！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "啊，那个也是……玛瑙吧。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "mano",
+        "text": "是和给制作人那个用同一块石头做的。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "mano",
+        "text": "这个是，我好好收着，嗯。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "这样啊，也就是说……",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "mano",
+        "text": "是的，是一对！",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "mano",
+        "text": "有和制作人成对的挂饰，就会涌起加油的勇气。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "这样啊……是啊！今天的舞台，我们两个人一起加油！",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "mano",
+        "text": "好！我去了！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "真乃，还好吗？不紧张？",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "mano",
+        "text": "制作人……是、是的……可能有一点紧张。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "今天是你一个人，舞台也大。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "但以现在积累了经验的真乃，一定没问题。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "mano",
+        "text": "呼哇……好的！",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "mano",
+        "text": "不知怎么，觉得非常安心……我总是被制作人的话救到。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "mano",
+        "text": "…………那个，制作人。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "怎么了，真乃？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "mano",
+        "text": "在这个时候……不，正因为是现在，我有样东西想交给您。",
+        "nextNodeId": "10"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T09:58:59.911Z",
+  "updatedAt": "2026-10-31T09:58:59.911Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T09:58:59.911Z",
+      "note": "ナチュラルモード 第 3 章（剧本 200100311）"
+    }
+  ]
+}

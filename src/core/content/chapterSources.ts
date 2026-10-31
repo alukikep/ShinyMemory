@@ -52,6 +52,27 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     anchors: ['2003005110010', '2003005110150', '2003005110290'],
   },
   {
+    chapterId: 'mano-shopping',
+    script: '200100301',
+    source: '剧本 200100301',
+    card: { title: 'ナチュラルモード', index: 1, total: 3 },
+    anchors: ['2001003010010', '2001003010100', '2001003010220'],
+  },
+  {
+    chapterId: 'mano-hiking',
+    script: '200100302',
+    source: '剧本 200100302',
+    card: { title: 'ナチュラルモード', index: 2, total: 3 },
+    anchors: ['2001003020010', '2001003020100', '2001003020190'],
+  },
+  {
+    chapterId: 'mano-thanks',
+    script: '200100311',
+    source: '剧本 200100311',
+    card: { title: 'ナチュラルモード', index: 3, total: 3 },
+    anchors: ['2001003110010', '2001003110100', '2001003110220'],
+  },
+  {
     chapterId: 'mano-hover',
     script: '200100401',
     source: '剧本 200100401',

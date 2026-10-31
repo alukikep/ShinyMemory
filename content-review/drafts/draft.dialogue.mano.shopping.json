@@ -1,0 +1,374 @@
+{
+  "id": "draft.dialogue.mano.shopping",
+  "kind": "dialogue",
+  "title": "ショッピング日和",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mano.shopping",
+  "payload": {
+    "id": "dialogue.mano.shopping",
+    "idolId": "mano",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "对我不用这么客气。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "mano",
+        "text": "可是……制作人明明很忙……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "今天有时间，我这边没问题，你慢慢看就好。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "mano",
+        "text": "呼、呼哇……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "mano",
+        "text": "那……就稍微看一下，可以吗？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "当然。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "mano",
+        "text": "谢谢您，制作人。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "这里包的种类挺多的……真乃看中哪个了？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "mano",
+        "text": "这个！这个棕色的双肩包。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "mano",
+        "text": "之前在别的店也见过，觉得好可爱，结果一转眼就卖完了……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "啊，这种事逛街常有。总想着当时买下来就好了，然后后悔。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "mano",
+        "text": "是的！所以在这家店看到它，我吓了一跳。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "mano",
+        "text": "呵呵……这个包，果然好可爱啊。",
+        "choices": [
+          {
+            "label": "我觉得很适合你",
+            "nextNodeId": "2-01",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "expression",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "买了再后悔",
+            "nextNodeId": "3-01",
+            "effects": [
+              {
+                "kind": "attributeExp",
+                "ref": "trust",
+                "tier": 1
+              }
+            ]
+          },
+          {
+            "label": "再放一放",
+            "nextNodeId": "4-01",
+            "effects": [
+              {
+                "kind": "sharedStat",
+                "stat": "stress",
+                "delta": -2
+              }
+            ]
+          }
+        ]
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "mano",
+        "text": "今天天气真好呢，制作人。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "嗯，下班路上散散步也不错。这一带店多，挺热闹的。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "说起来，真乃喜欢逛街吧。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "mano",
+        "text": "是的！像这样一边散步一边看各种店——",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "mano",
+        "text": "光是站在可爱的杂货店门口，心里就呼呼的了。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "mano",
+        "text": "……啊。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "嗯，怎么了？——哦，那边那家包店，你在意？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "想看看的话就去吧，我陪你。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "mano",
+        "text": "不，那个……我买东西要花很多时间的。",
+        "nextNodeId": "10"
+      },
+      "2-01": {
+        "id": "2-01",
+        "speakerId": "producer",
+        "text": "我觉得很适合你。",
+        "nextNodeId": "2-02"
+      },
+      "2-02": {
+        "id": "2-02",
+        "speakerId": "producer",
+        "text": "别光看着，背起来试试？",
+        "nextNodeId": "2-03"
+      },
+      "2-03": {
+        "id": "2-03",
+        "speakerId": "mano",
+        "text": "好，那我背一下。",
+        "nextNodeId": "2-04"
+      },
+      "2-04": {
+        "id": "2-04",
+        "speakerId": "mano",
+        "text": "……怎么样，制作人？",
+        "nextNodeId": "2-05"
+      },
+      "2-05": {
+        "id": "2-05",
+        "speakerId": "producer",
+        "text": "嗯，果然很衬你。来，你也照照镜子？",
+        "nextNodeId": "2-06"
+      },
+      "2-06": {
+        "id": "2-06",
+        "speakerId": "mano",
+        "text": "……呼哇，这样跟我现有的衣服也很搭。",
+        "nextNodeId": "2-07"
+      },
+      "2-07": {
+        "id": "2-07",
+        "speakerId": "mano",
+        "text": "蕾丝也特别可爱，真好啊，这个包……",
+        "nextNodeId": "2-08"
+      },
+      "2-08": {
+        "id": "2-08",
+        "speakerId": "mano",
+        "text": "……我还是买吧，呣嗯。",
+        "nextNodeId": "2-09"
+      },
+      "2-09": {
+        "id": "2-09",
+        "speakerId": "mano",
+        "text": "不好意思，制作人，我去结账，能等一下吗？",
+        "nextNodeId": "2-10"
+      },
+      "2-10": {
+        "id": "2-10",
+        "speakerId": "producer",
+        "text": "嗯，我等着，你去吧。",
+        "nextNodeId": "2-11"
+      },
+      "2-11": {
+        "id": "2-11",
+        "speakerId": "producer",
+        "text": "（笑得连我这边都跟着高兴起来了。）"
+      },
+      "3-01": {
+        "id": "3-01",
+        "speakerId": "producer",
+        "text": "与其不买而后悔，不如买了再后悔。",
+        "nextNodeId": "3-02"
+      },
+      "3-02": {
+        "id": "3-02",
+        "speakerId": "mano",
+        "text": "呼哇！那、那是说两种都会后悔吗？",
+        "nextNodeId": "3-03"
+      },
+      "3-03": {
+        "id": "3-03",
+        "speakerId": "producer",
+        "text": "不，只要喜欢就没问题。",
+        "nextNodeId": "3-04"
+      },
+      "3-04": {
+        "id": "3-04",
+        "speakerId": "mano",
+        "text": "……说得也是呢。",
+        "nextNodeId": "3-05"
+      },
+      "3-05": {
+        "id": "3-05",
+        "speakerId": "mano",
+        "text": "…………我……买了。",
+        "nextNodeId": "3-06"
+      },
+      "3-06": {
+        "id": "3-06",
+        "speakerId": "mano",
+        "text": "背着这个包出门，一定会心里痒痒的、很开心。",
+        "nextNodeId": "3-07"
+      },
+      "3-07": {
+        "id": "3-07",
+        "speakerId": "producer",
+        "text": "哈哈。看你这样子，这次逛街应该不会后悔。",
+        "nextNodeId": "3-08"
+      },
+      "3-08": {
+        "id": "3-08",
+        "speakerId": "mano",
+        "text": "是的，我也这么觉得。",
+        "nextNodeId": "3-09"
+      },
+      "3-09": {
+        "id": "3-09",
+        "speakerId": "mano",
+        "text": "不买的话才一定会后悔……是制作人在背后推了我一把。"
+      },
+      "4-01": {
+        "id": "4-01",
+        "speakerId": "producer",
+        "text": "要是还下不了决心，不如再放一放。",
+        "nextNodeId": "4-02"
+      },
+      "4-02": {
+        "id": "4-02",
+        "speakerId": "mano",
+        "text": "……说得是呢。今天先算了。",
+        "nextNodeId": "4-03"
+      },
+      "4-03": {
+        "id": "4-03",
+        "speakerId": "producer",
+        "text": "想清楚了还想要，那时候再买就行。",
+        "nextNodeId": "4-04"
+      },
+      "4-04": {
+        "id": "4-04",
+        "speakerId": "mano",
+        "text": "好的！",
+        "nextNodeId": "4-05"
+      },
+      "4-05": {
+        "id": "4-05",
+        "speakerId": "mano",
+        "text": "制作人，早上好！",
+        "nextNodeId": "4-06"
+      },
+      "4-06": {
+        "id": "4-06",
+        "speakerId": "producer",
+        "text": "嗯，早上好。今天看起来心情很好啊。",
+        "nextNodeId": "4-07"
+      },
+      "4-07": {
+        "id": "4-07",
+        "speakerId": "mano",
+        "text": "是的！呵呵，其实上次那个包，我还是买了。",
+        "nextNodeId": "4-08"
+      },
+      "4-08": {
+        "id": "4-08",
+        "speakerId": "mano",
+        "text": "我想着有那个包，出门会更开心。",
+        "nextNodeId": "4-09"
+      },
+      "4-09": {
+        "id": "4-09",
+        "speakerId": "mano",
+        "text": "按制作人说的放一放之后，我明白了自己真正想要什么。",
+        "nextNodeId": "4-10"
+      },
+      "4-10": {
+        "id": "4-10",
+        "speakerId": "producer",
+        "text": "这样啊。想通了才买的，那就好。",
+        "nextNodeId": "4-11"
+      },
+      "4-11": {
+        "id": "4-11",
+        "speakerId": "mano",
+        "text": "是的！谢谢您，制作人。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-10-31T09:58:59.911Z",
+  "updatedAt": "2026-10-31T09:58:59.911Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-10-31T09:58:59.911Z",
+      "note": "ナチュラルモード 第 1 章（剧本 200100301）"
+    }
+  ]
+}

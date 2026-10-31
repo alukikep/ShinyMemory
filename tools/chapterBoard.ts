@@ -45,6 +45,7 @@ if (existsSync(draftsDir)) {
 }
 
 type Row = {
+  chainId: string;
   idol: string;
   index: string;
   title: string;
@@ -86,6 +87,7 @@ for (const chain of cardChains) {
     | undefined;
 
   rows.push({
+    chainId: chain.id,
     idol: chain.idolId,
     index: `${stepIndex + 1}/${chain.steps.length}`,
     title: chain.title,
@@ -134,14 +136,14 @@ for (const [key, owners] of byAction) {
 }
 
 // 一个偶像的章节，天数必须递增
-for (const idol of new Set(rows.map((row) => row.idol))) {
+for (const key of new Set(rows.map((row) => row.chainId))) {
   const days = rows
-    .filter((row) => row.idol === idol)
+    .filter((row) => row.chainId === key)
     .map((row) => Number(row.day.replace(/[^0-9]/g, '')))
     .filter((day) => Number.isFinite(day));
   for (let index = 1; index < days.length; index += 1) {
     if (days[index]! <= days[index - 1]!) {
-      problems.push(`${idol}：第 ${index + 1} 章的天数没有晚于前一章`);
+      problems.push(`${key}：第 ${index + 1} 章的天数没有晚于前一章`);
     }
   }
 }
@@ -198,8 +200,34 @@ for (const chain of cardChains) {
   }
 }
 
-console.log(`卡面章 ${rows.length} 章：已上线 ${live}，待审 ${waiting}，缺对话 ${rows.length - live - waiting}`);
-console.log(`另有长线/招募链 ${arcChains.length} 条（不在本表里，见 content:coverage）`);
+// 按卡汇总：玩家/策划关心的是"几张卡"，章只是细分
+const byCard = new Map<
+  string,
+  { idol: string; title: string; total: number; live: number }
+>();
+for (const row of rows) {
+  const entry = byCard.get(row.chainId) ?? {
+    idol: row.idol,
+    title: row.title,
+    total: 0,
+    live: 0,
+  };
+  entry.total += 1;
+  if (row.state === '已上线') entry.live += 1;
+  byCard.set(row.chainId, entry);
+}
+
+console.log(
+  `\n卡面剧情：${byCard.size} 张卡 · ${rows.length} 章（已上线 ${live}，待审 ${waiting}）`,
+);
+for (const [, card] of [...byCard.entries()].sort((a, b) =>
+  a[1].idol.localeCompare(b[1].idol),
+)) {
+  console.log(
+    `  ${card.idol.padEnd(7)}${card.title.padEnd(22)}${card.live}/${card.total} 章`,
+  );
+}
+console.log(`\n另有长线/招募链 ${arcChains.length} 条（不在本表里，见 content:coverage）`);
 
 if (problems.length > 0) {
   console.log(`\n⚠ 配置问题 ${problems.length} 条：`);

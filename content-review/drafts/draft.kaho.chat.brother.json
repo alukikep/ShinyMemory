@@ -1,0 +1,22 @@
+{
+  "id": "draft.kaho.chat.brother",
+  "kind": "topic",
+  "title": "聊天 · 哥哥",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kaho.chat.brother",
+  "payload": {
+    "id": "kaho.chat.brother",
+    "actorId": "kaho",
+    "label": "哥哥",
+    "text": "「哥哥他啊，嘴上说『随便你』，结果把节目录下来了。他就是这种人！」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T02:36:00.000Z",
+  "updatedAt": "2026-11-02T02:36:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T02:36:00.000Z", "note": "果穂日常话题（100900501 哥哥与录像）" }
+  ]
+}

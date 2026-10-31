@@ -1,0 +1,22 @@
+{
+  "id": "draft.kaho.chat.school",
+  "kind": "topic",
+  "title": "聊天 · 学校",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kaho.chat.school",
+  "payload": {
+    "id": "kaho.chat.school",
+    "actorId": "kaho",
+    "label": "学校",
+    "text": "「学校啊，まおちゃん今天也来跟我说话了。我们是同班！」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T02:33:00.000Z",
+  "updatedAt": "2026-11-02T02:33:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T02:33:00.000Z", "note": "果穂日常话题（1009005050090 / 1009005060010）" }
+  ]
+}

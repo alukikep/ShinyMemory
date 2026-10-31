@@ -250,4 +250,38 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: 'カラフルメタモルフォーゼ', index: 3, total: 3 },
     anchors: ['2007003110010', '2007003110180', '2007003110290'],
   },
+  {
+    chapterId: 'kaho-walk',
+    script: '200900301',
+    source: '剧本 200900301',
+    card: { title: 'マメ丸と一緒！', index: 1, total: 3 },
+    // 旧格式剧本（没有行 id）：锚点用日文原句
+    anchors: [
+      'なんだか、とっても集中できました',
+      'マメ丸は、あたしの家で飼ってる柴犬なんです',
+      'あたしとマメ丸で……？',
+    ],
+  },
+  {
+    chapterId: 'kaho-home',
+    script: '200900302',
+    source: '剧本 200900302',
+    card: { title: 'マメ丸と一緒！', index: 2, total: 3 },
+    anchors: [
+      '下校中ですっ',
+      'あたし、自分で気づかなかったのに',
+      '手をつないでてもいいですか',
+    ],
+  },
+  {
+    chapterId: 'kaho-red',
+    script: '200900311',
+    source: '剧本 200900311',
+    card: { title: 'マメ丸と一緒！', index: 3, total: 3 },
+    anchors: [
+      '憧れのヒーロー役',
+      'あたし、まだ夢の中にいるみたいです',
+      'あたしにとって一番、大好きなヒーローは',
+    ],
+  },
 ];

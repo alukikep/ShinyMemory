@@ -1,0 +1,22 @@
+{
+  "id": "draft.kaho.chat.math",
+  "kind": "topic",
+  "title": "聊天 · 算数",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.kaho.chat.math",
+  "payload": {
+    "id": "kaho.chat.math",
+    "actorId": "kaho",
+    "label": "算数",
+    "text": "「算数？……那个，下次考试我会努力的。真的。」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T02:34:00.000Z",
+  "updatedAt": "2026-11-02T02:34:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T02:34:00.000Z", "note": "果穂日常话题（1009005010040 算数苦手）" }
+  ]
+}

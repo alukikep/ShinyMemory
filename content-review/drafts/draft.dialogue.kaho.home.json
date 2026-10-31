@@ -1,0 +1,334 @@
+{
+  "id": "draft.dialogue.kaho.home",
+  "kind": "dialogue",
+  "title": "下校路上她背着书包",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.kaho.home",
+  "payload": {
+    "id": "dialogue.kaho.home",
+    "idolId": "kaho",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（呼。总算告一段落了……那是……？）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kaho",
+        "text": "啊，制作人先生！你好！在工作吗？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "不，结束了正要回事务所。果穗怎么了？",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kaho",
+        "text": "我在放学路上！啊，不过因为值日留晚了，所以不回家，想直接去事务所！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "这样啊。那，一起走吧。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kaho",
+        "text": "是！诶嘿嘿，和制作人先生一起好开心。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "我也开心。今天学校里有什么事吗？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kaho",
+        "text": "早上开始，就在和朋友聊电视！大家不太看英雄……",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kaho",
+        "text": "可是可是，我说了这里很帅、很有趣，他们好像也有兴趣了！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "kaho",
+        "text": "下次大家要聚到我家，看英雄的名场面特集！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "那真期待啊。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "kaho",
+        "text": "是！还有，今天的午饭是咖喱饭，非常好吃！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "kaho",
+        "text": "可是不小心吃多了，之后的体育课，比平时动不了……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "哈哈哈，那下次努力就好。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "kaho",
+        "text": "是！……阿嚏！",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "（嗯？怎么感觉有点不对劲……）",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "果穗，你该不会身体不舒服吧？没事吧……？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "kaho",
+        "text": "……诶？没事哦？我很有精神！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "（样子有点怪啊……）",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "今天别去事务所了，直接回去比较好吧。本来也只是小事。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "kaho",
+        "text": "诶？为什么？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "那是因为……",
+        "choices": [
+          { "label": "是不是发烧了。", "nextNodeId": "30" },
+          { "label": "是不是累着了。", "nextNodeId": "40" },
+          { "label": "因为我想见マメ丸。", "nextNodeId": "50" }
+        ]
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "kaho",
+        "text": "发烧……？嗯——我自己不太清楚。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "kaho",
+        "text": "制作人先生，你确认一下看看！",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "（……嗯。果然有点烫。也许只是低烧……）",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "kaho",
+        "text": "我自己都没注意到……好厉害，制作人先生！",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "kaho",
+        "text": "制作人先生，一直有在好好看着我呢。诶嘿嘿。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "不，要能更早发现就好了……总之今天回去吧。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "偶像的日程很紧，能休息的时候就要好好休息。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "kaho",
+        "text": "这样啊……英雄也不是一直在战斗呢！",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "嗯。来，回家吧。我送你。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "kaho",
+        "text": "是！麻烦你了！"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "kaho",
+        "text": "嗯——我自己不觉得是那样……",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "最近偶像的工作也慢慢多起来了……学校也每天都好好去吧？",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "kaho",
+        "text": "是。可是完全不会辛苦哦？工作和学校，我都喜欢！",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "那比什么都好……不过累了的话不能勉强。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "为了今后能作为偶像成长，今天该好好休息。",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "kaho",
+        "text": "为了成长而休息……原来如此！我完全没想到！还有这种想法啊。",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "kaho",
+        "text": "制作人先生果然是大人的，好厉害！",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "producer",
+        "text": "没那回事。那今天，就回家吧？",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "kaho",
+        "text": "是，我知道了！"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "kaho",
+        "text": "哇！真的吗？这么说来，我们一次都没见过呢。",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "producer",
+        "text": "嗯。所以想送果穗回去，顺便见见マメ丸。",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "kaho",
+        "text": "那非常开心……不过，事务所有工作的事要谈吧？",
+        "nextNodeId": "53"
+      },
+      "53": {
+        "id": "53",
+        "speakerId": "producer",
+        "text": "工作的事边走边说也行。不一定要在事务所。",
+        "nextNodeId": "54"
+      },
+      "54": {
+        "id": "54",
+        "speakerId": "kaho",
+        "text": "我知道了！那，我带路到我家！",
+        "nextNodeId": "55"
+      },
+      "55": {
+        "id": "55",
+        "speakerId": "producer",
+        "text": "嗯，拜托了。",
+        "nextNodeId": "56"
+      },
+      "56": {
+        "id": "56",
+        "speakerId": "kaho",
+        "text": "是！像这样和制作人先生一起走回家……",
+        "nextNodeId": "57"
+      },
+      "57": {
+        "id": "57",
+        "speakerId": "kaho",
+        "text": "诶嘿嘿，总觉得很新鲜，好开心。",
+        "nextNodeId": "58"
+      },
+      "58": {
+        "id": "58",
+        "speakerId": "kaho",
+        "text": "对了，像爸爸妈妈对我那样，可以牵手吗？",
+        "nextNodeId": "59"
+      },
+      "59": {
+        "id": "59",
+        "speakerId": "producer",
+        "text": "诶？我是没关系……",
+        "nextNodeId": "60"
+      },
+      "60": {
+        "id": "60",
+        "speakerId": "kaho",
+        "text": "诶嘿嘿！哇……制作人先生的手好大啊。总觉得很安心。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T02:15:00.000Z",
+  "updatedAt": "2026-11-02T02:15:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T02:15:00.000Z", "note": "对照 200900302 改编，保留三个选项（旧格式剧本）" }
+  ]
+}

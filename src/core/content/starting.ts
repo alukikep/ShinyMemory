@@ -23,6 +23,7 @@ export const STARTING_STATE = {
     kogane: 'unknown',
     sakuya: 'unknown',
     yuika: 'unknown',
+    kaho: 'unknown',
   } as Record<string, IdolStatus>,
   dialogueId: 'dialogue.prologue.office',
 } as const;

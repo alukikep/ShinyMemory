@@ -9,15 +9,17 @@ import type { ActorDef } from './types';
  * 起因：安提卡三人的作息原本是"平日全同、周末全同"，日程表打开像排班表，
  * 玩家每天可选的地点和时间窗口也完全一样。
  *
- * 规则（2026-11 起对安提卡成立，之后新角色照做；旧角色是技术债）：
+ * 规则（2026-11 起的组合都照做；更早的角色是技术债）：
  * 1. 两周里出现的地点至少 5 种；
  * 2. 练习室每周至少 3 天（训练课与课后事件挂在上面，不能被"灵活性"挤掉）；
  * 3. 周一到周五的日程至少 4 种不同；
  * 4. 第 1 周和第 2 周不完全一样（`weekParity` 的双周轮换真的生效）；
  * 5. 同一天里没有时间与地点都重复的时段。
+ *
+ * 新组合接入时，把单位名加进下面的 `VARIED_UNITS` 就行。
  */
 
-const LANTICA_UNIT = "L'Antica";
+const VARIED_UNITS = ["L'Antica", '放課後クライマックスガールズ'];
 
 function signature(actor: ActorDef, day: number): string {
   return getSchedulesForDay(actor, day)
@@ -37,15 +39,15 @@ describe('idol schedule variety', () => {
   const actors = new Map(
     PRODUCTION_PACK.actors.map((actor) => [actor.id, actor]),
   );
-  const lanticaIds = PRODUCTION_PACK.idols
-    .filter((idol) => idol.unit === LANTICA_UNIT)
+  const coveredIds = PRODUCTION_PACK.idols
+    .filter((idol) => VARIED_UNITS.includes(idol.unit))
     .map((idol) => idol.id);
 
-  it('has the whole unit in the pack', () => {
-    expect(lanticaIds.length).toBeGreaterThanOrEqual(3);
+  it('covers every unit under the rule', () => {
+    expect(coveredIds.length).toBeGreaterThanOrEqual(5);
   });
 
-  for (const idolId of lanticaIds) {
+  for (const idolId of coveredIds) {
     it(`${idolId} keeps a varied but trainable week`, () => {
       const actor = actors.get(idolId);
       expect(actor, `${idolId} 没有 ActorDef`).toBeTruthy();

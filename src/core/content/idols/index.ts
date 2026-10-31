@@ -1,5 +1,6 @@
 import type { IdolDef } from '../../types';
 import hiori from './hiori';
+import kaho from './kaho';
 import kiriko from './kiriko';
 import kogane from './kogane';
 import mamimi from './mamimi';
@@ -8,4 +9,4 @@ import meguru from './meguru';
 import sakuya from './sakuya';
 import yuika from './yuika';
 
-export const IDOLS: IdolDef[] = [mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika];
+export const IDOLS: IdolDef[] = [mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho];

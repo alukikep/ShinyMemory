@@ -1,0 +1,248 @@
+{
+  "id": "draft.dialogue.kaho.red",
+  "kind": "dialogue",
+  "title": "英雄秀开演前",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.kaho.red",
+  "payload": {
+    "id": "dialogue.kaho.red",
+    "idolId": "kaho",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "kaho",
+        "text": "制作人先生！",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "果穗，准备好了吗？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "kaho",
+        "text": "是！当然！憧憬的英雄角色……",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kaho",
+        "text": "而且还是红战士！诶嘿嘿，都是因为制作人先生教了我很多！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "没那回事。是果穗比谁都喜欢英雄……努力的结果，才把红战士交给你。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "kaho",
+        "text": "制作人先生……谢谢你！那我去了！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "（她跑上舞台。灯一亮，她的声音就变了。）",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "kaho",
+        "text": "——大家，不用再害怕了！我们，一定会保护你们！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kaho",
+        "text": "——接招吧，正义的铁拳！！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "（台词也很稳，而且很会看观众……果然。）",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "kaho",
+        "text": "——有困难的时候，再叫我们！我们随时都是你们这边的！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "辛苦了。很努力啊！观众也很热烈。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "kaho",
+        "text": "制作人先生！怎么样，我的红战士！",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "最棒了。观众、工作人员、大人小孩，全都看入迷了。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "正因为是憧憬英雄的果穗，才能做出这样的舞台。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "kaho",
+        "text": "真的吗？我……有好好地成为红战士吗？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "嗯。不管谁看，果穗都是个出色的红战士。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "kaho",
+        "text": "制作人先生这么说的话……诶嘿嘿，谢谢！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "kaho",
+        "text": "我一直一直喜欢、憧憬的英雄，自己居然能成为……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "kaho",
+        "text": "我好像还在梦里……",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "不是梦。果穗在现实世界里，成为了英雄。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "kaho",
+        "text": "制作人先生……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "kaho",
+        "text": "一开始，我也满是「我能当好那个红战士吗」的不安。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "kaho",
+        "text": "但是『ジャスティスV』里也说，「正义的英雄需要的不是身体的强大，而是心的强大」……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "（『ジャスティスV』……是果穗喜欢的作品啊。）",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "kaho",
+        "text": "所以我也觉得，必须努力站上舞台。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "确实如此。是果穗「要当好红战士」的强烈心意让舞台成功了。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "kaho",
+        "text": "是！拥有强烈的意志，真的是非常重要的事呢！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "嗯。果穗和『ジャスティスV』都很厉害。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "kaho",
+        "text": "啊，不过。我能成为红战士……果然还是托了制作人先生的福！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "我只是稍微推了推一直在努力的果穗一把。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "kaho",
+        "text": "诶嘿嘿，那也就是说，一个人做不到的事……",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "kaho",
+        "text": "和制作人先生一起就能做到吧……好厉害！",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "kaho",
+        "text": "对我来说最、最喜欢的英雄是——制作人先生！",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "果穗……",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "谢谢。今后也一起加油吧！",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "kaho",
+        "text": "是！我想成为能让更多更多人笑起来的、最强的英雄偶像！",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "kaho",
+        "text": "和制作人先生一起的话，一定能成为的！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T02:20:00.000Z",
+  "updatedAt": "2026-11-02T02:20:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T02:20:00.000Z", "note": "对照 200900311 改编（旧格式剧本，锚点用日文原句）" }
+  ]
+}

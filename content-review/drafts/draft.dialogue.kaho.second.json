@@ -1,0 +1,262 @@
+{
+  "id": "draft.dialogue.kaho.second",
+  "kind": "dialogue",
+  "title": "她自己跑来事务所",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.kaho.second",
+  "payload": {
+    "id": "dialogue.kaho.second",
+    "idolId": "kaho",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "果穗——差不多到上课的时间了……",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "kaho",
+        "text": "哇……！",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "怎么了？",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "kaho",
+        "text": "啊，制作人先生！果然办公室好厉害啊！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "kaho",
+        "text": "像英雄的秘密基地一样，好开心！",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "是、是吗。对果穗来说确实很稀奇吧。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "kaho",
+        "text": "是！……啊！制作人先生，你看你看！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "……叶月小姐怎么了？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "kaho",
+        "text": "她打字的速度好快！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "kaho",
+        "text": "明明平时总是困困的样子，好厉害！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "kaho",
+        "text": "总觉得……像是去救遇险英雄的正义伙伴！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "原来如此……那个我也懂。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "kaho",
+        "text": "对吧！好帅啊——",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "kaho",
+        "text": "在这里的话，我觉得真的能成为英雄！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "果穗是偶像，不是英雄啊……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "kaho",
+        "text": "诶，英雄吗！？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "嗯。刚才我们正说，果穗说不定能成为像英雄那样的人。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "kaho",
+        "text": "我总有一天也能成为英雄那样吗！？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "这个嘛……",
+        "choices": [
+          { "label": "正因为能，我才会挖你。", "nextNodeId": "20" },
+          { "label": "果穗是想成为吧？", "nextNodeId": "30" },
+          { "label": "只有练习一条路！", "nextNodeId": "40" }
+        ]
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "果穗能像英雄一样让所有人笑起来……我觉得你能成为这样的偶像。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "kaho",
+        "text": "真的吗！？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "嗯。为了这个，我也会好好带你的。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "kaho",
+        "text": "我像英雄一样……那，帅气的姿势也需要吧！！",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "kaho",
+        "text": "现在就得想好！什么样的姿势才帅呢——",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "哈哈。姿势也重要，不过先从练习开始。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "今后，一起加油吧。"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "kaho",
+        "text": "是，我想成为！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "嗯，很好的回答。那份心情的强度很重要。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "kaho",
+        "text": "啊。那个，我听过！",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "kaho",
+        "text": "我最喜欢的特摄节目里也说过，向上心很重要！",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "kaho",
+        "text": "果然偶像和英雄很像呢！",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "确实如此。偶像和英雄，要让所有人一直笑下去，都需要向上心。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "所以，朝着更高的地方，一起战斗吧。"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "想像英雄一样，每天的练习就少不了。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "kaho",
+        "text": "英雄也说每天的特训很重要！说为了保护大家的笑容，每天的训练是必要的！",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "kaho",
+        "text": "为了保护大家的笑容，偶像也需要每天练习呢！",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "嗯。而且，果穗身上应该还睡着很厉害的力量。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "kaho",
+        "text": "潜在能力！我知道！是沉睡的力量！",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "producer",
+        "text": "对。为了解放那份力量，首先也是练习。",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "kaho",
+        "text": "是！为了成为能让所有人笑起来的、像英雄一样的偶像……"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T02:05:00.000Z",
+  "updatedAt": "2026-11-02T02:05:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T02:05:00.000Z", "note": "对照 100900102 改编，保留三个选项" }
+  ]
+}

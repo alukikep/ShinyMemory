@@ -3,6 +3,8 @@ import { hioriEncounter, manoEncounter, meguruEncounter, manoSlump, hioriGap, me
 import hioriSmileCard from './hioriSmileCard';
 import koganeCard from './koganeCard';
 import koganeEncounter from './koganeEncounter';
+import kahoCard from './kahoCard';
+import kahoEncounter from './kahoEncounter';
 import kirikoCard from './kirikoCard';
 import kirikoEncounter from './kirikoEncounter';
 import mamimiNatural from './mamimiNatural';
@@ -33,6 +35,8 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   hioriEncounter,
   meguruEncounter,
   mamimiEncounter,
+  kahoEncounter,
+  kahoCard,
   kirikoEncounter,
   kirikoCard,
   koganeEncounter,

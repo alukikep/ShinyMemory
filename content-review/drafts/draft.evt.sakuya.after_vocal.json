@@ -1,0 +1,51 @@
+{
+  "id": "draft.evt.sakuya.after_vocal",
+  "kind": "event",
+  "title": "低音唱过头了",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.sakuya.after_vocal",
+  "payload": {
+    "id": "evt.sakuya.after_vocal",
+    "title": "低音唱过头了",
+    "when": [],
+    "after": { "ids": ["vocal"] },
+    "afterIdol": { "ids": ["sakuya"] },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束了。她一整首都用低音唱，收尾的时候连指导老师都笑了。",
+    "choices": [
+      {
+        "label": "低音很适合你。",
+        "hint": "信任 +3、表现 +1",
+        "effects": [
+          { "kind": "attributeExp", "ref": "trust", "tier": 3 },
+          { "kind": "attributeExp", "ref": "expression", "tier": 1 }
+        ],
+        "result": "「フフ。谢谢。不过下次，我会把高音也唱好给你听。」她说完又补一句：「这样被人说，我会当真的哦。」"
+      },
+      {
+        "label": "再把高音那段唱一遍。",
+        "hint": "歌唱 +1、信任 +1",
+        "effects": [
+          { "kind": "attributeExp", "ref": "vocal", "tier": 1 },
+          { "kind": "attributeExp", "ref": "trust", "tier": 1 }
+        ],
+        "result": "她清了清嗓子，第二次唱上去了，然后自己先说了句「……好险」。"
+      },
+      {
+        "label": "先喝口水吧。",
+        "hint": "压力 -3",
+        "effects": [{ "kind": "sharedStat", "stat": "stress", "delta": -3 }],
+        "result": "「谢谢。アナタ总是记得这种事呢。」她把水瓶递回来，说自己今天唱得有点用力。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:40:00.000Z",
+  "updatedAt": "2026-11-02T00:40:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:40:00.000Z", "note": "咲耶声乐课后事件（1006005040080 得意な雰囲気）" }
+  ]
+}

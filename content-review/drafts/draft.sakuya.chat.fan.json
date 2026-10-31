@@ -1,0 +1,22 @@
+{
+  "id": "draft.sakuya.chat.fan",
+  "kind": "topic",
+  "title": "聊天 · 粉丝",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.sakuya.chat.fan",
+  "payload": {
+    "id": "sakuya.chat.fan",
+    "actorId": "sakuya",
+    "label": "粉丝",
+    "text": "「被粉丝打招呼，不管多少次我都会高兴。那份勇气，可不是随便就能拿出来的。」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:32:00.000Z",
+  "updatedAt": "2026-11-02T00:32:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:32:00.000Z", "note": "咲耶日常话题（1006005010210 / 2006003010200）" }
+  ]
+}

@@ -6,6 +6,7 @@ import kogane from './kogane';
 import mamimi from './mamimi';
 import mano from './mano';
 import meguru from './meguru';
+import sakuya from './sakuya';
 import tsutomu from './tsutomu';
 
-export const ACTORS: ActorDef[] = [hazuki, tsutomu, mano, hiori, meguru, mamimi, kiriko, kogane];
+export const ACTORS: ActorDef[] = [hazuki, tsutomu, mano, hiori, meguru, mamimi, kiriko, kogane, sakuya];

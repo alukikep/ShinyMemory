@@ -1,0 +1,260 @@
+{
+  "id": "draft.dialogue.sakuya.night",
+  "kind": "dialogue",
+  "title": "演出结束以后",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.sakuya.night",
+  "payload": {
+    "id": "dialogue.sakuya.night",
+    "idolId": "sakuya",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "sakuya",
+        "text": "好久不见了。像这样和制作人两个人在一起。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "嗯。最近你的人气也上来了，还参加了『W.I.N.G.』。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "明明那么忙那么辛苦……咲耶真的很努力了。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "sakuya",
+        "text": "フフ。被制作人这样夸，也感觉是好久没有的事了。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "喂喂，哪有那种事。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "sakuya",
+        "text": "クス。开玩笑的。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "sakuya",
+        "text": "不过，能像这样两个人独处、慢慢说话，真的很久没有了呢。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "是啊。咲耶身边，一不留神就总是围满了人。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "能两个人独处的机会，平时也不常有。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "sakuya",
+        "text": "确实，能和谁两个人独处的机会，也许不多呢。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "sakuya",
+        "text": "我自己，也一直想着要和各种各样的人建立联系。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "sakuya",
+        "text": "那真的是很棒的事……你不这么想吗，制作人？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "嗯，是啊。我也这么想。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "sakuya",
+        "text": "フフ……对吧？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "sakuya",
+        "text": "在那个舞台上，我和至今为止从未有过的那么多的人连上了。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "sakuya",
+        "text": "那个瞬间，最美的世界在我面前展开了。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "sakuya",
+        "text": "我真的非常感谢你，制作人。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "sakuya",
+        "text": "谢谢你，让我成为偶像。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "该道谢的是我。谢谢你陪我一直走到这里。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "sakuya",
+        "text": "制作人……我……",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "sakuya",
+        "text": "我有回应到アナタ的期待吗？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "当然了，咲耶。今后也一起朝着顶级偶像努力吧！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "sakuya",
+        "text": "顶级偶像吗……和制作人在一起的话，我感觉能成为呢！",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "sakuya",
+        "text": "一想到今后还能更多更多地品味那个最棒的瞬间，胸口就激动起来。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "sakuya",
+        "text": "フフ……我真的是个幸运的人。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "sakuya",
+        "text": "今后也请多指教。制作人。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "嗯。今后也请多指教，咲耶。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "sakuya",
+        "text": "……话说回来，真是不可思议的心情。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "sakuya",
+        "text": "我明明是为了和许多许多人连上，才当偶像的。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "sakuya",
+        "text": "现在却在想，只有两个人的这段时间，要是一直持续下去就好了。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "这样啊……",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "sakuya",
+        "text": "……呐，制作人。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "sakuya",
+        "text": "……再稍微……就这样待一会儿，可以吗？",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "嗯……",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "sakuya",
+        "text": "……谢谢你。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "（嗯？咲耶……？靠到我背上来了，真少见啊。）",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "哦、咲耶，你看，星星很漂亮。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "sakuya",
+        "text": "……真的，很漂亮……",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "sakuya",
+        "text": "……制作人，今后也一直，留在我身边好吗？",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "sakuya",
+        "text": "和制作人在一起的时间，比什么都，是我最重要的东西……"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:20:00.000Z",
+  "updatedAt": "2026-11-02T00:20:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:20:00.000Z", "note": "对照 200600311 改编" }
+  ]
+}

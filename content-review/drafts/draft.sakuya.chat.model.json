@@ -1,0 +1,22 @@
+{
+  "id": "draft.sakuya.chat.model",
+  "kind": "topic",
+  "title": "聊天 · 模特的工作",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.sakuya.chat.model",
+  "payload": {
+    "id": "sakuya.chat.model",
+    "actorId": "sakuya",
+    "label": "模特的工作",
+    "text": "「模特的工作，从高一那年开始就一直没断过。怎么让自己看起来最好看——这个我还挺有自信的。」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:31:00.000Z",
+  "updatedAt": "2026-11-02T00:31:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:31:00.000Z", "note": "咲耶日常话题（1006005030080）" }
+  ]
+}

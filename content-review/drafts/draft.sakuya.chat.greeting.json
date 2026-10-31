@@ -1,0 +1,22 @@
+{
+  "id": "draft.sakuya.chat.greeting",
+  "kind": "topic",
+  "title": "聊天 · 打招呼",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.sakuya.chat.greeting",
+  "payload": {
+    "id": "sakuya.chat.greeting",
+    "actorId": "sakuya",
+    "label": "打招呼",
+    "text": "「打招呼的时候，有人把『欢迎回来』和『早上好』说混了——我其实觉得挺有趣的。」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:36:00.000Z",
+  "updatedAt": "2026-11-02T00:36:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:36:00.000Z", "note": "咲耶日常话题（1006005060050）" }
+  ]
+}

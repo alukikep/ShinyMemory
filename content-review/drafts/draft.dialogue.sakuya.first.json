@@ -1,0 +1,194 @@
+{
+  "id": "draft.dialogue.sakuya.first",
+  "kind": "dialogue",
+  "title": "街边的拍摄现场",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.sakuya.first",
+  "payload": {
+    "id": "dialogue.sakuya.first",
+    "idolId": "sakuya",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（社长说要我「去挖一个人回来」……总之，先去人多的地方看看。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（嗯，那家店门口围了不少人。在拍杂志吗？那个模特……总觉得让人移不开眼。）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "（拍摄结束了。工作人员在收器材。）",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "sakuya",
+        "text": "辛苦了，非常感谢。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "（那个模特……凛然得让人挪不开眼，真是帅气。）",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "sakuya",
+        "text": "呀，请问找我有事吗？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "呃，啊，那个……",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "sakuya",
+        "text": "我还以为你一直在看我呢……是我多心了吗？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "不，不是多心。我确实在看。我是演艺事务所的人——",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "sakuya",
+        "text": "フフ。原来如此。也就是说，你想挖我？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "是的。刚才的拍摄我看了，觉得你有那份素质。你……有没有想过当偶像？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "sakuya",
+        "text": "……哦。我当偶像啊。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "对。我真想以偶像的身份带你！",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "sakuya",
+        "text": "可是，你也看到了，我不太像偶像吧？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "sakuya",
+        "text": "比我更合适的孩子多得是。为什么偏偏是我？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "正因为是你，我才想带。你身上有十足的偶像素质！",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "你落落大方，而且知道怎么把自己最好的一面拿出来——光这一点，就已经是很强的武器了！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "所以，请让我来带你！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "sakuya",
+        "text": "……原来如此。フフ，好……这个邀请，我接受了。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "真的吗！？不过，这么快就决定没问题吗？",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "sakuya",
+        "text": "クス。明明是你自己来挖我的，说的话真奇怪。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "抱、抱歉。因为你答应得太干脆了，我一时……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "sakuya",
+        "text": "フフ。我只是想回应アナタ为我着想的这份心情。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "sakuya",
+        "text": "也就是说，我对选中我的アナタ，起了兴趣。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "那真是荣幸……（不过，总觉得距离有点近……）",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "sakuya",
+        "text": "怎么了？",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "没、没什么。那，能到事务所详细谈谈吗？",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "sakuya",
+        "text": "好，那就拜托了。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "sakuya",
+        "text": "重新自我介绍一下，我是白瀬咲耶。我们一起迈出新的第一步吧。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:00:00.000Z",
+  "updatedAt": "2026-11-02T00:00:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:00:00.000Z", "note": "对照 100600101 改编" }
+  ]
+}

@@ -9,6 +9,8 @@ import mamimiNatural from './mamimiNatural';
 import manoNatural from './manoNatural';
 import manoSmile from './manoSmile';
 import meguruPicarte from './meguruPicarte';
+import sakuyaCard from './sakuyaCard';
+import sakuyaEncounter from './sakuyaEncounter';
 
 /**
  * 对话在审查台里的剧情链。
@@ -33,6 +35,8 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   kirikoCard,
   koganeEncounter,
   koganeCard,
+  sakuyaEncounter,
+  sakuyaCard,
   manoSlump,
   hioriGap,
   meguruBurden,

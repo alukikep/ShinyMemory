@@ -208,4 +208,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: 'ばってん長崎恋岬', index: 3, total: 3 },
     anchors: ['2004003110100', '2004003110180', '2004003110220'],
   },
+  {
+    chapterId: 'sakuya-fans',
+    script: '200600301',
+    source: '剧本 200600301',
+    card: { title: '秘めやかファンサービス', index: 1, total: 3 },
+    anchors: ['2006003010010', '2006003010100', '2006003010230'],
+  },
+  {
+    chapterId: 'sakuya-crowd',
+    script: '200600302',
+    source: '剧本 200600302',
+    card: { title: '秘めやかファンサービス', index: 2, total: 3 },
+    anchors: ['2006003020010', '2006003020100', '2006003020290'],
+  },
+  {
+    chapterId: 'sakuya-night',
+    script: '200600311',
+    source: '剧本 200600311',
+    card: { title: '秘めやかファンサービス', index: 3, total: 3 },
+    anchors: ['2006003110010', '2006003110120', '2006003110260'],
+  },
 ];

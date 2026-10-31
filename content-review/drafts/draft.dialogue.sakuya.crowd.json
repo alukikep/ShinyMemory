@@ -1,0 +1,298 @@
+{
+  "id": "draft.dialogue.sakuya.crowd",
+  "kind": "dialogue",
+  "title": "人潮里她找不到你",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.sakuya.crowd",
+  "payload": {
+    "id": "dialogue.sakuya.crowd",
+    "idolId": "sakuya",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（人太多了，找不到应该在等我的咲耶……麻烦了。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "sakuya",
+        "text": "制作人！太好了，我还以为这样下去就碰不上了。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "啊！咲、咲耶！找到你太好了……！",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "抱歉，不知道是什么活动，没想到会有这么多人。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "这样下去要迟到了。快走吧，咲耶。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "sakuya",
+        "text": "好，知道了。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "sakuya",
+        "text": "不过真的好多的人啊。这样连走路都很难吧。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "唔，没办法了……",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "sakuya",
+        "text": "……诶？制作人？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "sakuya",
+        "text": "为什么、手……",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "走吧，先冲出人群！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "sakuya",
+        "text": "……！好、好！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "呼……人总算少下来了。到这里应该没问题了。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "突然抓住你的手，抱歉。疼吗？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "sakuya",
+        "text": "……没、没事。只是突然被抓住手……吓了一跳而已。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "对、对不起……应该先跟你说一声的。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "sakuya",
+        "text": "クス……制作人也有相当强硬的一面呢。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "sakuya",
+        "text": "呐，制作人。我们现在，在旁人眼里是什么样子呢？",
+        "choices": [
+          { "label": "大小姐和她的随从吧。", "nextNodeId": "30" },
+          { "label": "亲子？", "nextNodeId": "40" },
+          { "label": "咲耶怎么想？", "nextNodeId": "50" }
+        ]
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "sakuya",
+        "text": "……大小姐吗。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "sakuya",
+        "text": "クス……不坏呢。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "sakuya",
+        "text": "不过，制作人是随从，这可说不过去吧？",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "不，对上咲耶，我只能看成那样。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "sakuya",
+        "text": "那是不是谦虚过头了？制作人也相当有看头哦。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "唔……是吗？",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "sakuya",
+        "text": "フフ。何不多一点自信呢？不过，也是呢……",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "sakuya",
+        "text": "既然你说大小姐……那就机会难得，能把我送到会场吗，随从先生？",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "（……结果还是被她的步调带着走了。）"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "sakuya",
+        "text": "フフ。再怎么说，也不至于看起来差那么多岁吧。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "哈哈哈。确实也许是这样。那就是兄弟……不，年纪差得多的朋友更接近？唔……",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "sakuya",
+        "text": "真是的……アナタ真是一点都不懂女人心呢。",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "什么意思？",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "sakuya",
+        "text": "那谁知道呢。不过……",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "sakuya",
+        "text": "那也算是制作人的优点吧。",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "producer",
+        "text": "唔。完全听不懂。",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "sakuya",
+        "text": "是说你诚实。好了，走吧。我可不想迟到。"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "sakuya",
+        "text": "咦？……フフ……原来如此。",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "sakuya",
+        "text": "我怎么会问出这么坏心眼的问题呢。",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "producer",
+        "text": "比起那个，咲耶，擦擦汗吧。明明工作前，还让你跑了，抱歉。",
+        "nextNodeId": "53"
+      },
+      "53": {
+        "id": "53",
+        "speakerId": "sakuya",
+        "text": "没事的，我运动很擅长。看起来那么不可靠吗？",
+        "nextNodeId": "54"
+      },
+      "54": {
+        "id": "54",
+        "speakerId": "producer",
+        "text": "不，没有那回事。我是信赖咲耶的。",
+        "nextNodeId": "55"
+      },
+      "55": {
+        "id": "55",
+        "speakerId": "producer",
+        "text": "但是，把偶像以最好的状态送到现场，才是制作人的工作。",
+        "nextNodeId": "56"
+      },
+      "56": {
+        "id": "56",
+        "speakerId": "sakuya",
+        "text": "クス。还是一样热爱工作呢。能被アナタ带着，我是个幸运的人。",
+        "nextNodeId": "57"
+      },
+      "57": {
+        "id": "57",
+        "speakerId": "sakuya",
+        "text": "制作人和偶像…………嗯，这就是我们现在最好的关系。",
+        "nextNodeId": "58"
+      },
+      "58": {
+        "id": "58",
+        "speakerId": "producer",
+        "text": "是啊。那么，走吧。",
+        "nextNodeId": "59"
+      },
+      "59": {
+        "id": "59",
+        "speakerId": "sakuya",
+        "text": "呐，制作人……",
+        "nextNodeId": "60"
+      },
+      "60": {
+        "id": "60",
+        "speakerId": "producer",
+        "text": "嗯？怎么了？"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:15:00.000Z",
+  "updatedAt": "2026-11-02T00:15:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:15:00.000Z", "note": "对照 200600302 改编，保留三个选项" }
+  ]
+}

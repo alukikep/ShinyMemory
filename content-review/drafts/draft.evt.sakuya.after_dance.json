@@ -1,0 +1,54 @@
+{
+  "id": "draft.evt.sakuya.after_dance",
+  "kind": "event",
+  "title": "镜子前的姿势",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.sakuya.after_dance",
+  "payload": {
+    "id": "evt.sakuya.after_dance",
+    "title": "镜子前的姿势",
+    "when": [],
+    "after": { "ids": ["dance"] },
+    "afterIdol": { "ids": ["sakuya"] },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她还留在镜子前，一个人把刚才的动作又做了一遍。",
+    "choices": [
+      {
+        "label": "刚才那段很帅。",
+        "hint": "信任 +3、舞蹈 +1",
+        "effects": [
+          { "kind": "attributeExp", "ref": "trust", "tier": 3 },
+          { "kind": "attributeExp", "ref": "dance", "tier": 1 }
+        ],
+        "result": "「クス。被你这么直白地夸，我反而不知道该怎么反应了。」镜子里她的表情松了一下。"
+      },
+      {
+        "label": "再来一次，我看着。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          { "kind": "attributeExp", "ref": "dance", "tier": 1 },
+          { "kind": "sharedStat", "stat": "stress", "delta": 2 }
+        ],
+        "result": "「好。……那你可要好好看着。」她重新站到镜子前，这次一次都没有笑。"
+      },
+      {
+        "label": "今天就到这里吧。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          { "kind": "sharedStat", "stat": "stress", "delta": -3 },
+          { "kind": "attributeExp", "ref": "trust", "tier": 1 }
+        ],
+        "result": "「……嗯。也好。」她关掉音乐的时候，还回头看了一眼镜子。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:41:00.000Z",
+  "updatedAt": "2026-11-02T00:41:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:41:00.000Z", "note": "咲耶舞蹈课后事件（100600504 舞台上かっこいい）" }
+  ]
+}

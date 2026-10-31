@@ -1,0 +1,22 @@
+{
+  "id": "draft.sakuya.chat.sweets",
+  "kind": "topic",
+  "title": "聊天 · 点心",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.sakuya.chat.sweets",
+  "payload": {
+    "id": "sakuya.chat.sweets",
+    "actorId": "sakuya",
+    "label": "点心",
+    "text": "「来的时候会顺手买点点心。好歹算是，让现场气氛缓和一点的礼物吧。」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:33:00.000Z",
+  "updatedAt": "2026-11-02T00:33:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:33:00.000Z", "note": "咲耶日常话题（1006005060120）" }
+  ]
+}

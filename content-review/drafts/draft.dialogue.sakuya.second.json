@@ -1,0 +1,294 @@
+{
+  "id": "draft.dialogue.sakuya.second",
+  "kind": "dialogue",
+  "title": "她在准备第一支广告",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.sakuya.second",
+  "payload": {
+    "id": "dialogue.sakuya.second",
+    "idolId": "sakuya",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "今天是作为偶像的第一份工作。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "sakuya",
+        "text": "今天的拍摄，用的是这支润唇膏呢。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "嗯。广告版面不大，但会登在女性杂志上。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "L'Antica 还只是刚起步，能接到这样的工作已经很厉害了。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "sakuya",
+        "text": "フフ。这都要归功于制作人在努力。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "sakuya",
+        "text": "只靠我一个人的力量，这样的工作根本接不到。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "sakuya",
+        "text": "正因为有制作人在，才接得到的。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "sakuya",
+        "text": "所以，为了回应アナタ的期待，我会努力的。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "嗯，我期待着呢！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "sakuya",
+        "text": "フフ。谢谢你，制作人。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "sakuya",
+        "text": "……不过，虽然有模特的经验，拍广告还是第一次呢。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "sakuya",
+        "text": "广告的重点不是自己，而是要把商品的魅力传达出去。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "sakuya",
+        "text": "要让商品看起来有魅力，该用什么姿势、什么表情去拍呢……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "sakuya",
+        "text": "制作人，你怎么看？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "我想，只要咲耶的魅力传达到了，商品的魅力自然也会传达出去。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "所以今天的咲耶……",
+        "choices": [
+          { "label": "就保持自然的样子。", "nextNodeId": "20" },
+          { "label": "还是冷淡的表情最好。", "nextNodeId": "30" },
+          { "label": "试试有女人味的姿势？", "nextNodeId": "40" }
+        ]
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "sakuya",
+        "text": "クス。你说了让人高兴的话呢。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "sakuya",
+        "text": "那，就照制作人说的，我用最原本的样子去拍。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "辛苦了。第一次拍广告，感觉怎么样？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "sakuya",
+        "text": "幸运的是，摄影师夸了我。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "sakuya",
+        "text": "他说「沉静的眼神和化妆品很搭，拍出了让人印象很深的照片」。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "很厉害啊！这次的摄影师是出了名的严格。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "sakuya",
+        "text": "嗯，好像是这样。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "sakuya",
+        "text": "拍得顺利，是托了制作人建议的福。",
+        "nextNodeId": "50"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "sakuya",
+        "text": "原来如此。商品也是沉稳的色调，那样确实更搭。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "嗯，而且咲耶的帅气也会更突出。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "sakuya",
+        "text": "フフ。听你这么说，我有自信了。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "sakuya",
+        "text": "那，我就带着制作人的话去拍。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "辛苦了！拍得很好啊。现场的女工作人员都在尖叫呢。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "sakuya",
+        "text": "クス，那真是荣幸。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "sakuya",
+        "text": "这都是因为有制作人准确的建议。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "不，能让女工作人员那么高兴，是因为咲耶有那份帅气的魅力。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "商品的目标人群是女性。这是只有咲耶才做得到的工作。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "sakuya",
+        "text": "フフ。听你这么说，我很高兴……",
+        "nextNodeId": "50"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "这次是化妆品的广告，把女人味的魅力推出来会更好吧。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "sakuya",
+        "text": "……有女人味……的吗……",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "producer",
+        "text": "不用想得太复杂。原本的咲耶，就已经是很有魅力的女性了。",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "sakuya",
+        "text": "……フフ。被你这么直白地说，我有点不好意思呢。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "sakuya",
+        "text": "谢谢你。这样我就能毫不犹豫地去拍了。",
+        "nextNodeId": "50"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "producer",
+        "text": "太好了，咲耶。客户那边的评价那么好。",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "sakuya",
+        "text": "嗯。下次想要更大的广告——虽然这么说，我很高兴，但也吃了一惊。",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "sakuya",
+        "text": "不过那样的话，也许得把女人味的魅力再提高一点才行呢。",
+        "nextNodeId": "53"
+      },
+      "53": {
+        "id": "53",
+        "speakerId": "producer",
+        "text": "我觉得咲耶现在这样就已经很有魅力了……",
+        "nextNodeId": "54"
+      },
+      "54": {
+        "id": "54",
+        "speakerId": "sakuya",
+        "text": "不，还差得远。为了让大家高兴，我会继续追求更多更多的女人味！",
+        "nextNodeId": "55"
+      },
+      "55": {
+        "id": "55",
+        "speakerId": "producer",
+        "text": "（说完她自己先迈开了步子。回去的路上，她一次都没有回头。）"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:05:00.000Z",
+  "updatedAt": "2026-11-02T00:05:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:05:00.000Z", "note": "对照 100600102 改编，保留三个选项" }
+  ]
+}

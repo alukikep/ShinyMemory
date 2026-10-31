@@ -1,0 +1,22 @@
+{
+  "id": "draft.sakuya.chat.sama",
+  "kind": "topic",
+  "title": "聊天 · 「咲耶様」",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.sakuya.chat.sama",
+  "payload": {
+    "id": "sakuya.chat.sama",
+    "actorId": "sakuya",
+    "label": "「咲耶様」",
+    "text": "「『咲耶様』……嗯，被那样叫的话，我会好好回应的。毕竟那是给我的称呼嘛。」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:34:00.000Z",
+  "updatedAt": "2026-11-02T00:34:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T00:34:00.000Z", "note": "咲耶日常话题（1006005020160 粉丝口中的咲耶様）" }
+  ]
+}

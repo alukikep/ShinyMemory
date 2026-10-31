@@ -58,7 +58,7 @@
 **动手写任何角色内容之前，必须先读语料库。** 没有例外。
 
 ```text
-ShinyGroup/SCTranslationData  →  data/story/<日文名>/
+npx tsx tools/scriptExport.ts <剧本编号>  →  .cache/shiny/
   W.I.N.G.編/   相遇、四季审查、决赛（相遇必读）
   G.R.A.D.編/   组合期
   S.T.E.P.編/   出道之前
@@ -103,7 +103,7 @@ npm run content:guard      # 已接进 content:validate，构建时会跑
 
 | # | 步骤 | 产出 | 在哪 |
 |---|---|---|---|
-| 1 | **查语料** | 先把 W.I.N.G. / G.R.A.D. / S.T.E.P. / Landing Point 的该角色剧情读一遍，**相遇和关键转折都从原作改** | `SCTranslationData/data/story/<角色>/` |
+| 1 | **查剧本** | 先导出该角色的剧本，读一遍，**相遇和关键转折都从原作改** | `npx tsx tools/scriptExport.ts <编号>` |
 | 1.5 | 角色卡 | 语气、称呼、阶段态度、OOC 对照、语料索引（台词要能指回文件） | `docs/content/<id>/character.md` |
 | 2 | 偶像定义 | id、名字、组合、颜色、头像、成长曲线 | `src/core/content/idols/<id>.ts` |
 | 3 | 角色日程 | 一周作息（她在哪、什么时候、能不能被工作顶掉） | `src/core/content/actors/<id>.ts` |
@@ -346,7 +346,7 @@ S 卡是纯场景、没有选项，现阶段排除。
 
 ### 4.9 素材来源：游戏原始剧本，不是汉化 CSV
 
-**汉化仓库（SCTranslationData）不再作为文本来源。** 它的 CSV 是"屏幕上出现过的行按顺序平铺"：
+**汉化仓库（SCTranslationData）已删除。** 它的 CSV 是"屏幕上出现过的行按顺序平铺"：
 分支和合流全丢、部分行没翻译、同卡多段混在一个文件夹里。
 
 **唯一事实来源是游戏自己的剧本 JSON**（镜像 `viewer.shinycolors.moe`）：
@@ -395,7 +395,7 @@ npx tsx tools/scriptExport.ts 200300501
 用工具列出来（不要靠 `ls`）：
 
 ```bash
-npm run content:card -- "data/story/八宮めぐる/【夏に恋するピチカート！】八宮めぐる"
+npx tsx tools/scriptExport.ts 200300501 200300502 200300503 200300504 200300511
 ```
 
 输出按序号排好，带每段行数和开头两句，直接能判断"哪几段是同一个故事"。

@@ -8,6 +8,7 @@ import park from './park.js';
 import shoppingStreet from './shoppingStreet.js';
 import pool from './pool.js';
 import school from './school.js';
+import hospital from './hospital.js';
 
 export const LOCATIONS: LocationDef[] = [
   office,
@@ -19,4 +20,5 @@ export const LOCATIONS: LocationDef[] = [
   shoppingStreet,
   school,
   pool,
+  hospital,
 ];

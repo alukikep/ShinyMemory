@@ -108,7 +108,7 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
 
       <div className="map-canvas">
         <svg
-          viewBox="0 10 500 170"
+          viewBox="0 10 560 250"
           className="map-svg"
           role="img"
           aria-label="地点与步行路线"
@@ -123,12 +123,12 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
               <circle cx="1" cy="1" r="1" fill="#c9dfea" opacity=".72" />
             </pattern>
           </defs>
-          <rect x="0" y="10" width="500" height="170" fill="#f7fbfe" />
+          <rect x="0" y="10" width="560" height="250" fill="#f7fbfe" />
           <rect
             x="0"
             y="10"
-            width="500"
-            height="170"
+            width="560"
+            height="250"
             fill="url(#map-dot-grid)"
           />
           <g className="map-blocks">
@@ -136,15 +136,16 @@ export function CityMap({ state, onMove, onTransit }: CityMapProps) {
             <rect x="356" y="18" width="30" height="14" rx="3" />
             <rect x="128" y="150" width="30" height="14" rx="3" />
             <rect x="356" y="150" width="30" height="14" rx="3" />
+            <rect x="430" y="200" width="26" height="14" rx="3" />
           </g>
           <g className="map-parks">
             <ellipse cx="470" cy="32" rx="16" ry="10" />
-            <ellipse cx="466" cy="148" rx="18" ry="11" />
+            <ellipse cx="520" cy="190" rx="18" ry="11" />
           </g>
-          <text x="22" y="168" className="map-area-label">
+          <text x="22" y="252" className="map-area-label">
             283 PRODUCTION · ACTIVITY AREA
           </text>
-          <text x="468" y="27" className="map-north-label">
+          <text x="530" y="27" className="map-north-label">
             N ↑
           </text>
 

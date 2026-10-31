@@ -7,6 +7,11 @@ export const WALK_EDGES: MapEdgeDef[] = [
   { from: 'home', to: 'shopping_street', minutes: 6 },
   { from: 'station', to: 'practice_room', minutes: 10 },
   { from: 'practice_room', to: 'studio', minutes: 4 },
+  // 地图东南角的一片：公园 → 泳池 → 医院。
+  // 泳池以前没有接进步行网络（有坐标、没有边），只能靠巴士/出租车，
+  // 地图上看就是一座孤岛；医院顺着它接在这条线上。
+  { from: 'park', to: 'pool', minutes: 14 },
+  { from: 'pool', to: 'hospital', minutes: 8 },
 ];
 
 export function neighborsOf(locationId: string): MapEdgeDef[] {

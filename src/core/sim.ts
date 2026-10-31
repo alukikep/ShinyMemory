@@ -252,6 +252,26 @@ export function activityDuration(
   );
 }
 
+/**
+ * 压力满 100 的后果：第二天必须休息。
+ *
+ * 这条只在行动结算后检查——不是"再也做不了任何事"，
+ * 而是"今天剩下的时间只能休息或睡觉"。
+ */
+function updateForcedRest(state: GameState): void {
+  if (state.shared.stress >= STAT_MAX.stress) {
+    if (!state.flags.forced_rest) {
+      state.flags.forced_rest = true;
+      addLog(state, '她已经到极限了。今天剩下的时间只能休息。', 'bad');
+    }
+    return;
+  }
+  // 缓过来就解除
+  if (state.flags.forced_rest && state.shared.stress < 70) {
+    state.flags.forced_rest = false;
+  }
+}
+
 function clampState(state: GameState): void {
   state.shared.stamina = Math.max(
     0,
@@ -682,6 +702,8 @@ export function acceptJob(
   if (state.phase !== 'plan' || state.locationId !== 'office') {
     return state;
   }
+  // 她已经到极限了，这时候接工作只会砸掉。
+  if (state.flags.forced_rest) return state;
 
   const targetId = idolId ?? getFocusIdolId(state);
   const job = CONTENT_INDEX.jobs.get(jobId);
@@ -858,6 +880,8 @@ export function activeJobFor(state: GameState): JobAssignment | undefined {
 
 export function attendJob(state: GameState, jobId: string): GameState {
   if (state.phase !== 'plan') return state;
+  // 强制休息那天到不了场：工作会按"没去"结算（只拿 20%）。
+  if (state.flags.forced_rest) return state;
   const assignment = state.jobs.find((job) => job.id === jobId);
   if (!assignment) return state;
   if (assignment.locationId !== state.locationId) return state;
@@ -2245,6 +2269,7 @@ export function talkTo(
   }
   applyEffects(next, topic.effects, { idolId: next.selectedIdolId });
   clampState(next);
+  updateForcedRest(next);
 
   const actorState = next.actors[actor.id]!;
   if (topic.once) actorState.flags[`seen:${topic.id}`] = true;
@@ -2311,12 +2336,21 @@ export function activityCheckChance(
   return check ? checkChance(state, check, idolId) : undefined;
 }
 
+/**
+ * 工作检定成功率。
+ *
+ * 压力 ≥ 70 时再 −15%：她已经绷到头了，这时候还要她上节目，
+ * 出错是必然的。训练不受这条影响（训练有它自己的降档惩罚）。
+ */
 export function jobCheckChance(
   state: GameState,
   job: JobDef,
   idolId?: string,
 ): number | undefined {
-  return job.check ? checkChance(state, job.check, idolId) : undefined;
+  if (!job.check) return undefined;
+  const base = checkChance(state, job.check, idolId);
+  if (state.shared.stress < 70) return base;
+  return Math.max(0.05, base - 0.15);
 }
 
 /** 界面用档位；不暴露精确概率。 */
@@ -2490,6 +2524,7 @@ export function applyActivityDef(
   });
   if (sharedEffects.length > 0) applyEffects(next, sharedEffects, {});
   clampState(next);
+  updateForcedRest(next);
 
   next.actionsTaken += 1;
   next.pendingActivityId = activity.id;
@@ -2958,6 +2993,7 @@ export function applyEventChoice(state: GameState, index: number): GameState {
 
   applyCastEffects(next, choice.effects, cast, effectIdolId);
   clampState(next);
+  updateForcedRest(next);
 
   const advanced =
     choice.durationMinutes && choice.durationMinutes > 0

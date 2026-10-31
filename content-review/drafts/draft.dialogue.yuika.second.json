@@ -1,0 +1,340 @@
+{
+  "id": "draft.dialogue.yuika.second",
+  "kind": "dialogue",
+  "title": "她第一次进录音间",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.yuika.second",
+  "payload": {
+    "id": "dialogue.yuika.second",
+    "idolId": "yuika",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "最后确认一下。今天的工作是在广播节目里的一个环节。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "yuika",
+        "text": "宣传 L'Antica，我会做得漂漂亮亮的吧？交给我交给我。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "yuika",
+        "text": "……话说回来，能上广播这种事，总觉得真的像偶像了呢ー",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "都到现在了还说什么。不是『像』，你就是偶像。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "yuika",
+        "text": "不不，三峰还没放弃『其实是整人节目』的说法，所以随时被揭穿都做好心理准备了。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "如果真是整人节目，最吃惊的是我。我挖人的理由也没了。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "……今天是一个人上的工作，能行吗？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "yuika",
+        "text": "总是大家一起，你担心过头啦，制作人。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "yuika",
+        "text": "那这样，三峰一个人就不行——诶，被看穿了～！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "看这状态，也不像紧张。正式录的时候也这样——",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "yuika",
+        "text": "比起那个，制作人你听我说！刚才走廊上，有我在追的那个偶像！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "yuika",
+        "text": "好厉害啊……！会不会就在隔壁的棚……！万一运气好能打个招呼……！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "……一点都不动摇啊……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "（……本来觉得她挺稳的，可能还是『客人』的意识更强。）",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "马上就要轮到你了。差不多该集中了。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "yuika",
+        "text": "咦？不接我的话啊……真是爱操心呢。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "yuika",
+        "text": "おっけおっけ，我知道的。切换很重要！……好，现在进入工作模式了！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "……你真的知道吧？虽然是新人，但结华已经是一个合格的——",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "（工作人员探头：三峰結華小姐，请准备。）",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "yuika",
+        "text": "哎呀呀，三峰被叫了。听不到宝贵的说教了，真遗憾呢……",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "yuika",
+        "text": "我先走啦，Ｐたん！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "啊，喂——",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "没问题吧……？——我也得去棚里了。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "yuika",
+        "text": "呼，结束了结束了。制作人也辛苦了ー",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "yuika",
+        "text": "三峰的第一次广播，怎么样？",
+        "choices": [
+          { "label": "很开心的节目。", "nextNodeId": "30" },
+          { "label": "听着很放心。", "nextNodeId": "40" },
+          { "label": "我笑得不行。", "nextNodeId": "60" }
+        ]
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "是我瞎担心了。对话也接得很好，结华自己也挺有把握吧？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "yuika",
+        "text": "怎么了制作人，这不是在猛夸我吗！等等等等，夸我也不会有什么好处哦ー？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "不是，真的。完全看不出来是第一次。也不像紧张。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "yuika",
+        "text": "比起紧张，是入迷的时候就已经结束了的感觉吧。很开心，但感觉还能多说一点。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "yuika",
+        "text": "变成只顾着回答主持人的提问了，下次我会做得更好。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "原来如此。结华自己也有要反省的地方啊。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "不过，第一次就能那么流畅地说，我觉得可以骄傲一下。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "yuika",
+        "text": "哦哦……反应这么好……！三峰，干脆走广播偶像路线也可以？"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "yuika",
+        "text": "哦，稳定感十足的三峰式谈话，制作人也给了好评？",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "是啊。……不过，你不听人说完就冲出去的时候，我还以为要出什么事。",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "producer",
+        "text": "开始之后，应答也很扎实，根本不用我担心。",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "yuika",
+        "text": "那里嘛，我不是说了进入工作模式了？三峰看着这样，切换其实挺快的哦～",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "嗯，真的被惊到了。不愧是结华。",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "yuika",
+        "text": "哎ー，对吧对吧！三峰，觉得自己才能有点可怕呢！",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "yuika",
+        "text": "……刚才那些先当玩笑，不过这种工作，三峰觉得自己还挺适合的。",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "yuika",
+        "text": "所以，能不能多接一些这样的工作？",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "yuika",
+        "text": "啊！那干脆，和制作人一起开网络广播也行哦？",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "producer",
+        "text": "我出场算怎么回事……",
+        "nextNodeId": "50"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "producer",
+        "text": "不过，让 L'Antica 一起做倒是挺有意思的。"
+      },
+      "60": {
+        "id": "60",
+        "speakerId": "yuika",
+        "text": "诶，有那么夸张吗？",
+        "nextNodeId": "61"
+      },
+      "61": {
+        "id": "61",
+        "speakerId": "producer",
+        "text": "嗯，结华的反应太有趣了，我一直在笑。",
+        "nextNodeId": "62"
+      },
+      "62": {
+        "id": "62",
+        "speakerId": "yuika",
+        "text": "嗯ー……？有那么好笑的地方吗……？",
+        "nextNodeId": "63"
+      },
+      "63": {
+        "id": "63",
+        "speakerId": "yuika",
+        "text": "……哈！三峰，好像明白了！这是制作人式的体贴吧！？",
+        "nextNodeId": "64"
+      },
+      "64": {
+        "id": "64",
+        "speakerId": "producer",
+        "text": "没那回事，真的很好。",
+        "nextNodeId": "65"
+      },
+      "65": {
+        "id": "65",
+        "speakerId": "yuika",
+        "text": "是不是说得太夸张了？太宠我可不好哦ー？",
+        "nextNodeId": "66"
+      },
+      "66": {
+        "id": "66",
+        "speakerId": "producer",
+        "text": "这次不是我，是结华在爱操心啊。",
+        "nextNodeId": "67"
+      },
+      "67": {
+        "id": "67",
+        "speakerId": "yuika",
+        "text": "……原来如此。既然你都说到这份上了，这次就这么算了吧！",
+        "nextNodeId": "68"
+      },
+      "68": {
+        "id": "68",
+        "speakerId": "yuika",
+        "text": "好——！下次要让三峰也能心服口服地，把制作人笑到肚子疼！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:05:00.000Z",
+  "updatedAt": "2026-11-02T01:05:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T01:05:00.000Z", "note": "对照 100700102 改编，保留三个选项" }
+  ]
+}

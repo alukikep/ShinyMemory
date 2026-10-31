@@ -11,6 +11,8 @@ import manoSmile from './manoSmile';
 import meguruPicarte from './meguruPicarte';
 import sakuyaCard from './sakuyaCard';
 import sakuyaEncounter from './sakuyaEncounter';
+import yuikaCard from './yuikaCard';
+import yuikaEncounter from './yuikaEncounter';
 
 /**
  * 对话在审查台里的剧情链。
@@ -37,6 +39,8 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   koganeCard,
   sakuyaEncounter,
   sakuyaCard,
+  yuikaEncounter,
+  yuikaCard,
   manoSlump,
   hioriGap,
   meguruBurden,

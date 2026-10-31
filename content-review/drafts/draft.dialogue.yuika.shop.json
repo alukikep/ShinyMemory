@@ -1,0 +1,266 @@
+{
+  "id": "draft.dialogue.yuika.shop",
+  "kind": "dialogue",
+  "title": "她说要带我去挑眼镜",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.yuika.shop",
+  "payload": {
+    "id": "dialogue.yuika.shop",
+    "idolId": "yuika",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（哦……！现在的女孩子都在这种地方买东西吗……！）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "yuika",
+        "text": "当然！……重新看一遍，还是好厉害呢。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "……果然请你带路是对的。一个人来，我可能就有点缩了。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "yuika",
+        "text": "偶尔也得孝敬一下制作人嘛。这也算偶像的职责？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "yuika",
+        "text": "……不过，『想学习最近的时尚』，制作人还真是认真啊。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "是工作需要的。我对流行也不算了解，得好好看看。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "yuika",
+        "text": "哦哦，很有制作人的发言！不愧是！那赶紧走吧！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "从哪儿开始逛好呢……？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "yuika",
+        "text": "不用想那么复杂也没关系，总之，随心所欲！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "这里是杂货店啊……哦，还卖眼镜。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "结华的话，实用也是需要的，但从时尚的角度看也很重要吧……？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "yuika",
+        "text": "哦！制作人眼光不错嘛～！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "yuika",
+        "text": "眼镜换一副，印象会变很多，所以很重要哦。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "这样啊……",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "yuika",
+        "text": "毕竟，三峰要是换了副眼镜，不就完全变个人了？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "原来如此……？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "yuika",
+        "text": "啊。制作人完全没 get 到吧？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "yuika",
+        "text": "来啦来啦，看好了——",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "yuika",
+        "text": "当当～！怎么样？",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "哦……挺合适的。这个镜框，猫的形状……吧？嗯，不错。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "yuika",
+        "text": "对对！很有趣吧～？戴上这个，就能带着两只猫走路了！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "yuika",
+        "text": "而且，这个和平时那副，感觉看起来不一样吧？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "是啊，确实挺少见。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "yuika",
+        "text": "您能明白就好。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "左右颜色不同，也是重点吗？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "yuika",
+        "text": "理解得真快呢Ｐくん，很好～答案是 YES！可爱吧？",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "嗯。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "yuika",
+        "text": "哦？制作人也喜欢这个？要不要戴戴看？",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "我、我就不用了。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "yuika",
+        "text": "哎呀呀，真遗憾。我还以为能凑成一对呢。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "yuika",
+        "text": "……啊，那那边的眼镜呢？看起来挺适合你的吧？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "不，等等，结华……！",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "yuika",
+        "text": "哈——好开心！和制作人一起逛店，可不常有！",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "结华也开心就好。陪我逛，帮大忙了。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "今天没逛完，不过也有收获……时尚真是深奥啊。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "yuika",
+        "text": "噗……啊哈哈！制作人，太认真了！",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "是吗？……总之，下次还得来学。你有空的话，还想请你陪我。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "yuika",
+        "text": "好好好，ｏｋ。三峰也觉得挺有意思的。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "yuika",
+        "text": "……啊，对了。那就布置个作业，到下次来之前。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "yuika",
+        "text": "三峰觉得最适合的眼镜是哪副，制作人你自己想想看！",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "（……结果一路上都是她在带我。回去的路上，她一直在说镜框的事。）"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:10:00.000Z",
+  "updatedAt": "2026-11-02T01:10:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T01:10:00.000Z", "note": "对照 200700301 改编" }
+  ]
+}

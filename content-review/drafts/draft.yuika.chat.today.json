@@ -1,0 +1,22 @@
+{
+  "id": "draft.yuika.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.yuika.chat.today",
+  "payload": {
+    "id": "yuika.chat.today",
+    "actorId": "yuika",
+    "label": "今天",
+    "text": "「今天？课上完了就来啦。……诶，你说我看起来有点困？那是、那是你看错了啦～」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:30:00.000Z",
+  "updatedAt": "2026-11-02T01:30:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T01:30:00.000Z", "note": "結華日常话题（100700501 大学与打工两头跑）" }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "draft.yuika.chat.goods",
+  "kind": "topic",
+  "title": "聊天 · 周边",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.yuika.chat.goods",
+  "payload": {
+    "id": "yuika.chat.goods",
+    "actorId": "yuika",
+    "label": "周边",
+    "text": "「这枚徽章是限定款。捡到的那天，我还以为运气用光了呢。」",
+    "cooldownMinutes": 1440,
+    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:31:00.000Z",
+  "updatedAt": "2026-11-02T01:31:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T01:31:00.000Z", "note": "結華日常话题（1007001010080）" }
+  ]
+}

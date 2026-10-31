@@ -229,4 +229,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: '秘めやかファンサービス', index: 3, total: 3 },
     anchors: ['2006003110010', '2006003110120', '2006003110260'],
   },
+  {
+    chapterId: 'yuika-shop',
+    script: '200700301',
+    source: '剧本 200700301',
+    card: { title: 'カラフルメタモルフォーゼ', index: 1, total: 3 },
+    anchors: ['2007003010010', '2007003010110', '2007003010230'],
+  },
+  {
+    chapterId: 'yuika-hide',
+    script: '200700302',
+    source: '剧本 200700302',
+    card: { title: 'カラフルメタモルフォーゼ', index: 2, total: 3 },
+    anchors: ['2007003020010', '2007003020090', '2007003020200'],
+  },
+  {
+    chapterId: 'yuika-live',
+    script: '200700311',
+    source: '剧本 200700311',
+    card: { title: 'カラフルメタモルフォーゼ', index: 3, total: 3 },
+    anchors: ['2007003110010', '2007003110180', '2007003110290'],
+  },
 ];

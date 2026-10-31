@@ -162,10 +162,12 @@ npm run build             # 上面全部 + 类型 + 打包
 - 旧的三条长线与三条旧招募链没有 `step.source`（board 里 `LEGACY_CHAINS` 豁免）。
   重读剧本时补上，补完从豁免表删掉。
 - 角色卡的"人审 + 哈希锁定"还没做（现在是"有出处"的机器检查，不是"人看过"的留痕）。
+- 已审台词里还有整句日文（kiriko.first / kiriko.second / mano.first 各一两句）。
+  规则见 playbook §1.7（整句必须翻、口癖可留），改的时候走 `supersedes` 修订。
 
 | 项 | 影响 | 建议 |
 |---|---|---|
 | 数值回归没有自动化 | `balance.test` 跑夹具，正式包数值没人守 | 写一个"第 7 天粉丝数"模拟脚本 |
 | 每个角色没有独立 E2E | 靠 `tests/prologue/*` 手写 | 按角色生成冒烟 spec |
 | 剧情链的对话写在 TS | 不走审查台（与"内容走审查台"有出入） | 改成 approved 引用 + 审批顺序守卫 |
-| `content:coverage` 不在构建门里 | 忘了跑就发现不了缺口 | 视情况接进 `content:validate` |
+| 草稿里的整句日文没有机器检查 | 新内容可能又混进日文 | 在 `content:drafts` 加一条"假名占比过高"的警告 |

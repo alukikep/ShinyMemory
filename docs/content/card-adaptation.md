@@ -124,6 +124,32 @@ curl 'https://api.shinycolors.moe/info/pCardInfo?cardId=<cardUuid>'
 
 ---
 
+### 2.4 一条链还是一张卡
+
+```ts
+{
+  id: 'mano-smile',
+  title: 'ほわっとスマイル',
+  kind: 'card',
+  steps: [ch1, ch2, ch3, ch4, ch5],   // 每步 = 一段 commu
+}
+```
+
+**不要拆成 5 条独立链**。拆开之后：
+
+- 手册里是 5 行并列，玩家看不出属于同一张卡（真实踩过，已改回）
+- "一个偶像同时只走一条链"的锁要靠额外字段才能表达
+
+**每步仍然自带**：地点、时间窗、对话、奖励、完成 flag、`nextStepDelayDays`。
+所以触发方式和以前完全一样，变的只是"它们属于同一条链"。
+
+**机器会拦住你**（`content:board`）：
+
+```text
+mano-smile：链有 4 步，但登记的总段数是 5
+mano-smile：步骤 mano-dream 没有在 chapterSources 登记
+```
+
 ## 2.5 发现机制：卡的开头要玩家自己找到
 
 ### 为什么

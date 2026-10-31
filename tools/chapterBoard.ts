@@ -179,6 +179,25 @@ console.log('');
 
 const live = rows.filter((row) => row.state === '已上线').length;
 const waiting = rows.filter((row) => row.state === '待审').length;
+// 一张卡 = 一条链：步数必须等于登记的总段数，每步都要有出处表条目
+for (const chain of cardChains) {
+  const sources = CHAPTER_SOURCES.filter((entry) =>
+    chain.steps.some((step) => step.id === entry.chapterId),
+  );
+  const totals = new Set(sources.map((entry) => entry.card?.total).filter(Boolean));
+  const total = totals.values().next().value as number | undefined;
+  if (total !== undefined && chain.steps.length !== total) {
+    problems.push(
+      `${chain.id}：链有 ${chain.steps.length} 步，但登记的总段数是 ${total}`,
+    );
+  }
+  for (const step of chain.steps) {
+    if (!CHAPTER_SOURCES.some((entry) => entry.chapterId === step.id)) {
+      problems.push(`${chain.id}：步骤 ${step.id} 没有在 chapterSources 登记`);
+    }
+  }
+}
+
 console.log(`卡面章 ${rows.length} 章：已上线 ${live}，待审 ${waiting}，缺对话 ${rows.length - live - waiting}`);
 console.log(`另有长线/招募链 ${arcChains.length} 条（不在本表里，见 content:coverage）`);
 

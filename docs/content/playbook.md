@@ -27,7 +27,7 @@
 |---|---|---|
 | 1 | 块编号与坐标 | `B3 · 真乃 · 偶像页 · 行动` |
 | 2 | 草稿 id 列表 | `draft.activity.mano.extra_practice` … |
-| 3 | 预检输出 | `npx tsx tools/content:validate` 与 `content:audit` 的结果 |
+| 3 | 预检输出 | `npm run content:drafts`（本批草稿）+ `npm run content:audit`（整包）的结果 |
 | 4 | 一句为什么 | 「专属行动不给粉丝，是为了不抢工作的生态位」 |
 | 5 | 最多一个开放问题 | 「三个选项都同价，还是要一好一坏？」 |
 
@@ -118,7 +118,7 @@ npm run content:guard      # 已接进 content:validate，构建时会跑
 | 8 | 训练后事件 | 每个训练行动 1 条 | 审查台批次 |
 | 9 | 工作线 | 她的属性对应的 2–3 份工作 | 审查台批次 |
 | 10 | 长线剧情 | 3 步 + 分支，带一次解锁 | 审查台批次 + 结构 |
-| 11 | 验收 | 跑 `npm run content:coverage` 补缺口，再在游戏里走一遍 | `npm run acceptance` |
+| 11 | 验收 | 构建已含覆盖率检查；再在游戏里走一遍 | `npm run acceptance` |
 | 12 | 记录 | 块表 + 一条经验 | `docs/content/README.md` |
 
 **两种起步方式**（`src/core/content/starting.ts` 的 `idolStatus`）：
@@ -526,9 +526,10 @@ npx tsx tools/scriptExport.ts 200300501 200300502 200300503 200300504 200300511
 ```bash
 npx tsc --noEmit                 # 类型
 npm test                         # 单元（跑夹具包）
+npm run content:drafts           # 草稿离线校验（和审查台同一套规则，交付前必跑）
 npx tsx tools/contentAudit.ts    # 内容体检
 npm run content:guard            # 角色资料门禁（角色卡 + 语料出处）
-npm run content:coverage         # 覆盖度（每个角色按单元数一遍）
+npm run content:coverage         # 覆盖度（每个角色按单元数一遍；已接进 build）
 npm run acceptance               # 引擎 + 内容 E2E
 npm run acceptance:prologue      # 正式包 E2E
 ```

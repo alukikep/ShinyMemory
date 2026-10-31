@@ -2,7 +2,13 @@
 
 > 适用：往正式包里**加一个偶像**（不是加一张卡——卡面见 [card-adaptation.md](card-adaptation.md)）。
 > 目标：批量接入时不用逐条讨论，照表执行；每一步都有**会变红的命令**，不是靠记性。
-> 现状：已接入 4 人（真乃、灯织、巡、摩美々），可接入 28 人（见 §5 顺序）。
+>
+> **已拍板的三个口径**（2026-10-31）：
+> 1. **MVP 先上线**：招募 2 步 + 首张卡 + 专属行动 ≥1 + 话题 ≥6 + 事件 3；长线/更多卡后续再加。
+> 2. **按组合补完**：下一批是 L'Antica（恋钟、咲耶、结华、雾子）。
+> 3. **先补工具再批量**：`content:drafts`、`content:new-idol`、coverage 进构建（已就位，见 §6）。
+>
+> 现状：已接入 4 人，可接入 28 人（见 §5 顺序）。
 
 ---
 
@@ -64,31 +70,44 @@ npx tsx tools/scriptExport.ts 200500501 200500511
 | 0 | 立项 | 接入卡：id / 组合 / 优先级 / 首张卡 / 素材是否齐 | — | 人（决定顺序） |
 | 1 | 资料包 | 3 本以上剧本在 `.cache/shiny/`；记下 cardUuid → eventId | 剧本能打开、行 id 在 | AI 自检 |
 | 2 | 角色卡 | `docs/content/<id>/character.md`（9 节，事实逐条带 13 位行 id） | `npm run content:guard` | 人（看语气） |
-| 3 | 骨架 | `idols/<id>.ts`、`actors/<id>.ts`（**日程**）、`starting.ts`、招募链结构 | `npm run build` | 代码评审 |
-| 4 | 招募链 | 2 步剧情链 + 2 段对话草稿 | `content:board` 无「无出处步骤」 | 审查台 |
-| 5 | 日常内容 | 专属行动 1–3、话题 6–8、训练后事件 3、（可选）地点事件 2–4 | 草稿预检 + 审查台 | 审查台 |
+| 3 | 骨架 | `npm run content:new-idol` 生成 idols/actors/角色卡空壳 + 登记两个 index、starting | `npm run build` | 代码评审 |
+| 4 | 招募链 | 2 步剧情链 + 2 段对话草稿 | `npm run content:drafts` | 审查台 |
+| 5 | 日常内容 | 专属行动 1–3、话题 6–8、训练后事件 3、（可选）地点事件 2–4 | `npm run content:drafts` | 审查台 |
 | 6 | 首张卡 | `chapterSources` 登记 + 1 条链 N 章 + 每章 1 段对话 | `content:anchors`、`content:board` | 审查台 |
 | 7 | 审查 | 按依赖顺序通过（对话 → 链 / 行动 → 事件） | 审查台「通过」不被校验挡 | **人** |
-| 8 | 同步构建 | `approved.generated.ts` 更新 + 构建产物 | `npm run build` | 自动 |
-| 9 | 覆盖度 | 该角色 7 项全 ✓ | `npm run content:coverage` | 自动 |
+| 8 | 同步构建 | `approved.generated.ts` 更新 + 构建产物 | `npm run build`（含 coverage） | 自动 |
+| 9 | 覆盖度 | 该角色 7 项全 ✓（已在构建里，缺了就红） | `npm run build` | 自动 |
 | 10 | E2E | 抄 `tests/prologue/mamimi.spec.ts` 改成新角色 | Playwright 绿 | 自动 |
 | 11 | 记录 | `docs/content/README.md` 块表 + 必要时 `dev-guide` 事故 | — | 人（抽看） |
 
 ### 2.1 各步骤的关键细节
 
-**Step 3 骨架——三件事最容易漏**
+**Step 3 骨架——一条命令写齐四处**
 
-```text
-idols/<id>.ts   id/name/unit/color/profile/avatar/quote/growth
-                → 名册和偶像页都读它；profile 里不许写没出处的设定（#28/#31）
-actors/<id>.ts  schedule：她几点在哪、visibility、protected、weekdays（0=周日）
-                → 日程决定"她能不能做某件事"；空的或没覆盖练习室 = 事件不可达（#30）
-starting.ts     idolStatus: 'unknown'（偶遇型）或 'known'（档案型）
-                → 漏了默认 unknown，名册里要等招募后才出现（这是设计，不是 bug）
-storyChains.ts  招募链骨架（lockScope: 'none'，#25）
+```bash
+npm run content:new-idol -- \
+  --id kogane --name 月冈恋钟 --unit "L'Antica" \
+  --color "#f2a0b5" --profile "L'Antica 的成员。……" \
+  --birthday 03/03 --cv "礒部花凜"
 ```
 
-还要在 `idols/index.ts`、`actors/index.ts` 里把新文件加进数组——漏了就等于没加。
+它会生成/登记：
+
+```text
+idols/<id>.ts   id/name/unit/color/profile/avatar/growth
+                → 名册和偶像页都读它；profile 里不许写没出处的设定（#28/#31）
+actors/<id>.ts  schedule 留空 + TODO
+                → 日程决定"她能不能做某件事"；空日程 = 名册/日程表/事件全不可用（#30）
+                → 故意留空：productionRoster.test 会红，逼你先填
+starting.ts     idolStatus: 'unknown'（偶遇型，默认）或 --status known（档案型）
+idols/index.ts、actors/index.ts
+                → 两个数组都自动加；漏了就等于没加
+docs/content/<id>/character.md
+                → 9 节空壳，等读剧本后填（content:guard 会红）
+```
+
+脚手架**不写**招募链和任何内容——那要读完剧本再写（`--dry-run` 可先看会动哪些文件）。
+成长曲线、日程、简介都按角色卡改，别照抄默认值。
 
 **Step 5 内容条数与数值**
 
@@ -101,6 +120,9 @@ storyChains.ts  招募链骨架（lockScope: 'none'，#25）
 
 数值不要凭感觉：[content-standards.md](../current/content-standards.md)（30 分钟 / 体力 10–20 / ¥100–150）。
 训练课（声乐/舞蹈/表演）是**全员共享**的，不要给每个角色重复建。
+
+每写完一个块，先跑 `npm run content:drafts` 自检，再交审查台——它和审查台用同一套规则，
+绿了就不会在审批时被"校验"挡住；碰到引用错误会直接告诉你先过哪一条。
 
 **Step 6 卡面**：一张卡 = 一条链 = N 步；一段 commu = 一章 = 1 段对话。
 详细的边界、锚点、`chapterSources` 字段见 [card-adaptation.md](card-adaptation.md) §1.5–§2.5。
@@ -186,13 +208,22 @@ storyChains.ts  招募链骨架（lockScope: 'none'，#25）
 
 ---
 
-## 6. 目前还没有、但批量前值得补的工具（待批）
+## 6. 已就位的三件工具
 
-| 工具 | 解决什么 | 理由 |
+| 命令 | 作用 | 接在哪 |
 |---|---|---|
-| `npm run content:drafts` | 离线校验 `content-review/drafts`（复用 `validateReviewDraft` + `auditPack`） | 现在草稿要等人在审查台点「通过」才会被校验；AI 交付前无法自检 |
-| `tools/newIdol.ts` | 生成 `idols/<id>.ts`、`actors/<id>.ts`、`starting` 条目、`docs/content/<id>/` 骨架 | 防 #30/#31 这类"少了就静默坏"的遗漏 |
-| `content:coverage` 接进构建 | 新角色没写满就构建失败 | 现在覆盖度是独立命令，容易漏跑 |
+| `npm run content:new-idol -- …` | 生成 idols/actors/角色卡空壳，登记两个 index 与 starting（空日程会刻意让测试红） | 手动，Step 3 |
+| `npm run content:drafts` | 用**和审查台同一套**规则离线校验 `drafts/` + `revisions/`；绿了审批就不会被校验挡 | 手动，每批交付前必跑 |
+| coverage 进构建 | `npm run build` 现在会跑 `contentCoverage`——任一角色缺内容直接红 | 自动，Step 8/9 |
+
+三条的边界：
+
+- `content:drafts` 的基准是「生产内容 + 已通过」，**看不到队列里的其他草稿**——
+  引用关系要按依赖顺序过（对话先于链/事件）。
+- 脚手架只铺骨架，**不写**招募链、卡面、任何草稿内容；角色卡和日程填完之前，
+  `content:guard` / `productionRoster.test` 会一直红，这是设计。
+- coverage 进构建意味着"角色做到一半"时构建会红；中途要在游戏里点一遍，
+  用 `npm run dev`（dev server 不跑内容校验），上线前再跑 `npm run build`。
 
 ---
 
@@ -200,13 +231,15 @@ storyChains.ts  招募链骨架（lockScope: 'none'，#25）
 
 ```text
 [ ] 角色卡有 9 节，事实逐条 13 位行 id，guard 绿
-[ ] idol / actor / starting / index 四处都加了
+[ ] content:new-idol 已登记：idol / actor / starting / 两个 index
+[ ] 日程填了，且包含练习室（训练课）与事件要触发的地点
 [ ] 招募链 2 步，lockScope: 'none'，对话已批
 [ ] 专属行动 ≥1，落在日程地点
 [ ] 话题 ≥6，id 前缀 <id>.chat.
 [ ] 训练后事件 3，event-unreachable 不报
 [ ] 首张卡：chapterSources 登记 + 一卡一链 + 每章 1 段对话
-[ ] coverage 7 项全 ✓
+[ ] content:drafts 绿（交付前自检）
+[ ] build 绿（含 coverage 7 项全 ✓）
 [ ] 名册 / 日程表能看到她（真人点过）
 [ ] 旧档：删掉她的存档 → 刷新 → 招募 → 名册可见
 [ ] E2E：动作出现 + 状态写入 两半都断言

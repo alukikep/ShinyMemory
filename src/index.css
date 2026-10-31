@@ -3500,6 +3500,29 @@ button:focus-visible,
   gap: 8px;
 }
 
+.job-board-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.job-board-picker select {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font: inherit;
+  color: var(--ink);
+}
+
+.job-board-picker select option:disabled {
+  color: #9aa6b2;
+}
+
 .job-board-accept {
   display: flex;
   flex-direction: column;

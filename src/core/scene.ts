@@ -287,10 +287,18 @@ export function buildJobBoard(state: GameState): JobBoardView {
     (idol) => state.idols[idol.id]?.status === 'recruited',
   );
 
+  // 门槛分两种：和"派谁"无关的（flag / 粉丝 / 天数），以及看人下菜的（属性）。
+  const isIdolScoped = (condition: { kind: string }) =>
+    condition.kind === 'attributeAtLeast' ||
+    condition.kind === 'attributeAtMost' ||
+    condition.kind === 'castPresent';
+
   const rows = [...CONTENT_INDEX.jobs.values()].map((job) => {
-    // 解锁判定走 checkCondition；describeCondition 只拿来写调试文案。
+    // 工作级门槛：谁都不满足就不能接。
     const unmet = (job.requires ?? []).filter(
-      (condition) => !checkCondition(condition, state, { idolId: focusIdolId }),
+      (condition) =>
+        !isIdolScoped(condition) &&
+        !checkCondition(condition, state, { idolId: focusIdolId }),
     );
     const locked = unmet.length > 0;
     const lockedReason = unmet
@@ -312,8 +320,24 @@ export function buildJobBoard(state: GameState): JobBoardView {
         ? `冷却中，还有 ${coolingDays} 天`
         : undefined;
 
-    const offers: JobBoardOffer[] = (busyReason || locked ? [] : idols).map((idol) => {
-      const offer = jobOfferFor(state, job, idol.id);
+    // 每个已招募的偶像都是一条候选：属性门槛按她本人判。
+    const offers: JobBoardOffer[] = idols.map((idol) => {
+      const idolUnmet = (job.requires ?? []).filter(
+        (condition) =>
+          isIdolScoped(condition) &&
+          !checkCondition(condition, state, { idolId: idol.id }),
+      );
+      const idolLocked = idolUnmet.length > 0;
+      const idolLockedReason = idolUnmet
+        .map((condition) =>
+          describeCondition(condition, state, { idolId: idol.id }),
+        )
+        .filter(Boolean)
+        .join('；');
+      const offer =
+        busyReason || locked || idolLocked
+          ? undefined
+          : jobOfferFor(state, job, idol.id);
       const chance = jobCheckChance(state, job, idol.id);
       const checkLabel =
         job.check && chance !== undefined
@@ -328,6 +352,12 @@ export function buildJobBoard(state: GameState): JobBoardView {
           : '未来七天没有可改期的空档',
         chance,
         checkLabel,
+        locked: idolLocked,
+        lockedReason: idolLocked
+          ? idolLockedReason || '属性还没到门槛'
+          : offer
+            ? undefined
+            : '未来七天没有可改期的空档',
         command: offer
           ? { type: 'acceptJob', jobId: job.id, day: offer.day, idolId: idol.id }
           : undefined,

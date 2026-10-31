@@ -78,7 +78,8 @@ describe('two idols working the same day', () => {
     const radio = board.entries.find((entry) => entry.jobId === 'job_radio');
 
     expect(magazine?.busyReason).toBe('已派出');
-    expect(magazine?.offers).toHaveLength(0);
+    // offers 现在恒算（每个人一条），但都不能派出
+    expect(magazine?.offers.every((offer) => !offer.command)).toBe(true);
     // 另一份工作不受影响，两个偶像都还能接。
     expect(radio?.busyReason).toBeUndefined();
     expect(radio?.offers).toHaveLength(2);

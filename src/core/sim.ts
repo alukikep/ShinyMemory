@@ -730,6 +730,15 @@ export function acceptJob(
     (state.jobCooldowns?.[job.id] ?? 0) + (job.cooldownDays ?? 0);
   if (currentDay < cooldownUntil) return state;
 
+  // 门槛按"要派的人"判：UI 会禁用不合格的人，但命令层也要守一遍。
+  const idolScopedKinds = new Set(['attributeAtLeast', 'attributeAtMost', 'castPresent']);
+  const unmet = (job.requires ?? []).filter(
+    (condition) =>
+      (idolScopedKinds.has(condition.kind) || 'idolId' in condition) &&
+      !checkCondition(condition, state, { idolId: actor.id }),
+  );
+  if (unmet.length > 0) return state;
+
   const check = canReplaceDay(actor, day, actorState.scheduleOverrides);
   if (!check.ok) return state;
 

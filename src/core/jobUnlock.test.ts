@@ -56,7 +56,7 @@ describe('story-gated jobs', () => {
       (entry) => entry.jobId === JOB_ID,
     );
     expect(before?.locked).toBe(true);
-    expect(before?.offers).toHaveLength(0);
+    expect(before?.offers.every((offer) => !offer.command)).toBe(true);
 
     // 剧情步骤的 effects 里写 { kind: 'flag', key: FLAG, value: true }
     locked.flags[FLAG] = true;

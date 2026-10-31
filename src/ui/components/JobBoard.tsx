@@ -36,9 +36,12 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
   }, [detailId, onClose]);
 
   const detail = board.entries.find((entry) => entry.jobId === detailId);
-  const focusOffer = detail?.offers.find(
-    (offer) => offer.idolId === board.focusIdolId,
-  );
+  // 默认重点偶像；玩家可以改成别人。
+  const [pickedIdolId, setPickedIdolId] = useState<string | undefined>();
+  const picked =
+    detail?.offers.find((offer) => offer.idolId === pickedIdolId) ??
+    detail?.offers.find((offer) => offer.idolId === board.focusIdolId) ??
+    detail?.offers[0];
 
   const statusOf = (entry: JobBoardEntry) =>
     entry.locked ? '未解锁' : entry.busyReason;
@@ -106,25 +109,53 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
               <p className="job-board-locked-note">未解锁</p>
             ) : detail.busyReason ? (
               <p className="job-board-locked-note">{detail.busyReason}</p>
-            ) : focusOffer ? (
-              <button
-                type="button"
-                className="job-board-accept"
-                disabled={!focusOffer.command}
-                onClick={() => {
-                  if (!focusOffer.command) return;
-                  onAccept(focusOffer.command);
-                  onClose();
-                }}
-              >
-                <strong>派 {focusOffer.idolName} 去</strong>
-                <span>{focusOffer.dayLabel}</span>
-                {focusOffer.checkLabel ? (
-                  <span>{focusOffer.checkLabel}</span>
-                ) : null}
-              </button>
-            ) : (
+            ) : detail.offers.length === 0 ? (
               <p className="job-board-locked-note">还没有能去的偶像</p>
+            ) : (
+              <>
+                <label className="job-board-picker">
+                  <span>派谁去</span>
+                  <select
+                    value={picked?.idolId ?? ''}
+                    aria-label="选择接工作的偶像"
+                    onChange={(event) => setPickedIdolId(event.target.value)}
+                  >
+                    {detail.offers.map((offer) => (
+                      <option
+                        key={offer.idolId}
+                        value={offer.idolId}
+                        disabled={!offer.command}
+                      >
+                        {offer.idolName}
+                        {offer.command
+                          ? ''
+                          : `（${offer.lockedReason ?? '不可用'}）`}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                {picked ? (
+                  <button
+                    type="button"
+                    className="job-board-accept"
+                    disabled={!picked.command}
+                    onClick={() => {
+                      if (!picked.command) return;
+                      onAccept(picked.command);
+                      onClose();
+                    }}
+                  >
+                    <strong>派 {picked.idolName} 去</strong>
+                    <span>{picked.dayLabel}</span>
+                    {picked.checkLabel ? <span>{picked.checkLabel}</span> : null}
+                  </button>
+                ) : null}
+                {picked && !picked.command ? (
+                  <p className="job-board-locked-note">
+                    {picked.lockedReason ?? '她这次去不了'}
+                  </p>
+                ) : null}
+              </>
             )}
 
             <p className="job-detail-note">

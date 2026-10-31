@@ -527,6 +527,10 @@ export type JobBoardOffer = {
   checkLabel?: string;
   command?: ActionCommand;
   disabledReason?: string;
+  /** 她的属性没达到这项工作的门槛 */
+  locked?: boolean;
+  /** 为什么不能派她（未达标 / 没有空档） */
+  lockedReason?: string;
 };
 
 export type JobBoardEntry = {

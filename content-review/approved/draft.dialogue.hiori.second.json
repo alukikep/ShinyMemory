@@ -2,7 +2,7 @@
   "id": "draft.dialogue.hiori.second",
   "kind": "dialogue",
   "title": "灯织 · 相遇 · second",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.hiori.second",
   "payload": {
@@ -140,12 +140,17 @@
   },
   "annotations": [],
   "createdAt": "2026-10-31T02:37:58.995Z",
-  "updatedAt": "2026-10-31T02:37:58.995Z",
+  "updatedAt": "2026-10-31T02:42:31.380Z",
+  "reviewedAt": "2026-10-31T02:42:31.380Z",
   "history": [
     {
       "status": "review",
       "at": "2026-10-31T02:37:58.995Z",
       "note": "从 TS 迁移：招募链对话也走审查"
+    },
+    {
+      "status": "approved",
+      "at": "2026-10-31T02:42:31.380Z"
     }
   ]
 }

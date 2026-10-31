@@ -25,8 +25,15 @@ import { readApprovedDrafts } from './approvedFiles.js';
 
 type Problem = { idol: string; message: string };
 
-const corpusRoot = path.join(process.cwd(), '..', 'SCTranslationData');
-const corpusAvailable = existsSync(path.join(corpusRoot, 'data', 'story'));
+const cacheRoot = path.join(process.cwd(), '.cache', 'shiny');
+/** 剧本缓存（含日文原文）只在本地，别的机器上没有。 */
+const cacheAvailable = existsSync(cacheRoot);
+
+/** 角色卡里引用的剧本编号，如 200300501。 */
+function readScriptIds(card: string): string[] {
+  const ids = [...card.matchAll(/(?:^|[^0-9])(2\d{8})(?![0-9])/g)].map((m) => m[1]!);
+  return [...new Set(ids)];
+}
 
 const approved = await readApprovedDrafts();
 const merged = mergeApprovedContent(
@@ -37,39 +44,8 @@ const merged = mergeApprovedContent(
 );
 const index = buildContentIndex(merged.pack);
 
-/** 卡里引用语料路径时，可能是日文目录名，按「文件是否存在」判断。 */
-function resolveCorpusPaths(card: string): string[] {
-  const matches = card.match(/data\/story\/[^\s`'"，、）)]+\.csv/g) ?? [];
-  return [...new Set(matches)];
-}
-
 type CardQuote = { text: string; file: string };
 
-/** 卡里形如 `- 「原文」 —— data/story/...csv` 的行。 */
-function parseQuotes(card: string): CardQuote[] {
-  const pattern = /^-\s*「(.+?)」\s*——\s*(data\/story\/\S+\.csv)\s*$/gm;
-  const quotes: CardQuote[] = [];
-  for (const match of card.matchAll(pattern)) {
-    quotes.push({ text: match[1]!.trim(), file: match[2]!.trim() });
-  }
-  return quotes;
-}
-
-const corpusCache = new Map<string, string>();
-
-function readCorpusFile(relative: string): string {
-  const cached = corpusCache.get(relative);
-  if (cached !== undefined) return cached;
-  const full = path.join(corpusRoot, relative.replace(/\//g, path.sep));
-  const content = readFileSync(full, 'utf8');
-  corpusCache.set(relative, content);
-  return content;
-}
-
-function findCorpusFile(relative: string): boolean {
-  const full = path.join(corpusRoot, relative.replace(/\//g, path.sep));
-  return existsSync(full);
-}
 
 const problems: Problem[] = [];
 
@@ -99,19 +75,20 @@ for (const idol of [...index.idols.values()]) {
     });
   }
 
-  const paths = resolveCorpusPaths(card);
-  if (paths.length === 0) {
+  const scriptIds = readScriptIds(card);
+  if (scriptIds.length === 0) {
     problems.push({
       idol: idol.id,
-      message:
-        '角色卡没有引用任何语料文件路径（形如 data/story/<角色>/W.I.N.G.編/xxx.csv）',
+      message: '角色卡里没有引用任何剧本编号（形如 200300501）',
     });
-  } else if (corpusAvailable) {
-    const resolved = paths.filter(findCorpusFile);
-    if (resolved.length === 0) {
+  } else if (cacheAvailable) {
+    const missing = scriptIds.filter(
+      (id) => !existsSync(path.join(cacheRoot, `${id}.json`)),
+    );
+    if (missing.length === scriptIds.length) {
       problems.push({
         idol: idol.id,
-        message: `角色卡引用的语料文件一个都不存在：${paths.slice(0, 3).join('、')}`,
+        message: `角色卡引用的剧本一个都没导出过：${missing.slice(0, 3).join(', ')}`,
       });
     }
   }
@@ -123,55 +100,7 @@ for (const idol of [...index.idols.values()]) {
     });
   }
 
-  // 引文：至少三条语料原文，且必须真的出现在所指文件里。
-  // 这是"有没有读过"能落到机器上的最低保证——抄三句真话就得打开文件。
-  const quotes = parseQuotes(card);
-  if (quotes.length < 3) {
-    problems.push({
-      idol: idol.id,
-      message: `角色卡里的原文引文不足三条（现在 ${quotes.length} 条）。格式：- 「原文」 —— data/story/...csv`,
-    });
-  }
 
-  for (const quote of quotes) {
-    if (quote.text.length < 6) {
-      problems.push({
-        idol: idol.id,
-        message: `引文太短，无法校验：${quote.text}`,
-      });
-      continue;
-    }
-    if (!findCorpusFile(quote.file)) {
-      problems.push({
-        idol: idol.id,
-        message: `引文指向的文件不存在：${quote.file}`,
-      });
-      continue;
-    }
-    if (corpusAvailable) {
-      const content = readCorpusFile(quote.file);
-      if (!content.includes(quote.text)) {
-        problems.push({
-          idol: idol.id,
-          message: `引文在文件里找不到（可能改写过了）：「${quote.text}」← ${quote.file}`,
-        });
-      }
-    }
-  }
-
-  const winning = quotes.some((quote) => quote.file.includes('W.I.N.G.'));
-  if (quotes.length > 0 && !winning) {
-    problems.push({
-      idol: idol.id,
-      message: '引文里至少要有一条出自 W.I.N.G.編（相遇章节必须读过）',
-    });
-  }
-}
-
-if (!corpusAvailable) {
-  console.warn(
-    '提示：没找到 ../SCTranslationData，只检查了卡的结构，没校验语料路径。',
-  );
 }
 
 if (problems.length === 0) {

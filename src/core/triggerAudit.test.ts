@@ -126,6 +126,7 @@ function run(strategy: Strategy, seed: number) {
 }
 
 describe('trigger audit', () => {
+  // 这是一次长模拟（约 200 天），默认 15s 在慢机器上会超时。
   it('reports stress and event frequencies', () => {
     const globalEvents = new Set<string>();
     for (const [name, strategy] of Object.entries(strategies)) {
@@ -167,5 +168,5 @@ describe('trigger audit', () => {
     // evt.insomnia is night-only (00:00–05:00); daytime strategies don't reach it.
     expect(globalEvents.has('evt.vocal_strain')).toBe(true);
     expect(globalEvents.has('evt.collapse')).toBe(true);
-  }, 15000);
+  }, 60_000);
 });

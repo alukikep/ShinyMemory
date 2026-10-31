@@ -2204,6 +2204,124 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.hiori.first",
+  "idolId": "hiori",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "练习室的镜墙里，一个人正在数拍子。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "hiori",
+      "text": "1，2，3，4……1，2，3，4……",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "text": "她停下来，从镜子里看见门口的人。然后转过身。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "hiori",
+      "text": "……有事吗。",
+      "choices": [
+        {
+          "label": "你就是风野灯织吧",
+          "nextNodeId": "n05a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "先等她这一遍练完",
+          "nextNodeId": "n05b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            },
+            {
+              "kind": "flag",
+              "key": "hiori_waited",
+              "value": true
+            }
+          ]
+        },
+        {
+          "label": "你是个努力家啊",
+          "nextNodeId": "n05c",
+          "effects": [
+            {
+              "kind": "flag",
+              "key": "hiori_judged_quickly",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "n05a": {
+      "id": "n05a",
+      "speakerId": "hiori",
+      "text": "……那是我的名字。你是哪位。",
+      "nextNodeId": "n06"
+    },
+    "n05b": {
+      "id": "n05b",
+      "text": "她没有说话，重新数起拍子。一遍结束，才回来。",
+      "nextNodeId": "n06"
+    },
+    "n05c": {
+      "id": "n05c",
+      "speakerId": "hiori",
+      "text": "只是稍微看了下就知道了吗？",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "hiori",
+      "text": "我是风野灯织。这边才是——请多关照。",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "text": "她说完就转身回去，重新数起拍子。这一次，呼吸比刚才更用力。",
+      "nextNodeId": "n08"
+    },
+    "n08": {
+      "id": "n08",
+      "speakerId": "hiori",
+      "text": "……关于刚才那句话。",
+      "nextNodeId": "n09"
+    },
+    "n09": {
+      "id": "n09",
+      "speakerId": "hiori",
+      "text": "你说想让谁做我的制作人，是看什么决定的？",
+      "nextNodeId": "n10"
+    },
+    "n10": {
+      "id": "n10",
+      "speakerId": "hiori",
+      "text": "不，现在不要回答。……我还没想好要不要接受。",
+      "nextNodeId": "n11"
+    },
+    "n11": {
+      "id": "n11",
+      "text": "她继续练。你在门口站着，直到她练完才离开。"
+    }
+  }
+},
+{
   "id": "dialogue.hiori.gap.first",
   "idolId": "hiori",
   "startNodeId": "n01",
@@ -2599,6 +2717,403 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.hiori.second",
+  "idolId": "hiori",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "两天后。她敲了三下事务所的门，间隔一样长。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "hiori",
+      "text": "我查过了。283 是个小事务所，还有好几个没人管的练习室。",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "hiori",
+      "text": "所以我想问的是——你来做我的制作人，到底有没有问题。",
+      "choices": [
+        {
+          "label": "把准备好的训练清单拿出来",
+          "nextNodeId": "n04a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 5
+            },
+            {
+              "kind": "flag",
+              "key": "hiori_saw_list",
+              "value": true
+            }
+          ]
+        },
+        {
+          "label": "因为我相信你的才能",
+          "nextNodeId": "n04b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "因为你很努力",
+          "nextNodeId": "n04c",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        }
+      ]
+    },
+    "n04a": {
+      "id": "n04a",
+      "speakerId": "hiori",
+      "text": "！ 这是……为我做的？",
+      "nextNodeId": "n05a"
+    },
+    "n04b": {
+      "id": "n04b",
+      "speakerId": "hiori",
+      "text": "才能。……你看到的是什么才能。",
+      "nextNodeId": "n05b"
+    },
+    "n04c": {
+      "id": "n04c",
+      "speakerId": "hiori",
+      "text": "请不要用这种话敷衍。努力是我自己知道的事。",
+      "nextNodeId": "n05c"
+    },
+    "n05a": {
+      "id": "n05a",
+      "speakerId": "hiori",
+      "text": "训练安排到哪一天，甄选会的日期也写了……是什么时候做的这些。",
+      "nextNodeId": "n06"
+    },
+    "n05b": {
+      "id": "n05b",
+      "speakerId": "hiori",
+      "text": "……说得再具体一点。我没办法这样相信。",
+      "nextNodeId": "n06"
+    },
+    "n05c": {
+      "id": "n05c",
+      "speakerId": "hiori",
+      "text": "……不过，至少你没有说谎。这点我记下了。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "hiori",
+      "text": "那你回答我另一个问题。我第一次见到你的时候——",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "speakerId": "hiori",
+      "text": "我在想，你来做我的制作人到底有没有问题。",
+      "nextNodeId": "n08"
+    },
+    "n08": {
+      "id": "n08",
+      "speakerId": "hiori",
+      "text": "……现在稍微，不那么想了。",
+      "nextNodeId": "n09"
+    },
+    "n09": {
+      "id": "n09",
+      "text": "她把资料收进包里，动作比进来时慢。",
+      "nextNodeId": "n10"
+    },
+    "n10": {
+      "id": "n10",
+      "speakerId": "hiori",
+      "text": "我有条件的。我不会因为被选中就高兴。",
+      "nextNodeId": "n11"
+    },
+    "n11": {
+      "id": "n11",
+      "speakerId": "hiori",
+      "text": "如果最后觉得不对，我会走。这样也可以的话——请多关照。"
+    }
+  }
+},
+{
+  "id": "dialogue.mano.first",
+  "idolId": "mano",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "公园的午后。长椅旁落着几只鸽子，一个女孩正低着头，小声哼着歌。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "mano",
+      "text": "……ほわっ。",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "mano",
+      "text": "啊、对不起。我没有注意到有人。",
+      "choices": [
+        {
+          "label": "刚才的歌，很好听",
+          "nextNodeId": "n04a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            },
+            {
+              "kind": "flag",
+              "key": "mano_heard_song",
+              "value": true
+            }
+          ]
+        },
+        {
+          "label": "你经常在这里唱歌吗？",
+          "nextNodeId": "n04b"
+        },
+        {
+          "label": "抱歉，打扰到你了",
+          "nextNodeId": "n04c"
+        }
+      ]
+    },
+    "n04a": {
+      "id": "n04a",
+      "speakerId": "mano",
+      "text": "……真的吗？我只是随便哼的。",
+      "nextNodeId": "n05"
+    },
+    "n04b": {
+      "id": "n04b",
+      "speakerId": "mano",
+      "text": "嗯。这里很安静，鸽子也不会笑我。",
+      "nextNodeId": "n05"
+    },
+    "n04c": {
+      "id": "n04c",
+      "speakerId": "mano",
+      "text": "没有关系。是我自己在这里唱歌。",
+      "nextNodeId": "n05"
+    },
+    "n05": {
+      "id": "n05",
+      "speakerId": "mano",
+      "text": "我叫樱木真乃。那个……你不是这附近的人吧？",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "mano",
+      "text": "刚才的歌，其实是我自己想着写的。还没有给别人听过。",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "speakerId": "mano",
+      "text": "制作人……？",
+      "nextNodeId": "n08"
+    },
+    "n08": {
+      "id": "n08",
+      "speakerId": "mano",
+      "text": "对不起。我还没有想过要成为偶像。",
+      "nextNodeId": "n09"
+    },
+    "n09": {
+      "id": "n09",
+      "text": "她低下头，手指轻轻攥住裙角。风把她的声音吹得很轻。"
+    }
+  }
+},
+{
+  "id": "dialogue.mano.second",
+  "idolId": "mano",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "两天后。公园的长椅上，真乃还是坐在原来的位置。鸽子比上次多了一只。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "mano",
+      "text": "你来了。",
+      "textVariants": [
+        {
+          "when": [
+            {
+              "kind": "flag",
+              "key": "mano_heard_song",
+              "value": true
+            }
+          ],
+          "text": "你来了。上次那首歌……我后来又改了一点。"
+        }
+      ],
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "mano",
+      "text": "我一直在想，你那天为什么要停下来听。",
+      "choices": [
+        {
+          "label": "因为我想听你唱完",
+          "nextNodeId": "n04a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "因为那首歌让我停下了脚步",
+          "nextNodeId": "n04b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "因为我觉得你还没有唱完",
+          "nextNodeId": "n04c",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        }
+      ]
+    },
+    "n04a": {
+      "id": "n04a",
+      "speakerId": "mano",
+      "text": "……唱完。我好像很久没有把一首歌唱完了。",
+      "nextNodeId": "n05"
+    },
+    "n04b": {
+      "id": "n04b",
+      "speakerId": "mano",
+      "text": "停下脚步……我从来没有想过，会有人这样听。",
+      "nextNodeId": "n05"
+    },
+    "n04c": {
+      "id": "n04c",
+      "speakerId": "mano",
+      "text": "还没有唱完……嗯。也许是这样。",
+      "nextNodeId": "n05"
+    },
+    "n05": {
+      "id": "n05",
+      "speakerId": "mano",
+      "text": "我从小就喜欢唱歌。但是，站在别人面前的时候，就会不知道该怎么办。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "mano",
+      "text": "所以那天，我才说了那种话。对不起。",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "speakerId": "tsutomu",
+      "text": "真乃。你不用为没有准备好道歉。",
+      "nextNodeId": "n08"
+    },
+    "n08": {
+      "id": "n08",
+      "speakerId": "tsutomu",
+      "text": "但如果你愿意试着改变，283 会接住你。",
+      "nextNodeId": "n09"
+    },
+    "n09": {
+      "id": "n09",
+      "speakerId": "mano",
+      "text": "……制作人。",
+      "nextNodeId": "n10"
+    },
+    "n10": {
+      "id": "n10",
+      "speakerId": "mano",
+      "text": "我想试试。不是为了成为很厉害的人，只是想……把这首歌唱完。",
+      "choices": [
+        {
+          "label": "我会陪你到最后",
+          "nextNodeId": "n11a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "先从第一步开始",
+          "nextNodeId": "n11b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        }
+      ]
+    },
+    "n11a": {
+      "id": "n11a",
+      "speakerId": "mano",
+      "text": "……嗯。那就请多指教。",
+      "nextNodeId": "n12"
+    },
+    "n11b": {
+      "id": "n11b",
+      "speakerId": "mano",
+      "text": "第一步……我可以做到吗？",
+      "nextNodeId": "n12"
+    },
+    "n12": {
+      "id": "n12",
+      "speakerId": "mano",
+      "text": "樱木真乃。从今天开始，请多指教。",
+      "nextNodeId": "n13"
+    },
+    "n13": {
+      "id": "n13",
+      "text": "她站起来，认真地向你鞠了一躬。公园里的鸽子扑棱棱飞起，又落在她脚边。"
+    }
+  }
+},
+{
   "id": "dialogue.mano.slump.first",
   "idolId": "mano",
   "startNodeId": "n01",
@@ -2933,6 +3448,98 @@ export const APPROVED_CONTENT: ApprovedContent = {
     "n07": {
       "id": "n07",
       "text": "她重新戴上耳机。窗外的鸽子落在窗台上，这次没有飞走。"
+    }
+  }
+},
+{
+  "id": "dialogue.mano.third",
+  "idolId": "mano",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "事务所的灯只开了半排。她把包放在桌上，站得笔直，像在等谁先开口。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "mano",
+      "text": "抱歉，这么晚还来打扰……",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "mano",
+      "text": "我一直在想一件事。我这样的人，真的可以站到台上去吗。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "mano",
+      "text": "不是不想。是怕上去以后，让别人失望。",
+      "choices": [
+        {
+          "label": "那就先站一次小的",
+          "nextNodeId": "n05a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "失望也是我们自己的事",
+          "nextNodeId": "n05b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "你已经在准备了，我看得见",
+          "nextNodeId": "n05c",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        }
+      ]
+    },
+    "n05a": {
+      "id": "n05a",
+      "speakerId": "mano",
+      "text": "小的……像那种只有几十个人的场子吗。",
+      "nextNodeId": "n06"
+    },
+    "n05b": {
+      "id": "n05b",
+      "speakerId": "mano",
+      "text": "我们……您说\"我们\"。",
+      "nextNodeId": "n06"
+    },
+    "n05c": {
+      "id": "n05c",
+      "speakerId": "mano",
+      "text": "被看见了。有点不好意思，但也有点高兴。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "mano",
+      "text": "那……我可以试试吗。哪怕只有一次。",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "text": "她说这句话的时候没有低头。窗外有鸽子落在窗台上，停了一下又飞走。"
     }
   }
 },
@@ -3323,6 +3930,126 @@ export const APPROVED_CONTENT: ApprovedContent = {
     "n11": {
       "id": "n11",
       "text": "她站起来，拍了拍裙子，把毛巾搭在肩上。"
+    }
+  }
+},
+{
+  "id": "dialogue.meguru.first",
+  "idolId": "meguru",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "公园的球场上，一个女生刚投进一球，被朋友们围着拍手。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "meguru",
+      "text": "要上了哦！嘿……！",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "text": "她转身捡球，正好和站在场边的你对了眼。",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "meguru",
+      "text": "……我说！",
+      "choices": [
+        {
+          "label": "（先开口）你是八宫巡吧",
+          "nextNodeId": "n05a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        },
+        {
+          "label": "（站着等她过来）",
+          "nextNodeId": "n05b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "（不知道该说什么）",
+          "nextNodeId": "n05c",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        }
+      ]
+    },
+    "n05a": {
+      "id": "n05a",
+      "speakerId": "meguru",
+      "text": "诶！？你怎么知道我的名字？",
+      "nextNodeId": "n06"
+    },
+    "n05b": {
+      "id": "n05b",
+      "speakerId": "meguru",
+      "text": "……果然！我就觉得是！",
+      "nextNodeId": "n06"
+    },
+    "n05c": {
+      "id": "n05c",
+      "speakerId": "meguru",
+      "text": "那个！你是不是有什么话要说？",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "speakerId": "meguru",
+      "text": "难道你是制作人吗！？",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "text": "她把球往朋友那边一抛，几步就跑到你面前。",
+      "nextNodeId": "n08"
+    },
+    "n08": {
+      "id": "n08",
+      "speakerId": "meguru",
+      "text": "我刚才就在想，说不定是这样呢～\"这个人肯定就是我的制作人\"，刚见到的时候就有这感觉了！",
+      "nextNodeId": "n09"
+    },
+    "n09": {
+      "id": "n09",
+      "speakerId": "meguru",
+      "text": "我一直期待着能跟制作人说上话的这天哦！",
+      "nextNodeId": "n10"
+    },
+    "n10": {
+      "id": "n10",
+      "text": "她说着已经迈开步子，往车站的方向走。",
+      "nextNodeId": "n11"
+    },
+    "n11": {
+      "id": "n11",
+      "speakerId": "meguru",
+      "text": "走吧走吧！因为有很开心的事情在等着吧？",
+      "nextNodeId": "n12"
+    },
+    "n12": {
+      "id": "n12",
+      "speakerId": "meguru",
+      "text": "啊，对了。叫我巡就可以了！今后请多关照哦，制作人！"
     }
   }
 },
@@ -3733,6 +4460,109 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "4-18",
       "speakerId": "meguru",
       "text": "对吧，是个好主意吧！？我去放音乐！"
+    }
+  }
+},
+{
+  "id": "dialogue.meguru.second",
+  "idolId": "meguru",
+  "startNodeId": "n01",
+  "nodes": {
+    "n01": {
+      "id": "n01",
+      "text": "第二天，她提前到了事务所，手里还拿着一副护腕。",
+      "nextNodeId": "n02"
+    },
+    "n02": {
+      "id": "n02",
+      "speakerId": "meguru",
+      "text": "制作人！我想先问一件事！",
+      "nextNodeId": "n03"
+    },
+    "n03": {
+      "id": "n03",
+      "speakerId": "meguru",
+      "text": "当偶像，是不是就不能像以前那样，随便去帮朋友的忙了？",
+      "nextNodeId": "n04"
+    },
+    "n04": {
+      "id": "n04",
+      "speakerId": "meguru",
+      "text": "之前我跟朋友说过，只奉陪到我要工作的时间为止。所以……应该没关系吧？",
+      "choices": [
+        {
+          "label": "没关系。但你的时间要自己划清",
+          "nextNodeId": "n05a",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 5
+            },
+            {
+              "kind": "flag",
+              "key": "meguru_drew_line",
+              "value": true
+            }
+          ]
+        },
+        {
+          "label": "没关系。你想帮就帮",
+          "nextNodeId": "n05b",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 3
+            }
+          ]
+        },
+        {
+          "label": "最好还是少去一点",
+          "nextNodeId": "n05c",
+          "effects": [
+            {
+              "kind": "attributeExp",
+              "ref": "trust",
+              "tier": 1
+            }
+          ]
+        }
+      ]
+    },
+    "n05a": {
+      "id": "n05a",
+      "speakerId": "meguru",
+      "text": "自己划清……嗯。我知道了，我会试试看！",
+      "nextNodeId": "n06"
+    },
+    "n05b": {
+      "id": "n05b",
+      "speakerId": "meguru",
+      "text": "太好了！那我会加油的！……不过好像会变得很忙诶，诶嘿嘿。",
+      "nextNodeId": "n06"
+    },
+    "n05c": {
+      "id": "n05c",
+      "speakerId": "meguru",
+      "text": "诶……啊，嗯。也是哦。……我会尽量少去一点。",
+      "nextNodeId": "n06"
+    },
+    "n06": {
+      "id": "n06",
+      "text": "她把护腕塞进包里，又抬起头，笑了一下。",
+      "nextNodeId": "n07"
+    },
+    "n07": {
+      "id": "n07",
+      "speakerId": "meguru",
+      "text": "那我就是这个事务所的偶像了？诶嘿嘿，有点不真实！",
+      "nextNodeId": "n08"
+    },
+    "n08": {
+      "id": "n08",
+      "speakerId": "meguru",
+      "text": "制作人，请多关照！我会努力的！"
     }
   }
 },

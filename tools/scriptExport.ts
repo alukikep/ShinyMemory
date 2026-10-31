@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 /**
@@ -23,7 +23,6 @@ import path from 'node:path';
 
 const VIEWER = 'https://viewer.shinycolors.moe/json';
 const CACHE = path.join(process.cwd(), '.cache', 'shiny');
-const CORPUS = path.join(process.cwd(), '..', 'SCTranslationData', 'data', 'story');
 
 type Entry = {
   id?: number;
@@ -152,7 +151,6 @@ function parseScript(entries: Entry[]) {
       }
       break;
     }
-    const entry = entries[cursor]!;
     if (entry.select || (entry.text && entry.text.trim())) {
       main.push(toNode(cursor));
     }
@@ -162,39 +160,12 @@ function parseScript(entries: Entry[]) {
   return { main, branches };
 }
 
-/** 从汉化 CSV 里按 id 取中文。 */
-function loadChinese(): Map<number, string> {
-  const map = new Map<number, string>();
-  const stack = [CORPUS];
-  const files: string[] = [];
-  while (stack.length > 0) {
-    const dir = stack.pop()!;
-    for (const entry of readdirSync(dir, { withFileTypes: true })) {
-      const full = path.join(dir, entry.name);
-      if (entry.isDirectory()) stack.push(full);
-      else if (entry.name.endsWith('.csv')) files.push(full);
-    }
-  }
-  for (const file of files) {
-    const rows = readFileSync(file, 'utf8').split(/\r?\n/).slice(1);
-    for (const row of rows) {
-      const cells = row.split(',');
-      const id = Number(cells[0]);
-      if (!Number.isFinite(id) || id === 0) continue;
-      const trans = (cells[cells.length - 1] ?? '').replace(/^"|"$/g, '');
-      if (trans.trim()) map.set(id, trans.replace(/\\n/g, ''));
-    }
-  }
-  return map;
-}
-
 const scripts = process.argv.slice(2);
 if (scripts.length === 0) {
   console.error('用法：npx tsx tools/scriptExport.ts <剧本编号> [更多编号…]');
   process.exit(1);
 }
 
-const chinese = loadChinese();
 
 for (const script of scripts) {
   const entries = await fetchScript(script);
@@ -206,10 +177,10 @@ for (const script of scripts) {
         .map((option, index) => `【选项 ${index + 1}】${option.text} → 分支 ${option.label}`)
         .join('\n');
     }
-    const zh = node.id ? chinese.get(node.id) : undefined;
     const who = node.speaker ?? '旁白';
-    const jp = node.text ?? '';
-    return `${who}：${zh ?? '（无中文）'}\n      日：${jp.replace(/\r?\n/g, '')}`;
+    const jp = (node.text ?? '').replace(/\r?\n/g, '');
+    const id = node.id ? `[${node.id}] ` : '';
+    return `${id}${who}：${jp}`;
   };
 
   const lines: string[] = [`# ${script}`, ''];

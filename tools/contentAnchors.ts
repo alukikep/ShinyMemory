@@ -77,47 +77,7 @@ const allContentText = `${gameText}\n${pendingDialogueText}`;
 
 const cache = new Map<string, string | undefined>();
 
-/** 用 commu id 的第 7–8 位还原"这是卡里第几节"。 */
-/**
- * 原作在"选项后有分支正文"时，会把选中的那句再显示一次。
- * 用这个特征判断：这一段到底有没有分支。
- */
-function readExpectBranch(relative: string): boolean | undefined {
-  if (!corpusAvailable) return undefined;
-  const full = path.join(corpusRoot, relative.split('/').join(path.sep));
-  if (!existsSync(full)) return undefined;
-  const rows = readFileSync(full, 'utf8')
-    .split(/\r?\n/)
-    .slice(1)
-    .filter((line) => line.trim().length > 0)
-    .map((line) => {
-      const cells = line.split(',');
-      return { name: cells[1] ?? '', text: (cells[cells.length - 1] ?? '').replace(/^"|"$/g, '') };
-    });
-
-  // 连续的「无说话人」行 = 选项块
-  let start = -1;
-  for (let index = 0; index < rows.length; index += 1) {
-    if (rows[index]!.name === '' && rows[index + 1]?.name === '') {
-      start = index;
-      break;
-    }
-  }
-  if (start === -1) return undefined;
-
-  const options: string[] = [];
-  let cursor = start;
-  while (cursor < rows.length && rows[cursor]!.name === '') {
-    options.push(rows[cursor]!.text.replace(/\\n/g, ''));
-    cursor += 1;
-  }
-  if (options.length === 0) return undefined;
-
-  const next = rows[cursor]?.text.replace(/\\n/g, '') ?? '';
-  return options.some((option) => option === next);
-}
-
-/** 原作这一章有几个分支（读私有缓存；读不到返回 undefined）。 */
+/** 原作这一章有几个分支（读私有结构缓存；读不到返回 undefined）。 */
 function readExpectedBranches(script: string | undefined): number | undefined {
   if (!script) return undefined;
   const file = path.join(process.cwd(), '.cache', 'shiny', `${script}.structure.json`);
@@ -126,31 +86,6 @@ function readExpectedBranches(script: string | undefined): number | undefined {
     branches?: { label: string }[];
   };
   return structure.branches?.length ?? 0;
-}
-
-function readCardOrder(relative: string): { index: number; total: number } | undefined {
-  if (!corpusAvailable) return undefined;
-  const full = path.join(corpusRoot, relative.split('/').join(path.sep));
-  const folder = path.dirname(full);
-  if (!existsSync(folder)) return undefined;
-  const file = path.basename(full);
-
-  const seqOf = (name: string): number | undefined => {
-    const text = readFileSync(path.join(folder, name), 'utf8');
-    const ids = [...text.matchAll(/(\\d{13})/g)]
-      .map((entry) => entry[1] ?? '')
-      .filter((id) => id !== '0000000000000');
-    if (ids.length === 0) return undefined;
-    return Number(ids[0]!.slice(7, 9));
-  };
-
-  const names = readdirSync(folder).filter((name) => name.endsWith('.csv'));
-  const seqs = names.map((name) => ({ name, seq: seqOf(name) }));
-  const valid = seqs.filter((entry): entry is { name: string; seq: number } => entry.seq !== undefined);
-  valid.sort((a, b) => a.seq - b.seq);
-  const index = valid.findIndex((entry) => entry.name === file) + 1;
-  if (index === 0) return undefined;
-  return { index, total: valid.length };
 }
 
 function readSource(relative: string): string | undefined {
@@ -240,7 +175,6 @@ const problems = [
       return {
         chapterId: chapter.chapterId,
         stepCount: chain?.steps.length ?? 0,
-        expectBranch: readExpectBranch(chapter.source),
         expectedBranches: readExpectedBranches(chapter.script),
         dialogue: draft
           ? { startNodeId: draft.startNodeId, nodes: draft.nodes }
@@ -251,7 +185,6 @@ const problems = [
   // 锚点对「全部登记章节」都校验：待审草稿也算内容，没理由跳过。
   ...validateChapterAnchors(CHAPTER_SOURCES, {
     readSource,
-    readCardOrder,
     hasInGame: (text, normalize) =>
       normalize(allContentText).includes(normalize(text)),
   }),

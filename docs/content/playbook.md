@@ -140,6 +140,11 @@ npm run content:guard      # 已接进 content:validate，构建时会跑
 `npm test` 里的 `productionRoster.test` 对**正式包里的每个偶像**逐条断言这四件事（有角色、日程非空、名册字段齐、有招募步骤），
 新角色漏了会直接红；`mamimi.spec` 则真开一次名册和日程表，断言能看到她。
 
+**旧存档也要验一次**（事故 #32）：新偶像是在某个存档纪元里加进来的，玩家手里的档没有她的条目。
+`migrateSave` 会自动补条目、并按剧情进度补回状态，但这条路径必须有测试——
+`src/save/idolBackfill.test.ts` 覆盖迁移逻辑，`tests/prologue/saveBackfill.spec.ts` 用"删掉她的存档 → 刷新 → 走招募"复现玩家路径。
+**不要为了加新角色去升 `CONTENT_EPOCH`**：那会清空所有人的存档进度，补条目才是对的做法。
+
 ---
 
 ## 3. 覆盖矩阵：做到什么程度算"全覆盖"

@@ -8,6 +8,7 @@ import { createInitialProducerStats, PRODUCER_STAT_KEYS } from '../core/producer
 import type {
   GameState,
   IdolAttribute,
+  IdolStatus,
   ProducerStats,
   Rank,
   SaveEnvelope,
@@ -18,6 +19,12 @@ import { CONTENT_EPOCH, GAME_VERSION, SAVE_VERSION } from './version';
 
 
 const RANK_FROM_VALUE: Rank[] = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
+
+const IDOL_STATUS_ORDER: Record<IdolStatus, number> = {
+  unknown: 0,
+  known: 1,
+  recruited: 2,
+};
 
 function legacyRank(value: number): Rank {
   if (value >= 100) return 'S';
@@ -310,6 +317,36 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     state.chatCounts = state.chatCounts ?? {};
     next.schemaVersion = 18;
     next.gameVersion = GAME_VERSION;
+  }
+
+  // 兜底：当前内容里新加的偶像/角色，旧存档里没有条目。
+  // 事故 #32：摩美々是在存档纪元 3 之后加进来的，纪元没变 → 旧档照常加载，
+  // 但 `state.idols` 里没有她；招募链的 `complete.status` 被守卫静默跳过，
+  // 剧情走完了她也不进名册/日程表。补条目不会动已有进度。
+  next.state.idols = {
+    ...createInitialIdolStates(),
+    ...(next.state.idols ?? {}),
+  };
+  next.state.actors = {
+    ...createInitialActorStates(),
+    ...(next.state.actors ?? {}),
+  };
+
+  // 已经走完、但状态没落盘的招募步骤：按剧情进度把状态补回来。
+  // （否则旧档补出条目后，她的招募链already completed，永远招不进来。）
+  for (const chain of CONTENT_INDEX.storyChains.values()) {
+    const chainState = next.state.storyChains?.[chain.id];
+    if (!chainState) continue;
+    const done = Math.min(chainState.stepIndex ?? 0, chain.steps.length);
+    for (const step of chain.steps.slice(0, done)) {
+      const status = step.complete?.status;
+      const idol = next.state.idols[chain.idolId];
+      if (!status || !idol) continue;
+      if (IDOL_STATUS_ORDER[status] > IDOL_STATUS_ORDER[idol.status]) {
+        idol.status = status;
+        idol.knownAt = idol.knownAt ?? 1;
+      }
+    }
   }
 
   return next;

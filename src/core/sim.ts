@@ -1131,28 +1131,34 @@ function finishDialogue(state: GameState): GameState {
   const step = chain.steps[chainState.stepIndex];
   const day = getDay(next.clock.absoluteMinutes);
 
-  if (step?.complete?.status && next.idols[chain.idolId]) {
-    const idol = next.idols[chain.idolId];
-    idol.status = step.complete.status;
-    if (step.complete.status === 'known') {
-      idol.knownAt = idol.knownAt ?? day;
-    }
-    if (step.complete.status === 'recruited') {
-      idol.knownAt = idol.knownAt ?? day;
-      idol.recruitedAt = day;
-      // 刚招进来的人自动成为重点偶像——但已经有人在带的时候不抢。
-      if (!isIdolRecruited(next, getFocusIdolId(next))) {
-        next.focusIdolId = chain.idolId;
-        next.selectedIdolId = chain.idolId;
+  if (step?.complete?.status) {
+    // 条目不存在就补一条：旧存档是"新偶像加进来之前"建的，加载后可能缺条目。
+    // 之前的写法把整段招募静默跳过了——剧情走完，她不进名册（事故 #32）。
+    const idol =
+      next.idols[chain.idolId] ?? createInitialIdolStates()[chain.idolId];
+    if (idol) {
+      next.idols[chain.idolId] = idol;
+      idol.status = step.complete.status;
+      if (step.complete.status === 'known') {
+        idol.knownAt = idol.knownAt ?? day;
       }
+      if (step.complete.status === 'recruited') {
+        idol.knownAt = idol.knownAt ?? day;
+        idol.recruitedAt = day;
+        // 刚招进来的人自动成为重点偶像——但已经有人在带的时候不抢。
+        if (!isIdolRecruited(next, getFocusIdolId(next))) {
+          next.focusIdolId = chain.idolId;
+          next.selectedIdolId = chain.idolId;
+        }
+      }
+      addLog(
+        next,
+        step.complete.status === 'recruited'
+          ? `${CONTENT_INDEX.idols.get(chain.idolId)?.name ?? chain.idolId} 加入了制作名单。`
+          : `你认识了${CONTENT_INDEX.idols.get(chain.idolId)?.name ?? chain.idolId}。`,
+        'good',
+      );
     }
-    addLog(
-      next,
-      step.complete.status === 'recruited'
-        ? `${CONTENT_INDEX.idols.get(chain.idolId)?.name ?? chain.idolId} 加入了制作名单。`
-        : `你认识了${CONTENT_INDEX.idols.get(chain.idolId)?.name ?? chain.idolId}。`,
-      'good',
-    );
   }
 
   if (step?.effects?.length) {

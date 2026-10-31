@@ -44,8 +44,13 @@ describe('discovery', () => {
     const state = playableState();
     const hints = storyHints(state);
     const chains = hints.map((hint) => hint.chainId).sort();
-    // 三个偶像的第一章都还没遇见
-    expect(chains).toEqual(['hiori-smile-card', 'mano-smile', 'meguru-picarte']);
+    // 四张卡的第一章都还没遇见（真乃有两张卡）
+    expect(chains).toEqual([
+      'hiori-smile-card',
+      'mano-natural',
+      'mano-smile',
+      'meguru-picarte',
+    ]);
   });
 
   it('aggregates hints per location', () => {

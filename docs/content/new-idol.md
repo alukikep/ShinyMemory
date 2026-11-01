@@ -8,7 +8,7 @@
 > 2. **按组合补完**：下一批是 L'Antica（恋钟、咲耶、结华、雾子）。
 > 3. **先补工具再批量**：`content:drafts`、`content:new-idol`、coverage 进构建（已就位，见 §6）。
 >
-> 现状：已接入 27 人（真乃、灯织、巡、摩美々、霧子、恋鐘、咲耶、結華、果穂、智代子、樹里、凛世、夏葉、甘奈、甜花、千雪、あさひ、冬優子、愛依、透、円香、小糸、雛菜、にちか、美琴、ルカ、羽那；L'Antica、放课组、ALSTROEMERIA、Straylight、noctchill、SHHis 六组齐，CoMETIK 接入中 2/3），可接入 28 人（见 §5 顺序）。
+> 现状：已接入 28 人（真乃、灯织、巡、摩美々、霧子、恋鐘、咲耶、結華、果穂、智代子、樹里、凛世、夏葉、甘奈、甜花、千雪、あさひ、冬優子、愛依、透、円香、小糸、雛菜、にちか、美琴、ルカ、羽那、はるき；L'Antica、放课组、ALSTROEMERIA、Straylight、noctchill、SHHis 六组齐，CoMETIK 3/3 招募齐），可接入 28 人（见 §5 顺序）。
 > **注意**：最后两人（羽那・はるき）不是各自独立接入的——她们的招募链要挂在 `luca recruited` 上，
 > 三人齐了才解锁「黑色彗星」结成。顺序与出处见 [_materials/cometik-plan.md](_materials/cometik-plan.md)。
 

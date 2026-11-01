@@ -2,7 +2,7 @@
   "id": "draft.dialogue.haruki.second",
   "kind": "dialogue",
   "title": "演出结束后，她从台上追了出来",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.haruki.second",
   "payload": {
@@ -124,12 +124,18 @@
   },
   "annotations": [],
   "createdAt": "2026-11-01T14:00:00.000Z",
-  "updatedAt": "2026-11-01T14:00:00.000Z",
+  "updatedAt": "2026-11-01T11:46:52.904Z",
+  "reviewedAt": "2026-11-01T11:46:52.904Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-01T14:00:00.000Z",
       "note": "对照 1028001010150〜0190（从舞台跑下来、「世界が色づいていく」「わたしを、連れていってください」）与 102800504（名片、来事务所）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:46:52.904Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.dialogue.haruki.first",
   "kind": "dialogue",
   "title": "会场里有个抱着贝斯的女孩",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.haruki.first",
   "payload": {
@@ -219,12 +219,18 @@
   },
   "annotations": [],
   "createdAt": "2026-11-01T14:00:00.000Z",
-  "updatedAt": "2026-11-01T14:00:00.000Z",
+  "updatedAt": "2026-11-01T11:46:52.891Z",
+  "reviewedAt": "2026-11-01T11:46:52.891Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-01T14:00:00.000Z",
       "note": "对照 102800503（发传单被拒、ベース、初ステージ）与 102800101（搭话、「動かすことができるかは君次第」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:46:52.891Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
     }
   ]
 }

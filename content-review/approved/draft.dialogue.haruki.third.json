@@ -2,7 +2,7 @@
   "id": "draft.dialogue.haruki.third",
   "kind": "dialogue",
   "title": "见习期的晚上，她一个人还在练",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.haruki.third",
   "payload": {
@@ -150,12 +150,18 @@
   },
   "annotations": [],
   "createdAt": "2026-11-01T14:00:00.000Z",
-  "updatedAt": "2026-11-01T14:00:00.000Z",
+  "updatedAt": "2026-11-01T11:46:52.909Z",
+  "reviewedAt": "2026-11-01T11:46:52.909Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-01T14:00:00.000Z",
       "note": "对照 102800505（见习期、训练师「こんなもんじゃないからね」、讲师的话、「どれも、求めているうちは諦めなくてもいいんだ」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:46:52.909Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
     }
   ]
 }

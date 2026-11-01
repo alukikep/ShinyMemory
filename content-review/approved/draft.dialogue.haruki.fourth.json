@@ -2,7 +2,7 @@
   "id": "draft.dialogue.haruki.fourth",
   "kind": "dialogue",
   "title": "她带着父亲的答复来了",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.haruki.fourth",
   "payload": {
@@ -150,12 +150,18 @@
   },
   "annotations": [],
   "createdAt": "2026-11-01T14:00:00.000Z",
-  "updatedAt": "2026-11-01T14:00:00.000Z",
+  "updatedAt": "2026-11-01T11:46:52.915Z",
+  "reviewedAt": "2026-11-01T11:46:52.915Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-01T14:00:00.000Z",
       "note": "对照 102800505（父亲同意、「マジックアワー」「わたしは、ほんのひと時しか見られないような、こんな空を見つけたい」「俺もかけよう／全部」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:46:52.915Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
     }
   ]
 }

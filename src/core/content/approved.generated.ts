@@ -17816,6 +17816,621 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.haruki.first",
+  "idolId": "haruki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "创作者集会。展位一间挨一间，空气里混着纸和咖啡的味道。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（いろんなクリエイターが集まるイベントか……）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "（ここでスカウト、ってことはないと思うけど。何か面白いものに出会えるだろうか）",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "text": "角落里，一个抱着贝斯的女孩正在发传单。接过去的人不多。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "（ん……あの子、楽器を抱えてるな。出展者……いや、ライブパフォーマンスの出演者かな）",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "（それにしては、ずいぶんあどけないような……）",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "text": "目光对上了。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "……もしかして、ライブパフォーマンスに出演する方ですか？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "haruki",
+      "text": "是……！　是的……！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "haruki",
+      "text": "我之后就要上台，请一定来看",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "谢谢……！──传单也做得很好啊。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "haruki",
+      "text": "真的吗？我改了好多遍，听您这么说好开心",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "诶，这是你自己做的？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "厉害啊……！你还要演奏吧。那是──",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "haruki",
+      "text": "是贝斯。虽然还很生疏──",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "haruki",
+      "text": "其实是朋友说少一个人，把我叫去的……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "haruki",
+      "text": "练了很久，今天是第一次上台",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "这样啊……！为了朋友，很有胆量啊。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "haruki",
+      "text": "呵呵～",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "我是不是打扰到你上台前的集中了。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "haruki",
+      "text": "……没有，反而是您跟我说话，让我放松下来了",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "haruki",
+      "text": "────这里的人，哪怕只有一个也好，会不会停下来听一听……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "haruki",
+      "text": "会不会觉得开心呢……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "haruki",
+      "text": "能不能打动某个人的心呢────",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "────能不能打动，大概取决于你吧",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "比起去动那些动不了的心，不如先动你自己的心────把看得见的世界重新涂一遍就好",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "haruki",
+      "text": "──────……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "haruki",
+      "text": "…………！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "text": "广播里在叫下一个出场者。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "haruki",
+      "text": "啊……！不好意思，我差不多该走了……！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "嗯，加油……！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "（有趣的孩子啊……也去看看她的舞台吧）",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "（很神奇的孩子。明明是软软的可爱的样子……）",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "（却像是在看着别的地方）",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "…………要不要去挖她呢"
+    }
+  }
+},
+{
+  "id": "dialogue.haruki.fourth",
+  "idolId": "haruki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "傍晚的事务所。窗外的天色正在变。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "haruki",
+      "text": "制作人先生……！",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "……怎么样？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "haruki",
+      "text": "爸爸，答应了",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "haruki",
+      "text": "说\"既然要做，就别半途而废\"",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "……！太好了。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "haruki",
+      "text": "太好了……被允许了……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "你父亲……看上去是很严格的人啊。我还以为肯定不行。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "haruki",
+      "text": "呵呵……连制作人先生都会这么想啊",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "哈哈……不过他是个考虑得很深的人。不愧是はるき的父亲。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "haruki",
+      "text": "说不定，父亲也这么想制作人先生呢",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "haruki",
+      "text": "说\"这位制作人比想象中年轻，但看起来靠得住\"之类的……！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "はるき……！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "haruki",
+      "text": "……制作人先生，天空──",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "……！好漂亮。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "haruki",
+      "text": "这叫做「魔术时刻」吧。什么都看起来很美的那段时间──",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "haruki",
+      "text": "──制作人先生。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "haruki",
+      "text": "我想找到的，是那种只能看一小会儿的天空。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "haruki",
+      "text": "那值得我把全部押上去……我是这么想的。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "那────",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "我也押上全部吧。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "……和はるき一起。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "haruki",
+      "text": "…………是。"
+    }
+  }
+},
+{
+  "id": "dialogue.haruki.second",
+  "idolId": "haruki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "舞台那边掌声散了。收拾器材的人来人往。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（演得挺开心的样子，太好了）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "haruki",
+      "text": "那个……！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "你、你从舞台上……！！",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "haruki",
+      "text": "跑下来了",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "舞台是结束了没错……不过直接跑过来这边──",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "haruki",
+      "text": "是……一想到以后可能就见不到了，就忍不住──",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "haruki",
+      "text": "……我看到，世界开始有颜色了。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "haruki",
+      "text": "请把我，带走吧……！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "……！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "……我是做偶像制作人的。你如果有兴趣的话──",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "text": "递出名片。她盯着看了很久。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "haruki",
+      "text": "……好像，是的呢",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "haruki",
+      "text": "啊、那个。其实刚才聊了一下，有件事忘了说……！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "text": "（其实她只是想说那句\"带我走\"）",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "……要不要来事务所坐坐？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "haruki",
+      "text": "可以吗？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "嗯。就当是听你聊聊，画画、乐队、映像部，什么都可以。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "haruki",
+      "text": "……好！"
+    }
+  }
+},
+{
+  "id": "dialogue.haruki.third",
+  "idolId": "haruki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "练习室的灯还亮着。她一个人在过同一段动作。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "haruki",
+      "text": "……啊，制作人先生。这么晚了，怎么了？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "看你还没回去。……今天训练师说了什么？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "haruki",
+      "text": "「郁田さん，还在试用期吧」",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "haruki",
+      "text": "「要是想当偶像，可不是这种程度哦」──这样说",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "……这样啊。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "haruki",
+      "text": "还有美术学校的老师也说过，有人从早上睁眼到睡觉，连梦里都在画画",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "haruki",
+      "text": "说我们要跟那样的人竞争",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "haruki",
+      "text": "……我能看见的东西太多了",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "haruki",
+      "text": "很多东西我都喜欢，都想去碰一碰",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "haruki",
+      "text": "可是这样什么都伸手去够，感觉反而把什么推远了……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "……我觉得，正是那些\"都想试试\"，才做出了现在的你。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "──哪一个都不用放弃，只要你还在追。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "而且，认真撞过每一件事的你，在哪一行都能发光。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "haruki",
+      "text": "──────……呵呵。那，偶像也算吗？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "……嗯。我觉得算。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "haruki",
+      "text": "……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "（她好像松了口气，又好像在忍着什么）",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "haruki",
+      "text": "制作人先生。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "haruki",
+      "text": "我……真的可以当偶像吗。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "haruki",
+      "text": "不是试试看的那种。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "这件事，得你自己决定。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "haruki",
+      "text": "……嗯。"
+    }
+  }
+},
+{
   "id": "dialogue.hinana.first",
   "idolId": "hinana",
   "startNodeId": "1",

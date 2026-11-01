@@ -1,0 +1,114 @@
+{
+  "id": "draft.dialogue.mei.report",
+  "kind": "dialogue",
+  "title": "她跑进事务所喊\"听我说\"",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mei.report",
+  "payload": {
+    "id": "dialogue.mei.report",
+    "idolId": "mei",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "mei",
+        "text": "制作人！听我说听我说～！",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "愛依？这么高兴，发生什么了？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "mei",
+        "text": "有的有的！之前那个课题，总算过了的感觉！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "太好了！",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "mei",
+        "text": "多亏了制作人嘛！真的谢谢啦！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "（她抓着我袖子晃，完全不掩饰。）",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "mei",
+        "text": "うち，第一次觉得学习好像也没那么糟。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "那是因为你没有放弃。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "mei",
+        "text": "……是那样吗？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "是那样。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "mei",
+        "text": "嘿嘿……那，うち是不是也能把别的事做好。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "当然能。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "mei",
+        "text": "好！那，下次的课うち也要好好做！",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "（她跑出去之前，回头补了一句。）",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "mei",
+        "text": "……制作人，谢啦。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:00:00.000Z",
+  "updatedAt": "2026-11-02T14:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:00:00.000Z",
+      "note": "对照 201900311（课题通过、跑来报告）"
+    }
+  ]
+}

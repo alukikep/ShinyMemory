@@ -1,0 +1,32 @@
+{
+  "id": "draft.mei.chat.family",
+  "kind": "topic",
+  "title": "聊天 · 家人",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mei.chat.family",
+  "payload": {
+    "id": "mei.chat.family",
+    "actorId": "mei",
+    "label": "家人",
+    "text": "「うち家超吵的哦～七口人呢！」「不过，挺开心的。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:14:00.000Z",
+  "updatedAt": "2026-11-02T14:14:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:14:00.000Z",
+      "note": "愛依日常话题（家里人多）"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "id": "draft.dialogue.mei.first",
+  "kind": "dialogue",
+  "title": "有人撞到了你，然后笑了",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mei.first",
+  "payload": {
+    "id": "dialogue.mei.first",
+    "idolId": "mei",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "……想也没用！总之到处走走——哇！",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "抱歉！你受伤了吗？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "mei",
+        "text": "啊，没事没事～うち才是，走神了。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "（好亮的笑……）",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "mei",
+        "text": "诶？你是星探吗？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "诶？为什么这么问？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "mei",
+        "text": "因为你刚才在看人家的脸看了好久嘛～",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "啊、不是，不是那种意思……其实我是做偶像制作人的。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "mei",
+        "text": "哦～！偶像！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "mei",
+        "text": "うち，对偶像不太了解诶。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "那我问一下，你有兴趣试试当偶像吗？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "mei",
+        "text": "うち？当偶像？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "嗯。偶像有可爱的类型，也有帅气的类型……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "像你这样开朗的性格，一定会被粉丝喜欢的。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "mei",
+        "text": "……真的？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "真的。要不要试试？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "mei",
+        "text": "嗯——……那，试试也行吧？反正也挺好玩的。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "谢谢！今后请多指教！对了，能告诉我你的名字吗？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "mei",
+        "text": "うち、和泉愛依～请多指教哦，大哥……不对，是制作人♪"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:00:00.000Z",
+  "updatedAt": "2026-11-02T14:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:00:00.000Z",
+      "note": "对照 101900101（撞到、自来熟、\"うち\"、报名字）"
+    }
+  ]
+}

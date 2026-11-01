@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.mei.after_vocal",
+  "kind": "event",
+  "title": "唱完先笑",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.mei.after_vocal",
+  "payload": {
+    "id": "evt.mei.after_vocal",
+    "title": "唱完先笑",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mei"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束了。她唱完先自己笑出来，说\"刚才那个音跑了\"。",
+    "choices": [
+      {
+        "label": "没跑。",
+        "hint": "信任 +3、歌唱 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          }
+        ],
+        "result": "「诶，真的？那うち就信你啦～」"
+      },
+      {
+        "label": "再来一遍。",
+        "hint": "歌唱 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好～再来！这次要认真点。」"
+      },
+      {
+        "label": "先喝水。",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「啊，谢谢～制作人真会照顾人。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:20:00.000Z",
+  "updatedAt": "2026-11-02T14:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:20:00.000Z",
+      "note": "愛依声乐课后事件"
+    }
+  ]
+}

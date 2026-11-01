@@ -1,0 +1,156 @@
+{
+  "id": "draft.dialogue.mei.drive",
+  "kind": "dialogue",
+  "title": "今天的工作要开车去",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mei.drive",
+  "payload": {
+    "id": "dialogue.mei.drive",
+    "idolId": "mei",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "mei",
+        "text": "哟……来接我，谢谢啦制作人。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "今天的目的地坐电车不方便，别在意。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "mei",
+        "text": "啊哈哈，接送什么的超——有偶像的感觉诶～！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "哈哈，也许吧。这种程度的话，随时都行。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "mei",
+        "text": "真的～！？那，下次去兜风吧？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "兜风？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "mei",
+        "text": "嗯！うち家那边有海，天气好的时候超舒服的～",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "（她说到家里那边的时候，语速变快了。）",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "好啊，有机会去。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "mei",
+        "text": "说定了哦！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "（窗外是海。她安静了一会儿，看着窗外。）",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "mei",
+        "text": "……制作人。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "嗯？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "mei",
+        "text": "うち，其实有点怕上台。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "mei",
+        "text": "平时这样说说笑笑的，没关系。可是一站到人前，就会僵住。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "（第一次听她说这个。）",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "mei",
+        "text": "……啊，说了奇怪的话。忘了吧～",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "不，没忘。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "怕的话，就先从小的场子开始。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "mei",
+        "text": "……嗯。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "mei",
+        "text": "谢谢。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:00:00.000Z",
+  "updatedAt": "2026-11-02T14:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:00:00.000Z",
+      "note": "对照 201900302（接送、她提议兜风）"
+    }
+  ]
+}

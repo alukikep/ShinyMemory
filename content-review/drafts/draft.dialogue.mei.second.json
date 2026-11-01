@@ -1,0 +1,143 @@
+{
+  "id": "draft.dialogue.mei.second",
+  "kind": "dialogue",
+  "title": "第一次基础课",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.mei.second",
+  "payload": {
+    "id": "dialogue.mei.second",
+    "idolId": "mei",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "mei",
+        "text": "制作人，早上好～",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "早上好，愛依。先说一下今天的预定，可以吗？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "mei",
+        "text": "OK、OK，什么样的感觉～？",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "今天打算让你把基础课都体验一遍。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "挖你的时候，你对偶像完全不了解吧？先从这儿开始。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "mei",
+        "text": "诶～不错嘛制作人！还配合着うち的情况来～♪",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "哈哈，这就是制作人的工作。那，去练习场吧。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "mei",
+        "text": "……好，怎么样？照你说的，先试了一遍。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "（她嘴上很轻松，其实一直在等评价。）",
+        "choices": [
+          {
+            "label": "基础打得不错。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "节奏再稳一点。",
+            "nextNodeId": "110"
+          },
+          {
+            "label": "先休息，别急。",
+            "nextNodeId": "120"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "mei",
+        "text": "诶，真的？那还好～",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "嗯，第一节课能到这个程度已经很好了。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "mei",
+        "text": "嘿嘿，那うち下次要更好看一点♪"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "mei",
+        "text": "节奏啊～……那个有点难诶。",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "producer",
+        "text": "所以才要练。不急。",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "mei",
+        "text": "知道啦知道啦～嗯，那再来一次。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "mei",
+        "text": "诶，可以休息吗？",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "嗯，一开始别太拼。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "mei",
+        "text": "那うち就，稍微歇一下～谢谢制作人♪"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:00:00.000Z",
+  "updatedAt": "2026-11-02T14:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:00:00.000Z",
+      "note": "对照 101900102（三分支：按她的情况排课）"
+    }
+  ]
+}

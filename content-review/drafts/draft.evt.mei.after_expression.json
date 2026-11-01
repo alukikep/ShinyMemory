@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.mei.after_expression",
+  "kind": "event",
+  "title": "她又僵住了",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.mei.after_expression",
+  "payload": {
+    "id": "evt.mei.after_expression",
+    "title": "她又僵住了",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mei"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表现课结束了。她说\"刚才中间脑子一片空白\"，说完自己先沉默了一下。",
+    "choices": [
+      {
+        "label": "看得出来，但你没停。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……真的？那，还行吧。」"
+      },
+      {
+        "label": "慢慢来。",
+        "hint": "信任 +3、压力 -3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「嗯……谢谢。」"
+      },
+      {
+        "label": "下次从短的开始。",
+        "hint": "表现 +1、压力 -2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -2
+          }
+        ],
+        "result": "「短一点的……那个，说不定行。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:20:00.000Z",
+  "updatedAt": "2026-11-02T14:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:20:00.000Z",
+      "note": "愛依表现课后事件（她怕上台）"
+    }
+  ]
+}

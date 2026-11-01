@@ -1,0 +1,32 @@
+{
+  "id": "draft.mei.chat.phone",
+  "kind": "topic",
+  "title": "聊天 · 电话",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mei.chat.phone",
+  "payload": {
+    "id": "mei.chat.phone",
+    "actorId": "mei",
+    "label": "电话",
+    "text": "「打电话啊～うち可以打好几个小时！」「厉害吧？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:12:00.000Z",
+  "updatedAt": "2026-11-02T14:12:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:12:00.000Z",
+      "note": "愛依日常话题（API 特技：何時間でも電話できる）"
+    }
+  ]
+}

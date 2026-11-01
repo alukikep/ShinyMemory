@@ -473,4 +473,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: 'ふゆの素顔', index: 3, total: 3 },
     anchors: ['2018003110010', '2018003110020', '2018003110060'],
   },
+  {
+    chapterId: 'mei-homework',
+    script: '201900301',
+    source: '剧本 201900301',
+    card: { title: 'うちのペースで', index: 1, total: 3 },
+    anchors: ['2019003010010', '2019003010030', '2019003010040'],
+  },
+  {
+    chapterId: 'mei-drive',
+    script: '201900302',
+    source: '剧本 201900302',
+    card: { title: 'うちのペースで', index: 2, total: 3 },
+    anchors: ['2019003020010', '2019003020020', '2019003020030'],
+  },
+  {
+    chapterId: 'mei-report',
+    script: '201900311',
+    source: '剧本 201900311',
+    card: { title: 'うちのペースで', index: 3, total: 3 },
+    anchors: ['2019003110010', '2019003110020', '2019003110030'],
+  },
 ];

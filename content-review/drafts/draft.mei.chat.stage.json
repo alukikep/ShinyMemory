@@ -1,0 +1,32 @@
+{
+  "id": "draft.mei.chat.stage",
+  "kind": "topic",
+  "title": "聊天 · 上台",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mei.chat.stage",
+  "payload": {
+    "id": "mei.chat.stage",
+    "actorId": "mei",
+    "label": "上台",
+    "text": "「上台啊……嗯，会紧张。」「……别跟别人说哦。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:15:00.000Z",
+  "updatedAt": "2026-11-02T14:15:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:15:00.000Z",
+      "note": "愛依日常话题（クールモード）"
+    }
+  ]
+}

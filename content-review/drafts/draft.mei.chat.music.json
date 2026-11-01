@@ -1,0 +1,32 @@
+{
+  "id": "draft.mei.chat.music",
+  "kind": "topic",
+  "title": "聊天 · 音乐",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mei.chat.music",
+  "payload": {
+    "id": "mei.chat.music",
+    "actorId": "mei",
+    "label": "音乐",
+    "text": "「最近都在听这个！」「超带感的，听一下？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:16:00.000Z",
+  "updatedAt": "2026-11-02T14:16:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:16:00.000Z",
+      "note": "愛依日常话题（API 兴趣：最近の曲）"
+    }
+  ]
+}

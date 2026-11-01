@@ -1,0 +1,32 @@
+{
+  "id": "draft.mei.chat.school",
+  "kind": "topic",
+  "title": "聊天 · 学校",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.mei.chat.school",
+  "payload": {
+    "id": "mei.chat.school",
+    "actorId": "mei",
+    "label": "学校",
+    "text": "「学校？嗯——不算讨厌啦～」「就是作业有点麻烦。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T14:13:00.000Z",
+  "updatedAt": "2026-11-02T14:13:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T14:13:00.000Z",
+      "note": "愛依日常话题（高三）"
+    }
+  ]
+}

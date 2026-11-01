@@ -15676,6 +15676,571 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.hana.first",
+  "idolId": "hana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "事务所的会议室。桌上摊着 W.I.N.G. 的资料，手机屏幕上的趋势栏一直在滚。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（バズりレシピ、カリスマ学生インフルエンサー、田舎暮らし動画……）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "（现在谁都能发，从哪儿都能发。偶像也不能光等着。）",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "text": "拇指停在一个标签上。『#可愛すぎる友達』。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "……「可爱过头的好朋友」？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "text": "三十秒的剪辑。教室、走廊、图书室，全是同一个女孩。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "……这个视频里的孩子，高中生吧。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "text": "投稿者的名字不是她。评论里写着「我朋友」。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "不是本人发的啊。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "text": "地点标签是——岡山県。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "……岡山。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "text": "视频里她只是坐在那儿。被拍的人叫了一声，她转过头，笑了。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "（被谁看着就亮起来的人，是这样的啊。）",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "……去问一句吧。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "text": "他点开投稿者的头像，按下「发送私信」。"
+    }
+  }
+},
+{
+  "id": "dialogue.hana.fourth",
+  "idolId": "hana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "宿舍门口。玄关摆着一排拖鞋，食堂那边飘着味噌汤的味道。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "这里就是宿舍。里面住着好几个偶像。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "hana",
+      "text": "好厉害──像宿舍剧一样！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "亲切的咲耶，还有做饭很好吃的恋鐘──",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "hana",
+      "text": "咲耶、恋鐘……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "hana",
+      "text": "──诶，是名字？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "嗯，大家都叫名字。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "hana",
+      "text": "啊哈，那──",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "hana",
+      "text": "叫我「羽那」就好哦？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "……好。那就，羽那。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "hana",
+      "text": "嗯！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "text": "她把行李箱靠在墙边，深呼吸了一次。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……进去之前，再说一次。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "────羽那。欢迎来到 283。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "hana",
+      "text": "──！",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hana",
+      "text": "嗯！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "hana",
+      "text": "我这个不成器的人，以后请多关照。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "hana",
+      "text": "呵呵──！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "text": "她鞠了一躬。行李箱的轮子在地上转了一圈，停住。"
+    }
+  }
+},
+{
+  "id": "dialogue.hana.second",
+  "idolId": "hana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "三天后，私信有了回复。对方问，可以通个电话吗。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "hana_friend",
+      "text": "您好，突然联系不好意思。……请问，是事务所的人吗？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "是的。冒昧问一句，那个视频是您拍的吗？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "hana_friend",
+      "text": "是我拍的。好几个月的份，剪成了三十秒。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "hana_friend",
+      "text": "……其实，已经有好几家发过私信来了。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "……这样啊。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "hana_friend",
+      "text": "私信写得随随便便的，搜也搜不到事务所的，一看就不靠谱，直接排除了。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "hana_friend",
+      "text": "我挑下来觉得可以的，是这里。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "hana_friend",
+      "text": "────２８３プロ。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "……为什么是我们？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "hana_friend",
+      "text": "因为查得到。而且私信写得很认真。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "hana_friend",
+      "text": "……还有，我觉得羽那是该站上大舞台的人。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "text": "她把电话交给了本人。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "hana",
+      "text": "啊哈，没关系的。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "hana",
+      "text": "……不过，真的是真人啊──！",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "哈哈……是的。只靠电话和邮件，确实很难让人相信吧。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "──那么，我重新问一次。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "对偶像这个职业，您有兴趣吗？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "hana",
+      "text": "…………",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "当然，还有高中生活。我知道现在做不到。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "所以，我想等到您高中毕业。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "hana",
+      "text": "……等我？居然愿意做到那个地步啊。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "是的。……我就是这么希望您能成为偶像。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "hana",
+      "text": "诶──？　……呵呵。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "hana",
+      "text": "──偶像，我觉得挺好的。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "……！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "hana",
+      "text": "不过，我可以先好好跟家里商量一下吗？",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "当然……！请慢慢考虑。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "需要的话，我随时都可以再过去一趟。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "hana",
+      "text": "嗯！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "text": "电话挂了。那一天之后，消息断了一阵子。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "text": "再收到她的信，是毕业典礼之后的事。"
+    }
+  }
+},
+{
+  "id": "dialogue.hana.third",
+  "idolId": "hana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "站台。新干线到站，人从检票口涌出来。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "hana",
+      "text": "──啊",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "hana",
+      "text": "有了，制作人先生──！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "text": "她拖着一个不大的行李箱跑过来，头发被风吹得有点乱。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "hana",
+      "text": "那个……今天开始受您照顾了，我是鈴木羽那！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "长途辛苦了。……这么郑重，谢谢。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "还有，敬语不用勉强也可以的。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "hana",
+      "text": "这样啊──那，敬语就不用了。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "hana",
+      "text": "……彼此都是哦？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "诶──……这样啊，知道了。谢谢。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "hana",
+      "text": "啊哈……！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "text": "行李箱比想象中小。她说，够用了。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "hana",
+      "text": "冈山到东京，比想象中要远呢。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "坐新干线三个多小时吧。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "hana",
+      "text": "嗯……不过，也比想象中快。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hana",
+      "text": "──我已经决定了。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "hana",
+      "text": "要当偶像。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "……嗯。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "hana",
+      "text": "朋友说，我不去太可惜了。妈妈也说到时候再说，弟弟在起哄。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "hana",
+      "text": "大家都这么说，那大概就是对的吧──",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "……不是\"大家都这么说\"也行。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "hana",
+      "text": "？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "你自己怎么想？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "hana",
+      "text": "……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "hana",
+      "text": "我自己，也想试试看。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "……好。那就去试。"
+    }
+  }
+},
+{
   "id": "dialogue.hinana.first",
   "idolId": "hinana",
   "startNodeId": "1",

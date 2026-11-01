@@ -2,7 +2,7 @@
   "id": "draft.dialogue.hana.second",
   "kind": "dialogue",
   "title": "给发视频的账号发一条私信",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.hana.second",
   "payload": {
@@ -201,12 +201,18 @@
   },
   "annotations": [],
   "createdAt": "2026-11-01T12:00:00.000Z",
-  "updatedAt": "2026-11-01T12:00:00.000Z",
+  "updatedAt": "2026-11-01T10:26:57.352Z",
+  "reviewedAt": "2026-11-01T10:26:57.352Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-01T12:00:00.000Z",
       "note": "对照 102700503/504（朋友筛事务所、选中 283）、102700101（电话、愿意等到毕业、家族商量）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T10:26:57.352Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
     }
   ]
 }

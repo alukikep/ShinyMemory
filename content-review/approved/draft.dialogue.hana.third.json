@@ -2,7 +2,7 @@
   "id": "draft.dialogue.hana.third",
   "kind": "dialogue",
   "title": "上京那天，去车站接她",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.hana.third",
   "payload": {
@@ -166,12 +166,18 @@
   },
   "annotations": [],
   "createdAt": "2026-11-01T12:00:00.000Z",
-  "updatedAt": "2026-11-01T12:00:00.000Z",
+  "updatedAt": "2026-11-01T10:26:57.357Z",
+  "reviewedAt": "2026-11-01T10:26:57.357Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-01T12:00:00.000Z",
       "note": "对照 102700505（车站相迎、「今日からお世話になります、鈴木羽那ですっ」「敬語はやめるね」「羽那でいいよ？」）、102700506（「一番は、プロデューサーがいい人だったから」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T10:26:57.357Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
     }
   ]
 }

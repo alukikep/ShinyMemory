@@ -2,7 +2,7 @@
   "id": "draft.dialogue.hana.fourth",
   "kind": "dialogue",
   "title": "带她看宿舍",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.hana.fourth",
   "payload": {
@@ -124,12 +124,18 @@
   },
   "annotations": [],
   "createdAt": "2026-11-01T12:00:00.000Z",
-  "updatedAt": "2026-11-01T12:00:00.000Z",
+  "updatedAt": "2026-11-01T10:26:57.360Z",
+  "reviewedAt": "2026-11-01T10:26:57.360Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-01T12:00:00.000Z",
       "note": "对照 102700505（寮案内、介绍咲耶与恋鐘、「羽那」でいいよ、「ようこそ、２８３プロへ」「ふつつか者ですが、よろしくお願いします」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T10:26:57.360Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.dialogue.hana.first",
   "kind": "dialogue",
   "title": "SNS 上推来一条视频",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.hana.first",
   "payload": {
@@ -102,12 +102,18 @@
   },
   "annotations": [],
   "createdAt": "2026-11-01T12:00:00.000Z",
-  "updatedAt": "2026-11-01T12:00:00.000Z",
+  "updatedAt": "2026-11-01T10:26:57.336Z",
+  "reviewedAt": "2026-11-01T10:26:57.336Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-01T12:00:00.000Z",
       "note": "对照 102700101（事务所刷 SNS、#可愛すぎる友達 急上升、投稿者不是本人、地点岡山県、注意到是高中生）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T10:26:57.336Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
     }
   ]
 }

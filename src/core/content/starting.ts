@@ -36,6 +36,7 @@ export const STARTING_STATE = {
     asahi: 'unknown',
     fuyuko: 'unknown',
     mei: 'unknown',
+    toru: 'unknown',
   } as Record<string, IdolStatus>,
   dialogueId: 'dialogue.prologue.office',
 } as const;

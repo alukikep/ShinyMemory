@@ -1,0 +1,95 @@
+{
+  "id": "draft.evt.toru.after_dance",
+  "kind": "event",
+  "title": "躺在地板上",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.toru.after_dance",
+  "payload": {
+    "id": "evt.toru.after_dance",
+    "title": "躺在地板上",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "toru"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她直接躺在地板上，说了一句\"肚子饿\"，然后又不动了。",
+    "choices": [
+      {
+        "label": "起来，去吃饭。",
+        "hint": "体力恢复、信任 +3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stamina",
+            "delta": 10
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……嗯——。起来了。」"
+      },
+      {
+        "label": "再跳一遍，就去吃。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「……真会做生意啊。」"
+      },
+      {
+        "label": "先躺着吧。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「嗯——。地板，凉凉的，挺好的。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:31:00.000Z",
+  "updatedAt": "2026-11-01T05:41:17.939Z",
+  "reviewedAt": "2026-11-01T05:41:17.939Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:31:00.000Z",
+      "note": "透舞蹈课后事件（跳完就倒、先喊肚子饿 [toru facts]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:17.939Z"
+    }
+  ]
+}

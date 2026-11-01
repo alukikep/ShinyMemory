@@ -1,0 +1,37 @@
+{
+  "id": "draft.toru.chat.movie",
+  "kind": "topic",
+  "title": "聊天 · 电影",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.toru.chat.movie",
+  "payload": {
+    "id": "toru.chat.movie",
+    "actorId": "toru",
+    "label": "电影",
+    "text": "「那部电影，动作戏很厉害。CG 也是。」「你又看了第几遍？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:21:00.000Z",
+  "updatedAt": "2026-11-01T05:41:26.761Z",
+  "reviewedAt": "2026-11-01T05:41:26.761Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:21:00.000Z",
+      "note": "透日常话题（兴趣：看电影 [202000403]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:26.761Z"
+    }
+  ]
+}

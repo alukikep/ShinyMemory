@@ -1,0 +1,69 @@
+{
+  "id": "draft.activity.toru.sky",
+  "kind": "activity",
+  "title": "陪她在公园看天",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.activity.toru.sky",
+  "payload": {
+    "id": "activity.toru.sky",
+    "name": "陪她在公园看天",
+    "description": "她把外套铺在长椅上，仰着头。问她看什么，她说\"亮的东西\"。太阳下去得比她想的快，她说了一句\"没了\"。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "toru"
+    ],
+    "locations": [
+      "park",
+      "station"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 960,
+        "toMinute": 1140
+      }
+    ],
+    "cost": {
+      "stamina": 5
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "expression",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
+    ],
+    "resultTexts": [
+      "她指着一颗刚亮起来的星说\"那个\"，等你再看时已经找不到了。",
+      "云过来了，她说\"下次\"，然后真的第二天又提了一次。",
+      "她把外套收起来的时候说\"谢了\"，声音小得像是说给自己听。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:10:00.000Z",
+  "updatedAt": "2026-11-01T05:41:28.541Z",
+  "reviewedAt": "2026-11-01T05:41:28.541Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:10:00.000Z",
+      "note": "透专属行动（公园/站前的傍晚，看亮的东西 [202000411]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:28.541Z"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "draft.toru.chat.family",
+  "kind": "topic",
+  "title": "聊天 · 家里",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.toru.chat.family",
+  "payload": {
+    "id": "toru.chat.family",
+    "actorId": "toru",
+    "label": "家里",
+    "text": "「我家今天，咖喱和拉西。」「拉西是饮料吧？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:25:00.000Z",
+  "updatedAt": "2026-11-01T05:41:22.321Z",
+  "reviewedAt": "2026-11-01T05:41:22.321Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:25:00.000Z",
+      "note": "透日常话题（家里常做咖喱和拉西 [toru facts 家庭]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:22.321Z"
+    }
+  ]
+}

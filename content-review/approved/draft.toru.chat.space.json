@@ -1,0 +1,37 @@
+{
+  "id": "draft.toru.chat.space",
+  "kind": "topic",
+  "title": "聊天 · 宇宙人",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.toru.chat.space",
+  "payload": {
+    "id": "toru.chat.space",
+    "actorId": "toru",
+    "label": "宇宙人",
+    "text": "「外星人，说不定真的会来哦。」「来了怎么办？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:22:00.000Z",
+  "updatedAt": "2026-11-01T05:41:25.890Z",
+  "reviewedAt": "2026-11-01T05:41:25.890Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:22:00.000Z",
+      "note": "透日常话题（外星人/明天 [202000401]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:25.890Z"
+    }
+  ]
+}

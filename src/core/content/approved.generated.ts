@@ -1125,6 +1125,52 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.toru.sky",
+  "name": "陪她在公园看天",
+  "description": "她把外套铺在长椅上，仰着头。问她看什么，她说\"亮的东西\"。太阳下去得比她想的快，她说了一句\"没了\"。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "toru"
+  ],
+  "locations": [
+    "park",
+    "station"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 960,
+      "toMinute": 1140
+    }
+  ],
+  "cost": {
+    "stamina": 5
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -5
+    }
+  ],
+  "resultTexts": [
+    "她指着一颗刚亮起来的星说\"那个\"，等你再看时已经找不到了。",
+    "云过来了，她说\"下次\"，然后真的第二天又提了一次。",
+    "她把外套收起来的时候说\"谢了\"，声音小得像是说给自己听。"
+  ]
+},
+{
   "id": "activity.watch_street",
   "name": "在街上待一会儿",
   "description": "不做什么，只是站在人多的地方看。",
@@ -5006,6 +5052,222 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「啊……谢谢……制作人先生，总是……」"
+    }
+  ]
+},
+{
+  "id": "evt.toru.after_dance",
+  "title": "躺在地板上",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "toru"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她直接躺在地板上，说了一句\"肚子饿\"，然后又不动了。",
+  "choices": [
+    {
+      "label": "起来，去吃饭。",
+      "hint": "体力恢复、信任 +3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stamina",
+          "delta": 10
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……嗯——。起来了。」"
+    },
+    {
+      "label": "再跳一遍，就去吃。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「……真会做生意啊。」"
+    },
+    {
+      "label": "先躺着吧。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「嗯——。地板，凉凉的，挺好的。」"
+    }
+  ]
+},
+{
+  "id": "evt.toru.after_expression",
+  "title": "对着镜子看了很久",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "toru"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。她还在镜子前面站着，看了很久自己的脸，然后说了一句\"……这样啊\"。",
+  "choices": [
+    {
+      "label": "看出什么了？",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……嗯。感觉，不像我。」"
+    },
+    {
+      "label": "刚才那个表情，再来一次。",
+      "hint": "表现 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「再来一次……好。」"
+    },
+    {
+      "label": "别照了，回去吧。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「嗯——。回去了。」"
+    }
+  ]
+},
+{
+  "id": "evt.toru.after_vocal",
+  "title": "唱完那一句",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "toru"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "歌唱课结束了。她还坐在原位，把刚才那句的结尾又哼了一遍，很轻。",
+  "choices": [
+    {
+      "label": "刚才那句，很好。",
+      "hint": "歌唱 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……嗯。那，再来一次。」"
+    },
+    {
+      "label": "音，再长一点。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「长一点……嗯——，这样？」"
+    },
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「好——。那，回去了。」"
     }
   ]
 },
@@ -28338,6 +28600,2127 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.toru.bus",
+  "idolId": "toru",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "toru",
+      "text": "——糟了。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "toru",
+      "text": "睡着了，抱歉。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "哦，没事，还早着呢吧。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "toru",
+      "text": "……诶，已经到二手店那里了。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "诶？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "toru",
+      "text": "公交的话，很快就到。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "那个……是吗，我记得还有三站左右。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "toru",
+      "text": "——是吗。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "什么叫是吗……哈哈，你不是每天都坐吗。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "toru",
+      "text": "今天是从反方向坐的。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "toru",
+      "text": "……这一带，会搞不清。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "啊，也许吧。这一带景色都差不多。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "toru",
+      "text": "嗯。天黑了更搞不清。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "toru",
+      "text": "只有窗户亮着，一直只有窗户连着。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "toru",
+      "text": "会变成『这里原来是这样的啊』——",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "嗯——",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "我也许现在才发现，窗户居然这样……居然住了这么多人。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "toru",
+      "text": "……？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "这一带，因为你们住着，我才经常经过——",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "之前一直没看见。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "toru",
+      "text": "……啊——",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "toru",
+      "text": "嗯。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "toru",
+      "text": "……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "……下一站要下吧。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "toru",
+      "text": "——诶，你按了？",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "按了啊。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "toru",
+      "text": "诶，我想按的。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "诶诶！……这个，能取消吗——",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "toru",
+      "text": "不行吧。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "toru",
+      "text": "呼，亮得好厉害。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "……对、对不起……",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "toru",
+      "text": "好想按啊——",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "……呜。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "toru",
+      "text": "——这个也是，原来这么亮啊。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "诶？啊……是说停车按钮？",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "——哈哈，好漂亮。像萤火虫。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "toru",
+      "text": "白天亮着的东西看不见呢。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "toru",
+      "text": "明明晚上能看见。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "……白天亮着的东西——？",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "啊……——",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "toru",
+      "text": "以前没在意过，不过这个，亮得好厉害——",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "toru",
+      "text": "这一带，住了好多人。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "producer",
+      "text": "——嗯。",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "producer",
+      "text": "……我啊……",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "toru",
+      "text": "诶？",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "producer",
+      "text": "啊……不。",
+      "nextNodeId": "48"
+    },
+    "48": {
+      "id": "48",
+      "speakerId": "producer",
+      "text": "能好好说出来吗。",
+      "nextNodeId": "49"
+    },
+    "49": {
+      "id": "49",
+      "speakerId": "producer",
+      "text": "那些亮着的东西——白天也一直亮着的东西。",
+      "nextNodeId": "50"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "toru",
+      "text": "下车了哦，制作人。",
+      "nextNodeId": "51"
+    },
+    "51": {
+      "id": "51",
+      "speakerId": "producer",
+      "text": "啊，好！",
+      "nextNodeId": "52"
+    },
+    "52": {
+      "id": "52",
+      "speakerId": "producer",
+      "text": "……那个，就是——",
+      "nextNodeId": "53"
+    },
+    "53": {
+      "id": "53",
+      "speakerId": "producer",
+      "text": "我，看得见。白天也亮着的东西。",
+      "nextNodeId": "54"
+    },
+    "54": {
+      "id": "54",
+      "speakerId": "toru",
+      "text": "……？",
+      "nextNodeId": "55"
+    },
+    "55": {
+      "id": "55",
+      "speakerId": "producer",
+      "text": "……亮着的东西就是亮着的。",
+      "nextNodeId": "56"
+    },
+    "56": {
+      "id": "56",
+      "speakerId": "toru",
+      "text": "——嘿……",
+      "nextNodeId": "57"
+    },
+    "57": {
+      "id": "57",
+      "speakerId": "toru",
+      "text": "这样啊。",
+      "nextNodeId": "58"
+    },
+    "58": {
+      "id": "58",
+      "speakerId": "toru",
+      "text": "挺厉害的嘛。"
+    }
+  }
+},
+{
+  "id": "dialogue.toru.first",
+  "idolId": "toru",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "（……赶不上了。）",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "啊——……走了。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "toru",
+      "text": "……走过去更快哦。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "诶？……啊。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "toru",
+      "text": "车站对吧。公交还要四十分钟左右才来。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "……！",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "（好漂亮的女孩……）",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "谢谢——四十分钟啊……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "toru",
+      "text": "……",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "……那个，你没参加什么社团吗？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "toru",
+      "text": "——……为什么？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "这个……你对偶像，有兴趣吗？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "toru",
+      "text": "……诶？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "不好意思突然说这个。我是做偶像制作的——",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "toru",
+      "text": "不用了……我走了。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "啊，抱歉！抱歉，等一下！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "toru",
+      "text": "……你很烦诶。那种事不用了。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "——不是，那个……我走就是了！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "toru",
+      "text": "……诶？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "突然说这些很失礼，我光顾着看你了……车站是这边吧！我走过去，你等公交就好。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "那——",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "toru",
+      "text": "……——……等一下。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "toru",
+      "text": "等一下。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "……诶……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "toru",
+      "text": "……不是，这个。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "……？——啊，透明胶带。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "toru",
+      "text": "沾在衣服上了。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "诶，哇……！你帮我弄掉了……",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "toru",
+      "text": "……刚才，我也抱歉。名片我收下就好。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "toru",
+      "text": "那我走了。"
+    }
+  }
+},
+{
+  "id": "dialogue.toru.movie",
+  "idolId": "toru",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "toru",
+      "text": "——呼……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "toru",
+      "text": "——",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "咦，透——什么啊，在看视频吗。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "toru",
+      "text": "……啊，嗯。辛苦了。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "辛苦了。别看手机了，接显示器不就好了。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "toru",
+      "text": "啊——……嗯，打发时间而已。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "哈哈，是吗。离上课还有挺久的。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "在看什么——啊，电影啊。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "toru",
+      "text": "嗯。要看吗？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "诶，不是……我以为不是电影，打扰你了。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "toru",
+      "text": "没有，看过好几遍了。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "toru",
+      "text": "——之前日誌里也写过的那部。CG 或者动作戏，很厉害。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……嘿。那我也看一眼吧——",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "toru",
+      "text": "……啊。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "嗯？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "toru",
+      "text": "——没什么。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "toru",
+      "text": "——接下来，有吻戏哦。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "——诶。",
+      "choices": [
+        {
+          "label": "——哈哈。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "——那个，这个……",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "啊，哦……！",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "toru",
+      "text": "……诶。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "不是，怎么说呢……",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "producer",
+      "text": "想起来啊。跟父母一起看电视的时候，就会变成这种感觉。",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "toru",
+      "text": "……这种感觉。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "toru",
+      "text": "……是什么意思？",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "producer",
+      "text": "诶，不……这种……有点难为情。",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "toru",
+      "text": "嗯。",
+      "nextNodeId": "107"
+    },
+    "107": {
+      "id": "107",
+      "speakerId": "producer",
+      "text": "不是，那个……也不用深挖吧——",
+      "nextNodeId": "108"
+    },
+    "108": {
+      "id": "108",
+      "speakerId": "toru",
+      "text": "——呼，父母啊。",
+      "nextNodeId": "109"
+    },
+    "109": {
+      "id": "109",
+      "speakerId": "toru",
+      "text": "父母的话，可能还比较无所谓。",
+      "nextNodeId": "110"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "producer",
+      "text": "……诶？",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "toru",
+      "text": "啊——没什么。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "toru",
+      "text": "……",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "……——嗯。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "toru",
+      "text": "……呼，呼呼……——",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "producer",
+      "text": "诶……",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "toru",
+      "text": "抱歉……有点，糟糕。",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "toru",
+      "text": "有点……怎么说，害羞了。",
+      "nextNodeId": "126"
+    },
+    "126": {
+      "id": "126",
+      "speakerId": "producer",
+      "text": "……嘛，能理解。",
+      "nextNodeId": "127"
+    },
+    "127": {
+      "id": "127",
+      "speakerId": "toru",
+      "text": "——诶，大人也会害羞啊。",
+      "nextNodeId": "128"
+    },
+    "128": {
+      "id": "128",
+      "speakerId": "producer",
+      "text": "嘛……这种事，习惯不了啊。",
+      "nextNodeId": "129"
+    },
+    "129": {
+      "id": "129",
+      "speakerId": "toru",
+      "text": "嘿——",
+      "nextNodeId": "130"
+    },
+    "130": {
+      "id": "130",
+      "speakerId": "producer",
+      "text": "哈哈……",
+      "nextNodeId": "131"
+    },
+    "131": {
+      "id": "131",
+      "speakerId": "toru",
+      "text": "啊——",
+      "nextNodeId": "132"
+    },
+    "132": {
+      "id": "132",
+      "speakerId": "toru",
+      "text": "亲了呢，刚才。"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "toru",
+      "text": "……嗯。",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "toru",
+      "text": "……",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "toru",
+      "text": "——",
+      "nextNodeId": "144"
+    },
+    "144": {
+      "id": "144",
+      "speakerId": "producer",
+      "text": "——",
+      "nextNodeId": "145"
+    },
+    "145": {
+      "id": "145",
+      "speakerId": "producer",
+      "text": "……对不起。我觉得是名场面……失礼，电话。",
+      "nextNodeId": "146"
+    },
+    "146": {
+      "id": "146",
+      "speakerId": "toru",
+      "text": "啊……嗯。",
+      "nextNodeId": "147"
+    },
+    "147": {
+      "id": "147",
+      "speakerId": "toru",
+      "text": "——放映中请将",
+      "nextNodeId": "148"
+    },
+    "148": {
+      "id": "148",
+      "speakerId": "toru",
+      "text": "手机调成静音，或关闭电源——"
+    }
+  }
+},
+{
+  "id": "dialogue.toru.questionnaire",
+  "idolId": "toru",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "toru",
+      "text": "嗯——……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "toru",
+      "text": "睡很多觉……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "——原来如此。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "toru",
+      "text": "看电影……",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "——嗯……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "toru",
+      "text": "……啊，想要衬衫。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "嗯……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "……我问的，是『一生中想做的十件事』哦？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "虽然只是个小问卷——就没有更像样的吗。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "toru",
+      "text": "——诶，不行吗？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "不是说不行，只是……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "toru",
+      "text": "那，制作人呢？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "诶？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "toru",
+      "text": "『一生中想做的十件事』。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "……那个……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "嗯——……不，等一下——",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "toru",
+      "text": "很难吧？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "……嗯。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "被这么一问，确实……平时想着的，也说不出来。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "toru",
+      "text": "——啊，想喝那个。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "嗯？……啊，要喝吗？冰咖啡。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "toru",
+      "text": "嗯。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "toru",
+      "text": "——『想喝冰咖啡』。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "哈哈，所以说透，是『一生中想做的事』啊？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "toru",
+      "text": "——可是，填不满啊。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "那不是现在想做的事吗。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "toru",
+      "text": "现在想做的事，现在就得珍惜。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "toru",
+      "text": "明天说不定就有外星人打过来。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "……哈哈。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "也有道理。那，我——",
+      "choices": [
+        {
+          "label": "想做冰咖啡",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "『睡很多觉』",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "────",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "toru",
+      "text": "……呼。不是已经在做了吗。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "——啊，嗯。这个你喝就好。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "producer",
+      "text": "不只是我的份，我是说也想做透的那份。",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "怎么说呢……想努力成为你的力量，大概就是这种。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "toru",
+      "text": "——这样啊。",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "toru",
+      "text": "呼，那感觉有点像正确答案呢。",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "toru",
+      "text": "像『一生中想做的十件事』。",
+      "nextNodeId": "107"
+    },
+    "107": {
+      "id": "107",
+      "speakerId": "producer",
+      "text": "对吧？情绪上大概是『一辈子想做完的事』那种！",
+      "nextNodeId": "108"
+    },
+    "108": {
+      "id": "108",
+      "speakerId": "toru",
+      "text": "……",
+      "nextNodeId": "109"
+    },
+    "109": {
+      "id": "109",
+      "speakerId": "producer",
+      "text": "哈哈，抱歉。不过……我是抱着那种心情的。",
+      "nextNodeId": "110"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "producer",
+      "text": "——问卷，要好好努力回答哦。",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "toru",
+      "text": "好——……",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "toru",
+      "text": "谢谢，冰咖啡。",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "toru",
+      "text": "我会喝的。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "toru",
+      "text": "……呼，学我。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "『睡很多觉』，还挺好的愿望吧。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "toru",
+      "text": "对吧。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "producer",
+      "text": "嗯。不过要和『努力很多』配套。『努力很多，睡很多』。",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "producer",
+      "text": "——你可以学哦？",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "toru",
+      "text": "呼，诶——……",
+      "nextNodeId": "126"
+    },
+    "126": {
+      "id": "126",
+      "speakerId": "toru",
+      "text": "感觉像是一个顶十个的答案呢。",
+      "nextNodeId": "127"
+    },
+    "127": {
+      "id": "127",
+      "speakerId": "producer",
+      "text": "哈哈，努力很多再睡很多的话，一辈子说不定转眼就过去了。",
+      "nextNodeId": "128"
+    },
+    "128": {
+      "id": "128",
+      "speakerId": "toru",
+      "text": "——那，嗯，我收下了。",
+      "nextNodeId": "129"
+    },
+    "129": {
+      "id": "129",
+      "speakerId": "toru",
+      "text": "那个答案，还有冰咖啡。"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "producer",
+      "text": "……果然临时想不出来啊。",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "toru",
+      "text": "呼，那就当作业。",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "toru",
+      "text": "我也可以当作业吗？",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "producer",
+      "text": "诶？可以是可以——哈哈，一个都没填上吗？",
+      "nextNodeId": "144"
+    },
+    "144": {
+      "id": "144",
+      "speakerId": "toru",
+      "text": "嗯。",
+      "nextNodeId": "145"
+    },
+    "145": {
+      "id": "145",
+      "speakerId": "producer",
+      "text": "那在带回去之前，先填上一两个，起个头吧。",
+      "nextNodeId": "146"
+    },
+    "146": {
+      "id": "146",
+      "speakerId": "toru",
+      "text": "诶——……",
+      "nextNodeId": "147"
+    },
+    "147": {
+      "id": "147",
+      "speakerId": "producer",
+      "text": "来嘛来嘛。想出一个就休息，我去做冰咖啡。",
+      "nextNodeId": "148"
+    },
+    "148": {
+      "id": "148",
+      "speakerId": "toru",
+      "text": "……啊，那我知道了。",
+      "nextNodeId": "149"
+    },
+    "149": {
+      "id": "149",
+      "speakerId": "producer",
+      "text": "哦？",
+      "nextNodeId": "150"
+    },
+    "150": {
+      "id": "150",
+      "speakerId": "toru",
+      "text": "嗯。『找到这个问题的答案』。",
+      "nextNodeId": "151"
+    },
+    "151": {
+      "id": "151",
+      "speakerId": "producer",
+      "text": "——诶。",
+      "nextNodeId": "152"
+    },
+    "152": {
+      "id": "152",
+      "speakerId": "toru",
+      "text": "呼，我去做冰咖啡。"
+    }
+  }
+},
+{
+  "id": "dialogue.toru.second",
+  "idolId": "toru",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "——好，合同书这样就 OK 了。可以吧，透。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "toru",
+      "text": "嗯。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "toru",
+      "text": "制作人你，很烦诶。还有……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "……？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "toru",
+      "text": "嗯——，没什么。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "toru",
+      "text": "——走吧，去上课了，制作人。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "（……她刚才想说什么？）",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "……好，走吧。"
+    }
+  }
+},
+{
+  "id": "dialogue.toru.star",
+  "idolId": "toru",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "toru",
+      "text": "——啊。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "……嗯？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "toru",
+      "text": "有颗星星在亮。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "——啊……真的。是什么星呢。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "啊，透——",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "toru",
+      "text": "走吧。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "toru",
+      "text": "傍晚要结束了。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "诶……——哈哈。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "好……！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "toru",
+      "text": "——",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "呼……好棒的傍晚……！——嗯——……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "toru",
+      "text": "呼，别突然伸懒腰啊。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "不是，可是在这么好的景色前面——嗯——……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "toru",
+      "text": "嗯……——",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "toru",
+      "text": "——……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "toru",
+      "text": "感觉全都看得见。全世界。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "哈哈，嗯，整条街都看得见呢。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "toru",
+      "text": "不是，是全世界。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "——那可厉害了。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "toru",
+      "text": "呼。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "toru",
+      "text": "……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "toru",
+      "text": "这里，是谁的东西吗？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "诶？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "toru",
+      "text": "诶啊……可能说了随便的话。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "这里是……公园吗？",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "toru",
+      "text": "嗯——……不是，是更『这里』的那种。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "……这片土地的话，大概是自治体，或者国家吧。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "toru",
+      "text": "怎么说呢，不是那种……世界？",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "toru",
+      "text": "这里。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "——哈哈，好难啊。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "说是世界的话，也不属于谁吧。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "toru",
+      "text": "……这样啊。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "toru",
+      "text": "谢谢，总觉得说不清楚。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "toru",
+      "text": "只是觉得，如果不是谁的东西就好了。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "toru",
+      "text": "这里。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "……透？",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "toru",
+      "text": "总觉得，现在。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "——",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "toru",
+      "text": "——星星，变多了呢。",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "……啊，真的。刚才那颗是哪个，已经分不清了。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "toru",
+      "text": "诶——你找找看啊。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "producer",
+      "text": "哈哈，已经很难了。",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "toru",
+      "text": "能的能的。",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "producer",
+      "text": "诶——那透你知道？",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "toru",
+      "text": "诶，嗯……",
+      "nextNodeId": "48"
+    },
+    "48": {
+      "id": "48",
+      "speakerId": "toru",
+      "text": "……不知道。",
+      "nextNodeId": "49"
+    },
+    "49": {
+      "id": "49",
+      "speakerId": "toru",
+      "text": "呼。",
+      "nextNodeId": "50"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "toru",
+      "text": "——那，这个也加上。",
+      "nextNodeId": "51"
+    },
+    "51": {
+      "id": "51",
+      "speakerId": "producer",
+      "text": "——诶？",
+      "nextNodeId": "52"
+    },
+    "52": {
+      "id": "52",
+      "speakerId": "toru",
+      "text": "不是有『一生中想做的十件事』吗。",
+      "nextNodeId": "53"
+    },
+    "53": {
+      "id": "53",
+      "speakerId": "toru",
+      "text": "找到刚才那颗星。",
+      "nextNodeId": "54"
+    },
+    "54": {
+      "id": "54",
+      "speakerId": "producer",
+      "text": "——那……哈哈，要到什么时候啊。",
+      "nextNodeId": "55"
+    },
+    "55": {
+      "id": "55",
+      "speakerId": "toru",
+      "text": "总有一天。",
+      "nextNodeId": "56"
+    },
+    "56": {
+      "id": "56",
+      "speakerId": "toru",
+      "text": "但是，能找到的。",
+      "nextNodeId": "57"
+    },
+    "57": {
+      "id": "57",
+      "speakerId": "toru",
+      "text": "如果不是谁的东西的话——"
+    }
+  }
+},
+{
+  "id": "dialogue.toru.wari",
+  "idolId": "toru",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "——所以。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "toru",
+      "text": "……嗯。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "个人课会增加，但也要和学业平衡。觉得辛苦就跟我商量。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "toru",
+      "text": "……嗯。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "——手机可以放下了哦？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "toru",
+      "text": "好——，抱歉——",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "toru",
+      "text": "——樋口发来了消息。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "啊……可能是同一件事。全体课的时间也一起调。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "toru",
+      "text": "这样啊。嗯，我明白了。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "好，那把那个喝完就走吧——我去结账。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "toru",
+      "text": "——诶……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "嗯？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "toru",
+      "text": "啊……今天也这样吗？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "toru",
+      "text": "怎么说呢，是不是一直都让你请客？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "诶，不是……这个算经费。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "toru",
+      "text": "……诶，嗯。算经费也是——",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "toru",
+      "text": "每次都让你请啊。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "……嗯，所以说不是请客……——",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "也不能在路边开会……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "而且正好是吃饭的时间，总不能让我重要的偶像饿着。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "toru",
+      "text": "啊——……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "对吧？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "toru",
+      "text": "偶像啊……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "toru",
+      "text": "——感觉就是被请客了啊，怎么说。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "……？是吗。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "toru",
+      "text": "今天我做的那点事，对不上吧——",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "toru",
+      "text": "对上『清爽萝卜泥汉堡肉和炸牡蛎套餐』的话。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "——不是……",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "toru",
+      "text": "嗯，也是……",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "toru",
+      "text": "这里就 AA 吧。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "……透……！？",
+      "choices": [
+        {
+          "label": "等一下……！",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "不用在意！",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "不、不行……！",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "producer",
+      "text": "不是，那个……透的心情，确实我也觉得有道理。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "但是，AA 就正确吗，我也不觉得。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "toru",
+      "text": "……是吗？",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "嗯。如果透和我只是私人出来玩，那请客也好被请也好、AA 也好，都可以。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "producer",
+      "text": "但现在，是工作的时间。",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "toru",
+      "text": "啊——……嗯。",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "toru",
+      "text": "所以，就是我没做好工作啊。",
+      "nextNodeId": "107"
+    },
+    "107": {
+      "id": "107",
+      "speakerId": "producer",
+      "text": "哈哈，没有那种事。今天听你说话就是工作。",
+      "nextNodeId": "108"
+    },
+    "108": {
+      "id": "108",
+      "speakerId": "producer",
+      "text": "所以，课程的事你明白了的话，就辛苦了！1,373 日元，让我付吧。",
+      "nextNodeId": "109"
+    },
+    "109": {
+      "id": "109",
+      "speakerId": "toru",
+      "text": "这样啊——……嗯。我知道了。",
+      "nextNodeId": "110"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "toru",
+      "text": "那，下次 AA 哦。",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "……嗯？",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "toru",
+      "text": "呼。",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "toru",
+      "text": "呐。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "toru",
+      "text": "……诶，可是，我会在意的。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "啊……该怎么说呢——",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "toru",
+      "text": "或者说，不能请客真是抱歉。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "producer",
+      "text": "……所以说——",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "producer",
+      "text": "——嗯，那你就在意吧。",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "toru",
+      "text": "诶？",
+      "nextNodeId": "126"
+    },
+    "126": {
+      "id": "126",
+      "speakerId": "producer",
+      "text": "……那个，在意钱的事……那就在下次课上，把今天的份还给我。",
+      "nextNodeId": "127"
+    },
+    "127": {
+      "id": "127",
+      "speakerId": "producer",
+      "text": "『清爽萝卜泥汉堡肉和炸牡蛎套餐』的热量，好好消耗掉，加油！",
+      "nextNodeId": "128"
+    },
+    "128": {
+      "id": "128",
+      "speakerId": "toru",
+      "text": "——啊——……",
+      "nextNodeId": "129"
+    },
+    "129": {
+      "id": "129",
+      "speakerId": "toru",
+      "text": "呼，这样啊，嗯。",
+      "nextNodeId": "130"
+    },
+    "130": {
+      "id": "130",
+      "speakerId": "toru",
+      "text": "……899 千卡。",
+      "nextNodeId": "131"
+    },
+    "131": {
+      "id": "131",
+      "speakerId": "toru",
+      "text": "可能，挺辛苦的。"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "toru",
+      "text": "——诶。",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "producer",
+      "text": "啊……抱歉，那个——",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "producer",
+      "text": "透的心情，我很高兴。你有在想，工作要好好拿出成果。",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "toru",
+      "text": "诶，嗯……不太懂。",
+      "nextNodeId": "144"
+    },
+    "144": {
+      "id": "144",
+      "speakerId": "producer",
+      "text": "不是，我很高兴。不过——",
+      "nextNodeId": "145"
+    },
+    "145": {
+      "id": "145",
+      "speakerId": "producer",
+      "text": "我不想变成 AA 了就结束了。",
+      "nextNodeId": "146"
+    },
+    "146": {
+      "id": "146",
+      "speakerId": "toru",
+      "text": "……",
+      "nextNodeId": "147"
+    },
+    "147": {
+      "id": "147",
+      "speakerId": "producer",
+      "text": "嗯。我不觉得我和你是靠钱、靠饭连着的。",
+      "nextNodeId": "148"
+    },
+    "148": {
+      "id": "148",
+      "speakerId": "producer",
+      "text": "所以，可以的。透要是那样想着要努力，那就好。",
+      "nextNodeId": "149"
+    },
+    "149": {
+      "id": "149",
+      "speakerId": "toru",
+      "text": "……这样啊。呼，没关系。",
+      "nextNodeId": "150"
+    },
+    "150": {
+      "id": "150",
+      "speakerId": "toru",
+      "text": "我们，是比炸牡蛎和汉堡肉更深的联系。"
+    }
+  }
+},
+{
   "id": "dialogue.yuika.first",
   "idolId": "yuika",
   "startNodeId": "01",
@@ -31578,6 +33961,118 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "tenka",
   "label": "今天",
   "text": "「今天……也，还不错……」「能这样，说说话……就很好……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "toru.chat.family",
+  "actorId": "toru",
+  "label": "家里",
+  "text": "「我家今天，咖喱和拉西。」「拉西是饮料吧？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "toru.chat.friends",
+  "actorId": "toru",
+  "label": "朋友",
+  "text": "「樋口什么都知道。小糸ちゃん很努力。雛菜很吵。」「很吵是夸她？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "toru.chat.lesson",
+  "actorId": "toru",
+  "label": "上课",
+  "text": "「上课……嗯，会睡着。」「那还上吗？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "toru.chat.movie",
+  "actorId": "toru",
+  "label": "电影",
+  "text": "「那部电影，动作戏很厉害。CG 也是。」「你又看了第几遍？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "toru.chat.school",
+  "actorId": "toru",
+  "label": "学校",
+  "text": "「补课……嗯，有点多。」「上课没睡着吧？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "toru.chat.space",
+  "actorId": "toru",
+  "label": "宇宙人",
+  "text": "「外星人，说不定真的会来哦。」「来了怎么办？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "toru.chat.today",
+  "actorId": "toru",
+  "label": "今天",
+  "text": "「嗯——……今天，还行吧。」「还行，是多少？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "toru.chat.weather",
+  "actorId": "toru",
+  "label": "天空",
+  "text": "「今天的天，颜色不错。」「你还看这个？」",
   "cooldownMinutes": 1440,
   "effects": [
     {

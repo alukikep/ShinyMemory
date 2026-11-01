@@ -1,0 +1,371 @@
+{
+  "id": "draft.dialogue.toru.star",
+  "kind": "dialogue",
+  "title": "傍晚的公园，她仰着头",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.toru.star",
+  "payload": {
+    "id": "dialogue.toru.star",
+    "idolId": "toru",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "toru",
+        "text": "——啊。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "……嗯？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "toru",
+        "text": "有颗星星在亮。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "——啊……真的。是什么星呢。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "啊，透——",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "toru",
+        "text": "走吧。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "toru",
+        "text": "傍晚要结束了。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "诶……——哈哈。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "好……！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "toru",
+        "text": "——",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "呼……好棒的傍晚……！——嗯——……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "toru",
+        "text": "呼，别突然伸懒腰啊。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "不是，可是在这么好的景色前面——嗯——……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "toru",
+        "text": "嗯……——",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "toru",
+        "text": "——……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "toru",
+        "text": "感觉全都看得见。全世界。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "哈哈，嗯，整条街都看得见呢。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "toru",
+        "text": "不是，是全世界。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "——那可厉害了。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "toru",
+        "text": "呼。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "toru",
+        "text": "……",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "toru",
+        "text": "这里，是谁的东西吗？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "诶？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "toru",
+        "text": "诶啊……可能说了随便的话。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "这里是……公园吗？",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "toru",
+        "text": "嗯——……不是，是更『这里』的那种。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "……这片土地的话，大概是自治体，或者国家吧。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "toru",
+        "text": "怎么说呢，不是那种……世界？",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "toru",
+        "text": "这里。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "——哈哈，好难啊。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "说是世界的话，也不属于谁吧。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "toru",
+        "text": "……这样啊。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "toru",
+        "text": "谢谢，总觉得说不清楚。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "toru",
+        "text": "只是觉得，如果不是谁的东西就好了。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "toru",
+        "text": "这里。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "……透？",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "toru",
+        "text": "总觉得，现在。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "——",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "toru",
+        "text": "——星星，变多了呢。",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "producer",
+        "text": "……啊，真的。刚才那颗是哪个，已经分不清了。",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "toru",
+        "text": "诶——你找找看啊。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "哈哈，已经很难了。",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "toru",
+        "text": "能的能的。",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "producer",
+        "text": "诶——那透你知道？",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "toru",
+        "text": "诶，嗯……",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "toru",
+        "text": "……不知道。",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "toru",
+        "text": "呼。",
+        "nextNodeId": "50"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "toru",
+        "text": "——那，这个也加上。",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "producer",
+        "text": "——诶？",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "toru",
+        "text": "不是有『一生中想做的十件事』吗。",
+        "nextNodeId": "53"
+      },
+      "53": {
+        "id": "53",
+        "speakerId": "toru",
+        "text": "找到刚才那颗星。",
+        "nextNodeId": "54"
+      },
+      "54": {
+        "id": "54",
+        "speakerId": "producer",
+        "text": "——那……哈哈，要到什么时候啊。",
+        "nextNodeId": "55"
+      },
+      "55": {
+        "id": "55",
+        "speakerId": "toru",
+        "text": "总有一天。",
+        "nextNodeId": "56"
+      },
+      "56": {
+        "id": "56",
+        "speakerId": "toru",
+        "text": "但是，能找到的。",
+        "nextNodeId": "57"
+      },
+      "57": {
+        "id": "57",
+        "speakerId": "toru",
+        "text": "如果不是谁的东西的话——"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:00:00.000Z",
+  "updatedAt": "2026-11-01T05:41:10.351Z",
+  "reviewedAt": "2026-11-01T05:41:10.351Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:00:00.000Z",
+      "note": "对照 202000411（公园黄昏、星星、谁的东西、把星星写进问卷）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:10.351Z"
+    }
+  ]
+}

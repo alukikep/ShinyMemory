@@ -1,0 +1,37 @@
+{
+  "id": "draft.toru.chat.school",
+  "kind": "topic",
+  "title": "聊天 · 学校",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.toru.chat.school",
+  "payload": {
+    "id": "toru.chat.school",
+    "actorId": "toru",
+    "label": "学校",
+    "text": "「补课……嗯，有点多。」「上课没睡着吧？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:23:00.000Z",
+  "updatedAt": "2026-11-01T05:41:25.114Z",
+  "reviewedAt": "2026-11-01T05:41:25.114Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:23:00.000Z",
+      "note": "透日常话题（高二、补课、上课睡着 [toru facts 学校]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:25.114Z"
+    }
+  ]
+}

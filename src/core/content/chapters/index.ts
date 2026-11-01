@@ -33,6 +33,8 @@ import manoSmile from './manoSmile';
 import meguruPicarte from './meguruPicarte';
 import sakuyaCard from './sakuyaCard';
 import sakuyaEncounter from './sakuyaEncounter';
+import toruCard from './toruCard';
+import toruEncounter from './toruEncounter';
 import yuikaCard from './yuikaCard';
 import yuikaEncounter from './yuikaEncounter';
 
@@ -85,6 +87,8 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   sakuyaCard,
   yuikaEncounter,
   yuikaCard,
+  toruEncounter,
+  toruCard,
   manoSlump,
   hioriGap,
   meguruBurden,

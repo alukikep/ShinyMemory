@@ -1,0 +1,37 @@
+{
+  "id": "draft.toru.chat.friends",
+  "kind": "topic",
+  "title": "聊天 · 朋友",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.toru.chat.friends",
+  "payload": {
+    "id": "toru.chat.friends",
+    "actorId": "toru",
+    "label": "朋友",
+    "text": "「樋口什么都知道。小糸ちゃん很努力。雛菜很吵。」「很吵是夸她？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:24:00.000Z",
+  "updatedAt": "2026-11-01T05:41:24.049Z",
+  "reviewedAt": "2026-11-01T05:41:24.049Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:24:00.000Z",
+      "note": "透日常话题（三人称呼 [toru facts 关系]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:24.049Z"
+    }
+  ]
+}

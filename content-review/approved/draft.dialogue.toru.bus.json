@@ -1,0 +1,377 @@
+{
+  "id": "draft.dialogue.toru.bus",
+  "kind": "dialogue",
+  "title": "回程的公交上，她睡着了",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.toru.bus",
+  "payload": {
+    "id": "dialogue.toru.bus",
+    "idolId": "toru",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "toru",
+        "text": "——糟了。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "toru",
+        "text": "睡着了，抱歉。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "哦，没事，还早着呢吧。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "toru",
+        "text": "……诶，已经到二手店那里了。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "诶？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "toru",
+        "text": "公交的话，很快就到。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "那个……是吗，我记得还有三站左右。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "toru",
+        "text": "——是吗。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "什么叫是吗……哈哈，你不是每天都坐吗。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "toru",
+        "text": "今天是从反方向坐的。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "toru",
+        "text": "……这一带，会搞不清。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "啊，也许吧。这一带景色都差不多。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "toru",
+        "text": "嗯。天黑了更搞不清。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "toru",
+        "text": "只有窗户亮着，一直只有窗户连着。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "toru",
+        "text": "会变成『这里原来是这样的啊』——",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "嗯——",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "我也许现在才发现，窗户居然这样……居然住了这么多人。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "toru",
+        "text": "……？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "这一带，因为你们住着，我才经常经过——",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "之前一直没看见。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "toru",
+        "text": "……啊——",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "toru",
+        "text": "嗯。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "toru",
+        "text": "……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "……下一站要下吧。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "toru",
+        "text": "——诶，你按了？",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "按了啊。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "toru",
+        "text": "诶，我想按的。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "诶诶！……这个，能取消吗——",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "toru",
+        "text": "不行吧。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "toru",
+        "text": "呼，亮得好厉害。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "……对、对不起……",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "toru",
+        "text": "好想按啊——",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "……呜。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "toru",
+        "text": "——这个也是，原来这么亮啊。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "诶？啊……是说停车按钮？",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "——哈哈，好漂亮。像萤火虫。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "toru",
+        "text": "白天亮着的东西看不见呢。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "toru",
+        "text": "明明晚上能看见。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "……白天亮着的东西——？",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "啊……——",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "toru",
+        "text": "以前没在意过，不过这个，亮得好厉害——",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "toru",
+        "text": "这一带，住了好多人。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "——嗯。",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "producer",
+        "text": "……我啊……",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "toru",
+        "text": "诶？",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "producer",
+        "text": "啊……不。",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "producer",
+        "text": "能好好说出来吗。",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "producer",
+        "text": "那些亮着的东西——白天也一直亮着的东西。",
+        "nextNodeId": "50"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "toru",
+        "text": "下车了哦，制作人。",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "producer",
+        "text": "啊，好！",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "producer",
+        "text": "……那个，就是——",
+        "nextNodeId": "53"
+      },
+      "53": {
+        "id": "53",
+        "speakerId": "producer",
+        "text": "我，看得见。白天也亮着的东西。",
+        "nextNodeId": "54"
+      },
+      "54": {
+        "id": "54",
+        "speakerId": "toru",
+        "text": "……？",
+        "nextNodeId": "55"
+      },
+      "55": {
+        "id": "55",
+        "speakerId": "producer",
+        "text": "……亮着的东西就是亮着的。",
+        "nextNodeId": "56"
+      },
+      "56": {
+        "id": "56",
+        "speakerId": "toru",
+        "text": "——嘿……",
+        "nextNodeId": "57"
+      },
+      "57": {
+        "id": "57",
+        "speakerId": "toru",
+        "text": "这样啊。",
+        "nextNodeId": "58"
+      },
+      "58": {
+        "id": "58",
+        "speakerId": "toru",
+        "text": "挺厉害的嘛。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T14:30:00.000Z",
+  "updatedAt": "2026-11-01T05:41:09.982Z",
+  "reviewedAt": "2026-11-01T05:41:09.982Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T14:30:00.000Z",
+      "note": "对照 202000402（夜里的公交、窗户、降车按钮、白天亮着的东西）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:09.982Z"
+    }
+  ]
+}

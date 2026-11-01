@@ -1,0 +1,37 @@
+{
+  "id": "draft.toru.chat.lesson",
+  "kind": "topic",
+  "title": "聊天 · 上课",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.toru.chat.lesson",
+  "payload": {
+    "id": "toru.chat.lesson",
+    "actorId": "toru",
+    "label": "上课",
+    "text": "「上课……嗯，会睡着。」「那还上吗？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:26:00.000Z",
+  "updatedAt": "2026-11-01T05:41:21.325Z",
+  "reviewedAt": "2026-11-01T05:41:21.325Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:26:00.000Z",
+      "note": "透日常话题（上课会睡着、仍照常去 [102000102]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:21.325Z"
+    }
+  ]
+}

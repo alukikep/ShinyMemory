@@ -67,3 +67,4 @@ L'Antica 四人的具体方案（招募地点、日程、首卡、内容草案�
 放課後クライマックスガールズ五人的方案见 [climax-plan.md](climax-plan.md)。
 ALSTROEMERIA 三人（甘奈 ✅ / 甜花 ✅ / 千雪）的方案见 [alstroemeria-plan.md](alstroemeria-plan.md)。
 STRAYLIGHT 三人的方案（含「不需要新地点」的逐场核对）见 [straylight-plan.md](straylight-plan.md)。
+noctchill 四人的方案（透已送审 / 円香・小糸・雛菜待开轮）见 [noctchill-plan.md](noctchill-plan.md)。

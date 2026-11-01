@@ -1,0 +1,37 @@
+{
+  "id": "draft.toru.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.toru.chat.today",
+  "payload": {
+    "id": "toru.chat.today",
+    "actorId": "toru",
+    "label": "今天",
+    "text": "「嗯——……今天，还行吧。」「还行，是多少？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:20:00.000Z",
+  "updatedAt": "2026-11-01T05:41:27.660Z",
+  "reviewedAt": "2026-11-01T05:41:27.660Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:20:00.000Z",
+      "note": "透日常话题（短句、答得很淡 [202000401]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:27.660Z"
+    }
+  ]
+}

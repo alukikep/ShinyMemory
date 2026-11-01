@@ -1,0 +1,77 @@
+{
+  "id": "draft.dialogue.toru.second",
+  "kind": "dialogue",
+  "title": "契约书摊在事务所的桌上",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.toru.second",
+  "payload": {
+    "id": "dialogue.toru.second",
+    "idolId": "toru",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "——好，合同书这样就 OK 了。可以吧，透。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "toru",
+        "text": "嗯。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "toru",
+        "text": "制作人你，很烦诶。还有……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "……？",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "toru",
+        "text": "嗯——，没什么。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "toru",
+        "text": "——走吧，去上课了，制作人。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "（……她刚才想说什么？）",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "……好，走吧。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T14:10:00.000Z",
+  "updatedAt": "2026-11-01T05:41:07.363Z",
+  "reviewedAt": "2026-11-01T05:41:07.363Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T14:10:00.000Z",
+      "note": "对照 102000101 尾段（签完约、半句话收回去、立刻要去上课）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:07.363Z"
+    }
+  ]
+}

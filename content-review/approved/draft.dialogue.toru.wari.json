@@ -1,0 +1,448 @@
+{
+  "id": "draft.dialogue.toru.wari",
+  "kind": "dialogue",
+  "title": "她盯着账单不动",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.toru.wari",
+  "payload": {
+    "id": "dialogue.toru.wari",
+    "idolId": "toru",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "——所以。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "toru",
+        "text": "……嗯。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "个人课会增加，但也要和学业平衡。觉得辛苦就跟我商量。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "toru",
+        "text": "……嗯。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "——手机可以放下了哦？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "toru",
+        "text": "好——，抱歉——",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "toru",
+        "text": "——樋口发来了消息。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "啊……可能是同一件事。全体课的时间也一起调。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "toru",
+        "text": "这样啊。嗯，我明白了。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "好，那把那个喝完就走吧——我去结账。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "toru",
+        "text": "——诶……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "嗯？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "toru",
+        "text": "啊……今天也这样吗？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "toru",
+        "text": "怎么说呢，是不是一直都让你请客？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "诶，不是……这个算经费。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "toru",
+        "text": "……诶，嗯。算经费也是——",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "toru",
+        "text": "每次都让你请啊。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "……嗯，所以说不是请客……——",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "也不能在路边开会……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "而且正好是吃饭的时间，总不能让我重要的偶像饿着。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "toru",
+        "text": "啊——……",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "对吧？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "toru",
+        "text": "偶像啊……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "toru",
+        "text": "——感觉就是被请客了啊，怎么说。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "……？是吗。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "toru",
+        "text": "今天我做的那点事，对不上吧——",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "toru",
+        "text": "对上『清爽萝卜泥汉堡肉和炸牡蛎套餐』的话。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "——不是……",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "toru",
+        "text": "嗯，也是……",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "toru",
+        "text": "这里就 AA 吧。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "……透……！？",
+        "choices": [
+          {
+            "label": "等一下……！",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "不用在意！",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "不、不行……！",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "producer",
+        "text": "不是，那个……透的心情，确实我也觉得有道理。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "但是，AA 就正确吗，我也不觉得。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "toru",
+        "text": "……是吗？",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "嗯。如果透和我只是私人出来玩，那请客也好被请也好、AA 也好，都可以。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "但现在，是工作的时间。",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "toru",
+        "text": "啊——……嗯。",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "toru",
+        "text": "所以，就是我没做好工作啊。",
+        "nextNodeId": "107"
+      },
+      "107": {
+        "id": "107",
+        "speakerId": "producer",
+        "text": "哈哈，没有那种事。今天听你说话就是工作。",
+        "nextNodeId": "108"
+      },
+      "108": {
+        "id": "108",
+        "speakerId": "producer",
+        "text": "所以，课程的事你明白了的话，就辛苦了！1,373 日元，让我付吧。",
+        "nextNodeId": "109"
+      },
+      "109": {
+        "id": "109",
+        "speakerId": "toru",
+        "text": "这样啊——……嗯。我知道了。",
+        "nextNodeId": "110"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "toru",
+        "text": "那，下次 AA 哦。",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "producer",
+        "text": "……嗯？",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "toru",
+        "text": "呼。",
+        "nextNodeId": "113"
+      },
+      "113": {
+        "id": "113",
+        "speakerId": "toru",
+        "text": "呐。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "toru",
+        "text": "……诶，可是，我会在意的。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "啊……该怎么说呢——",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "toru",
+        "text": "或者说，不能请客真是抱歉。",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "producer",
+        "text": "……所以说——",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "producer",
+        "text": "——嗯，那你就在意吧。",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "toru",
+        "text": "诶？",
+        "nextNodeId": "126"
+      },
+      "126": {
+        "id": "126",
+        "speakerId": "producer",
+        "text": "……那个，在意钱的事……那就在下次课上，把今天的份还给我。",
+        "nextNodeId": "127"
+      },
+      "127": {
+        "id": "127",
+        "speakerId": "producer",
+        "text": "『清爽萝卜泥汉堡肉和炸牡蛎套餐』的热量，好好消耗掉，加油！",
+        "nextNodeId": "128"
+      },
+      "128": {
+        "id": "128",
+        "speakerId": "toru",
+        "text": "——啊——……",
+        "nextNodeId": "129"
+      },
+      "129": {
+        "id": "129",
+        "speakerId": "toru",
+        "text": "呼，这样啊，嗯。",
+        "nextNodeId": "130"
+      },
+      "130": {
+        "id": "130",
+        "speakerId": "toru",
+        "text": "……899 千卡。",
+        "nextNodeId": "131"
+      },
+      "131": {
+        "id": "131",
+        "speakerId": "toru",
+        "text": "可能，挺辛苦的。"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "toru",
+        "text": "——诶。",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "producer",
+        "text": "啊……抱歉，那个——",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "透的心情，我很高兴。你有在想，工作要好好拿出成果。",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "toru",
+        "text": "诶，嗯……不太懂。",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "producer",
+        "text": "不是，我很高兴。不过——",
+        "nextNodeId": "145"
+      },
+      "145": {
+        "id": "145",
+        "speakerId": "producer",
+        "text": "我不想变成 AA 了就结束了。",
+        "nextNodeId": "146"
+      },
+      "146": {
+        "id": "146",
+        "speakerId": "toru",
+        "text": "……",
+        "nextNodeId": "147"
+      },
+      "147": {
+        "id": "147",
+        "speakerId": "producer",
+        "text": "嗯。我不觉得我和你是靠钱、靠饭连着的。",
+        "nextNodeId": "148"
+      },
+      "148": {
+        "id": "148",
+        "speakerId": "producer",
+        "text": "所以，可以的。透要是那样想着要努力，那就好。",
+        "nextNodeId": "149"
+      },
+      "149": {
+        "id": "149",
+        "speakerId": "toru",
+        "text": "……这样啊。呼，没关系。",
+        "nextNodeId": "150"
+      },
+      "150": {
+        "id": "150",
+        "speakerId": "toru",
+        "text": "我们，是比炸牡蛎和汉堡肉更深的联系。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T14:50:00.000Z",
+  "updatedAt": "2026-11-01T05:41:10.218Z",
+  "reviewedAt": "2026-11-01T05:41:10.218Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T14:50:00.000Z",
+      "note": "对照 202000404（食堂、AA、1,373 日元、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:10.218Z"
+    }
+  ]
+}

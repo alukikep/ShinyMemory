@@ -1,0 +1,37 @@
+{
+  "id": "draft.toru.chat.weather",
+  "kind": "topic",
+  "title": "聊天 · 天空",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.toru.chat.weather",
+  "payload": {
+    "id": "toru.chat.weather",
+    "actorId": "toru",
+    "label": "天空",
+    "text": "「今天的天，颜色不错。」「你还看这个？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:27:00.000Z",
+  "updatedAt": "2026-11-01T05:41:20.470Z",
+  "reviewedAt": "2026-11-01T05:41:20.470Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:27:00.000Z",
+      "note": "透日常话题（她看的是光和天空 [202000411]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:41:20.470Z"
+    }
+  ]
+}

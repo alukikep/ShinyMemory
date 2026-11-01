@@ -17,6 +17,7 @@ import natsuha from './natsuha';
 import rinze from './rinze';
 import sakuya from './sakuya';
 import tenka from './tenka';
+import toru from './toru';
 import yuika from './yuika';
 
-export const IDOLS: IdolDef[] = [mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze, natsuha, amana, tenka, chiyuki, asahi, fuyuko, mei];
+export const IDOLS: IdolDef[] = [mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze, natsuha, amana, tenka, chiyuki, asahi, fuyuko, mei, toru];

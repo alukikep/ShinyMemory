@@ -24975,6 +24975,649 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.luca.first",
+  "idolId": "luca",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "公寓三楼。走廊尽头，一个拖着行李箱的女人站在门前。门牌擦得很干净，底下的信箱塞满了广告纸。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "luca_manager",
+      "text": "……ルカ。开一下门。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "text": "没有回应。她又敲了两下，转过身来，朝你低下头。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "luca_manager",
+      "text": "不好意思，突然把您叫到这种地方来。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "luca_manager",
+      "text": "我今天晚上的飞机。……以后就没有人给她送饭了。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "……交给我吧。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "不过，移籍那件事，还是得她自己点头才算。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "luca_manager",
+      "text": "……嗯。那是当然的。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "luca_manager",
+      "text": "饭放在门口就好。她不会当着人的面开门，只会在没人的时候收进去。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "luca_manager",
+      "text": "这个孩子……从来不会自己喊救命。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "……我知道。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "text": "行李箱的轮子在走廊上响起来。电梯门关上的时候，她没有再回头。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……饭，放在这里了。今天的是加热就能吃的。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "text": "过了很久，门把轻轻动了一下。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "luca",
+      "text": "……吃的…………？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "text": "门开了一条缝。她站在里面，头发乱着，眼睛下面一圈青。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "luca",
+      "text": "什…………",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "luca",
+      "text": "…………什么啊…………你这家伙……………………",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "……约好了要给你送饭。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "luca",
+      "text": "………………约好────────？",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "嗯。你以前的经纪人，临走前拜托我的。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "luca",
+      "text": "……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "luca",
+      "text": "……是她说的？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "她说，一直到出发前都在担心你。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "还说……对不起你。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "luca",
+      "text": "………………",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "luca",
+      "text": "哈────！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "luca",
+      "text": "关你什么事啊，你这家伙……！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "……是有关系。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "希望你能再站上舞台的人，不止她一个。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "luca",
+      "text": "……",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "luca",
+      "text": "滚………………！",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "luca",
+      "text": "滚，滚，滚，滚，滚──────────",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "text": "门关上了。便当在门把上晃了两下，停住。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "……我还会来的。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "text": "没有回答。但门后面，有很轻的、像喘气一样的声音。"
+    }
+  }
+},
+{
+  "id": "dialogue.luca.second",
+  "idolId": "luca",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "luca",
+      "text": "又",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "luca",
+      "text": "吵起来了。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "……今天带了热的。还有甜的东西。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "luca",
+      "text": "────知道了就滚啊……那些东西我不要。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "luca",
+      "text": "滚…………滚啊……………………！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "……你那边的经纪人已经飞走了。公司也把辞呈收下了。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "……可是你还在这个房间里。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "luca",
+      "text": "……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "……想吃点什么？能弄到的我都去弄。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "luca",
+      "text": "……",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "luca",
+      "text": "ナポリタン",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "……拿坡里意面？那个能弄到。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "luca",
+      "text": "不是那个。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "luca",
+      "text": "────一样你这辈子都弄不到的东西。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "luca",
+      "text": "『妈妈做的拿坡里意面』",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "────",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "luca",
+      "text": "滚吧……………………",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "luca",
+      "text": "你每来一次……东西就少一点。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "luca",
+      "text": "一点一点地被夺走……然后就没有了──────────",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "luca",
+      "text": "『谁都不在』",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "luca",
+      "text": "『安静的时间』",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "luca",
+      "text": "『我，还剩下的那部分』",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "luca",
+      "text": "────────滚啊………………！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "text": "门没有开。走廊里只剩下加热过的便当慢慢变凉的味道。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "……那我下次再来。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "luca",
+      "text": "啊",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "luca",
+      "text": "好寂寞啊",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "────"
+    }
+  }
+},
+{
+  "id": "dialogue.luca.third",
+  "idolId": "luca",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "走廊里有声音。屋里有人在走来走去，脚步很乱。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "……ルカ？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "luca",
+      "text": "……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "luca",
+      "text": "别来了……",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "luca",
+      "text": "来多少次都没用的────────",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "luca",
+      "text": "……头……好重",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "……你发烧了？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "luca",
+      "text": "滚……！",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "luca",
+      "text": "吵……重────────",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "luca",
+      "text": "────────烫……。吵死了",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "luca",
+      "text": "────────消失吧",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "ルカ……？　────啊……！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "hazuki",
+      "text": "────────！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "hazuki",
+      "text": "制、制作人先生……这孩子，头发────────！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "text": "门开了。她抓着门框，另一只手里是剪刀，脚边的地板上落着一小堆头发。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "luca",
+      "text": "要说多少遍才懂啊…………别来了……！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "luca",
+      "text": "再来，我就剪………………",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "luca",
+      "text": "要怎样才肯放过我啊…………！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "luca",
+      "text": "你来一次………………就会少一点啊………………",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "luca",
+      "text": "好痛",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "luca",
+      "text": "重要的东西…………一点一点…………！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "……！别动那个────！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "hazuki",
+      "text": "────嗯，好像还有点烧……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "hazuki",
+      "text": "让她到里面躺下来。保险起见，还是去医院。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "……好！",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "luca",
+      "text": "要怎样",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "luca",
+      "text": "才不会管我啊",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "luca",
+      "text": "────────别放着不管啊",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "luca",
+      "text": "…………已经…………别再夺走了………………",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "luca",
+      "text": "你如果要连我一起夺走的话…………",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "luca",
+      "text": "只要攥紧，我就不再是我了啊────────！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "────────",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "不是什么夺走、被夺走的问题────",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "……不是那样。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "是想让你抓住────",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "想让你抓住别的什么……能让你幸福起来的东西。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "我想帮上你的忙────我是这么想的────────！",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "luca",
+      "text": "────────────",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "hazuki",
+      "text": "来，擦擦汗吧……？",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "hazuki",
+      "text": "放心吧……慢慢呼吸，躺下来────",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "text": "她的手一直攥着那截剪刀，很久以后才松开。"
+    }
+  }
+},
+{
   "id": "dialogue.madoka.blanket",
   "idolId": "madoka",
   "startNodeId": "1",

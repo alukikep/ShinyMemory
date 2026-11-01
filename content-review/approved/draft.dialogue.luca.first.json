@@ -1,0 +1,244 @@
+{
+  "id": "draft.dialogue.luca.first",
+  "kind": "dialogue",
+  "title": "把便当挂在她家门把上",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.luca.first",
+  "payload": {
+    "id": "dialogue.luca.first",
+    "idolId": "luca",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "公寓三楼。走廊尽头，一个拖着行李箱的女人站在门前。门牌擦得很干净，底下的信箱塞满了广告纸。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "luca_manager",
+        "text": "……ルカ。开一下门。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "text": "没有回应。她又敲了两下，转过身来，朝你低下头。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "luca_manager",
+        "text": "不好意思，突然把您叫到这种地方来。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "luca_manager",
+        "text": "我今天晚上的飞机。……以后就没有人给她送饭了。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "……交给我吧。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "不过，移籍那件事，还是得她自己点头才算。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "luca_manager",
+        "text": "……嗯。那是当然的。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "luca_manager",
+        "text": "饭放在门口就好。她不会当着人的面开门，只会在没人的时候收进去。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "luca_manager",
+        "text": "这个孩子……从来不会自己喊救命。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "……我知道。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "text": "行李箱的轮子在走廊上响起来。电梯门关上的时候，她没有再回头。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "……饭，放在这里了。今天的是加热就能吃的。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "text": "过了很久，门把轻轻动了一下。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "luca",
+        "text": "……吃的…………？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "text": "门开了一条缝。她站在里面，头发乱着，眼睛下面一圈青。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "luca",
+        "text": "什…………",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "luca",
+        "text": "…………什么啊…………你这家伙……………………",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "……约好了要给你送饭。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "luca",
+        "text": "………………约好────────？",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "嗯。你以前的经纪人，临走前拜托我的。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "luca",
+        "text": "……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "luca",
+        "text": "……是她说的？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "她说，一直到出发前都在担心你。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "还说……对不起你。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "luca",
+        "text": "………………",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "luca",
+        "text": "哈────！",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "luca",
+        "text": "关你什么事啊，你这家伙……！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "……是有关系。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "希望你能再站上舞台的人，不止她一个。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "luca",
+        "text": "……",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "luca",
+        "text": "滚………………！",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "luca",
+        "text": "滚，滚，滚，滚，滚──────────",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "text": "门关上了。便当在门把上晃了两下，停住。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "……我还会来的。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "text": "没有回答。但门后面，有很轻的、像喘气一样的声音。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T09:00:00.000Z",
+  "updatedAt": "2026-11-01T08:12:00.684Z",
+  "reviewedAt": "2026-11-01T08:12:00.684Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T09:00:00.000Z",
+      "note": "对照 490103908（便当挂门把、「食べ物…………？」「オマエに……約束？」「帰れ」×5）"
+    },
+    {
+      "status": "review",
+      "at": "2026-11-01T09:40:00.000Z",
+      "note": "按方案A重写：经纪人当场在门口交接。补上原作里被删掉的三句——「移籍は、あくまで彼女がうんと言ってくれればの話で」「食事を届けるように、約束していたので」「あなたのことを、とても大事に思っている方から」。关系来源从旁白变成可见场面。"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T08:12:00.684Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示；第 1 步按方案A补上经纪人交接）"
+    }
+  ]
+}

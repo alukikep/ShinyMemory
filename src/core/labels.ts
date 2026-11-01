@@ -84,4 +84,7 @@ export function formatFans(value: number): string {
  */
 export const SPEAKER_NAMES: Record<string, string> = {
   producer: '制作人',
+  // ルカ 前事务所的经纪人：只在一场戏里出现（门口交接），不排班。
+  // 出处 490103908 —— 她在门口，制作人和 ルカ 的对话都当着她的面。
+  luca_manager: '前事务所的经纪人',
 };

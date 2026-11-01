@@ -2,7 +2,7 @@
   "id": "draft.dialogue.luca.second",
   "kind": "dialogue",
   "title": "她说了一样你弄不到的东西",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.luca.second",
   "payload": {
@@ -186,12 +186,18 @@
   },
   "annotations": [],
   "createdAt": "2026-11-01T09:10:00.000Z",
-  "updatedAt": "2026-11-01T09:10:00.000Z",
+  "updatedAt": "2026-11-01T08:12:00.702Z",
+  "reviewedAt": "2026-11-01T08:12:00.702Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-01T09:10:00.000Z",
       "note": "对照 490103909（「わかったら帰れよ」「帰れ」、制作人问想吃什么、「ナポリタン」「オメェに……絶対用意できねェもの…………『ママのナポリタン』」「どんどんいろんなもんが奪われて……なくなってく」「『静かな時間』」「さびしい」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T08:12:00.702Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示；第 1 步按方案A补上经纪人交接）"
     }
   ]
 }

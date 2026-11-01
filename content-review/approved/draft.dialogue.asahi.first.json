@@ -2,7 +2,7 @@
   "id": "draft.dialogue.asahi.first",
   "kind": "dialogue",
   "title": "大屏下面有人在跳",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.asahi.first",
   "payload": {
@@ -157,12 +157,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T12:00:00.000Z",
-  "updatedAt": "2026-11-02T12:00:00.000Z",
+  "updatedAt": "2026-11-01T04:10:28.552Z",
+  "reviewedAt": "2026-11-01T04:10:28.552Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T12:00:00.000Z",
       "note": "对照 101700101（大屏、看一遍就跳、只问\"偶像做什么\"）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:10:28.552Z"
     }
   ]
 }

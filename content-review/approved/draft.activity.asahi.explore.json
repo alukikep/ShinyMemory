@@ -2,7 +2,7 @@
   "id": "draft.activity.asahi.explore",
   "kind": "activity",
   "title": "陪她找有趣的事",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.asahi.explore",
   "payload": {
@@ -53,12 +53,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T12:00:00.000Z",
-  "updatedAt": "2026-11-02T12:00:00.000Z",
+  "updatedAt": "2026-11-01T04:10:41.309Z",
+  "reviewedAt": "2026-11-01T04:10:41.309Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T12:00:00.000Z",
       "note": "あさひ专属行动（找有趣的事，剧本主线动机）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:10:41.309Z"
     }
   ]
 }

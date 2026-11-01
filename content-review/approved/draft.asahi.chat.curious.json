@@ -2,7 +2,7 @@
   "id": "draft.asahi.chat.curious",
   "kind": "topic",
   "title": "聊天 · 有趣的事",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.asahi.chat.curious",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T12:11:00.000Z",
-  "updatedAt": "2026-11-02T12:11:00.000Z",
+  "updatedAt": "2026-11-01T04:10:39.336Z",
+  "reviewedAt": "2026-11-01T04:10:39.336Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T12:11:00.000Z",
       "note": "あさひ日常话题（主线动机）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:10:39.336Z"
     }
   ]
 }

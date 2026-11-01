@@ -1,156 +1,156 @@
 {
-  "id": "draft.dialogue.asahi.second",
+  "id": "draft.dialogue.asahi.magician",
   "kind": "dialogue",
-  "title": "她比上课时间早到了一个多小时",
-  "status": "review",
+  "title": "她拦住路人问魔术师在哪",
+  "status": "approved",
   "version": 1,
-  "rootId": "draft.dialogue.asahi.second",
+  "rootId": "draft.dialogue.asahi.magician",
   "payload": {
-    "id": "dialogue.asahi.second",
+    "id": "dialogue.asahi.magician",
     "idolId": "asahi",
     "startNodeId": "1",
     "nodes": {
       "1": {
         "id": "1",
-        "speakerId": "asahi",
-        "text": "这里……这样。",
+        "speakerId": "producer",
+        "text": "『是，明天也请多指教。那么，失礼了。』",
         "nextNodeId": "2"
       },
       "2": {
         "id": "2",
-        "speakerId": "asahi",
-        "text": "然后……嘿！",
+        "speakerId": "producer",
+        "text": "好，今天的预定到此结束。肚子也饿了，去哪儿吃点……",
         "nextNodeId": "3"
       },
       "3": {
         "id": "3",
         "speakerId": "producer",
-        "text": "あさひ，早上好。来得真早啊。",
+        "text": "……嗯？",
         "nextNodeId": "4"
       },
       "4": {
         "id": "4",
-        "speakerId": "asahi",
-        "text": "嗯……有点不对……这里这样……",
+        "speakerId": "producer",
+        "text": "（あさひ……？在做什么呢……？）",
         "nextNodeId": "5"
       },
       "5": {
         "id": "5",
         "speakerId": "producer",
-        "text": "（好厉害的集中力……好，等她跳完吧。）",
+        "text": "（去看看吧。）",
         "nextNodeId": "6"
       },
       "6": {
         "id": "6",
         "speakerId": "asahi",
-        "text": "好……！",
+        "text": "那边吗～？",
         "nextNodeId": "7"
       },
       "7": {
         "id": "7",
-        "speakerId": "producer",
-        "text": "あさひ，早上好。",
+        "speakerId": "asahi",
+        "text": "还是这边呢？",
         "nextNodeId": "8"
       },
       "8": {
         "id": "8",
-        "speakerId": "asahi",
-        "text": "啊，制作人先生，早上好！",
+        "speakerId": "producer",
+        "text": "あさひ！",
         "nextNodeId": "9"
       },
       "9": {
         "id": "9",
-        "speakerId": "producer",
-        "text": "嗯，第一天就这么有干劲，佩服。",
+        "speakerId": "asahi",
+        "text": "？",
         "nextNodeId": "10"
       },
       "10": {
         "id": "10",
         "speakerId": "asahi",
-        "text": "我想早点做！上次你给我看的那个影像太厉害了。",
+        "text": "诶，不是制作人先生吗！在这种地方做什么呢？",
         "nextNodeId": "11"
       },
       "11": {
         "id": "11",
         "speakerId": "producer",
-        "text": "这样啊。不过话说回来，你集中力真厉害。",
+        "text": "我下班回来啊。",
         "nextNodeId": "12"
       },
       "12": {
         "id": "12",
         "speakerId": "asahi",
-        "text": "？　什么意思？",
+        "text": "什么嘛，原来是这样！",
         "nextNodeId": "13"
       },
       "13": {
         "id": "13",
         "speakerId": "producer",
-        "text": "我喊你好像完全没听见，所以在佩服。",
+        "text": "比起那个，我更好奇あさひ在做什么……",
         "nextNodeId": "14"
       },
       "14": {
         "id": "14",
         "speakerId": "asahi",
-        "text": "原来是那样……我都没注意到。",
+        "text": "我吗？我在找有没有什么有趣的事！",
         "nextNodeId": "15"
       },
       "15": {
         "id": "15",
-        "speakerId": "producer",
-        "text": "（一集中就看不见周围了啊……得帮她注意着点。）",
+        "speakerId": "asahi",
+        "text": "然后听说公园里有魔术师，正打算去！",
         "nextNodeId": "16"
       },
       "16": {
         "id": "16",
-        "speakerId": "asahi",
-        "text": "话说，制作人先生是来做什么的？",
+        "speakerId": "producer",
+        "text": "所以你到处问人，就是这个啊。",
         "nextNodeId": "17"
       },
       "17": {
         "id": "17",
-        "speakerId": "producer",
-        "text": "今天是第一次上课，我想在旁边看着。",
+        "speakerId": "asahi",
+        "text": "是的！找有趣的事，基本就是从收集情报开始！",
         "nextNodeId": "18"
       },
       "18": {
         "id": "18",
-        "speakerId": "asahi",
-        "text": "哦～原来是这样。",
+        "speakerId": "producer",
+        "text": "话是没错，不过别随便跟不认识的人说话啊？",
         "nextNodeId": "19"
       },
       "19": {
         "id": "19",
         "speakerId": "asahi",
-        "text": "那我可要全力以赴了，请看着我！制作人先生！",
+        "text": "？　什么意思？",
         "nextNodeId": "20"
       },
       "20": {
         "id": "20",
         "speakerId": "producer",
-        "text": "不……之后的课上会好好看的，没关系——",
+        "text": "世上不是只有好人。也可能会遇上危险。",
         "nextNodeId": "21"
       },
       "21": {
         "id": "21",
         "speakerId": "asahi",
-        "text": "……呼。",
+        "text": "……唔。",
         "nextNodeId": "22"
       },
       "22": {
         "id": "22",
-        "speakerId": "asahi",
-        "text": "……！",
+        "speakerId": "producer",
+        "text": "（她大概没被这么说过吧……不过该说的还是要说。）",
         "choices": [
           {
-            "label": "挺厉害的。",
+            "label": "我陪你去。",
             "nextNodeId": "100"
           },
           {
-            "label": "先热身。",
+            "label": "魔术师是什么样的？",
             "nextNodeId": "110"
           },
           {
-            "label": "我在旁边看着。",
+            "label": "下次要和我说一声。",
             "nextNodeId": "120"
           }
         ]
@@ -158,64 +158,69 @@
       "100": {
         "id": "100",
         "speakerId": "asahi",
-        "text": "嘿嘿……被夸了。",
+        "text": "诶，可以吗！",
         "nextNodeId": "101"
       },
       "101": {
         "id": "101",
         "speakerId": "producer",
-        "text": "真的。第一节课就这个状态，很厉害。",
+        "text": "嗯。一起去吧，比一个人到处问安全。",
         "nextNodeId": "102"
       },
       "102": {
         "id": "102",
         "speakerId": "asahi",
-        "text": "那我，下次要跳得更好！"
+        "text": "谢谢！那，走吧！"
       },
       "110": {
         "id": "110",
         "speakerId": "asahi",
-        "text": "热身？……对，要先让身体醒过来。",
+        "text": "听说他会从帽子里变出花来！",
         "nextNodeId": "111"
       },
       "111": {
         "id": "111",
         "speakerId": "producer",
-        "text": "嗯。急不得。",
+        "text": "那确实挺有趣的。",
         "nextNodeId": "112"
       },
       "112": {
         "id": "112",
         "speakerId": "asahi",
-        "text": "知道了！那我先跑一圈！"
+        "text": "对吧！我想看！"
       },
       "120": {
         "id": "120",
         "speakerId": "asahi",
-        "text": "那就，请你一直看着！",
+        "text": "要说一声……我知道了。",
         "nextNodeId": "121"
       },
       "121": {
         "id": "121",
         "speakerId": "producer",
-        "text": "嗯，我会看着。",
+        "text": "嗯。我会担心。",
         "nextNodeId": "122"
       },
       "122": {
         "id": "122",
         "speakerId": "asahi",
-        "text": "好！那我，开始了！"
+        "text": "……制作人先生，原来是会担心人的啊。"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T12:00:00.000Z",
-  "updatedAt": "2026-11-02T12:00:00.000Z",
+  "updatedAt": "2026-11-01T04:10:29.733Z",
+  "reviewedAt": "2026-11-01T04:10:29.733Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T12:00:00.000Z",
-      "note": "对照 101700102（提前到、自己先跳、集中到听不见，三分支）"
+      "note": "对照 201700301（公园打听魔术师、制作人提醒别和陌生人说话，三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:10:29.733Z"
     }
   ]
 }

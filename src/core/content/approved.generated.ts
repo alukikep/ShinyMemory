@@ -50,6 +50,52 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.asahi.explore",
+  "name": "陪她找有趣的事",
+  "description": "她说\"那边好像有东西\"，然后就真的往那边走。你跟着她拐了三个弯，最后停在一家从没注意过的小店前。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "asahi"
+  ],
+  "locations": [
+    "shopping_street",
+    "park"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 900,
+      "toMinute": 1140
+    }
+  ],
+  "cost": {
+    "stamina": 5
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -4
+    }
+  ],
+  "resultTexts": [
+    "她蹲在店门口看了十分钟，说\"这个为什么会动\"，然后自己找到了答案。",
+    "回去的路上她说\"今天最有趣的是制作人先生的表情\"。",
+    "她记下了店的地址，说下次要一个人再来看看。"
+  ]
+},
+{
   "id": "activity.carry_gear",
   "name": "帮忙搬器材",
   "description": "录音棚缺人手，灯架和音箱都得从楼下搬上来。",
@@ -1599,6 +1645,217 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「啊，谢谢！甘奈正好想喝☆」"
+    }
+  ]
+},
+{
+  "id": "evt.asahi.after_dance",
+  "title": "还在跳",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "asahi"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她还在镜子前，把最后一个动作反复做了三遍。",
+  "choices": [
+    {
+      "label": "已经很好了。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「真的？那，再来一次确认！」"
+    },
+    {
+      "label": "再来一遍。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好！这次我想那样跳！」"
+    },
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「诶——……那，明天早点来！」"
+    }
+  ]
+},
+{
+  "id": "evt.asahi.after_expression",
+  "title": "表情没弄明白",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "asahi"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表现课结束了。她对着镜子做了几个表情，最后皱起眉。",
+  "choices": [
+    {
+      "label": "哪个不明白？",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「这个！这个表情，是什么意思？」"
+    },
+    {
+      "label": "不用想太多。",
+      "hint": "信任 +3、压力 -3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「不用想……原来也有这种事啊。」"
+    },
+    {
+      "label": "我来学给你看。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「啊哈哈，制作人先生的样子好怪！」"
+    }
+  ]
+},
+{
+  "id": "evt.asahi.after_vocal",
+  "title": "唱完还在看",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "asahi"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她没动，盯着钢琴的方向看了好一会儿。",
+  "choices": [
+    {
+      "label": "在想什么？",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "「那个声音，为什么会那样颤呢？」"
+    },
+    {
+      "label": "很好。",
+      "hint": "歌唱 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「嘿嘿，那我要再多唱几遍！」"
+    },
+    {
+      "label": "先休息。",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「休息！那我去看看外面！」"
     }
   ]
 },
@@ -9250,6 +9507,808 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "130",
       "speakerId": "amana",
       "text": "不会啦。啊，不过制作人先生虽然可靠……"
+    }
+  }
+},
+{
+  "id": "dialogue.asahi.ambush",
+  "idolId": "asahi",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "呼……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（天气真好啊——）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "哇！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "asahi",
+      "text": "啊哈哈！",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "……啊，是あさひ啊……！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "asahi",
+      "text": "吓到了吧～制作人先生。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "那是，突然从背后大声喊，当然会吓到。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "asahi",
+      "text": "刚才制作人先生的表情，超好笑的！",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "喂，别拿人取笑。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "asahi",
+      "text": "啊哈哈。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "话说你来得真早啊。今天的课是下午吧。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "asahi",
+      "text": "我提早出来了！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "在事务所也没事做，慢慢来也可以啊。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "asahi",
+      "text": "在家里待着，也不会有有趣的事发生的！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "真像あさひ会说的话。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "asahi",
+      "text": "……是吗？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "嗯。那，离上课还有时间。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "asahi",
+      "text": "那，制作人先生，陪我找有趣的事吧！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "（这个人，真是一刻也停不下来啊……）",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "asahi",
+      "text": "走吧走吧！"
+    }
+  }
+},
+{
+  "id": "dialogue.asahi.first",
+  "idolId": "asahi",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "好……差不多该走了——",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "asahi",
+      "text": "——这里……这样？——",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "（那孩子，从刚才一直在跳……嗯？可那个舞……！）",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "asahi",
+      "text": "——好……成了！",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "你，能稍微打扰一下吗？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "asahi",
+      "text": "？　是我吗？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "嗯，刚才那个舞，是屏幕上广告里的吧？你在练？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "asahi",
+      "text": "不是，只是试着跳了一下。因为看着好像很好玩！",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "诶？也就是说……你刚看到，就照着跳了？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "asahi",
+      "text": "是的！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "（……她说得轻轻松松，可这孩子的厉害之处她自己没意识到吗……）",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "（说不定……有着不得了的才能。）",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "asahi",
+      "text": "～♪",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "其实我是做这个的。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "asahi",
+      "text": "……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "asahi",
+      "text": "『制作人』……吗？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "嗯，我负责制作偶像。你，如果愿意的话，要不要试试当偶像？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "asahi",
+      "text": "偶像，是做什么的？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "像刚才你模仿的那个女孩子一样跳舞、唱歌。还有——",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "——大概就是这些。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "asahi",
+      "text": "……！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "asahi",
+      "text": "好像很有趣！我，想试试当偶像！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "这、这样啊！谢谢！今后请多指教！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "asahi",
+      "text": "是！我是芹沢あさひ！请多指教！"
+    }
+  }
+},
+{
+  "id": "dialogue.asahi.magician",
+  "idolId": "asahi",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "『是，明天也请多指教。那么，失礼了。』",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "好，今天的预定到此结束。肚子也饿了，去哪儿吃点……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "……嗯？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "（あさひ……？在做什么呢……？）",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "（去看看吧。）",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "asahi",
+      "text": "那边吗～？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "asahi",
+      "text": "还是这边呢？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "あさひ！",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "asahi",
+      "text": "？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "asahi",
+      "text": "诶，不是制作人先生吗！在这种地方做什么呢？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "我下班回来啊。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "asahi",
+      "text": "什么嘛，原来是这样！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "比起那个，我更好奇あさひ在做什么……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "asahi",
+      "text": "我吗？我在找有没有什么有趣的事！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "asahi",
+      "text": "然后听说公园里有魔术师，正打算去！",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "所以你到处问人，就是这个啊。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "asahi",
+      "text": "是的！找有趣的事，基本就是从收集情报开始！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "话是没错，不过别随便跟不认识的人说话啊？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "asahi",
+      "text": "？　什么意思？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "世上不是只有好人。也可能会遇上危险。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "asahi",
+      "text": "……唔。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "（她大概没被这么说过吧……不过该说的还是要说。）",
+      "choices": [
+        {
+          "label": "我陪你去。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "魔术师是什么样的？",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "下次要和我说一声。",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "asahi",
+      "text": "诶，可以吗！",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "嗯。一起去吧，比一个人到处问安全。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "asahi",
+      "text": "谢谢！那，走吧！"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "asahi",
+      "text": "听说他会从帽子里变出花来！",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "那确实挺有趣的。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "asahi",
+      "text": "对吧！我想看！"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "asahi",
+      "text": "要说一声……我知道了。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "嗯。我会担心。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "asahi",
+      "text": "……制作人先生，原来是会担心人的啊。"
+    }
+  }
+},
+{
+  "id": "dialogue.asahi.morning",
+  "idolId": "asahi",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "asahi",
+      "text": "哈……呼……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "あさひ，早上好。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "asahi",
+      "text": "呼——……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "asahi",
+      "text": "制作人先生，早上好。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "一大早就辛苦了。今天格外有干劲啊。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "asahi",
+      "text": "那当然！因为今天制作人先生要看我上课！",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "那我平时也一直在看——",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "asahi",
+      "text": "——今天不一样。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "あさひ？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "asahi",
+      "text": "制作人先生，今天只要……看着就好。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "asahi",
+      "text": "我要跳了！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "asahi",
+      "text": "吸——……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "asahi",
+      "text": "！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "asahi",
+      "text": "哈——……制作人先生，怎么样？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "（……说不出来。刚才那一段，比之前任何一次都干净。）",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "……很好。真的。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "asahi",
+      "text": "嘿嘿……那我，还能跳得更好！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "（她不是不服输，是\"还能更有趣\"吧。）",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "asahi",
+      "text": "那，再来一次！"
+    }
+  }
+},
+{
+  "id": "dialogue.asahi.second",
+  "idolId": "asahi",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "asahi",
+      "text": "这里……这样。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "asahi",
+      "text": "然后……嘿！",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "あさひ，早上好。来得真早啊。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "asahi",
+      "text": "嗯……有点不对……这里这样……",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "（好厉害的集中力……好，等她跳完吧。）",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "asahi",
+      "text": "好……！",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "あさひ，早上好。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "asahi",
+      "text": "啊，制作人先生，早上好！",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "嗯，第一天就这么有干劲，佩服。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "asahi",
+      "text": "我想早点做！上次你给我看的那个影像太厉害了。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "这样啊。不过话说回来，你集中力真厉害。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "asahi",
+      "text": "？　什么意思？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "我喊你好像完全没听见，所以在佩服。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "asahi",
+      "text": "原来是那样……我都没注意到。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "（一集中就看不见周围了啊……得帮她注意着点。）",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "asahi",
+      "text": "话说，制作人先生是来做什么的？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "今天是第一次上课，我想在旁边看着。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "asahi",
+      "text": "哦～原来是这样。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "asahi",
+      "text": "那我可要全力以赴了，请看着我！制作人先生！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "不……之后的课上会好好看的，没关系——",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "asahi",
+      "text": "……呼。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "asahi",
+      "text": "……！",
+      "choices": [
+        {
+          "label": "挺厉害的。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "先热身。",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "我在旁边看着。",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "asahi",
+      "text": "嘿嘿……被夸了。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "真的。第一节课就这个状态，很厉害。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "asahi",
+      "text": "那我，下次要跳得更好！"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "asahi",
+      "text": "热身？……对，要先让身体醒过来。",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "嗯。急不得。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "asahi",
+      "text": "知道了！那我先跑一圈！"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "asahi",
+      "text": "那就，请你一直看着！",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "嗯，我会看着。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "asahi",
+      "text": "好！那我，开始了！"
     }
   }
 },
@@ -27163,6 +28222,104 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "amana",
   "label": "今天",
   "text": "「今天也超——开心！」「跟制作人先生说话的时间，甘奈最喜欢☆」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "asahi.chat.curious",
+  "actorId": "asahi",
+  "label": "有趣的事",
+  "text": "「有趣的事，要自己去找才好玩！」「等是等不来的！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "asahi.chat.magic",
+  "actorId": "asahi",
+  "label": "魔术",
+  "text": "「魔术！为什么会那样？」「我想弄清楚！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "asahi.chat.memory",
+  "actorId": "asahi",
+  "label": "记性",
+  "text": "「看过的东西，我大概都记得！」「舞也是，看一遍就能跳！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "asahi.chat.observe",
+  "actorId": "asahi",
+  "label": "观察",
+  "text": "「观察人很有意思！」「那个人为什么走得那么快呢……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "asahi.chat.school",
+  "actorId": "asahi",
+  "label": "学校",
+  "text": "「学校……我常常不在教室。」「因为外面比较有趣！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "asahi.chat.today",
+  "actorId": "asahi",
+  "label": "今天",
+  "text": "「今天！　发现了三件有趣的事！」「……要不要听？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "asahi.chat.unit",
+  "actorId": "asahi",
+  "label": "Straylight",
+  "text": "「冬優子ちゃん和愛依ちゃん，都很厉害！」「我也不能输！」",
   "cooldownMinutes": 1440,
   "effects": [
     {

@@ -2,7 +2,7 @@
   "id": "draft.asahi.chat.magic",
   "kind": "topic",
   "title": "聊天 · 魔术",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.asahi.chat.magic",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T12:14:00.000Z",
-  "updatedAt": "2026-11-02T12:14:00.000Z",
+  "updatedAt": "2026-11-01T04:10:36.651Z",
+  "reviewedAt": "2026-11-01T04:10:36.651Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T12:14:00.000Z",
       "note": "あさひ日常话题（201700301 魔术师）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:10:36.651Z"
     }
   ]
 }

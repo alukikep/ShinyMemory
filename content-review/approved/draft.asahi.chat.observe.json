@@ -2,7 +2,7 @@
   "id": "draft.asahi.chat.observe",
   "kind": "topic",
   "title": "聊天 · 观察",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.asahi.chat.observe",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T12:12:00.000Z",
-  "updatedAt": "2026-11-02T12:12:00.000Z",
+  "updatedAt": "2026-11-01T04:10:37.978Z",
+  "reviewedAt": "2026-11-01T04:10:37.978Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T12:12:00.000Z",
       "note": "あさひ日常话题（API 兴趣：人間観察）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:10:37.978Z"
     }
   ]
 }

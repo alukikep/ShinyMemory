@@ -2,7 +2,7 @@
   "id": "draft.evt.asahi.after_dance",
   "kind": "event",
   "title": "还在跳",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.asahi.after_dance",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T12:20:00.000Z",
-  "updatedAt": "2026-11-02T12:20:00.000Z",
+  "updatedAt": "2026-11-01T04:10:32.406Z",
+  "reviewedAt": "2026-11-01T04:10:32.406Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T12:20:00.000Z",
       "note": "あさひ舞蹈课后事件（她的专注）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:10:32.406Z"
     }
   ]
 }

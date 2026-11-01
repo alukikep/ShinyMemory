@@ -2,7 +2,7 @@
   "id": "draft.evt.asahi.after_expression",
   "kind": "event",
   "title": "表情没弄明白",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.asahi.after_expression",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T12:20:00.000Z",
-  "updatedAt": "2026-11-02T12:20:00.000Z",
+  "updatedAt": "2026-11-01T04:10:33.430Z",
+  "reviewedAt": "2026-11-01T04:10:33.430Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T12:20:00.000Z",
       "note": "あさひ表现课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:10:33.430Z"
     }
   ]
 }

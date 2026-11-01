@@ -2,7 +2,7 @@
   "id": "draft.evt.asahi.after_vocal",
   "kind": "event",
   "title": "唱完还在看",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.asahi.after_vocal",
   "payload": {
@@ -74,12 +74,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T12:20:00.000Z",
-  "updatedAt": "2026-11-02T12:20:00.000Z",
+  "updatedAt": "2026-11-01T04:10:34.509Z",
+  "reviewedAt": "2026-11-01T04:10:34.509Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T12:20:00.000Z",
       "note": "あさひ声乐课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:10:34.509Z"
     }
   ]
 }

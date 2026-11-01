@@ -2,7 +2,7 @@
   "id": "draft.asahi.chat.school",
   "kind": "topic",
   "title": "聊天 · 学校",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.asahi.chat.school",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T12:15:00.000Z",
-  "updatedAt": "2026-11-02T12:15:00.000Z",
+  "updatedAt": "2026-11-01T04:10:35.999Z",
+  "reviewedAt": "2026-11-01T04:10:35.999Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T12:15:00.000Z",
       "note": "あさひ日常话题（她在学校总是一个人）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:10:35.999Z"
     }
   ]
 }

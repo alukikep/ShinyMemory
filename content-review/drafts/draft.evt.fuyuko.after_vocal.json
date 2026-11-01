@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.fuyuko.after_vocal",
+  "kind": "event",
+  "title": "唱完立刻收声",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.fuyuko.after_vocal",
+  "payload": {
+    "id": "evt.fuyuko.after_vocal",
+    "title": "唱完立刻收声",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "fuyuko"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束了。她唱完立刻收声，先看看门口有没有人。",
+    "choices": [
+      {
+        "label": "刚才很好。",
+        "hint": "信任 +3、歌唱 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          }
+        ],
+        "result": "「……真的？那，还行吧。」"
+      },
+      {
+        "label": "再唱一遍。",
+        "hint": "歌唱 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「哈……好吧，再来一遍。」"
+      },
+      {
+        "label": "为什么看门口？",
+        "hint": "信任 +3、压力 -2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -2
+          }
+        ],
+        "result": "「……习惯了。在外面要笑得好看。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:20:00.000Z",
+  "updatedAt": "2026-11-02T13:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:20:00.000Z",
+      "note": "冬優子声乐课后事件"
+    }
+  ]
+}

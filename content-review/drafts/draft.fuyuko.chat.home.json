@@ -1,0 +1,32 @@
+{
+  "id": "draft.fuyuko.chat.home",
+  "kind": "topic",
+  "title": "聊天 · 家",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.fuyuko.chat.home",
+  "payload": {
+    "id": "fuyuko.chat.home",
+    "actorId": "fuyuko",
+    "label": "家",
+    "text": "「家很远哦。」「回去要花不少时间。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:15:00.000Z",
+  "updatedAt": "2026-11-02T13:15:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:15:00.000Z",
+      "note": "冬優子日常话题（家在远处）"
+    }
+  ]
+}

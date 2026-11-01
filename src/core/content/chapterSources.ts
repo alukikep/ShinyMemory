@@ -452,4 +452,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: '見つけたもの', index: 3, total: 3 },
     anchors: ['2017003110010', '2017003110060', '2017003110100'],
   },
+  {
+    chapterId: 'fuyuko-lazy',
+    script: '201800301',
+    source: '剧本 201800301',
+    card: { title: 'ふゆの素顔', index: 1, total: 3 },
+    anchors: ['2018003010010', '2018003010030', '2018003010050'],
+  },
+  {
+    chapterId: 'fuyuko-badge',
+    script: '201800302',
+    source: '剧本 201800302',
+    card: { title: 'ふゆの素顔', index: 2, total: 3 },
+    anchors: ['2018003020010', '2018003020020', '2018003020050'],
+  },
+  {
+    chapterId: 'fuyuko-solo',
+    script: '201800311',
+    source: '剧本 201800311',
+    card: { title: 'ふゆの素顔', index: 3, total: 3 },
+    anchors: ['2018003110010', '2018003110020', '2018003110060'],
+  },
 ];

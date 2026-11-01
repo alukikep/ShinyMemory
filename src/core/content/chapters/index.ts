@@ -9,6 +9,8 @@ import juriCard from './juriCard';
 import juriEncounter from './juriEncounter';
 import amanaCard from './amanaCard';
 import asahiCard from './asahiCard';
+import fuyukoCard from './fuyukoCard';
+import fuyukoEncounter from './fuyukoEncounter';
 import asahiEncounter from './asahiEncounter';
 import chiyukiCard from './chiyukiCard';
 import chiyukiEncounter from './chiyukiEncounter';
@@ -65,6 +67,8 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   chiyukiCard,
   asahiEncounter,
   asahiCard,
+  fuyukoEncounter,
+  fuyukoCard,
   chiyokoEncounter,
   chiyokoCard,
   juriEncounter,

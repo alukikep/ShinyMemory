@@ -1,0 +1,114 @@
+{
+  "id": "draft.dialogue.fuyuko.solo",
+  "kind": "dialogue",
+  "title": "ソロステージ结束后的后台",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.fuyuko.solo",
+  "payload": {
+    "id": "dialogue.fuyuko.solo",
+    "idolId": "fuyuko",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "fuyuko",
+        "text": "～♪",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "ソロステージ辛苦了。心情很好啊。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "fuyuko",
+        "text": "因为今天的ふゆ，状态绝佳！表演超棒的！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "fuyuko",
+        "text": "呐，怎么样？ふゆ的舞台！",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "当然，很好。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "fuyuko",
+        "text": "真的？比今天其他偶像的谁都好！？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "嗯，毫无疑问，冬優子是最好的。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "fuyuko",
+        "text": "果然！？你也这么想！？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "fuyuko",
+        "text": "ふゆ是……第一……",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "（她笑得很真。这个笑容和现场那个不一样。）",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "fuyuko",
+        "text": "啊……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "fuyuko",
+        "text": "……刚才那个，别跟别人说啊。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "哪个？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "fuyuko",
+        "text": "就是，\"ふゆ是第一\"这种话，自己说得很起劲的这件事。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "（她别过脸去，耳朵是红的。）"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:00:00.000Z",
+  "updatedAt": "2026-11-02T13:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:00:00.000Z",
+      "note": "对照 201800311（ソロステージ后情绪很高、追问评价）"
+    }
+  ]
+}

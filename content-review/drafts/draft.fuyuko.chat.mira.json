@@ -1,0 +1,32 @@
+{
+  "id": "draft.fuyuko.chat.mira",
+  "kind": "topic",
+  "title": "聊天 · ミラ♡ミラ",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.fuyuko.chat.mira",
+  "payload": {
+    "id": "fuyuko.chat.mira",
+    "actorId": "fuyuko",
+    "label": "ミラ♡ミラ",
+    "text": "「ミラ♡ミラ，超可爱的吧？」「……你也要看？可以啊。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:10:00.000Z",
+  "updatedAt": "2026-11-02T13:10:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:10:00.000Z",
+      "note": "冬優子日常话题（偶像宅）"
+    }
+  ]
+}

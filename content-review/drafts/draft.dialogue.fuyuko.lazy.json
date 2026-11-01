@@ -1,0 +1,173 @@
+{
+  "id": "draft.dialogue.fuyuko.lazy",
+  "kind": "dialogue",
+  "title": "她瘫在练习室的地板上",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.fuyuko.lazy",
+  "payload": {
+    "id": "dialogue.fuyuko.lazy",
+    "idolId": "fuyuko",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "fuyuko",
+        "text": "哈～～……好累～……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "fuyuko",
+        "text": "明明是这么好的天气，之后却要一直上课……好麻烦啊……",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "冬優子……现在这样懒着可以，但上课时要好好做啊。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "fuyuko",
+        "text": "烦死了……麻烦就是麻烦嘛。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "fuyuko",
+        "text": "而且，偶像的课为什么那么严啊。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "fuyuko",
+        "text": "ふゆ明明照着节奏跳对了。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "fuyuko",
+        "text": "『手指没伸开』『姿势不好』，连细节都要说……",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "不是跳对了就行。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "fuyuko",
+        "text": "……哈？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "动作对了，但看起来不对。差别就在那些细节里。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "fuyuko",
+        "text": "……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "fuyuko",
+        "text": "（她没反驳，只是别过脸去。）",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "fuyuko",
+        "text": "……知道了啦。",
+        "choices": [
+          {
+            "label": "起来吧。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "刚才那段，再来一次。",
+            "nextNodeId": "110"
+          },
+          {
+            "label": "先说说你在气什么。",
+            "nextNodeId": "120"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "fuyuko",
+        "text": "……真是的，催什么催。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "fuyuko",
+        "text": "好啦，起来了。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "producer",
+        "text": "（嘴上抱怨，动作倒是不慢。）"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "fuyuko",
+        "text": "现在？……哈，好吧。",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "fuyuko",
+        "text": "那我跳一遍，你看着。",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "producer",
+        "text": "（这次她没有偷懒。）"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "fuyuko",
+        "text": "……没在气什么。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "fuyuko",
+        "text": "只是，被说\"看起来不对\"，有点不甘心。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "producer",
+        "text": "那就把\"看起来\"改对。",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "fuyuko",
+        "text": "……知道了。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:00:00.000Z",
+  "updatedAt": "2026-11-02T13:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:00:00.000Z",
+      "note": "对照 201800301（上课前赖着、抱怨、被指出细节，三分支）"
+    }
+  ]
+}

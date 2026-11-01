@@ -1,0 +1,138 @@
+{
+  "id": "draft.dialogue.fuyuko.first",
+  "kind": "dialogue",
+  "title": "站前有人盯着海报",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.fuyuko.first",
+  "payload": {
+    "id": "dialogue.fuyuko.first",
+    "idolId": "fuyuko",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "（唔……到处看了一圈，也没有特别合适的……今天先回去吧……嗯？）",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "（那个孩子……看什么东西看得那么认真啊。）",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "（侧脸就能看出来，很直的眼神……看着就会被吸引。）",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "fuyuko",
+        "text": "……果然，这个设计好可爱……",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "那个，不好意思。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "fuyuko",
+        "text": "诶？……啊，是。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "你在看那张海报？",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "fuyuko",
+        "text": "是的……『ミラクル♡ミラージュ』的……我很喜欢。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "（说起喜欢的东西时，表情一下子软下来了。）",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "其实我是做偶像制作人的。如果愿意的话，要不要试试当偶像？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "fuyuko",
+        "text": "……诶？我，当偶像……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "嗯。刚才那个表情，我觉得很棒。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "fuyuko",
+        "text": "……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "fuyuko",
+        "text": "那就，请多指教。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "诶？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "fuyuko",
+        "text": "ふゆ，会努力的。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "（她答应得太快了……而且刚才那一瞬，表情变了。）",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "fuyuko",
+        "text": "那个……有什么问题吗？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "啊，不……没什么。今后一起加油吧！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:00:00.000Z",
+  "updatedAt": "2026-11-02T13:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:00:00.000Z",
+      "note": "对照 101800101（海报、营业式自我介绍、一瞬间的表情）"
+    }
+  ]
+}

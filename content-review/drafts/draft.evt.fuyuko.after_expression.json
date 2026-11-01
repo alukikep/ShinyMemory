@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.fuyuko.after_expression",
+  "kind": "event",
+  "title": "营业脸收不回来",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.fuyuko.after_expression",
+  "payload": {
+    "id": "evt.fuyuko.after_expression",
+    "title": "营业脸收不回来",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "fuyuko"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表现课结束了。她还保持着刚才那个笑，过了几秒才垮下来。",
+    "choices": [
+      {
+        "label": "笑了很久吧。",
+        "hint": "信任 +3、压力 -3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「……脸都僵了。别看我。」"
+      },
+      {
+        "label": "那个笑很好。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……那是练出来的，不是真的。」"
+      },
+      {
+        "label": "不用一直笑。",
+        "hint": "表现 +1、压力 -4",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -4
+          }
+        ],
+        "result": "「……这儿又没别人。算了，谢谢。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:20:00.000Z",
+  "updatedAt": "2026-11-02T13:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:20:00.000Z",
+      "note": "冬優子表演课后事件（两副面孔）"
+    }
+  ]
+}

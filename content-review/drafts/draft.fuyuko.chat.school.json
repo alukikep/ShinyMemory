@@ -1,0 +1,32 @@
+{
+  "id": "draft.fuyuko.chat.school",
+  "kind": "topic",
+  "title": "聊天 · 专门学校",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.fuyuko.chat.school",
+  "payload": {
+    "id": "fuyuko.chat.school",
+    "actorId": "fuyuko",
+    "label": "专门学校",
+    "text": "「专门学校的课，早上就开始了。」「……早上很困。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:12:00.000Z",
+  "updatedAt": "2026-11-02T13:12:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:12:00.000Z",
+      "note": "冬優子日常话题（专门学校 1 年）"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.fuyuko.chat.asahi",
+  "kind": "topic",
+  "title": "聊天 · あさひ",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.fuyuko.chat.asahi",
+  "payload": {
+    "id": "fuyuko.chat.asahi",
+    "actorId": "fuyuko",
+    "label": "あさひ",
+    "text": "「あさひ？那个中学生。」「……很厉害，是真的。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:16:00.000Z",
+  "updatedAt": "2026-11-02T13:16:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:16:00.000Z",
+      "note": "冬優子日常话题（Straylight 成员）"
+    }
+  ]
+}

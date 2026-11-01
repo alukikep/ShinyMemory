@@ -1,0 +1,113 @@
+{
+  "id": "draft.dialogue.fuyuko.badge",
+  "kind": "dialogue",
+  "title": "商店街排起了长队",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.fuyuko.badge",
+  "payload": {
+    "id": "dialogue.fuyuko.badge",
+    "idolId": "fuyuko",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "fuyuko",
+        "text": "哇～……已经排了这么多人吗。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "人真多啊……你打算排这条队？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "fuyuko",
+        "text": "当然！就是为了这个才带你来的嘛。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "fuyuko",
+        "text": "工作也好好地提前赶完了呢。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "（确实……刚才的工作，她比平时更有干劲。）",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "你到底为了什么这么……嗯？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "fuyuko",
+        "text": "看这个画面。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "呃……『「ミラクル♡ミラージュ」徽章发售通知』？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "fuyuko",
+        "text": "对！这个超可爱的店铺限定随机徽章，今天发售！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "（原来是在说这个。工作那么拼，是为了这个啊……）",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "（她说这话时的表情，比拍摄时生动多了。）",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "fuyuko",
+        "text": "……不是，别一直看着我啊。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "（她别过脸去，但排队的脚步没停。）",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "fuyuko",
+        "text": "……あんた也帮我看看，哪个种类最可爱。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:00:00.000Z",
+  "updatedAt": "2026-11-02T13:30:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:00:00.000Z",
+      "note": "对照 201800302（限定徽章、她为了排队提前收工，三分支）"
+    },
+    {
+      "status": "review",
+      "at": "2026-11-02T13:30:00.000Z",
+      "note": "原作 201800302 没有选项，改成线性；不再自造分支"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.fuyuko.after_dance",
+  "kind": "event",
+  "title": "她先看镜子里的自己",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.fuyuko.after_dance",
+  "payload": {
+    "id": "evt.fuyuko.after_dance",
+    "title": "她先看镜子里的自己",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "fuyuko"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她没有马上停下来，先对着镜子把最后一拍定住。",
+    "choices": [
+      {
+        "label": "手指伸直了。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……看出来了？那就好。」"
+      },
+      {
+        "label": "再一遍。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好。这次连指尖都要对。」"
+      },
+      {
+        "label": "今天就到这里。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……行吧。明天再说。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:20:00.000Z",
+  "updatedAt": "2026-11-02T13:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:20:00.000Z",
+      "note": "冬優子舞蹈课后事件（她嘴上嫌麻烦、实际最较真）"
+    }
+  ]
+}

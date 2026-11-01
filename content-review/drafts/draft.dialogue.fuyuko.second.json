@@ -1,0 +1,161 @@
+{
+  "id": "draft.dialogue.fuyuko.second",
+  "kind": "dialogue",
+  "title": "她第一次拍摄，笑得很标准",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.fuyuko.second",
+  "payload": {
+    "id": "dialogue.fuyuko.second",
+    "idolId": "fuyuko",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "fuyuko",
+        "text": "哇，每张照片都好棒……简直不像ふゆ！",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "fuyuko",
+        "text": "staff 先生，谢谢您♪",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "fuyuko",
+        "text": "诶嘿嘿，没有那种事啦。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "（嗯，冬優子在现场很受 staff 喜欢啊。）",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "（之前也被夸\"可爱的好孩子\"\"总是笑眯眯的\"……）",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "（……不过，她的优点应该不只是这些。）",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "fuyuko",
+        "text": "──你真的觉得，ふゆ能当偶像吗？",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "（冬優子最大的魅力是……）",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "fuyuko",
+        "text": "制作人先生……？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "啊，嗯，我在想点事。冬優子，招呼都打完了？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "fuyuko",
+        "text": "真是的，不是说了要叫\"ふゆ\"吗。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "fuyuko",
+        "text": "不过，工作上的支持总是谢谢您♡",
+        "choices": [
+          {
+            "label": "你的笑容很讨人喜欢。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "刚才那句\"不像ふゆ\"是什么意思？",
+            "nextNodeId": "110"
+          },
+          {
+            "label": "接下来还有工作，先休息。",
+            "nextNodeId": "120"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "fuyuko",
+        "text": "诶嘿嘿，那是ふゆ的卖点嘛♡",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "（笑得很好看。不过……）",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "fuyuko",
+        "text": "……怎么了，那种表情。"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "fuyuko",
+        "text": "啊……那个啊。",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "fuyuko",
+        "text": "照片里的ふゆ，太完美了嘛。",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "fuyuko",
+        "text": "太完美的东西，看起来就不像真的，不是吗？"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "fuyuko",
+        "text": "好——那就休息一下吧。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "fuyuko",
+        "text": "……あんた，还挺会看时机的嘛。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "producer",
+        "text": "（刚才那句，语气完全不一样了。）"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:00:00.000Z",
+  "updatedAt": "2026-11-02T13:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:00:00.000Z",
+      "note": "对照 101800102（三分支：对 staff 笑脸 / 对制作人毒舌）"
+    }
+  ]
+}

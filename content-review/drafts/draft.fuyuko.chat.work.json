@@ -1,0 +1,32 @@
+{
+  "id": "draft.fuyuko.chat.work",
+  "kind": "topic",
+  "title": "聊天 · 营业",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.fuyuko.chat.work",
+  "payload": {
+    "id": "fuyuko.chat.work",
+    "actorId": "fuyuko",
+    "label": "营业",
+    "text": "「在外面，ふゆ是可爱的好孩子。」「……那也算真话。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T13:14:00.000Z",
+  "updatedAt": "2026-11-02T13:14:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T13:14:00.000Z",
+      "note": "冬優子日常话题（两副面孔）"
+    }
+  ]
+}

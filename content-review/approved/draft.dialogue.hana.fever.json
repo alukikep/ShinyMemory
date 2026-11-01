@@ -1,0 +1,263 @@
+{
+  "id": "draft.dialogue.hana.fever",
+  "kind": "dialogue",
+  "title": "她烧得有点迷糊",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.hana.fever",
+  "payload": {
+    "id": "dialogue.hana.fever",
+    "idolId": "hana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "──所以，那天的拍摄，说是摄影棚换了。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "保险起见，我把换过之后的棚的地图发给你。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "hana",
+        "text": "…………",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "……羽那？",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "hana",
+        "text": "──啊，抱歉，我刚才说到哪了？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "……！身体不舒服吗？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "hana",
+        "text": "嗯──……",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "先量个体温吧。我找找体温计。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "那个……放在哪来着。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "hana",
+        "text": "不用找啦──……",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "hana",
+        "text": "来，用手量吧？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "…………那就失礼了。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "……有热度。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "hana",
+        "text": "这样啊──",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "hana",
+        "text": "这种感觉，是发烧啊──……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "hana",
+        "text": "会不会是上次去「はなタウン」的时候玩太疯了……？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "不是……是我一直让你这么忙。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "大概是累出来了吧。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "……抱歉啊。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "hana",
+        "text": "……呵呵，为什么制作人要道歉啊？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "因为是我的责任。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "这么忙，连身体都顾不过来。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "hana",
+        "text": "又不是制作人的错──……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "……不。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "总之，我送你回宿舍。能走到车那边吗？",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "hana",
+        "text": "嗯。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "hana",
+        "text": "……啊，不过。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "hana",
+        "text": "能扶我到车那边吗？",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "知道了。──来，抓住我。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "hana",
+        "text": "谢谢。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "hana",
+        "text": "……制作人，比平时更温柔呢。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "hana",
+        "text": "总觉得，很特别。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "是吗……？",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "hana",
+        "text": "嗯。这种感觉，说不定也不错──……",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "喂。这种事可不能随便说，身体还是好一点才好。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "好好休息，快点好起来。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "那，往车那边走了？",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "hana",
+        "text": "好──……"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T13:00:00.000Z",
+  "updatedAt": "2026-11-01T11:24:25.749Z",
+  "reviewedAt": "2026-11-01T11:24:25.749Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T13:00:00.000Z",
+      "note": "对照 202700611（TE：发烧、用手量体温、护送、「いつもよりもっと優しいね」「特別な感じ」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:24:25.749Z"
+    }
+  ]
+}

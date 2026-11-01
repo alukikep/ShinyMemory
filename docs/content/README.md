@@ -257,8 +257,8 @@ P6 2026-10-30  系统层 / 无内容
 ## 12. 现在的位置
 
 - 已确立：角色卡、数值档位、审查流程、内容生成链路
-- **已接入 26 人 / 27 张卡 / 100 章**（最后一批：斑鳩ルカ，コメティック 第一人）
-  - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 4、SHHis 2、CoMETIK 1
+- **已接入 27 人 / 28 张卡 / 105 章**（最后一批：鈴木羽那，コメティック 2/3）
+  - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 4、SHHis 2、CoMETIK 2
   - 每人的块结构都一样：招募链 2–4 步 + 首张卡一链 N 章 + 专属行动 + 话题 6–8 + 训练后事件 3
   - 进度与逐场地点核对见 [`_materials/<unit>-plan.md`](_materials/README.md)
 - **コメティック 前导**（`nichika-tribute`，3 步，已上线）：八雲なみ 的致敬演出。

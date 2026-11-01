@@ -1,0 +1,91 @@
+{
+  "id": "draft.evt.hana.after_vocal",
+  "kind": "event",
+  "title": "她说唱歌的时候不知道怎么站",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.hana.after_vocal",
+  "payload": {
+    "id": "evt.hana.after_vocal",
+    "title": "她说唱歌的时候不知道怎么站",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "hana"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "歌唱课结束了。她还站在麦克风前面，说不知道该把手放在哪里，然后自己笑了一下。",
+    "choices": [
+      {
+        "label": "放在舒服的地方就好。",
+        "hint": "歌唱 +1、压力 -2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -2
+          }
+        ],
+        "result": "「舒服的地方……那就是肚子这里了──！」"
+      },
+      {
+        "label": "看着我唱。",
+        "hint": "信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……看着你？」「那，好像可以。」"
+      },
+      {
+        "label": "再唱一遍。",
+        "hint": "歌唱 +3、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好──！」她深吸一口气，从头唱起。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T13:10:00.000Z",
+  "updatedAt": "2026-11-01T11:24:37.797Z",
+  "reviewedAt": "2026-11-01T11:24:37.797Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T13:10:00.000Z",
+      "note": "羽那歌唱课后事件（102700503 她没学过唱歌）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:24:37.797Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

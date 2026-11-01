@@ -1,0 +1,295 @@
+{
+  "id": "draft.dialogue.hana.purikura",
+  "kind": "dialogue",
+  "title": "开园前的园区，她说要拍大头贴",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.hana.purikura",
+  "payload": {
+    "id": "dialogue.hana.purikura",
+    "idolId": "hana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "开园前。真的一个客人都没有，喷泉的声音显得特别大。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "hana",
+        "text": "真的、完全没有客人呢。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "嗯，哈哈……因为还没开园啊。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "感觉有点奇怪，先随便在园区里走走吧。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "hana",
+        "text": "好──！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "──羽那，今天虽然是为了工作来取材，时间也有限，",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "不过你要是能像单纯来游乐园玩一样，尽情享受就好了。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "这段时间，羽那的希望我什么都帮你实现。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "hana",
+        "text": "啊哈，嗯──！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "hana",
+        "text": "……那，制作人，那个──！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "大头贴？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "hana",
+        "text": "嗯！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "hana",
+        "text": "不拍吗？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "诶，两个人？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "hana",
+        "text": "……？嗯。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "不，那个就有点……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "hana",
+        "text": "诶──",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "hana",
+        "text": "不行的话，今天就只能在这儿散散步了哦？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "确、确实是这样没错……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "hana",
+        "text": "……你说过「羽那的希望什么都帮我实现」吧？",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "唔……",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "hana",
+        "text": "……对吧？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "…………知道了。去拍吧。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "hana",
+        "text": "啊哈，太好了──",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "text": "机器的声音：『先从第一张开始哦♡』",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "诶，已经开拍了！？怎、怎么办……",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "hana",
+        "text": "呵呵，制作人，太慌张了──！",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "那个，姿势是──",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "hana",
+        "text": "啊，是之前你查的那个吧。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "hana",
+        "text": "那，来，半边爱心。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "hana",
+        "text": "制作人也做半边？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "不不，在这里做那个姿势实在太──",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "text": "『决定姿势♡　３、２、１──』",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "hana",
+        "text": "快，快点────",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "hana",
+        "text": "啊哈，总觉得，好微妙的姿势──！",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "都、都是我的错，抱歉……",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "hana",
+        "text": "不会，没关系。不过──",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "hana",
+        "text": "下次要好好给我比一个漂亮的爱心哦？",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "text": "『决定姿势♡　３、２、１──』",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "哦，贴纸出来了。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "hana",
+        "text": "哇──　──……",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "……怎么说呢，两个人的脸都完全不像。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "hana",
+        "text": "是啊──，眼睛好大──！",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "hana",
+        "text": "啊哈，总觉得，好可惜。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T13:00:00.000Z",
+  "updatedAt": "2026-11-01T11:24:25.490Z",
+  "reviewedAt": "2026-11-01T11:24:25.490Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T13:00:00.000Z",
+      "note": "对照 202700603（开园前无人、プリントシール、半边心、成品很微妙）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:24:25.490Z"
+    }
+  ]
+}

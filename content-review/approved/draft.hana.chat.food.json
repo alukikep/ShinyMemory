@@ -1,0 +1,38 @@
+{
+  "id": "draft.hana.chat.food",
+  "kind": "topic",
+  "title": "聊天 · 吃饭",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hana.chat.food",
+  "payload": {
+    "id": "hana.chat.food",
+    "actorId": "hana",
+    "label": "吃饭",
+    "text": "「宿舍的饭超好吃！」「炊込飯，最喜欢。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T13:10:00.000Z",
+  "updatedAt": "2026-11-01T11:24:37.773Z",
+  "reviewedAt": "2026-11-01T11:24:37.773Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T13:10:00.000Z",
+      "note": "羽那日常话题（吃饭：尾音上扬、不设防）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:24:37.773Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

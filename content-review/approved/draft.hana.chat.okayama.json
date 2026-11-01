@@ -1,0 +1,38 @@
+{
+  "id": "draft.hana.chat.okayama",
+  "kind": "topic",
+  "title": "聊天 · 冈山",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hana.chat.okayama",
+  "payload": {
+    "id": "hana.chat.okayama",
+    "actorId": "hana",
+    "label": "冈山",
+    "text": "「冈山啊──。」「海，其实不太看得到呢。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T13:10:00.000Z",
+  "updatedAt": "2026-11-01T11:24:37.759Z",
+  "reviewedAt": "2026-11-01T11:24:37.759Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T13:10:00.000Z",
+      "note": "羽那日常话题（冈山：尾音上扬、不设防）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:24:37.759Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

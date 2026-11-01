@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.hana.after_expression",
+  "kind": "event",
+  "title": "她问镜头里那个人是不是自己",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.hana.after_expression",
+  "payload": {
+    "id": "evt.hana.after_expression",
+    "title": "她问镜头里那个人是不是自己",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "hana"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表现课结束。她盯着监视器里的回放看了很久，问「这个人，是我吗？」",
+    "choices": [
+      {
+        "label": "是你。很好看。",
+        "hint": "信任 +3、压力 -2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -2
+          }
+        ],
+        "result": "「……真的？」她凑近了一点，又笑了。"
+      },
+      {
+        "label": "下一次会更好。",
+        "hint": "表现 +1、压力 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 1
+          }
+        ],
+        "result": "「嗯！那就再来一次──！」"
+      },
+      {
+        "label": "这张要不要存下来？",
+        "hint": "表现 +3、信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「要！」她马上说，「……可以让我自己留着吗？」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T13:10:00.000Z",
+  "updatedAt": "2026-11-01T11:24:37.808Z",
+  "reviewedAt": "2026-11-01T11:24:37.808Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T13:10:00.000Z",
+      "note": "羽那表现课后事件（202700601 她对\"被拍\"的自觉）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:24:37.808Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

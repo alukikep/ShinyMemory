@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.hana.after_dance",
+  "kind": "event",
+  "title": "她数拍子数到忘记呼吸",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.hana.after_dance",
+  "payload": {
+    "id": "evt.hana.after_dance",
+    "title": "她数拍子数到忘记呼吸",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "hana"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束，她扶着膝盖喘，说「原来跳舞是要呼吸的啊」。",
+    "choices": [
+      {
+        "label": "先坐下休息。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「坐着也会累呢──。」"
+      },
+      {
+        "label": "慢一点再来一遍。",
+        "hint": "舞蹈 +1、信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「慢一点的话，好像能行！」"
+      },
+      {
+        "label": "跟着我的节奏。",
+        "hint": "舞蹈 +3、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「嗯！……啊，真的跟上了──！」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T13:10:00.000Z",
+  "updatedAt": "2026-11-01T11:24:37.803Z",
+  "reviewedAt": "2026-11-01T11:24:37.803Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T13:10:00.000Z",
+      "note": "羽那舞蹈课后事件（102700503 从零开始）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:24:37.803Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

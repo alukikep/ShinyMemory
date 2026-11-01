@@ -1,0 +1,38 @@
+{
+  "id": "draft.hana.chat.dorm",
+  "kind": "topic",
+  "title": "聊天 · 宿舍",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hana.chat.dorm",
+  "payload": {
+    "id": "hana.chat.dorm",
+    "actorId": "hana",
+    "label": "宿舍",
+    "text": "「大家都叫我羽那哦。」「很亲切的──！」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T13:10:00.000Z",
+  "updatedAt": "2026-11-01T11:24:37.783Z",
+  "reviewedAt": "2026-11-01T11:24:37.783Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T13:10:00.000Z",
+      "note": "羽那日常话题（宿舍：尾音上扬、不设防）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:24:37.783Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

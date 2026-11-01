@@ -14,6 +14,8 @@ export const WALK_EDGES: MapEdgeDef[] = [
   { from: 'home', to: 'ekimae', minutes: 15 },
   // 公寓走廊：她住的那栋楼，从家走过去 10 分钟。
   { from: 'home', to: 'apartment', minutes: 10 },
+  // 游乐园：站前再坐一段车。
+  { from: 'ekimae', to: 'theme_park', minutes: 15 },
   { from: 'ekimae', to: 'office', minutes: 15 },
   { from: 'office', to: 'university_district', minutes: 15 },
   { from: 'ekimae', to: 'studio_district', minutes: 15 },

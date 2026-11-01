@@ -1,0 +1,38 @@
+{
+  "id": "draft.hana.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hana.chat.today",
+  "payload": {
+    "id": "hana.chat.today",
+    "actorId": "hana",
+    "label": "今天",
+    "text": "「今天也，很有精神哦──！」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T13:10:00.000Z",
+  "updatedAt": "2026-11-01T11:24:37.753Z",
+  "reviewedAt": "2026-11-01T11:24:37.753Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T13:10:00.000Z",
+      "note": "羽那日常话题（今天：尾音上扬、不设防）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:24:37.753Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

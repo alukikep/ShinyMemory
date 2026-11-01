@@ -6,6 +6,7 @@ import {
   reset,
   watchConsole,
 } from '../acceptance/helpers';
+import { PRODUCTION_PACK } from '../../src/core/productionPack';
 
 /**
  * 鈴木羽那 的招募链。
@@ -111,6 +112,43 @@ test('Hana: video, DM, arrival, dorm — gated on Luca', async ({ page }) => {
     roster.locator('.roster-card', { hasText: '鈴木羽那' }),
   ).toBeVisible();
   await page.getByRole('button', { name: '关闭偶像名册' }).click();
+
+  // ---- 卡面【Scene With You】五章 ----
+  await jumpTo(page, 33, 16 * 60, 'studio');
+  await pick(page, '收录结束了，工作人员想拍 off-shot');
+  expect((await getState(page)).flags['completed.hana.offshot']).toBe(true);
+
+  await jumpTo(page, 35, 14 * 60, 'office');
+  await pick(page, '游乐场的合作说明会');
+  expect((await getState(page)).flags['completed.hana.parkoffer']).toBe(true);
+
+  // 游乐园是这一轮新加的地点：两章都在这里
+  await jumpTo(page, 37, 9 * 60, 'theme_park');
+  await pick(page, '开园前的园区，她说要拍大头贴');
+  expect((await getState(page)).flags['completed.hana.purikura']).toBe(true);
+
+  await jumpTo(page, 38, 12 * 60, 'theme_park');
+  await pick(page, '可丽饼摊前，她要你也吃一口');
+  expect((await getState(page)).flags['completed.hana.crepe']).toBe(true);
+
+  await jumpTo(page, 40, 19 * 60, 'office');
+  await pick(page, '她烧得有点迷糊');
+  expect((await getState(page)).flags['completed.hana.fever']).toBe(true);
+
+  // ---- 专属行动与话题 ----
+  await jumpTo(page, 41, 15 * 60, 'practice_room');
+  await page.getByRole('button', { name: /鈴木羽那/ }).first().click();
+  await expect(
+    page.getByRole('button', { name: '陪她练拍照的姿势' }),
+  ).toBeVisible();
+
+  const topics = PRODUCTION_PACK.actors.find((actor) => actor.id === HANA)!.topics;
+  expect(topics).toHaveLength(8);
+
+  const events = PRODUCTION_PACK.events.filter((event) =>
+    event.id.startsWith('evt.hana.'),
+  );
+  expect(events).toHaveLength(3);
 
   expect(errors).toEqual([]);
 });

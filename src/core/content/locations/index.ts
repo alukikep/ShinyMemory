@@ -19,6 +19,7 @@ import universityDistrict from './universityDistrict.js';
 import university from './university.js';
 import hall from './hall.js';
 import apartment from './apartment.js';
+import themePark from './themePark.js';
 
 /**
  * 地点分两层：
@@ -30,6 +31,7 @@ export const LOCATIONS: LocationDef[] = [
   officeRoof,
   home,
   apartment,
+  themePark,
   universityDistrict,
   university,
   ekimae,

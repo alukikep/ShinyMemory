@@ -1,0 +1,317 @@
+{
+  "id": "draft.dialogue.hana.parkoffer",
+  "kind": "dialogue",
+  "title": "游乐场的合作说明会",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.hana.parkoffer",
+  "payload": {
+    "id": "dialogue.hana.parkoffer",
+    "idolId": "hana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "hana",
+        "text": "「ニュー・はなタウン」？",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "嗯。说是名字有缘，想请羽那当主题公园的形象角色，做联动。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "hana",
+        "text": "名字──！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "hana",
+        "text": "是「はなタウン」和「羽那」对吧？",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "嗯！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "hana",
+        "text": "可是，形象角色要做什么呢？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "说是拍海报和广告，不用太用力。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "hana",
+        "text": "这样啊──",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "顺便问一句，羽那去过「ニュー・はなタウン」吗──",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "hana",
+        "text": "没有哦？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "也是啊。毕竟才刚搬过来……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "……不过离拍摄也没多少时间了。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "园区白天才开，按行程算，去一趟很难啊……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "text": "说明会结束前，工作人员问还有没有别的问题。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "hana",
+        "text": "是。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "不过──其实铃木还没去过「ニュー・はなタウン」。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "可是在拍主视觉之前去一趟，行程上又排不开……",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "作为形象角色，这样是不是有点不合适……",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "text": "对方想了想，说：那就在开园前来，虽然时间早一点。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "text": "游乐设施不能开动，但园内的气氛还是能感受一下的。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "hana",
+        "text": "诶……！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "这、这也太麻烦您了……！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "text": "对方说，铃木是重要的合作对象，这点对应是应该的。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "text": "而且——要是平常的日子让她来，园区会乱成一团的。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "哈哈，不不不……！",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "text": "对方说，开园前的话不用变装，也不用在意别人的目光。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "hana",
+        "text": "…………",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "既然人家都这么说了，那就去吧……？",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "hana",
+        "text": "呵呵，嗯──！",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "没想到真的能在开园前进去啊……！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "hana",
+        "text": "是呀──",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "hana",
+        "text": "……那个，那天是我和制作人一起去「はなタウン」对吧？",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "嗯，是这样……怎么了？",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "hana",
+        "text": "啊哈，没有。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "hana",
+        "text": "我只是觉得，那会非常期待啊──！",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "想去吗？",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "hana",
+        "text": "嗯！",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "hana",
+        "text": "开园前的主题公园，还是第一次──！",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "producer",
+        "text": "嗯。这绝对是羽那作为偶像努力才有的经历。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "hana",
+        "text": "诶──，是这样啊。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "hana",
+        "text": "那我就得好好享受「はなタウン」了──！",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "producer",
+        "text": "哈哈，嗯……！不过说不定也不用那么努力，一起享受吧。",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "hana",
+        "text": "嗯──！",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "开园前的主题公园啊……总觉得有点紧张。",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "hana",
+        "text": "啊哈，是啊。",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "hana",
+        "text": "──没有客人的时候，也就是说那天只有制作人和我两个人？",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "producer",
+        "text": "嗯，会是这样吧。",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "hana",
+        "text": "这样啊──好厉害──！",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "hana",
+        "text": "呵呵，总觉得，越来越期待了──！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T13:00:00.000Z",
+  "updatedAt": "2026-11-01T11:24:25.365Z",
+  "reviewedAt": "2026-11-01T11:24:25.365Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T13:00:00.000Z",
+      "note": "对照 202700602（名字谐音、没去过、开园前入场的提议、「ふたりきり」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T11:24:25.365Z"
+    }
+  ]
+}

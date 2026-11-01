@@ -2,7 +2,7 @@
   "id": "draft.dialogue.fuyuko.solo",
   "kind": "dialogue",
   "title": "ソロステージ结束后的后台",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.fuyuko.solo",
   "payload": {
@@ -103,12 +103,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:00:00.000Z",
-  "updatedAt": "2026-11-02T13:00:00.000Z",
+  "updatedAt": "2026-11-01T04:44:33.103Z",
+  "reviewedAt": "2026-11-01T04:44:33.103Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T13:00:00.000Z",
       "note": "对照 201800311（ソロステージ后情绪很高、追问评价）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:33.103Z"
     }
   ]
 }

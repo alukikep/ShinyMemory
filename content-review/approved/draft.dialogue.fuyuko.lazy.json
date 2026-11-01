@@ -2,7 +2,7 @@
   "id": "draft.dialogue.fuyuko.lazy",
   "kind": "dialogue",
   "title": "她瘫在练习室的地板上",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.fuyuko.lazy",
   "payload": {
@@ -162,12 +162,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:00:00.000Z",
-  "updatedAt": "2026-11-02T13:00:00.000Z",
+  "updatedAt": "2026-11-01T04:44:32.939Z",
+  "reviewedAt": "2026-11-01T04:44:32.939Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T13:00:00.000Z",
       "note": "对照 201800301（上课前赖着、抱怨、被指出细节，三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:32.939Z"
     }
   ]
 }

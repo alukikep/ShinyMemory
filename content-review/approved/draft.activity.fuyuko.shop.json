@@ -2,7 +2,7 @@
   "id": "draft.activity.fuyuko.shop",
   "kind": "activity",
   "title": "陪她逛周边店",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.fuyuko.shop",
   "payload": {
@@ -52,12 +52,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:00:00.000Z",
-  "updatedAt": "2026-11-02T13:00:00.000Z",
+  "updatedAt": "2026-11-01T04:44:43.365Z",
+  "reviewedAt": "2026-11-01T04:44:43.365Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T13:00:00.000Z",
       "note": "冬優子专属行动（周边店，剧本里的偶像宅设定）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:43.365Z"
     }
   ]
 }

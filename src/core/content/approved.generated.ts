@@ -275,6 +275,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.fuyuko.shop",
+  "name": "陪她逛周边店",
+  "description": "她在货架前站定，眼睛发光，然后立刻装作没那么在意。结账时她说\"这算取材\"，你也就不拆穿。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "fuyuko"
+  ],
+  "locations": [
+    "shopping_street"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 900,
+      "toMinute": 1140
+    }
+  ],
+  "cost": {
+    "stamina": 4
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -5
+    }
+  ],
+  "resultTexts": [
+    "她抽到了想要的种类，憋了两秒才笑出来。",
+    "她说\"这个给你\"，把重复的那一个塞进你手里。",
+    "出门时她已经把徽章别在包上，还假装是随手别的。"
+  ]
+},
+{
   "id": "activity.hiori.review",
   "name": "听她复盘",
   "description": "收工之后，她把自己今天做错的地方一条条说出来。",
@@ -2273,6 +2318,222 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「啊，谢谢……您总是很周到呢。」"
+    }
+  ]
+},
+{
+  "id": "evt.fuyuko.after_dance",
+  "title": "她先看镜子里的自己",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "fuyuko"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她没有马上停下来，先对着镜子把最后一拍定住。",
+  "choices": [
+    {
+      "label": "手指伸直了。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……看出来了？那就好。」"
+    },
+    {
+      "label": "再一遍。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好。这次连指尖都要对。」"
+    },
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……行吧。明天再说。」"
+    }
+  ]
+},
+{
+  "id": "evt.fuyuko.after_expression",
+  "title": "营业脸收不回来",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "fuyuko"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表现课结束了。她还保持着刚才那个笑，过了几秒才垮下来。",
+  "choices": [
+    {
+      "label": "笑了很久吧。",
+      "hint": "信任 +3、压力 -3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「……脸都僵了。别看我。」"
+    },
+    {
+      "label": "那个笑很好。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……那是练出来的，不是真的。」"
+    },
+    {
+      "label": "不用一直笑。",
+      "hint": "表现 +1、压力 -4",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -4
+        }
+      ],
+      "result": "「……这儿又没别人。算了，谢谢。」"
+    }
+  ]
+},
+{
+  "id": "evt.fuyuko.after_vocal",
+  "title": "唱完立刻收声",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "fuyuko"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她唱完立刻收声，先看看门口有没有人。",
+  "choices": [
+    {
+      "label": "刚才很好。",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "「……真的？那，还行吧。」"
+    },
+    {
+      "label": "再唱一遍。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「哈……好吧，再来一遍。」"
+    },
+    {
+      "label": "为什么看门口？",
+      "hint": "信任 +3、压力 -2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -2
+        }
+      ],
+      "result": "「……习惯了。在外面要笑得好看。」"
     }
   ]
 },
@@ -12729,6 +12990,610 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "9",
       "speakerId": "chiyuki",
       "text": "哎呀……！谢谢您。请多指教呢，制作人先生。"
+    }
+  }
+},
+{
+  "id": "dialogue.fuyuko.badge",
+  "idolId": "fuyuko",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "fuyuko",
+      "text": "哇～……已经排了这么多人吗。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "人真多啊……你打算排这条队？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "fuyuko",
+      "text": "当然！就是为了这个才带你来的嘛。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "fuyuko",
+      "text": "工作也好好地提前赶完了呢。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "（确实……刚才的工作，她比平时更有干劲。）",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "你到底为了什么这么……嗯？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "fuyuko",
+      "text": "看这个画面。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "呃……『「ミラクル♡ミラージュ」徽章发售通知』？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "fuyuko",
+      "text": "对！这个超可爱的店铺限定随机徽章，今天发售！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "（原来是在说这个。工作那么拼，是为了这个啊……）",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "（她说这话时的表情，比拍摄时生动多了。）",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "fuyuko",
+      "text": "……不是，别一直看着我啊。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "（她别过脸去，但排队的脚步没停。）",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "fuyuko",
+      "text": "……あんた也帮我看看，哪个种类最可爱。"
+    }
+  }
+},
+{
+  "id": "dialogue.fuyuko.first",
+  "idolId": "fuyuko",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "（唔……到处看了一圈，也没有特别合适的……今天先回去吧……嗯？）",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（那个孩子……看什么东西看得那么认真啊。）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "（侧脸就能看出来，很直的眼神……看着就会被吸引。）",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "fuyuko",
+      "text": "……果然，这个设计好可爱……",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "那个，不好意思。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "fuyuko",
+      "text": "诶？……啊，是。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "你在看那张海报？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "fuyuko",
+      "text": "是的……『ミラクル♡ミラージュ』的……我很喜欢。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "（说起喜欢的东西时，表情一下子软下来了。）",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "其实我是做偶像制作人的。如果愿意的话，要不要试试当偶像？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "fuyuko",
+      "text": "……诶？我，当偶像……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "嗯。刚才那个表情，我觉得很棒。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "fuyuko",
+      "text": "……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "fuyuko",
+      "text": "那就，请多指教。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "诶？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "fuyuko",
+      "text": "ふゆ，会努力的。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "（她答应得太快了……而且刚才那一瞬，表情变了。）",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "fuyuko",
+      "text": "那个……有什么问题吗？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "啊，不……没什么。今后一起加油吧！"
+    }
+  }
+},
+{
+  "id": "dialogue.fuyuko.lazy",
+  "idolId": "fuyuko",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "fuyuko",
+      "text": "哈～～……好累～……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "fuyuko",
+      "text": "明明是这么好的天气，之后却要一直上课……好麻烦啊……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "冬優子……现在这样懒着可以，但上课时要好好做啊。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "fuyuko",
+      "text": "烦死了……麻烦就是麻烦嘛。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "fuyuko",
+      "text": "而且，偶像的课为什么那么严啊。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "fuyuko",
+      "text": "ふゆ明明照着节奏跳对了。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "fuyuko",
+      "text": "『手指没伸开』『姿势不好』，连细节都要说……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "不是跳对了就行。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "fuyuko",
+      "text": "……哈？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "动作对了，但看起来不对。差别就在那些细节里。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "fuyuko",
+      "text": "……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "fuyuko",
+      "text": "（她没反驳，只是别过脸去。）",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "fuyuko",
+      "text": "……知道了啦。",
+      "choices": [
+        {
+          "label": "起来吧。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "刚才那段，再来一次。",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "先说说你在气什么。",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "fuyuko",
+      "text": "……真是的，催什么催。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "fuyuko",
+      "text": "好啦，起来了。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "producer",
+      "text": "（嘴上抱怨，动作倒是不慢。）"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "fuyuko",
+      "text": "现在？……哈，好吧。",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "fuyuko",
+      "text": "那我跳一遍，你看着。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "producer",
+      "text": "（这次她没有偷懒。）"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "fuyuko",
+      "text": "……没在气什么。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "fuyuko",
+      "text": "只是，被说\"看起来不对\"，有点不甘心。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "producer",
+      "text": "那就把\"看起来\"改对。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "fuyuko",
+      "text": "……知道了。"
+    }
+  }
+},
+{
+  "id": "dialogue.fuyuko.second",
+  "idolId": "fuyuko",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "fuyuko",
+      "text": "哇，每张照片都好棒……简直不像ふゆ！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "fuyuko",
+      "text": "staff 先生，谢谢您♪",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "fuyuko",
+      "text": "诶嘿嘿，没有那种事啦。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "（嗯，冬優子在现场很受 staff 喜欢啊。）",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "（之前也被夸\"可爱的好孩子\"\"总是笑眯眯的\"……）",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "（……不过，她的优点应该不只是这些。）",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "fuyuko",
+      "text": "──你真的觉得，ふゆ能当偶像吗？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "（冬優子最大的魅力是……）",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "fuyuko",
+      "text": "制作人先生……？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "啊，嗯，我在想点事。冬優子，招呼都打完了？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "fuyuko",
+      "text": "真是的，不是说了要叫\"ふゆ\"吗。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "fuyuko",
+      "text": "不过，工作上的支持总是谢谢您♡",
+      "choices": [
+        {
+          "label": "你的笑容很讨人喜欢。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "刚才那句\"不像ふゆ\"是什么意思？",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "接下来还有工作，先休息。",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "fuyuko",
+      "text": "诶嘿嘿，那是ふゆ的卖点嘛♡",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "（笑得很好看。不过……）",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "fuyuko",
+      "text": "……怎么了，那种表情。"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "fuyuko",
+      "text": "啊……那个啊。",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "fuyuko",
+      "text": "照片里的ふゆ，太完美了嘛。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "fuyuko",
+      "text": "太完美的东西，看起来就不像真的，不是吗？"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "fuyuko",
+      "text": "好——那就休息一下吧。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "fuyuko",
+      "text": "……あんた，还挺会看时机的嘛。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "producer",
+      "text": "（刚才那句，语气完全不一样了。）"
+    }
+  }
+},
+{
+  "id": "dialogue.fuyuko.solo",
+  "idolId": "fuyuko",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "fuyuko",
+      "text": "～♪",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "ソロステージ辛苦了。心情很好啊。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "fuyuko",
+      "text": "因为今天的ふゆ，状态绝佳！表演超棒的！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "fuyuko",
+      "text": "呐，怎么样？ふゆ的舞台！",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "当然，很好。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "fuyuko",
+      "text": "真的？比今天其他偶像的谁都好！？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "嗯，毫无疑问，冬優子是最好的。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "fuyuko",
+      "text": "果然！？你也这么想！？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "fuyuko",
+      "text": "ふゆ是……第一……",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "（她笑得很真。这个笑容和现场那个不一样。）",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "fuyuko",
+      "text": "啊……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "fuyuko",
+      "text": "……刚才那个，别跟别人说啊。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "哪个？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "fuyuko",
+      "text": "就是，\"ふゆ是第一\"这种话，自己说得很起劲的这件事。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "（她别过脸去，耳朵是红的。）"
     }
   }
 },
@@ -28516,6 +29381,104 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "chiyuki",
   "label": "杂货",
   "text": "「杂货……我喜欢得不行～」「看到可爱的小东西，就想带回家……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "fuyuko.chat.asahi",
+  "actorId": "fuyuko",
+  "label": "あさひ",
+  "text": "「あさひ？那个中学生。」「……很厉害，是真的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "fuyuko.chat.cute",
+  "actorId": "fuyuko",
+  "label": "可爱的东西",
+  "text": "「可爱的东西，看着就有精神了。」「ふゆ的房间里全都是。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "fuyuko.chat.home",
+  "actorId": "fuyuko",
+  "label": "家",
+  "text": "「家很远哦。」「回去要花不少时间。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "fuyuko.chat.leader",
+  "actorId": "fuyuko",
+  "label": "队长",
+  "text": "「队长？ふゆ是队长哦。」「……虽然有点麻烦。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "fuyuko.chat.mira",
+  "actorId": "fuyuko",
+  "label": "ミラ♡ミラ",
+  "text": "「ミラ♡ミラ，超可爱的吧？」「……你也要看？可以啊。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "fuyuko.chat.school",
+  "actorId": "fuyuko",
+  "label": "专门学校",
+  "text": "「专门学校的课，早上就开始了。」「……早上很困。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "fuyuko.chat.work",
+  "actorId": "fuyuko",
+  "label": "营业",
+  "text": "「在外面，ふゆ是可爱的好孩子。」「……那也算真话。」",
   "cooldownMinutes": 1440,
   "effects": [
     {

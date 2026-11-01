@@ -2,7 +2,7 @@
   "id": "draft.dialogue.fuyuko.badge",
   "kind": "dialogue",
   "title": "商店街排起了长队",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.fuyuko.badge",
   "payload": {
@@ -97,7 +97,8 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:00:00.000Z",
-  "updatedAt": "2026-11-02T13:30:00.000Z",
+  "updatedAt": "2026-11-01T04:44:33.021Z",
+  "reviewedAt": "2026-11-01T04:44:33.021Z",
   "history": [
     {
       "status": "review",
@@ -108,6 +109,10 @@
       "status": "review",
       "at": "2026-11-02T13:30:00.000Z",
       "note": "原作 201800302 没有选项，改成线性；不再自造分支"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:33.021Z"
     }
   ]
 }

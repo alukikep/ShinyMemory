@@ -2,7 +2,7 @@
   "id": "draft.evt.fuyuko.after_expression",
   "kind": "event",
   "title": "营业脸收不回来",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.fuyuko.after_expression",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:20:00.000Z",
-  "updatedAt": "2026-11-02T13:20:00.000Z",
+  "updatedAt": "2026-11-01T04:44:36.711Z",
+  "reviewedAt": "2026-11-01T04:44:36.711Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T13:20:00.000Z",
       "note": "冬優子表演课后事件（两副面孔）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:36.711Z"
     }
   ]
 }

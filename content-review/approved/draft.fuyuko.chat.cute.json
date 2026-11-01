@@ -2,7 +2,7 @@
   "id": "draft.fuyuko.chat.cute",
   "kind": "topic",
   "title": "聊天 · 可爱的东西",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.fuyuko.chat.cute",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:11:00.000Z",
-  "updatedAt": "2026-11-02T13:11:00.000Z",
+  "updatedAt": "2026-11-01T04:44:41.978Z",
+  "reviewedAt": "2026-11-01T04:44:41.978Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T13:11:00.000Z",
       "note": "冬優子日常话题"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:41.978Z"
     }
   ]
 }

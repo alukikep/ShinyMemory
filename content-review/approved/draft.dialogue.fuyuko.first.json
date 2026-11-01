@@ -2,7 +2,7 @@
   "id": "draft.dialogue.fuyuko.first",
   "kind": "dialogue",
   "title": "站前有人盯着海报",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.fuyuko.first",
   "payload": {
@@ -127,12 +127,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:00:00.000Z",
-  "updatedAt": "2026-11-02T13:00:00.000Z",
+  "updatedAt": "2026-11-01T04:44:28.318Z",
+  "reviewedAt": "2026-11-01T04:44:28.318Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T13:00:00.000Z",
       "note": "对照 101800101（海报、营业式自我介绍、一瞬间的表情）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:28.318Z"
     }
   ]
 }

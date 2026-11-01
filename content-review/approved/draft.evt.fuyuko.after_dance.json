@@ -2,7 +2,7 @@
   "id": "draft.evt.fuyuko.after_dance",
   "kind": "event",
   "title": "她先看镜子里的自己",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.fuyuko.after_dance",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:20:00.000Z",
-  "updatedAt": "2026-11-02T13:20:00.000Z",
+  "updatedAt": "2026-11-01T04:44:35.488Z",
+  "reviewedAt": "2026-11-01T04:44:35.488Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T13:20:00.000Z",
       "note": "冬優子舞蹈课后事件（她嘴上嫌麻烦、实际最较真）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:35.488Z"
     }
   ]
 }

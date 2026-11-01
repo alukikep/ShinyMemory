@@ -2,7 +2,7 @@
   "id": "draft.fuyuko.chat.asahi",
   "kind": "topic",
   "title": "聊天 · あさひ",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.fuyuko.chat.asahi",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:16:00.000Z",
-  "updatedAt": "2026-11-02T13:16:00.000Z",
+  "updatedAt": "2026-11-01T04:44:37.996Z",
+  "reviewedAt": "2026-11-01T04:44:37.996Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T13:16:00.000Z",
       "note": "冬優子日常话题（Straylight 成员）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:37.996Z"
     }
   ]
 }

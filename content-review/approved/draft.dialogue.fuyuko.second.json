@@ -2,7 +2,7 @@
   "id": "draft.dialogue.fuyuko.second",
   "kind": "dialogue",
   "title": "她第一次拍摄，笑得很标准",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.fuyuko.second",
   "payload": {
@@ -150,12 +150,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:00:00.000Z",
-  "updatedAt": "2026-11-02T13:00:00.000Z",
+  "updatedAt": "2026-11-01T04:44:28.413Z",
+  "reviewedAt": "2026-11-01T04:44:28.413Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T13:00:00.000Z",
       "note": "对照 101800102（三分支：对 staff 笑脸 / 对制作人毒舌）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:28.413Z"
     }
   ]
 }

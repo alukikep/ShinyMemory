@@ -2,7 +2,7 @@
   "id": "draft.fuyuko.chat.home",
   "kind": "topic",
   "title": "聊天 · 家",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.fuyuko.chat.home",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T13:15:00.000Z",
-  "updatedAt": "2026-11-02T13:15:00.000Z",
+  "updatedAt": "2026-11-01T04:44:38.600Z",
+  "reviewedAt": "2026-11-01T04:44:38.600Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T13:15:00.000Z",
       "note": "冬優子日常话题（家在远处）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T04:44:38.600Z"
     }
   ]
 }

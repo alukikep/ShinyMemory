@@ -58,6 +58,19 @@ function formatMinute(minute: unknown): string {
   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 }
 
+/** 链步骤的时间窗：审「一段对话跨没跨天」时用。 */
+function formatStepWindow(value: unknown): string {
+  if (!value || typeof value !== 'object') return '';
+  const record = value as { fromMinute?: unknown; toMinute?: unknown };
+  if (
+    typeof record.fromMinute !== 'number' ||
+    typeof record.toMinute !== 'number'
+  ) {
+    return '';
+  }
+  return `　${formatMinute(record.fromMinute)}–${formatMinute(record.toMinute)}`;
+}
+
 function JsonBlock({ label, value }: { label: string; value: unknown }) {
   return (
     <div className="review-json-block">
@@ -500,6 +513,7 @@ function StoryPreview({ payload }: { payload: Record<string, unknown> }) {
               <p>
                 {String(record.locationId ?? '—')} ·{' '}
                 {String(record.dialogueId ?? '—')}
+                {formatStepWindow(record.timeWindow)}
               </p>
               {record.endLocationId ? (
                 <p>结束时前往：{String(record.endLocationId)}</p>

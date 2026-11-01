@@ -302,14 +302,18 @@ docs/content/<id>/character.md
 [ ] 角色卡有 9 节，事实逐条 13 位行 id，guard 绿
 [ ] content:new-idol 已登记：idol / actor / starting / 两个 index
 [ ] 日程填了，且包含练习室（训练课）与事件要触发的地点
-[ ] 招募链 2 步，lockScope: 'none'，对话已批
+[ ] 招募链 2–3 步，lockScope: 'none'，对话已批
+[ ] 招募链每一步只有一场戏：没有在一段对话里跨天或换地点（playbook §4.6 三问）
 [ ] 专属行动 ≥1，落在日程地点
 [ ] 话题 ≥6，id 前缀 <id>.chat.
 [ ] 训练后事件 3，event-unreachable 不报
-[ ] 首张卡：chapterSources 登记 + 一卡一链 + 每章 1 段对话
+[ ] 首张卡：chapterSources 登记 + 一卡一链 + 每章 1 段对话（一章 = 一场戏）
 [ ] content:drafts 绿（交付前自检）
 [ ] build 绿（含 coverage 7 项全 ✓）
 [ ] 名册 / 日程表能看到她（真人点过）
 [ ] 旧档：删掉她的存档 → 刷新 → 招募 → 名册可见
 [ ] E2E：动作出现 + 状态写入 两半都断言
 ```
+
+> 招募链就是 2 步时不需要额外的分段检查；**一旦原文里出现"第二天 / 几天后"，
+> 那一段就必须单独成为一步**（果穗的招募链就是这么从 2 步变 3 步的）。

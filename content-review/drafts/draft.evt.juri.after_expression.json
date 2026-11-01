@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.juri.after_expression",
+  "kind": "event",
+  "title": "笑得像被逼的",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.juri.after_expression",
+  "payload": {
+    "id": "evt.juri.after_expression",
+    "title": "笑得像被逼的",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "juri"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。她被要求笑一个，笑完自己先低下了头。",
+    "choices": [
+      {
+        "label": "不笑也可以。",
+        "hint": "信任 +3、表现 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          }
+        ],
+        "result": "「……你这么说，我反而想笑出来了。」"
+      },
+      {
+        "label": "再试一次。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "第二次她笑得小一点，反倒像真的。"
+      },
+      {
+        "label": "休息一下。",
+        "hint": "压力 -4",
+        "effects": [
+          {
+            "delta": -4,
+            "kind": "sharedStat",
+            "stat": "stress"
+          }
+        ],
+        "result": "「……被看出来了啊。可恶。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:40:00.000Z",
+  "updatedAt": "2026-11-02T04:40:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T04:40:00.000Z",
+      "note": "樹里表演课后事件（1011001020050 那种笑她做不出来）"
+    }
+  ]
+}

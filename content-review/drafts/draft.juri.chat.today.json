@@ -1,0 +1,32 @@
+{
+  "id": "draft.juri.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.juri.chat.today",
+  "payload": {
+    "id": "juri.chat.today",
+    "actorId": "juri",
+    "label": "今天",
+    "text": "「今天？今天早上跑了……啊，没什么，就是晨跑而已。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:31:00.000Z",
+  "updatedAt": "2026-11-02T04:31:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T04:31:00.000Z",
+      "note": "樹里日常话题（API 兴趣：运动）"
+    }
+  ]
+}

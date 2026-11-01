@@ -1,0 +1,272 @@
+{
+  "id": "draft.dialogue.juri.shop",
+  "kind": "dialogue",
+  "title": "她在服屋前转来转去",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.juri.shop",
+  "payload": {
+    "id": "dialogue.juri.shop",
+    "idolId": "juri",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（好，回事务所处理文件吧……）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（……嗯？那里的，不是樹里吗？）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "juri",
+        "text": "……",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "（在服装店前转来转去……在干什么呢。）",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "樹里，怎么了？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "juri",
+        "text": "哇啊！？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "juri",
+        "text": "……是你啊。别突然出声啊！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "抱、抱歉。没想到你会吓成这样。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "话说你在看什么？……这件可爱的衣服，那么在意吗？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "juri",
+        "text": "……不是那样。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "既然这样，进去试穿一下不就好了。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "juri",
+        "text": "所、所以说，不是那样！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "juri",
+        "text": "我就是……只是路过而已……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "（唔，真不坦率啊。这样的话……）",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "樹里，听我说。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "juri",
+        "text": "干、干什么啊。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "樹里试穿各种衣服、引出各种表情，也能连接到作为偶像的魅力。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "而且引出魅力，也是制作人的职责。所以，你跟我来。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "juri",
+        "text": "哇，等一下！等等啊！",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "juri",
+        "text": "……真是的，没想到你是这么强硬的男的。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "juri",
+        "text": "算了，既然进来了就没办法，我选就是了。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "（好，嘴上那样说，其实挺开心的吧。）",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "juri",
+        "text": "……哦，还挺多的。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "那，什么样的衣服好？……这里的怎么样？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "juri",
+        "text": "那种露肩的，凉飕飕的怎么穿得了！",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "唔，这样啊。……那，那边那件怎么样？没露肩，看起来也适合樹里。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "juri",
+        "text": "哈、哈啊！？那种飘飘的衣服！？",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "juri",
+        "text": "开玩笑也适可而止吧！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "我觉得不错啊。不喜欢那件的话，下次那边……",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "juri",
+        "text": "够、够了！不是那样！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "juri",
+        "text": "那个……我在找的，不是我的衣服！",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "诶……？",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "juri",
+        "text": "……前阵子，果穂说想穿穿看大人一点的衣服。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "juri",
+        "text": "所以我在找适合果穂的、可爱但稍微大人一点的衣服。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "什么啊，原来是这么回事。樹里真为伙伴着想啊。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "juri",
+        "text": "哼。别管我……",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "总之，情况我知道了。一起找果穂的衣服吧。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "juri",
+        "text": "嗯，你肯帮忙就帮大忙了。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "producer",
+        "text": "不过樹里也想要什么的话，不用客气说啊。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "juri",
+        "text": "说了不要了！",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "juri",
+        "text": "……不过，算了，如果我想穿可爱衣服的话……",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "juri",
+        "text": "我自己也不知道什么可爱衣服适合我，让你来选也行，吧。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:10:00.000Z",
+  "updatedAt": "2026-11-02T04:10:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T04:10:00.000Z", "note": "对照 201100301 改编" }
+  ]
+}

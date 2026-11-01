@@ -1,0 +1,32 @@
+{
+  "id": "draft.juri.chat.praise",
+  "kind": "topic",
+  "title": "聊天 · 被夸",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.juri.chat.praise",
+  "payload": {
+    "id": "juri.chat.praise",
+    "actorId": "juri",
+    "label": "被夸",
+    "text": "「夸我？……你、你别突然说这种话！我又不会因此高兴！」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:37:00.000Z",
+  "updatedAt": "2026-11-02T04:37:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T04:37:00.000Z",
+      "note": "樹里日常话题（1011001010070 / 1011001020160）"
+    }
+  ]
+}

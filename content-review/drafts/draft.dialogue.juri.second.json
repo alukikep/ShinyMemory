@@ -1,0 +1,352 @@
+{
+  "id": "draft.dialogue.juri.second",
+  "kind": "dialogue",
+  "title": "她在等宣材写真的拍摄",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.juri.second",
+  "payload": {
+    "id": "dialogue.juri.second",
+    "idolId": "juri",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "juri",
+        "text": "唉……",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "嗯？怎么了樹里？有什么在意的吗？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "juri",
+        "text": "……倒是你，就不在意吗？我在这种地方这件事。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "在这种地方……也没什么在意的啊。今天要拍宣材写真，我不是说明过了吗？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "juri",
+        "text": "不是说那个。看到那个，你也什么都不想吗？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "那个……哦，你在看别的偶像拍摄啊。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "不过，为什么那么在意？宣材写真，把平时的样子拍出来就好。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "juri",
+        "text": "哈？平时的样子……你在说什么啊。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "juri",
+        "text": "你看见那些偶像的笑脸了吗？摆着可爱的姿势，笑眯眯地……",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "juri",
+        "text": "那种样子，你觉得我做得出来？平时的我里面，可没有那种笑。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "（这样啊……樹里是看着周围的偶像，担心自己做不到同样的事。）",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "（那么，我该对樹里说的话是……）",
+        "choices": [
+          { "label": "那就不笑，怎么样？", "nextNodeId": "20" },
+          { "label": "我觉得樹里的笑容也很可爱。", "nextNodeId": "40" },
+          { "label": "拍帅气的决胜姿势吧。", "nextNodeId": "60" }
+        ]
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "juri",
+        "text": "哈？不笑……那就不算宣材了吧。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "没那种事。就算是宣材写真，也不必硬挤笑容。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "那是用来介绍樹里是怎样一个女孩子的，拍出平时的樹里就好。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "juri",
+        "text": "哼……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "juri",
+        "text": "……既然你说那样行，我也轻松，就那样吧。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "juri",
+        "text": "不过，那样真的没问题吗？偶像不是该多露笑脸的吗？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "那要看是哪个偶像。有靠笑容的可爱当魅力的偶像——",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "像樹里这样，靠酷酷的表情吸引人的偶像，肯定也有很多客人会喜欢。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "juri",
+        "text": "哈啊……！？什、什么啊，说什么魅力，你说着不害羞吗？",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "嗯？是啊。作为制作人，考虑自己带的偶像的魅力是当然的吧。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "juri",
+        "text": "这样啊……算了，随便吧。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "juri",
+        "text": "既然这样，我就按自己喜欢的来，之后可别抱怨。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "（哦？樹里这个表情，比刚才……）",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "juri",
+        "text": "那，我去了，制作人。"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "juri",
+        "text": "什……！",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "juri",
+        "text": "……笨、笨蛋！别开这种玩笑！",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "juri",
+        "text": "我的笑容……可爱……怎、怎么可能啊……！",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "juri",
+        "text": "话、话说回来，你根本没见过我笑吧！",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "嗯，确实是这样。实际上没见过。",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "juri",
+        "text": "看、看吧！果然是随口说的吧。",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "juri",
+        "text": "真是的……耍我……",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "producer",
+        "text": "不过，不用看也知道。平时的樹里就很有魅力，笑起来一定很可爱。",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "juri",
+        "text": "你你你……你、你这家伙！别尽说些好听的话！",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "producer",
+        "text": "别那么上火。我只是把想到的说出来。",
+        "nextNodeId": "50"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "juri",
+        "text": "……这、这家伙。",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "juri",
+        "text": "……喂，你刚才不是随口说的吧？",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "producer",
+        "text": "随口？",
+        "nextNodeId": "53"
+      },
+      "53": {
+        "id": "53",
+        "speakerId": "juri",
+        "text": "……唉。算了。笑着拍照就行了吧？",
+        "nextNodeId": "54"
+      },
+      "54": {
+        "id": "54",
+        "speakerId": "producer",
+        "text": "樹里……！不过，可以吗？",
+        "nextNodeId": "55"
+      },
+      "55": {
+        "id": "55",
+        "speakerId": "juri",
+        "text": "算是吧。……虽然不像我，但既然决定当偶像了。",
+        "nextNodeId": "56"
+      },
+      "56": {
+        "id": "56",
+        "speakerId": "juri",
+        "text": "一旦决定了，我就会做到。",
+        "nextNodeId": "57"
+      },
+      "57": {
+        "id": "57",
+        "speakerId": "producer",
+        "text": "好，就是这股劲！期待你的好笑容！"
+      },
+      "60": {
+        "id": "60",
+        "speakerId": "juri",
+        "text": "帅气？……不是可爱，是帅气？",
+        "nextNodeId": "61"
+      },
+      "61": {
+        "id": "61",
+        "speakerId": "producer",
+        "text": "樹里的话，比起可爱，帅气的姿势更适合。怎么样？",
+        "nextNodeId": "62"
+      },
+      "62": {
+        "id": "62",
+        "speakerId": "juri",
+        "text": "……嗯，也是。我自己也觉得那样更适合我。",
+        "nextNodeId": "63"
+      },
+      "63": {
+        "id": "63",
+        "speakerId": "juri",
+        "text": "可是，别的偶像都是笑着拍的。帅气什么的，不像偶像吧？",
+        "nextNodeId": "64"
+      },
+      "64": {
+        "id": "64",
+        "speakerId": "producer",
+        "text": "没那种事。樹里用樹里的方式当偶像就好。",
+        "nextNodeId": "65"
+      },
+      "65": {
+        "id": "65",
+        "speakerId": "producer",
+        "text": "可爱的偶像也许会有抵触，但帅气的偶像，不是可以以它为目标吗？",
+        "nextNodeId": "66"
+      },
+      "66": {
+        "id": "66",
+        "speakerId": "juri",
+        "text": "帅气的偶像……吗。偶像也有各种各样的方向啊。",
+        "nextNodeId": "67"
+      },
+      "67": {
+        "id": "67",
+        "speakerId": "juri",
+        "text": "……好。差不多该我上了，我去了，制作人。",
+        "nextNodeId": "68"
+      },
+      "68": {
+        "id": "68",
+        "speakerId": "producer",
+        "text": "哦，想好要拍什么样的照片了吗？",
+        "nextNodeId": "69"
+      },
+      "69": {
+        "id": "69",
+        "speakerId": "juri",
+        "text": "嗯？……算是吧。",
+        "nextNodeId": "70"
+      },
+      "70": {
+        "id": "70",
+        "speakerId": "juri",
+        "text": "能拍到什么程度不知道，不过我会用现在的我能做到的最帅的姿势去定胜负。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:05:00.000Z",
+  "updatedAt": "2026-11-02T04:05:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T04:05:00.000Z", "note": "对照 101100102 改编，保留三个选项" }
+  ]
+}

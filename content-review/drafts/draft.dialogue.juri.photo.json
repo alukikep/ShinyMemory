@@ -1,0 +1,242 @@
+{
+  "id": "draft.dialogue.juri.photo",
+  "kind": "dialogue",
+  "title": "她把旧照片摊在桌上",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.juri.photo",
+  "payload": {
+    "id": "dialogue.juri.photo",
+    "idolId": "juri",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "juri",
+        "text": "……哇啊。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "嗯？怎么了樹里？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "juri",
+        "text": "等、……别突然过来啊！",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "哦，不是之前拍的宣材写真吗。摊在桌上，在确认什么？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "juri",
+        "text": "……在学姿势。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "juri",
+        "text": "衣装也是，不过偶像果然姿势也得有样子吧。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "juri",
+        "text": "所以我在看之前拍的照片学习，不过……",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "juri",
+        "text": "……有点害羞起来了。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "哈哈，原来如此。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "juri",
+        "text": "唔，都是姿势不太行吗？不，表情也是……",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "你还是一样的好学啊。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "juri",
+        "text": "……只是有点时间，在确认而已。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "juri",
+        "text": "你看这个，这时候表情很僵吧。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "不过，能这么觉得，正是樹里成长的证明。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "juri",
+        "text": "算、算是吧。总归是会成长一点。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "juri",
+        "text": "我也以自己的方式努力过了……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "嗯，是啊。刚认识的时候真让人怀念。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "juri",
+        "text": "……想起来，那时候挺乱来的。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "juri",
+        "text": "那时候……作为偶像也还差得远，还老是跟你顶。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "现在都成了好回忆了。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "juri",
+        "text": "……那个，抱歉了。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "嗯？为什么突然道歉？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "juri",
+        "text": "不是……虽然是以前的事，但态度不好。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "我没在意啊。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "juri",
+        "text": "我在意啊！",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "juri",
+        "text": "……也许是借口，但除了家人，我很少跟男的有接触。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "juri",
+        "text": "对偶像这件事有不安也是真的，和你也不知道该怎么相处……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "……原来如此。但现在，能像这样普通地说话了。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "这也是作为偶像和制作人建立起信赖关系的结果吧。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "juri",
+        "text": "那也有……但不只是那样。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "嗯？什么意思？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "juri",
+        "text": "所以说……我的、那个……",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "juri",
+        "text": "想让你全部知道——",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "juri",
+        "text": "……够了！还是算了！现在不说！",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "什么啊，说到那个份上会让人在意的吧。喂，你想说什么？告诉我吧。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "juri",
+        "text": "也、就是说……制作人对我的理解还完全不够！",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "juri",
+        "text": "而且想知道刚才的答案的话……今后就继续制作我！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:20:00.000Z",
+  "updatedAt": "2026-11-02T04:20:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T04:20:00.000Z", "note": "对照 201100311 改编" }
+  ]
+}

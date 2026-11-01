@@ -305,4 +305,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: '純真チョコレート', index: 3, total: 3 },
     anchors: ['2010003110130', '2010003110190', '2010003110280'],
   },
+  {
+    chapterId: 'juri-shop',
+    script: '201100301',
+    source: '剧本 201100301',
+    card: { title: 'バッドガールの羽ばたき', index: 1, total: 3 },
+    anchors: ['2011003010010', '2011003010180', '2011003010230'],
+  },
+  {
+    chapterId: 'juri-letter',
+    script: '201100302',
+    source: '剧本 201100302',
+    card: { title: 'バッドガールの羽ばたき', index: 2, total: 3 },
+    anchors: ['2011003020070', '2011003020140', '2011003020210'],
+  },
+  {
+    chapterId: 'juri-photo',
+    script: '201100311',
+    source: '剧本 201100311',
+    card: { title: 'バッドガールの羽ばたき', index: 3, total: 3 },
+    anchors: ['2011003110140', '2011003110170', '2011003110210'],
+  },
 ];

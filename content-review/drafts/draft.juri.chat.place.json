@@ -1,0 +1,32 @@
+{
+  "id": "draft.juri.chat.place",
+  "kind": "topic",
+  "title": "聊天 · 归处",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.juri.chat.place",
+  "payload": {
+    "id": "juri.chat.place",
+    "actorId": "juri",
+    "label": "归处",
+    "text": "「放クラ啊……算是我的归处吧。那种话别让我说第二遍。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:36:00.000Z",
+  "updatedAt": "2026-11-02T04:36:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T04:36:00.000Z",
+      "note": "樹里日常话题（组合感）"
+    }
+  ]
+}

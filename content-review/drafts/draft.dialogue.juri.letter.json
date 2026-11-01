@@ -1,0 +1,316 @@
+{
+  "id": "draft.dialogue.juri.letter",
+  "kind": "dialogue",
+  "title": "拍摄前她坐在走廊上",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.juri.letter",
+  "payload": {
+    "id": "dialogue.juri.letter",
+    "idolId": "juri",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "juri",
+        "text": "拍摄还没开始吗？我已经等挺久了。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "好像别的孩子拍摄拖了……抱歉，能再等一会儿吗？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "juri",
+        "text": "算了，也行……呼啊～",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "对了，难得的空档，要不要读读粉丝信？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "juri",
+        "text": "诶，啊，给我的那些……？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "当然。喏，这个。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "juri",
+        "text": "哦、哦，谢了。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "juri",
+        "text": "…………",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "……怎么了，不读吗？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "juri",
+        "text": "……每次打开粉丝信，我都会想一件事。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "juri",
+        "text": "真的有人愿意说喜欢我啊。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "juri",
+        "text": "有种确实在接近偶像的实感……胸口这块痒痒的。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "不是接近，樹里已经是出色的偶像了。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "juri",
+        "text": "就算你这么说……我自己也不明白啊。只是配合着你的节奏而已……",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "哈哈，那为了更有实感，得好好读粉丝信才行。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "juri",
+        "text": "……知道了。那，先读这封……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "juri",
+        "text": "……！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "……那么吃惊，写了什么？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "juri",
+        "text": "说帅气的我也好，穿可爱衣装的我也有，两个都很可爱……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "是在说可爱啊。这种时候坦率高兴就好吧？",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "juri",
+        "text": "我、我知道，我知道啦……",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "juri",
+        "text": "偶像活动是比以前习惯了，可是……可爱的衣装，还是有点那个。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "有抵触，所以没法坦率高兴吗。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "juri",
+        "text": "算是吧……不过粉丝们，是不是更想看我穿可爱的衣装。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "juri",
+        "text": "你之前说过吧，引出偶像各种表情是制作人的职责？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "juri",
+        "text": "那就是说……你还是觉得我今后也该穿可爱的衣装？",
+        "choices": [
+          { "label": "樹里有樹里的样子。", "nextNodeId": "30" },
+          { "label": "工作需要的就得做。", "nextNodeId": "40" },
+          { "label": "真的那样就好吗？", "nextNodeId": "50" }
+        ]
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "juri",
+        "text": "什么意思？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "粉丝们不只是看樹里的外表，是喜欢樹里这个人。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "juri",
+        "text": "我……这个人？",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "嗯。也就是说，粉丝们是把樹里整个都喜欢。帅气的樹里也好，可爱的樹里也好，他们都会喜欢。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "你可以更有自信一点。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "juri",
+        "text": "这、这样啊……粉丝们竟然看到那么里面啊。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "juri",
+        "text": "听你说话，总觉得能有点自信。"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "juri",
+        "text": "……果然，是这样吗。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "樹里不是把偶像当玩票在做的吧？",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "juri",
+        "text": "那、那当然！都做到这一步了，可不是半吊子的心情！",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "有这份心，什么工作都能做下去。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "juri",
+        "text": "是、是吗？",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "juri",
+        "text": "不，是这样。你说的没错！",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "juri",
+        "text": "我会更加努力，你要好好支持我啊！"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "juri",
+        "text": "什、什么意思……",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "producer",
+        "text": "最开始因为不习惯，不愿意穿吧。但刚才你说，当偶像已经习惯了挺多？",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "producer",
+        "text": "我想樹里心里还有什么卡着的东西。",
+        "nextNodeId": "53"
+      },
+      "53": {
+        "id": "53",
+        "speakerId": "juri",
+        "text": "卡着的东西，吗……",
+        "nextNodeId": "54"
+      },
+      "54": {
+        "id": "54",
+        "speakerId": "juri",
+        "text": "可爱的衣装不适合我。不管怎么被夸，我都会这么觉得……",
+        "nextNodeId": "55"
+      },
+      "55": {
+        "id": "55",
+        "speakerId": "producer",
+        "text": "但如果不适合，粉丝也不会说也喜欢穿可爱衣装的樹里吧？",
+        "nextNodeId": "56"
+      },
+      "56": {
+        "id": "56",
+        "speakerId": "producer",
+        "text": "而且，不适合的衣装，我也不会让偶像穿吧？",
+        "nextNodeId": "57"
+      },
+      "57": {
+        "id": "57",
+        "speakerId": "juri",
+        "text": "知、知道了！我以后也会穿很多可爱衣装的！",
+        "nextNodeId": "58"
+      },
+      "58": {
+        "id": "58",
+        "speakerId": "juri",
+        "text": "不过，要是因此我的粉丝少了，就怪你啊！？"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:15:00.000Z",
+  "updatedAt": "2026-11-02T04:15:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T04:15:00.000Z", "note": "对照 201100302 改编，保留三个选项" }
+  ]
+}

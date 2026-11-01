@@ -1,0 +1,32 @@
+{
+  "id": "draft.juri.chat.running",
+  "kind": "topic",
+  "title": "聊天 · 跑步",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.juri.chat.running",
+  "payload": {
+    "id": "juri.chat.running",
+    "actorId": "juri",
+    "label": "跑步",
+    "text": "「比起跑，我更喜欢跑完之后看到的景色。……别笑啊。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:33:00.000Z",
+  "updatedAt": "2026-11-02T04:33:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T04:33:00.000Z",
+      "note": "樹里日常话题（API 兴趣：跑步）"
+    }
+  ]
+}

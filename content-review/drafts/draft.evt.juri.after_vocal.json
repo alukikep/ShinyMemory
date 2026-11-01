@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.juri.after_vocal",
+  "kind": "event",
+  "title": "唱完先哼一声",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.juri.after_vocal",
+  "payload": {
+    "id": "evt.juri.after_vocal",
+    "title": "唱完先哼一声",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "juri"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束了。她唱完先「哼」了一声，才转过来问怎么样。",
+    "choices": [
+      {
+        "label": "很好。",
+        "hint": "信任 +3、歌唱 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          }
+        ],
+        "result": "「……是、是吗。那就好。」她说完自己先别过脸去。"
+      },
+      {
+        "label": "再稳一点。",
+        "hint": "歌唱 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "delta": 2,
+            "kind": "sharedStat",
+            "stat": "stress"
+          }
+        ],
+        "result": "「稳……好，再来。」第二遍她唱得很用力，收尾还是有点冲。"
+      },
+      {
+        "label": "先喝口水。",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "delta": -3,
+            "kind": "sharedStat",
+            "stat": "stress"
+          }
+        ],
+        "result": "「哦，谢了。……你怎么什么都注意到了。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:40:00.000Z",
+  "updatedAt": "2026-11-02T04:40:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T04:40:00.000Z",
+      "note": "樹里声乐课后事件（101100102 她担心自己不像偶像）"
+    }
+  ]
+}

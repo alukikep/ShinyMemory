@@ -1,0 +1,32 @@
+{
+  "id": "draft.juri.chat.hoop",
+  "kind": "topic",
+  "title": "聊天 · 篮球",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.juri.chat.hoop",
+  "payload": {
+    "id": "juri.chat.hoop",
+    "actorId": "juri",
+    "label": "篮球",
+    "text": "「篮球啊……我投篮的时候，喜欢球进网的那个声音。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:32:00.000Z",
+  "updatedAt": "2026-11-02T04:32:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T04:32:00.000Z",
+      "note": "樹里日常话题（101100502 篮球）"
+    }
+  ]
+}

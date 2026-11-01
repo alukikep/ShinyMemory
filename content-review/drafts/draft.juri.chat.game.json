@@ -1,0 +1,32 @@
+{
+  "id": "draft.juri.chat.game",
+  "kind": "topic",
+  "title": "聊天 · 游戏",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.juri.chat.game",
+  "payload": {
+    "id": "juri.chat.game",
+    "actorId": "juri",
+    "label": "游戏",
+    "text": "「格斗游戏很燃吧？音乐游戏我也擅长，要不要比一场？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:35:00.000Z",
+  "updatedAt": "2026-11-02T04:35:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T04:35:00.000Z",
+      "note": "樹里日常话题（API 兴趣：洋楽、ゲーム）"
+    }
+  ]
+}

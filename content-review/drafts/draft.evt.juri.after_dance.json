@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.juri.after_dance",
+  "kind": "event",
+  "title": "镜子前又过一遍",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.juri.after_dance",
+  "payload": {
+    "id": "evt.juri.after_dance",
+    "title": "镜子前又过一遍",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "juri"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她还盯着镜子，把刚才那段又过了一遍。",
+    "choices": [
+      {
+        "label": "今天就到这里。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "delta": -3,
+            "kind": "sharedStat",
+            "stat": "stress"
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……行吧。反正明天还能练。」"
+      },
+      {
+        "label": "再来一遍。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "delta": 2,
+            "kind": "sharedStat",
+            "stat": "stress"
+          }
+        ],
+        "result": "「好。你看着。」第二遍她一秒都没抢拍。"
+      },
+      {
+        "label": "刚才那个转身很好。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「转、转身吗。……那个我练了很久。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:40:00.000Z",
+  "updatedAt": "2026-11-02T04:40:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T04:40:00.000Z",
+      "note": "樹里舞蹈课后事件（她运动神经好、但被夸会别扭）"
+    }
+  ]
+}

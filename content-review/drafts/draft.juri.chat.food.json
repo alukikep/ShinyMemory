@@ -1,0 +1,32 @@
+{
+  "id": "draft.juri.chat.food",
+  "kind": "topic",
+  "title": "聊天 · 吃的",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.juri.chat.food",
+  "payload": {
+    "id": "juri.chat.food",
+    "actorId": "juri",
+    "label": "吃的",
+    "text": "「商店街那家肉铺的可乐饼，真的很好吃。下次给你带一个。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T04:34:00.000Z",
+  "updatedAt": "2026-11-02T04:34:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T04:34:00.000Z",
+      "note": "樹里日常话题（201100301 商店街）"
+    }
+  ]
+}

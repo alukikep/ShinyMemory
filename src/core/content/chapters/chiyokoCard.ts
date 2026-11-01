@@ -35,6 +35,7 @@ const chiyokoCard: StoryChainDef = {
     },
     {
       id: 'chiyoko-piano',
+      // 喫茶店在站前（station 覆盖「车站附近」），不用挤到商业街。
       locationId: 'station',
       timeWindow: { fromMinute: 900, toMinute: 1140 },
       dialogueId: 'dialogue.chiyoko.piano',

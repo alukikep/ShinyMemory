@@ -2,7 +2,7 @@
   "id": "draft.dialogue.juri.first",
   "kind": "dialogue",
   "title": "街上有个金发的女孩子",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.juri.first",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "juri",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（人流量大的地方……嗯？）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "（那个孩子，总感觉和别的孩子气氛不太一样。只是一个人走着，却有种特别的风格……）",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "（简直像一头孤高的狼啊……）",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "喂，你，能稍微打扰一下吗？",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "juri",
-        "text": "……",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "啊，等一下……那边的你，等一下！",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "juri",
-        "text": "嗯？我……？",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "producer",
-        "text": "嗯，是啊。你的那个头发——",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "juri",
-        "text": "哈？干什么啊你，是不喜欢我染头发吗？",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "juri",
@@ -206,13 +152,76 @@
         "id": "33",
         "speakerId": "producer",
         "text": "……！嗯，今后请多指教，樹里！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（人流量大的地方……嗯？）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（那个孩子，总感觉和别的孩子气氛不太一样。只是一个人走着，却有种特别的风格……）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "（简直像一头孤高的狼啊……）",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "喂，你，能稍微打扰一下吗？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "juri",
+        "text": "……",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "啊，等一下……那边的你，等一下！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "juri",
+        "text": "嗯？我……？",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "嗯，是啊。你的那个头发——",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "juri",
+        "text": "哈？干什么啊你，是不喜欢我染头发吗？",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T04:00:00.000Z",
-  "updatedAt": "2026-11-02T04:00:00.000Z",
+  "updatedAt": "2026-11-01T02:07:32.897Z",
+  "reviewedAt": "2026-11-01T02:07:32.897Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T04:00:00.000Z", "note": "对照 101100101 改编" }
+    {
+      "status": "review",
+      "at": "2026-11-02T04:00:00.000Z",
+      "note": "对照 101100101 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:07:32.897Z"
+    }
   ]
 }

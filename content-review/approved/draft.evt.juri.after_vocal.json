@@ -2,7 +2,7 @@
   "id": "draft.evt.juri.after_vocal",
   "kind": "event",
   "title": "唱完先哼一声",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.juri.after_vocal",
   "payload": {
@@ -74,12 +74,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T04:40:00.000Z",
-  "updatedAt": "2026-11-02T04:40:00.000Z",
+  "updatedAt": "2026-11-01T02:07:39.822Z",
+  "reviewedAt": "2026-11-01T02:07:39.822Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T04:40:00.000Z",
       "note": "樹里声乐课后事件（101100102 她担心自己不像偶像）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:07:39.822Z"
     }
   ]
 }

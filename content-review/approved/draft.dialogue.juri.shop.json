@@ -2,7 +2,7 @@
   "id": "draft.dialogue.juri.shop",
   "kind": "dialogue",
   "title": "她在服屋前转来转去",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.juri.shop",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "juri",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（好，回事务所处理文件吧……）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "（……嗯？那里的，不是樹里吗？）",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "juri",
-        "text": "……",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "（在服装店前转来转去……在干什么呢。）",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "樹里，怎么了？",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "juri",
-        "text": "哇啊！？",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "juri",
-        "text": "……是你啊。别突然出声啊！",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "producer",
-        "text": "抱、抱歉。没想到你会吓成这样。",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "话说你在看什么？……这件可爱的衣服，那么在意吗？",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "juri",
@@ -260,13 +206,76 @@
         "id": "42",
         "speakerId": "juri",
         "text": "我自己也不知道什么可爱衣服适合我，让你来选也行，吧。"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（好，回事务所处理文件吧……）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（……嗯？那里的，不是樹里吗？）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "juri",
+        "text": "……",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "（在服装店前转来转去……在干什么呢。）",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "樹里，怎么了？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "juri",
+        "text": "哇啊！？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "juri",
+        "text": "……是你啊。别突然出声啊！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "抱、抱歉。没想到你会吓成这样。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "话说你在看什么？……这件可爱的衣服，那么在意吗？",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T04:10:00.000Z",
-  "updatedAt": "2026-11-02T04:10:00.000Z",
+  "updatedAt": "2026-11-01T02:07:34.603Z",
+  "reviewedAt": "2026-11-01T02:07:34.603Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T04:10:00.000Z", "note": "对照 201100301 改编" }
+    {
+      "status": "review",
+      "at": "2026-11-02T04:10:00.000Z",
+      "note": "对照 201100301 改编"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:07:34.603Z"
+    }
   ]
 }

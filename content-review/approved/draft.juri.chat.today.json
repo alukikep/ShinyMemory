@@ -2,7 +2,7 @@
   "id": "draft.juri.chat.today",
   "kind": "topic",
   "title": "聊天 · 今天",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.juri.chat.today",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T04:31:00.000Z",
-  "updatedAt": "2026-11-02T04:31:00.000Z",
+  "updatedAt": "2026-11-01T02:07:43.274Z",
+  "reviewedAt": "2026-11-01T02:07:43.274Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T04:31:00.000Z",
       "note": "樹里日常话题（API 兴趣：运动）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:07:43.274Z"
     }
   ]
 }

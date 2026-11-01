@@ -2,7 +2,7 @@
   "id": "draft.juri.chat.hoop",
   "kind": "topic",
   "title": "聊天 · 篮球",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.juri.chat.hoop",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T04:32:00.000Z",
-  "updatedAt": "2026-11-02T04:32:00.000Z",
+  "updatedAt": "2026-11-01T02:07:42.817Z",
+  "reviewedAt": "2026-11-01T02:07:42.817Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T04:32:00.000Z",
       "note": "樹里日常话题（101100502 篮球）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:07:42.817Z"
     }
   ]
 }

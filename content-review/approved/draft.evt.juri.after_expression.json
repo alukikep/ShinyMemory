@@ -2,7 +2,7 @@
   "id": "draft.evt.juri.after_expression",
   "kind": "event",
   "title": "笑得像被逼的",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.juri.after_expression",
   "payload": {
@@ -74,12 +74,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T04:40:00.000Z",
-  "updatedAt": "2026-11-02T04:40:00.000Z",
+  "updatedAt": "2026-11-01T02:07:39.153Z",
+  "reviewedAt": "2026-11-01T02:07:39.153Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T04:40:00.000Z",
       "note": "樹里表演课后事件（1011001020050 那种笑她做不出来）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:07:39.153Z"
     }
   ]
 }

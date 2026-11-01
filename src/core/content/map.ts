@@ -13,11 +13,11 @@ export const WALK_EDGES: MapEdgeDef[] = [
   // 地区之间统一 15 分钟（不然公交 5 分钟就没意义了）。
   { from: 'home', to: 'ekimae', minutes: 15 },
   { from: 'ekimae', to: 'office', minutes: 15 },
-  { from: 'office', to: 'university', minutes: 15 },
+  { from: 'office', to: 'university_district', minutes: 15 },
   { from: 'ekimae', to: 'studio_district', minutes: 15 },
   { from: 'studio_district', to: 'office', minutes: 15 },
   { from: 'office', to: 'seaside', minutes: 15 },
-  { from: 'university', to: 'seaside', minutes: 15 },
+  { from: 'university_district', to: 'seaside', minutes: 15 },
   // 进楼：0 分钟
   { from: 'ekimae', to: 'station', minutes: 0 },
   { from: 'ekimae', to: 'shopping_street', minutes: 0 },
@@ -26,6 +26,7 @@ export const WALK_EDGES: MapEdgeDef[] = [
   { from: 'seaside', to: 'park', minutes: 0 },
   { from: 'seaside', to: 'pool', minutes: 0 },
   { from: 'seaside', to: 'hospital', minutes: 0 },
+  { from: 'university_district', to: 'university', minutes: 0 },
 ];
 
 export function neighborsOf(

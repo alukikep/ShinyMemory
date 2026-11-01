@@ -23,7 +23,7 @@ const actor: ActorDef = {
     {
       fromMinute: 9 * 60,
       toMinute: 14 * 60,
-      locationId: 'school',
+      locationId: 'university',
       weekdays: [1, 3],
       label: '大学',
       visibility: 'private',
@@ -49,7 +49,7 @@ const actor: ActorDef = {
     {
       fromMinute: 10 * 60,
       toMinute: 15 * 60,
-      locationId: 'school',
+      locationId: 'university',
       weekdays: [2, 4],
       label: '大学',
       visibility: 'private',
@@ -104,7 +104,7 @@ const actor: ActorDef = {
     {
       fromMinute: 9 * 60,
       toMinute: 12 * 60,
-      locationId: 'school',
+      locationId: 'university',
       weekdays: [5],
       label: '大学',
       visibility: 'private',

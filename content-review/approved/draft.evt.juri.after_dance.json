@@ -2,7 +2,7 @@
   "id": "draft.evt.juri.after_dance",
   "kind": "event",
   "title": "镜子前又过一遍",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.juri.after_dance",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T04:40:00.000Z",
-  "updatedAt": "2026-11-02T04:40:00.000Z",
+  "updatedAt": "2026-11-01T02:07:38.181Z",
+  "reviewedAt": "2026-11-01T02:07:38.181Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T04:40:00.000Z",
       "note": "樹里舞蹈课后事件（她运动神经好、但被夸会别扭）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:07:38.181Z"
     }
   ]
 }

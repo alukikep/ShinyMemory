@@ -2,7 +2,7 @@
   "id": "draft.dialogue.juri.letter",
   "kind": "dialogue",
   "title": "拍摄前她坐在走廊上",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.juri.letter",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "juri",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "juri",
-        "text": "拍摄还没开始吗？我已经等挺久了。",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "好像别的孩子拍摄拖了……抱歉，能再等一会儿吗？",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "juri",
-        "text": "算了，也行……呼啊～",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "对了，难得的空档，要不要读读粉丝信？",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "juri",
-        "text": "诶，啊，给我的那些……？",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "当然。喏，这个。",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "juri",
-        "text": "哦、哦，谢了。",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "juri",
-        "text": "…………",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "……怎么了，不读吗？",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "juri",
@@ -165,9 +111,18 @@
         "speakerId": "juri",
         "text": "那就是说……你还是觉得我今后也该穿可爱的衣装？",
         "choices": [
-          { "label": "樹里有樹里的样子。", "nextNodeId": "30" },
-          { "label": "工作需要的就得做。", "nextNodeId": "40" },
-          { "label": "真的那样就好吗？", "nextNodeId": "50" }
+          {
+            "label": "樹里有樹里的样子。",
+            "nextNodeId": "30"
+          },
+          {
+            "label": "工作需要的就得做。",
+            "nextNodeId": "40"
+          },
+          {
+            "label": "真的那样就好吗？",
+            "nextNodeId": "50"
+          }
         ]
       },
       "30": {
@@ -304,13 +259,76 @@
         "id": "58",
         "speakerId": "juri",
         "text": "不过，要是因此我的粉丝少了，就怪你啊！？"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "juri",
+        "text": "拍摄还没开始吗？我已经等挺久了。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "好像别的孩子拍摄拖了……抱歉，能再等一会儿吗？",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "juri",
+        "text": "算了，也行……呼啊～",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "对了，难得的空档，要不要读读粉丝信？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "juri",
+        "text": "诶，啊，给我的那些……？",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "当然。喏，这个。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "juri",
+        "text": "哦、哦，谢了。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "juri",
+        "text": "…………",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "……怎么了，不读吗？",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T04:15:00.000Z",
-  "updatedAt": "2026-11-02T04:15:00.000Z",
+  "updatedAt": "2026-11-01T02:07:34.658Z",
+  "reviewedAt": "2026-11-01T02:07:34.658Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T04:15:00.000Z", "note": "对照 201100302 改编，保留三个选项" }
+    {
+      "status": "review",
+      "at": "2026-11-02T04:15:00.000Z",
+      "note": "对照 201100302 改编，保留三个选项"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:07:34.658Z"
+    }
   ]
 }

@@ -18,6 +18,7 @@ const LOCATION_ICONS: Record<string, string> = {
   ekimae: 'train',
   studio_district: 'music',
   seaside: 'tree',
+  university_district: 'book',
   university: 'book',
 };
 

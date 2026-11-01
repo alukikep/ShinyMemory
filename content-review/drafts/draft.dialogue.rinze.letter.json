@@ -1,0 +1,174 @@
+{
+  "id": "draft.dialogue.rinze.letter",
+  "kind": "dialogue",
+  "title": "她接过你的大衣",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.rinze.letter",
+  "payload": {
+    "id": "dialogue.rinze.letter",
+    "idolId": "rinze",
+    "startNodeId": "01",
+    "nodes": {
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "诶，认可偶像活动……？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "rinze",
+        "text": "是……杜野家，本来并不认可凛世的活动……我说想当偶像的时候，那可真是大骚动……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "这、这样啊……",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "rinze",
+        "text": "但是……无论如何……都想知道。制作人大人，会把凛世带到哪里去……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "rinze",
+        "text": "让家里人……稍微担心了……",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "凛世…………原来有这样的内情啊……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "rinze",
+        "text": "是……但是，我一点也不后悔。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "rinze",
+        "text": "制作人大人，把凛世……带到最好的舞台上去了。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "rinze",
+        "text": "那一天，和制作人大人相遇，是命运。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "嗯，我也这么想。不过，让凛世走到这里的，是凛世自己的力量。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "rinze",
+        "text": "正因为有您在，才做得到……感谢您，制作人大人。家里人，也这么说……",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "不不，不用谢…………话说……家里人，也……信里也提到我了？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "rinze",
+        "text": "……写信回家时，尽是写您的事……所以……想见见您，他们这么说……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "rinze",
+        "text": "如果可以……能请您，见见凛世的家人吗？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "（『W.I.N.G.』的优胜报告……吧……得准备句像样的问候才行。）",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "rinze",
+        "text": "制作人大人……！凛世……很幸福……"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "辛苦了。我回来了。呼……好，得整理报告书……",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "rinze",
+        "text": "大衣，我帮您收下……",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "啊，你已经来了啊，凛世。谢谢。不过那种事不用在意也行哦？",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "rinze",
+        "text": "凛世，想这么做……现在，去给您泡茶。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "不，不能麻烦你做这种事……不过，谢谢你的心意。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "……嗯？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "rinze",
+        "text": "那是……老家寄来的信。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "producer",
+        "text": "哦，这样啊……写了些什么？",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "rinze",
+        "text": "是……说认可凛世的偶像活动……正好，想跟您说……",
+        "nextNodeId": "10"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T06:10:00.000Z",
+  "updatedAt": "2026-11-02T06:10:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T06:10:00.000Z",
+      "note": "对照 201200311（大衣、老家来信、邀制作人见家人）"
+    }
+  ]
+}

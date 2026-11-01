@@ -326,4 +326,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: 'バッドガールの羽ばたき', index: 3, total: 3 },
     anchors: ['2011003110140', '2011003110170', '2011003110210'],
   },
+  {
+    chapterId: 'rinze-shoot',
+    script: '201200301',
+    source: '剧本 201200301',
+    card: { title: '凛世、まいります', index: 1, total: 3 },
+    anchors: ['2012003010010', '2012003010130', '2012003010190'],
+  },
+  {
+    chapterId: 'rinze-rain',
+    script: '201200302',
+    source: '剧本 201200302',
+    card: { title: '凛世、まいります', index: 2, total: 3 },
+    anchors: ['2012003020010', '2012003020110', '2012003020190'],
+  },
+  {
+    chapterId: 'rinze-letter',
+    script: '201200311',
+    source: '剧本 201200311',
+    card: { title: '凛世、まいります', index: 3, total: 3 },
+    anchors: ['2012003110030', '2012003110130', '2012003110190'],
+  },
 ];

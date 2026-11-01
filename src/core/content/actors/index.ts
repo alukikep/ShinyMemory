@@ -9,8 +9,9 @@ import kogane from './kogane';
 import mamimi from './mamimi';
 import mano from './mano';
 import meguru from './meguru';
+import rinze from './rinze';
 import sakuya from './sakuya';
 import tsutomu from './tsutomu';
 import yuika from './yuika';
 
-export const ACTORS: ActorDef[] = [hazuki, tsutomu, mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri];
+export const ACTORS: ActorDef[] = [hazuki, tsutomu, mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze];

@@ -1,0 +1,251 @@
+{
+  "id": "draft.dialogue.rinze.rain",
+  "kind": "dialogue",
+  "title": "站前突然下起雨",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.rinze.rain",
+  "payload": {
+    "id": "dialogue.rinze.rain",
+    "idolId": "rinze",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "真头疼啊……突然下这么大。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "rinze",
+        "text": "要暂时避雨吗……",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "是啊……我也该带把折叠伞的。抱歉，凛世。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "rinze",
+        "text": "凛世，不要紧的……",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "rinze",
+        "text": "──阿嚏。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "凛世，和服都湿了不是吗！没注意到，抱歉！总之，先穿上这件外套。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "rinze",
+        "text": "不……不能给制作人大人添麻烦。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "话不能这么说……没办法，我去趟便利店吧。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "rinze",
+        "text": "凛世……真的，不要紧的……",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "不，我去买伞。记得附近应该有一家。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "rinze",
+        "text": "不，您的心意就足够了……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "（可是……把湿着的凛世留在这儿也让人担心。）不过，也是啊……也许马上就停了，稍微等等看吧。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "rinze",
+        "text": "是，就……那样吧。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "……雨一直不停啊。好像比刚才更大了……",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "rinze",
+        "text": "是……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "（……嗯……沉默着也不是办法，找点话说吧。）",
+        "choices": [
+          {
+            "label": "还是把外套借给你吧？",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "……总觉得，一个人都没有啊。",
+            "nextNodeId": "110"
+          },
+          {
+            "label": "希望早点放晴啊。",
+            "nextNodeId": "120"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "producer",
+        "text": "越来越冷了……不能让凛世感冒。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "rinze",
+        "text": "……制作人大人。凛世，也是同样的心情。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "producer",
+        "text": "诶……？",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "rinze",
+        "text": "凛世也，不想让制作人大人感冒……",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "（……这样啊。凛世也在担心我。）……谢谢你，凛世。",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "rinze",
+        "text": "凛世，什么都没……",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "producer",
+        "text": "不，怎么说呢，因为凛世的话，身体也觉得暖和起来了。"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "rinze",
+        "text": "制作人大人……",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "producer",
+        "text": "啊，不，没什么深意，只是这么安静，会想听听大家的声音啊。",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "rinze",
+        "text": "是，可是……凛世和制作人大人，像是这世上只剩两个人……真好。",
+        "nextNodeId": "113"
+      },
+      "113": {
+        "id": "113",
+        "speakerId": "producer",
+        "text": "嗯？嘛……一个人的话会寂寞，两个人的话就不寂寞了。",
+        "nextNodeId": "114"
+      },
+      "114": {
+        "id": "114",
+        "speakerId": "rinze",
+        "text": "是……",
+        "nextNodeId": "115"
+      },
+      "115": {
+        "id": "115",
+        "speakerId": "producer",
+        "text": "哈哈。好，难得的机会，再聊一会儿吧。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "rinze",
+        "text": "……制作人大人，是这样想的啊……",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "那是，我不想让凛世感冒啊。凛世不想放晴吗？",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "rinze",
+        "text": "如果制作人大人希望的话……可是……",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "producer",
+        "text": "（……凛世是喜欢雨吗？）总之，这样下去肯定要感冒。凛世，能再靠近一点吗？",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "rinze",
+        "text": "……！可以，吗……",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "producer",
+        "text": "……有、有点太近了……吧？稍微，保持点距离不好吗？",
+        "nextNodeId": "126"
+      },
+      "126": {
+        "id": "126",
+        "speakerId": "rinze",
+        "text": "……给您添麻烦了吗……非常抱歉……"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T06:55:00.000Z",
+  "updatedAt": "2026-11-02T06:55:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T06:55:00.000Z",
+      "note": "对照 201200302（三分支，保留三个选项）"
+    }
+  ]
+}

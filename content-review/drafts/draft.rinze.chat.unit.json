@@ -1,0 +1,32 @@
+{
+  "id": "draft.rinze.chat.unit",
+  "kind": "topic",
+  "title": "聊天 · 放クラ",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.rinze.chat.unit",
+  "payload": {
+    "id": "rinze.chat.unit",
+    "actorId": "rinze",
+    "label": "放クラ",
+    "text": "「放クラ的凛世是……」「ナンバーワンの……杜野凛世，所以……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T06:37:00.000Z",
+  "updatedAt": "2026-11-02T06:37:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T06:37:00.000Z",
+      "note": "凛世日常话题（组合里的她更积极）"
+    }
+  ]
+}

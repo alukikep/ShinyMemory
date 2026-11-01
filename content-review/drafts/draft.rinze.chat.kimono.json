@@ -1,0 +1,32 @@
+{
+  "id": "draft.rinze.chat.kimono",
+  "kind": "topic",
+  "title": "聊天 · 和服",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.rinze.chat.kimono",
+  "payload": {
+    "id": "rinze.chat.kimono",
+    "actorId": "rinze",
+    "label": "和服",
+    "text": "「和服……穿习惯了……」「腰带系紧的时候，背会……挺直……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T06:35:00.000Z",
+  "updatedAt": "2026-11-02T06:35:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T06:35:00.000Z",
+      "note": "凛世日常话题（和服、木屐）"
+    }
+  ]
+}

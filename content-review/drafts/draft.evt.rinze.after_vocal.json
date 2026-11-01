@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.rinze.after_vocal",
+  "kind": "event",
+  "title": "唱完先行礼",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.rinze.after_vocal",
+  "payload": {
+    "id": "evt.rinze.after_vocal",
+    "title": "唱完先行礼",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "rinze"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束了。她唱完没有马上问怎么样，先对着空椅子行了一礼。",
+    "choices": [
+      {
+        "label": "很好。",
+        "hint": "信任 +3、歌唱 +1",
+        "effects": [
+          {
+            "ref": "trust",
+            "kind": "attributeExp",
+            "tier": 3
+          },
+          {
+            "ref": "vocal",
+            "kind": "attributeExp",
+            "tier": 1
+          }
+        ],
+        "result": "「……是。凛世，会再努力……」她说完才轻轻笑了一下。"
+      },
+      {
+        "label": "再稳一点。",
+        "hint": "歌唱 +1、压力 +2",
+        "effects": [
+          {
+            "ref": "vocal",
+            "kind": "attributeExp",
+            "tier": 1
+          },
+          {
+            "delta": 2,
+            "stat": "stress",
+            "kind": "sharedStat"
+          }
+        ],
+        "result": "「稳定……是。再来一次，就好……」第二遍她收得更紧。"
+      },
+      {
+        "label": "先喝水。",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "delta": -3,
+            "stat": "stress",
+            "kind": "sharedStat"
+          }
+        ],
+        "result": "「……谢谢您。您总是，先想到……」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T06:45:00.000Z",
+  "updatedAt": "2026-11-02T06:45:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T06:45:00.000Z",
+      "note": "凛世声乐课后事件"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.rinze.after_dance",
+  "kind": "event",
+  "title": "还是那个「型」",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.rinze.after_dance",
+  "payload": {
+    "id": "evt.rinze.after_dance",
+    "title": "还是那个「型」",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "rinze"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。老师夸她完璧，她却又把刚才那段从头比了一遍。",
+    "choices": [
+      {
+        "label": "今天就到这里。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "delta": -3,
+            "stat": "stress",
+            "kind": "sharedStat"
+          },
+          {
+            "ref": "trust",
+            "kind": "attributeExp",
+            "tier": 1
+          }
+        ],
+        "result": "「……是。那就，明天……」"
+      },
+      {
+        "label": "再来一遍。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "ref": "dance",
+            "kind": "attributeExp",
+            "tier": 1
+          },
+          {
+            "delta": 2,
+            "stat": "stress",
+            "kind": "sharedStat"
+          }
+        ],
+        "result": "「是。这一次……请看着。」"
+      },
+      {
+        "label": "刚才那样已经很好。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "ref": "dance",
+            "kind": "attributeExp",
+            "tier": 1
+          },
+          {
+            "ref": "trust",
+            "kind": "attributeExp",
+            "tier": 3
+          }
+        ],
+        "result": "「……很好，吗。凛世，不太懂那种事……」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T06:45:00.000Z",
+  "updatedAt": "2026-11-02T06:45:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T06:45:00.000Z",
+      "note": "凛世舞蹈课后事件（型）"
+    }
+  ]
+}

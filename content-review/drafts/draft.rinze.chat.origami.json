@@ -1,0 +1,32 @@
+{
+  "id": "draft.rinze.chat.origami",
+  "kind": "topic",
+  "title": "聊天 · 折纸",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.rinze.chat.origami",
+  "payload": {
+    "id": "rinze.chat.origami",
+    "actorId": "rinze",
+    "label": "折纸",
+    "text": "「折纸……从很小的时候，就喜欢了……」「折不好的时候，压平，再折一次……就好……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T06:32:00.000Z",
+  "updatedAt": "2026-11-02T06:32:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T06:32:00.000Z",
+      "note": "凛世日常话题（API 特技：折り紙）"
+    }
+  ]
+}

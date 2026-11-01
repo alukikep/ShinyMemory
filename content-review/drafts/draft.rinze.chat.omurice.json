@@ -1,0 +1,32 @@
+{
+  "id": "draft.rinze.chat.omurice",
+  "kind": "topic",
+  "title": "聊天 · 蛋包饭",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.rinze.chat.omurice",
+  "payload": {
+    "id": "rinze.chat.omurice",
+    "actorId": "rinze",
+    "label": "蛋包饭",
+    "text": "「宿舍食堂的……蛋包饭……」「用勺子切开的时候……会，笑出来……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T06:36:00.000Z",
+  "updatedAt": "2026-11-02T06:36:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T06:36:00.000Z",
+      "note": "凛世日常话题（宿舍食堂）"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "id": "draft.dialogue.rinze.second",
+  "kind": "dialogue",
+  "title": "课后的练习室",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.rinze.second",
+  "payload": {
+    "id": "dialogue.rinze.second",
+    "idolId": "rinze",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "rinze",
+        "text": "……老师，刚才的地方……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "rinze",
+        "text": "……是，手臂再……",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "rinze",
+        "text": "谢谢您……今天，就到这里了呢。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "（今天也认真练习啊，认真得有点过头了。）",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "辛苦了，凛世。最近进步很大啊。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "rinze",
+        "text": "制作人大人……您，有在看吗。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "rinze",
+        "text": "都是托制作人大人的指导。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "嗯，因为凛世很认真地完成课题，安排日程也有意义。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "rinze",
+        "text": "不，不是什么值得夸奖的事……",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "不只是这样，社长也夸了凛世的努力哦！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "rinze",
+        "text": "……是，今后也会精进。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "……？好像……没那么高兴？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "rinze",
+        "text": "不，制作人大人高兴……那才是凛世的幸福。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "（算是高兴了吧？可总觉得她对自己的兴趣很淡……）",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "rinze",
+        "text": "制作人大人……？怎么了？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "不，怎么说呢……想问一下。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "rinze",
+        "text": "是。无论什么事。",
+        "choices": [
+          {
+            "label": "为什么接受了我的邀请？",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "有没有想试着做的工作？",
+            "nextNodeId": "110"
+          },
+          {
+            "label": "别太勉强自己了。",
+            "nextNodeId": "120"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "rinze",
+        "text": "那是……制作人大人的话，把凛世，改变了……",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "（\"带你走上最好的舞台\"——那句话，凛世一直……）",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "producer",
+        "text": "（原来如此，凛世是觉得不能在这种程度松懈啊……）",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "不愧是凛世。我也是把你带进这个世界的人，有责任。以最好的舞台为目标一起努力吧！",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "rinze",
+        "text": "是。为了您，我会迈进。"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "rinze",
+        "text": "只要是制作人大人期望的……凛世，不会拒绝……",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "producer",
+        "text": "这、这样啊……谢谢。帮大忙了。不过……硬要说的话，有没有什么想做的？",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "rinze",
+        "text": "凛世只要能，被制作人大人看着……那就……",
+        "nextNodeId": "113"
+      },
+      "113": {
+        "id": "113",
+        "speakerId": "producer",
+        "text": "原、原来如此……好像被期待了呢。既然凛世这么说，我也会尽量陪着你。",
+        "nextNodeId": "114"
+      },
+      "114": {
+        "id": "114",
+        "speakerId": "rinze",
+        "text": "呵呵……感激不尽。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "producer",
+        "text": "如果有不想做的工作，一定要跟我商量。我想尽量尊重凛世的意见。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "rinze",
+        "text": "勉强……不行的吧，那种事……",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "rinze",
+        "text": "无论什么事都会接受……这个凛世，已经如此下定决心。",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "producer",
+        "text": "这样啊……奇怪地担心了，抱歉。有凛世这份觉悟，今后一定也会顺利。",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "rinze",
+        "text": "是……"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T06:55:00.000Z",
+  "updatedAt": "2026-11-02T06:55:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T06:55:00.000Z",
+      "note": "对照 101200102（三分支，保留三个选项）"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.rinze.after_expression",
+  "kind": "event",
+  "title": "台词念得太认真",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.rinze.after_expression",
+  "payload": {
+    "id": "evt.rinze.after_expression",
+    "title": "台词念得太认真",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "rinze"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。她把一句告白念了三遍，每一遍都像在说自己。",
+    "choices": [
+      {
+        "label": "刚才那句很好。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "ref": "expression",
+            "kind": "attributeExp",
+            "tier": 1
+          },
+          {
+            "ref": "trust",
+            "kind": "attributeExp",
+            "tier": 3
+          }
+        ],
+        "result": "「……是。那句，凛世，也有点，当真……」"
+      },
+      {
+        "label": "只是台词而已。",
+        "hint": "表现 +1、压力 -2",
+        "effects": [
+          {
+            "ref": "expression",
+            "kind": "attributeExp",
+            "tier": 1
+          },
+          {
+            "delta": -2,
+            "stat": "stress",
+            "kind": "sharedStat"
+          }
+        ],
+        "result": "「……是。只是，台词。」她低着头，把台本合上。"
+      },
+      {
+        "label": "休息一下。",
+        "hint": "压力 -4",
+        "effects": [
+          {
+            "delta": -4,
+            "stat": "stress",
+            "kind": "sharedStat"
+          }
+        ],
+        "result": "「……可以吗。那，凛世，就借这块地板……」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T06:45:00.000Z",
+  "updatedAt": "2026-11-02T06:45:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T06:45:00.000Z",
+      "note": "凛世表演课后事件（2012003010190 台词告白）"
+    }
+  ]
+}

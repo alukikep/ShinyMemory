@@ -27,6 +27,7 @@ export const STARTING_STATE = {
     // 智代子是档案型：制作人在甄选现场见过她，进事务所时已经认识。
     chiyoko: 'known',
     juri: 'unknown',
+    rinze: 'unknown',
   } as Record<string, IdolStatus>,
   dialogueId: 'dialogue.prologue.office',
 } as const;

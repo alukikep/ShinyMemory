@@ -1,0 +1,261 @@
+{
+  "id": "draft.dialogue.nichika.tribute.gig",
+  "kind": "dialogue",
+  "title": "致敬演出当晚",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.nichika.tribute.gig",
+  "payload": {
+    "id": "dialogue.nichika.tribute.gig",
+    "idolId": "nichika",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "会场。两百人的站席满了。后台的走廊窄得只够一个人侧身过去。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "……にちか。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "nichika",
+        "text": "……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "nichika",
+        "text": "我，唱不出来。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "nichika",
+        "text": "会唱不出来的那种人，为什么还要站上舞台啊。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "nichika",
+        "text": "为什么……要站在美琴さん旁边────",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "────",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "有件事，得跟你说。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "对面事务所来问了。想让美琴和以前的搭档，今晚一起上。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "nichika",
+        "text": "────",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "nichika",
+        "text": "那不就是……重新组队吗。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "nichika",
+        "text": "……",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "nichika",
+        "text": "美琴さん，想跟她一起上吗。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "────",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "美琴是 SHHis 的。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "にちか也是。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "nichika",
+        "text": "……！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "nichika",
+        "text": "SHHis 什么的，我────",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "──にちか。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "不是因为你是个偶像才让你上台。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "是因为你是偶像，才不能让你一个人扛着走下台。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "nichika",
+        "text": "…………",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "nichika",
+        "text": "……我，会唱的。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "nichika",
+        "text": "我会站上去。会唱。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "text": "灯暗下来。她走上台，停在美琴左边半步的位置。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "nichika",
+        "text": "……一、二────",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "nichika",
+        "text": "……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "nichika",
+        "text": "听不见。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "nichika",
+        "text": "自己的声音，听不见────",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "mikoto",
+        "text": "────ah",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "……！",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "nichika",
+        "text": "……",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "nichika",
+        "text": "美琴さん，在唱。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "nichika",
+        "text": "我那段，美琴さん在唱────",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "────",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "nichika",
+        "text": "……我，听见了。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "nichika",
+        "text": "咚、咚────！",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "……好。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "text": "演出结束了。掌声响起来的时候，她抓着美琴的袖子，一直没有松开。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T08:20:00.000Z",
+  "updatedAt": "2026-11-01T07:48:55.720Z",
+  "reviewedAt": "2026-11-01T07:48:55.720Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T08:20:00.000Z",
+      "note": "对照 400105805/400105806（ルカ 侧的「美琴と私が」提案、にちか「歌えない……」、制作人「アイドルだからだよ」「美琴はシーズなんだ」「にちかもシーズだ」、にちか「シーズ……なんかじゃないですよ私」）。ルカ 未接入，名字不出现，只写「以前的搭档」。"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:48:55.720Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示；终局改为纯动作收尾）"
+    }
+  ]
+}

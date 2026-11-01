@@ -704,4 +704,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: 'ROUNDLY', index: 5, total: 5 },
     anchors: ['2025004110050', '2025004110130', '2025004110190'],
   },
+  // ── 活动剧情（不是卡面）：不填 `card`，只登记出处和锚点 ──
+  // 一章 = 链的一步。形状校验（一章 1 步、分支数）只管卡面章，
+  // 这三条走 arc 链、各有自己的剧本。
+  {
+    chapterId: 'nichika-tribute-offer',
+    script: '400105802',
+    source: 'data/story/283活动剧情/セヴン＃ス/第1话-そうだよ.csv',
+    anchors: ['4001058020100', '4001058020120', '4001058020430'],
+  },
+  {
+    chapterId: 'nichika-tribute-radio',
+    script: '400105803',
+    source: 'data/story/283活动剧情/セヴン＃ス/第2话-が／を.csv',
+    anchors: ['4001058030350', '4001058030830', '4001058031030'],
+  },
+  {
+    chapterId: 'nichika-tribute-gig',
+    script: '400105806',
+    source: 'data/story/283活动剧情/セヴン＃ス/第5话-shhh.csv',
+    anchors: ['4001058060220', '4001058060810', '4001058061080'],
+  },
 ];

@@ -28,6 +28,7 @@ import natsuhaCard from './natsuhaCard';
 import natsuhaEncounter from './natsuhaEncounter';
 import nichikaCard from './nichikaCard';
 import nichikaEncounter from './nichikaEncounter';
+import nichikaTribute from './nichikaTribute';
 import rinzeCard from './rinzeCard';
 import rinzeEncounter from './rinzeEncounter';
 import kahoEncounter from './kahoEncounter';
@@ -107,6 +108,7 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   hinanaCard,
   nichikaEncounter,
   nichikaCard,
+  nichikaTribute,
   mikotoEncounter,
   mikotoCard,
   manoSlump,

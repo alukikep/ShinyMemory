@@ -25,6 +25,7 @@ export const WALK_EDGES: MapEdgeDef[] = [
   { from: 'ekimae', to: 'station', minutes: 0 },
   { from: 'ekimae', to: 'shopping_street', minutes: 0 },
   { from: 'ekimae', to: 'record_shop', minutes: 0 },
+  { from: 'ekimae', to: 'hall', minutes: 0 },
   { from: 'studio_district', to: 'practice_room', minutes: 0 },
   { from: 'studio_district', to: 'studio', minutes: 0 },
   { from: 'seaside', to: 'park', minutes: 0 },

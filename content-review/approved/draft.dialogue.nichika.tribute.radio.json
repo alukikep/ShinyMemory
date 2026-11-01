@@ -1,0 +1,273 @@
+{
+  "id": "draft.dialogue.nichika.tribute.radio",
+  "kind": "dialogue",
+  "title": "电台公开录音的彩排",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.nichika.tribute.radio",
+  "payload": {
+    "id": "dialogue.nichika.tribute.radio",
+    "idolId": "nichika",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "电台公开录音的彩排。舞台只有两步宽，返听音箱摆不下，工作人员一直在道歉。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "彩排从这里开始。舞台比图纸上还窄，先适应一下。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "nichika",
+        "text": "好──！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "nichika",
+        "text": "……哇，真的好窄。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "nichika",
+        "text": "啊、对不起！我不是在抱怨──",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "mikoto",
+        "text": "动不了。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "nichika",
+        "text": "……是。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "mikoto",
+        "text": "后面看不见吧？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "nichika",
+        "text": "诶？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "mikoto",
+        "text": "朝我这边确认。看起来就像在对视。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "nichika",
+        "text": "……！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "mikoto",
+        "text": "一、二────",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "nichika",
+        "text": "咚、咚────",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "text": "正式开演。第三首的副歌之前，她的声音开始飘。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "nichika",
+        "text": "────",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "nichika",
+        "text": "……诶？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "nichika",
+        "text": "音程……听不出来……",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "nichika",
+        "text": "音准对吗？诶…………？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "mikoto",
+        "text": "────",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "nichika",
+        "text": "不对不对，不是这样────",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "nichika",
+        "text": "咚、咚、右脚…………！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "……她跟上了。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "text": "演出结束。她站在后台的墙边，手一直握着拳。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "nichika",
+        "text": "……啊哈哈，那个，刚才────",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "nichika",
+        "text": "美琴さん替我唱了吧。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "mikoto",
+        "text": "……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "nichika",
+        "text": "美琴さん怎么可以来这种舞台啊……！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "nichika",
+        "text": "本来就是我的工作吧……！",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "这不是一个人的工作。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "nichika",
+        "text": "……不对啊。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "mikoto",
+        "text": "致敬演出那件事。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "mikoto",
+        "text": "我……可以上台。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "……！",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "nichika",
+        "text": "……",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "mikoto",
+        "text": "不过────",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "mikoto",
+        "text": "对她来说怎么样，我不知道。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "mikoto",
+        "text": "……但不知道，也要做了才知道。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "producer",
+        "text": "……嗯。那就做。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "nichika",
+        "text": "……美琴さん，刚才那句，好帅啊。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "mikoto",
+        "text": "……没说什么特别的。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T08:10:00.000Z",
+  "updatedAt": "2026-11-01T07:48:55.715Z",
+  "reviewedAt": "2026-11-01T07:48:55.715Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T08:10:00.000Z",
+      "note": "对照 400105803（窄舞台、美琴「そこ、私に合わせて下がって」「アイコンタクトに見せられる」、にちか「音程……わかんない……」、美琴「私は……出てもいい」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:48:55.715Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示；终局改为纯动作收尾）"
+    }
+  ]
+}

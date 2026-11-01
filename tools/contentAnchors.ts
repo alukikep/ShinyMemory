@@ -109,20 +109,38 @@ if (!corpusAvailable) {
 // 还没接入 STORY_CHAINS 的章节只提示——过审后再接。
 const cardChains = PENDING_CHAPTERS.filter((chain) => (chain.kind ?? 'card') === 'card');
 
-/** 步骤 id → (链, 步骤序, 步骤)。一张卡是多步链，所以按步骤查。 */
+/**
+ * 步骤 id → (链, 步骤序, 步骤)。一张卡是多步链，所以按步骤查。
+ * 招募/长线（arc）也进表——活动剧情的 chapterId 就是某个步骤 id。
+ */
 const stepIndex = new Map<
   string,
   { chain: (typeof PENDING_CHAPTERS)[number]; stepIndex: number }
 >();
-for (const chain of cardChains) {
+for (const chain of PENDING_CHAPTERS) {
   chain.steps.forEach((step, index) => {
     if (step.id) stepIndex.set(step.id, { chain, stepIndex: index });
   });
 }
 
-const pendingChapters = CHAPTER_SOURCES.filter(
-  (chapter) => !index.storyChains.has(chapter.chapterId),
-);
+/** 章节 → 它对应的一步（卡面章按步骤 id 找，旧章按链 id 找）。 */
+function stepFor(chapter: (typeof CHAPTER_SOURCES)[number]) {
+  const located = stepIndex.get(chapter.chapterId);
+  if (located) return located.chain.steps[located.stepIndex];
+  return index.storyChains.get(chapter.chapterId)?.steps[0];
+}
+
+/**
+ * "还没过审" = 这一步的对话不在已批内容里。
+ *
+ * 以前用 `storyChains.has(chapterId)` 判，只有在 chapterId 恰好等于链 id 时才成立，
+ * 于是多步卡（chapterId 是步骤 id）**全部**被当成待审，输出了 95 行假警报。
+ * E2E 与看板都靠这份名单时这点很致命——现在按对话实际在不在包里判。
+ */
+const pendingChapters = CHAPTER_SOURCES.filter((chapter) => {
+  const step = stepFor(chapter);
+  return !step || !index.dialogues.has(step.dialogueId);
+});
 const activeChapters = CHAPTER_SOURCES.filter((chapter) =>
   index.storyChains.has(chapter.chapterId),
 );
@@ -171,8 +189,10 @@ const problems = [
     }),
     ),
   ),
+  // 形状校验（"卡面章 1 步、分支数对齐原作"）只适用于**卡面章**；
+  // 活动剧情的 chapterId 是链的一步（arc），没有 `card` 字段。
   ...validateChapterShape(
-    CHAPTER_SOURCES.map((chapter) => {
+    CHAPTER_SOURCES.filter((chapter) => chapter.card).map((chapter) => {
       const located = stepIndex.get(chapter.chapterId);
       const chain =
         index.storyChains.get(chapter.chapterId) ?? located?.chain;
@@ -255,7 +275,7 @@ for (const chapter of CHAPTER_SOURCES) {
 
 for (const chapter of pendingChapters) {
   console.log(
-    `  · ${chapter.chapterId}：对话待审，尚未接入 STORY_CHAINS（过审后再加）`,
+    `  · ${chapter.chapterId}：对话还没过审（过审并 content:sync 后才会进包）`,
   );
 }
 

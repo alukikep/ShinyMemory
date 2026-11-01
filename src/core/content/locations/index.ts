@@ -17,6 +17,7 @@ import recordShop from './recordShop.js';
 import officeRoof from './officeRoof.js';
 import universityDistrict from './universityDistrict.js';
 import university from './university.js';
+import hall from './hall.js';
 
 /**
  * 地点分两层：
@@ -34,6 +35,7 @@ export const LOCATIONS: LocationDef[] = [
   seaside,
   station,
   recordShop,
+  hall,
   practiceRoom,
   studio,
   park,

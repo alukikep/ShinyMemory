@@ -261,6 +261,13 @@ P6 2026-10-30  系统层 / 无内容
   - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 4、SHHis 2
   - 每人的块结构都一样：招募链 2–3 步 + 首张卡一链 N 章 + 专属行动 + 话题 6–8 + 训练后事件 3
   - 进度与逐场地点核对见 [`_materials/<unit>-plan.md`](_materials/README.md)
+- **コメティック 前导**（`nichika-tribute`，3 步，已上线）：八雲なみ 的致敬演出。
+  - 它是 にちか 的低谷（台上唱不出来），也是 斑鳩ルカ 闭门不出的**直接原因**——
+    `ルカ` 的招募链挂在它的完成 flag `unlocked.tribute_gig` 上。
+  - 闸门跨角色：`にちか` + `美琴` 都在籍才出现（`idolStatus` 显式写 idolId）。
+  - 顺带新增地点 `hall`（会场，`ekimae` 的成员）。
+  - 依赖图、原文出处与三个人的入场顺序见
+    [`_materials/cometik-plan.md`](_materials/cometik-plan.md)。
 - 已有工作（6 份已通过）：摄影棚 ¥1,200 / 电台 ¥900 / 封面 ¥2,000 / 录音小样 ¥600 / 舞蹈节目 ¥1,000 / 初次 Live（剧情解锁）
 - 技术债（不影响构建，见 [dev-guide](../current/dev-guide.md)）：
   - `mano` 日程仍缺学校时段（`schoolSlotDebt` 豁免）

@@ -2,7 +2,7 @@
   "id": "draft.dialogue.chiyoko.first",
   "kind": "dialogue",
   "title": "事务所里有个眼熟的女孩子",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.chiyoko.first",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "chiyoko",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（今天从进事务所的孩子里挑……就是上次甄选通过的那几个吧。）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "producer",
-        "text": "（嗯？那个扎两个小丸子的女孩子……好像一直在看我。）",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "chiyoko",
-        "text": "……啊！那位是！",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "chiyoko",
-        "text": "那个，您还记得我吗？",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "producer",
-        "text": "诶、那个……",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "（这个孩子，我有印象……对了！）是参加甄选的園田智代子小姐吧。",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "chiyoko",
-        "text": "是！没错！您还记得我，我好高兴！",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "chiyoko",
-        "text": "那时候真的受您照顾了……！非常感谢！",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "chiyoko",
-        "text": "我今后会努力的。……虽说离出道还远得很……诶嘿嘿。",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "producer",
@@ -188,13 +134,76 @@
         "id": "30",
         "speakerId": "chiyoko",
         "text": "好——！既然决定了，我会想很多很多的！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（今天从进事务所的孩子里挑……就是上次甄选通过的那几个吧。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "（嗯？那个扎两个小丸子的女孩子……好像一直在看我。）",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "chiyoko",
+        "text": "……啊！那位是！",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "chiyoko",
+        "text": "那个，您还记得我吗？",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "诶、那个……",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "（这个孩子，我有印象……对了！）是参加甄选的園田智代子小姐吧。",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "chiyoko",
+        "text": "是！没错！您还记得我，我好高兴！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "chiyoko",
+        "text": "那时候真的受您照顾了……！非常感谢！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "chiyoko",
+        "text": "我今后会努力的。……虽说离出道还远得很……诶嘿嘿。",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T03:00:00.000Z",
-  "updatedAt": "2026-11-02T03:00:00.000Z",
+  "updatedAt": "2026-11-01T01:51:39.225Z",
+  "reviewedAt": "2026-11-01T01:51:39.225Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T03:00:00.000Z", "note": "对照 101000101 改编（档案型：甄选时已见过）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T03:00:00.000Z",
+      "note": "对照 101000101 改编（档案型：甄选时已见过）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T01:51:39.225Z"
+    }
   ]
 }

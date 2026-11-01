@@ -2,7 +2,7 @@
   "id": "draft.chiyoko.chat.school",
   "kind": "topic",
   "title": "聊天 · 学校",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.chiyoko.chat.school",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T03:35:00.000Z",
-  "updatedAt": "2026-11-02T03:35:00.000Z",
+  "updatedAt": "2026-11-01T01:51:45.820Z",
+  "reviewedAt": "2026-11-01T01:51:45.820Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T03:35:00.000Z",
       "note": "智代子日常话题（1010005010150 数学苦手）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T01:51:45.820Z"
     }
   ]
 }

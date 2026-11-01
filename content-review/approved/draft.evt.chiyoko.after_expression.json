@@ -2,7 +2,7 @@
   "id": "draft.evt.chiyoko.after_expression",
   "kind": "event",
   "title": "好几种笑",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.chiyoko.after_expression",
   "payload": {
@@ -74,12 +74,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T03:40:00.000Z",
-  "updatedAt": "2026-11-02T03:40:00.000Z",
+  "updatedAt": "2026-11-01T01:51:42.548Z",
+  "reviewedAt": "2026-11-01T01:51:42.548Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T03:40:00.000Z",
       "note": "智代子表演课后事件（笑是她的挡箭牌）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T01:51:42.548Z"
     }
   ]
 }

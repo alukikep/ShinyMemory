@@ -2,7 +2,7 @@
   "id": "draft.dialogue.chiyoko.piano",
   "kind": "dialogue",
   "title": "拍摄结束后的喫茶店",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.chiyoko.piano",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "chiyoko",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "智代子，辛苦了。今天很顺利啊。",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "chiyoko",
-        "text": "是！想着要加油，摄影师的指示也都听清了！",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "那就好。拍摄本身也提前结束了。",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "producer",
-        "text": "……还有时间，你可以慢慢待着。店里也包场了。",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "chiyoko",
-        "text": "真的吗？太好了！那我到处看看！",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "chiyoko",
-        "text": "呵呵。这么宽敞的地方，只有我和制作人先生两个人，有点心跳呢！",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "producer",
-        "text": "是吗？智代子一个人的工作前后基本都是这样吧？和平时一样。",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "chiyoko",
-        "text": "是因为这家喫茶店啊～这么时髦的地方，我一个人很少来……",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "我还以为你到处吃甜品，喫茶店也会去呢。",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "chiyoko",
@@ -189,9 +135,18 @@
         "speakerId": "chiyoko",
         "text": "那要不要重新学钢琴……自弹自唱的巧克力偶像！怎么样？",
         "choices": [
-          { "label": "我觉得不错。", "nextNodeId": "40" },
-          { "label": "我想看看。", "nextNodeId": "50" },
-          { "label": "很上镜。", "nextNodeId": "60" }
+          {
+            "label": "我觉得不错。",
+            "nextNodeId": "40"
+          },
+          {
+            "label": "我想看看。",
+            "nextNodeId": "50"
+          },
+          {
+            "label": "很上镜。",
+            "nextNodeId": "60"
+          }
         ]
       },
       "40": {
@@ -280,13 +235,76 @@
         "id": "65",
         "speakerId": "chiyoko",
         "text": "真是的！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "智代子，辛苦了。今天很顺利啊。",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "chiyoko",
+        "text": "是！想着要加油，摄影师的指示也都听清了！",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "那就好。拍摄本身也提前结束了。",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "producer",
+        "text": "……还有时间，你可以慢慢待着。店里也包场了。",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "chiyoko",
+        "text": "真的吗？太好了！那我到处看看！",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "chiyoko",
+        "text": "呵呵。这么宽敞的地方，只有我和制作人先生两个人，有点心跳呢！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "producer",
+        "text": "是吗？智代子一个人的工作前后基本都是这样吧？和平时一样。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "chiyoko",
+        "text": "是因为这家喫茶店啊～这么时髦的地方，我一个人很少来……",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "我还以为你到处吃甜品，喫茶店也会去呢。",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T03:15:00.000Z",
-  "updatedAt": "2026-11-02T03:15:00.000Z",
+  "updatedAt": "2026-11-01T01:51:38.017Z",
+  "reviewedAt": "2026-11-01T01:51:38.017Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T03:15:00.000Z", "note": "对照 201000302 改编，保留三个选项" }
+    {
+      "status": "review",
+      "at": "2026-11-02T03:15:00.000Z",
+      "note": "对照 201000302 改编，保留三个选项"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T01:51:38.017Z"
+    }
   ]
 }

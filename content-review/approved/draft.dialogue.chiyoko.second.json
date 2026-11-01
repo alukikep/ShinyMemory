@@ -2,7 +2,7 @@
   "id": "draft.dialogue.chiyoko.second",
   "kind": "dialogue",
   "title": "练习室里有人在练巧克力段子",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.chiyoko.second",
   "payload": {
@@ -10,60 +10,6 @@
     "idolId": "chiyoko",
     "startNodeId": "01",
     "nodes": {
-      "01": {
-        "id": "01",
-        "speakerId": "producer",
-        "text": "（哦，她练得挺认真啊。）",
-        "nextNodeId": "02"
-      },
-      "02": {
-        "id": "02",
-        "speakerId": "chiyoko",
-        "text": "……巧克力……巧克力……",
-        "nextNodeId": "03"
-      },
-      "03": {
-        "id": "03",
-        "speakerId": "producer",
-        "text": "（……嗯？她一边跳一边在念什么……动作的空隙里）",
-        "nextNodeId": "04"
-      },
-      "04": {
-        "id": "04",
-        "speakerId": "chiyoko",
-        "text": "把甜甜的爱送给你♪……毕竟是巧克力嘛！",
-        "nextNodeId": "05"
-      },
-      "05": {
-        "id": "05",
-        "speakerId": "chiyoko",
-        "text": "巧克力偶像，就是「巧」可爱！……毕竟是巧克力嘛！",
-        "nextNodeId": "06"
-      },
-      "06": {
-        "id": "06",
-        "speakerId": "producer",
-        "text": "……你在干什么啊，智代子？",
-        "nextNodeId": "07"
-      },
-      "07": {
-        "id": "07",
-        "speakerId": "chiyoko",
-        "text": "啊！制作人先生！早上好！",
-        "nextNodeId": "08"
-      },
-      "08": {
-        "id": "08",
-        "speakerId": "chiyoko",
-        "text": "我正在练习，好让自己能马上说出很有巧克力偶像感觉的话！",
-        "nextNodeId": "09"
-      },
-      "09": {
-        "id": "09",
-        "speakerId": "producer",
-        "text": "……原来如此。智代子有智代子的努力方式啊。",
-        "nextNodeId": "10"
-      },
       "10": {
         "id": "10",
         "speakerId": "chiyoko",
@@ -81,9 +27,18 @@
         "speakerId": "producer",
         "text": "嗯，我的意见？这个嘛……",
         "choices": [
-          { "label": "得多吃巧克力才行。", "nextNodeId": "30" },
-          { "label": "得加深巧克力知识。", "nextNodeId": "40" },
-          { "label": "想一想巧克力是什么。", "nextNodeId": "50" }
+          {
+            "label": "得多吃巧克力才行。",
+            "nextNodeId": "30"
+          },
+          {
+            "label": "得加深巧克力知识。",
+            "nextNodeId": "40"
+          },
+          {
+            "label": "想一想巧克力是什么。",
+            "nextNodeId": "50"
+          }
         ]
       },
       "30": {
@@ -268,13 +223,76 @@
         "id": "60",
         "speakerId": "chiyoko",
         "text": "虽然完全在预料之外，但能被关注到，我很开心！"
+      },
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（哦，她练得挺认真啊。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "chiyoko",
+        "text": "……巧克力……巧克力……",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "（……嗯？她一边跳一边在念什么……动作的空隙里）",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "chiyoko",
+        "text": "把甜甜的爱送给你♪……毕竟是巧克力嘛！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "chiyoko",
+        "text": "巧克力偶像，就是「巧」可爱！……毕竟是巧克力嘛！",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "……你在干什么啊，智代子？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "chiyoko",
+        "text": "啊！制作人先生！早上好！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "chiyoko",
+        "text": "我正在练习，好让自己能马上说出很有巧克力偶像感觉的话！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "……原来如此。智代子有智代子的努力方式啊。",
+        "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T03:05:00.000Z",
-  "updatedAt": "2026-11-02T03:05:00.000Z",
+  "updatedAt": "2026-11-01T01:51:39.278Z",
+  "reviewedAt": "2026-11-01T01:51:39.278Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T03:05:00.000Z", "note": "对照 101000102 改编，保留三个选项" }
+    {
+      "status": "review",
+      "at": "2026-11-02T03:05:00.000Z",
+      "note": "对照 101000102 改编，保留三个选项"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T01:51:39.278Z"
+    }
   ]
 }

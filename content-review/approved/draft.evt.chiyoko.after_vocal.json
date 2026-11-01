@@ -2,7 +2,7 @@
   "id": "draft.evt.chiyoko.after_vocal",
   "kind": "event",
   "title": "唱完就想吃甜的",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.chiyoko.after_vocal",
   "payload": {
@@ -74,12 +74,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T03:40:00.000Z",
-  "updatedAt": "2026-11-02T03:40:00.000Z",
+  "updatedAt": "2026-11-01T01:51:43.133Z",
+  "reviewedAt": "2026-11-01T01:51:43.133Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T03:40:00.000Z",
       "note": "智代子声乐课后事件（1010001020030 边唱边念巧克力梗）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T01:51:43.133Z"
     }
   ]
 }

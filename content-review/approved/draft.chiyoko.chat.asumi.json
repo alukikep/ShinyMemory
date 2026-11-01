@@ -2,7 +2,7 @@
   "id": "draft.chiyoko.chat.asumi",
   "kind": "topic",
   "title": "聊天 · 朋友",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.chiyoko.chat.asumi",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T03:35:00.000Z",
-  "updatedAt": "2026-11-02T03:35:00.000Z",
+  "updatedAt": "2026-11-01T01:51:43.596Z",
+  "reviewedAt": "2026-11-01T01:51:43.596Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T03:35:00.000Z",
       "note": "智代子日常话题（1010005010050 / 1010005010190）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T01:51:43.596Z"
     }
   ]
 }

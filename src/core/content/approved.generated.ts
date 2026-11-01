@@ -49,6 +49,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.chiyoko.sweets",
+  "name": "陪她甜品巡礼",
+  "description": "她说这条街有三家想去的店，一家一家吃过去，每样都分你一半。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "chiyoko"
+  ],
+  "locations": [
+    "shopping_street"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 900,
+      "toMinute": 1140
+    }
+  ],
+  "cost": {
+    "stamina": 7
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -4
+    }
+  ],
+  "resultTexts": [
+    "每家店她都要先拍三张，才肯把叉子递给你。",
+    "她说「好吃的东西分着吃会更美味」，然后把自己那份又切了一半给你。",
+    "回去的路上她还在数：今天吃了四家，下次还剩两家。"
+  ]
+},
+{
   "id": "activity.daily_errand",
   "name": "发传单",
   "description": "商业街的店在找人手，站一会儿，按小时结。",
@@ -1073,6 +1118,212 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "她把谱子合上，说下次一定唱完。走到门口又回头确认了一遍灯关没关。"
+    }
+  ]
+},
+{
+  "id": "evt.chiyoko.after_dance",
+  "title": "腿已经不是自己的了",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "chiyoko"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她趴在把杆上，说腿已经不是自己的了。",
+  "choices": [
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "delta": -3,
+          "stat": "stress",
+          "kind": "sharedStat"
+        },
+        {
+          "ref": "trust",
+          "tier": 1,
+          "kind": "attributeExp"
+        }
+      ],
+      "result": "「……嗯。那今天就吃甜的补回来！」"
+    },
+    {
+      "label": "再跳一次刚才那段。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "ref": "dance",
+          "tier": 1,
+          "kind": "attributeExp"
+        },
+        {
+          "delta": 2,
+          "stat": "stress",
+          "kind": "sharedStat"
+        }
+      ],
+      "result": "「诶——……好、好吧！跳完要请我吃芭菲哦！」"
+    },
+    {
+      "label": "先喝水，慢慢来。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "ref": "dance",
+          "tier": 1,
+          "kind": "attributeExp"
+        },
+        {
+          "ref": "trust",
+          "tier": 3,
+          "kind": "attributeExp"
+        }
+      ],
+      "result": "「谢谢……制作人先生真会照顾人。」"
+    }
+  ]
+},
+{
+  "id": "evt.chiyoko.after_expression",
+  "title": "好几种笑",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "chiyoko"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。她对着镜子练了好几遍笑，最后说分不清哪个是自己。",
+  "choices": [
+    {
+      "label": "刚才那个最好。",
+      "hint": "信任 +3、表现 +1",
+      "effects": [
+        {
+          "ref": "trust",
+          "tier": 3,
+          "kind": "attributeExp"
+        },
+        {
+          "ref": "expression",
+          "tier": 1,
+          "kind": "attributeExp"
+        }
+      ],
+      "result": "「刚才那个……是想到巧克力布丁的时候的笑。」"
+    },
+    {
+      "label": "不笑的样子也看看。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "ref": "expression",
+          "tier": 1,
+          "kind": "attributeExp"
+        },
+        {
+          "ref": "trust",
+          "tier": 3,
+          "kind": "attributeExp"
+        }
+      ],
+      "result": "「不、不笑的样子？……这、这样可以吗？」她很快就撑不住笑了。"
+    },
+    {
+      "label": "别勉强。",
+      "hint": "压力 -4",
+      "effects": [
+        {
+          "delta": -4,
+          "stat": "stress",
+          "kind": "sharedStat"
+        }
+      ],
+      "result": "「被看出来了啊……诶嘿嘿。谢谢。」"
+    }
+  ]
+},
+{
+  "id": "evt.chiyoko.after_vocal",
+  "title": "唱完就想吃甜的",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "chiyoko"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她把最后一句唱完，先摸了摸肚子。",
+  "choices": [
+    {
+      "label": "唱得很好。",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "ref": "trust",
+          "tier": 3,
+          "kind": "attributeExp"
+        },
+        {
+          "ref": "vocal",
+          "tier": 1,
+          "kind": "attributeExp"
+        }
+      ],
+      "result": "「真的吗！？诶嘿嘿，那……可以去吃蛋糕吗？」"
+    },
+    {
+      "label": "再来一遍。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "ref": "vocal",
+          "tier": 1,
+          "kind": "attributeExp"
+        },
+        {
+          "delta": 2,
+          "stat": "stress",
+          "kind": "sharedStat"
+        }
+      ],
+      "result": "「好！……这次唱完，真的要去吃甜的哦！」"
+    },
+    {
+      "label": "先喝口水吧。",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "delta": -3,
+          "stat": "stress",
+          "kind": "sharedStat"
+        }
+      ],
+      "result": "「谢谢……啊，被照顾了。平常都是我在照顾人。」"
     }
   ]
 },
@@ -6242,6 +6493,1258 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "4-10",
       "speakerId": "meguru",
       "text": "真是的——！能全部都穿到就好了——！"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyoko.first",
+  "idolId": "chiyoko",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "（園田小姐的笑容……朴素，但非常可爱。这份亲和力一定会成为武器。）",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "……園田小姐，如果可以的话，要不要来我带的组合？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "chiyoko",
+      "text": "诶诶！？我吗？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "看到園田小姐的笑容，我就觉得无论如何都想邀请你。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "可能有点突然，你觉得呢？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "chiyoko",
+      "text": "可、可是可是，真的让我来可以吗？我完全就是个普通人……！",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "没有『普通』这回事。把你有的东西用起来就好。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "chiyoko",
+      "text": "我有的东西……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "能跟我说说你的事吗？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "chiyoko",
+      "text": "我知道了！那个，那个……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "chiyoko",
+      "text": "我是園田智代子，女高中生，朋友都叫我チョコ，",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "チョコ？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "chiyoko",
+      "text": "是！名字是智代子，能读成チョコ，所以就有了这个外号……嗯？チョコ……？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "chiyoko",
+      "text": "チョコアイドル，園田智代子！……您觉得怎么样？！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "chiyoko",
+      "text": "我喜欢甜食，感觉特别合适！",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "是啊。不错啊，巧克力偶像！",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "chiyoko",
+      "text": "真的吗！？好开心！为了配得上巧克力偶像，我会努力的！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "chiyoko",
+      "text": "毕竟是板巧克力嘛！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "板、板巧克力？",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "chiyoko",
+      "text": "是！我想着，如果能说这种和巧克力挂上钩的台词，就很有巧克力偶像的感觉……！",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "chiyoko",
+      "text": "好——！既然决定了，我会想很多很多的！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（今天从进事务所的孩子里挑……就是上次甄选通过的那几个吧。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "（嗯？那个扎两个小丸子的女孩子……好像一直在看我。）",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "chiyoko",
+      "text": "……啊！那位是！",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "chiyoko",
+      "text": "那个，您还记得我吗？",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "诶、那个……",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "（这个孩子，我有印象……对了！）是参加甄选的園田智代子小姐吧。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "chiyoko",
+      "text": "是！没错！您还记得我，我好高兴！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "chiyoko",
+      "text": "那时候真的受您照顾了……！非常感谢！",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "chiyoko",
+      "text": "我今后会努力的。……虽说离出道还远得很……诶嘿嘿。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyoko.gift",
+  "idolId": "chiyoko",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "这样啊……那下次也去接一些巧克力偶像的工作。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "chiyoko",
+      "text": "诶？真的吗！？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "chiyoko",
+      "text": "哇——！约好了哦，制作人先生！绝对哦！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "不过，别的工作也要好好做？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "chiyoko",
+      "text": "当然！不管什么工作我都会全力努力！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "那就好。看这状态，应该不用担心了。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "chiyoko",
+      "text": "诶嘿嘿……！……啊，对了！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "怎么了？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "chiyoko",
+      "text": "其实本来打算今天马上给您的，结果因为工作完全忘了！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "chiyoko",
+      "text": "……给！制作人先生，这是我送您的礼物。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "chiyoko",
+      "text": "当然是巧克力！这个非常好吃，但很受欢迎，很难买到！",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "这么好味的巧克力，给我？我很高兴，不过为什么？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "chiyoko",
+      "text": "那是因为……诶嘿嘿。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "chiyoko",
+      "text": "……我觉得，我一直没能好好道谢。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "chiyoko",
+      "text": "一直带着我，把我拉到最前面的制作人先生。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "chiyoko",
+      "text": "我想把平时的感谢，用礼物表达出来！",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "哪里，我才要……谢谢你，智代子。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "chiyoko",
+      "text": "不会不会！……这种事，说出来还是有点不好意思。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "chiyoko",
+      "text": "制作人先生，今后也请多多指教園田智代子！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "当然。请多指教，智代子。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "chiyoko",
+      "text": "哇！？制、制作人先生，刚才那是……！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "说起来，我今天一整天工作，什么都没吃。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "chiyoko",
+      "text": "唔……是的……",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "……好！我也受了智代子不少照顾，就当巧克力的回礼，今天我请客！",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "chiyoko",
+      "text": "诶！可、可是，巧克力本来就是我感谢的心意……！",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "别客气，我想让智代子尽情地吃。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "chiyoko",
+      "text": "……是！谢谢您！",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "chiyoko",
+      "text": "这么多……！从哪个开始吃……",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "从哪个都行，从智代子喜欢的开始就好。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "chiyoko",
+      "text": "那……我要特大的巧克力芭菲！我开动了！",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "喂喂，不用从甜点开始吧……！——听不到了啊。",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "chiyoko",
+      "text": "嗯——！！好吃！果然巧克力最棒了！",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "chiyoko",
+      "text": "被喜欢的东西围着……！我现在非常幸福哦，制作人先生！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "chiyoko",
+      "text": "大家，辛苦了——！",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "智代子，辛苦了。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "chiyoko",
+      "text": "制作人先生！辛苦了！",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "chiyoko",
+      "text": "今天是临时的工作，不过……很开心呢！",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "嗯，甜品联动以外的工作也顺利多起来了。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "chiyoko",
+      "text": "是！能做各种工作，很开心！",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "chiyoko",
+      "text": "不过……果然我的原点还是在巧克力。",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "chiyoko",
+      "text": "像这样离巧克力越来越远，有点寂寞……诶嘿嘿。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "chiyoko",
+      "text": "感觉像……想家一样。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyoko.piano",
+  "idolId": "chiyoko",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "chiyoko",
+      "text": "蛋糕店和咖啡店会去，但这种地方门槛太高，我进不来。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "chiyoko",
+      "text": "所以像这样待在喫茶店里……而且还是和制作人先生一起……！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "chiyoko",
+      "text": "我现在，非常兴奋！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "这样啊。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "chiyoko",
+      "text": "是。……啊，好厉害！这家店有钢琴！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "chiyoko",
+      "text": "哇，好怀念啊……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "智代子，学过钢琴吗？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "chiyoko",
+      "text": "……以前学过，只是一点点……现在只会用一只手弹了。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "……要弹弹看吗？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "chiyoko",
+      "text": "诶，可以吗！？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "又不是不让碰。我去问问店里的人。……他们说没问题，让我随便弹。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "chiyoko",
+      "text": "谢谢！那，我想想……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "chiyoko",
+      "text": "哆——来——咪——发——梭——拉——西——哆♪",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "chiyoko",
+      "text": "诶嘿嘿，总觉得想唱歌了。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "chiyoko",
+      "text": "小时候手指够不到，很困扰，不过现在好像没问题了。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "……这样的智代子，也挺好的。刚才应该拍下来的。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "chiyoko",
+      "text": "又、又不是弹得很好，不用了！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "chiyoko",
+      "text": "这件事，请只收在制作人先生的心里！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "明明挺开心的？",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "chiyoko",
+      "text": "那、那是因为钢琴很漂亮！……啊！对了！",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "chiyoko",
+      "text": "那要不要重新学钢琴……自弹自唱的巧克力偶像！怎么样？",
+      "choices": [
+        {
+          "label": "我觉得不错。",
+          "nextNodeId": "40"
+        },
+        {
+          "label": "我想看看。",
+          "nextNodeId": "50"
+        },
+        {
+          "label": "很上镜。",
+          "nextNodeId": "60"
+        }
+      ]
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "chiyoko",
+      "text": "诶嘿嘿，开玩笑的……诶、可、可以吗！？",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "chiyoko",
+      "text": "制作人先生总是马上支持我，偶尔也请阻止我一下！",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "什么啊，刚才那个不是认真的吗？",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "chiyoko",
+      "text": "因为，我几乎都不记得了……",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "chiyoko",
+      "text": "…………不过，能弹的话确实很棒。",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "chiyoko",
+      "text": "如果我弹得出来了，制作人先生会第一个听吗？"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "chiyoko",
+      "text": "唔，明明是玩笑，居然真的被点单了……！",
+      "nextNodeId": "51"
+    },
+    "51": {
+      "id": "51",
+      "speakerId": "producer",
+      "text": "不，不是勉强你。只是有机会的话，想看看。",
+      "nextNodeId": "52"
+    },
+    "52": {
+      "id": "52",
+      "speakerId": "chiyoko",
+      "text": "就算这样，我也有点慌了！"
+    },
+    "60": {
+      "id": "60",
+      "speakerId": "chiyoko",
+      "text": "诶、诶诶！？才没有那种事……",
+      "nextNodeId": "61"
+    },
+    "61": {
+      "id": "61",
+      "speakerId": "chiyoko",
+      "text": "我不是那种适合钢琴的类型……",
+      "nextNodeId": "62"
+    },
+    "62": {
+      "id": "62",
+      "speakerId": "producer",
+      "text": "是吗？刚才真的很适合。",
+      "nextNodeId": "63"
+    },
+    "63": {
+      "id": "63",
+      "speakerId": "chiyoko",
+      "text": "别用那么认真的表情说！",
+      "nextNodeId": "64"
+    },
+    "64": {
+      "id": "64",
+      "speakerId": "producer",
+      "text": "自弹自唱的偶像，应该也不错。",
+      "nextNodeId": "65"
+    },
+    "65": {
+      "id": "65",
+      "speakerId": "chiyoko",
+      "text": "真是的！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "智代子，辛苦了。今天很顺利啊。",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "chiyoko",
+      "text": "是！想着要加油，摄影师的指示也都听清了！",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "那就好。拍摄本身也提前结束了。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "……还有时间，你可以慢慢待着。店里也包场了。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "chiyoko",
+      "text": "真的吗？太好了！那我到处看看！",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "chiyoko",
+      "text": "呵呵。这么宽敞的地方，只有我和制作人先生两个人，有点心跳呢！",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "是吗？智代子一个人的工作前后基本都是这样吧？和平时一样。",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "chiyoko",
+      "text": "是因为这家喫茶店啊～这么时髦的地方，我一个人很少来……",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "我还以为你到处吃甜品，喫茶店也会去呢。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyoko.second",
+  "idolId": "chiyoko",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "chiyoko",
+      "text": "是！我想变得更有巧克力偶像的样子！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "chiyoko",
+      "text": "请务必也给我一点建议！我接下来该做什么好呢？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "嗯，我的意见？这个嘛……",
+      "choices": [
+        {
+          "label": "得多吃巧克力才行。",
+          "nextNodeId": "30"
+        },
+        {
+          "label": "得加深巧克力知识。",
+          "nextNodeId": "40"
+        },
+        {
+          "label": "想一想巧克力是什么。",
+          "nextNodeId": "50"
+        }
+      ]
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "chiyoko",
+      "text": "多吃巧克力……吗……原来如此，对巧克力偶像来说确实必不可少……！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "chiyoko",
+      "text": "我知道了！我去买！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "智代子？也不用现在就去吧……！……决定了就行动很快啊，不愧是智代子。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "chiyoko",
+      "text": "买回来了！",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "这、这么多……！？吃得完吗……？",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "chiyoko",
+      "text": "甜食我最喜欢了，没问题♪",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "（真是一张幸福的好脸啊。）……拍张照发到社交平台上也行吗？",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "chiyoko",
+      "text": "啊，好！当然可以，麻烦您了！",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "智代子！刚才那张照片反应挺多的哦！",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "chiyoko",
+      "text": "真、真的吗！？……哇……！大家都在说可爱……！"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "chiyoko",
+      "text": "说起来，我一直只顾着吃，关于巧克力的事完全不了解……！",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "既然要卖巧克力，了解一下说不定更好。",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "chiyoko",
+      "text": "说得对！我去借巧克力的书！",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "producer",
+      "text": "现在就去？",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "chiyoko",
+      "text": "是！好事不宜迟！我去图书馆了！",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "chiyoko",
+      "text": "唔——……",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "producer",
+      "text": "怎么了？智代子。",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "chiyoko",
+      "text": "刚才借的书，有点难……",
+      "nextNodeId": "48"
+    },
+    "48": {
+      "id": "48",
+      "speakerId": "producer",
+      "text": "我看看……巧克力的历史啊，嗯，借了本挺硬的书。",
+      "nextNodeId": "49"
+    },
+    "49": {
+      "id": "49",
+      "speakerId": "chiyoko",
+      "text": "是。我平时不太读书，所以是个强敌……！不过一点点读下去，好好学！不好好记住就没有意义嘛！"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "chiyoko",
+      "text": "巧、巧克力是什么……吗？……啊，是哲学那种！",
+      "nextNodeId": "51"
+    },
+    "51": {
+      "id": "51",
+      "speakerId": "chiyoko",
+      "text": "唔——……巧克力是……",
+      "nextNodeId": "52"
+    },
+    "52": {
+      "id": "52",
+      "speakerId": "chiyoko",
+      "text": "巧克力……甜甜的你真迷人……",
+      "nextNodeId": "53"
+    },
+    "53": {
+      "id": "53",
+      "speakerId": "producer",
+      "text": "智、智代子……？",
+      "nextNodeId": "54"
+    },
+    "54": {
+      "id": "54",
+      "speakerId": "chiyoko",
+      "text": "……啊！抱歉，我跑题了。",
+      "nextNodeId": "55"
+    },
+    "55": {
+      "id": "55",
+      "speakerId": "producer",
+      "text": "不，可能是我说得太抽象了……也许需要慢慢想。",
+      "nextNodeId": "56"
+    },
+    "56": {
+      "id": "56",
+      "speakerId": "chiyoko",
+      "text": "很难呢…………融化了很好吃的茶色宝石……？",
+      "nextNodeId": "57"
+    },
+    "57": {
+      "id": "57",
+      "speakerId": "chiyoko",
+      "text": "……想到什么就先发到社交平台试试看吧……？",
+      "nextNodeId": "58"
+    },
+    "58": {
+      "id": "58",
+      "speakerId": "chiyoko",
+      "text": "制作人先生！你看！社交平台上有反应了！",
+      "nextNodeId": "59"
+    },
+    "59": {
+      "id": "59",
+      "speakerId": "producer",
+      "text": "真的！？太好了！……哦，这条说巧克力诗很有趣……",
+      "nextNodeId": "60"
+    },
+    "60": {
+      "id": "60",
+      "speakerId": "chiyoko",
+      "text": "虽然完全在预料之外，但能被关注到，我很开心！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（哦，她练得挺认真啊。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "chiyoko",
+      "text": "……巧克力……巧克力……",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "（……嗯？她一边跳一边在念什么……动作的空隙里）",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "chiyoko",
+      "text": "把甜甜的爱送给你♪……毕竟是巧克力嘛！",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "chiyoko",
+      "text": "巧克力偶像，就是「巧」可爱！……毕竟是巧克力嘛！",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "……你在干什么啊，智代子？",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "chiyoko",
+      "text": "啊！制作人先生！早上好！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "chiyoko",
+      "text": "我正在练习，好让自己能马上说出很有巧克力偶像感觉的话！",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "……原来如此。智代子有智代子的努力方式啊。",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyoko.sweets",
+  "idolId": "chiyoko",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "chiyoko",
+      "text": "不、不是的！平时都有朋友一起，今天只是碰巧……！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "chiyoko",
+      "text": "真、真是的！比起那个！制作人先生也来一个怎么样？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "chiyoko",
+      "text": "偶然遇到好幸运，就当纪念！来，别客气！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "诶？可以吗？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "chiyoko",
+      "text": "是，当然！这个一定很好吃！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "但这是智代子买的……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "chiyoko",
+      "text": "好吃的东西，和别人分着吃会更美味的！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "chiyoko",
+      "text": "对吧？所以制作人先生也别客气！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "这样啊……那，我就拿一个吧。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "chiyoko",
+      "text": "请！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "……嗯！真的很好吃。不愧是到处吃的人。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "chiyoko",
+      "text": "诶嘿嘿，太好了！谢谢！……啊，对了，得好好拍下来。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "发社交平台用吗？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "chiyoko",
+      "text": "是！不过，也有单纯想把好吃的东西记录下来的意思。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "chiyoko",
+      "text": "……哇，这张拍得挺好！制作人先生也看看！",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "原来如此……拍得很好，感觉平时就拍惯了。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "chiyoko",
+      "text": "诶嘿嘿，经常和朋友一起拍！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "chiyoko",
+      "text": "大家都很厉害，所以我也研究了很多！角度之类的……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "chiyoko",
+      "text": "因为有在等着看的人，所以想发一些让看的人也能笑一笑的东西。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "chiyoko",
+      "text": "话说回来，好像还没和制作人先生拍过照呢？",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "chiyoko",
+      "text": "要不要一起拍一张？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "诶，不，我就不用了。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "chiyoko",
+      "text": "不用害羞！只要笑一下比个剪刀手就好！",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "不是那个问题……偶像和制作人的关系，这样不太好吧。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "chiyoko",
+      "text": "是这样吗……？唔，可是……照片……",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "唔……",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "——对了。那，等『W.I.N.G.』夺冠，一起拍张纪念照怎么样？",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "chiyoko",
+      "text": "那真的可以吗！？",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "嗯，当然。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "chiyoko",
+      "text": "哇，好棒啊！第一次的照片，是夺冠纪念！",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "chiyoko",
+      "text": "我更有干劲了！这个必须好好努力了！等着我哦，制作人先生！"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（……嗯？刚才那个声音，难道是……智代子？）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "chiyoko",
+      "text": "嗯——！这个蛋糕，好好吃！这家店别的菜单也要检查一下……好！",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "啊，果然是智代子。",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "chiyoko",
+      "text": "咦，制作人先生！？好巧啊！",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "是啊，在这种地方遇到……智代子在做什么？",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "chiyoko",
+      "text": "我在甜品巡礼！休息日经常这样。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "这样啊……不、不过，你点了不少啊……",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "chiyoko",
+      "text": "一个人独占这么多甜品……对我来说是最高级的奢侈！",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "这么多，都是一个人？",
+      "nextNodeId": "10"
     }
   }
 },
@@ -17040,6 +18543,104 @@ export const APPROVED_CONTENT: ApprovedContent = {
 }
 ],
   topics: [
+{
+  "id": "chiyoko.chat.asumi",
+  "actorId": "chiyoko",
+  "label": "朋友",
+  "text": "「あすみちゃん是我高中的朋友，坐我前面。……嗯，是个很努力的孩子。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyoko.chat.choco",
+  "actorId": "chiyoko",
+  "label": "チョコアイドル",
+  "text": "「『巧克力偶像』这名字，是我自己想出来的哦。……诶嘿嘿，是不是有点太随便了？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyoko.chat.photo",
+  "actorId": "chiyoko",
+  "label": "拍照",
+  "text": "「拍甜品的照片我会研究角度。因为在等着看的人，我想让他们也笑一笑。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyoko.chat.piano",
+  "actorId": "chiyoko",
+  "label": "钢琴",
+  "text": "「钢琴啊……以前学过。现在只会用一只手弹了。……这个请保密哦。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyoko.chat.school",
+  "actorId": "chiyoko",
+  "label": "学校",
+  "text": "「学校啊，我坐得离黑板很远，所以数学总是追不上。……下次教教我吧？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyoko.chat.sweets",
+  "actorId": "chiyoko",
+  "label": "甜品",
+  "text": "「蛋糕、泡芙、芭菲……甜的东西我全都喜欢！不过要选一个的话，还是巧克力。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyoko.chat.today",
+  "actorId": "chiyoko",
+  "label": "今天",
+  "text": "「今天？今天是……嗯，是甜品巡礼的日子！制作人先生也要一起来吗？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
 {
   "id": "hiori.chat.about_you",
   "actorId": "hiori",

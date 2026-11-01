@@ -2,7 +2,7 @@
   "id": "draft.evt.chiyoko.after_dance",
   "kind": "event",
   "title": "腿已经不是自己的了",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.chiyoko.after_dance",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T03:40:00.000Z",
-  "updatedAt": "2026-11-02T03:40:00.000Z",
+  "updatedAt": "2026-11-01T01:51:41.909Z",
+  "reviewedAt": "2026-11-01T01:51:41.909Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T03:40:00.000Z",
       "note": "智代子舞蹈课后事件（她自称运动不擅长）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T01:51:41.909Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.chiyoko.chat.today",
   "kind": "topic",
   "title": "聊天 · 今天",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.chiyoko.chat.today",
   "payload": {
@@ -11,12 +11,27 @@
     "label": "今天",
     "text": "「今天？今天是……嗯，是甜品巡礼的日子！制作人先生也要一起来吗？」",
     "cooldownMinutes": 1440,
-    "effects": [{ "kind": "attributeExp", "ref": "trust", "tier": 1 }]
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
   },
   "annotations": [],
   "createdAt": "2026-11-02T03:30:00.000Z",
-  "updatedAt": "2026-11-02T03:30:00.000Z",
+  "updatedAt": "2026-11-01T01:51:47.602Z",
+  "reviewedAt": "2026-11-01T01:51:47.602Z",
   "history": [
-    { "status": "review", "at": "2026-11-02T03:30:00.000Z", "note": "智代子日常话题（2010003010030）" }
+    {
+      "status": "review",
+      "at": "2026-11-02T03:30:00.000Z",
+      "note": "智代子日常话题（2010003010030）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T01:51:47.602Z"
+    }
   ]
 }

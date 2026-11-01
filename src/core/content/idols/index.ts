@@ -11,6 +11,7 @@ import kaho from './kaho';
 import kiriko from './kiriko';
 import kogane from './kogane';
 import koito from './koito';
+import luca from './luca';
 import madoka from './madoka';
 import mamimi from './mamimi';
 import mano from './mano';
@@ -25,4 +26,4 @@ import tenka from './tenka';
 import toru from './toru';
 import yuika from './yuika';
 
-export const IDOLS: IdolDef[] = [mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze, natsuha, amana, tenka, chiyuki, asahi, fuyuko, mei, toru, madoka, koito, hinana, nichika, mikoto];
+export const IDOLS: IdolDef[] = [mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze, natsuha, amana, tenka, chiyuki, asahi, fuyuko, mei, toru, madoka, koito, hinana, nichika, mikoto, luca];

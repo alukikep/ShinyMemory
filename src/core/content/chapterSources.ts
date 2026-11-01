@@ -725,4 +725,22 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     source: 'data/story/283活动剧情/セヴン＃ス/第5话-shhh.csv',
     anchors: ['4001058060220', '4001058060810', '4001058061080'],
   },
+  {
+    chapterId: 'luca-door-1',
+    script: '490103908',
+    source: '剧本 490103908',
+    anchors: ['4901039080010', '4901039080030', '4901039080050'],
+  },
+  {
+    chapterId: 'luca-door-2',
+    script: '490103909',
+    source: '剧本 490103909',
+    anchors: ['4901039090040', '4901039090080', '4901039090090'],
+  },
+  {
+    chapterId: 'luca-door-3',
+    script: '490103910',
+    source: '剧本 490103910',
+    anchors: ['4901039100010', '4901039100200', '4901039100210'],
+  },
 ];

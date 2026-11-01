@@ -12,6 +12,8 @@ import type { MapEdgeDef } from '../types';
 export const WALK_EDGES: MapEdgeDef[] = [
   // 地区之间统一 15 分钟（不然公交 5 分钟就没意义了）。
   { from: 'home', to: 'ekimae', minutes: 15 },
+  // 公寓走廊：她住的那栋楼，从家走过去 10 分钟。
+  { from: 'home', to: 'apartment', minutes: 10 },
   { from: 'ekimae', to: 'office', minutes: 15 },
   { from: 'office', to: 'university_district', minutes: 15 },
   { from: 'ekimae', to: 'studio_district', minutes: 15 },

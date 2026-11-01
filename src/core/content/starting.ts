@@ -42,6 +42,8 @@ export const STARTING_STATE = {
     hinana: 'unknown',
     nichika: 'unknown',
     mikoto: 'unknown',
+    // ルカ 是"被挖过来"的：致敬演出那一夜之后才闭门不出，招募链挂在那个 flag 上。
+    luca: 'unknown',
   } as Record<string, IdolStatus>,
   dialogueId: 'dialogue.prologue.office',
 } as const;

@@ -1,0 +1,197 @@
+{
+  "id": "draft.dialogue.luca.second",
+  "kind": "dialogue",
+  "title": "她说了一样你弄不到的东西",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.luca.second",
+  "payload": {
+    "id": "dialogue.luca.second",
+    "idolId": "luca",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "luca",
+        "text": "又",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "luca",
+        "text": "吵起来了。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "……今天带了热的。还有甜的东西。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "luca",
+        "text": "────知道了就滚啊……那些东西我不要。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "luca",
+        "text": "滚…………滚啊……………………！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "……你那边的经纪人已经飞走了。公司也把辞呈收下了。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "……可是你还在这个房间里。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "luca",
+        "text": "……",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "……想吃点什么？能弄到的我都去弄。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "luca",
+        "text": "……",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "luca",
+        "text": "ナポリタン",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "……拿坡里意面？那个能弄到。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "luca",
+        "text": "不是那个。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "luca",
+        "text": "────一样你这辈子都弄不到的东西。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "luca",
+        "text": "『妈妈做的拿坡里意面』",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "────",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "luca",
+        "text": "滚吧……………………",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "luca",
+        "text": "你每来一次……东西就少一点。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "luca",
+        "text": "一点一点地被夺走……然后就没有了──────────",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "luca",
+        "text": "『谁都不在』",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "luca",
+        "text": "『安静的时间』",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "luca",
+        "text": "『我，还剩下的那部分』",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "luca",
+        "text": "────────滚啊………………！",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "text": "门没有开。走廊里只剩下加热过的便当慢慢变凉的味道。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "……那我下次再来。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "luca",
+        "text": "啊",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "luca",
+        "text": "好寂寞啊",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "────"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T09:10:00.000Z",
+  "updatedAt": "2026-11-01T09:10:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T09:10:00.000Z",
+      "note": "对照 490103909（「わかったら帰れよ」「帰れ」、制作人问想吃什么、「ナポリタン」「オメェに……絶対用意できねェもの…………『ママのナポリタン』」「どんどんいろんなもんが奪われて……なくなってく」「『静かな時間』」「さびしい」）"
+    }
+  ]
+}

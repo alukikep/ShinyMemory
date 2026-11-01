@@ -257,9 +257,9 @@ P6 2026-10-30  系统层 / 无内容
 ## 12. 现在的位置
 
 - 已确立：角色卡、数值档位、审查流程、内容生成链路
-- **已接入 25 人 / 26 张卡 / 95 章**（最后一批：緋田美琴，SHHis 补完）
-  - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 4、SHHis 2
-  - 每人的块结构都一样：招募链 2–3 步 + 首张卡一链 N 章 + 专属行动 + 话题 6–8 + 训练后事件 3
+- **已接入 26 人 / 27 张卡 / 100 章**（最后一批：斑鳩ルカ，コメティック 第一人）
+  - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 4、SHHis 2、CoMETIK 1
+  - 每人的块结构都一样：招募链 2–4 步 + 首张卡一链 N 章 + 专属行动 + 话题 6–8 + 训练后事件 3
   - 进度与逐场地点核对见 [`_materials/<unit>-plan.md`](_materials/README.md)
 - **コメティック 前导**（`nichika-tribute`，3 步，已上线）：八雲なみ 的致敬演出。
   - 它是 にちか 的低谷（台上唱不出来），也是 斑鳩ルカ 闭门不出的**直接原因**——
@@ -268,6 +268,10 @@ P6 2026-10-30  系统层 / 无内容
   - 顺带新增地点 `hall`（会场，`ekimae` 的成员）。
   - 依赖图、原文出处与三个人的入场顺序见
     [`_materials/cometik-plan.md`](_materials/cometik-plan.md)。
+- **斑鳩ルカ**（`luca`，已上线）：招募链 3 步全在门口（新地点 `apartment` 公寓走廊），
+  卡面「【broken shout】」5 章。她没有独立排班表之外的东西——几乎不来事务所，
+  一个人练到关灯。
+  - 羽那・はるき 的招募链要挂 `luca recruited`；三人的「黑色彗星」结成排在最后。
 - 已有工作（6 份已通过）：摄影棚 ¥1,200 / 电台 ¥900 / 封面 ¥2,000 / 录音小样 ¥600 / 舞蹈节目 ¥1,000 / 初次 Live（剧情解锁）
 - 技术债（不影响构建，见 [dev-guide](../current/dev-guide.md)）：
   - `mano` 日程仍缺学校时段（`schoolSlotDebt` 豁免）

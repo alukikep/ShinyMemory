@@ -1,0 +1,208 @@
+{
+  "id": "draft.dialogue.luca.cafe",
+  "kind": "dialogue",
+  "title": "站前的喫茶店里，她一个人坐着",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.luca.cafe",
+  "payload": {
+    "id": "dialogue.luca.cafe",
+    "idolId": "luca",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "站前的喫茶店。靠窗那桌只有一个人，面前的杯子早就空了。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "……找到你了。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "luca",
+        "text": "……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "luca",
+        "text": "滚。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "luca",
+        "text": "没人叫你。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "嗯，是我自己来的。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "今天你本来该来事务所的。……要来的时候，能给个信就好了。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "luca",
+        "text": "…………",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "luca",
+        "text": "……饮品单。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "诶？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "luca",
+        "text": "你每次……都点的那个……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "luca",
+        "text": "你喜欢的那个…………",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "luca",
+        "text": "…………现在没了────────",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "……这样啊。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "luca",
+        "text": "明明还挺喜欢的。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "luca",
+        "text": "…………明明挺喜欢的────────",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "…………回去吧。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "luca",
+        "text": "你自己回去啊……",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "luca",
+        "text": "反正，也没什么像样的工作。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "……ルカ，有工作找上门了。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "我想跟你商量。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "luca",
+        "text": "……………",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "luca",
+        "text": "……什么样的。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "小型 live。场地不大，但是和音乐媒体一起做，来看的人会很挑。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "luca",
+        "text": "……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "luca",
+        "text": "……那种的，我接。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "……真的？",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "luca",
+        "text": "别问第二遍。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "……知道了。那我去回话。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "text": "她站起来的时候，椅子腿在地板上刮了一声。杯子还放在桌上，她没管。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T10:10:00.000Z",
+  "updatedAt": "2026-11-01T08:31:53.301Z",
+  "reviewedAt": "2026-11-01T08:31:53.301Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T10:10:00.000Z",
+      "note": "对照 202600402（制作人在咖啡馆找到她、「帰れ」「呼んでねぇ」、「ドリンクメニュー」「いつも頼むやつ」「なくなった」「好きだったのに」、live 的委托「相談したい」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T08:31:53.301Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

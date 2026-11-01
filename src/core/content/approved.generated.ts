@@ -677,6 +677,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.luca.practice",
+  "name": "陪她在练习室待到关灯",
+  "description": "她一遍一遍地过同一段，镜子里的动作越来越省。你不喊停，她就不停——直到楼道的灯灭掉一半。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "luca"
+  ],
+  "locations": [
+    "practice_room"
+  ],
+  "durationMinutes": 60,
+  "timeWindows": [
+    {
+      "fromMinute": 1080,
+      "toMinute": 1380
+    }
+  ],
+  "cost": {
+    "stamina": 6
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "dance",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -4
+    }
+  ],
+  "resultTexts": [
+    "她把毛巾扔给你，说「擦一下」，自己先去关音响。",
+    "走出楼的时候她走得很慢，但没有扶墙。",
+    "分手前她说「明天也来」，然后补了一句「随便你」。"
+  ]
+},
+{
   "id": "activity.madoka.tea",
   "name": "陪她在喫茶店坐一会儿",
   "description": "她点柠檬茶，微糖。你说这家的招牌是咖啡，她说\"那种苦的东西你自己喝就好\"，然后把叉子伸向你的蛋糕。",
@@ -4245,6 +4290,217 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「……好的。那，我收拾一下就回去。」"
+    }
+  ]
+},
+{
+  "id": "evt.luca.after_dance",
+  "title": "她练到站不稳也不肯停",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "luca"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束。她扶着把杆，说不清是在喘还是在忍，音乐一响又站直了。",
+  "choices": [
+    {
+      "label": "扶住她。",
+      "hint": "信任 +3、压力 -2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -2
+        }
+      ],
+      "result": "「……放手。」她没真的甩开。"
+    },
+    {
+      "label": "让她再跳一遍。",
+      "hint": "舞蹈 +1、压力 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 3
+        }
+      ],
+      "result": "「……早就该这样。」"
+    },
+    {
+      "label": "把音乐关掉。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……你干嘛啊。」她坐在镜子前，很久没有起来。"
+    }
+  ]
+},
+{
+  "id": "evt.luca.after_expression",
+  "title": "她说不知道自己是什么表情",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "luca"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表现课结束。老师让她对着镜子笑一下，她看了很久，最后说「不知道自己在用什么表情」。",
+  "choices": [
+    {
+      "label": "不用笑也可以。",
+      "hint": "信任 +3、压力 -2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -2
+        }
+      ],
+      "result": "「……那，站在舞台上算什么。」"
+    },
+    {
+      "label": "你笑起来其实很好看。",
+      "hint": "表现 +1、信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……说什么呢。」她转过头去了。"
+    },
+    {
+      "label": "再试一次。",
+      "hint": "表现 +3、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「……好啦。」镜子里那个表情，还是不太像笑。"
+    }
+  ]
+},
+{
+  "id": "evt.luca.after_vocal",
+  "title": "她说唱到第三首就听不见自己了",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "luca"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "歌唱课结束了。她还在重复同一句，说唱到第三首就听不见自己的声音，然后又从头开始。",
+  "choices": [
+    {
+      "label": "那就唱到第四首。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「……行。」"
+    },
+    {
+      "label": "先停下来。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……停不下来啊。」话是这么说，她还是坐下了。"
+    },
+    {
+      "label": "我听着。",
+      "hint": "信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……随便你。」她背对着你，重新起了个头。"
     }
   ]
 },
@@ -24975,6 +25231,575 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.luca.bare",
+  "idolId": "luca",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "第二天的会场。椅子和线材堆在墙边，老板正在收拾。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "昨天真是麻烦了。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "不，设备很快就恢复了，您别太放在心上……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "text": "老板一直在道歉，说正演到一半出设备故障，实在不知道该怎么赔。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "……多亏斑鳩在 MC 那边撑住了。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "她经验也够，应付这种状况应该是习惯了吧……真不愧是。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "……啊，是啊。不过────",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "习惯……也许不是那么回事。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "text": "手机响了。是音乐媒体那边。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "……是，一直承蒙关照……！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "text": "对方说 live 报道的校样出来了，已经发到邮箱。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "明白了，我马上确认。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "text": "对方说，真的是一场很厉害的 live，希望会场的气氛能传达到一点。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "……谢谢您。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "text": "对方顿了顿，像是在找词。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "text": "然后说：和别的孩子不一样，是**生身**的，**毫无遮拦**的。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "────",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "……谢谢。我会转告她。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "text": "挂了电话，他站在墙边等。等到灯都换成了夜间模式。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "……今天也没来啊。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "至少给个信也好啊。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "luca",
+      "text": "…………",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "luca",
+      "text": "不知道…………那种事…………",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "live……反响很好。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "说近期还想再请你来。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "luca",
+      "text": "…………",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "手机。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "luca",
+      "text": "啊……？",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "果然还是那样啊。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "因为修好了也会再裂……是这样吗？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "luca",
+      "text": "…………",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "luca",
+      "text": "吵死了。"
+    }
+  }
+},
+{
+  "id": "dialogue.luca.broken",
+  "idolId": "luca",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "一天跑了三家电视台。每一家都说「有机会一定」，然后把人送到电梯口。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "……今天辛苦了。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "luca",
+      "text": "……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "luca",
+      "text": "回去。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "……啊，嗯。下周同一时间，要是能再来一趟的话────",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "text": "她的手机从手里滑下去，落在瓷砖上，屏幕朝下。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "……手机掉了。喂，屏幕是不是摔裂了……！",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "luca",
+      "text": "……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "luca",
+      "text": "……没什么。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "luca",
+      "text": "以前就……裂着了。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "诶，是这样吗……？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "luca",
+      "text": "在哪里掉过一次，那时候裂的。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "在哪里……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "luca",
+      "text": "河边能看见水的咖啡馆────……发呆来着。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "luca",
+      "text": "手机响了……不知道是谁打来的……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "luca",
+      "text": "不对……其实……是在等电话。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "luca",
+      "text": "像个傻子吧。……结果，还是黄了。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "luca",
+      "text": "等的那个，和响的那个，不一样……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "luca",
+      "text": "大概是那时候掉的……然后裂了────────",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "……这样啊。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "luca",
+      "text": "保护壳……？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "不一定是壳，保护膜之类的也行……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "luca",
+      "text": "…………谁知道。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "luca",
+      "text": "…………为什么？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "也不是说非要换新的……修一下用起来方便吧？",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "luca",
+      "text": "…………",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "luca",
+      "text": "修……太麻烦了……",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "luca",
+      "text": "修好了也一样会裂……",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "可是……",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "luca",
+      "text": "不关你的事……",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "text": "她把手机塞回口袋，走了。电梯口的灯一直亮着。"
+    }
+  }
+},
+{
+  "id": "dialogue.luca.cafe",
+  "idolId": "luca",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "站前的喫茶店。靠窗那桌只有一个人，面前的杯子早就空了。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "……找到你了。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "luca",
+      "text": "……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "luca",
+      "text": "滚。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "luca",
+      "text": "没人叫你。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "嗯，是我自己来的。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "今天你本来该来事务所的。……要来的时候，能给个信就好了。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "luca",
+      "text": "…………",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "luca",
+      "text": "……饮品单。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "诶？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "luca",
+      "text": "你每次……都点的那个……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "luca",
+      "text": "你喜欢的那个…………",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "luca",
+      "text": "…………现在没了────────",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "……这样啊。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "luca",
+      "text": "明明还挺喜欢的。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "luca",
+      "text": "…………明明挺喜欢的────────",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "…………回去吧。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "luca",
+      "text": "你自己回去啊……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "luca",
+      "text": "反正，也没什么像样的工作。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "……ルカ，有工作找上门了。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "我想跟你商量。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "luca",
+      "text": "……………",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "luca",
+      "text": "……什么样的。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "小型 live。场地不大，但是和音乐媒体一起做，来看的人会很挑。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "luca",
+      "text": "……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "luca",
+      "text": "……那种的，我接。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "……真的？",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "luca",
+      "text": "别问第二遍。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "……知道了。那我去回话。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "text": "她站起来的时候，椅子腿在地板上刮了一声。杯子还放在桌上，她没管。"
+    }
+  }
+},
+{
   "id": "dialogue.luca.first",
   "idolId": "luca",
   "startNodeId": "1",
@@ -25186,6 +26011,517 @@ export const APPROVED_CONTENT: ApprovedContent = {
     "36": {
       "id": "36",
       "text": "没有回答。但门后面，有很轻的、像喘气一样的声音。"
+    }
+  }
+},
+{
+  "id": "dialogue.luca.interview",
+  "idolId": "luca",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "录音棚的角落里摆了一张桌子和两把椅子。采访的人已经坐好了。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "luca",
+      "text": "声乐和舞蹈…………练习，不能落下────",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "text": "采访的人翻了一页纸，换了个问题。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "luca",
+      "text": "……辛苦？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "text": "对方说的是：工作上有没有什么辛苦的事、难过的事。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "luca",
+      "text": "………………",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "luca",
+      "text": "……难过的，事……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "luca",
+      "text": "────────────────",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "text": "她没有再说下去。桌边的人叫了她两声，她才像被碰到一样抬起眼睛。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "ルカ？　ルカ────？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "luca",
+      "text": "……诶？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "没事吧？还在采访中间。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "……不好意思，稍等一下。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "text": "对方说可以改天重来一次。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "luca",
+      "text": "为什么──────",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "诶……？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "luca",
+      "text": "为什么要……重来啊。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "luca",
+      "text": "我明明……在回答吧……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "luca",
+      "text": "我明明在回答啊……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "luca",
+      "text": "是要删掉吗……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "luca",
+      "text": "──────继续",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "可是……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "…………是啊。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "……如果方便的话，能让我们继续吗？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "还有，刚才采到的那部分，也请照原样用。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "text": "对方确认了两遍，才把录音笔又打开。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "……ルカ。辛苦了。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "luca",
+      "text": "…………",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "luca",
+      "text": "……没什么。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "luca",
+      "text": "被问到什么……我就答了什么。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "luca",
+      "text": "答了而已。就那么……",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "……你的脸色不太好。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "luca",
+      "text": "别管我……",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "luca",
+      "text": "不是你该操心的事……",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "……live，能行吗？",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "luca",
+      "text": "…………会做。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "可是……",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "luca",
+      "text": "会做的。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "luca",
+      "text": "我说会做──────"
+    }
+  }
+},
+{
+  "id": "dialogue.luca.live",
+  "idolId": "luca",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "会场。观众挤到门口，后排的人一直踮着脚。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "luca",
+      "text": "────────",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "luca",
+      "text": "……谢谢──────",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "luca",
+      "text": "最喜欢你们了──────",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "luca",
+      "text": "这道伤／要是能消失就好了……我是这么想的，可是……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "luca",
+      "text": "它一直缠着不走……／抱歉…………",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "luca",
+      "text": "今天就／陪着我吧────────",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "luca",
+      "text": "──────继续",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "text": "第二首的间奏，音箱里炸出一声尖锐的噪声。然后全停了。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "──？　不好意思，是设备吗，噪声相当────",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "text": "工作人员跑上台，观众开始交头接耳。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "luca",
+      "text": "────────",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "luca",
+      "text": "又是／　　　　　　　　　　　　　　　　裂开",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "luca",
+      "text": "算了────",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "……！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "luca",
+      "text": "噪声……噪声……／全都是来碍事的────────",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "luca",
+      "text": "裂开────／坏掉────",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "luca",
+      "text": "啊哈哈……！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "luca",
+      "text": "算了／就这样吧",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "luca",
+      "text": "────────我要唱。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "luca",
+      "text": "所以，给我听着。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "text": "工作人员打手势说要中止。导演在对讲里喊停。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "啊……不……！",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "luca",
+      "text": "别碍事啊…………",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "luca",
+      "text": "别碍事啊────────…………！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "text": "那一瞬间，整个会场都看向舞台。除了看，什么也做不了。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "……喂，ルカ。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "你为什么不停下来？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "luca",
+      "text": "谁知道。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "luca",
+      "text": "只是………………",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "luca",
+      "text": "就是想喊出来────────",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "……这样啊。嗯。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "真的是一场很好的歌。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "不过，好像还有别的什么……有什么扎进心里了。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "所以听你说只是想喊出来，我好像就明白了。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "luca",
+      "text": "吵死了／啰嗦……",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "……我想看舞台上的ルカ。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "luca",
+      "text": "啊…………？",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "luca",
+      "text": "谁是为了你才唱的。",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "哈哈……是啊。今天的 live 我觉得是最棒的。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "luca",
+      "text": "……设备都坏了。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "producer",
+      "text": "那些都不算什么了。今天那一刻……是最好的。谢谢你。",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "luca",
+      "text": "……吵死了。"
     }
   }
 },
@@ -46764,6 +48100,118 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "koito",
   "label": "工作",
   "text": "「下次甄选……我会好好准备。」「紧张吗？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "luca.chat.fans",
+  "actorId": "luca",
+  "label": "粉丝",
+  "text": "「粉丝啊。」「……他们没做错什么。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "luca.chat.food",
+  "actorId": "luca",
+  "label": "吃饭",
+  "text": "「便利店。」「……有什么好笑的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "luca.chat.home",
+  "actorId": "luca",
+  "label": "老家",
+  "text": "「神奈川。」「……海，是有的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "luca.chat.mikoto",
+  "actorId": "luca",
+  "label": "美琴",
+  "text": "「美琴？」「……别问。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "luca.chat.phone",
+  "actorId": "luca",
+  "label": "手机",
+  "text": "「手机。」「裂了就裂着。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "luca.chat.practice",
+  "actorId": "luca",
+  "label": "练习",
+  "text": "「练／练到忘了时间。」「……不是在夸自己。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "luca.chat.stage",
+  "actorId": "luca",
+  "label": "舞台",
+  "text": "「舞台啊。」「……只有那里是干净的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "luca.chat.today",
+  "actorId": "luca",
+  "label": "今天",
+  "text": "「……今天？／还站得起来。」",
   "cooldownMinutes": 1440,
   "effects": [
     {

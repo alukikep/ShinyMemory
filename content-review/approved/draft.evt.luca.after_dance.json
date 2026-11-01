@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.luca.after_dance",
+  "kind": "event",
+  "title": "她练到站不稳也不肯停",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.luca.after_dance",
+  "payload": {
+    "id": "evt.luca.after_dance",
+    "title": "她练到站不稳也不肯停",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "luca"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束。她扶着把杆，说不清是在喘还是在忍，音乐一响又站直了。",
+    "choices": [
+      {
+        "label": "扶住她。",
+        "hint": "信任 +3、压力 -2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -2
+          }
+        ],
+        "result": "「……放手。」她没真的甩开。"
+      },
+      {
+        "label": "让她再跳一遍。",
+        "hint": "舞蹈 +1、压力 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 3
+          }
+        ],
+        "result": "「……早就该这样。」"
+      },
+      {
+        "label": "把音乐关掉。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……你干嘛啊。」她坐在镜子前，很久没有起来。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T11:00:00.000Z",
+  "updatedAt": "2026-11-01T08:31:53.386Z",
+  "reviewedAt": "2026-11-01T08:31:53.386Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T11:00:00.000Z",
+      "note": "ルカ舞蹈课后事件（她练到站不稳也不停 [WING 4 the key]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T08:31:53.386Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

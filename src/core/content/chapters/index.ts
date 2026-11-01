@@ -36,6 +36,7 @@ import kirikoCard from './kirikoCard';
 import kirikoEncounter from './kirikoEncounter';
 import koitoCard from './koitoCard';
 import koitoEncounter from './koitoEncounter';
+import lucaCard from './lucaCard';
 import lucaEncounter from './lucaEncounter';
 import mamimiNatural from './mamimiNatural';
 import manoNatural from './manoNatural';
@@ -113,6 +114,7 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   mikotoEncounter,
   mikotoCard,
   lucaEncounter,
+  lucaCard,
   manoSlump,
   hioriGap,
   meguruBurden,

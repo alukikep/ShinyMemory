@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.luca.after_expression",
+  "kind": "event",
+  "title": "她说不知道自己是什么表情",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.luca.after_expression",
+  "payload": {
+    "id": "evt.luca.after_expression",
+    "title": "她说不知道自己是什么表情",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "luca"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表现课结束。老师让她对着镜子笑一下，她看了很久，最后说「不知道自己在用什么表情」。",
+    "choices": [
+      {
+        "label": "不用笑也可以。",
+        "hint": "信任 +3、压力 -2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -2
+          }
+        ],
+        "result": "「……那，站在舞台上算什么。」"
+      },
+      {
+        "label": "你笑起来其实很好看。",
+        "hint": "表现 +1、信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……说什么呢。」她转过头去了。"
+      },
+      {
+        "label": "再试一次。",
+        "hint": "表现 +3、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「……好啦。」镜子里那个表情，还是不太像笑。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T11:00:00.000Z",
+  "updatedAt": "2026-11-01T08:31:53.391Z",
+  "reviewedAt": "2026-11-01T08:31:53.391Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T11:00:00.000Z",
+      "note": "ルカ表现课后事件（她对自己的表情没有把握 [202600411]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T08:31:53.391Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

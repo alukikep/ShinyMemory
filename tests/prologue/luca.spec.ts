@@ -6,6 +6,7 @@ import {
   reset,
   watchConsole,
 } from '../acceptance/helpers';
+import { PRODUCTION_PACK } from '../../src/core/productionPack';
 
 /**
  * 斑鳩ルカ 的招募链（门口三步）。
@@ -99,6 +100,46 @@ test('Luca: door recruitment opens only after the tribute gig', async ({
     roster.locator('.roster-card', { hasText: '斑鳩ルカ' }),
   ).toBeVisible();
   await page.getByRole('button', { name: '关闭偶像名册' }).click();
+
+  // ---- 卡面【broken shout】五章 ----
+  await jumpTo(page, 18, 17 * 60, 'office');
+  await pick(page, '她跟着跑完了一整天的电视台');
+  expect((await getState(page)).flags['completed.luca.broken']).toBe(true);
+
+  await jumpTo(page, 20, 16 * 60, 'station');
+  await pick(page, '站前的喫茶店里，她一个人坐着');
+  expect((await getState(page)).flags['completed.luca.cafe']).toBe(true);
+
+  await jumpTo(page, 22, 15 * 60, 'studio');
+  await pick(page, '采访中途，她停住了');
+  expect((await getState(page)).flags['completed.luca.interview']).toBe(true);
+
+  await jumpTo(page, 24, 19 * 60, 'hall');
+  await pick(page, '小型 live，音响全坏了');
+  expect((await getState(page)).flags['completed.luca.live']).toBe(true);
+
+  await jumpTo(page, 25, 19 * 60, 'hall');
+  await pick(page, '第二天的会场，她来得比谁都晚');
+  expect((await getState(page)).flags['completed.luca.bare']).toBe(true);
+
+  // ---- 专属行动与话题 ----
+  // 周日 13:00–22:00 她在练习室（周五晚上她在会场，别用 26 号）
+  await jumpTo(page, 28, 19 * 60, 'practice_room');
+  await page.getByRole('button', { name: /斑鳩ルカ/ }).first().click();
+  await expect(
+    page.getByRole('button', { name: '陪她在练习室待到关灯' }),
+  ).toBeVisible();
+
+  const topics = PRODUCTION_PACK.actors.find(
+    (actor) => actor.id === LUCA,
+  )!.topics;
+  expect(topics).toHaveLength(8);
+
+  // 三个训练后事件都在包里
+  const events = PRODUCTION_PACK.events.filter((event) =>
+    event.id.startsWith('evt.luca.'),
+  );
+  expect(events).toHaveLength(3);
 
   expect(errors).toEqual([]);
 });

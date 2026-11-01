@@ -1,0 +1,38 @@
+{
+  "id": "draft.luca.chat.fans",
+  "kind": "topic",
+  "title": "聊天 · 粉丝",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.luca.chat.fans",
+  "payload": {
+    "id": "luca.chat.fans",
+    "actorId": "luca",
+    "label": "粉丝",
+    "text": "「粉丝啊。」「……他们没做错什么。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T11:00:00.000Z",
+  "updatedAt": "2026-11-01T08:31:53.369Z",
+  "reviewedAt": "2026-11-01T08:31:53.369Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T11:00:00.000Z",
+      "note": "ルカ日常话题（粉丝；短句、省略号、不解释）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T08:31:53.369Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

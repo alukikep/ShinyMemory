@@ -1,0 +1,38 @@
+{
+  "id": "draft.luca.chat.stage",
+  "kind": "topic",
+  "title": "聊天 · 舞台",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.luca.chat.stage",
+  "payload": {
+    "id": "luca.chat.stage",
+    "actorId": "luca",
+    "label": "舞台",
+    "text": "「舞台啊。」「……只有那里是干净的。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T11:00:00.000Z",
+  "updatedAt": "2026-11-01T08:31:53.378Z",
+  "reviewedAt": "2026-11-01T08:31:53.378Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T11:00:00.000Z",
+      "note": "ルカ日常话题（舞台；短句、省略号、不解释）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T08:31:53.378Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

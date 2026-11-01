@@ -1,0 +1,38 @@
+{
+  "id": "draft.luca.chat.food",
+  "kind": "topic",
+  "title": "聊天 · 吃饭",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.luca.chat.food",
+  "payload": {
+    "id": "luca.chat.food",
+    "actorId": "luca",
+    "label": "吃饭",
+    "text": "「便利店。」「……有什么好笑的。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T11:00:00.000Z",
+  "updatedAt": "2026-11-01T08:31:53.349Z",
+  "reviewedAt": "2026-11-01T08:31:53.349Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T11:00:00.000Z",
+      "note": "ルカ日常话题（吃饭；短句、省略号、不解释）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T08:31:53.349Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

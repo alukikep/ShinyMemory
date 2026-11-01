@@ -1,0 +1,91 @@
+{
+  "id": "draft.evt.luca.after_vocal",
+  "kind": "event",
+  "title": "她说唱到第三首就听不见自己了",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.luca.after_vocal",
+  "payload": {
+    "id": "evt.luca.after_vocal",
+    "title": "她说唱到第三首就听不见自己了",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "luca"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "歌唱课结束了。她还在重复同一句，说唱到第三首就听不见自己的声音，然后又从头开始。",
+    "choices": [
+      {
+        "label": "那就唱到第四首。",
+        "hint": "歌唱 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「……行。」"
+      },
+      {
+        "label": "先停下来。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……停不下来啊。」话是这么说，她还是坐下了。"
+      },
+      {
+        "label": "我听着。",
+        "hint": "信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……随便你。」她背对着你，重新起了个头。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T11:00:00.000Z",
+  "updatedAt": "2026-11-01T08:31:53.382Z",
+  "reviewedAt": "2026-11-01T08:31:53.382Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T11:00:00.000Z",
+      "note": "ルカ歌唱课后事件（202600403 她卡在\"辛かったこと\"上 / 202600404 听不见自己的声音）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T08:31:53.382Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

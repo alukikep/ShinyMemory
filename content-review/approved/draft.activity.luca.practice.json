@@ -1,0 +1,69 @@
+{
+  "id": "draft.activity.luca.practice",
+  "kind": "activity",
+  "title": "陪她在练习室待到关灯",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.activity.luca.practice",
+  "payload": {
+    "id": "activity.luca.practice",
+    "name": "陪她在练习室待到关灯",
+    "description": "她一遍一遍地过同一段，镜子里的动作越来越省。你不喊停，她就不停——直到楼道的灯灭掉一半。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "luca"
+    ],
+    "locations": [
+      "practice_room"
+    ],
+    "durationMinutes": 60,
+    "timeWindows": [
+      {
+        "fromMinute": 1080,
+        "toMinute": 1380
+      }
+    ],
+    "cost": {
+      "stamina": 6
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "dance",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -4
+      }
+    ],
+    "resultTexts": [
+      "她把毛巾扔给你，说「擦一下」，自己先去关音响。",
+      "走出楼的时候她走得很慢，但没有扶墙。",
+      "分手前她说「明天也来」，然后补了一句「随便你」。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T11:00:00.000Z",
+  "updatedAt": "2026-11-01T08:31:53.327Z",
+  "reviewedAt": "2026-11-01T08:31:53.327Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T11:00:00.000Z",
+      "note": "ルカ专属行动（练习室，一个人练到关灯 [WING 4 the key、黑色彗星 400106903]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T08:31:53.327Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

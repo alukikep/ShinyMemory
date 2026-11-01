@@ -1,0 +1,305 @@
+{
+  "id": "draft.dialogue.tenka.second",
+  "kind": "dialogue",
+  "title": "街角的 CD 手売り",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.tenka.second",
+  "payload": {
+    "id": "dialogue.tenka.second",
+    "idolId": "tenka",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "tenka",
+        "text": "CD……啊，新出的……请买一张……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "tenka",
+        "text": "啊……CD……",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "tenka",
+        "text": "唉……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "辛苦了，甜花。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "tenka",
+        "text": "啊，制作人先生……",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "你很努力了。不过一开始果然还是会紧张吧。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "tenka",
+        "text": "……嗯……CD……没做好……",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "tenka",
+        "text": "なーちゃん和千雪小姐，明明都做得那么好……",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "甘奈她们是甘奈她们，甜花是甜花。习惯之后甜花也能做好的。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "tenka",
+        "text": "是、这样吗……",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "tenka",
+        "text": "甜花什么都不会……只会依赖大家……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "tenka",
+        "text": "なーちゃん也……帮了甜花好多……",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "遇到困难时互相帮忙，这就是组合啊。这方面不用太在意。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "……说起来，和组合的成员相处得怎么样？甘奈应该没问题吧。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "tenka",
+        "text": "托なーちゃん的福，和千雪小姐也……一点点地，能说上话了……大概……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "tenka",
+        "text": "当了偶像之后……なーちゃん还是那么厉害……闪闪发光的……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "tenka",
+        "text": "甜花看着なーちゃん……也会变得有精神……",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "确实，甘奈那股元气，连我都想学。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "tenka",
+        "text": "嘿嘿……制作人先生也……这么想吧……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "嗯。不过，我觉得甜花也有甜花的好。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "只要在偶像工作上努力下去，一定能成为拥有甘奈没有的魅力的、好偶像。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "tenka",
+        "text": "能变成那样……就好了……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "（好像还没反应过来……得想办法把甜花的魅力引出来……）",
+        "choices": [
+          {
+            "label": "再多点自信吧。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "今后也继续努力。",
+            "nextNodeId": "110"
+          },
+          {
+            "label": "试着一个人做份工作？",
+            "nextNodeId": "120"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "tenka",
+        "text": "自信……",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "嗯。甜花太低估自己了。再多一点自信。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "tenka",
+        "text": "可是……甜花什么都不会……光有自信，也没用……",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "我觉得不是\"什么都不会\"啊。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "那，先从简单的开始，让甜花一个人做点工作试试？",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "tenka",
+        "text": "诶……甜花，一个人……？那种事，做不到……",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "producer",
+        "text": "当然我也会跟着。一点点习惯一个人的工作，说不定会有变化。",
+        "nextNodeId": "107"
+      },
+      "107": {
+        "id": "107",
+        "speakerId": "tenka",
+        "text": "甜花……能改变吗……"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "tenka",
+        "text": "甜花也想努力……可是，该做什么好呢……",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "producer",
+        "text": "这个啊……首先是集中精神做好眼前的工作。",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "tenka",
+        "text": "可是，工作的时候……又会依赖なーちゃん她们……",
+        "nextNodeId": "113"
+      },
+      "113": {
+        "id": "113",
+        "speakerId": "producer",
+        "text": "（原来如此……只做组合的工作，也许很难让甜花建立自信。）",
+        "nextNodeId": "114"
+      },
+      "114": {
+        "id": "114",
+        "speakerId": "producer",
+        "text": "……甜花，现在没有太大型的工作，也试试一个人做的工作吧？",
+        "nextNodeId": "115"
+      },
+      "115": {
+        "id": "115",
+        "speakerId": "tenka",
+        "text": "诶……甜花，一个人……？……可是……一定会失败的……",
+        "nextNodeId": "116"
+      },
+      "116": {
+        "id": "116",
+        "speakerId": "producer",
+        "text": "那种时候我也会补上。不是一开始就全部一个人做，所以没关系。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "tenka",
+        "text": "诶……一个人……なーちゃん，不在吗……？那、那种事，能行吗？",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "虽然不多，但也有单人工作。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "producer",
+        "text": "在那些工作里，找到自己能做的事就好。",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "tenka",
+        "text": "一个人工作……有点，可怕……",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "producer",
+        "text": "不过，试一次的价值是有的。我也想看到甜花一个人站在舞台上的样子。",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "tenka",
+        "text": "……制作人先生，也一起……？",
+        "nextNodeId": "126"
+      },
+      "126": {
+        "id": "126",
+        "speakerId": "producer",
+        "text": "当然。我会一直在台下看着。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:00:00.000Z",
+  "updatedAt": "2026-11-02T10:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:00:00.000Z",
+      "note": "对照 101500102（三分支，保留三个选项）"
+    }
+  ]
+}

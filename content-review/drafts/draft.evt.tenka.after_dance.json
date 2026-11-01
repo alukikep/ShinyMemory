@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.tenka.after_dance",
+  "kind": "event",
+  "title": "记不住动作",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.tenka.after_dance",
+  "payload": {
+    "id": "evt.tenka.after_dance",
+    "title": "记不住动作",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "tenka"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她坐在地上看手机里录的动作，一遍遍拖着进度条。",
+    "choices": [
+      {
+        "label": "我陪你慢慢来。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……嗯。那，再一遍……就好……」"
+      },
+      {
+        "label": "今天就休息吧。",
+        "hint": "压力 -4",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -4
+          }
+        ],
+        "result": "「可、可以吗……那，甜花，明天……」"
+      },
+      {
+        "label": "再看一遍。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「嗯……这次，会记住的……」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:20:00.000Z",
+  "updatedAt": "2026-11-02T10:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:20:00.000Z",
+      "note": "甜花舞蹈课后事件（她学得慢）"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.tenka.chat.coffee",
+  "kind": "topic",
+  "title": "聊天 · 咖啡",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.tenka.chat.coffee",
+  "payload": {
+    "id": "tenka.chat.coffee",
+    "actorId": "tenka",
+    "label": "咖啡",
+    "text": "「咖啡……甜花会泡了……」「浓了的话……要说，哦……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:15:00.000Z",
+  "updatedAt": "2026-11-02T10:15:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:15:00.000Z",
+      "note": "甜花日常话题（201500311 泡咖啡）"
+    }
+  ]
+}

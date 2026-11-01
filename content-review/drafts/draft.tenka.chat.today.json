@@ -1,0 +1,32 @@
+{
+  "id": "draft.tenka.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.tenka.chat.today",
+  "payload": {
+    "id": "tenka.chat.today",
+    "actorId": "tenka",
+    "label": "今天",
+    "text": "「今天……也，还不错……」「能这样，说说话……就很好……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:10:00.000Z",
+  "updatedAt": "2026-11-02T10:10:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:10:00.000Z",
+      "note": "甜花日常话题"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.tenka.chat.net",
+  "kind": "topic",
+  "title": "聊天 · 上网",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.tenka.chat.net",
+  "payload": {
+    "id": "tenka.chat.net",
+    "actorId": "tenka",
+    "label": "上网",
+    "text": "「上网……看着看着，时间就没了……」「甜花的网名，是テン三郎……嘿嘿……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:13:00.000Z",
+  "updatedAt": "2026-11-02T10:13:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:13:00.000Z",
+      "note": "甜花日常话题（API 兴趣：ネットサーフィン）"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.tenka.chat.nachan",
+  "kind": "topic",
+  "title": "聊天 · なーちゃん",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.tenka.chat.nachan",
+  "payload": {
+    "id": "tenka.chat.nachan",
+    "actorId": "tenka",
+    "label": "なーちゃん",
+    "text": "「なーちゃん……甜花的妹妹……」「一直，都很温柔……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:16:00.000Z",
+  "updatedAt": "2026-11-02T10:16:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:16:00.000Z",
+      "note": "甜花日常话题（双子妹妹）"
+    }
+  ]
+}

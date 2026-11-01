@@ -1,0 +1,32 @@
+{
+  "id": "draft.tenka.chat.anime",
+  "kind": "topic",
+  "title": "聊天 · 动画",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.tenka.chat.anime",
+  "payload": {
+    "id": "tenka.chat.anime",
+    "actorId": "tenka",
+    "label": "动画",
+    "text": "「动画……一季一季，会追完……」「甜花，记性只有这个好……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:14:00.000Z",
+  "updatedAt": "2026-11-02T10:14:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:14:00.000Z",
+      "note": "甜花日常话题（API 兴趣：アニメ）"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.tenka.chat.game",
+  "kind": "topic",
+  "title": "聊天 · 游戏",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.tenka.chat.game",
+  "payload": {
+    "id": "tenka.chat.game",
+    "actorId": "tenka",
+    "label": "游戏",
+    "text": "「游戏……甜花很喜欢……」「手机和电脑有的话……就能一直玩……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:11:00.000Z",
+  "updatedAt": "2026-11-02T10:11:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:11:00.000Z",
+      "note": "甜花日常话题（API 兴趣：ゲーム）"
+    }
+  ]
+}

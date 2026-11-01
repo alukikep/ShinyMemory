@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.tenka.after_expression",
+  "kind": "event",
+  "title": "笑得太小声",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.tenka.after_expression",
+  "payload": {
+    "id": "evt.tenka.after_expression",
+    "title": "笑得太小声",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "tenka"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。老师说她笑得太小声，她试了一次，还是很小。",
+    "choices": [
+      {
+        "label": "这样就好。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「这、这样……就好吗……嘿嘿……」"
+      },
+      {
+        "label": "再试一次。",
+        "hint": "表现 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「嗯……嘿嘿……诶、这样可以吗……」"
+      },
+      {
+        "label": "我陪你练。",
+        "hint": "信任 +3、压力 -2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -2
+          }
+        ],
+        "result": "「制作人先生……一起……谢谢……」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:20:00.000Z",
+  "updatedAt": "2026-11-02T10:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:20:00.000Z",
+      "note": "甜花表演课后事件"
+    }
+  ]
+}

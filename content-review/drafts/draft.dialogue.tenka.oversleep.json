@@ -1,0 +1,282 @@
+{
+  "id": "draft.dialogue.tenka.oversleep",
+  "kind": "dialogue",
+  "title": "她今天没来上课",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.tenka.oversleep",
+  "payload": {
+    "id": "dialogue.tenka.oversleep",
+    "idolId": "tenka",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "（嗯……甜花好慢啊。课的时间已经过了很久……）",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "（手机和家里电话都没人接……来路上出了什么事吗？）",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "让人担心……总之，先去她家看看吧。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "……甜花，我进来了。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "tenka",
+        "text": "诶……？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "tenka",
+        "text": "啊……制作人先生……",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "tenka",
+        "text": "诶……为什么……在家里……？",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "tenka",
+        "text": "来叫なーちゃん……？还是，家长面谈……？甜花，是不是哪里做得不好……？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "不，都不是……不过你没事就好。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "tenka",
+        "text": "……？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "甜花没来上课，所以我来接你了。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "tenka",
+        "text": "诶……诶……？课是明天吧……我记得……手机上，也记了……",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "tenka",
+        "text": "啊。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "tenka",
+        "text": "是、是今天……",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "tenka",
+        "text": "对不起，制作人先生……甜花……以为是明天……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "这样啊……情况我明白了。总之，现在赶紧去上课吧。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "tenka",
+        "text": "可、可是……现在去的话……迟到……老师会不会生气……？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "可能会被说几句吧。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "tenka",
+        "text": "呜哇……！果、果然……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "不过，迟到的事我已经联络过了。如果被说，那时候我也一起道歉。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "tenka",
+        "text": "制作人先生，也……？那……我、我去试试……",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "嗯。我在外面等着，准备好了就出来。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "话说回来……记错日期没办法，但电话总得接吧。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "我还担心甜花出了什么事呢。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "tenka",
+        "text": "对不起……给制作人先生添麻烦了……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "tenka",
+        "text": "那个……手机响的时候，甜花在睡觉……没注意到……",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "tenka",
+        "text": "醒来之后想回电，可是……因为休息……就觉得，算了吧……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "原来如此……不过今后，注意到了就马上回。我也会担心。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "tenka",
+        "text": "嗯……会那样做的……",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "……那个先放一边。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "tenka",
+        "text": "诶？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "甜花平时，穿得相当松弛啊。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "tenka",
+        "text": "啊呜……那个是……",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "tenka",
+        "text": "因为舒服……在家里，一直都是……那样……",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "tenka",
+        "text": "反正不太出门……就觉得，也可以吧……",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "不出门的话，确实会变成那样……",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "tenka",
+        "text": "制作人先生要来……甜花没想到……所以……",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "确实，突然进房间的是我。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "producer",
+        "text": "哦……差不多到练习场了。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "tenka",
+        "text": "……对不起，都是甜花害的……",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "我也会有弄错的时候。彼此彼此。比起那个，做好觉悟了吗？",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "tenka",
+        "text": "嗯、嗯……会好好道歉……和制作人先生，一起……",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "tenka",
+        "text": "……谢谢你，制作人先生。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:00:00.000Z",
+  "updatedAt": "2026-11-02T10:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:00:00.000Z",
+      "note": "对照 201500301（睡过头、制作人去她家、松弛的衣服）"
+    }
+  ]
+}

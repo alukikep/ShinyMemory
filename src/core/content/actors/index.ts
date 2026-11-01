@@ -13,7 +13,8 @@ import meguru from './meguru';
 import natsuha from './natsuha';
 import rinze from './rinze';
 import sakuya from './sakuya';
+import tenka from './tenka';
 import tsutomu from './tsutomu';
 import yuika from './yuika';
 
-export const ACTORS: ActorDef[] = [hazuki, tsutomu, mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze, natsuha, amana];
+export const ACTORS: ActorDef[] = [hazuki, tsutomu, mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze, natsuha, amana, tenka];

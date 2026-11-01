@@ -389,4 +389,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: 'パーフェクト・スマイル', index: 3, total: 3 },
     anchors: ['2014003110010', '2014003110140', '2014003110190'],
   },
+  {
+    chapterId: 'tenka-oversleep',
+    script: '201500301',
+    source: '剧本 201500301',
+    card: { title: 'あまやどり', index: 1, total: 3 },
+    anchors: ['2015003010010', '2015003010120', '2015003010240'],
+  },
+  {
+    chapterId: 'tenka-cafe',
+    script: '201500302',
+    source: '剧本 201500302',
+    card: { title: 'あまやどり', index: 2, total: 3 },
+    anchors: ['2015003020010', '2015003020070', '2015003020110'],
+  },
+  {
+    chapterId: 'tenka-coffee',
+    script: '201500311',
+    source: '剧本 201500311',
+    card: { title: 'あまやどり', index: 3, total: 3 },
+    anchors: ['2015003110010', '2015003110120', '2015003110160'],
+  },
 ];

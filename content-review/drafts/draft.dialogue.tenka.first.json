@@ -1,0 +1,192 @@
+{
+  "id": "draft.dialogue.tenka.first",
+  "kind": "dialogue",
+  "title": "试镜室里很安静",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.tenka.first",
+  "payload": {
+    "id": "dialogue.tenka.first",
+    "idolId": "tenka",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "tenka",
+        "text": "……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "大崎甜花小姐，是吧。今天请多指教。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "tenka",
+        "text": "呜哇！……是、是……请多指教……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "呃……抱歉，吓到你了吗？",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "tenka",
+        "text": "不、不是的……那个……",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "tenka",
+        "text": "甜花……不太跟别人说话……所以，只是稍微，吓了一跳……而已……",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "这样啊。不过是试镜，不用太紧张，开心地聊就好。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "tenka",
+        "text": "开心地聊……诶、呃……甜花会努力……",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "那，大崎小姐为什么会想当偶像呢？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "tenka",
+        "text": "那个……甜花对偶像……其实不太懂……",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "tenka",
+        "text": "是因为なーちゃん说，一起当偶像吧……才来的……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "なーちゃん？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "tenka",
+        "text": "啊，呃……なーちゃん是……甜花的妹妹……甘奈，所以……甜花叫她なーちゃん……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "（妹妹……资料上写着有双胞胎妹妹，就是那个孩子啊。）",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "这样啊。妹妹一句话就让你想当偶像，你很喜欢她呢。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "tenka",
+        "text": "是……なーちゃん一直很温柔、很有精神……甜花，最喜欢她……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "是个好孩子呢。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "tenka",
+        "text": "嘿嘿……甜花也想过，自己能当偶像吗……",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "tenka",
+        "text": "可是なーちゃん那样说了……所以，为了なーちゃん，甜花想努力试试……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "原来如此……",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "（说到妹妹时的笑容……看到这个笑容，连我都要开心起来了。）",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "（把周围的魅力引出来，也许能成为很厉害的偶像！）",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "好，你合格了！",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "tenka",
+        "text": "诶……真的……？甜花……当偶像……？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "嗯，我就是你的制作人。请多指教，甜花。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "tenka",
+        "text": "是、是……",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "tenka",
+        "text": "甜花……会努力肥！",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "tenka",
+        "text": "啊，会努力的……！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:00:00.000Z",
+  "updatedAt": "2026-11-02T10:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:00:00.000Z",
+      "note": "对照 101500101（试镜：怕生、なーちゃん、咬字）"
+    }
+  ]
+}

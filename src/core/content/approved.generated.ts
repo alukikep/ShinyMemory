@@ -10361,85 +10361,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
     "21": {
       "id": "21",
       "speakerId": "producer",
-      "text": "（……她跑走了。跑得真快。）",
-      "nextNodeId": "22"
-    },
-    "22": {
-      "id": "22",
-      "speakerId": "producer",
-      "text": "好，今天也精神满满地去找偶像吧。",
-      "nextNodeId": "23"
-    },
-    "23": {
-      "id": "23",
-      "speakerId": "kaho",
-      "text": "你好——！",
-      "nextNodeId": "24"
-    },
-    "24": {
-      "id": "24",
-      "speakerId": "producer",
-      "text": "哇！……啊，你是昨天的——",
-      "nextNodeId": "25"
-    },
-    "25": {
-      "id": "25",
-      "speakerId": "kaho",
-      "text": "是！我是小宫果穗！……哇，这里就是工作的地方！好厉害！",
-      "nextNodeId": "26"
-    },
-    "26": {
-      "id": "26",
-      "speakerId": "producer",
-      "text": "只是普通的办公室而已。话说回来，你今天来了，也就是说……",
-      "nextNodeId": "27"
-    },
-    "27": {
-      "id": "27",
-      "speakerId": "kaho",
-      "text": "啊，对了！",
-      "nextNodeId": "28"
-    },
-    "28": {
-      "id": "28",
-      "speakerId": "kaho",
-      "text": "我本来不太了解偶像，回去以后查了很多！",
-      "nextNodeId": "29"
-    },
-    "29": {
-      "id": "29",
-      "speakerId": "kaho",
-      "text": "然后发现，偶像好像能让所有人笑起来！",
-      "nextNodeId": "30"
-    },
-    "30": {
-      "id": "30",
-      "speakerId": "kaho",
-      "text": "这和最喜欢的英雄很像啊——我是这么想的！",
-      "nextNodeId": "31"
-    },
-    "31": {
-      "id": "31",
-      "speakerId": "producer",
-      "text": "英雄啊……嗯，确实偶像也能让所有人笑起来！",
-      "nextNodeId": "32"
-    },
-    "32": {
-      "id": "32",
-      "speakerId": "kaho",
-      "text": "果然！然后我跟爸爸妈妈说了，他们说要支持我！",
-      "nextNodeId": "33"
-    },
-    "33": {
-      "id": "33",
-      "speakerId": "kaho",
-      "text": "所以，我想试试当偶像！！",
-      "nextNodeId": "34"
-    },
-    "34": {
-      "id": "34",
-      "speakerId": "producer",
-      "text": "（……她的眼睛一点都没有躲。）"
+      "text": "（……她跑走了。跑得真快。）"
     },
     "01": {
       "id": "01",
@@ -11313,6 +11235,96 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "09",
       "speakerId": "kaho",
       "text": "她打字的速度好快！",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.kaho.visit",
+  "idolId": "kaho",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "kaho",
+      "text": "果然！然后我跟爸爸妈妈说了，他们说要支持我！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "kaho",
+      "text": "所以，我想试试当偶像！！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "（……她的眼睛一点都没有躲。）",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "好。那——先带你看看事务所吧。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "kaho",
+      "text": "是！诶嘿嘿！那，先从哪里看起呢——"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "kaho",
+      "text": "你好——！",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "哇！……啊，你是昨天的——",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "kaho",
+      "text": "是！我是小宫果穗！……哇，这里就是工作的地方！好厉害！",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "只是普通的办公室而已。话说回来，你今天来了，也就是说……",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "kaho",
+      "text": "啊，对了！",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "kaho",
+      "text": "我本来不太了解偶像，回去以后查了很多！",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "kaho",
+      "text": "然后发现，偶像好像能让所有人笑起来！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "kaho",
+      "text": "这和最喜欢的英雄很像啊——我是这么想的！",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "英雄啊……嗯，确实偶像也能让所有人笑起来！",
       "nextNodeId": "10"
     }
   }

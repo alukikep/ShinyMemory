@@ -43,10 +43,19 @@ test('Kaho: recruit, card, dog walk, topic and a post-lesson event', async ({
   await pick(page, '公园里有孩子在玩抓人');
   expect((await getState(page)).idols[KAHO]?.status).toBe('known');
 
-  // ---- 招募：她自己跑来事务所（原三分支，选第一个） ----
-  await jumpTo(page, 3, 10 * 60, 'office');
-  await pick(page, '她自己跑来事务所');
+  // ---- 招募：第二天她自己跑来事务所（原文 100900101 后半） ----
+  await jumpTo(page, 2, 10 * 60, 'office');
+  await pick(page, '第二天她自己跑来事务所');
   expect((await getState(page)).idols[KAHO]?.status).toBe('recruited');
+  // 三段戏、三个时间点：公园(第 1 天) → 决定(第 2 天) → 上课前(第 3 天)
+  expect((await getState(page)).storyChains['kaho-encounter']?.stepIndex).toBe(2);
+
+  // ---- 招募：第一次上课前（原三分支，选第一个） ----
+  await jumpTo(page, 3, 10 * 60, 'office');
+  await pick(page, '第一次上课前她坐不住');
+  expect((await getState(page)).storyChains['kaho-encounter']?.completed).toBe(
+    true,
+  );
 
   // ---- 名册 / 日程表 ----
   await page.getByRole('button', { name: /偶像名册/ }).first().click();

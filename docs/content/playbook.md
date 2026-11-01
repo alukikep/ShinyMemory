@@ -315,9 +315,26 @@ npm run content:guard      # 已接进 content:validate，构建时会跑
 | 换了地点（哪怕紧接着） | 拆成步骤，或"旁白换场 + `endLocationId`"二选一 |
 | 换地点**又**隔时间 | 必须拆成步骤——`endLocationId` 只解决空间，不解决时间 |
 
-反面例子（**待修**）：`dialogue.kaho.first` 前半在公园（当天），后半（node 23 起）已经是
-"第二天她来事务所"，而链的第 1 步挂在公园、第 2 步才到事务所——时间地点都对不上。
-详见 dev-guide §6。
+**已经拆过一次的例子（果穗的招募链，2026-11-02）**——照着做：
+
+```text
+原文 100900101：公园（当天）→「第二天」事务所在同一段里
+拆前：1 段对话 34 节点，链 2 步（公园 known → 事务所 recruited），间隔 2 天
+拆后：3 段 / 3 步 / 每天一步
+  第 1 天 公园    dialogue.kaho.first  21 节点  → known   delay 1
+  第 2 天 事务所  dialogue.kaho.visit  14 节点  → recruited delay 1
+  第 3 天 事务所  dialogue.kaho.second 100900102 → 收尾
+```
+
+操作顺序（改已批内容不能跳步）：
+
+1. 旧对话写进 `content-review/revisions/`（同 id、`status: 'revision'`，**只删节点不改词**）
+2. 新的那一段写进 `content-review/drafts/`（新 id）
+3. 人在审查台「通过」两条 → `npm run content:sync`
+4. 再改链（`*Encounter.ts`）：加步骤、把 `nextStepDelayDays` 改成原文的实际天数
+5. 改 E2E 的时间点，`build` + `npm test` + 序章 E2E
+
+判断"要不要拆"只问一句：**这段里玩家有没有被移动、时间有没有跳？** 有就拆或写 `endLocationId`。
 
 **场景要不要建地点？三选一**（2026-11 定）：
 

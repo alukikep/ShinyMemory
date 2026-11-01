@@ -284,4 +284,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
       'あたしにとって一番、大好きなヒーローは',
     ],
   },
+  {
+    chapterId: 'chiyoko-sweets',
+    script: '201000301',
+    source: '剧本 201000301',
+    card: { title: '純真チョコレート', index: 1, total: 3 },
+    anchors: ['2010003010040', '2010003010090', '2010003010220'],
+  },
+  {
+    chapterId: 'chiyoko-piano',
+    script: '201000302',
+    source: '剧本 201000302',
+    card: { title: '純真チョコレート', index: 2, total: 3 },
+    anchors: ['2010003020100', '2010003020170', '2010003020210'],
+  },
+  {
+    chapterId: 'chiyoko-gift',
+    script: '201000311',
+    source: '剧本 201000311',
+    card: { title: '純真チョコレート', index: 3, total: 3 },
+    anchors: ['2010003110130', '2010003110190', '2010003110280'],
+  },
 ];

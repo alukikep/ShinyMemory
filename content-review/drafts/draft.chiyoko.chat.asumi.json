@@ -1,0 +1,32 @@
+{
+  "id": "draft.chiyoko.chat.asumi",
+  "kind": "topic",
+  "title": "聊天 · 朋友",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.chiyoko.chat.asumi",
+  "payload": {
+    "id": "chiyoko.chat.asumi",
+    "actorId": "chiyoko",
+    "label": "朋友",
+    "text": "「あすみちゃん是我高中的朋友，坐我前面。……嗯，是个很努力的孩子。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T03:35:00.000Z",
+  "updatedAt": "2026-11-02T03:35:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T03:35:00.000Z",
+      "note": "智代子日常话题（1010005010050 / 1010005010190）"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.chiyoko.after_vocal",
+  "kind": "event",
+  "title": "唱完就想吃甜的",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.chiyoko.after_vocal",
+  "payload": {
+    "id": "evt.chiyoko.after_vocal",
+    "title": "唱完就想吃甜的",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "chiyoko"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束了。她把最后一句唱完，先摸了摸肚子。",
+    "choices": [
+      {
+        "label": "唱得很好。",
+        "hint": "信任 +3、歌唱 +1",
+        "effects": [
+          {
+            "ref": "trust",
+            "tier": 3,
+            "kind": "attributeExp"
+          },
+          {
+            "ref": "vocal",
+            "tier": 1,
+            "kind": "attributeExp"
+          }
+        ],
+        "result": "「真的吗！？诶嘿嘿，那……可以去吃蛋糕吗？」"
+      },
+      {
+        "label": "再来一遍。",
+        "hint": "歌唱 +1、压力 +2",
+        "effects": [
+          {
+            "ref": "vocal",
+            "tier": 1,
+            "kind": "attributeExp"
+          },
+          {
+            "delta": 2,
+            "stat": "stress",
+            "kind": "sharedStat"
+          }
+        ],
+        "result": "「好！……这次唱完，真的要去吃甜的哦！」"
+      },
+      {
+        "label": "先喝口水吧。",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "delta": -3,
+            "stat": "stress",
+            "kind": "sharedStat"
+          }
+        ],
+        "result": "「谢谢……啊，被照顾了。平常都是我在照顾人。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T03:40:00.000Z",
+  "updatedAt": "2026-11-02T03:40:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T03:40:00.000Z",
+      "note": "智代子声乐课后事件（1010001020030 边唱边念巧克力梗）"
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "id": "draft.dialogue.chiyoko.gift",
+  "kind": "dialogue",
+  "title": "收工后她叫住我",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.chiyoko.gift",
+  "payload": {
+    "id": "dialogue.chiyoko.gift",
+    "idolId": "chiyoko",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "chiyoko",
+        "text": "大家，辛苦了——！",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "producer",
+        "text": "智代子，辛苦了。",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "chiyoko",
+        "text": "制作人先生！辛苦了！",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "chiyoko",
+        "text": "今天是临时的工作，不过……很开心呢！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "producer",
+        "text": "嗯，甜品联动以外的工作也顺利多起来了。",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "chiyoko",
+        "text": "是！能做各种工作，很开心！",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "chiyoko",
+        "text": "不过……果然我的原点还是在巧克力。",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "chiyoko",
+        "text": "像这样离巧克力越来越远，有点寂寞……诶嘿嘿。",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "chiyoko",
+        "text": "感觉像……想家一样。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "这样啊……那下次也去接一些巧克力偶像的工作。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "chiyoko",
+        "text": "诶？真的吗！？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "chiyoko",
+        "text": "哇——！约好了哦，制作人先生！绝对哦！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "不过，别的工作也要好好做？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "chiyoko",
+        "text": "当然！不管什么工作我都会全力努力！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "那就好。看这状态，应该不用担心了。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "chiyoko",
+        "text": "诶嘿嘿……！……啊，对了！",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "怎么了？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "chiyoko",
+        "text": "其实本来打算今天马上给您的，结果因为工作完全忘了！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "chiyoko",
+        "text": "……给！制作人先生，这是我送您的礼物。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "chiyoko",
+        "text": "当然是巧克力！这个非常好吃，但很受欢迎，很难买到！",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "这么好味的巧克力，给我？我很高兴，不过为什么？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "chiyoko",
+        "text": "那是因为……诶嘿嘿。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "chiyoko",
+        "text": "……我觉得，我一直没能好好道谢。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "chiyoko",
+        "text": "一直带着我，把我拉到最前面的制作人先生。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "chiyoko",
+        "text": "我想把平时的感谢，用礼物表达出来！",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "哪里，我才要……谢谢你，智代子。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "chiyoko",
+        "text": "不会不会！……这种事，说出来还是有点不好意思。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "chiyoko",
+        "text": "制作人先生，今后也请多多指教園田智代子！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "当然。请多指教，智代子。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "chiyoko",
+        "text": "哇！？制、制作人先生，刚才那是……！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "说起来，我今天一整天工作，什么都没吃。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "chiyoko",
+        "text": "唔……是的……",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "……好！我也受了智代子不少照顾，就当巧克力的回礼，今天我请客！",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "chiyoko",
+        "text": "诶！可、可是，巧克力本来就是我感谢的心意……！",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "别客气，我想让智代子尽情地吃。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "chiyoko",
+        "text": "……是！谢谢您！",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "chiyoko",
+        "text": "这么多……！从哪个开始吃……",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "从哪个都行，从智代子喜欢的开始就好。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "chiyoko",
+        "text": "那……我要特大的巧克力芭菲！我开动了！",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "喂喂，不用从甜点开始吧……！——听不到了啊。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "chiyoko",
+        "text": "嗯——！！好吃！果然巧克力最棒了！",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "chiyoko",
+        "text": "被喜欢的东西围着……！我现在非常幸福哦，制作人先生！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T03:20:00.000Z",
+  "updatedAt": "2026-11-02T03:20:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T03:20:00.000Z", "note": "对照 201000311 改编" }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.chiyoko.chat.sweets",
+  "kind": "topic",
+  "title": "聊天 · 甜品",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.chiyoko.chat.sweets",
+  "payload": {
+    "id": "chiyoko.chat.sweets",
+    "actorId": "chiyoko",
+    "label": "甜品",
+    "text": "「蛋糕、泡芙、芭菲……甜的东西我全都喜欢！不过要选一个的话，还是巧克力。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T03:35:00.000Z",
+  "updatedAt": "2026-11-02T03:35:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T03:35:00.000Z",
+      "note": "智代子日常话题（2010003010040 / 2010003110280）"
+    }
+  ]
+}

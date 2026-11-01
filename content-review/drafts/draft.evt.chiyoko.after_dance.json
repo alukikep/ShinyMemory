@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.chiyoko.after_dance",
+  "kind": "event",
+  "title": "腿已经不是自己的了",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.chiyoko.after_dance",
+  "payload": {
+    "id": "evt.chiyoko.after_dance",
+    "title": "腿已经不是自己的了",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "chiyoko"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她趴在把杆上，说腿已经不是自己的了。",
+    "choices": [
+      {
+        "label": "今天就到这里。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "delta": -3,
+            "stat": "stress",
+            "kind": "sharedStat"
+          },
+          {
+            "ref": "trust",
+            "tier": 1,
+            "kind": "attributeExp"
+          }
+        ],
+        "result": "「……嗯。那今天就吃甜的补回来！」"
+      },
+      {
+        "label": "再跳一次刚才那段。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "ref": "dance",
+            "tier": 1,
+            "kind": "attributeExp"
+          },
+          {
+            "delta": 2,
+            "stat": "stress",
+            "kind": "sharedStat"
+          }
+        ],
+        "result": "「诶——……好、好吧！跳完要请我吃芭菲哦！」"
+      },
+      {
+        "label": "先喝水，慢慢来。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "ref": "dance",
+            "tier": 1,
+            "kind": "attributeExp"
+          },
+          {
+            "ref": "trust",
+            "tier": 3,
+            "kind": "attributeExp"
+          }
+        ],
+        "result": "「谢谢……制作人先生真会照顾人。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T03:40:00.000Z",
+  "updatedAt": "2026-11-02T03:40:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T03:40:00.000Z",
+      "note": "智代子舞蹈课后事件（她自称运动不擅长）"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.chiyoko.chat.piano",
+  "kind": "topic",
+  "title": "聊天 · 钢琴",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.chiyoko.chat.piano",
+  "payload": {
+    "id": "chiyoko.chat.piano",
+    "actorId": "chiyoko",
+    "label": "钢琴",
+    "text": "「钢琴啊……以前学过。现在只会用一只手弹了。……这个请保密哦。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T03:35:00.000Z",
+  "updatedAt": "2026-11-02T03:35:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T03:35:00.000Z",
+      "note": "智代子日常话题（2010003020100 / 2010003020170）"
+    }
+  ]
+}

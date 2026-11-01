@@ -1,5 +1,7 @@
 import type { StoryChainDef } from '../../types';
 import { hioriEncounter, manoEncounter, meguruEncounter, manoSlump, hioriGap, meguruBurden, mamimiEncounter } from '../storyChains';
+import chiyokoCard from './chiyokoCard';
+import chiyokoEncounter from './chiyokoEncounter';
 import hioriSmileCard from './hioriSmileCard';
 import koganeCard from './koganeCard';
 import koganeEncounter from './koganeEncounter';
@@ -37,6 +39,8 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   mamimiEncounter,
   kahoEncounter,
   kahoCard,
+  chiyokoEncounter,
+  chiyokoCard,
   kirikoEncounter,
   kirikoCard,
   koganeEncounter,

@@ -1,0 +1,280 @@
+{
+  "id": "draft.dialogue.chiyoko.second",
+  "kind": "dialogue",
+  "title": "练习室里有人在练巧克力段子",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.chiyoko.second",
+  "payload": {
+    "id": "dialogue.chiyoko.second",
+    "idolId": "chiyoko",
+    "startNodeId": "01",
+    "nodes": {
+      "01": {
+        "id": "01",
+        "speakerId": "producer",
+        "text": "（哦，她练得挺认真啊。）",
+        "nextNodeId": "02"
+      },
+      "02": {
+        "id": "02",
+        "speakerId": "chiyoko",
+        "text": "……巧克力……巧克力……",
+        "nextNodeId": "03"
+      },
+      "03": {
+        "id": "03",
+        "speakerId": "producer",
+        "text": "（……嗯？她一边跳一边在念什么……动作的空隙里）",
+        "nextNodeId": "04"
+      },
+      "04": {
+        "id": "04",
+        "speakerId": "chiyoko",
+        "text": "把甜甜的爱送给你♪……毕竟是巧克力嘛！",
+        "nextNodeId": "05"
+      },
+      "05": {
+        "id": "05",
+        "speakerId": "chiyoko",
+        "text": "巧克力偶像，就是「巧」可爱！……毕竟是巧克力嘛！",
+        "nextNodeId": "06"
+      },
+      "06": {
+        "id": "06",
+        "speakerId": "producer",
+        "text": "……你在干什么啊，智代子？",
+        "nextNodeId": "07"
+      },
+      "07": {
+        "id": "07",
+        "speakerId": "chiyoko",
+        "text": "啊！制作人先生！早上好！",
+        "nextNodeId": "08"
+      },
+      "08": {
+        "id": "08",
+        "speakerId": "chiyoko",
+        "text": "我正在练习，好让自己能马上说出很有巧克力偶像感觉的话！",
+        "nextNodeId": "09"
+      },
+      "09": {
+        "id": "09",
+        "speakerId": "producer",
+        "text": "……原来如此。智代子有智代子的努力方式啊。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "chiyoko",
+        "text": "是！我想变得更有巧克力偶像的样子！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "chiyoko",
+        "text": "请务必也给我一点建议！我接下来该做什么好呢？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "嗯，我的意见？这个嘛……",
+        "choices": [
+          { "label": "得多吃巧克力才行。", "nextNodeId": "30" },
+          { "label": "得加深巧克力知识。", "nextNodeId": "40" },
+          { "label": "想一想巧克力是什么。", "nextNodeId": "50" }
+        ]
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "chiyoko",
+        "text": "多吃巧克力……吗……原来如此，对巧克力偶像来说确实必不可少……！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "chiyoko",
+        "text": "我知道了！我去买！",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "智代子？也不用现在就去吧……！……决定了就行动很快啊，不愧是智代子。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "chiyoko",
+        "text": "买回来了！",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "这、这么多……！？吃得完吗……？",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "chiyoko",
+        "text": "甜食我最喜欢了，没问题♪",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "（真是一张幸福的好脸啊。）……拍张照发到社交平台上也行吗？",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "chiyoko",
+        "text": "啊，好！当然可以，麻烦您了！",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "智代子！刚才那张照片反应挺多的哦！",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "chiyoko",
+        "text": "真、真的吗！？……哇……！大家都在说可爱……！"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "chiyoko",
+        "text": "说起来，我一直只顾着吃，关于巧克力的事完全不了解……！",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "既然要卖巧克力，了解一下说不定更好。",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "chiyoko",
+        "text": "说得对！我去借巧克力的书！",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "现在就去？",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "chiyoko",
+        "text": "是！好事不宜迟！我去图书馆了！",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "chiyoko",
+        "text": "唔——……",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "producer",
+        "text": "怎么了？智代子。",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "chiyoko",
+        "text": "刚才借的书，有点难……",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "producer",
+        "text": "我看看……巧克力的历史啊，嗯，借了本挺硬的书。",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "chiyoko",
+        "text": "是。我平时不太读书，所以是个强敌……！不过一点点读下去，好好学！不好好记住就没有意义嘛！"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "chiyoko",
+        "text": "巧、巧克力是什么……吗？……啊，是哲学那种！",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "chiyoko",
+        "text": "唔——……巧克力是……",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "chiyoko",
+        "text": "巧克力……甜甜的你真迷人……",
+        "nextNodeId": "53"
+      },
+      "53": {
+        "id": "53",
+        "speakerId": "producer",
+        "text": "智、智代子……？",
+        "nextNodeId": "54"
+      },
+      "54": {
+        "id": "54",
+        "speakerId": "chiyoko",
+        "text": "……啊！抱歉，我跑题了。",
+        "nextNodeId": "55"
+      },
+      "55": {
+        "id": "55",
+        "speakerId": "producer",
+        "text": "不，可能是我说得太抽象了……也许需要慢慢想。",
+        "nextNodeId": "56"
+      },
+      "56": {
+        "id": "56",
+        "speakerId": "chiyoko",
+        "text": "很难呢…………融化了很好吃的茶色宝石……？",
+        "nextNodeId": "57"
+      },
+      "57": {
+        "id": "57",
+        "speakerId": "chiyoko",
+        "text": "……想到什么就先发到社交平台试试看吧……？",
+        "nextNodeId": "58"
+      },
+      "58": {
+        "id": "58",
+        "speakerId": "chiyoko",
+        "text": "制作人先生！你看！社交平台上有反应了！",
+        "nextNodeId": "59"
+      },
+      "59": {
+        "id": "59",
+        "speakerId": "producer",
+        "text": "真的！？太好了！……哦，这条说巧克力诗很有趣……",
+        "nextNodeId": "60"
+      },
+      "60": {
+        "id": "60",
+        "speakerId": "chiyoko",
+        "text": "虽然完全在预料之外，但能被关注到，我很开心！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T03:05:00.000Z",
+  "updatedAt": "2026-11-02T03:05:00.000Z",
+  "history": [
+    { "status": "review", "at": "2026-11-02T03:05:00.000Z", "note": "对照 101000102 改编，保留三个选项" }
+  ]
+}

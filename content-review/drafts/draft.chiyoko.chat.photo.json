@@ -1,0 +1,32 @@
+{
+  "id": "draft.chiyoko.chat.photo",
+  "kind": "topic",
+  "title": "聊天 · 拍照",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.chiyoko.chat.photo",
+  "payload": {
+    "id": "chiyoko.chat.photo",
+    "actorId": "chiyoko",
+    "label": "拍照",
+    "text": "「拍甜品的照片我会研究角度。因为在等着看的人，我想让他们也笑一笑。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T03:35:00.000Z",
+  "updatedAt": "2026-11-02T03:35:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T03:35:00.000Z",
+      "note": "智代子日常话题（2010003010170）"
+    }
+  ]
+}

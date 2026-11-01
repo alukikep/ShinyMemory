@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.chiyoko.after_expression",
+  "kind": "event",
+  "title": "好几种笑",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.chiyoko.after_expression",
+  "payload": {
+    "id": "evt.chiyoko.after_expression",
+    "title": "好几种笑",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "chiyoko"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。她对着镜子练了好几遍笑，最后说分不清哪个是自己。",
+    "choices": [
+      {
+        "label": "刚才那个最好。",
+        "hint": "信任 +3、表现 +1",
+        "effects": [
+          {
+            "ref": "trust",
+            "tier": 3,
+            "kind": "attributeExp"
+          },
+          {
+            "ref": "expression",
+            "tier": 1,
+            "kind": "attributeExp"
+          }
+        ],
+        "result": "「刚才那个……是想到巧克力布丁的时候的笑。」"
+      },
+      {
+        "label": "不笑的样子也看看。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "ref": "expression",
+            "tier": 1,
+            "kind": "attributeExp"
+          },
+          {
+            "ref": "trust",
+            "tier": 3,
+            "kind": "attributeExp"
+          }
+        ],
+        "result": "「不、不笑的样子？……这、这样可以吗？」她很快就撑不住笑了。"
+      },
+      {
+        "label": "别勉强。",
+        "hint": "压力 -4",
+        "effects": [
+          {
+            "delta": -4,
+            "stat": "stress",
+            "kind": "sharedStat"
+          }
+        ],
+        "result": "「被看出来了啊……诶嘿嘿。谢谢。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T03:40:00.000Z",
+  "updatedAt": "2026-11-02T03:40:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T03:40:00.000Z",
+      "note": "智代子表演课后事件（笑是她的挡箭牌）"
+    }
+  ]
+}

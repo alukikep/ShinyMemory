@@ -55,7 +55,7 @@ const actor: ActorDef = {
     {
       fromMinute: 20 * 60,
       toMinute: 23 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [1],
       label: '宿舍',
       protected: false,
@@ -88,7 +88,7 @@ const actor: ActorDef = {
     {
       fromMinute: 21 * 60,
       toMinute: 23 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [2, 4],
       label: '宿舍',
       protected: false,
@@ -115,7 +115,7 @@ const actor: ActorDef = {
     {
       fromMinute: 12 * 60,
       toMinute: 14 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [3],
       label: '补觉',
       protected: false,
@@ -131,7 +131,7 @@ const actor: ActorDef = {
     {
       fromMinute: 20 * 60,
       toMinute: 23 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [3],
       label: '宿舍',
       protected: false,
@@ -156,7 +156,7 @@ const actor: ActorDef = {
     {
       fromMinute: 20 * 60,
       toMinute: 23 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [5],
       label: '宿舍',
       protected: false,
@@ -181,7 +181,7 @@ const actor: ActorDef = {
     {
       fromMinute: 19 * 60,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [6],
       label: '宿舍',
       protected: false,
@@ -190,7 +190,7 @@ const actor: ActorDef = {
     {
       fromMinute: 10 * 60,
       toMinute: 12 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [0],
       label: '休息',
       protected: false,
@@ -214,7 +214,7 @@ const actor: ActorDef = {
     {
       fromMinute: 19 * 60,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [0],
       label: '宿舍',
       protected: false,

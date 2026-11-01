@@ -47,7 +47,7 @@ const actor: ActorDef = {
     {
       fromMinute: 19 * 60,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [1],
       label: '回宿舍',
       protected: false,
@@ -72,7 +72,7 @@ const actor: ActorDef = {
     {
       fromMinute: 19 * 60,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [2],
       label: '回宿舍',
       protected: false,
@@ -99,7 +99,7 @@ const actor: ActorDef = {
     {
       fromMinute: 18 * 60,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [3],
       weekParity: 'first',
       label: '回宿舍',
@@ -108,7 +108,7 @@ const actor: ActorDef = {
     {
       fromMinute: 17 * 60 + 30,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [3],
       weekParity: 'second',
       label: '回宿舍',
@@ -134,7 +134,7 @@ const actor: ActorDef = {
     {
       fromMinute: 19 * 60,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [4],
       label: '回宿舍',
       protected: false,
@@ -159,7 +159,7 @@ const actor: ActorDef = {
     {
       fromMinute: 19 * 60,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [5],
       label: '回宿舍',
       protected: false,
@@ -177,7 +177,7 @@ const actor: ActorDef = {
     {
       fromMinute: 9 * 60,
       toMinute: 11 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [6],
       weekParity: 'second',
       label: '折纸',
@@ -202,7 +202,7 @@ const actor: ActorDef = {
     {
       fromMinute: 17 * 60,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [6],
       label: '回宿舍',
       protected: false,
@@ -211,7 +211,7 @@ const actor: ActorDef = {
     {
       fromMinute: 9 * 60,
       toMinute: 12 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [0],
       label: '梳妆',
       protected: false,
@@ -237,7 +237,7 @@ const actor: ActorDef = {
     {
       fromMinute: 16 * 60,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [0],
       label: '回宿舍',
       protected: false,

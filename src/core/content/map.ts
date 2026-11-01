@@ -18,6 +18,7 @@ export const WALK_EDGES: MapEdgeDef[] = [
   { from: 'studio_district', to: 'office', minutes: 15 },
   { from: 'office', to: 'seaside', minutes: 15 },
   { from: 'university_district', to: 'seaside', minutes: 15 },
+  { from: 'office', to: 'dorm', minutes: 5 },
   // 进楼：0 分钟
   { from: 'ekimae', to: 'station', minutes: 0 },
   { from: 'ekimae', to: 'shopping_street', minutes: 0 },

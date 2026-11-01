@@ -32,6 +32,7 @@ export const STARTING_STATE = {
     natsuha: 'known',
     amana: 'unknown',
     tenka: 'unknown',
+    chiyuki: 'unknown',
   } as Record<string, IdolStatus>,
   dialogueId: 'dialogue.prologue.office',
 } as const;

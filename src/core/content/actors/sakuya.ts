@@ -67,7 +67,7 @@ const actor: ActorDef = {
     {
       fromMinute: 21 * 60,
       toMinute: 23 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [1, 4],
       label: '回家',
       protected: false,
@@ -85,7 +85,7 @@ const actor: ActorDef = {
     {
       fromMinute: 19 * 60,
       toMinute: 23 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [2],
       label: '回家',
       protected: false,
@@ -102,7 +102,7 @@ const actor: ActorDef = {
     {
       fromMinute: 18 * 60,
       toMinute: 21 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [3],
       label: '休息',
       protected: false,
@@ -127,7 +127,7 @@ const actor: ActorDef = {
     {
       fromMinute: 20 * 60,
       toMinute: 23 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [5],
       label: '回家',
       protected: false,
@@ -160,7 +160,7 @@ const actor: ActorDef = {
     {
       fromMinute: 21 * 60,
       toMinute: 23 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [6],
       label: '回家',
       protected: false,
@@ -169,7 +169,7 @@ const actor: ActorDef = {
     {
       fromMinute: 10 * 60,
       toMinute: 13 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [0],
       label: '休息',
       protected: false,
@@ -193,7 +193,7 @@ const actor: ActorDef = {
     {
       fromMinute: 18 * 60,
       toMinute: 22 * 60,
-      locationId: 'home',
+      locationId: 'dorm',
       weekdays: [0],
       label: '回家',
       protected: false,

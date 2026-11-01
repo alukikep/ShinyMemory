@@ -9,6 +9,7 @@ import { GameIcon, getIconPaths } from './GameIcon';
 
 const LOCATION_ICONS: Record<string, string> = {
   home: 'home',
+  dorm: 'building',
   station: 'train',
   office: 'building',
   practice_room: 'music',

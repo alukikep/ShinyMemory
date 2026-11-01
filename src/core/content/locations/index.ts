@@ -8,6 +8,7 @@ import park from './park.js';
 import shoppingStreet from './shoppingStreet.js';
 import pool from './pool.js';
 import school from './school.js';
+import dorm from './dorm.js';
 import hospital from './hospital.js';
 import ekimae from './ekimae.js';
 import studioDistrict from './studioDistrict.js';
@@ -34,6 +35,7 @@ export const LOCATIONS: LocationDef[] = [
   park,
   shoppingStreet,
   pool,
+  dorm,
   hospital,
   school,
 ];

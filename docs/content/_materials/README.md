@@ -65,4 +65,5 @@ WING 相遇   100400101   佐世保出身 / 方言 / 全部落选 / 被选中—
 
 L'Antica 四人的具体方案（招募地点、日程、首卡、内容草案）见 [lantica-plan.md](lantica-plan.md)。
 放課後クライマックスガールズ五人的方案见 [climax-plan.md](climax-plan.md)。
-ALSTROEMERIA 三人（甘奈 ✅ / 甜花 / 千雪）的方案见 [alstroemeria-plan.md](alstroemeria-plan.md)。
+ALSTROEMERIA 三人（甘奈 ✅ / 甜花 ✅ / 千雪）的方案见 [alstroemeria-plan.md](alstroemeria-plan.md)。
+STRAYLIGHT 三人的方案（含「不需要新地点」的逐场核对）见 [straylight-plan.md](straylight-plan.md)。

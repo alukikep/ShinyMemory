@@ -21,7 +21,8 @@ const tenkaCard: StoryChainDef = {
       locationId: 'home',
       timeWindow: { fromMinute: 780, toMinute: 1140 },
       dialogueId: 'dialogue.tenka.oversleep',
-      actionLabel: '她今天没来上课',
+      actionLabel: '她的电话打不通',
+      endLocationId: 'practice_room',
       when: [
         { kind: 'idolStatus', idolId: 'tenka', status: 'recruited' },
         { kind: 'dayAtLeast', day: 4 },

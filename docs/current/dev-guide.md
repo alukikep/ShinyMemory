@@ -165,6 +165,8 @@ npm run build             # 上面全部 + 类型 + 打包
 - 旧的三条长线与三条旧招募链没有 `step.source`（board 里 `LEGACY_CHAINS` 豁免）。
   重读剧本时补上，补完从豁免表删掉。
 - 角色卡的"人审 + 哈希锁定"还没做（现在是"有出处"的机器检查，不是"人看过"的留痕）。
+- **训练课名称不统一**：训练按钮叫「表现课」，但已批的事件正文写着「表演课」
+  （甘奈、甜花的 after_expression，以及咲耶的旧事件）。下次统一时走 `revisions`。
 - 已审台词里还有整句日文（kiriko.first / kiriko.second / mano.first 各一两句）。
   规则见 playbook §1.7（整句必须翻、口癖可留），改的时候走 `supersedes` 修订。
 

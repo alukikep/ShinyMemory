@@ -2,7 +2,7 @@
   "id": "draft.tenka.chat.nap",
   "kind": "topic",
   "title": "聊天 · 午睡",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.tenka.chat.nap",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T10:12:00.000Z",
-  "updatedAt": "2026-11-02T10:12:00.000Z",
+  "updatedAt": "2026-11-01T03:33:16.384Z",
+  "reviewedAt": "2026-11-01T03:33:16.384Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T10:12:00.000Z",
       "note": "甜花日常话题（API 兴趣：お昼寝）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:33:16.384Z"
     }
   ]
 }

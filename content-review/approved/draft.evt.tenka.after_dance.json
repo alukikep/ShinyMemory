@@ -2,7 +2,7 @@
   "id": "draft.evt.tenka.after_dance",
   "kind": "event",
   "title": "记不住动作",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.tenka.after_dance",
   "payload": {
@@ -74,12 +74,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T10:20:00.000Z",
-  "updatedAt": "2026-11-02T10:20:00.000Z",
+  "updatedAt": "2026-11-01T03:33:10.948Z",
+  "reviewedAt": "2026-11-01T03:33:10.948Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T10:20:00.000Z",
       "note": "甜花舞蹈课后事件（她学得慢）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:33:10.948Z"
     }
   ]
 }

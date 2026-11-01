@@ -2,7 +2,7 @@
   "id": "draft.tenka.chat.nachan",
   "kind": "topic",
   "title": "聊天 · なーちゃん",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.tenka.chat.nachan",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T10:16:00.000Z",
-  "updatedAt": "2026-11-02T10:16:00.000Z",
+  "updatedAt": "2026-11-01T03:33:13.391Z",
+  "reviewedAt": "2026-11-01T03:33:13.391Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T10:16:00.000Z",
       "note": "甜花日常话题（双子妹妹）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:33:13.391Z"
     }
   ]
 }

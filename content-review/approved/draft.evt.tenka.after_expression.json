@@ -2,7 +2,7 @@
   "id": "draft.evt.tenka.after_expression",
   "kind": "event",
   "title": "笑得太小声",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.tenka.after_expression",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T10:20:00.000Z",
-  "updatedAt": "2026-11-02T10:20:00.000Z",
+  "updatedAt": "2026-11-01T03:33:11.882Z",
+  "reviewedAt": "2026-11-01T03:33:11.882Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T10:20:00.000Z",
       "note": "甜花表演课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:33:11.882Z"
     }
   ]
 }

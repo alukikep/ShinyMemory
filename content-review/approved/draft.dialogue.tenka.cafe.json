@@ -2,7 +2,7 @@
   "id": "draft.dialogue.tenka.cafe",
   "kind": "dialogue",
   "title": "课后她说想去个地方",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.tenka.cafe",
   "payload": {
@@ -288,12 +288,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T10:00:00.000Z",
-  "updatedAt": "2026-11-02T10:00:00.000Z",
+  "updatedAt": "2026-11-01T03:33:05.261Z",
+  "reviewedAt": "2026-11-01T03:33:05.261Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T10:00:00.000Z",
       "note": "对照 201500302（三分支，保留三个选项）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:33:05.261Z"
     }
   ]
 }

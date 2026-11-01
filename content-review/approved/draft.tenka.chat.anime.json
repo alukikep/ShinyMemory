@@ -2,7 +2,7 @@
   "id": "draft.tenka.chat.anime",
   "kind": "topic",
   "title": "聊天 · 动画",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.tenka.chat.anime",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T10:14:00.000Z",
-  "updatedAt": "2026-11-02T10:14:00.000Z",
+  "updatedAt": "2026-11-01T03:33:15.118Z",
+  "reviewedAt": "2026-11-01T03:33:15.118Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T10:14:00.000Z",
       "note": "甜花日常话题（API 兴趣：アニメ）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:33:15.118Z"
     }
   ]
 }

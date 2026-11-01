@@ -2,7 +2,7 @@
   "id": "draft.dialogue.tenka.coffee",
   "kind": "dialogue",
   "title": "她拿着台本站在茶水间",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.tenka.coffee",
   "payload": {
@@ -193,12 +193,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T10:00:00.000Z",
-  "updatedAt": "2026-11-02T10:00:00.000Z",
+  "updatedAt": "2026-11-01T03:33:05.329Z",
+  "reviewedAt": "2026-11-01T03:33:05.329Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T10:00:00.000Z",
       "note": "对照 201500311（台本、泡咖啡、憋了很久的道谢）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:33:05.329Z"
     }
   ]
 }

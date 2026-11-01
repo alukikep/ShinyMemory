@@ -898,6 +898,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.tenka.game",
+  "name": "陪她打游戏",
+  "description": "送她回家，被留下来打一局。她把两个手柄都擦了一遍才递给你，说输了也不许生气；第一局她赢得很快，第二局开始明显放慢。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "tenka"
+  ],
+  "locations": [
+    "home"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 1020,
+      "toMinute": 1200
+    }
+  ],
+  "cost": {
+    "stamina": 4
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -5
+    }
+  ],
+  "resultTexts": [
+    "她连赢三局，第四局开始故意让分，被你看出来了，耳朵红了。",
+    "她说\"这个游戏甜花通关过七次\"，然后从头带你走了一遍。",
+    "时间到了她还举着手柄，说\"再来一局……就一局……\"。"
+  ]
+},
+{
   "id": "activity.watch_street",
   "name": "在街上待一会儿",
   "description": "不做什么，只是站在人多的地方看。",
@@ -3724,6 +3769,212 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「谢谢。アナタ总是记得这种事呢。」她把水瓶递回来，说自己今天唱得有点用力。"
+    }
+  ]
+},
+{
+  "id": "evt.tenka.after_dance",
+  "title": "记不住动作",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "tenka"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她坐在地上看手机里录的动作，一遍遍拖着进度条。",
+  "choices": [
+    {
+      "label": "我陪你慢慢来。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……嗯。那，再一遍……就好……」"
+    },
+    {
+      "label": "今天就休息吧。",
+      "hint": "压力 -4",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -4
+        }
+      ],
+      "result": "「可、可以吗……那，甜花，明天……」"
+    },
+    {
+      "label": "再看一遍。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「嗯……这次，会记住的……」"
+    }
+  ]
+},
+{
+  "id": "evt.tenka.after_expression",
+  "title": "笑得太小声",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "tenka"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。老师说她笑得太小声，她试了一次，还是很小。",
+  "choices": [
+    {
+      "label": "这样就好。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「这、这样……就好吗……嘿嘿……」"
+    },
+    {
+      "label": "再试一次。",
+      "hint": "表现 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「嗯……嘿嘿……诶、这样可以吗……」"
+    },
+    {
+      "label": "我陪你练。",
+      "hint": "信任 +3、压力 -2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -2
+        }
+      ],
+      "result": "「制作人先生……一起……谢谢……」"
+    }
+  ]
+},
+{
+  "id": "evt.tenka.after_vocal",
+  "title": "唱完先低头",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "tenka"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她唱完先低下头，过了几秒才抬起来问怎么样。",
+  "choices": [
+    {
+      "label": "很好。",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "「真、真的……？嘿嘿……」"
+    },
+    {
+      "label": "再大声一点。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「大、大声……甜花，试试……」"
+    },
+    {
+      "label": "先喝水。",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「啊……谢谢……制作人先生，总是……」"
     }
   ]
 },
@@ -22680,6 +22931,1198 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.tenka.cafe",
+  "idolId": "tenka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "tenka",
+      "text": "你、你好……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "你好，甜花。今天好好来了呢。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "tenka",
+      "text": "嘿嘿……日程，好好记了……不再犯同样的错……这才是甜花……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "嗯，这个心态很好。好，那去上课吧。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "tenka",
+      "text": "嗯……甜花，会努力的……！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "今天的课比平时感觉好多了。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "tenka",
+      "text": "嗯……上次课时间变短了……所以今天，多努力了……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "这样啊。老师也说，这次的迟到都快忘了，还夸了你。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "tenka",
+      "text": "嘿嘿……",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "……话说，甜花在家里的样子真让我吃惊。休息日总是那样吗？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "tenka",
+      "text": "嗯……在甜花的房间里，一整天……那样……上网、打游戏……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "tenka",
+      "text": "甜花……有手机和电脑的话……就能一直躺着……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "原来如此。……那今天也有时间，要不要出去走走？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "tenka",
+      "text": "诶、呃……为什么……？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "偶尔换个心情，多呼吸点外面的空气也不坏吧。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "tenka",
+      "text": "这样啊……制作人先生也一起的话……好啊……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "好。……不过，去哪里好呢。甜花有想去的地方、想试试的事吗？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "tenka",
+      "text": "诶、呃……嗯——",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "嘛，也不会一下子说得出来吧……就在附近的咖啡店……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "tenka",
+      "text": "啊……制作人先生……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "哦，想到要去的地方了？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "tenka",
+      "text": "那个……甜花今天的课……很努力地上了……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "tenka",
+      "text": "所以……想要，奖励……",
+      "choices": [
+        {
+          "label": "想要什么奖励？",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "奖励先保密。",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "去游戏厅吧。",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "producer",
+      "text": "好，奖励啊……既然出来了，去找点好东西吧。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "tenka",
+      "text": "找奖励……甜花也想，一起找好东西……",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "tenka",
+      "text": "制作人先生……果然这个靠垫最好……这样，事务所的午睡也能更舒服……",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "哈哈哈。真像甜花。那，稍等一下。……喏，这样就能更有精神了吧。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "tenka",
+      "text": "谢谢……制作人先生……嘿嘿……"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "tenka",
+      "text": "如果……努力的话……能得到什么？",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "那个啊，到那时候再说，是惊喜。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "tenka",
+      "text": "这样啊……甜花，会期待的……",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "tenka",
+      "text": "所以……为了拿到奖励……下次的课也会加油的……！",
+      "nextNodeId": "114"
+    },
+    "114": {
+      "id": "114",
+      "speakerId": "producer",
+      "text": "好，就是这股劲。……总之今天先在附近的咖啡店喝点东西再回去吧。",
+      "nextNodeId": "115"
+    },
+    "115": {
+      "id": "115",
+      "speakerId": "tenka",
+      "text": "嗯……嘿嘿……"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "tenka",
+      "text": "呃……甜花……想去，游戏厅……",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "好，那就找找附近的游戏厅去看看吧。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "tenka",
+      "text": "嗯……谢谢……嘿嘿……",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "tenka",
+      "text": "好厉害……有好多游戏……",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "producer",
+      "text": "甜花果然哪个游戏都很擅长啊。",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "tenka",
+      "text": "嘿嘿……甜花……和制作人先生一起打游戏……很开心……！",
+      "nextNodeId": "126"
+    },
+    "126": {
+      "id": "126",
+      "speakerId": "producer",
+      "text": "哈哈，那就好。怎么样，偶尔在外面玩也不错吧？",
+      "nextNodeId": "127"
+    },
+    "127": {
+      "id": "127",
+      "speakerId": "tenka",
+      "text": "嗯……外面，也很有趣……甜花，稍微这么想了……",
+      "nextNodeId": "128"
+    },
+    "128": {
+      "id": "128",
+      "speakerId": "tenka",
+      "text": "下次……还想和制作人先生……一起来……",
+      "nextNodeId": "129"
+    },
+    "129": {
+      "id": "129",
+      "speakerId": "producer",
+      "text": "嗯，是啊。那就把下次也当成上课努力的奖励吧。"
+    }
+  }
+},
+{
+  "id": "dialogue.tenka.coffee",
+  "idolId": "tenka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "tenka",
+      "text": "……那，我去确认一下谈话节目的台本……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "嗯，拜托了。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "tenka",
+      "text": "嗯……呃……下一个日程是……在录音棚碰头……来着……？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "嗯，是啊。现在一个人管理日程也没问题了。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "……不过还有时间，趁现在稍微休息一下吧。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "tenka",
+      "text": "嗯…………制作人先生……喝咖啡吗……？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "不，让甜花给我泡不太好，我自己来吧。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "tenka",
+      "text": "没关系……换换心情……制作人先生，等着……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "这样啊。那就拜托你了。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "tenka",
+      "text": "……嗯。甜花，会好好泡的……",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "tenka",
+      "text": "喏，泡好了……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "哦哦，谢谢。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "tenka",
+      "text": "呃，那个……会不会太浓……？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "嗯，很好喝。不过，能让甜花给我泡咖啡，感觉真不可思议。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "tenka",
+      "text": "嘿嘿，太好了……甜花也……一点点，在变化……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "是啊。真的在很多方面成长了。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "tenka",
+      "text": "偶像的工作……最近，也很多……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "工作排得很满，会很辛苦吧，没事吗？如果有勉强的事，马上告诉我。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "tenka",
+      "text": "嗯……那时候会那样做的……不过现在……很开心……所以，没事……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "tenka",
+      "text": "……呐，制作人先生。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "tenka",
+      "text": "谢谢你把甜花，变成偶像……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "嗯？怎么突然？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "tenka",
+      "text": "最近很忙……没能慢慢……说话……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "tenka",
+      "text": "其实……一直，想说道谢……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "没什么值得道谢的事。我只是帮了点忙而已。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "tenka",
+      "text": "不是的……甜花能走到这里……一定是，因为有制作人先生在……",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "tenka",
+      "text": "要是没有制作人先生……甜花就算摔倒了……也起不来……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "不是因为有我在，而是因为甜花努力了，才能成为这么棒的偶像。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "tenka",
+      "text": "能那么努力……也是多亏了制作人先生……",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "tenka",
+      "text": "制作人先生……好好把甜花，当作偶像培养起来了……"
+    }
+  }
+},
+{
+  "id": "dialogue.tenka.first",
+  "idolId": "tenka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "tenka",
+      "text": "……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "大崎甜花小姐，是吧。今天请多指教。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "tenka",
+      "text": "呜哇！……是、是……请多指教……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "呃……抱歉，吓到你了吗？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "tenka",
+      "text": "不、不是的……那个……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "tenka",
+      "text": "甜花……不太跟别人说话……所以，只是稍微，吓了一跳……而已……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "这样啊。不过是试镜，不用太紧张，开心地聊就好。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "tenka",
+      "text": "开心地聊……诶、呃……甜花会努力……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "那，大崎小姐为什么会想当偶像呢？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "tenka",
+      "text": "那个……甜花对偶像……其实不太懂……",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "tenka",
+      "text": "是因为なーちゃん说，一起当偶像吧……才来的……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "なーちゃん？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "tenka",
+      "text": "啊，呃……なーちゃん是……甜花的妹妹……甘奈，所以……甜花叫她なーちゃん……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "（妹妹……资料上写着有双胞胎妹妹，就是那个孩子啊。）",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "这样啊。妹妹一句话就让你想当偶像，你很喜欢她呢。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "tenka",
+      "text": "是……なーちゃん一直很温柔、很有精神……甜花，最喜欢她……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "是个好孩子呢。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "tenka",
+      "text": "嘿嘿……甜花也想过，自己能当偶像吗……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "tenka",
+      "text": "可是なーちゃん那样说了……所以，为了なーちゃん，甜花想努力试试……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "原来如此……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "（说到妹妹时的笑容……看到这个笑容，连我都要开心起来了。）",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "（把周围的魅力引出来，也许能成为很厉害的偶像！）",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "好，你合格了！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "tenka",
+      "text": "诶……真的……？甜花……当偶像……？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "嗯，我就是你的制作人。请多指教，甜花。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "tenka",
+      "text": "是、是……",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "tenka",
+      "text": "甜花……会努力肥！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "tenka",
+      "text": "啊，会努力的……！"
+    }
+  }
+},
+{
+  "id": "dialogue.tenka.oversleep",
+  "idolId": "tenka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "（嗯……甜花的电话，打了也没人接。家里电话也一样……）",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（来路上出了什么事吗？……先直接去她家看看吧。）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "……甜花，我进来了。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "……甜花，我进来了。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "tenka",
+      "text": "诶……？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "tenka",
+      "text": "啊……制作人先生……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "tenka",
+      "text": "诶……为什么……在家里……？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "tenka",
+      "text": "来叫なーちゃん……？还是，家长面谈……？甜花，是不是哪里做得不好……？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "不，都不是……不过你没事就好。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "tenka",
+      "text": "……？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "甜花没来上课，所以我来接你了。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "tenka",
+      "text": "诶……诶……？课是明天吧……我记得……手机上，也记了……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "tenka",
+      "text": "啊。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "tenka",
+      "text": "是、是今天……",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "tenka",
+      "text": "对不起，制作人先生……甜花……以为是明天……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "这样啊……情况我明白了。总之，现在赶紧去上课吧。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "tenka",
+      "text": "可、可是……现在去的话……迟到……老师会不会生气……？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "可能会被说几句吧。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "tenka",
+      "text": "呜哇……！果、果然……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "不过，迟到的事我已经联络过了。如果被说，那时候我也一起道歉。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "tenka",
+      "text": "制作人先生，也……？那……我、我去试试……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "嗯。我在外面等着，准备好了就出来。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "话说回来……记错日期没办法，但电话总得接吧。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "我还担心甜花出了什么事呢。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "tenka",
+      "text": "对不起……给制作人先生添麻烦了……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "tenka",
+      "text": "那个……手机响的时候，甜花在睡觉……没注意到……",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "tenka",
+      "text": "醒来之后想回电，可是……因为休息……就觉得，算了吧……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "原来如此……不过今后，注意到了就马上回。我也会担心。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "tenka",
+      "text": "嗯……会那样做的……",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "……那个先放一边。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "tenka",
+      "text": "诶？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "甜花平时，穿得相当松弛啊。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "tenka",
+      "text": "啊呜……那个是……",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "tenka",
+      "text": "因为舒服……在家里，一直都是……那样……",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "tenka",
+      "text": "反正不太出门……就觉得，也可以吧……",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "不出门的话，确实会变成那样……",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "tenka",
+      "text": "制作人先生要来……甜花没想到……所以……",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "确实，突然进房间的是我。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "哦……差不多到练习场了。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "tenka",
+      "text": "……对不起，都是甜花害的……",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "我也会有弄错的时候。彼此彼此。比起那个，做好觉悟了吗？",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "tenka",
+      "text": "嗯、嗯……会好好道歉……和制作人先生，一起……",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "tenka",
+      "text": "……谢谢你，制作人先生。"
+    }
+  }
+},
+{
+  "id": "dialogue.tenka.second",
+  "idolId": "tenka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "tenka",
+      "text": "CD……啊，新出的……请买一张……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "tenka",
+      "text": "啊……CD……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "tenka",
+      "text": "唉……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "辛苦了，甜花。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "tenka",
+      "text": "啊，制作人先生……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "你很努力了。不过一开始果然还是会紧张吧。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "tenka",
+      "text": "……嗯……CD……没做好……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "tenka",
+      "text": "なーちゃん和千雪小姐，明明都做得那么好……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "甘奈她们是甘奈她们，甜花是甜花。习惯之后甜花也能做好的。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "tenka",
+      "text": "是、这样吗……",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "tenka",
+      "text": "甜花什么都不会……只会依赖大家……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "tenka",
+      "text": "なーちゃん也……帮了甜花好多……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "遇到困难时互相帮忙，这就是组合啊。这方面不用太在意。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "……说起来，和组合的成员相处得怎么样？甘奈应该没问题吧。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "tenka",
+      "text": "托なーちゃん的福，和千雪小姐也……一点点地，能说上话了……大概……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "tenka",
+      "text": "当了偶像之后……なーちゃん还是那么厉害……闪闪发光的……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "tenka",
+      "text": "甜花看着なーちゃん……也会变得有精神……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "确实，甘奈那股元气，连我都想学。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "tenka",
+      "text": "嘿嘿……制作人先生也……这么想吧……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "嗯。不过，我觉得甜花也有甜花的好。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "只要在偶像工作上努力下去，一定能成为拥有甘奈没有的魅力的、好偶像。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "tenka",
+      "text": "能变成那样……就好了……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "（好像还没反应过来……得想办法把甜花的魅力引出来……）",
+      "choices": [
+        {
+          "label": "再多点自信吧。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "今后也继续努力。",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "试着一个人做份工作？",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "tenka",
+      "text": "自信……",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "嗯。甜花太低估自己了。再多一点自信。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "tenka",
+      "text": "可是……甜花什么都不会……光有自信，也没用……",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "我觉得不是\"什么都不会\"啊。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "producer",
+      "text": "那，先从简单的开始，让甜花一个人做点工作试试？",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "tenka",
+      "text": "诶……甜花，一个人……？那种事，做不到……",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "producer",
+      "text": "当然我也会跟着。一点点习惯一个人的工作，说不定会有变化。",
+      "nextNodeId": "107"
+    },
+    "107": {
+      "id": "107",
+      "speakerId": "tenka",
+      "text": "甜花……能改变吗……"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "tenka",
+      "text": "甜花也想努力……可是，该做什么好呢……",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "这个啊……首先是集中精神做好眼前的工作。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "tenka",
+      "text": "可是，工作的时候……又会依赖なーちゃん她们……",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "producer",
+      "text": "（原来如此……只做组合的工作，也许很难让甜花建立自信。）",
+      "nextNodeId": "114"
+    },
+    "114": {
+      "id": "114",
+      "speakerId": "producer",
+      "text": "……甜花，现在没有太大型的工作，也试试一个人做的工作吧？",
+      "nextNodeId": "115"
+    },
+    "115": {
+      "id": "115",
+      "speakerId": "tenka",
+      "text": "诶……甜花，一个人……？……可是……一定会失败的……",
+      "nextNodeId": "116"
+    },
+    "116": {
+      "id": "116",
+      "speakerId": "producer",
+      "text": "那种时候我也会补上。不是一开始就全部一个人做，所以没关系。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "tenka",
+      "text": "诶……一个人……なーちゃん，不在吗……？那、那种事，能行吗？",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "虽然不多，但也有单人工作。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "producer",
+      "text": "在那些工作里，找到自己能做的事就好。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "tenka",
+      "text": "一个人工作……有点，可怕……",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "producer",
+      "text": "不过，试一次的价值是有的。我也想看到甜花一个人站在舞台上的样子。",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "tenka",
+      "text": "……制作人先生，也一起……？",
+      "nextNodeId": "126"
+    },
+    "126": {
+      "id": "126",
+      "speakerId": "producer",
+      "text": "当然。我会一直在台下看着。"
+    }
+  }
+},
+{
   "id": "dialogue.yuika.first",
   "idolId": "yuika",
   "startNodeId": "01",
@@ -25430,6 +26873,104 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "sakuya",
   "label": "今天",
   "text": "「今天？本来打算第一个到的。看来我又来早过头了。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "tenka.chat.anime",
+  "actorId": "tenka",
+  "label": "动画",
+  "text": "「动画……一季一季，会追完……」「甜花，记性只有这个好……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "tenka.chat.coffee",
+  "actorId": "tenka",
+  "label": "咖啡",
+  "text": "「咖啡……甜花会泡了……」「浓了的话……要说，哦……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "tenka.chat.game",
+  "actorId": "tenka",
+  "label": "游戏",
+  "text": "「游戏……甜花很喜欢……」「手机和电脑有的话……就能一直玩……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "tenka.chat.nachan",
+  "actorId": "tenka",
+  "label": "なーちゃん",
+  "text": "「なーちゃん……甜花的妹妹……」「一直，都很温柔……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "tenka.chat.nap",
+  "actorId": "tenka",
+  "label": "午睡",
+  "text": "「午睡……最好了……」「事务所有沙发……能睡……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "tenka.chat.net",
+  "actorId": "tenka",
+  "label": "上网",
+  "text": "「上网……看着看着，时间就没了……」「甜花的网名，是テン三郎……嘿嘿……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "tenka.chat.today",
+  "actorId": "tenka",
+  "label": "今天",
+  "text": "「今天……也，还不错……」「能这样，说说话……就很好……」",
   "cooldownMinutes": 1440,
   "effects": [
     {

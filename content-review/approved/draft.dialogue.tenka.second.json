@@ -2,7 +2,7 @@
   "id": "draft.dialogue.tenka.second",
   "kind": "dialogue",
   "title": "街角的 CD 手売り",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.tenka.second",
   "payload": {
@@ -294,12 +294,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T10:00:00.000Z",
-  "updatedAt": "2026-11-02T10:00:00.000Z",
+  "updatedAt": "2026-11-01T03:33:07.169Z",
+  "reviewedAt": "2026-11-01T03:33:07.169Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T10:00:00.000Z",
       "note": "对照 101500102（三分支，保留三个选项）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:33:07.169Z"
     }
   ]
 }

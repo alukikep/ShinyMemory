@@ -2,7 +2,7 @@
   "id": "draft.dialogue.tenka.oversleep",
   "kind": "dialogue",
   "title": "她今天没来上课",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.tenka.oversleep",
   "payload": {
@@ -271,7 +271,8 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T10:00:00.000Z",
-  "updatedAt": "2026-11-02T10:30:00.000Z",
+  "updatedAt": "2026-11-01T03:33:05.183Z",
+  "reviewedAt": "2026-11-01T03:33:05.183Z",
   "history": [
     {
       "status": "review",
@@ -282,6 +283,10 @@
       "status": "review",
       "at": "2026-11-02T10:30:00.000Z",
       "note": "开头改成在家打电话→去她家；收尾用 endLocationId 搬到练习场（她家的场景，落点是练习场）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:33:05.183Z"
     }
   ]
 }

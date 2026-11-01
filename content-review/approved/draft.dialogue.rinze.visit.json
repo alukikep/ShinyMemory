@@ -2,7 +2,7 @@
   "id": "draft.dialogue.rinze.visit",
   "kind": "dialogue",
   "title": "她来还手帕",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.rinze.visit",
   "payload": {
@@ -85,7 +85,8 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:10:00.000Z",
-  "updatedAt": "2026-11-02T07:10:00.000Z",
+  "updatedAt": "2026-11-01T02:54:38.350Z",
+  "reviewedAt": "2026-11-01T02:54:38.350Z",
   "history": [
     {
       "status": "review",
@@ -96,6 +97,10 @@
       "status": "review",
       "at": "2026-11-02T07:10:00.000Z",
       "note": "开头补上「果然没有联络啊」——从第一步结尾移过来，它发生在几天之后"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:38.350Z"
     }
   ]
 }

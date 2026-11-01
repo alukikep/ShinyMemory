@@ -2,7 +2,7 @@
   "id": "draft.dialogue.rinze.rain",
   "kind": "dialogue",
   "title": "站前突然下起雨",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.rinze.rain",
   "payload": {
@@ -240,12 +240,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:55:00.000Z",
-  "updatedAt": "2026-11-02T06:55:00.000Z",
+  "updatedAt": "2026-11-01T02:54:39.738Z",
+  "reviewedAt": "2026-11-01T02:54:39.738Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:55:00.000Z",
       "note": "对照 201200302（三分支，保留三个选项）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:39.738Z"
     }
   ]
 }

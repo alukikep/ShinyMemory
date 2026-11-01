@@ -2,7 +2,7 @@
   "id": "draft.rinze.chat.unit",
   "kind": "topic",
   "title": "聊天 · 放クラ",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.rinze.chat.unit",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:37:00.000Z",
-  "updatedAt": "2026-11-02T06:37:00.000Z",
+  "updatedAt": "2026-11-01T02:54:44.551Z",
+  "reviewedAt": "2026-11-01T02:54:44.551Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:37:00.000Z",
       "note": "凛世日常话题（组合里的她更积极）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:44.551Z"
     }
   ]
 }

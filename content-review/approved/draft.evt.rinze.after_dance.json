@@ -2,7 +2,7 @@
   "id": "draft.evt.rinze.after_dance",
   "kind": "event",
   "title": "还是那个「型」",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.rinze.after_dance",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:45:00.000Z",
-  "updatedAt": "2026-11-02T06:45:00.000Z",
+  "updatedAt": "2026-11-01T02:54:42.604Z",
+  "reviewedAt": "2026-11-01T02:54:42.604Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:45:00.000Z",
       "note": "凛世舞蹈课后事件（型）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:42.604Z"
     }
   ]
 }

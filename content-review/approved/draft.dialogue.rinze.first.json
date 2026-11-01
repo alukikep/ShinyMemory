@@ -2,7 +2,7 @@
   "id": "draft.dialogue.rinze.first",
   "kind": "dialogue",
   "title": "路边有人蹲着看木屐",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.rinze.first",
   "payload": {
@@ -127,7 +127,8 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:00:00.000Z",
-  "updatedAt": "2026-11-02T07:10:00.000Z",
+  "updatedAt": "2026-11-01T02:54:38.274Z",
+  "reviewedAt": "2026-11-01T02:54:38.274Z",
   "history": [
     {
       "status": "review",
@@ -138,6 +139,10 @@
       "status": "review",
       "at": "2026-11-02T07:10:00.000Z",
       "note": "删掉结尾的「果然没有联络啊」——那是隔了几天之后的旁白，移到第二步开头"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:38.274Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.dialogue.rinze.letter",
   "kind": "dialogue",
   "title": "她接过你的大衣",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.rinze.letter",
   "payload": {
@@ -163,12 +163,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:10:00.000Z",
-  "updatedAt": "2026-11-02T06:10:00.000Z",
+  "updatedAt": "2026-11-01T02:54:39.819Z",
+  "reviewedAt": "2026-11-01T02:54:39.819Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:10:00.000Z",
       "note": "对照 201200311（大衣、老家来信、邀制作人见家人）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:39.819Z"
     }
   ]
 }

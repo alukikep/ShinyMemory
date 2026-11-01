@@ -2,7 +2,7 @@
   "id": "draft.dialogue.rinze.shoot",
   "kind": "dialogue",
   "title": "和风外景的控え室",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.rinze.shoot",
   "payload": {
@@ -253,12 +253,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:10:00.000Z",
-  "updatedAt": "2026-11-02T06:10:00.000Z",
+  "updatedAt": "2026-11-01T02:54:39.657Z",
+  "reviewedAt": "2026-11-01T02:54:39.657Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:10:00.000Z",
       "note": "对照 201200301（日本家屋拍摄、少女漫画、念台词告白）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:39.657Z"
     }
   ]
 }

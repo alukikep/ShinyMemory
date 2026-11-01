@@ -2,7 +2,7 @@
   "id": "draft.rinze.chat.kimono",
   "kind": "topic",
   "title": "聊天 · 和服",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.rinze.chat.kimono",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:35:00.000Z",
-  "updatedAt": "2026-11-02T06:35:00.000Z",
+  "updatedAt": "2026-11-01T02:54:46.094Z",
+  "reviewedAt": "2026-11-01T02:54:46.094Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:35:00.000Z",
       "note": "凛世日常话题（和服、木屐）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:46.094Z"
     }
   ]
 }

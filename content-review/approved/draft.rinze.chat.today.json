@@ -2,7 +2,7 @@
   "id": "draft.rinze.chat.today",
   "kind": "topic",
   "title": "聊天 · 今天",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.rinze.chat.today",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:31:00.000Z",
-  "updatedAt": "2026-11-02T06:31:00.000Z",
+  "updatedAt": "2026-11-01T02:54:49.009Z",
+  "reviewedAt": "2026-11-01T02:54:49.009Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:31:00.000Z",
       "note": "凛世日常话题"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:49.009Z"
     }
   ]
 }

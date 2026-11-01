@@ -677,6 +677,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.rinze.fold",
+  "name": "陪她折纸",
+  "description": "她从袖子里拿出一叠和纸，问你想折什么。折坏了也不扔，重新压平再折一次。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "rinze"
+  ],
+  "locations": [
+    "office"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 900,
+      "toMinute": 1140
+    }
+  ],
+  "cost": {
+    "stamina": 6
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -4
+    }
+  ],
+  "resultTexts": [
+    "她折了一只鹤，放在你手心上，说这个能留住好运。",
+    "你折歪了，她没笑，把纸压平递回来：「再来一次，就好……」",
+    "临走时她把折好的纸鹤排成一排，说下次教你折更难的那种。"
+  ]
+},
+{
   "id": "activity.sakuya.treats",
   "name": "陪她挑点心",
   "description": "收工顺路，她说要给打合せ带点点心。你在旁边帮她拿纸袋。",
@@ -2760,6 +2805,212 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "她愣了一下：「因为我怕停下来啊。」"
+    }
+  ]
+},
+{
+  "id": "evt.rinze.after_dance",
+  "title": "还是那个「型」",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "rinze"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。老师夸她完璧，她却又把刚才那段从头比了一遍。",
+  "choices": [
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "delta": -3,
+          "stat": "stress",
+          "kind": "sharedStat"
+        },
+        {
+          "ref": "trust",
+          "kind": "attributeExp",
+          "tier": 1
+        }
+      ],
+      "result": "「……是。那就，明天……」"
+    },
+    {
+      "label": "再来一遍。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "ref": "dance",
+          "kind": "attributeExp",
+          "tier": 1
+        },
+        {
+          "delta": 2,
+          "stat": "stress",
+          "kind": "sharedStat"
+        }
+      ],
+      "result": "「是。这一次……请看着。」"
+    },
+    {
+      "label": "刚才那样已经很好。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "ref": "dance",
+          "kind": "attributeExp",
+          "tier": 1
+        },
+        {
+          "ref": "trust",
+          "kind": "attributeExp",
+          "tier": 3
+        }
+      ],
+      "result": "「……很好，吗。凛世，不太懂那种事……」"
+    }
+  ]
+},
+{
+  "id": "evt.rinze.after_expression",
+  "title": "台词念得太认真",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "rinze"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。她把一句告白念了三遍，每一遍都像在说自己。",
+  "choices": [
+    {
+      "label": "刚才那句很好。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "ref": "expression",
+          "kind": "attributeExp",
+          "tier": 1
+        },
+        {
+          "ref": "trust",
+          "kind": "attributeExp",
+          "tier": 3
+        }
+      ],
+      "result": "「……是。那句，凛世，也有点，当真……」"
+    },
+    {
+      "label": "只是台词而已。",
+      "hint": "表现 +1、压力 -2",
+      "effects": [
+        {
+          "ref": "expression",
+          "kind": "attributeExp",
+          "tier": 1
+        },
+        {
+          "delta": -2,
+          "stat": "stress",
+          "kind": "sharedStat"
+        }
+      ],
+      "result": "「……是。只是，台词。」她低着头，把台本合上。"
+    },
+    {
+      "label": "休息一下。",
+      "hint": "压力 -4",
+      "effects": [
+        {
+          "delta": -4,
+          "stat": "stress",
+          "kind": "sharedStat"
+        }
+      ],
+      "result": "「……可以吗。那，凛世，就借这块地板……」"
+    }
+  ]
+},
+{
+  "id": "evt.rinze.after_vocal",
+  "title": "唱完先行礼",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "rinze"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她唱完没有马上问怎么样，先对着空椅子行了一礼。",
+  "choices": [
+    {
+      "label": "很好。",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "ref": "trust",
+          "kind": "attributeExp",
+          "tier": 3
+        },
+        {
+          "ref": "vocal",
+          "kind": "attributeExp",
+          "tier": 1
+        }
+      ],
+      "result": "「……是。凛世，会再努力……」她说完才轻轻笑了一下。"
+    },
+    {
+      "label": "再稳一点。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "ref": "vocal",
+          "kind": "attributeExp",
+          "tier": 1
+        },
+        {
+          "delta": 2,
+          "stat": "stress",
+          "kind": "sharedStat"
+        }
+      ],
+      "result": "「稳定……是。再来一次，就好……」第二遍她收得更紧。"
+    },
+    {
+      "label": "先喝水。",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "delta": -3,
+          "stat": "stress",
+          "kind": "sharedStat"
+        }
+      ],
+      "result": "「……谢谢您。您总是，先想到……」"
     }
   ]
 },
@@ -17319,6 +17570,1048 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.rinze.first",
+  "idolId": "rinze",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "rinze",
+      "text": "作为回礼，我会送还的。请告诉我您的所在。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "（……重新看，真是非常美的孩子啊……怎么说呢，很有气质……）",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "rinze",
+      "text": "那个……？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "诶？啊！抱歉抱歉。手帕不用还，你收下吧。比起那个——要不要试着当偶像？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "rinze",
+      "text": "偶、像……？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "嗯，我想制作你。我一定会带你走上最好的舞台。……怎么样？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "rinze",
+      "text": "那是莫非……这个凛世，被男子说那样的话，是头一次……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "啊……抱、抱歉。突然这么说，你也为难吧。不过，如果有一点点兴趣，请来名片上的事务所。我等着你。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "rinze",
+      "text": "……此处，是您所在之处……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "rinze",
+      "text": "……必定，会去拜访。这个凛世，不会失礼。那么……"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（嗯……想找适合的孩子，可哪有那么容易。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "producer",
+      "text": "（……哦？那个穿和服的孩子蹲在地上，怎么了？）",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "你，没事吧？",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "rinze",
+      "text": "……凛世、でしょうか……？木屐的鼻绪，断了……",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "啊，断了啊……那个，能借我一下吗？",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "rinze",
+      "text": "……？",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "producer",
+      "text": "嗯——我记得在哪本书上读过。把手帕撕开，穿过五元硬币……好，完成了！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "给。……虽然不太好看，但走一小段路没问题。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "rinze",
+      "text": "……您的亲切，感激不尽。可是……您的手帕……",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.rinze.letter",
+  "idolId": "rinze",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "诶，认可偶像活动……？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "rinze",
+      "text": "是……杜野家，本来并不认可凛世的活动……我说想当偶像的时候，那可真是大骚动……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "这、这样啊……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "rinze",
+      "text": "但是……无论如何……都想知道。制作人大人，会把凛世带到哪里去……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "rinze",
+      "text": "让家里人……稍微担心了……",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "凛世…………原来有这样的内情啊……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "rinze",
+      "text": "是……但是，我一点也不后悔。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "rinze",
+      "text": "制作人大人，把凛世……带到最好的舞台上去了。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "rinze",
+      "text": "那一天，和制作人大人相遇，是命运。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "嗯，我也这么想。不过，让凛世走到这里的，是凛世自己的力量。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "rinze",
+      "text": "正因为有您在，才做得到……感谢您，制作人大人。家里人，也这么说……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "不不，不用谢…………话说……家里人，也……信里也提到我了？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "rinze",
+      "text": "……写信回家时，尽是写您的事……所以……想见见您，他们这么说……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "rinze",
+      "text": "如果可以……能请您，见见凛世的家人吗？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "（『W.I.N.G.』的优胜报告……吧……得准备句像样的问候才行。）",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "rinze",
+      "text": "制作人大人……！凛世……很幸福……"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "辛苦了。我回来了。呼……好，得整理报告书……",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "rinze",
+      "text": "大衣，我帮您收下……",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "啊，你已经来了啊，凛世。谢谢。不过那种事不用在意也行哦？",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "rinze",
+      "text": "凛世，想这么做……现在，去给您泡茶。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "不，不能麻烦你做这种事……不过，谢谢你的心意。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "……嗯？",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "rinze",
+      "text": "那是……老家寄来的信。",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "哦，这样啊……写了些什么？",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "rinze",
+      "text": "是……说认可凛世的偶像活动……正好，想跟您说……",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.rinze.rain",
+  "idolId": "rinze",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "真头疼啊……突然下这么大。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "rinze",
+      "text": "要暂时避雨吗……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "是啊……我也该带把折叠伞的。抱歉，凛世。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "rinze",
+      "text": "凛世，不要紧的……",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "rinze",
+      "text": "──阿嚏。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "凛世，和服都湿了不是吗！没注意到，抱歉！总之，先穿上这件外套。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "rinze",
+      "text": "不……不能给制作人大人添麻烦。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "话不能这么说……没办法，我去趟便利店吧。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "rinze",
+      "text": "凛世……真的，不要紧的……",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "不，我去买伞。记得附近应该有一家。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "rinze",
+      "text": "不，您的心意就足够了……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "（可是……把湿着的凛世留在这儿也让人担心。）不过，也是啊……也许马上就停了，稍微等等看吧。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "rinze",
+      "text": "是，就……那样吧。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "……雨一直不停啊。好像比刚才更大了……",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "rinze",
+      "text": "是……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "（……嗯……沉默着也不是办法，找点话说吧。）",
+      "choices": [
+        {
+          "label": "还是把外套借给你吧？",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "……总觉得，一个人都没有啊。",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "希望早点放晴啊。",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "producer",
+      "text": "越来越冷了……不能让凛世感冒。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "rinze",
+      "text": "……制作人大人。凛世，也是同样的心情。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "producer",
+      "text": "诶……？",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "rinze",
+      "text": "凛世也，不想让制作人大人感冒……",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "producer",
+      "text": "（……这样啊。凛世也在担心我。）……谢谢你，凛世。",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "rinze",
+      "text": "凛世，什么都没……",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "producer",
+      "text": "不，怎么说呢，因为凛世的话，身体也觉得暖和起来了。"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "rinze",
+      "text": "制作人大人……",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "啊，不，没什么深意，只是这么安静，会想听听大家的声音啊。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "rinze",
+      "text": "是，可是……凛世和制作人大人，像是这世上只剩两个人……真好。",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "producer",
+      "text": "嗯？嘛……一个人的话会寂寞，两个人的话就不寂寞了。",
+      "nextNodeId": "114"
+    },
+    "114": {
+      "id": "114",
+      "speakerId": "rinze",
+      "text": "是……",
+      "nextNodeId": "115"
+    },
+    "115": {
+      "id": "115",
+      "speakerId": "producer",
+      "text": "哈哈。好，难得的机会，再聊一会儿吧。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "rinze",
+      "text": "……制作人大人，是这样想的啊……",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "那是，我不想让凛世感冒啊。凛世不想放晴吗？",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "rinze",
+      "text": "如果制作人大人希望的话……可是……",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "producer",
+      "text": "（……凛世是喜欢雨吗？）总之，这样下去肯定要感冒。凛世，能再靠近一点吗？",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "rinze",
+      "text": "……！可以，吗……",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "producer",
+      "text": "……有、有点太近了……吧？稍微，保持点距离不好吗？",
+      "nextNodeId": "126"
+    },
+    "126": {
+      "id": "126",
+      "speakerId": "rinze",
+      "text": "……给您添麻烦了吗……非常抱歉……"
+    }
+  }
+},
+{
+  "id": "dialogue.rinze.second",
+  "idolId": "rinze",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "rinze",
+      "text": "……老师，刚才的地方……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "rinze",
+      "text": "……是，手臂再……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "rinze",
+      "text": "谢谢您……今天，就到这里了呢。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "（今天也认真练习啊，认真得有点过头了。）",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "辛苦了，凛世。最近进步很大啊。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "rinze",
+      "text": "制作人大人……您，有在看吗。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "rinze",
+      "text": "都是托制作人大人的指导。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "嗯，因为凛世很认真地完成课题，安排日程也有意义。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "rinze",
+      "text": "不，不是什么值得夸奖的事……",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "不只是这样，社长也夸了凛世的努力哦！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "rinze",
+      "text": "……是，今后也会精进。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "……？好像……没那么高兴？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "rinze",
+      "text": "不，制作人大人高兴……那才是凛世的幸福。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "（算是高兴了吧？可总觉得她对自己的兴趣很淡……）",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "rinze",
+      "text": "制作人大人……？怎么了？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "不，怎么说呢……想问一下。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "rinze",
+      "text": "是。无论什么事。",
+      "choices": [
+        {
+          "label": "为什么接受了我的邀请？",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "有没有想试着做的工作？",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "别太勉强自己了。",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "rinze",
+      "text": "那是……制作人大人的话，把凛世，改变了……",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "（\"带你走上最好的舞台\"——那句话，凛世一直……）",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "producer",
+      "text": "（原来如此，凛世是觉得不能在这种程度松懈啊……）",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "不愧是凛世。我也是把你带进这个世界的人，有责任。以最好的舞台为目标一起努力吧！",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "rinze",
+      "text": "是。为了您，我会迈进。"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "rinze",
+      "text": "只要是制作人大人期望的……凛世，不会拒绝……",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "这、这样啊……谢谢。帮大忙了。不过……硬要说的话，有没有什么想做的？",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "rinze",
+      "text": "凛世只要能，被制作人大人看着……那就……",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "producer",
+      "text": "原、原来如此……好像被期待了呢。既然凛世这么说，我也会尽量陪着你。",
+      "nextNodeId": "114"
+    },
+    "114": {
+      "id": "114",
+      "speakerId": "rinze",
+      "text": "呵呵……感激不尽。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "producer",
+      "text": "如果有不想做的工作，一定要跟我商量。我想尽量尊重凛世的意见。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "rinze",
+      "text": "勉强……不行的吧，那种事……",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "rinze",
+      "text": "无论什么事都会接受……这个凛世，已经如此下定决心。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "producer",
+      "text": "这样啊……奇怪地担心了，抱歉。有凛世这份觉悟，今后一定也会顺利。",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "rinze",
+      "text": "是……"
+    }
+  }
+},
+{
+  "id": "dialogue.rinze.shoot",
+  "idolId": "rinze",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "……是吗？好，结束了马上叫你。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "抱歉凛世！碰头拖太久了……了……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "rinze",
+      "text": "不……碰头已经结束了吧。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "rinze",
+      "text": "那个，制作人大人？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "……啊，抱歉！不由得看入迷了。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "rinze",
+      "text": "是啊……真是很棒的院子呢……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "（看入迷的不只是院子的景色……真想就这样拍下去。）",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "rinze",
+      "text": "……？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "不、不是……器材好像还要一会儿，你可以再慢慢待着。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "rinze",
+      "text": "明白了。制作人大人也，在这边……？",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "嗯，要等一会儿……怎么了？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "rinze",
+      "text": "呵呵……不。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "……？话说，你在读什么？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "rinze",
+      "text": "是少女漫画……──向智代子小姐借的。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "啊，刚才说带了东西来，就是这个啊。……是现在播的那部剧吗？凛世喜欢这种？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "rinze",
+      "text": "是……在，学习……",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "学习？",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "rinze",
+      "text": "是……智代子小姐说，这上面写着\"恋爱的入门\"。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "（嗯……我记得那部剧是卖独特世界观的……）",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "rinze",
+      "text": "……怎么了？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "嗯……我觉得没错，但别太当真比较好哦？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "rinze",
+      "text": "……是吗……",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "哈哈，大概吧。……啊，已经这个时间了。凛世，差不多该移动了。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "rinze",
+      "text": "……制作人大人。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "嗯？",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "rinze",
+      "text": "……一直……都在思慕您。已经，不想离开您身边了。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "诶，怎、怎么了突然……？",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "rinze",
+      "text": "想和您，永远，结为连理……",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "（啊、啊啊！刚才少女漫画的台词啊！吓我一跳……）咳、咳咳，看来不紧张啊……那就加油吧，凛世！",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "rinze",
+      "text": "……是，制作人大人。"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "那么……马上就到现场了，凛世，准备好了吗？",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "rinze",
+      "text": "是……在日本家屋的拍摄呢。",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "嗯，不愧是凛世，工作内容都记得很清楚！",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "rinze",
+      "text": "如果能帮上忙，那就再好不过了……",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "别太紧张啊……",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "producer",
+      "text": "（抱歉，电话。）是的，283制作……辛苦了。嗯，正好在那边……是，我知道了。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "rinze",
+      "text": "……发生了什么事吗？",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "正好是对方打来的。拍摄前有个简短的碰头——到了现场，凛世先在休息室等着。让你一个人，抱歉。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "rinze",
+      "text": "不……我带了很不错的东西来。请不用挂心凛世……",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.rinze.visit",
+  "idolId": "rinze",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "rinze",
+      "text": "是，我叫杜野凛世。虽是不成器之人，请多指教。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "请多指教，凛世！……那个，先带你看看事务所吧。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "rinze",
+      "text": "是……那就，麻烦您了。"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（嗯……果然没有联络啊。那个穿和服的孩子，是不是我太强硬了……）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "rinze",
+      "text": "请问……",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "producer",
+      "text": "……诶，你是……",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "rinze",
+      "text": "前几天，谢谢您。为了还手帕，我来了。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "这个……是吗，你特意送过来。总觉得不好意思。",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "rinze",
+      "text": "不……还有，今天……是来给您答复的。",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "rinze",
+      "text": "凛世，已经下定决心了。",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "rinze",
+      "text": "从今往后，一生，都跟随您。",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "producer",
+      "text": "……也就是说，你下定决心了！谢谢！……那个，凛世……小姐？",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
   "id": "dialogue.sakuya.crowd",
   "idolId": "sakuya",
   "startNodeId": "01",
@@ -20985,6 +22278,104 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "meguru",
   "label": "被担心的时候",
   "text": "「诶？我没事哦！真的！……制作人，你刚才是不是在担心我？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "rinze.chat.kimono",
+  "actorId": "rinze",
+  "label": "和服",
+  "text": "「和服……穿习惯了……」「腰带系紧的时候，背会……挺直……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "rinze.chat.manga",
+  "actorId": "rinze",
+  "label": "少女漫画",
+  "text": "「少女漫画……是很深的世界……」「智代子小姐，借了我很多……要还的……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "rinze.chat.omurice",
+  "actorId": "rinze",
+  "label": "蛋包饭",
+  "text": "「宿舍食堂的……蛋包饭……」「用勺子切开的时候……会，笑出来……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "rinze.chat.origami",
+  "actorId": "rinze",
+  "label": "折纸",
+  "text": "「折纸……从很小的时候，就喜欢了……」「折不好的时候，压平，再折一次……就好……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "rinze.chat.today",
+  "actorId": "rinze",
+  "label": "今天",
+  "text": "「今天……也是，平静的一天……」「能这样说话，凛世……很高兴……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "rinze.chat.unit",
+  "actorId": "rinze",
+  "label": "放クラ",
+  "text": "「放クラ的凛世是……」「ナンバーワンの……杜野凛世，所以……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "rinze.chat.waka",
+  "actorId": "rinze",
+  "label": "和歌",
+  "text": "「和歌……您想听吗……」「『夢と知りせば……覚めざらましを……』……请，不要笑……」",
   "cooldownMinutes": 1440,
   "effects": [
     {

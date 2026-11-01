@@ -2,7 +2,7 @@
   "id": "draft.rinze.chat.manga",
   "kind": "topic",
   "title": "聊天 · 少女漫画",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.rinze.chat.manga",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:34:00.000Z",
-  "updatedAt": "2026-11-02T06:34:00.000Z",
+  "updatedAt": "2026-11-01T02:54:46.714Z",
+  "reviewedAt": "2026-11-01T02:54:46.714Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:34:00.000Z",
       "note": "凛世日常话题（2012003010130 借书）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:46.714Z"
     }
   ]
 }

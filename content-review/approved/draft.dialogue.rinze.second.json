@@ -2,7 +2,7 @@
   "id": "draft.dialogue.rinze.second",
   "kind": "dialogue",
   "title": "课后的练习室",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.rinze.second",
   "payload": {
@@ -216,12 +216,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:55:00.000Z",
-  "updatedAt": "2026-11-02T06:55:00.000Z",
+  "updatedAt": "2026-11-01T02:54:38.414Z",
+  "reviewedAt": "2026-11-01T02:54:38.414Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:55:00.000Z",
       "note": "对照 101200102（三分支，保留三个选项）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:38.414Z"
     }
   ]
 }

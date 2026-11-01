@@ -2,7 +2,7 @@
   "id": "draft.evt.rinze.after_vocal",
   "kind": "event",
   "title": "唱完先行礼",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.rinze.after_vocal",
   "payload": {
@@ -74,12 +74,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:45:00.000Z",
-  "updatedAt": "2026-11-02T06:45:00.000Z",
+  "updatedAt": "2026-11-01T02:54:44.090Z",
+  "reviewedAt": "2026-11-01T02:54:44.090Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:45:00.000Z",
       "note": "凛世声乐课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T02:54:44.090Z"
     }
   ]
 }

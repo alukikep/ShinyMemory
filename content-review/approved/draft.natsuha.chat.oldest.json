@@ -2,7 +2,7 @@
   "id": "draft.natsuha.chat.oldest",
   "kind": "topic",
   "title": "聊天 · 最年长",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.natsuha.chat.oldest",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:16:00.000Z",
-  "updatedAt": "2026-11-02T08:16:00.000Z",
+  "updatedAt": "2026-11-01T03:03:56.247Z",
+  "reviewedAt": "2026-11-01T03:03:56.247Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:16:00.000Z",
       "note": "夏葉日常话题（组合最年长）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:56.247Z"
     }
   ]
 }

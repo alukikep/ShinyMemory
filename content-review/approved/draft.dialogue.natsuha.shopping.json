@@ -2,7 +2,7 @@
   "id": "draft.dialogue.natsuha.shopping",
   "kind": "dialogue",
   "title": "她突然说要去逛街",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.natsuha.shopping",
   "payload": {
@@ -258,12 +258,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:00:00.000Z",
-  "updatedAt": "2026-11-02T08:00:00.000Z",
+  "updatedAt": "2026-11-01T03:03:49.398Z",
+  "reviewedAt": "2026-11-01T03:03:49.398Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:00:00.000Z",
       "note": "对照 201300302（三分支，保留三个选项）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:49.398Z"
     }
   ]
 }

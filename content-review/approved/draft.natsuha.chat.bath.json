@@ -2,7 +2,7 @@
   "id": "draft.natsuha.chat.bath",
   "kind": "topic",
   "title": "聊天 · 泡澡",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.natsuha.chat.bath",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:13:00.000Z",
-  "updatedAt": "2026-11-02T08:13:00.000Z",
+  "updatedAt": "2026-11-01T03:03:57.681Z",
+  "reviewedAt": "2026-11-01T03:03:57.681Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:13:00.000Z",
       "note": "夏葉日常话题（入浴は健康の基本）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:57.681Z"
     }
   ]
 }

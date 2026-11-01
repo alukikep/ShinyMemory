@@ -633,6 +633,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.natsuha.run",
+  "name": "陪她跑步",
+  "description": "她按着秒表说\"跟上\"，然后真的按配速跑。第二圈开始你才发现她在放慢。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "natsuha"
+  ],
+  "locations": [
+    "park"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 900,
+      "toMinute": 1140
+    }
+  ],
+  "cost": {
+    "stamina": 8
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "dance",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -3
+    }
+  ],
+  "resultTexts": [
+    "跑完她递来水，说\"呼吸还没乱吧\"，眼睛都没红。",
+    "她按停秒表，看了一眼，说\"比上次快了\"。",
+    "回程她走得很慢，说这是\"缓和运动\"，不许你坐下。"
+  ]
+},
+{
   "id": "activity.office_filing",
   "name": "整理资料",
   "description": "把抽屉里那堆通告单和合同按日期重新排一遍。",
@@ -2805,6 +2850,212 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "她愣了一下：「因为我怕停下来啊。」"
+    }
+  ]
+},
+{
+  "id": "evt.natsuha.after_dance",
+  "title": "呼吸都没乱",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "natsuha"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她停下来，呼吸几乎没有乱，先看了一眼镜子里的队形。",
+  "choices": [
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「嗯。明天还有。」"
+    },
+    {
+      "label": "再来一遍。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好。你看着，别眨眼。」"
+    },
+    {
+      "label": "刚才那样已经很好。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……很好，是吗。那就再往上一档。」"
+    }
+  ]
+},
+{
+  "id": "evt.natsuha.after_expression",
+  "title": "收工后的加练",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "natsuha"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。她收拾完东西，又回到镜子前，一个人对口型。",
+  "choices": [
+    {
+      "label": "已经很好了。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……听你这么说，就再停一下吧。」"
+    },
+    {
+      "label": "再练一遍。",
+      "hint": "表现 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好。你陪着，我就再练一遍。」"
+    },
+    {
+      "label": "一起回去吧。",
+      "hint": "压力 -4",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -4
+        }
+      ],
+      "result": "「……也好。今天，就到这儿。」"
+    }
+  ]
+},
+{
+  "id": "evt.natsuha.after_vocal",
+  "title": "唱完先按秒表",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "natsuha"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她没问怎么样，先按了一下秒表。",
+  "choices": [
+    {
+      "label": "很好。",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "「……嗯。那，下次再快一点。」"
+    },
+    {
+      "label": "再稳一点。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「稳。是呢，稳。再来一次。」"
+    },
+    {
+      "label": "先喝水。",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「……谢谢。你总是先想到这些。」"
     }
   ]
 },
@@ -17570,6 +17821,1018 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.natsuha.bench",
+  "idolId": "natsuha",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "（今天的外勤到此为止。回事务所一趟吧。）",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "嗯……夏葉，今天也在训练？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "natsuha",
+      "text": "哎呀，制作人。呼……当然是这样。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "明明前阵子才刚拿下 W.I.N.G. 冠军，真的很佩服夏葉。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "natsuha",
+      "text": "就算夺冠，要做的事也不会变。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "哈哈，是啊。不愧是夏葉。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "natsuha",
+      "text": "其实我也不觉得自己在做什么特别的事……对了。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "natsuha",
+      "text": "制作人，能不能在那边的长凳上等我一下？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "可以是可以，怎么了？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "natsuha",
+      "text": "别问了，制作人就慢慢休息吧。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "啊，知道了。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "natsuha",
+      "text": "来，饮料。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "可以吗？谢谢你，夏葉。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "natsuha",
+      "text": "没关系。咖啡可以吗？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "嗯，完全没问题。不过说起来，一般该是我去拿吧。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "natsuha",
+      "text": "没事。这种时候就让我请一次吧。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "natsuha",
+      "text": "我可以坐你旁边吗？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "嗯，当然。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "natsuha",
+      "text": "那，失礼了。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "natsuha",
+      "text": "……谢谢你，制作人。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "嗯，我做了什么吗？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "natsuha",
+      "text": "真是的，你一直都在支持我不是吗。托你的福，我才能拿下 W.I.N.G. 冠军。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "natsuha",
+      "text": "真的，感谢你。说有今天的我，是因为你在，也不为过哦。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "哦、哦哦……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "natsuha",
+      "text": "……怎么了制作人，呆住了？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "不……抱歉，这样冷不防被郑重地道谢，有点受不了。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "natsuha",
+      "text": "真失礼。我道谢还是会道的哦。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "natsuha",
+      "text": "而且，只是想说说，今后也请多指教而已。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "嗯，当然。我这边才是，今后也请多指教。刚才也收到了道谢……",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "natsuha",
+      "text": "哎呀，那种不算道谢哦？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "诶，是吗？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "natsuha",
+      "text": "是啊……那下次，我招待你去能看见漂亮夜景的、我喜欢的法餐厅吧。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "natsuha",
+      "text": "到时候，好好谈一谈吧？……为了站上更完美、更大的舞台，的计划。"
+    }
+  }
+},
+{
+  "id": "dialogue.natsuha.cafe",
+  "idolId": "natsuha",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "（这样到下一个日程之前有一点时间了……喉咙也渴了……就去咖啡店吧。）",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（……诶，坐在那边的是……）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "natsuha",
+      "text": "…………",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "……夏葉？一手哑铃一手读书，惊到我了……",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "natsuha",
+      "text": "哎呀，制作人。这也不奇怪吧？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "natsuha",
+      "text": "光是学习的话，一只手就闲着了。而且我也想训练。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "原来如此，不愧是夏葉的热情啊。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "natsuha",
+      "text": "没那回事。因为，这种程度理所当然吧？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "natsuha",
+      "text": "为了成为顶点，必须比谁都要努力哦？一秒都不能浪费。顾不上什么体面。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "natsuha",
+      "text": "只是不想后悔，为自己做而已。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "natsuha",
+      "text": "我并没有什么才能，不如说还远远不够呢。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "……这样啊。我也得向夏葉学习。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "natsuha",
+      "text": "……嗯，这里这样……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "（……听不见吗？好厉害的集中力。）",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "natsuha",
+      "text": "……说起来最近，觉得现在这个哑铃的重量不够了。要不再增加点次数吧……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "natsuha",
+      "text": "……啊，真是的。干脆书和哑铃合成一个就好了。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "……呃，什么意思？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "natsuha",
+      "text": "哎呀，简单的事哦？现在这样，必须定期换手，那个时间就浪费了。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "natsuha",
+      "text": "但两个合成一个的话，不用换手也能同时学习和训练吧？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "natsuha",
+      "text": "一定会提高效率，训练量也能增加。对吧？不觉得是非常棒的事吗？",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "啊、嗯……是吗？确实道理上没错。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "natsuha",
+      "text": "对吧！绝对是这样！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "natsuha",
+      "text": "……突然安静下来，怎么了？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "不、不是……有点被夏葉的想象力震住了。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "natsuha",
+      "text": "我的想象力……？哎呀，是吗……比起那个，这之后有采访吧？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "natsuha",
+      "text": "差不多该走了，不然要赶不上了哦！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "啊，是啊。夏葉……好快……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "（夏葉对偶像那么直接、那么拼命地向前走。）"
+    }
+  }
+},
+{
+  "id": "dialogue.natsuha.first",
+  "idolId": "natsuha",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "natsuha",
+      "text": "一、二、三、四！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（……好热烈的气氛。打扰也不好，就在这儿等着吧。）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "natsuha",
+      "text": "你就是我的制作人吧？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "啊，你是——",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "natsuha",
+      "text": "听好？目标是顶点，只有顶点哦！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "……诶、那、那个？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "natsuha",
+      "text": "哎呀，发什么呆呢？理所当然的吧！",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "natsuha",
+      "text": "偶像也好什么也好，目标不可能是世界第一以外的！",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "natsuha",
+      "text": "你既然是我的制作人，就给我这么打算着！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "……明白了。那为了这个，我们一起来想该做什么吧。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "natsuha",
+      "text": "不，那没必要。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "什么意思？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "natsuha",
+      "text": "偶像的制作，也许你经验更多一点。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "natsuha",
+      "text": "但说到有栖川夏葉的制作，只是我经验更长而已。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "natsuha",
+      "text": "所以你什么都不用想，全部交给我。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "唔……总不能真的那样，不过你的意见我会尽量采纳。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "还有，你要以『放課後クライマックスガールズ』这个五人组合活动。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "natsuha",
+      "text": "也没什么不好哦。单人也好组合也好，我要冲向顶点这一点不会变。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "这样啊。那今后就拜托了。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "natsuha",
+      "text": "嗯，好好跟着我来吧，制作人。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "（……本来想着是位清纯的大小姐，原来是个相当有主见的女孩子啊。）"
+    }
+  }
+},
+{
+  "id": "dialogue.natsuha.second",
+  "idolId": "natsuha",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "好，差不多该出发了。准备好了吗？",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "natsuha",
+      "text": "嗯，当然。为了下一个工作，状态已经调整到万全。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "不好意思，能在这儿稍微等一下吗？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "natsuha",
+      "text": "可以。不用在意。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "谢谢。（……喂，我是283制作……）夏葉采访的事……嗯？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "natsuha",
+      "text": "…………",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "natsuha",
+      "text": "怎么了？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "不，刚才那个……你在做什么？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "natsuha",
+      "text": "单脚站立。随时随地都能做，很好的训练法。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "……你总是这样，连一点空档都在训练吗？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "natsuha",
+      "text": "当然。一开始就说过了吧，我目标是顶级偶像。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "natsuha",
+      "text": "为了那个，必须一直贪心地锻炼自己。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "natsuha",
+      "text": "哪怕再短，空出来的时间也不能浪费！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "这样啊……",
+      "choices": [
+        {
+          "label": "夏葉对顶点的想法真厉害",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "努力归努力，别太勉强",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "还有别的什么训练吗？",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "natsuha",
+      "text": "当然。听好？顶点这东西，真的非常厉害哦？",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "natsuha",
+      "text": "在很多人里的第一个……只有一个人才能拿到的顶点……",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "natsuha",
+      "text": "那是比谁都要努力的证据。半吊子的心情，绝对到不了。",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "natsuha",
+      "text": "所以这种程度是理所当然的。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "producer",
+      "text": "就算这样，厉害就是厉害啊。为什么能对自己这么狠？",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "natsuha",
+      "text": "……我想成为能成就大事的人。",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "natsuha",
+      "text": "通过比谁都努力成为偶像的顶点，我觉得能靠近那样的未来。"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "producer",
+      "text": "重要的事，不只有训练吧？",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "natsuha",
+      "text": "哎呀，没事的。所有方面我都在努力。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "producer",
+      "text": "那也让人担心……",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "natsuha",
+      "text": "听好？我瞄准的不是普通偶像，是顶级偶像哦？",
+      "nextNodeId": "114"
+    },
+    "114": {
+      "id": "114",
+      "speakerId": "natsuha",
+      "text": "既然瞄准那里，光是普通的努力是不够的。",
+      "nextNodeId": "115"
+    },
+    "115": {
+      "id": "115",
+      "speakerId": "producer",
+      "text": "这我明白，但太投入也不好。",
+      "nextNodeId": "116"
+    },
+    "116": {
+      "id": "116",
+      "speakerId": "natsuha",
+      "text": "真是爱操心。这种程度真的不算什么。老实说，要达到顶点的目标，还远远不够。",
+      "nextNodeId": "117"
+    },
+    "117": {
+      "id": "117",
+      "speakerId": "natsuha",
+      "text": "所以我要更加、更加努力。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "natsuha",
+      "text": "用零碎时间，比如坐电车移动时踮脚，或者站着的时候踮脚跟……",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "natsuha",
+      "text": "还有，只要用心把平时的姿势保持得笔挺漂亮，肌肉的附着方式也会不一样。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "natsuha",
+      "text": "……总之先说到这儿，这样你明白了吗？",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "producer",
+      "text": "原来如此。考虑得很周到啊。",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "natsuha",
+      "text": "就算是零碎时间，训练的可能性也是无限的！",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "producer",
+      "text": "厉害啊，简直是训练博士。",
+      "nextNodeId": "126"
+    },
+    "126": {
+      "id": "126",
+      "speakerId": "natsuha",
+      "text": "呵呵，制作人也试试看吧。就算不是偶像，有肌肉也没坏处。",
+      "nextNodeId": "127"
+    },
+    "127": {
+      "id": "127",
+      "speakerId": "producer",
+      "text": "那我也来试试刚才的单脚站立——……哦、哦、哇？",
+      "nextNodeId": "128"
+    },
+    "128": {
+      "id": "128",
+      "speakerId": "natsuha",
+      "text": "呵呵呵，完全不行呢。",
+      "nextNodeId": "129"
+    },
+    "129": {
+      "id": "129",
+      "speakerId": "producer",
+      "text": "（……刚才的夏葉，做得那么轻松啊。这就是她一直在努力的意思啊。）"
+    }
+  }
+},
+{
+  "id": "dialogue.natsuha.shopping",
+  "idolId": "natsuha",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "嗯……对方的情况没办法，不过突然空出时间了……那么，怎么办……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "natsuha",
+      "text": "……对了，这附近有那个呢。走吧，制作人。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "那个，是附近有健身房吗？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "natsuha",
+      "text": "不，不是。是去购物哦！",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "natsuha",
+      "text": "最近净是工作地和健身房来回，忙得不行，好久没来购物了。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "（嗯？刚才很自然地说过去了，一般人不是工作地和家来回吗……）",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "natsuha",
+      "text": "平时来不了，今天要尽情买衣服！",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "natsuha",
+      "text": "哎呀，发什么呆呢？累了的话先回去也行哦？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "不，难得的机会，我也跟着吧。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "natsuha",
+      "text": "哎呀，是吗？那先去那家店吧。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "natsuha",
+      "text": "这件连衣裙设计不错，买了。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "嗯，颜色也好。很适合你。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "喂，夏葉，这种怎么样？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "natsuha",
+      "text": "那个就算了。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "夏葉挑东西的时候，完全不犹豫啊……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "natsuha",
+      "text": "当然。自己适合什么，看一眼就知道了。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "natsuha",
+      "text": "而且时间是有限的，快点去下一家吧。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "还以为会被派去拎包，重的话我来拿吧？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "natsuha",
+      "text": "没事的，制作人。这个重量刚刚好。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "natsuha",
+      "text": "因为能感觉到，那件漂亮的衣服现在在我手里——",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "（也会说些女孩子气的话啊……）",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "natsuha",
+      "text": "而且拎包也是训练吧？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "嘛、算是吧……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "natsuha",
+      "text": "不过，如果我拿不动了，也让你拿一下好了。那样能买更多衣服呢？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "……啊、嗯！夏葉就尽情地买吧。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "natsuha",
+      "text": "今天很开心。谢谢你陪我，制作人。",
+      "choices": [
+        {
+          "label": "我什么都没做啊",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "夏葉看起来很开心，太好了",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "算是解闷了吗？",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "natsuha",
+      "text": "可是，你本来可以回去的，却陪我了不是吗。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "natsuha",
+      "text": "因为有制作人在，所以不只靠自己的判断，也能听到客观的意见。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "natsuha",
+      "text": "偶尔和别人一起享受购物也不错。下次要不要叫果穂她们？",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "嗯，不错啊。"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "natsuha",
+      "text": "多亏了制作人。本来可以回去的，却陪我买东西了不是吗？",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "natsuha",
+      "text": "托你的福，今天非常开心。和别人一起购物，也不错呢。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "natsuha",
+      "text": "下次有时间……还能像今天这样陪我吗？",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "producer",
+      "text": "嗯，当然没问题。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "natsuha",
+      "text": "嗯，非常。一个人购物也好，但和别人一起，很新鲜也很开心。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "能帮上忙就好。今天买的东西，很适合夏葉哦。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "natsuha",
+      "text": "那当然。自己适合什么，早就知道了。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "natsuha",
+      "text": "……不过，谢谢你，我很高兴。",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "natsuha",
+      "text": "突然空下来的时候还在想怎么办，多亏了制作人，我焕然一新了。"
+    }
+  }
+},
+{
   "id": "dialogue.rinze.first",
   "idolId": "rinze",
   "startNodeId": "01",
@@ -22278,6 +23541,104 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "meguru",
   "label": "被担心的时候",
   "text": "「诶？我没事哦！真的！……制作人，你刚才是不是在担心我？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "natsuha.chat.bath",
+  "actorId": "natsuha",
+  "label": "泡澡",
+  "text": "「泡澡是健康的基本。」「你也别只冲一下就出来。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "natsuha.chat.catorea",
+  "actorId": "natsuha",
+  "label": "カトレア",
+  "text": "「カトレア？是我家的狗。」「……很可爱哦，比听起来更可爱。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "natsuha.chat.coffee",
+  "actorId": "natsuha",
+  "label": "咖啡",
+  "text": "「咖啡？我记住了你常喝的那种。」「……别问为什么。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "natsuha.chat.coord",
+  "actorId": "natsuha",
+  "label": "搭配",
+  "text": "「搭配？看你一眼就知道该穿什么。」「……要帮你看看吗？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "natsuha.chat.oldest",
+  "actorId": "natsuha",
+  "label": "最年长",
+  "text": "「最年长？那不代表更优秀。」「只是，该我扛的，我会扛。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "natsuha.chat.stretch",
+  "actorId": "natsuha",
+  "label": "拉伸",
+  "text": "「洗完澡一定要拉伸。」「不然，第二天会后悔的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "natsuha.chat.train",
+  "actorId": "natsuha",
+  "label": "训练",
+  "text": "「训练？那是每天的，不是特别的事。」「一秒也，不想浪费。」",
   "cooldownMinutes": 1440,
   "effects": [
     {

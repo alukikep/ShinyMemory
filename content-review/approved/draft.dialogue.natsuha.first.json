@@ -2,7 +2,7 @@
   "id": "draft.dialogue.natsuha.first",
   "kind": "dialogue",
   "title": "练习室里有人在喊拍子",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.natsuha.first",
   "payload": {
@@ -139,12 +139,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:00:00.000Z",
-  "updatedAt": "2026-11-02T08:00:00.000Z",
+  "updatedAt": "2026-11-01T03:03:50.269Z",
+  "reviewedAt": "2026-11-01T03:03:50.269Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:00:00.000Z",
       "note": "对照 101300101（练习室、认人、只有顶点）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:50.269Z"
     }
   ]
 }

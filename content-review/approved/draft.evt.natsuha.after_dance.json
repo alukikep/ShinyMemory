@@ -2,7 +2,7 @@
   "id": "draft.evt.natsuha.after_dance",
   "kind": "event",
   "title": "呼吸都没乱",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.natsuha.after_dance",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:20:00.000Z",
-  "updatedAt": "2026-11-02T08:20:00.000Z",
+  "updatedAt": "2026-11-01T03:03:53.798Z",
+  "reviewedAt": "2026-11-01T03:03:53.798Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:20:00.000Z",
       "note": "夏葉舞蹈课后事件（她永远再加一档）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:53.798Z"
     }
   ]
 }

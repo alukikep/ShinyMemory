@@ -2,7 +2,7 @@
   "id": "draft.dialogue.natsuha.bench",
   "kind": "dialogue",
   "title": "她递来一罐咖啡",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.natsuha.bench",
   "payload": {
@@ -211,12 +211,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:00:00.000Z",
-  "updatedAt": "2026-11-02T08:00:00.000Z",
+  "updatedAt": "2026-11-01T03:03:49.456Z",
+  "reviewedAt": "2026-11-01T03:03:49.456Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:00:00.000Z",
       "note": "对照 201300311（长凳、咖啡、道谢、夜景法餐）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:49.456Z"
     }
   ]
 }

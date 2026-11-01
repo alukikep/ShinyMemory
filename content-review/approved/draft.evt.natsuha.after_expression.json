@@ -2,7 +2,7 @@
   "id": "draft.evt.natsuha.after_expression",
   "kind": "event",
   "title": "收工后的加练",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.natsuha.after_expression",
   "payload": {
@@ -74,12 +74,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:20:00.000Z",
-  "updatedAt": "2026-11-02T08:20:00.000Z",
+  "updatedAt": "2026-11-01T03:03:55.132Z",
+  "reviewedAt": "2026-11-01T03:03:55.132Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:20:00.000Z",
       "note": "夏葉表演课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:55.132Z"
     }
   ]
 }

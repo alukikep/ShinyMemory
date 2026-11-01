@@ -2,7 +2,7 @@
   "id": "draft.dialogue.natsuha.cafe",
   "kind": "dialogue",
   "title": "喫茶店里一手哑铃一手书",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.natsuha.cafe",
   "payload": {
@@ -181,12 +181,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:00:00.000Z",
-  "updatedAt": "2026-11-02T08:00:00.000Z",
+  "updatedAt": "2026-11-01T03:03:49.331Z",
+  "reviewedAt": "2026-11-01T03:03:49.331Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:00:00.000Z",
       "note": "对照 201300301（铁アレイ与课本、书和哑铃合一）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:49.331Z"
     }
   ]
 }

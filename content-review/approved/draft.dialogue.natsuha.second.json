@@ -2,7 +2,7 @@
   "id": "draft.dialogue.natsuha.second",
   "kind": "dialogue",
   "title": "等工作的空档她在练平衡",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.natsuha.second",
   "payload": {
@@ -258,12 +258,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:00:00.000Z",
-  "updatedAt": "2026-11-02T08:00:00.000Z",
+  "updatedAt": "2026-11-01T03:03:50.331Z",
+  "reviewedAt": "2026-11-01T03:03:50.331Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:00:00.000Z",
       "note": "对照 101300102（三分支，保留三个选项）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:50.331Z"
     }
   ]
 }

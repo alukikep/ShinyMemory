@@ -2,7 +2,7 @@
   "id": "draft.natsuha.chat.coffee",
   "kind": "topic",
   "title": "聊天 · 咖啡",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.natsuha.chat.coffee",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:14:00.000Z",
-  "updatedAt": "2026-11-02T08:14:00.000Z",
+  "updatedAt": "2026-11-01T03:03:57.165Z",
+  "reviewedAt": "2026-11-01T03:03:57.165Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:14:00.000Z",
       "note": "夏葉日常话题（给他买罐装咖啡）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:57.165Z"
     }
   ]
 }

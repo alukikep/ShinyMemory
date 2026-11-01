@@ -2,7 +2,7 @@
   "id": "draft.natsuha.chat.coord",
   "kind": "topic",
   "title": "聊天 · 搭配",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.natsuha.chat.coord",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T08:12:00.000Z",
-  "updatedAt": "2026-11-02T08:12:00.000Z",
+  "updatedAt": "2026-11-01T03:03:58.138Z",
+  "reviewedAt": "2026-11-01T03:03:58.138Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T08:12:00.000Z",
       "note": "夏葉日常话题（API 特技：トータルコーディネート）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:03:58.138Z"
     }
   ]
 }

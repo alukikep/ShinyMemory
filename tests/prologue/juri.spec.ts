@@ -39,7 +39,15 @@ test('Juri: recruit, card, basketball, topic and a post-lesson event', async ({
 
   // ---- 招募：街上有个金发的女孩子 ----
   await jumpTo(page, 1, 14 * 60, 'shopping_street');
-  await pick(page, '街上有个金发的女孩子');
+  await page.getByRole('button', { name: '街上有个金发的女孩子' }).first().click();
+  // 对话顶栏要说清"现在在哪、演到哪一段"。
+  await expect(page.locator('.dialogue-scene-chapter')).toHaveText(
+    '街上的金发',
+  );
+  await expect(page.locator('.dialogue-scene-location')).toContainText(
+    '朝雾站前 · 商业街',
+  );
+  await finishDialogue(page);
   expect((await getState(page)).idols[JURI]?.status).toBe('known');
 
   // ---- 招募：等她拍宣材写真（原三分支，选第一个） ----

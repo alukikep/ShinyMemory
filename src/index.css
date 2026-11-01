@@ -3180,12 +3180,35 @@ button:focus-visible,
   border-bottom: 1px solid var(--line);
   padding-bottom: 9px;
   color: var(--faint);
-  font-size: 9px;
-  letter-spacing: 0.12em;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.dialogue-scene-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
 }
 
 .dialogue-scene-label {
   color: var(--accent-strong);
+  letter-spacing: 0.12em;
+}
+
+.dialogue-scene-chapter {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dialogue-scene-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  color: var(--text);
+  letter-spacing: 0.04em;
 }
 
 .dialogue-speaker {

@@ -236,6 +236,21 @@ for (const chapter of CHAPTER_SOURCES) {
       message: `地点不存在：${step.locationId}`,
     });
   }
+  // 收尾搬家：只能搬到真实存在的地点，而且不写入口（area）——内容一律认成员地点。
+  if (step?.endLocationId) {
+    const target = index.locations.get(step.endLocationId);
+    if (!target) {
+      problems.push({
+        chapterId: chapter.chapterId,
+        message: `endLocationId 指向不存在的地点：${step.endLocationId}`,
+      });
+    } else if (target.members?.length) {
+      problems.push({
+        chapterId: chapter.chapterId,
+        message: `endLocationId 不能是一带（area）：${step.endLocationId}`,
+      });
+    }
+  }
 }
 
 for (const chapter of pendingChapters) {

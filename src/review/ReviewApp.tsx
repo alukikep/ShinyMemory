@@ -501,6 +501,9 @@ function StoryPreview({ payload }: { payload: Record<string, unknown> }) {
                 {String(record.locationId ?? '—')} ·{' '}
                 {String(record.dialogueId ?? '—')}
               </p>
+              {record.endLocationId ? (
+                <p>结束时前往：{String(record.endLocationId)}</p>
+              ) : null}
             </article>
           );
         })

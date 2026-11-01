@@ -260,6 +260,15 @@ function validateStory(payload: Record<string, unknown>, errors: string[]): void
     requireString(rawStep.locationId, `steps[${index}].locationId`, errors);
     requireString(rawStep.dialogueId, `steps[${index}].dialogueId`, errors);
     requireString(rawStep.actionLabel, `steps[${index}].actionLabel`, errors);
+    // 收尾搬家（可选）：这一章演完把玩家放到另一处。
+    // 只校验形状；目标地点是否存在由 content:anchors 查。
+    if (rawStep.endLocationId !== undefined) {
+      requireString(
+        rawStep.endLocationId,
+        `steps[${index}].endLocationId`,
+        errors,
+      );
+    }
     if (rawStep.timeWindow !== undefined) {
       if (!isRecord(rawStep.timeWindow)) {
         errors.push(`steps[${index}].timeWindow 必须是对象`);

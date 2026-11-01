@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { parentArea } from '../../core/areas';
 import { CONTENT_INDEX } from '../../core/contentIndex';
 import { SPEAKER_NAMES } from '../../core/labels';
 import { getDialogueNode, getDialogueText } from '../../core/sim';
@@ -11,6 +12,14 @@ type DialogueOverlayProps = {
   onAdvance: () => void;
   onChoice: (index: number) => void;
 };
+
+/** 「一带 · 地点」；独立地点只显示自己。 */
+function sceneLocationLabel(locationId: string): string {
+  const location = CONTENT_INDEX.locations.get(locationId);
+  if (!location) return '';
+  const area = parentArea(locationId);
+  return area ? `${area.name} · ${location.name}` : location.name;
+}
 
 export function DialogueOverlay({
   state,
@@ -29,6 +38,9 @@ export function DialogueOverlay({
   const speakerAvatar = idol?.avatar;
   const choices = node?.choices ?? [];
   const text = node ? getDialogueText(state, node) : '';
+  const chapterTitle = state.dialogueChainId
+    ? CONTENT_INDEX.storyChains.get(state.dialogueChainId)?.title
+    : undefined;
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -58,9 +70,15 @@ export function DialogueOverlay({
         tabIndex={-1}
       >
         <div className="dialogue-scene-head">
-          <span className="dialogue-scene-label">STORY</span>
+          <span className="dialogue-scene-title">
+            <span className="dialogue-scene-label">STORY</span>
+            {chapterTitle ? (
+              <span className="dialogue-scene-chapter">{chapterTitle}</span>
+            ) : null}
+          </span>
           <span className="dialogue-scene-location">
-            {CONTENT_INDEX.locations.get(state.locationId)?.name ?? ''}
+            <GameIcon name="map" size={11} />
+            {sceneLocationLabel(state.locationId)}
           </span>
         </div>
 

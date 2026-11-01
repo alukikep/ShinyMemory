@@ -227,4 +227,41 @@ describe('story chain step gates and rewards', () => {
       expect(after.money).toBe(before + 1000);
     });
   });
+
+  it('moves the player to endLocationId when the chapter ends', () => {
+    const walkingHome: StoryChainDef = {
+      id: 'fixture-end-location',
+      idolId: 'fixture-idol',
+      priority: 20,
+      steps: [
+        {
+          id: 'fixture-end-1',
+          locationId: 'park',
+          timeWindow: { fromMinute: 600, toMinute: 1080 },
+          dialogueId: FIXTURE_DIALOGUE.id,
+          actionLabel: 'fixture walks back',
+          // 章节在公园演完，收尾旁白说"我们回到了事务所"。
+          endLocationId: 'office',
+          complete: { status: 'known' },
+        },
+      ],
+    };
+
+    withChain(walkingHome, () => {
+      const before = atPark();
+      expect(before.locationId).toBe('park');
+
+      const after = play(startStory(before, walkingHome.id));
+
+      expect(after.storyChains[walkingHome.id]?.completed).toBe(true);
+      expect(after.locationId).toBe('office');
+    });
+  });
+
+  it('stays put when endLocationId is omitted', () => {
+    withChain(rewarded, () => {
+      const after = play(startStory(atPark(), rewarded.id));
+      expect(after.locationId).toBe('park');
+    });
+  });
 });

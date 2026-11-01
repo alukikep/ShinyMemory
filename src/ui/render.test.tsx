@@ -115,6 +115,7 @@ describe('app shell', () => {
 
   it('renders dialogue text and choices', () => {
     const state = newGame(1);
+    state.locationId = 'park';
     state.pendingDialogueId = 'dialogue.hiori.first';
     state.dialogueChainId = 'hiori-encounter';
     state.dialogueNodeId = 'n03';
@@ -128,6 +129,10 @@ describe('app shell', () => {
     );
     expect(html).toContain('风野灯织');
     expect(html).toContain('帮她捡起被风吹散的纸');
+    // 对话栏要显示"现在在哪"：STORY + 地点名。
+    expect(html).toContain('STORY');
+    expect(html).toContain('公园');
+    expect(html).toContain('dialogue-scene-location');
   });
 
   it('renders the Hiori encounter action at the park', () => {

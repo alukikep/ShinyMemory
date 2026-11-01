@@ -1,0 +1,70 @@
+{
+  "id": "draft.activity.haruki.sketch",
+  "kind": "activity",
+  "title": "陪她在公园写生",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.activity.haruki.sketch",
+  "payload": {
+    "id": "activity.haruki.sketch",
+    "name": "陪她在公园写生",
+    "description": "她把速写本摊在膝盖上，画两笔就抬头看你一眼。你说别画我，她说「那你要坐着别动哦」。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "haruki"
+    ],
+    "locations": [
+      "park",
+      "seaside"
+    ],
+    "durationMinutes": 45,
+    "timeWindows": [
+      {
+        "fromMinute": 600,
+        "toMinute": 1080
+      }
+    ],
+    "cost": {
+      "stamina": 5
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "expression",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
+    ],
+    "resultTexts": [
+      "收笔的时候她把本子合上，说「这个不给你看」。",
+      "「画得不好也没关系吧──反正只有我看」。",
+      "回去的路上她一直在看那张画，走了两步又停下来补了一笔。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:10:00.000Z",
+  "updatedAt": "2026-11-01T12:14:04.999Z",
+  "reviewedAt": "2026-11-01T12:14:04.999Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:10:00.000Z",
+      "note": "はるき 专属行动（公园写生 [102800501 映像部/美术]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T12:14:04.999Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

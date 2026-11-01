@@ -1,0 +1,38 @@
+{
+  "id": "draft.haruki.chat.nagano",
+  "kind": "topic",
+  "title": "聊天 · 长野",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.haruki.chat.nagano",
+  "payload": {
+    "id": "haruki.chat.nagano",
+    "actorId": "haruki",
+    "label": "长野",
+    "text": "「长野啊──。」「苹果，家里经常收到。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:10:00.000Z",
+  "updatedAt": "2026-11-01T12:14:05.023Z",
+  "reviewedAt": "2026-11-01T12:14:05.023Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:10:00.000Z",
+      "note": "はるき日常话题（长野：尾音拖长、先收半步）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T12:14:05.023Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

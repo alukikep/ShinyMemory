@@ -1,0 +1,38 @@
+{
+  "id": "draft.haruki.chat.stage",
+  "kind": "topic",
+  "title": "聊天 · 舞台",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.haruki.chat.stage",
+  "payload": {
+    "id": "haruki.chat.stage",
+    "actorId": "haruki",
+    "label": "舞台",
+    "text": "「站在上面的时候，世界会有颜色。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:10:00.000Z",
+  "updatedAt": "2026-11-01T12:14:05.074Z",
+  "reviewedAt": "2026-11-01T12:14:05.074Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:10:00.000Z",
+      "note": "はるき日常话题（舞台：尾音拖长、先收半步）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T12:14:05.074Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

@@ -366,6 +366,52 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.haruki.sketch",
+  "name": "陪她在公园写生",
+  "description": "她把速写本摊在膝盖上，画两笔就抬头看你一眼。你说别画我，她说「那你要坐着别动哦」。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "haruki"
+  ],
+  "locations": [
+    "park",
+    "seaside"
+  ],
+  "durationMinutes": 45,
+  "timeWindows": [
+    {
+      "fromMinute": 600,
+      "toMinute": 1080
+    }
+  ],
+  "cost": {
+    "stamina": 5
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -5
+    }
+  ],
+  "resultTexts": [
+    "收笔的时候她把本子合上，说「这个不给你看」。",
+    "「画得不好也没关系吧──反正只有我看」。",
+    "回去的路上她一直在看那张画，走了两步又停下来补了一笔。"
+  ]
+},
+{
   "id": "activity.hinana.sweets",
   "name": "陪她吃甜的",
   "description": "她在菜单上画来画去，最后点了三种。端上来先拍照，再把叉子递给你：\"第一口给你～\"。",
@@ -3151,6 +3197,217 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「好──！」她深吸一口气，从头唱起。"
+    }
+  ]
+},
+{
+  "id": "evt.haruki.after_dance",
+  "title": "她记动作靠画",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "haruki"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束。她蹲在地上，速写本上画着一串小人，每个旁边都写了箭头。",
+  "choices": [
+    {
+      "label": "画得真清楚。",
+      "hint": "舞蹈 +1、信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「对吧！我照着这个练就不会忘──！」"
+    },
+    {
+      "label": "用身体记更好。",
+      "hint": "舞蹈 +3、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「……嗯，我知道。可是画下来我会安心一点。」"
+    },
+    {
+      "label": "借我看看。",
+      "hint": "信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「啊、等一下，那页画得有点丑──！」"
+    }
+  ]
+},
+{
+  "id": "evt.haruki.after_expression",
+  "title": "她问被拍下来的自己好不好看",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "haruki"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表现课结束。她看着自己的回放，问「这个人，看起来像在享受吗？」",
+  "choices": [
+    {
+      "label": "看起来很开心。",
+      "hint": "信任 +3、压力 -2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -2
+        }
+      ],
+      "result": "「太好了……我怕只有自己觉得开心。」"
+    },
+    {
+      "label": "还可以再放开一点。",
+      "hint": "表现 +3、压力 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 1
+        }
+      ],
+      "result": "「放开一点……好，我试试看。」"
+    },
+    {
+      "label": "你自己觉得呢？",
+      "hint": "表现 +1、信任 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……我觉得，还想再跳一次。」"
+    }
+  ]
+},
+{
+  "id": "evt.haruki.after_vocal",
+  "title": "她唱完先道歉",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "haruki"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "歌唱课结束。她摘下耳机，第一句话是「对不起，我声音有点抖」。",
+  "choices": [
+    {
+      "label": "抖的地方很好听。",
+      "hint": "歌唱 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……那个，也算好听吗？」她小声问。"
+    },
+    {
+      "label": "再唱一遍。",
+      "hint": "歌唱 +3、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好……这次我会稳住。」"
+    },
+    {
+      "label": "先别道歉。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……啊。」她愣了一下，然后笑了。"
     }
   ]
 },
@@ -17816,6 +18073,244 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.haruki.books",
+  "idolId": "haruki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "商业街的大书店。她在杂志区站了很久，三本抱在手里换来换去。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "haruki",
+      "text": "嗯──……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "haruki",
+      "text": "对、对不起，制作人先生，我挑太久了……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "不会，慢慢挑。──买哪本都行吧？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "haruki",
+      "text": "要说能看到现在整个音乐圈的话，应该是这本……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "haruki",
+      "text": "这本给偶像留的版面好像很多……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "haruki",
+      "text": "这本有个我特别在意的特集，可是只为这个买又有点……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "haruki",
+      "text": "全买的话会破产呢…………",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "…………那，我买这本吧。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "haruki",
+      "text": "诶？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "我看完可以借给你。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "haruki",
+      "text": "那怎么好意思……可是……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "没关系，我自己也想读了。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "我买两本，はるき买这边一本，怎么样？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "haruki",
+      "text": "可、可以吗……？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "嗯。你那本好看的话，也讲给我听。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "haruki",
+      "text": "好，一定……！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "text": "结账的队伍很长。出了店门，她说要带路去一家有推荐的奶茶店。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "haruki",
+      "text": "这、这边！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "haruki",
+      "text": "制作人先生，我找到座位了！",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "哦，谢谢。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "haruki",
+      "text": "不会，书还是您帮我拿的……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "哈哈，没什么。那，喝はるき推荐的奶茶吧。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "haruki",
+      "text": "嘿嘿……希望合您口味──",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "haruki",
+      "text": "不，一定会合的！来，请请请～",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "我开动了……！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "嗯，好喝……！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "haruki",
+      "text": "对吧……！明明是甜的，却滑溜溜地就进去了……！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "haruki",
+      "text": "……呼，走累的身体太舒服了～",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "──真悠闲啊。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "haruki",
+      "text": "──咖啡馆是好，可是人一多，就听不见制作人先生的声音了……",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "haruki",
+      "text": "外面宽敞一点、能好好说话的环境，是不是更好……",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "haruki",
+      "text": "您教了我那么多书和杂志，虽然算不上回礼──",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "haruki",
+      "text": "我也想和您分享这杯好喝的奶茶",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "嗯，谢谢。是个好主意。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "────买来的那些，你其实很想读吧？摊开看看？",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "haruki",
+      "text": "啊，不过……再等一下可以吗？",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "haruki",
+      "text": "我想就这样，先聊一会儿。难得制作人先生也在。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "这样啊──那就这样吧。天气也不错。"
+    }
+  }
+},
+{
   "id": "dialogue.haruki.first",
   "idolId": "haruki",
   "startNodeId": "1",
@@ -18167,6 +18662,679 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "23",
       "speakerId": "haruki",
       "text": "…………是。"
+    }
+  }
+},
+{
+  "id": "dialogue.haruki.letters",
+  "idolId": "haruki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "はるき，签名会的名额全满了，改成抽选了。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "haruki",
+      "text": "诶……已经满了吗……？好厉害啊……！",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "嗯。越来越有干劲了吧。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "haruki",
+      "text": "…………那个，先打招呼，一边聊一边签名……然后递过去……",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "haruki",
+      "text": "──咦？每个人大概有多少时间呢？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "这次只签名，大概一分到一分半吧。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "haruki",
+      "text": "好、好短……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "要让更多人参加的话，只能这样了……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "haruki",
+      "text": "一分钟……那得说快一点才行了────",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "haruki",
+      "text": "────啊。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "嗯？怎么了？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "haruki",
+      "text": "没什么……！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "haruki",
+      "text": "签名会，我会加油的……！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "text": "第二天早上。她在事务所门口等着，怀里抱着一叠纸。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "haruki",
+      "text": "制作人先生，早上好……！",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "haruki",
+      "text": "突然不好意思……！请看看这个……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "──────……这是……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "haruki",
+      "text": "是写给粉丝的信……！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "haruki",
+      "text": "不是写给特定某个人的……因为今天肯定没法跟每个人都说上话",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "haruki",
+      "text": "不好意思，今天这个，可以发给来的人吗？",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "内容没问题。发给大家，我觉得也可以。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "haruki",
+      "text": "谢谢您……！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "haruki",
+      "text": "所以，我想赶紧把这个数据按人数复印出来……在家里没法印",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "原来如此……！还有时间，我们去印吧。"
+    }
+  }
+},
+{
+  "id": "dialogue.haruki.name",
+  "idolId": "haruki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "共演的休息室。她刚跟歌手打完招呼。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "haruki",
+      "text": "今天请多关照，我是 283 的郁田はるき",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "haruki",
+      "text": "请多指教……！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "text": "对方愣了一下，说\"你就是？\"──像是想象中的人不太一样。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "haruki",
+      "text": "…………呵呵，经常被弄错呢。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "haruki",
+      "text": "托这个福，好像很容易被记住……！",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "はるき，有人给了点心，你吃吗？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "haruki",
+      "text": "啊，谢谢您……！",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "haruki",
+      "text": "不过还是忍一下吧。制作人先生，请……！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "这、这样啊……我现在也先算了──",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "……那个。刚才，对方吓了一大跳吧。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "haruki",
+      "text": "啊……常有的事。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "haruki",
+      "text": "从小就这样──经常被笑，也经常被拿来开玩笑",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "haruki",
+      "text": "所以，其实我不太喜欢自己的名字──",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "haruki",
+      "text": "不过，已经习惯了。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "其实，并没有习惯吧？从小就这样的话，更是──",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "……觉得讨厌也可以。说出来也可以。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "…………抱歉。如果你真的不在意，就是多管闲事了────",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "haruki",
+      "text": "…………",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "haruki",
+      "text": "不是的。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "haruki",
+      "text": "……谢谢您。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "haruki",
+      "text": "第一次，有人这么说。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "haruki",
+      "text": "那个，我可以……再慢慢说一点吗？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "嗯。什么时候都可以。"
+    }
+  }
+},
+{
+  "id": "dialogue.haruki.nap",
+  "idolId": "haruki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "录音棚。棚里灯还亮着，人却不在座位上。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（还在录吗，はるき）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "（不在啊────）",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "……哇！！",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "haruki",
+      "text": "嗯嗯……？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "haruki",
+      "text": "咦……？制作人先生…………",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "怎么了？身体……",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "haruki",
+      "text": "啊……我、我睡着了……！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "haruki",
+      "text": "对不起，什么事都没有！只是有点犯困……！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "真的吗……？看你倒在地上，吓了我一跳。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "haruki",
+      "text": "那个，我在看笔记，看着看着头就发晕，回过神就已经被地板吸引过去了……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "haruki",
+      "text": "难得借到房间，却这样，对不起……",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "不用道歉。勉强也不好啊。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "我带了喝的来。要不要休息一下？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "haruki",
+      "text": "哇……！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "这个有点甜……先喝口水吧？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "haruki",
+      "text": "好……！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "haruki",
+      "text": "…………",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "还要继续吗？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "haruki",
+      "text": "──是啊，还有时间……我想让它连得更顺一点……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "haruki",
+      "text": "睡了一会儿也休息到了，只要时间允许──",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "嗯……这样啊……那就再多休息一会儿吧。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "总之先喝这个。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "haruki",
+      "text": "哇……颜色好漂亮的果汁……！看起来好好喝……！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "这是上次上电台时，一位工作人员告诉我的。"
+    }
+  }
+},
+{
+  "id": "dialogue.haruki.seaside",
+  "idolId": "haruki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "──はるき，可以解散了，回去吧。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "haruki",
+      "text": "啊……好────",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "haruki",
+      "text": "…………",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "haruki",
+      "text": "那个，制作人先生。我……可以留在这里吗。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "……诶。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "haruki",
+      "text": "之后也没有别的事，机会难得，想在这附近走走────",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "haruki",
+      "text": "听说海边有各种各样的小店……可、可以吗……？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "那个────",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "text": "海边的露天座位。风很舒服。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "haruki",
+      "text": "哇……好棒的地方……海风好舒服……！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "幸好有空位。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "haruki",
+      "text": "是……！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "haruki",
+      "text": "对不起，结果还是让您陪我任性了……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "哈哈，没关系。虽然只能到我得走的时候──",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "我也很高兴能在这里喝杯茶。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "haruki",
+      "text": "这里每张桌上都有一个水壶呢……！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "haruki",
+      "text": "我来倒～",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "哦，谢谢。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "haruki",
+      "text": "哇哇……！对不起，倒太猛了……！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "哦哦，没事，只洒了一点……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "haruki",
+      "text": "纸巾纸巾……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "haruki",
+      "text": "水，我重新倒。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "哎，はるき，手劲──",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "haruki",
+      "text": "哇啊……！",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "haruki",
+      "text": "溢出来了……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "haruki",
+      "text": "对不起……我好像有点飘了。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "哈哈，那我来倒吧。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "haruki",
+      "text": "对不起……！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "haruki",
+      "text": "为什么会变成这样呢……",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "杯子小，水壶又挺重的嘛。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "──来，请。"
     }
   }
 },
@@ -50295,6 +51463,118 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "hana",
   "label": "东京",
   "text": "「东京，人好多啊──。」「不过，还不讨厌。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "haruki.chat.books",
+  "actorId": "haruki",
+  "label": "书",
+  "text": "「那本杂志，我看完了！」「可以借你。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "haruki.chat.drawing",
+  "actorId": "haruki",
+  "label": "画画",
+  "text": "「画画的时候，时间过得好快。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "haruki.chat.nagano",
+  "actorId": "haruki",
+  "label": "长野",
+  "text": "「长野啊──。」「苹果，家里经常收到。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "haruki.chat.name",
+  "actorId": "haruki",
+  "label": "名字",
+  "text": "「名字啊……」「……嗯，有点复杂呢。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "haruki.chat.practice",
+  "actorId": "haruki",
+  "label": "练习",
+  "text": "「我记东西还蛮快的哦。」「大概。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "haruki.chat.sister",
+  "actorId": "haruki",
+  "label": "姐姐",
+  "text": "「姐姐会给我做饭的～！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "haruki.chat.stage",
+  "actorId": "haruki",
+  "label": "舞台",
+  "text": "「站在上面的时候，世界会有颜色。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "haruki.chat.today",
+  "actorId": "haruki",
+  "label": "今天",
+  "text": "「今天也，学到了好多东西～！」",
   "cooldownMinutes": 1440,
   "effects": [
     {

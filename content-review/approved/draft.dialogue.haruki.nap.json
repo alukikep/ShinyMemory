@@ -1,0 +1,191 @@
+{
+  "id": "draft.dialogue.haruki.nap",
+  "kind": "dialogue",
+  "title": "录音棚里她睡在地板上",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.haruki.nap",
+  "payload": {
+    "id": "dialogue.haruki.nap",
+    "idolId": "haruki",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "录音棚。棚里灯还亮着，人却不在座位上。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "（还在录吗，はるき）",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "（不在啊────）",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "……哇！！",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "haruki",
+        "text": "嗯嗯……？",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "haruki",
+        "text": "咦……？制作人先生…………",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "怎么了？身体……",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "haruki",
+        "text": "啊……我、我睡着了……！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "haruki",
+        "text": "对不起，什么事都没有！只是有点犯困……！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "真的吗……？看你倒在地上，吓了我一跳。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "haruki",
+        "text": "那个，我在看笔记，看着看着头就发晕，回过神就已经被地板吸引过去了……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "haruki",
+        "text": "难得借到房间，却这样，对不起……",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "不用道歉。勉强也不好啊。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "我带了喝的来。要不要休息一下？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "haruki",
+        "text": "哇……！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "这个有点甜……先喝口水吧？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "haruki",
+        "text": "好……！",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "haruki",
+        "text": "…………",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "还要继续吗？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "haruki",
+        "text": "──是啊，还有时间……我想让它连得更顺一点……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "haruki",
+        "text": "睡了一会儿也休息到了，只要时间允许──",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "嗯……这样啊……那就再多休息一会儿吧。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "总之先喝这个。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "haruki",
+        "text": "哇……颜色好漂亮的果汁……！看起来好好喝……！",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "这是上次上电台时，一位工作人员告诉我的。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:00:00.000Z",
+  "updatedAt": "2026-11-01T12:14:04.965Z",
+  "reviewedAt": "2026-11-01T12:14:04.965Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:00:00.000Z",
+      "note": "对照 202800402（地板睡着、熬夜看笔记、制作人买饮料）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T12:14:04.965Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

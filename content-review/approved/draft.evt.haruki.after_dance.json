@@ -1,0 +1,91 @@
+{
+  "id": "draft.evt.haruki.after_dance",
+  "kind": "event",
+  "title": "她记动作靠画",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.haruki.after_dance",
+  "payload": {
+    "id": "evt.haruki.after_dance",
+    "title": "她记动作靠画",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "haruki"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束。她蹲在地上，速写本上画着一串小人，每个旁边都写了箭头。",
+    "choices": [
+      {
+        "label": "画得真清楚。",
+        "hint": "舞蹈 +1、信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「对吧！我照着这个练就不会忘──！」"
+      },
+      {
+        "label": "用身体记更好。",
+        "hint": "舞蹈 +3、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「……嗯，我知道。可是画下来我会安心一点。」"
+      },
+      {
+        "label": "借我看看。",
+        "hint": "信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「啊、等一下，那页画得有点丑──！」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:10:00.000Z",
+  "updatedAt": "2026-11-01T12:14:05.089Z",
+  "reviewedAt": "2026-11-01T12:14:05.089Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:10:00.000Z",
+      "note": "はるき 舞蹈课后事件（走美术路子的人记动作的方式）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T12:14:05.089Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

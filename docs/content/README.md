@@ -257,9 +257,8 @@ P6 2026-10-30  系统层 / 无内容
 ## 12. 现在的位置
 
 - 已确立：角色卡、数值档位、审查流程、内容生成链路
-- **已接入 28 人 / 28 张卡 / 105 章**（最后一批：郁田はるき——**28 人的招募全部上线**）
-  - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 4、SHHis 2、CoMETIK 3（招募齐）
-  - **はるき 的卡面/行动/话题/事件还没做**（`PENDING_IDOLS`），其余 27 人的块都完整
+- **已接入 28 人 / 29 张卡 / 110 章**（最后一批：郁田はるき——**28 人全部完整**）
+  - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 4、SHHis 2、CoMETIK 3（完整）
   - 每人的块结构都一样：招募链 2–4 步 + 首张卡一链 N 章 + 专属行动 + 话题 6–8 + 训练后事件 3
   - 进度与逐场地点核对见 [`_materials/<unit>-plan.md`](_materials/README.md)
 - **コメティック 前导**（`nichika-tribute`，3 步，已上线）：八雲なみ 的致敬演出。

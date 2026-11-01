@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.haruki.after_expression",
+  "kind": "event",
+  "title": "她问被拍下来的自己好不好看",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.haruki.after_expression",
+  "payload": {
+    "id": "evt.haruki.after_expression",
+    "title": "她问被拍下来的自己好不好看",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "haruki"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表现课结束。她看着自己的回放，问「这个人，看起来像在享受吗？」",
+    "choices": [
+      {
+        "label": "看起来很开心。",
+        "hint": "信任 +3、压力 -2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -2
+          }
+        ],
+        "result": "「太好了……我怕只有自己觉得开心。」"
+      },
+      {
+        "label": "还可以再放开一点。",
+        "hint": "表现 +3、压力 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 1
+          }
+        ],
+        "result": "「放开一点……好，我试试看。」"
+      },
+      {
+        "label": "你自己觉得呢？",
+        "hint": "表现 +1、信任 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……我觉得，还想再跳一次。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:10:00.000Z",
+  "updatedAt": "2026-11-01T12:14:05.094Z",
+  "reviewedAt": "2026-11-01T12:14:05.094Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:10:00.000Z",
+      "note": "はるき 表现课后事件（202800411 她对自己的样子没有把握）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T12:14:05.094Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "draft.haruki.chat.practice",
+  "kind": "topic",
+  "title": "聊天 · 练习",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.haruki.chat.practice",
+  "payload": {
+    "id": "haruki.chat.practice",
+    "actorId": "haruki",
+    "label": "练习",
+    "text": "「我记东西还蛮快的哦。」「大概。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:10:00.000Z",
+  "updatedAt": "2026-11-01T12:14:05.054Z",
+  "reviewedAt": "2026-11-01T12:14:05.054Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:10:00.000Z",
+      "note": "はるき日常话题（练习：尾音拖长、先收半步）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T12:14:05.054Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

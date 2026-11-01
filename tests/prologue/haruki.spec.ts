@@ -6,6 +6,7 @@ import {
   reset,
   watchConsole,
 } from '../acceptance/helpers';
+import { PRODUCTION_PACK } from '../../src/core/productionPack';
 
 /**
  * 郁田はるき 的招募链。
@@ -105,6 +106,47 @@ test('Haruki: creator event, stage chase, trainee night, father answer', async (
     roster.locator('.roster-card', { hasText: '郁田はるき' }),
   ).toBeVisible();
   await page.getByRole('button', { name: '关闭偶像名册' }).click();
+
+  // ---- 卡面【Hopeland】五章 ----
+  await jumpTo(page, 25, 15 * 60, 'shopping_street');
+  await pick(page, '书店里她挑杂志挑了很久');
+  expect((await getState(page)).flags['completed.haruki.books']).toBe(true);
+
+  await jumpTo(page, 27, 16 * 60, 'studio');
+  await pick(page, '棚里找不到人，她睡在地板上');
+  expect((await getState(page)).flags['completed.haruki.nap']).toBe(true);
+
+  await jumpTo(page, 29, 17 * 60, 'park');
+  await pick(page, '收工后，她想在海边多待一会儿');
+  expect((await getState(page)).flags['completed.haruki.seaside']).toBe(true);
+
+  await jumpTo(page, 31, 10 * 60, 'office');
+  await pick(page, '签名会前，她抱着一叠信');
+  expect((await getState(page)).flags['completed.haruki.letters']).toBe(true);
+
+  await jumpTo(page, 33, 16 * 60, 'hall');
+  await pick(page, '共演的后台，有人念错了她的名字');
+  expect((await getState(page)).flags['completed.haruki.name']).toBe(true);
+
+  // ---- 专属行动与话题 ----
+  // 她在公园只在周六上午（双周轮换的另一周是画廊街），所以试两个周六
+  let sawAction = false;
+  for (const day of [34, 41]) {
+    await jumpTo(page, day, 11 * 60, 'park');
+    const idolButton = page.getByRole('button', { name: /郁田はるき/ }).first();
+    if ((await idolButton.count()) === 0) continue;
+    await idolButton.click();
+    if ((await page.getByRole('button', { name: '陪她在公园写生' }).count()) > 0) {
+      sawAction = true;
+      break;
+    }
+  }
+  expect(sawAction).toBe(true);
+
+  const topics = PRODUCTION_PACK.actors.find((a) => a.id === HARUKI)!.topics;
+  expect(topics).toHaveLength(8);
+  const events = PRODUCTION_PACK.events.filter((e) => e.id.startsWith('evt.haruki.'));
+  expect(events).toHaveLength(3);
 
   expect(errors).toEqual([]);
 });

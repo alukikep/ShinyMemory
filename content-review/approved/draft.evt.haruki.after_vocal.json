@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.haruki.after_vocal",
+  "kind": "event",
+  "title": "她唱完先道歉",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.haruki.after_vocal",
+  "payload": {
+    "id": "evt.haruki.after_vocal",
+    "title": "她唱完先道歉",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "haruki"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "歌唱课结束。她摘下耳机，第一句话是「对不起，我声音有点抖」。",
+    "choices": [
+      {
+        "label": "抖的地方很好听。",
+        "hint": "歌唱 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……那个，也算好听吗？」她小声问。"
+      },
+      {
+        "label": "再唱一遍。",
+        "hint": "歌唱 +3、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好……这次我会稳住。」"
+      },
+      {
+        "label": "先别道歉。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……啊。」她愣了一下，然后笑了。"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T15:10:00.000Z",
+  "updatedAt": "2026-11-01T12:14:05.082Z",
+  "reviewedAt": "2026-11-01T12:14:05.082Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T15:10:00.000Z",
+      "note": "はるき 歌唱课后事件（102800505 她习惯先道歉）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T12:14:05.082Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

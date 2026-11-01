@@ -347,4 +347,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: '凛世、まいります', index: 3, total: 3 },
     anchors: ['2012003110030', '2012003110130', '2012003110190'],
   },
+  {
+    chapterId: 'natsuha-cafe',
+    script: '201300301',
+    source: '剧本 201300301',
+    card: { title: '目指すなら世界一よ', index: 1, total: 3 },
+    anchors: ['2013003010010', '2013003010140', '2013003010190'],
+  },
+  {
+    chapterId: 'natsuha-shopping',
+    script: '201300302',
+    source: '剧本 201300302',
+    card: { title: '目指すなら世界一よ', index: 2, total: 3 },
+    anchors: ['2013003020010', '2013003020050', '2013003020140'],
+  },
+  {
+    chapterId: 'natsuha-bench',
+    script: '201300311',
+    source: '剧本 201300311',
+    card: { title: '目指すなら世界一よ', index: 3, total: 3 },
+    anchors: ['2013003110010', '2013003110130', '2013003110190'],
+  },
 ];

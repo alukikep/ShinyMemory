@@ -1,0 +1,32 @@
+{
+  "id": "draft.natsuha.chat.bath",
+  "kind": "topic",
+  "title": "聊天 · 泡澡",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.natsuha.chat.bath",
+  "payload": {
+    "id": "natsuha.chat.bath",
+    "actorId": "natsuha",
+    "label": "泡澡",
+    "text": "「泡澡是健康的基本。」「你也别只冲一下就出来。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T08:13:00.000Z",
+  "updatedAt": "2026-11-02T08:13:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T08:13:00.000Z",
+      "note": "夏葉日常话题（入浴は健康の基本）"
+    }
+  ]
+}

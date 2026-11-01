@@ -1,0 +1,222 @@
+{
+  "id": "draft.dialogue.natsuha.bench",
+  "kind": "dialogue",
+  "title": "她递来一罐咖啡",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.natsuha.bench",
+  "payload": {
+    "id": "dialogue.natsuha.bench",
+    "idolId": "natsuha",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "（今天的外勤到此为止。回事务所一趟吧。）",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "嗯……夏葉，今天也在训练？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "natsuha",
+        "text": "哎呀，制作人。呼……当然是这样。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "明明前阵子才刚拿下 W.I.N.G. 冠军，真的很佩服夏葉。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "natsuha",
+        "text": "就算夺冠，要做的事也不会变。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "哈哈，是啊。不愧是夏葉。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "natsuha",
+        "text": "其实我也不觉得自己在做什么特别的事……对了。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "natsuha",
+        "text": "制作人，能不能在那边的长凳上等我一下？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "可以是可以，怎么了？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "natsuha",
+        "text": "别问了，制作人就慢慢休息吧。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "啊，知道了。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "natsuha",
+        "text": "来，饮料。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "可以吗？谢谢你，夏葉。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "natsuha",
+        "text": "没关系。咖啡可以吗？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "嗯，完全没问题。不过说起来，一般该是我去拿吧。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "natsuha",
+        "text": "没事。这种时候就让我请一次吧。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "natsuha",
+        "text": "我可以坐你旁边吗？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "嗯，当然。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "natsuha",
+        "text": "那，失礼了。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "natsuha",
+        "text": "……谢谢你，制作人。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "嗯，我做了什么吗？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "natsuha",
+        "text": "真是的，你一直都在支持我不是吗。托你的福，我才能拿下 W.I.N.G. 冠军。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "natsuha",
+        "text": "真的，感谢你。说有今天的我，是因为你在，也不为过哦。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "哦、哦哦……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "natsuha",
+        "text": "……怎么了制作人，呆住了？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "不……抱歉，这样冷不防被郑重地道谢，有点受不了。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "natsuha",
+        "text": "真失礼。我道谢还是会道的哦。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "natsuha",
+        "text": "而且，只是想说说，今后也请多指教而已。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "嗯，当然。我这边才是，今后也请多指教。刚才也收到了道谢……",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "natsuha",
+        "text": "哎呀，那种不算道谢哦？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "诶，是吗？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "natsuha",
+        "text": "是啊……那下次，我招待你去能看见漂亮夜景的、我喜欢的法餐厅吧。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "natsuha",
+        "text": "到时候，好好谈一谈吧？……为了站上更完美、更大的舞台，的计划。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T08:00:00.000Z",
+  "updatedAt": "2026-11-02T08:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T08:00:00.000Z",
+      "note": "对照 201300311（长凳、咖啡、道谢、夜景法餐）"
+    }
+  ]
+}

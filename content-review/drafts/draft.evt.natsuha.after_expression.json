@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.natsuha.after_expression",
+  "kind": "event",
+  "title": "收工后的加练",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.natsuha.after_expression",
+  "payload": {
+    "id": "evt.natsuha.after_expression",
+    "title": "收工后的加练",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "natsuha"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。她收拾完东西，又回到镜子前，一个人对口型。",
+    "choices": [
+      {
+        "label": "已经很好了。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……听你这么说，就再停一下吧。」"
+      },
+      {
+        "label": "再练一遍。",
+        "hint": "表现 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好。你陪着，我就再练一遍。」"
+      },
+      {
+        "label": "一起回去吧。",
+        "hint": "压力 -4",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -4
+          }
+        ],
+        "result": "「……也好。今天，就到这儿。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T08:20:00.000Z",
+  "updatedAt": "2026-11-02T08:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T08:20:00.000Z",
+      "note": "夏葉表演课后事件"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "draft.natsuha.chat.catorea",
+  "kind": "topic",
+  "title": "聊天 · カトレア",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.natsuha.chat.catorea",
+  "payload": {
+    "id": "natsuha.chat.catorea",
+    "actorId": "natsuha",
+    "label": "カトレア",
+    "text": "「カトレア？是我家的狗。」「……很可爱哦，比听起来更可爱。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T08:15:00.000Z",
+  "updatedAt": "2026-11-02T08:15:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T08:15:00.000Z",
+      "note": "夏葉日常话题（爱犬）"
+    }
+  ]
+}

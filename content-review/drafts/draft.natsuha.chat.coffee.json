@@ -1,0 +1,32 @@
+{
+  "id": "draft.natsuha.chat.coffee",
+  "kind": "topic",
+  "title": "聊天 · 咖啡",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.natsuha.chat.coffee",
+  "payload": {
+    "id": "natsuha.chat.coffee",
+    "actorId": "natsuha",
+    "label": "咖啡",
+    "text": "「咖啡？我记住了你常喝的那种。」「……别问为什么。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T08:14:00.000Z",
+  "updatedAt": "2026-11-02T08:14:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T08:14:00.000Z",
+      "note": "夏葉日常话题（给他买罐装咖啡）"
+    }
+  ]
+}

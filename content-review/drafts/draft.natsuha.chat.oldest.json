@@ -1,0 +1,32 @@
+{
+  "id": "draft.natsuha.chat.oldest",
+  "kind": "topic",
+  "title": "聊天 · 最年长",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.natsuha.chat.oldest",
+  "payload": {
+    "id": "natsuha.chat.oldest",
+    "actorId": "natsuha",
+    "label": "最年长",
+    "text": "「最年长？那不代表更优秀。」「只是，该我扛的，我会扛。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T08:16:00.000Z",
+  "updatedAt": "2026-11-02T08:16:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T08:16:00.000Z",
+      "note": "夏葉日常话题（组合最年长）"
+    }
+  ]
+}

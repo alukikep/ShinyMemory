@@ -1,0 +1,32 @@
+{
+  "id": "draft.natsuha.chat.train",
+  "kind": "topic",
+  "title": "聊天 · 训练",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.natsuha.chat.train",
+  "payload": {
+    "id": "natsuha.chat.train",
+    "actorId": "natsuha",
+    "label": "训练",
+    "text": "「训练？那是每天的，不是特别的事。」「一秒也，不想浪费。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T08:10:00.000Z",
+  "updatedAt": "2026-11-02T08:10:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T08:10:00.000Z",
+      "note": "夏葉日常话题（API 兴趣：トレーニング）"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "id": "draft.dialogue.natsuha.first",
+  "kind": "dialogue",
+  "title": "练习室里有人在喊拍子",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.natsuha.first",
+  "payload": {
+    "id": "dialogue.natsuha.first",
+    "idolId": "natsuha",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "natsuha",
+        "text": "一、二、三、四！",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "（……好热烈的气氛。打扰也不好，就在这儿等着吧。）",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "natsuha",
+        "text": "你就是我的制作人吧？",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "啊，你是——",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "natsuha",
+        "text": "听好？目标是顶点，只有顶点哦！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "……诶、那、那个？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "natsuha",
+        "text": "哎呀，发什么呆呢？理所当然的吧！",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "natsuha",
+        "text": "偶像也好什么也好，目标不可能是世界第一以外的！",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "natsuha",
+        "text": "你既然是我的制作人，就给我这么打算着！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "……明白了。那为了这个，我们一起来想该做什么吧。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "natsuha",
+        "text": "不，那没必要。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "什么意思？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "natsuha",
+        "text": "偶像的制作，也许你经验更多一点。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "natsuha",
+        "text": "但说到有栖川夏葉的制作，只是我经验更长而已。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "natsuha",
+        "text": "所以你什么都不用想，全部交给我。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "唔……总不能真的那样，不过你的意见我会尽量采纳。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "还有，你要以『放課後クライマックスガールズ』这个五人组合活动。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "natsuha",
+        "text": "也没什么不好哦。单人也好组合也好，我要冲向顶点这一点不会变。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "这样啊。那今后就拜托了。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "natsuha",
+        "text": "嗯，好好跟着我来吧，制作人。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "（……本来想着是位清纯的大小姐，原来是个相当有主见的女孩子啊。）"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T08:00:00.000Z",
+  "updatedAt": "2026-11-02T08:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T08:00:00.000Z",
+      "note": "对照 101300101（练习室、认人、只有顶点）"
+    }
+  ]
+}

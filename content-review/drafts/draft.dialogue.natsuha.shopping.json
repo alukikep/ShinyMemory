@@ -1,0 +1,269 @@
+{
+  "id": "draft.dialogue.natsuha.shopping",
+  "kind": "dialogue",
+  "title": "她突然说要去逛街",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.natsuha.shopping",
+  "payload": {
+    "id": "dialogue.natsuha.shopping",
+    "idolId": "natsuha",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "嗯……对方的情况没办法，不过突然空出时间了……那么，怎么办……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "natsuha",
+        "text": "……对了，这附近有那个呢。走吧，制作人。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "那个，是附近有健身房吗？",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "natsuha",
+        "text": "不，不是。是去购物哦！",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "natsuha",
+        "text": "最近净是工作地和健身房来回，忙得不行，好久没来购物了。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "（嗯？刚才很自然地说过去了，一般人不是工作地和家来回吗……）",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "natsuha",
+        "text": "平时来不了，今天要尽情买衣服！",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "natsuha",
+        "text": "哎呀，发什么呆呢？累了的话先回去也行哦？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "不，难得的机会，我也跟着吧。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "natsuha",
+        "text": "哎呀，是吗？那先去那家店吧。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "natsuha",
+        "text": "这件连衣裙设计不错，买了。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "嗯，颜色也好。很适合你。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "喂，夏葉，这种怎么样？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "natsuha",
+        "text": "那个就算了。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "夏葉挑东西的时候，完全不犹豫啊……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "natsuha",
+        "text": "当然。自己适合什么，看一眼就知道了。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "natsuha",
+        "text": "而且时间是有限的，快点去下一家吧。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "还以为会被派去拎包，重的话我来拿吧？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "natsuha",
+        "text": "没事的，制作人。这个重量刚刚好。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "natsuha",
+        "text": "因为能感觉到，那件漂亮的衣服现在在我手里——",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "（也会说些女孩子气的话啊……）",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "natsuha",
+        "text": "而且拎包也是训练吧？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "嘛、算是吧……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "natsuha",
+        "text": "不过，如果我拿不动了，也让你拿一下好了。那样能买更多衣服呢？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "……啊、嗯！夏葉就尽情地买吧。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "natsuha",
+        "text": "今天很开心。谢谢你陪我，制作人。",
+        "choices": [
+          {
+            "label": "我什么都没做啊",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "夏葉看起来很开心，太好了",
+            "nextNodeId": "110"
+          },
+          {
+            "label": "算是解闷了吗？",
+            "nextNodeId": "120"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "natsuha",
+        "text": "可是，你本来可以回去的，却陪我了不是吗。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "natsuha",
+        "text": "因为有制作人在，所以不只靠自己的判断，也能听到客观的意见。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "natsuha",
+        "text": "偶尔和别人一起享受购物也不错。下次要不要叫果穂她们？",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "嗯，不错啊。"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "natsuha",
+        "text": "多亏了制作人。本来可以回去的，却陪我买东西了不是吗？",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "natsuha",
+        "text": "托你的福，今天非常开心。和别人一起购物，也不错呢。",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "natsuha",
+        "text": "下次有时间……还能像今天这样陪我吗？",
+        "nextNodeId": "113"
+      },
+      "113": {
+        "id": "113",
+        "speakerId": "producer",
+        "text": "嗯，当然没问题。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "natsuha",
+        "text": "嗯，非常。一个人购物也好，但和别人一起，很新鲜也很开心。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "能帮上忙就好。今天买的东西，很适合夏葉哦。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "natsuha",
+        "text": "那当然。自己适合什么，早就知道了。",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "natsuha",
+        "text": "……不过，谢谢你，我很高兴。",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "natsuha",
+        "text": "突然空下来的时候还在想怎么办，多亏了制作人，我焕然一新了。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T08:00:00.000Z",
+  "updatedAt": "2026-11-02T08:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T08:00:00.000Z",
+      "note": "对照 201300302（三分支，保留三个选项）"
+    }
+  ]
+}

@@ -257,8 +257,8 @@ P6 2026-10-30  系统层 / 无内容
 ## 12. 现在的位置
 
 - 已确立：角色卡、数值档位、审查流程、内容生成链路
-- **已接入 21 人 / 22 张卡 / 75 章**（最后一批：樋口円香）
-  - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 2
+- **已接入 22 人 / 23 张卡 / 80 章**（最后一批：福丸小糸）
+  - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 3
   - 每人的块结构都一样：招募链 2–3 步 + 首张卡一链 N 章 + 专属行动 + 话题 6–8 + 训练后事件 3
   - 进度与逐场地点核对见 [`_materials/<unit>-plan.md`](_materials/README.md)
 - 已有工作（6 份已通过）：摄影棚 ¥1,200 / 电台 ¥900 / 封面 ¥2,000 / 录音小样 ¥600 / 舞蹈节目 ¥1,000 / 初次 Live（剧情解锁）

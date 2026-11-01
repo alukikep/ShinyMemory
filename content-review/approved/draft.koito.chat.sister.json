@@ -1,0 +1,38 @@
+{
+  "id": "draft.koito.chat.sister",
+  "kind": "topic",
+  "title": "聊天 · 妹妹",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.koito.chat.sister",
+  "payload": {
+    "id": "koito.chat.sister",
+    "actorId": "koito",
+    "label": "妹妹",
+    "text": "「妹妹又让我买冰淇淋……」「你买了吗？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:24:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.646Z",
+  "reviewedAt": "2026-11-01T06:14:27.646Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:24:00.000Z",
+      "note": "小糸日常话题（一边训一边宠妹妹 [koito facts 家庭]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.646Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

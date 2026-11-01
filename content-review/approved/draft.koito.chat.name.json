@@ -1,0 +1,38 @@
+{
+  "id": "draft.koito.chat.name",
+  "kind": "topic",
+  "title": "聊天 · 名字",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.koito.chat.name",
+  "payload": {
+    "id": "koito.chat.name",
+    "actorId": "koito",
+    "label": "名字",
+    "text": "「『福丸』……听起来有点呆呆的，对吧。」「不会啊。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:27:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.643Z",
+  "reviewedAt": "2026-11-01T06:14:27.643Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:27:00.000Z",
+      "note": "小糸日常话题（对『福丸』的自我评价 [koito facts 自己的名字]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.643Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

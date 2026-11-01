@@ -1,0 +1,38 @@
+{
+  "id": "draft.koito.chat.friends",
+  "kind": "topic",
+  "title": "聊天 · 幼驯染",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.koito.chat.friends",
+  "payload": {
+    "id": "koito.chat.friends",
+    "actorId": "koito",
+    "label": "幼驯染",
+    "text": "「透ちゃん今天又睡过头了……」「你怎么知道？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:23:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.640Z",
+  "reviewedAt": "2026-11-01T06:14:27.640Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:23:00.000Z",
+      "note": "小糸日常话题（她管着透的日常 [koito facts 关系]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.640Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

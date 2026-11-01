@@ -1,0 +1,38 @@
+{
+  "id": "draft.koito.chat.park",
+  "kind": "topic",
+  "title": "聊天 · 公园",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.koito.chat.park",
+  "payload": {
+    "id": "koito.chat.park",
+    "actorId": "koito",
+    "label": "公园",
+    "text": "「公园……以前不太喜欢。现在有点喜欢了。」「诶？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:25:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.645Z",
+  "reviewedAt": "2026-11-01T06:14:27.645Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:25:00.000Z",
+      "note": "小糸日常话题（小时候怕公园、现在会去 [202200404]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.645Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

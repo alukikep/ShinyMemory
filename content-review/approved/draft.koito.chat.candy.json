@@ -1,0 +1,38 @@
+{
+  "id": "draft.koito.chat.candy",
+  "kind": "topic",
+  "title": "聊天 · 糖",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.koito.chat.candy",
+  "payload": {
+    "id": "koito.chat.candy",
+    "actorId": "koito",
+    "label": "糖",
+    "text": "「要糖吗？这个……不酸的。」「你随身带这么多？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:21:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.638Z",
+  "reviewedAt": "2026-11-01T06:14:27.638Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:21:00.000Z",
+      "note": "小糸日常话题（随身带糖 [koito facts 喜好]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.638Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.koito.after_dance",
+  "kind": "event",
+  "title": "她记住了步子",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.koito.after_dance",
+  "payload": {
+    "id": "evt.koito.after_dance",
+    "title": "她记住了步子",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "koito"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她对着镜子把刚才那段又走了一遍，脚步很轻，像是怕踩坏地板。",
+    "choices": [
+      {
+        "label": "记住了。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「真、真的吗……！我记了两天……！」"
+      },
+      {
+        "label": "手再抬高一点。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好、好……这样吗……？」"
+      },
+      {
+        "label": "今天就到这里。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……好的。谢谢您陪我到最后。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:31:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.630Z",
+  "reviewedAt": "2026-11-01T06:14:27.630Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:31:00.000Z",
+      "note": "小糸舞蹈课后事件（她靠多记几遍补上）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.630Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

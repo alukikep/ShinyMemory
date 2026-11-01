@@ -1,0 +1,311 @@
+{
+  "id": "draft.dialogue.koito.notebook",
+  "kind": "dialogue",
+  "title": "清早，事务所的门还没开",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.koito.notebook",
+  "payload": {
+    "id": "dialogue.koito.notebook",
+    "idolId": "koito",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "koito",
+        "text": "…………！",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "koito",
+        "text": "啊……",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "koito",
+        "text": "门、锁着……怎怎怎怎么办……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "……咦，小糸？",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "koito",
+        "text": "ぴゃ！？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "怎么了，这么一大早。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "koito",
+        "text": "啊……",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "koito",
+        "text": "什、什么嘛……是制作人先生……",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "koito",
+        "text": "──啊对了、对……！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "koito",
+        "text": "那个，是这样的……！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "koito",
+        "text": "我、我好像把笔记本放在事务所了……！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "原来如此，所以上学前来拿。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "koito",
+        "text": "是、是的……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "好，我马上开门。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "koito",
+        "text": "啊……拜、拜托您了……！",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "koito",
+        "text": "啊……有了……！找到了！",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "哦哦，太好了！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "好……那么，快点吧！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "koito",
+        "text": "诶……！？",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "我送你到学校。看，要迟到了！",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "koito",
+        "text": "诶诶……！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "koito",
+        "text": "不、不用了不用了！没、没问题的！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "不用那么客气也没关系哦？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "koito",
+        "text": "我、我不是在客气……！",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "小糸，你总是为了不迟到而提早出门吧。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "现在坐电车或者公交去，肯定我送更快。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "koito",
+        "text": "可、可是…………",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "开车的话从这里直接到校门口。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "所以，来，走吧！",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "koito",
+        "text": "这、这样……",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "koito",
+        "text": "那、那种像艺人一样的上学方式……！",
+        "choices": [
+          {
+            "label": "不坏吧？",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "就这么定了！",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "不是\"像\"，就是吧？",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "koito",
+        "text": "不、不坏是…………",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "koito",
+        "text": "不坏……呢…………！",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "producer",
+        "text": "哈哈，太好了。那么走吧！",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "koito",
+        "text": "……啊，谢谢您，制作人先生……！"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "koito",
+        "text": "诶、诶诶……！",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "koito",
+        "text": "不、不会被学校骂吗……！",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "producer",
+        "text": "我想不会吧……那就偷偷地、悄悄地去吧！",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "koito",
+        "text": "悄、悄悄地……！",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "koito",
+        "text": "好、好像艺人……！"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "producer",
+        "text": "小糸就是偶像啊。不是\"像\"，是艺人。",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "koito",
+        "text": "ぴぇ…………！",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "来，走吧！艺人上学！",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "koito",
+        "text": "等、等一下……！",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "koito",
+        "text": "请等一下啊，制作人先生……！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T18:30:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.622Z",
+  "reviewedAt": "2026-11-01T06:14:27.622Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T18:30:00.000Z",
+      "note": "对照 202200402（忘带笔记本、开车送、艺人上学、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.622Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

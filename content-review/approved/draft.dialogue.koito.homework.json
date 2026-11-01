@@ -1,0 +1,329 @@
+{
+  "id": "draft.dialogue.koito.homework",
+  "kind": "dialogue",
+  "title": "她趴在桌上写作业",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.koito.homework",
+  "payload": {
+    "id": "dialogue.koito.homework",
+    "idolId": "koito",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "──好，资料完成……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "………咦，小糸？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "koito",
+        "text": "………………",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "……在写作业吗。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "koito",
+        "text": "………………",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "小糸，今天……之后有课吧。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "koito",
+        "text": "──好，作业写完了……！",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "哦哦，写完了吗，小糸。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "koito",
+        "text": "ぴゃ……！？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "koito",
+        "text": "ぷ、制作人先生……！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "抱歉，吓到你了。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "koito",
+        "text": "啊……不、没有……",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "我从刚才就在看了，小糸完全没注意到呢。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "koito",
+        "text": "诶诶诶……你、你在看…………？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "哈哈，好厉害的专注力。不愧是你。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "而且解题也非常快。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "koito",
+        "text": "…………是、是吗……",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "koito",
+        "text": "我、我这个范围已经……",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "koito",
+        "text": "初中、学过所以……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "咦，这样啊？好厉害。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "koito",
+        "text": "只、只是知道解法而已……",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "koito",
+        "text": "知道的话……谁都能…………",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "这、这样啊……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "啊，说起来小糸确实和其他三个人是不同初中──",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "koito",
+        "text": "啊…………是、是的……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "koito",
+        "text": "…………",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "…………啊──对了，这个！",
+        "choices": [
+          {
+            "label": "是糖哦！",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "是巧克力哦！",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "是口香糖哦！",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "producer",
+        "text": "……小糸，你喜欢这个吧？写作业的时候配着吃。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "koito",
+        "text": "诶……！你、你知道啊……！",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "koito",
+        "text": "为、为什么……！",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "哈哈，谁知道呢。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "koito",
+        "text": "诶、诶诶……！",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "producer",
+        "text": "哈哈，大概是事先预习了小糸的事吧。",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "producer",
+        "text": "猜对了吧？",
+        "nextNodeId": "107"
+      },
+      "107": {
+        "id": "107",
+        "speakerId": "koito",
+        "text": "…………正、正解……！"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "koito",
+        "text": "哇、哇……！巧克力……！",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "写作业的时候配着吃，大家都这么说吧？",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "producer",
+        "text": "不过，小糸好像已经把作业写完了。",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "koito",
+        "text": "可、可以收下吗……！",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "producer",
+        "text": "嗯，当然。",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "koito",
+        "text": "…………！",
+        "nextNodeId": "126"
+      },
+      "126": {
+        "id": "126",
+        "speakerId": "koito",
+        "text": "…………唔嗯嗯～……！"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "producer",
+        "text": "听说边写作业边嚼口香糖不错……你要的话拿去。",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "koito",
+        "text": "啊……那个……谢、谢谢您……！",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "哈哈，更早一点给你就好了。",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "producer",
+        "text": "作业已经写完了对吧？",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "koito",
+        "text": "啊，不、不是那个……！",
+        "nextNodeId": "145"
+      },
+      "145": {
+        "id": "145",
+        "speakerId": "koito",
+        "text": "我、我会留着的……！好好珍惜……！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T18:20:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.619Z",
+  "reviewedAt": "2026-11-01T06:14:27.619Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T18:20:00.000Z",
+      "note": "对照 202200401（写作业、不同初中、糖/巧克力/口香糖三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.619Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

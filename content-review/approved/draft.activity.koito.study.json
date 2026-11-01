@@ -1,0 +1,65 @@
+{
+  "id": "draft.activity.koito.study",
+  "kind": "activity",
+  "title": "陪她在咖啡店复习",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.activity.koito.study",
+  "payload": {
+    "id": "activity.koito.study",
+    "name": "陪她在咖啡店复习",
+    "description": "她把笔记摊开，先用尺子画好线才开始。你出题，她答得很快，然后小声问\"这题……会不会太简单了\"。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "koito"
+    ],
+    "locations": [
+      "shopping_street",
+      "station"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 960,
+        "toMinute": 1080
+      }
+    ],
+    "cost": {
+      "stamina": 5
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
+    ],
+    "resultTexts": [
+      "她把最后一道题讲给你听，讲完才发现自己一直在说。",
+      "她分了你一颗糖，说\"这个不酸\"，然后继续低头写字。",
+      "走之前她把桌子擦了一遍，说\"下一个人也要用\"。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:10:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.607Z",
+  "reviewedAt": "2026-11-01T06:14:27.607Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:10:00.000Z",
+      "note": "小糸专属行动（咖啡店复习 [koito facts 高中生活]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.607Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

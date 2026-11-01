@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.koito.after_vocal",
+  "kind": "event",
+  "title": "她还在小声唱",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.koito.after_vocal",
+  "payload": {
+    "id": "evt.koito.after_vocal",
+    "title": "她还在小声唱",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "koito"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "歌唱课结束了。她还在原地小声唱，声音小得像怕被谁听见。",
+    "choices": [
+      {
+        "label": "再大声一点。",
+        "hint": "歌唱 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「诶……！？可、可是……好，我试试……！」"
+      },
+      {
+        "label": "刚才那句，音准很好。",
+        "hint": "歌唱 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「真、真的吗……那我，再唱一次。」"
+      },
+      {
+        "label": "今天这样就好。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……好的。那，我收拾一下就回去。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:30:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.634Z",
+  "reviewedAt": "2026-11-01T06:14:27.634Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:30:00.000Z",
+      "note": "小糸歌唱课后事件（她不敢发出大声）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.634Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

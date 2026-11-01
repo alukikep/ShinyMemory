@@ -590,6 +590,47 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.koito.study",
+  "name": "陪她在咖啡店复习",
+  "description": "她把笔记摊开，先用尺子画好线才开始。你出题，她答得很快，然后小声问\"这题……会不会太简单了\"。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "koito"
+  ],
+  "locations": [
+    "shopping_street",
+    "station"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 960,
+      "toMinute": 1080
+    }
+  ],
+  "cost": {
+    "stamina": 5
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -5
+    }
+  ],
+  "resultTexts": [
+    "她把最后一道题讲给你听，讲完才发现自己一直在说。",
+    "她分了你一颗糖，说\"这个不酸\"，然后继续低头写字。",
+    "走之前她把桌子擦了一遍，说\"下一个人也要用\"。"
+  ]
+},
+{
   "id": "activity.madoka.tea",
   "name": "陪她在喫茶店坐一会儿",
   "description": "她点柠檬茶，微糖。你说这家的招牌是咖啡，她说\"那种苦的东西你自己喝就好\"，然后把叉子伸向你的蛋糕。",
@@ -3635,6 +3676,222 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「谢谢～」她把水瓶递回来，说长崎的水更好喝，然后自己先笑了。"
+    }
+  ]
+},
+{
+  "id": "evt.koito.after_dance",
+  "title": "她记住了步子",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "koito"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她对着镜子把刚才那段又走了一遍，脚步很轻，像是怕踩坏地板。",
+  "choices": [
+    {
+      "label": "记住了。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「真、真的吗……！我记了两天……！」"
+    },
+    {
+      "label": "手再抬高一点。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好、好……这样吗……？」"
+    },
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……好的。谢谢您陪我到最后。」"
+    }
+  ]
+},
+{
+  "id": "evt.koito.after_expression",
+  "title": "她不敢看镜头",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "koito"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。老师让她对着镜头笑一下，她试了三次，第三次笑到一半就低下头。",
+  "choices": [
+    {
+      "label": "第三次，很好。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「那、那个……真的吗？我以为一定不行……」"
+    },
+    {
+      "label": "别低头，看着它。",
+      "hint": "表现 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「……好。我、我再看一次。」"
+    },
+    {
+      "label": "今天不练这个了。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……对不起。下次，我会好好笑的。」"
+    }
+  ]
+},
+{
+  "id": "evt.koito.after_vocal",
+  "title": "她还在小声唱",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "koito"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "歌唱课结束了。她还在原地小声唱，声音小得像怕被谁听见。",
+  "choices": [
+    {
+      "label": "再大声一点。",
+      "hint": "歌唱 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「诶……！？可、可是……好，我试试……！」"
+    },
+    {
+      "label": "刚才那句，音准很好。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「真、真的吗……那我，再唱一次。」"
+    },
+    {
+      "label": "今天这样就好。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……好的。那，我收拾一下就回去。」"
     }
   ]
 },
@@ -20005,6 +20262,1862 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.koito.fail",
+  "idolId": "koito",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "（……邮件来了啊。）",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（前几天小糸参加的那场甄选的……）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "────…………",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "koito",
+      "text": "……早上好。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "哦、哦，小糸！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "koito",
+      "text": "啊……ぷ、制作人先生也在啊……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "嗯……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "koito",
+      "text": "…………",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "小糸，好像没什么精神啊。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "koito",
+      "text": "……诶，啊，对、对不起……",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "不，没什么好道歉的……发生什么了吗？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "koito",
+      "text": "…………小、小测验发下来了。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……嗯。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "koito",
+      "text": "可是，答题卡好像错开了一格……",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "啊……原来如此。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "koito",
+      "text": "我……明明全都得做好才行……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "koito",
+      "text": "──比、比起这个……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "koito",
+      "text": "ぷ、制作人先生才是，是不是没什么精神……！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "…………──小糸，其实。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "你上次参加的那场甄选，结果今天来了。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "koito",
+      "text": "…………！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "……这次，没能合格。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "koito",
+      "text": "啊…………这样、啊……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "…………嗯。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "koito",
+      "text": "那、那个……对不起，制作人先生。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "koito",
+      "text": "我、我，什么都没能做好呢……",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "不是，小糸没有错。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "小糸才刚开始做这份工作，不习惯的地方很多。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "不只是工作，和学业兼顾也很辛苦，我却没能好好支援，抱歉。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "……不过，一开始总是不顺利的，这是当然的。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "koito",
+      "text": "……那，总有一天会顺利吗。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "koito",
+      "text": "我，要到什么时候……",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "…………！",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "koito",
+      "text": "啊……对、对不起，不是那样……",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "koito",
+      "text": "诶、诶嘿嘿……真没用啊，我。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "koito",
+      "text": "──真是不顺利啊……",
+      "choices": [
+        {
+          "label": "小糸才刚开始。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "一起跨过去吧。",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "会顺利的。",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "producer",
+      "text": "而且我作为制作人也还差得远。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "koito",
+      "text": "制作人先生……",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "producer",
+      "text": "努力，然后不行的时候就像这样再聊聊。",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "koito",
+      "text": "…………！……好。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "producer",
+      "text": "以后大概也会有什么都不顺利的日子。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "koito",
+      "text": "…………是……",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "producer",
+      "text": "但就算那样，在那之后一定会有全部都顺利的日子。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "koito",
+      "text": "一、一定……？",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "producer",
+      "text": "嗯，一定。"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "producer",
+      "text": "小糸会顺利的。",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "koito",
+      "text": "……会吗……",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "producer",
+      "text": "不顺利的那些也全都不会白费。",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "producer",
+      "text": "为了顺利，全都有用。"
+    }
+  }
+},
+{
+  "id": "dialogue.koito.first",
+  "idolId": "koito",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "——呃……福丸小糸小姐。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "koito",
+      "text": "ぴゃ……！？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "koito",
+      "text": "诶、啊、那个……！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "不用那么紧张也没关系。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "koito",
+      "text": "………………",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "像平时那样回答就好。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "那么，先说说你想当偶像的契机…… 愿意告诉我你为什么报名 283 制作吗？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "koito",
+      "text": "………………",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "福丸小姐？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "koito",
+      "text": "…………大、大家……一起…………",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "啊，这样。你的幼驯染也在 283 制作呢。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "幼驯染之间，关系真好啊。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "koito",
+      "text": "…………！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "koito",
+      "text": "你、你明白吗……？就是这样……！我们非常要好……！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "……哈哈，嗯，我明白。大家能一起活动的话，会是不错的组合。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "koito",
+      "text": "诶嘿嘿……就是这样……！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "那么，在这之中，你自己想成为什么样的偶像？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "koito",
+      "text": "诶……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "撇开幼驯染，你自己想做的事、想成为的偶像，有吗？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "koito",
+      "text": "………………想成为的……偶像……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "koito",
+      "text": "………………",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "……有点难吗。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "koito",
+      "text": "啊……那个…………",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "koito",
+      "text": "我、我……那个……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "——那么，福丸小糸小姐。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "koito",
+      "text": "ぴゃい……！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "在偶像活动里，你想成为什么样的偶像，能想一想吗？",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "这就是你作为 283 制作旗下偶像的，第一个课题。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "koito",
+      "text": "………………诶！",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "今后请多指教。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "koito",
+      "text": "…………！好！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "啊，还有最后一件。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "你还是高一，和学业兼顾没问题吧？当然，也需要父母的同意。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "koito",
+      "text": "………………！",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "koito",
+      "text": "…………没、没问题……！"
+    }
+  }
+},
+{
+  "id": "dialogue.koito.homework",
+  "idolId": "koito",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "──好，资料完成……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "………咦，小糸？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "koito",
+      "text": "………………",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "……在写作业吗。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "koito",
+      "text": "………………",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "小糸，今天……之后有课吧。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "koito",
+      "text": "──好，作业写完了……！",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "哦哦，写完了吗，小糸。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "koito",
+      "text": "ぴゃ……！？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "koito",
+      "text": "ぷ、制作人先生……！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "抱歉，吓到你了。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "koito",
+      "text": "啊……不、没有……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "我从刚才就在看了，小糸完全没注意到呢。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "koito",
+      "text": "诶诶诶……你、你在看…………？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "哈哈，好厉害的专注力。不愧是你。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "而且解题也非常快。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "koito",
+      "text": "…………是、是吗……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "koito",
+      "text": "我、我这个范围已经……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "koito",
+      "text": "初中、学过所以……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "咦，这样啊？好厉害。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "koito",
+      "text": "只、只是知道解法而已……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "koito",
+      "text": "知道的话……谁都能…………",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "这、这样啊……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "啊，说起来小糸确实和其他三个人是不同初中──",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "koito",
+      "text": "啊…………是、是的……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "koito",
+      "text": "…………",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "…………啊──对了，这个！",
+      "choices": [
+        {
+          "label": "是糖哦！",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "是巧克力哦！",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "是口香糖哦！",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "producer",
+      "text": "……小糸，你喜欢这个吧？写作业的时候配着吃。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "koito",
+      "text": "诶……！你、你知道啊……！",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "koito",
+      "text": "为、为什么……！",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "哈哈，谁知道呢。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "koito",
+      "text": "诶、诶诶……！",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "producer",
+      "text": "哈哈，大概是事先预习了小糸的事吧。",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "producer",
+      "text": "猜对了吧？",
+      "nextNodeId": "107"
+    },
+    "107": {
+      "id": "107",
+      "speakerId": "koito",
+      "text": "…………正、正解……！"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "koito",
+      "text": "哇、哇……！巧克力……！",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "写作业的时候配着吃，大家都这么说吧？",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "producer",
+      "text": "不过，小糸好像已经把作业写完了。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "koito",
+      "text": "可、可以收下吗……！",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "producer",
+      "text": "嗯，当然。",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "koito",
+      "text": "…………！",
+      "nextNodeId": "126"
+    },
+    "126": {
+      "id": "126",
+      "speakerId": "koito",
+      "text": "…………唔嗯嗯～……！"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "producer",
+      "text": "听说边写作业边嚼口香糖不错……你要的话拿去。",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "koito",
+      "text": "啊……那个……谢、谢谢您……！",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "producer",
+      "text": "哈哈，更早一点给你就好了。",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "producer",
+      "text": "作业已经写完了对吧？",
+      "nextNodeId": "144"
+    },
+    "144": {
+      "id": "144",
+      "speakerId": "koito",
+      "text": "啊，不、不是那个……！",
+      "nextNodeId": "145"
+    },
+    "145": {
+      "id": "145",
+      "speakerId": "koito",
+      "text": "我、我会留着的……！好好珍惜……！"
+    }
+  }
+},
+{
+  "id": "dialogue.koito.notebook",
+  "idolId": "koito",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "koito",
+      "text": "…………！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "koito",
+      "text": "啊……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "koito",
+      "text": "门、锁着……怎怎怎怎么办……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "……咦，小糸？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "koito",
+      "text": "ぴゃ！？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "怎么了，这么一大早。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "koito",
+      "text": "啊……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "koito",
+      "text": "什、什么嘛……是制作人先生……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "koito",
+      "text": "──啊对了、对……！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "koito",
+      "text": "那个，是这样的……！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "koito",
+      "text": "我、我好像把笔记本放在事务所了……！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "原来如此，所以上学前来拿。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "koito",
+      "text": "是、是的……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "好，我马上开门。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "koito",
+      "text": "啊……拜、拜托您了……！",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "koito",
+      "text": "啊……有了……！找到了！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "哦哦，太好了！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "好……那么，快点吧！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "koito",
+      "text": "诶……！？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "我送你到学校。看，要迟到了！",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "koito",
+      "text": "诶诶……！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "koito",
+      "text": "不、不用了不用了！没、没问题的！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "不用那么客气也没关系哦？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "koito",
+      "text": "我、我不是在客气……！",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "小糸，你总是为了不迟到而提早出门吧。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "现在坐电车或者公交去，肯定我送更快。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "koito",
+      "text": "可、可是…………",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "开车的话从这里直接到校门口。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "所以，来，走吧！",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "koito",
+      "text": "这、这样……",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "koito",
+      "text": "那、那种像艺人一样的上学方式……！",
+      "choices": [
+        {
+          "label": "不坏吧？",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "就这么定了！",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "不是\"像\"，就是吧？",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "koito",
+      "text": "不、不坏是…………",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "koito",
+      "text": "不坏……呢…………！",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "producer",
+      "text": "哈哈，太好了。那么走吧！",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "koito",
+      "text": "……啊，谢谢您，制作人先生……！"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "koito",
+      "text": "诶、诶诶……！",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "koito",
+      "text": "不、不会被学校骂吗……！",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "producer",
+      "text": "我想不会吧……那就偷偷地、悄悄地去吧！",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "koito",
+      "text": "悄、悄悄地……！",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "koito",
+      "text": "好、好像艺人……！"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "producer",
+      "text": "小糸就是偶像啊。不是\"像\"，是艺人。",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "koito",
+      "text": "ぴぇ…………！",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "producer",
+      "text": "来，走吧！艺人上学！",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "koito",
+      "text": "等、等一下……！",
+      "nextNodeId": "144"
+    },
+    "144": {
+      "id": "144",
+      "speakerId": "koito",
+      "text": "请等一下啊，制作人先生……！"
+    }
+  }
+},
+{
+  "id": "dialogue.koito.park",
+  "idolId": "koito",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "koito",
+      "text": "──啊…………",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "哦，已经这个时间了。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "明明还很亮呢……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "koito",
+      "text": "……小朋友们都好好地跟着晚霞的钟声回去了呢。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "啊，是啊。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "koito",
+      "text": "………………",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "……哈哈，小糸也去公园坐坐吗？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "开个玩笑──",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "koito",
+      "text": "诶……！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "koito",
+      "text": "可、可以吗！？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "嗯，倒是没关系……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "koito",
+      "text": "哇、哇……！诶嘿嘿……！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "koito",
+      "text": "我、我想去！去吧，制作人先生……！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "koito",
+      "text": "你、你在做什么啊——！制作人先生——！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "koito",
+      "text": "快点过来啊——！",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "哦、哦哦……！我这就来……！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "koito",
+      "text": "……我，这个从以前就一直想试一次……！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "这样啊……？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "koito",
+      "text": "是的！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "koito",
+      "text": "和制作人先生在一起，能经历好多以前没有过的经验呢……！",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "koito",
+      "text": "──哈、哈啊～……！好、好开心……！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "……这样啊。那太好了。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "koito",
+      "text": "……和制作人先生在一起，尽是以前没发生过的事。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "……嗯。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "koito",
+      "text": "所以一定，过一阵子……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "koito",
+      "text": "很、很多事情都会慢慢顺利起来吧……！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "koito",
+      "text": "……为了那样，只能努力了呢。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "──是啊。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "koito",
+      "text": "不过，今天的甄选稍微……有、有点顺利的感觉！",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "koito",
+      "text": "虽然只有一点点——！"
+    }
+  }
+},
+{
+  "id": "dialogue.koito.second",
+  "idolId": "koito",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "——啊，小糸，能稍微过来一下吗。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "koito",
+      "text": "ぴゃ……！？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "koito",
+      "text": "…………什、什么事……！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "抱歉，吓到你了。能稍微过来一下吗？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "koito",
+      "text": "…………！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "不用那么警惕也没关系。我不是要生气，也不是要骂你。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "koito",
+      "text": "…………好、好的……！",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "那个，这个……加入 283 制作的时候，你从父母那里拿到文件了吧？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "koito",
+      "text": "…………！那、那个有什么问题吗！？是不是缺了什么……！？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "不，这个本身没有缺漏。只是要正式开始活动的话……",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "我想直接见一面打个招呼，或者说做说明和确认。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "你说父母都很忙，但也不能就这样推进小糸的活动。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "koito",
+      "text": "……………………",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "果然，很忙吗？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "koito",
+      "text": "………………是的。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "这样啊……那让我打一次电话……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "koito",
+      "text": "诶……！啊、那个……！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "koito",
+      "text": "确认！……我来确认……我自己来……！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "啊，这样吗？我这边会调整时间，你去问问父母方便的日子。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "koito",
+      "text": "……我、我知道了…………",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "koito",
+      "text": "……………………",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "……说起来，听说小糸成绩很好。学习和课程兼顾没问题吗？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "koito",
+      "text": "………………是的……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "……课程上了之后感觉怎么样？有什么困扰的事吗？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "koito",
+      "text": "………………没有……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "啊，对了，指导老师夸你了。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "说果然幼驯染就是不一样，大家很有默契。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "koito",
+      "text": "…………！诶……",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "koito",
+      "text": "那、那是真的吗……！",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "嗯，说类型完全不同，但有一体感。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "……我也这么想。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "koito",
+      "text": "诶……诶嘿嘿。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "而且小糸又认真又努力。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "koito",
+      "text": "哇…………！",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "听说你这样的地方，也给了其他成员好的影响。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "koito",
+      "text": "诶、诶嘿嘿……！就是这样！",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "koito",
+      "text": "大家，没有我可是不行的哦——！",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "哈哈，是啊。",
+      "choices": [
+        {
+          "label": "就依靠你了。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "一起加油吧。",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "和听说的完全一样。",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "producer",
+      "text": "作为制作人也是。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "koito",
+      "text": "好……！大、大家的事就交给我吧！",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "producer",
+      "text": "啊哈哈，是啊。",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "我好像明白小糸给了大家好的影响这句话了。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "producer",
+      "text": "看着小糸，就会想努力啊？",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "koito",
+      "text": "诶诶……那是什么意思……！？",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "koito",
+      "text": "等一下，制作人——！"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "producer",
+      "text": "为了大家，当然也为了小糸。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "不明白的事、不安的事，什么都可以问我。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "koito",
+      "text": "…………！那个……我、我…………",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "koito",
+      "text": "我，才没有那种东西哦——！",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "producer",
+      "text": "哈哈，这样啊。没有就好。不过要是有什么，随时告诉我。",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "producer",
+      "text": "真的，随时。"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "koito",
+      "text": "诶？",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "producer",
+      "text": "听说小糸一扯到幼驯染，表情就特别好。",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "koito",
+      "text": "……诶诶……！？",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "producer",
+      "text": "那样的、小糸的样子，要是能让更多人知道就好了。"
+    }
+  }
+},
+{
+  "id": "dialogue.koito.studio",
+  "idolId": "koito",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "koito",
+      "text": "……好、好厉害…………",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "koito",
+      "text": "ぴぇ……！啊，早、早上好……！",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "koito",
+      "text": "请、请多指教……！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "koito",
+      "text": "辛、辛苦了……！",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "koito",
+      "text": "……………………！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "哈哈，小糸不用那么紧张也没关系。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "koito",
+      "text": "我、我不是想紧张才紧张的……！",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "啊哈哈，那倒也是。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "不过，你可以有自信。小糸是被选中才站在这里的。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "这份工作，是小糸在甄选里抓住的。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "koito",
+      "text": "………………！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "第一次来拍摄现场的时候，我也吓了一跳。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "原来是这样的啊。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "koito",
+      "text": "是、是这样吧……！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "koito",
+      "text": "我、我在化妆间也吓了一跳……！",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "koito",
+      "text": "化妆师那个……像宝箱一样的东西里",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "koito",
+      "text": "闪闪发光的化妆工具一直往外冒……！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "嗯。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "koito",
+      "text": "摄影棚也特别晃眼，大人好多……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "koito",
+      "text": "这样的景色，我从来没见过，也不知道……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "……嗯。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "koito",
+      "text": "所、所以也从来没想象过。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "koito",
+      "text": "到现在为止，一次也没有梦到过。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "……这样啊。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "koito",
+      "text": "不过……以后每天，一定会梦到的。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "koito",
+      "text": "和制作人先生在一起，尽是第一次的事，全都像梦一样。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "……不是梦吧？",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "koito",
+      "text": "────啊……！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "……嗯？怎么了小糸？",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "koito",
+      "text": "要是捏一下，梦就会醒，所以我在保护它们，脸颊！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "…………！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "……哈哈，没事没事，不是梦。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "koito",
+      "text": "不、不行的……！我、我不会让你捏的……！"
+    }
+  }
+},
+{
   "id": "dialogue.madoka.blanket",
   "idolId": "madoka",
   "startNodeId": "1",
@@ -35888,6 +38001,118 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "kogane",
   "label": "为什么来东京",
   "text": "「因为想当偶像啊！……还有，想让更多人吃到好吃的，露出那种吃饱了的表情」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "koito.chat.candy",
+  "actorId": "koito",
+  "label": "糖",
+  "text": "「要糖吗？这个……不酸的。」「你随身带这么多？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "koito.chat.friends",
+  "actorId": "koito",
+  "label": "幼驯染",
+  "text": "「透ちゃん今天又睡过头了……」「你怎么知道？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "koito.chat.name",
+  "actorId": "koito",
+  "label": "名字",
+  "text": "「『福丸』……听起来有点呆呆的，对吧。」「不会啊。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "koito.chat.park",
+  "actorId": "koito",
+  "label": "公园",
+  "text": "「公园……以前不太喜欢。现在有点喜欢了。」「诶？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "koito.chat.sister",
+  "actorId": "koito",
+  "label": "妹妹",
+  "text": "「妹妹又让我买冰淇淋……」「你买了吗？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "koito.chat.study",
+  "actorId": "koito",
+  "label": "学习",
+  "text": "「明天有小测验……所以今天要早点回去。」「不用那么拼吧？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "koito.chat.today",
+  "actorId": "koito",
+  "label": "今天",
+  "text": "「今天……普、普通地努力了……！」「普通地？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "koito.chat.work",
+  "actorId": "koito",
+  "label": "工作",
+  "text": "「下次甄选……我会好好准备。」「紧张吗？」",
   "cooldownMinutes": 1440,
   "effects": [
     {

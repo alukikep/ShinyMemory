@@ -1,0 +1,210 @@
+{
+  "id": "draft.dialogue.koito.park",
+  "kind": "dialogue",
+  "title": "傍晚的公园，她站在游乐设施前",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.koito.park",
+  "payload": {
+    "id": "dialogue.koito.park",
+    "idolId": "koito",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "koito",
+        "text": "──啊…………",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "哦，已经这个时间了。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "明明还很亮呢……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "koito",
+        "text": "……小朋友们都好好地跟着晚霞的钟声回去了呢。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "啊，是啊。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "koito",
+        "text": "………………",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "……哈哈，小糸也去公园坐坐吗？",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "开个玩笑──",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "koito",
+        "text": "诶……！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "koito",
+        "text": "可、可以吗！？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "嗯，倒是没关系……",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "koito",
+        "text": "哇、哇……！诶嘿嘿……！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "koito",
+        "text": "我、我想去！去吧，制作人先生……！",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "koito",
+        "text": "你、你在做什么啊——！制作人先生——！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "koito",
+        "text": "快点过来啊——！",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "哦、哦哦……！我这就来……！",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "koito",
+        "text": "……我，这个从以前就一直想试一次……！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "这样啊……？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "koito",
+        "text": "是的！",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "koito",
+        "text": "和制作人先生在一起，能经历好多以前没有过的经验呢……！",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "koito",
+        "text": "──哈、哈啊～……！好、好开心……！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "……这样啊。那太好了。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "koito",
+        "text": "……和制作人先生在一起，尽是以前没发生过的事。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "……嗯。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "koito",
+        "text": "所以一定，过一阵子……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "koito",
+        "text": "很、很多事情都会慢慢顺利起来吧……！",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "koito",
+        "text": "……为了那样，只能努力了呢。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "──是啊。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "koito",
+        "text": "不过，今天的甄选稍微……有、有点顺利的感觉！",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "koito",
+        "text": "虽然只有一点点——！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T18:50:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.625Z",
+  "reviewedAt": "2026-11-01T06:14:27.625Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T18:50:00.000Z",
+      "note": "对照 202200404（傍晚的公园、一直想试的游乐设施、一点点顺利）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.625Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

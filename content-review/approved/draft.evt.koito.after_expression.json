@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.koito.after_expression",
+  "kind": "event",
+  "title": "她不敢看镜头",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.koito.after_expression",
+  "payload": {
+    "id": "evt.koito.after_expression",
+    "title": "她不敢看镜头",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "koito"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。老师让她对着镜头笑一下，她试了三次，第三次笑到一半就低下头。",
+    "choices": [
+      {
+        "label": "第三次，很好。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「那、那个……真的吗？我以为一定不行……」"
+      },
+      {
+        "label": "别低头，看着它。",
+        "hint": "表现 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「……好。我、我再看一次。」"
+      },
+      {
+        "label": "今天不练这个了。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……对不起。下次，我会好好笑的。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:32:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.632Z",
+  "reviewedAt": "2026-11-01T06:14:27.632Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:32:00.000Z",
+      "note": "小糸表演课后事件（怕被看着）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.632Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

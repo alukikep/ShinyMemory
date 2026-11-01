@@ -29,6 +29,8 @@ import rinzeEncounter from './rinzeEncounter';
 import kahoEncounter from './kahoEncounter';
 import kirikoCard from './kirikoCard';
 import kirikoEncounter from './kirikoEncounter';
+import koitoCard from './koitoCard';
+import koitoEncounter from './koitoEncounter';
 import mamimiNatural from './mamimiNatural';
 import manoNatural from './manoNatural';
 import manoSmile from './manoSmile';
@@ -93,6 +95,8 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   toruCard,
   madokaEncounter,
   madokaCard,
+  koitoEncounter,
+  koitoCard,
   manoSlump,
   hioriGap,
   meguruBurden,

@@ -1,0 +1,38 @@
+{
+  "id": "draft.koito.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.koito.chat.today",
+  "payload": {
+    "id": "koito.chat.today",
+    "actorId": "koito",
+    "label": "今天",
+    "text": "「今天……普、普通地努力了……！」「普通地？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:20:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.651Z",
+  "reviewedAt": "2026-11-01T06:14:27.651Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:20:00.000Z",
+      "note": "小糸日常话题（断句、ですます）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.651Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

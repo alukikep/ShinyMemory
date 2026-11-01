@@ -1,0 +1,228 @@
+{
+  "id": "draft.dialogue.koito.studio",
+  "kind": "dialogue",
+  "title": "第一次进摄影棚",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.koito.studio",
+  "payload": {
+    "id": "dialogue.koito.studio",
+    "idolId": "koito",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "koito",
+        "text": "……好、好厉害…………",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "koito",
+        "text": "ぴぇ……！啊，早、早上好……！",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "koito",
+        "text": "请、请多指教……！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "koito",
+        "text": "辛、辛苦了……！",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "koito",
+        "text": "……………………！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "哈哈，小糸不用那么紧张也没关系。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "koito",
+        "text": "我、我不是想紧张才紧张的……！",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "啊哈哈，那倒也是。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "不过，你可以有自信。小糸是被选中才站在这里的。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "这份工作，是小糸在甄选里抓住的。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "koito",
+        "text": "………………！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "第一次来拍摄现场的时候，我也吓了一跳。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "原来是这样的啊。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "koito",
+        "text": "是、是这样吧……！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "koito",
+        "text": "我、我在化妆间也吓了一跳……！",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "koito",
+        "text": "化妆师那个……像宝箱一样的东西里",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "koito",
+        "text": "闪闪发光的化妆工具一直往外冒……！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "嗯。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "koito",
+        "text": "摄影棚也特别晃眼，大人好多……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "koito",
+        "text": "这样的景色，我从来没见过，也不知道……",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "……嗯。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "koito",
+        "text": "所、所以也从来没想象过。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "koito",
+        "text": "到现在为止，一次也没有梦到过。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "……这样啊。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "koito",
+        "text": "不过……以后每天，一定会梦到的。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "koito",
+        "text": "和制作人先生在一起，尽是第一次的事，全都像梦一样。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "……不是梦吧？",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "koito",
+        "text": "────啊……！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "……嗯？怎么了小糸？",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "koito",
+        "text": "要是捏一下，梦就会醒，所以我在保护它们，脸颊！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "…………！",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "……哈哈，没事没事，不是梦。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "koito",
+        "text": "不、不行的……！我、我不会让你捏的……！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:00:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.627Z",
+  "reviewedAt": "2026-11-01T06:14:27.627Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:00:00.000Z",
+      "note": "对照 202200411（第一次进摄影棚、化妆间、守着脸颊）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.627Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

@@ -1,0 +1,370 @@
+{
+  "id": "draft.dialogue.koito.second",
+  "kind": "dialogue",
+  "title": "她抱着一叠文件站在门口",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.koito.second",
+  "payload": {
+    "id": "dialogue.koito.second",
+    "idolId": "koito",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "——啊，小糸，能稍微过来一下吗。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "koito",
+        "text": "ぴゃ……！？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "koito",
+        "text": "…………什、什么事……！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "抱歉，吓到你了。能稍微过来一下吗？",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "koito",
+        "text": "…………！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "不用那么警惕也没关系。我不是要生气，也不是要骂你。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "koito",
+        "text": "…………好、好的……！",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "那个，这个……加入 283 制作的时候，你从父母那里拿到文件了吧？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "koito",
+        "text": "…………！那、那个有什么问题吗！？是不是缺了什么……！？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "不，这个本身没有缺漏。只是要正式开始活动的话……",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "我想直接见一面打个招呼，或者说做说明和确认。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "你说父母都很忙，但也不能就这样推进小糸的活动。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "koito",
+        "text": "……………………",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "果然，很忙吗？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "koito",
+        "text": "………………是的。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "这样啊……那让我打一次电话……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "koito",
+        "text": "诶……！啊、那个……！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "koito",
+        "text": "确认！……我来确认……我自己来……！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "啊，这样吗？我这边会调整时间，你去问问父母方便的日子。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "koito",
+        "text": "……我、我知道了…………",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "koito",
+        "text": "……………………",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "……说起来，听说小糸成绩很好。学习和课程兼顾没问题吗？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "koito",
+        "text": "………………是的……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "……课程上了之后感觉怎么样？有什么困扰的事吗？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "koito",
+        "text": "………………没有……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "啊，对了，指导老师夸你了。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "说果然幼驯染就是不一样，大家很有默契。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "koito",
+        "text": "…………！诶……",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "koito",
+        "text": "那、那是真的吗……！",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "嗯，说类型完全不同，但有一体感。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "……我也这么想。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "koito",
+        "text": "诶……诶嘿嘿。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "而且小糸又认真又努力。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "koito",
+        "text": "哇…………！",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "听说你这样的地方，也给了其他成员好的影响。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "koito",
+        "text": "诶、诶嘿嘿……！就是这样！",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "koito",
+        "text": "大家，没有我可是不行的哦——！",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "哈哈，是啊。",
+        "choices": [
+          {
+            "label": "就依靠你了。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "一起加油吧。",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "和听说的完全一样。",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "producer",
+        "text": "作为制作人也是。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "koito",
+        "text": "好……！大、大家的事就交给我吧！",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "producer",
+        "text": "啊哈哈，是啊。",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "我好像明白小糸给了大家好的影响这句话了。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "看着小糸，就会想努力啊？",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "koito",
+        "text": "诶诶……那是什么意思……！？",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "koito",
+        "text": "等一下，制作人——！"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "producer",
+        "text": "为了大家，当然也为了小糸。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "不明白的事、不安的事，什么都可以问我。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "koito",
+        "text": "…………！那个……我、我…………",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "koito",
+        "text": "我，才没有那种东西哦——！",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "producer",
+        "text": "哈哈，这样啊。没有就好。不过要是有什么，随时告诉我。",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "producer",
+        "text": "真的，随时。"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "koito",
+        "text": "诶？",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "producer",
+        "text": "听说小糸一扯到幼驯染，表情就特别好。",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "koito",
+        "text": "……诶诶……！？",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "producer",
+        "text": "那样的、小糸的样子，要是能让更多人知道就好了。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T18:10:00.000Z",
+  "updatedAt": "2026-11-01T06:14:26.429Z",
+  "reviewedAt": "2026-11-01T06:14:26.429Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T18:10:00.000Z",
+      "note": "对照 102200102（文件、父母不知情、被夸、えっへん、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:26.429Z"
+    }
+  ]
+}

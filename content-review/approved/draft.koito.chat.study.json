@@ -1,0 +1,38 @@
+{
+  "id": "draft.koito.chat.study",
+  "kind": "topic",
+  "title": "聊天 · 学习",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.koito.chat.study",
+  "payload": {
+    "id": "koito.chat.study",
+    "actorId": "koito",
+    "label": "学习",
+    "text": "「明天有小测验……所以今天要早点回去。」「不用那么拼吧？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:22:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.649Z",
+  "reviewedAt": "2026-11-01T06:14:27.649Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:22:00.000Z",
+      "note": "小糸日常话题（小测验、预习 [202200403]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.649Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

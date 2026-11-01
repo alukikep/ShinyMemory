@@ -1,0 +1,38 @@
+{
+  "id": "draft.koito.chat.work",
+  "kind": "topic",
+  "title": "聊天 · 工作",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.koito.chat.work",
+  "payload": {
+    "id": "koito.chat.work",
+    "actorId": "koito",
+    "label": "工作",
+    "text": "「下次甄选……我会好好准备。」「紧张吗？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T19:26:00.000Z",
+  "updatedAt": "2026-11-01T06:14:27.653Z",
+  "reviewedAt": "2026-11-01T06:14:27.653Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T19:26:00.000Z",
+      "note": "小糸日常话题（甄选、紧张 [202200403/202200411]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:14:27.653Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

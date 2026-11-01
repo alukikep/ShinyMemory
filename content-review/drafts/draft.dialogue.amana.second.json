@@ -1,0 +1,245 @@
+{
+  "id": "draft.dialogue.amana.second",
+  "kind": "dialogue",
+  "title": "新人联合 live 的后台",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.amana.second",
+  "payload": {
+    "id": "dialogue.amana.second",
+    "idolId": "amana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "amana",
+        "text": "哇——好厉害，这些孩子全都是偶像啊。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "和甘奈立场差不多的新人偶像。今天是好几个新人组合出场的联合 live。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "不过规模没有 W.I.N.G. 那么大，不用紧张。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "amana",
+        "text": "W.I.N.G.……？啊！那个啊，那个超厉害的嘛！",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "amana",
+        "text": "甘奈好好知道的哦！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "（太好了，看来没紧张……甘奈似乎很放松。）",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "下一个，大崎甘奈小姐，请——！",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "喏，甘奈，到你了。精神满满地上吧！",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "amana",
+        "text": "嗯！制作人先生，我去了哦！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "amana",
+        "text": "大家——！今天请多指教——！一起开心起来吧！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "amana",
+        "text": "诶嘿，谢谢！甘奈也最喜欢大家了！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "（甘奈很大方啊。嗯，也有好好地回应客人。）",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "（明明才刚出道，还不习惯活动，真厉害。）",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "amana",
+        "text": "制作人先生，我回来啦——！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "甘奈，辛苦了！表现很好！",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "今后非常值得期待！照这个状态努力，W.I.N.G. 也不是梦！",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "amana",
+        "text": "诶嘿嘿，谢谢！舞台超——开心的！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "amana",
+        "text": "客人也超——用力给甘奈应援了，好开心啊。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "这样啊，那就好。能享受舞台，对偶像来说是重要的事。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "amana",
+        "text": "诶嘿嘿，是这样啊……",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "amana",
+        "text": "作为偶像重要的事，是吗……唔——",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "怎么了？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "amana",
+        "text": "呐，制作人先生。甘奈，怎么样？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "（……\"怎么样\"是什么意思？刚才夸过了，难道不够吗……？）",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "……抱歉，是什么意思？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "amana",
+        "text": "那个……甘奈，能当好偶像吗？",
+        "choices": [
+          {
+            "label": "甘奈的话没问题。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "今天这样就不错。",
+            "nextNodeId": "110"
+          },
+          {
+            "label": "先休息一下吧。",
+            "nextNodeId": "120"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "amana",
+        "text": "诶，真的？嘿嘿……听你这么说，甘奈有点安心了。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "（她一直在担心这个啊。）",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "amana",
+        "text": "那，下次的舞台也要好好看着甘奈哦☆"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "amana",
+        "text": "今天这样……啊，那甘奈就照今天这样继续做下去！",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "producer",
+        "text": "嗯，先这样。慢慢把能做的事变多就好。",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "amana",
+        "text": "了解！甘奈会一点点变厉害的☆"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "amana",
+        "text": "啊，好——甘奈也有点累了。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "今天很努力了。回去好好休息。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "amana",
+        "text": "诶嘿，那甘奈就听你的，先休息啦☆"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:00:00.000Z",
+  "updatedAt": "2026-11-02T09:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:00:00.000Z",
+      "note": "对照 101400102（三分支，保留三个选项）"
+    }
+  ]
+}

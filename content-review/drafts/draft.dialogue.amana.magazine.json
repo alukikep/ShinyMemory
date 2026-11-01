@@ -1,0 +1,288 @@
+{
+  "id": "draft.dialogue.amana.magazine",
+  "kind": "dialogue",
+  "title": "她留在事务所翻杂志",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.amana.magazine",
+  "payload": {
+    "id": "dialogue.amana.magazine",
+    "idolId": "amana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "（嗯？是甘奈。课程明明已经结束了啊。）",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "怎么了甘奈，不回去吗？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "amana",
+        "text": "啊，制作人先生。甘奈想稍微看一下杂志再走。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "这样啊。那是时装杂志？",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "amana",
+        "text": "嗯，是啊——事务所真是有好多杂志呢！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "amana",
+        "text": "所以这本也想看那本也想看，不知不觉就留下来看完了☆",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "amana",
+        "text": "真的，每一本都好可——爱～",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "看起来很开心啊。果然甘奈喜欢看衣服。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "amana",
+        "text": "算是吧☆想什么样的搭配适合自己，想着就很开心。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "amana",
+        "text": "啊，这条薄纱好可爱——这边的牛仔迷你也不错！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "（她看杂志看得很投入啊。那我去那边……）",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "amana",
+        "text": "呐，制作人先生，看这个！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "啊，嗯。哪个哪个？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "amana",
+        "text": "你看，这件衬衫！蝴蝶结和蕾丝的感觉不错吧——？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "是啊，很可爱吧？有点缀的话也会成为亮点。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "amana",
+        "text": "对吧！配一件灰色外套……下装要短裤好呢～",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "amana",
+        "text": "啊，不过果然还是裙子好！制作人先生喜欢哪个——？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "我？我觉得两种搭配都很合适。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "amana",
+        "text": "唔唔，制作人先生两个都喜欢啊～啊，那这条紧身裙呢？",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "amana",
+        "text": "偶尔走成熟一点的路线也不错吧？",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "成熟啊……之前没往那个方向想过，不过也许值得一试！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "amana",
+        "text": "哦！既然制作人先生这么说，这个也记下来吧！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "amana",
+        "text": "还有～……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "amana",
+        "text": "啊，制作人先生这套搭配怎么样？超可爱的吧～？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "哦，确实不错。到现在看过的里面，这套最适合甘奈。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "amana",
+        "text": "诶，适合甘奈！？",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "咦？怎么这么惊讶？我觉得很适合啊……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "amana",
+        "text": "诶嘿嘿，不是啦～甘奈不是在问甘奈，是在问甜花穿这套怎么样☆",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "啊，是这个意思啊。我一直以为是在说甘奈的衣服。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "既然这样……我想想……这套甜花穿也合适！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "amana",
+        "text": "对吧☆甜花要是穿这个，绝对超可爱～",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "amana",
+        "text": "不过呢，甜花什么都很合适就是了☆",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "不过，甘奈看杂志的时候也在想着甜花啊。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "amana",
+        "text": "诶嘿嘿，是啊。不知不觉就净想着甜花了。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "amana",
+        "text": "所以刚才那个算是突然袭击吧。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "刚才……啊，是说我说错了那件事。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "amana",
+        "text": "嗯，\"适合甘奈\"那句。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "我没打算让你那么吃惊啊。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "amana",
+        "text": "唔——与其说吓了一跳……",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "amana",
+        "text": "也许是开心吧。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "哦，这样啊。",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "amana",
+        "text": "那、那——甘奈差不多该回去了！",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "amana",
+        "text": "拜拜——制作人先生☆",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "（怎么了？一转眼就出去了……）"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:00:00.000Z",
+  "updatedAt": "2026-11-02T09:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:00:00.000Z",
+      "note": "对照 201400301（杂志、误以为给她挑、其实是甜花）"
+    }
+  ]
+}

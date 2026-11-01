@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.amana.after_vocal",
+  "kind": "event",
+  "title": "唱完先看手机",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.amana.after_vocal",
+  "payload": {
+    "id": "evt.amana.after_vocal",
+    "title": "唱完先看手机",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "amana"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束了。她唱完先看了一眼手机，说要把今天的感觉记下来。",
+    "choices": [
+      {
+        "label": "记什么？",
+        "hint": "信任 +3、歌唱 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          }
+        ],
+        "result": "「今天的甘奈，感觉很好☆」她把屏幕转过来给你看。"
+      },
+      {
+        "label": "很好。",
+        "hint": "歌唱 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「诶嘿嘿，那甘奈下次要更好☆」"
+      },
+      {
+        "label": "先喝口水。",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「啊，谢谢！甘奈正好想喝☆」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:20:00.000Z",
+  "updatedAt": "2026-11-02T09:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:20:00.000Z",
+      "note": "甘奈声乐课后事件（她每天写日记）"
+    }
+  ]
+}

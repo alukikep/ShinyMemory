@@ -1,0 +1,312 @@
+{
+  "id": "draft.dialogue.amana.window",
+  "kind": "dialogue",
+  "title": "她在店门口看了很久",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.amana.window",
+  "payload": {
+    "id": "dialogue.amana.window",
+    "idolId": "amana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "（离碰头还有时间……稍微走走看吧。）",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "amana",
+        "text": "啊，是制作人先生！",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "哦，甘奈啊。真巧。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "amana",
+        "text": "制作人先生在这里做什么呢？",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "接下来要跟客户公司碰头，谈组合的工作。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "amana",
+        "text": "诶嘿嘿，制作人先生在为了我们努力啊！",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "amana",
+        "text": "甘奈也要在偶像工作上努力，不能输给制作人先生的努力哦☆",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "听你这么说，我这边也更有干劲了。不过休息日好好休息也行哦。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "amana",
+        "text": "不要紧。该工作时工作、该休息时休息的道理，甘奈也懂的。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "是啊。看来我不用操心。话说，甘奈在这里做什么？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "amana",
+        "text": "杂志上看到一件在意的衣服，就来看看店☆",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "不过你手上是空的啊，什么都没买吗？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "amana",
+        "text": "嗯，虽然真的很可爱。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "amana",
+        "text": "价钱上……所以犹豫了很久，还是没买。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "为了打扮就不惜花钱——倒也不是那样啊。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "amana",
+        "text": "嘛，当偶像是有拿工资啦，不过一半交给爸妈保管……所以支出尽量想压一压嘛。",
+        "choices": [
+          {
+            "label": "真的很靠得住啊。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "想了解甘奈的喜好。",
+            "nextNodeId": "110"
+          },
+          {
+            "label": "活动上就穿那件吧。",
+            "nextNodeId": "120"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "amana",
+        "text": "嗯——这样吗？不过，被这么说会开心呢☆",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "amana",
+        "text": "自己是不太清楚，不过从小就被说可靠。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "amana",
+        "text": "甘奈之所以可靠？也许是因为很想和甜花待在一起吧。",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "了不起啊，甘奈很自立。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "amana",
+        "text": "诶嘿嘿，是吗？不过呢……",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "amana",
+        "text": "有件事只希望制作人先生知道哦。",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "producer",
+        "text": "什么？",
+        "nextNodeId": "107"
+      },
+      "107": {
+        "id": "107",
+        "speakerId": "amana",
+        "text": "靠得住的人啊……也不是对谁都不撒娇的哦？",
+        "nextNodeId": "108"
+      },
+      "108": {
+        "id": "108",
+        "speakerId": "producer",
+        "text": "？",
+        "nextNodeId": "109"
+      },
+      "109": {
+        "id": "109",
+        "speakerId": "amana",
+        "text": "那——这是指谁呢——？",
+        "nextNodeId": "110"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "amana",
+        "text": "哦，为什么？",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "producer",
+        "text": "知道甘奈的喜好，准备衣服的时候可以当参考。",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "amana",
+        "text": "哇，会给甘奈做喜欢的衣服啊！谢啦——！",
+        "nextNodeId": "113"
+      },
+      "113": {
+        "id": "113",
+        "speakerId": "amana",
+        "text": "……不过呢，那虽然开心，但当偶像会穿到自己以前不会选的衣服吧？",
+        "nextNodeId": "114"
+      },
+      "114": {
+        "id": "114",
+        "speakerId": "amana",
+        "text": "甘奈，那个也挺期待的☆",
+        "nextNodeId": "115"
+      },
+      "115": {
+        "id": "115",
+        "speakerId": "producer",
+        "text": "原来如此，也有这种看法啊。",
+        "nextNodeId": "116"
+      },
+      "116": {
+        "id": "116",
+        "speakerId": "amana",
+        "text": "诶嘿，让别人帮忙选衣服很开心哦，制作人先生！",
+        "nextNodeId": "117"
+      },
+      "117": {
+        "id": "117",
+        "speakerId": "amana",
+        "text": "所以呢……下次挑衣服的时候，制作人先生也一起来好吗？",
+        "nextNodeId": "118"
+      },
+      "118": {
+        "id": "118",
+        "speakerId": "producer",
+        "text": "啊，嗯。我记着了。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "amana",
+        "text": "这样也可以的吗？",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "嗯。如果穿那件去活动，可以当必要经费处理。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "amana",
+        "text": "唔……还有这种办法……",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "amana",
+        "text": "……可是，那样不行吧。经费说到底也是公司的钱吧？",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "amana",
+        "text": "不能浪费！",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "producer",
+        "text": "浪费公司的钱啊……被这么说的话……",
+        "nextNodeId": "126"
+      },
+      "126": {
+        "id": "126",
+        "speakerId": "amana",
+        "text": "诶嘿，制作人先生是在替甘奈着想吧？",
+        "nextNodeId": "127"
+      },
+      "127": {
+        "id": "127",
+        "speakerId": "amana",
+        "text": "那甘奈非常开心哦☆",
+        "nextNodeId": "128"
+      },
+      "128": {
+        "id": "128",
+        "speakerId": "amana",
+        "text": "不过，这次就心领啦☆",
+        "nextNodeId": "129"
+      },
+      "129": {
+        "id": "129",
+        "speakerId": "producer",
+        "text": "知道了。总觉得让你费心了，抱歉。",
+        "nextNodeId": "130"
+      },
+      "130": {
+        "id": "130",
+        "speakerId": "amana",
+        "text": "不会啦。啊，不过制作人先生虽然可靠……"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:00:00.000Z",
+  "updatedAt": "2026-11-02T09:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:00:00.000Z",
+      "note": "对照 201400302（三分支，保留三个选项）"
+    }
+  ]
+}

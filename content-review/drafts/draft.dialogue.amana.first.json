@@ -1,0 +1,222 @@
+{
+  "id": "draft.dialogue.amana.first",
+  "kind": "dialogue",
+  "title": "叫到下一个试镜的人",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.amana.first",
+  "payload": {
+    "id": "dialogue.amana.first",
+    "idolId": "amana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "amana",
+        "text": "请——多指教☆",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "这边才是，请多指教。首先，能告诉我你的名字吗？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "amana",
+        "text": "好——大崎甘奈，17 岁哦！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "试镜的孩子大多会紧张，大崎倒是很有精神啊。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "amana",
+        "text": "诶嘿，在学校也常被这么说☆",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "这样啊。大崎在学校是什么样的？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "amana",
+        "text": "嗯——和朋友聊时装啊，放学后去逛街什么的！",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "amana",
+        "text": "啊，最近迷上自拍了☆",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "学校听起来很开心呢。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "amana",
+        "text": "当然！还有，常被问打扮得这么辣妹是为什么。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "amana",
+        "text": "这也是因为，想全力享受只有现在才能做的事。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "（不只是打扮，连活法都有自己的一套的孩子啊。）",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "那，能说说你参加这次试镜的理由吗？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "amana",
+        "text": "这个啊，是因为想和甜花一起当偶像！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "甜花……啊，在资料里见过。是姐姐吗？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "amana",
+        "text": "对对！甜花可——可爱了！",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "amana",
+        "text": "甜花要是当了偶像，大家都会被她迷得团团转的！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "大崎很喜欢姐姐呢。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "amana",
+        "text": "当然，最喜欢了☆",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "真是叫人羡慕的姐妹情。不过，现在是在面试你，也可以说点别的吗？",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "amana",
+        "text": "诶嘿，说得也是。唔，是问志愿理由对吧。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "amana",
+        "text": "甘奈呢，是想和甜花一起当偶像，一起闪闪发光！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "amana",
+        "text": "这样不行吗？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "当偶像，比你想的要辛苦得多哦。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "amana",
+        "text": "不要紧！甘奈不是说着玩的。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "amana",
+        "text": "既然要做就要认真做。也不想给支持甘奈的事务所添麻烦。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "（哦，意外地很认真啊。）",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "（作为偶像的魅力足够，性格看起来也很扎实。）",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "（感情好的双胞胎偶像吗……嗯，也许不错。）",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "大崎，试镜，你合格了。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "amana",
+        "text": "诶，真的？甘奈，合格了？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "嗯！今后就一起加油吧！",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "amana",
+        "text": "太好了！这边才是，请多指教——！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:00:00.000Z",
+  "updatedAt": "2026-11-02T09:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:00:00.000Z",
+      "note": "对照 101400101（试镜：辣妹的理由、想和甜花一起）"
+    }
+  ]
+}

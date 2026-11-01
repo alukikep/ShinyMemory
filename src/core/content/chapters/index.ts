@@ -7,6 +7,8 @@ import koganeCard from './koganeCard';
 import koganeEncounter from './koganeEncounter';
 import juriCard from './juriCard';
 import juriEncounter from './juriEncounter';
+import amanaCard from './amanaCard';
+import amanaEncounter from './amanaEncounter';
 import kahoCard from './kahoCard';
 import natsuhaCard from './natsuhaCard';
 import natsuhaEncounter from './natsuhaEncounter';
@@ -49,6 +51,8 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   rinzeCard,
   natsuhaEncounter,
   natsuhaCard,
+  amanaEncounter,
+  amanaCard,
   chiyokoEncounter,
   chiyokoCard,
   juriEncounter,

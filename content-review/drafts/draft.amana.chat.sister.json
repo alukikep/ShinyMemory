@@ -1,0 +1,32 @@
+{
+  "id": "draft.amana.chat.sister",
+  "kind": "topic",
+  "title": "聊天 · 甜花",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.amana.chat.sister",
+  "payload": {
+    "id": "amana.chat.sister",
+    "actorId": "amana",
+    "label": "甜花",
+    "text": "「甜花可——可爱了！」「制作人先生也知道吧？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:16:00.000Z",
+  "updatedAt": "2026-11-02T09:16:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:16:00.000Z",
+      "note": "甘奈日常话题（双子姐姐）"
+    }
+  ]
+}

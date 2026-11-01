@@ -1,0 +1,32 @@
+{
+  "id": "draft.amana.chat.nail",
+  "kind": "topic",
+  "title": "聊天 · 美甲",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.amana.chat.nail",
+  "payload": {
+    "id": "amana.chat.nail",
+    "actorId": "amana",
+    "label": "美甲",
+    "text": "「美甲！下周要换什么颜色呢～」「诶嘿，已经想好了☆」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:13:00.000Z",
+  "updatedAt": "2026-11-02T09:13:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:13:00.000Z",
+      "note": "甘奈日常话题（API 兴趣：ネイル）"
+    }
+  ]
+}

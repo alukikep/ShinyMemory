@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.amana.after_dance",
+  "kind": "event",
+  "title": "拍下来了",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.amana.after_dance",
+  "payload": {
+    "id": "evt.amana.after_dance",
+    "title": "拍下来了",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "amana"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她举着手机把刚才的走位录了一遍，说要回去慢慢看。",
+    "choices": [
+      {
+        "label": "给我也看看。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「可以哦！不过要夸甘奈哦☆」"
+      },
+      {
+        "label": "再来一遍。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好！这次要更利落☆」"
+      },
+      {
+        "label": "今天就到这里。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「嗯！那甘奈回去看录像～」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:20:00.000Z",
+  "updatedAt": "2026-11-02T09:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:20:00.000Z",
+      "note": "甘奈舞蹈课后事件（自拍/记录的习惯）"
+    }
+  ]
+}

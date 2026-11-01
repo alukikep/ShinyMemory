@@ -1,4 +1,5 @@
 import type { ActorDef } from '../../types';
+import amana from './amana';
 import chiyoko from './chiyoko';
 import hazuki from './hazuki';
 import hiori from './hiori';
@@ -15,4 +16,4 @@ import sakuya from './sakuya';
 import tsutomu from './tsutomu';
 import yuika from './yuika';
 
-export const ACTORS: ActorDef[] = [hazuki, tsutomu, mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze, natsuha];
+export const ACTORS: ActorDef[] = [hazuki, tsutomu, mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze, natsuha, amana];

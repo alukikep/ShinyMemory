@@ -1,0 +1,32 @@
+{
+  "id": "draft.amana.chat.morning",
+  "kind": "topic",
+  "title": "聊天 · 早起",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.amana.chat.morning",
+  "payload": {
+    "id": "amana.chat.morning",
+    "actorId": "amana",
+    "label": "早起",
+    "text": "「甘奈早上很强的！」「会好好准备，所以出门很快哦☆」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:15:00.000Z",
+  "updatedAt": "2026-11-02T09:15:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:15:00.000Z",
+      "note": "甘奈日常话题（API 特技：早起き）"
+    }
+  ]
+}

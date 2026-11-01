@@ -30,6 +30,7 @@ export const STARTING_STATE = {
     rinze: 'unknown',
     // 夏葉是档案型：她是自己通过书面审查进的事务所，制作人第一次去练习室见她。
     natsuha: 'known',
+    amana: 'unknown',
   } as Record<string, IdolStatus>,
   dialogueId: 'dialogue.prologue.office',
 } as const;

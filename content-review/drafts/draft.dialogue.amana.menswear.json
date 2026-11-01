@@ -1,0 +1,264 @@
+{
+  "id": "draft.dialogue.amana.menswear",
+  "kind": "dialogue",
+  "title": "她拉你去一家男装店",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.amana.menswear",
+  "payload": {
+    "id": "dialogue.amana.menswear",
+    "idolId": "amana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "今天的工作很辛苦，你累不累？",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "amana",
+        "text": "完全——不累哦！",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "是吗？那就好。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "amana",
+        "text": "诶嘿嘿，和制作人先生在一起，甘奈就一直是笑眯眯的☆",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "amana",
+        "text": "因为制作人先生很重视甘奈嘛！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "amana",
+        "text": "今天连工作结束后都陪着我……",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "只是逛街的话，我随时都可以。不过啊……甘奈已经是人气偶像了，在这么热闹的地方没问题吗？",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "amana",
+        "text": "不要紧！堂堂正正的话，意外地不会被认出来哦？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "amana",
+        "text": "而且，喘口气也是必要的吧？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "确实需要喘口气，最近的甘奈非常努力。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "amana",
+        "text": "制作人先生这么说，甘奈也很开心！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "明明最近工作变多很忙，甘奈还能开开心心的，帮大忙了。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "amana",
+        "text": "不是的，甘奈是真的从心底觉得开心！甘奈在制作人先生面前不会勉强的。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "这样啊……心情上确实有不少变化呢。能感觉你作为偶像在一点点成长，作为制作人，我非常高兴。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "amana",
+        "text": "哎呀～夸太过了啦～诶嘿嘿……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "好！为了犒劳平时努力的你，今天就陪你到底。那，想买什么？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "amana",
+        "text": "杂志上看到一件超在意的衣服，今天想看看那个。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "想去哪家店已经定了吗？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "amana",
+        "text": "当然！这边这边——",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "amana",
+        "text": "当当——！就是这家店哦☆",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "amana",
+        "text": "你看你看，橱窗里摆的那件，甘奈觉得超合适的～☆",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "不，不过这家店……不是男装店吗？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "amana",
+        "text": "诶嘿嘿，吓到了？今天是想和制作人先生一起看衣服啦。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "amana",
+        "text": "啊，这件绝对适合你！",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "amana",
+        "text": "呐，怎么样？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "怎么样……",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "amana",
+        "text": "制作人先生啊，总是穿西装，不过其实底子不错哦。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "amana",
+        "text": "所以甘奈，想看看制作人先生各种各样样子？",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "唔……就算你这么说，也没办法啊……",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "amana",
+        "text": "不行，平时一直受你照顾，偶尔也让甘奈回礼嘛！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "不，不过总觉得不好意思。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "amana",
+        "text": "不会啦。因为这是甘奈的任性……今天的制作人先生，是听的那个哦……",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "amana",
+        "text": "而且，说今天要陪我到底的，是哪位来着～？",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "……嗯、嗯。是啊，知道了！今天就全交给甘奈吧！",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "amana",
+        "text": "太好了！就这么定啦！",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "amana",
+        "text": "那，衬衫就那件、裤子那件，鞋子好像也有不错的……哦，那顶帽子也可以？",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "有、有那么多吗？",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "amana",
+        "text": "当然！因为一直在想各种搭配嘛。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "amana",
+        "text": "今天要把制作人先生按甘奈的喜好改造一下哦！",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "amana",
+        "text": "诶嘿嘿，所以要有心理准备哦☆制作人先生。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:00:00.000Z",
+  "updatedAt": "2026-11-02T09:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:00:00.000Z",
+      "note": "对照 201400311（男装店、给制作人挑衣服）"
+    }
+  ]
+}

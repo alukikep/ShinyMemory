@@ -368,4 +368,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: '目指すなら世界一よ', index: 3, total: 3 },
     anchors: ['2013003110010', '2013003110130', '2013003110190'],
   },
+  {
+    chapterId: 'amana-magazine',
+    script: '201400301',
+    source: '剧本 201400301',
+    card: { title: 'パーフェクト・スマイル', index: 1, total: 3 },
+    anchors: ['2014003010010', '2014003010170', '2014003010240'],
+  },
+  {
+    chapterId: 'amana-window',
+    script: '201400302',
+    source: '剧本 201400302',
+    card: { title: 'パーフェクト・スマイル', index: 2, total: 3 },
+    anchors: ['2014003020010', '2014003020060', '2014003020090'],
+  },
+  {
+    chapterId: 'amana-menswear',
+    script: '201400311',
+    source: '剧本 201400311',
+    card: { title: 'パーフェクト・スマイル', index: 3, total: 3 },
+    anchors: ['2014003110010', '2014003110140', '2014003110190'],
+  },
 ];

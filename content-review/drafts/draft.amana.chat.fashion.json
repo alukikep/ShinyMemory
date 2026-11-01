@@ -1,0 +1,32 @@
+{
+  "id": "draft.amana.chat.fashion",
+  "kind": "topic",
+  "title": "聊天 · 时装",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.amana.chat.fashion",
+  "payload": {
+    "id": "amana.chat.fashion",
+    "actorId": "amana",
+    "label": "时装",
+    "text": "「时装！看新衣服、想搭配，超开心的吧～」「下次一起去逛？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:11:00.000Z",
+  "updatedAt": "2026-11-02T09:11:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:11:00.000Z",
+      "note": "甘奈日常话题（API 兴趣：ショッピング）"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.amana.after_expression",
+  "kind": "event",
+  "title": "笑容练到脸酸",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.amana.after_expression",
+  "payload": {
+    "id": "evt.amana.after_expression",
+    "title": "笑容练到脸酸",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "amana"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。她揉着脸说笑太久会酸，然后又笑了一下确认还能笑。",
+    "choices": [
+      {
+        "label": "辛苦了。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「诶嘿，甘奈的笑容，还行吧？」"
+      },
+      {
+        "label": "不用一直笑。",
+        "hint": "信任 +3、压力 -3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「……那样啊。那甘奈，稍微歇一下。」"
+      },
+      {
+        "label": "再试一次。",
+        "hint": "表现 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好！这次要来真的哦☆」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T09:20:00.000Z",
+  "updatedAt": "2026-11-02T09:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T09:20:00.000Z",
+      "note": "甘奈表演课后事件（\"大丈夫だよっ☆\"的背面）"
+    }
+  ]
+}

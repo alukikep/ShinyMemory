@@ -2,7 +2,7 @@
   "id": "draft.chiyuki.chat.coffee",
   "kind": "topic",
   "title": "聊天 · 咖啡",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.chiyuki.chat.coffee",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:13:00.000Z",
-  "updatedAt": "2026-11-02T11:13:00.000Z",
+  "updatedAt": "2026-11-01T03:52:38.722Z",
+  "reviewedAt": "2026-11-01T03:52:38.722Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:13:00.000Z",
       "note": "千雪日常话题（201600301 马克杯）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:38.722Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.dialogue.chiyuki.mug",
   "kind": "dialogue",
   "title": "新开的杂货屋里都是小东西",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.chiyuki.mug",
   "payload": {
@@ -211,12 +211,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:00:00.000Z",
-  "updatedAt": "2026-11-02T11:00:00.000Z",
+  "updatedAt": "2026-11-01T03:52:32.593Z",
+  "reviewedAt": "2026-11-01T03:52:32.593Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:00:00.000Z",
       "note": "对照 201600301（马克杯、杂货屋、她也想要）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:32.593Z"
     }
   ]
 }

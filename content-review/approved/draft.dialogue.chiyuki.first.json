@@ -2,7 +2,7 @@
   "id": "draft.dialogue.chiyuki.first",
   "kind": "dialogue",
   "title": "有人叫住了你",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.chiyuki.first",
   "payload": {
@@ -247,12 +247,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:00:00.000Z",
-  "updatedAt": "2026-11-02T11:00:00.000Z",
+  "updatedAt": "2026-11-01T03:52:27.739Z",
+  "reviewedAt": "2026-11-01T03:52:27.739Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:00:00.000Z",
       "note": "对照 101600101 前半（袖扣、杂货店、要想想）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:27.739Z"
     }
   ]
 }

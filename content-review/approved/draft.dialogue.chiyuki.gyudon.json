@@ -2,7 +2,7 @@
   "id": "draft.dialogue.chiyuki.gyudon",
   "kind": "dialogue",
   "title": "收工很晚，她说想吃牛丼",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.chiyuki.gyudon",
   "payload": {
@@ -300,12 +300,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:00:00.000Z",
-  "updatedAt": "2026-11-02T11:00:00.000Z",
+  "updatedAt": "2026-11-01T03:52:32.675Z",
+  "reviewedAt": "2026-11-01T03:52:32.675Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:00:00.000Z",
       "note": "对照 201600302（三分支，保留三个选项）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:32.675Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.evt.chiyuki.after_expression",
   "kind": "event",
   "title": "笑容练到发僵",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.chiyuki.after_expression",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:20:00.000Z",
-  "updatedAt": "2026-11-02T11:20:00.000Z",
+  "updatedAt": "2026-11-01T03:52:35.361Z",
+  "reviewedAt": "2026-11-01T03:52:35.361Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:20:00.000Z",
       "note": "千雪表演课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:35.361Z"
     }
   ]
 }

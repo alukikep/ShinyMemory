@@ -2,7 +2,7 @@
   "id": "draft.dialogue.chiyuki.second",
   "kind": "dialogue",
   "title": "她来给出答复",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.chiyuki.second",
   "payload": {
@@ -67,12 +67,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:00:00.000Z",
-  "updatedAt": "2026-11-02T11:00:00.000Z",
+  "updatedAt": "2026-11-01T03:52:31.368Z",
+  "reviewedAt": "2026-11-01T03:52:31.368Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:00:00.000Z",
       "note": "对照 101600101 后半（来事务所、答应、从上课开始）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:31.368Z"
     }
   ]
 }

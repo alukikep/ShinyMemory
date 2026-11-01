@@ -2,7 +2,7 @@
   "id": "draft.chiyuki.chat.zakka",
   "kind": "topic",
   "title": "聊天 · 杂货",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.chiyuki.chat.zakka",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:10:00.000Z",
-  "updatedAt": "2026-11-02T11:10:00.000Z",
+  "updatedAt": "2026-11-01T03:52:40.566Z",
+  "reviewedAt": "2026-11-01T03:52:40.566Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:10:00.000Z",
       "note": "千雪日常话题（API 兴趣：雑貨作り）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:40.566Z"
     }
   ]
 }

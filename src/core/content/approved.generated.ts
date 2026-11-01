@@ -139,6 +139,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.chiyuki.craft",
+  "name": "陪她做手工",
+  "description": "宿舍的房间里摆着她的杂货和布头。她戴着眼镜，问你想做点什么，然后先把你手上的针接过去示范了一遍。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "chiyuki"
+  ],
+  "locations": [
+    "dorm"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 1080,
+      "toMinute": 1260
+    }
+  ],
+  "cost": {
+    "stamina": 4
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -5
+    }
+  ],
+  "resultTexts": [
+    "她把你缝歪的那一行拆掉重来，说\"第一次都是这样\"。",
+    "临走时她把手链塞进你手里，说线不够了，下次再做一个更好的。",
+    "她把灯关小，说这样看布的颜色才准，然后给你看她的收藏。"
+  ]
+},
+{
   "id": "activity.daily_errand",
   "name": "发传单",
   "description": "商业街的店在找人手，站一会儿，按小时结。",
@@ -1760,6 +1805,217 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「谢谢……啊，被照顾了。平常都是我在照顾人。」"
+    }
+  ]
+},
+{
+  "id": "evt.chiyuki.after_dance",
+  "title": "膝盖有点酸",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "chiyuki"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她说膝盖有点酸，还是先把动作记完了才坐下。",
+  "choices": [
+    {
+      "label": "先休息。",
+      "hint": "压力 -4、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -4
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……那就，稍微坐一下。谢谢您。」"
+    },
+    {
+      "label": "我帮你拉伸。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「呵呵，您还会这个啊……好舒服。」"
+    },
+    {
+      "label": "再来一遍。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好。那我，再来一遍。」"
+    }
+  ]
+},
+{
+  "id": "evt.chiyuki.after_expression",
+  "title": "笑容练到发僵",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "chiyuki"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表现课结束了。她揉着嘴角说笑太久会僵，然后又笑了一下确认还能笑。",
+  "choices": [
+    {
+      "label": "刚才那样很好。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「呵呵……那，我记住这个感觉。」"
+    },
+    {
+      "label": "不用一直笑。",
+      "hint": "信任 +3、压力 -3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「……是呢。那，就休息一下表情吧。」"
+    },
+    {
+      "label": "再试一次。",
+      "hint": "表现 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好。这次，我想再自然一点。」"
+    }
+  ]
+},
+{
+  "id": "evt.chiyuki.after_vocal",
+  "title": "唱完先笑着喘气",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "chiyuki"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她唱完先笑了一下，才把气喘匀。",
+  "choices": [
+    {
+      "label": "很好。",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "「呵呵……谢谢您。那我，再唱一遍♪」"
+    },
+    {
+      "label": "再稳一点。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「稳……是呢。好，再试一次。」"
+    },
+    {
+      "label": "先喝水。",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「啊，谢谢……您总是很周到呢。」"
     }
   ]
 },
@@ -10246,6 +10502,1174 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "speakerId": "producer",
       "text": "这么多，都是一个人？",
       "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyuki.first",
+  "idolId": "chiyuki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "chiyuki",
+      "text": "那个……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（总之得多跑几家……没有浪费的时间。）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "chiyuki",
+      "text": "——那个，不好意思。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "好！……诶？……我、我吗？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "chiyuki",
+      "text": "是。突然叫住您，很抱歉。袖子上的扣子快掉了，我在意得不行……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "诶？……啊，真的。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "不好意思……谢谢您。让人看到这么不体面的地方……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "chiyuki",
+      "text": "呵呵，不会～",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "哈哈……",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "（怎么回事……这个人的笑容，好温柔啊……）",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "chiyuki",
+      "text": "那个……如果可以的话，让我帮您缝上吧？我带着针线包。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "诶……不不！怎么能让您做到那种地步——",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "chiyuki",
+      "text": "可是，已经快掉下来了哦……？请别客气。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "那、那就……拜托您了？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "chiyuki",
+      "text": "好的。稍微失礼一下哦。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "（还、还是拜托了……被那个笑容带着就……）",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "chiyuki",
+      "text": "好了，缝完了♪",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "（自然而然就觉得心里暖暖的……）",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "chiyuki",
+      "text": "……？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "啊……哦哦，一眨眼就好了呢……！真的，不知道该怎么道谢。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "chiyuki",
+      "text": "不用，能帮上忙就好。那我就先失礼了……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "啊，请等一下——",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "啊……呃……突然不好意思……您要不要试试当偶像？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "chiyuki",
+      "text": "诶？偶像……吗？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "吓到您了吧，抱歉。其实我是做偶像制作人的，正在找新人。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "在这里突然说这种话可能很唐突……但我实在被您吸引了！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "chiyuki",
+      "text": "诶、呃……这样啊……不过，抱歉。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "chiyuki",
+      "text": "我在杂货店工作。现在的工作我很喜欢……那种事，还是有点。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "在杂货店……这样啊。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "那、那个……不用辞掉现在的工作也没关系。休息日先来上上课也好！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "chiyuki",
+      "text": "不……这么突然……",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "那，至少聊聊！",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "chiyuki",
+      "text": "那个……为什么您会对我，这么上心呢？",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "我觉得您一定能成为很棒的偶像。您的笑容，能让很多人打起精神！",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "chiyuki",
+      "text": "让很多人……我……？",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "是的！所以……拜托您了！",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "chiyuki",
+      "text": "……您都说到这个份上了……",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "chiyuki",
+      "text": "那个……能让我稍微考虑一下吗？我会好好想的。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "当然！这是事务所的联系方式……我随时都在等，请联络我。"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyuki.greet",
+  "idolId": "chiyuki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "（差不多到约定的时间了。）",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "chiyuki",
+      "text": "哈……哈……制作人先生，让您久等了～！",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "chiyuki",
+      "text": "对不起，杂货店的工作拖长了一点……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "没关系，是准时。辛苦了。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "那从现在开始集中在这边吧。抱歉，连休息时间都没多少。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "chiyuki",
+      "text": "不会，我会努力的～！今天的工作是……挨个去打招呼吧？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "嗯，是这样。我们事务所有参与一个活动，去跟主办方打个招呼。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "chiyuki",
+      "text": "是……我能做好吗。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "没问题，千雪一定行。别想太复杂，享受活动的气氛就好。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "（对还不太了解偶像的千雪来说，让她看看舞台是最好的。）",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "chiyuki",
+      "text": "明、明白了。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "chiyuki",
+      "text": "我叫桑山千雪，是新人的偶像。请多指教。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "（千雪身上果然有东西啊……虽然紧张，却好好地笑着打了招呼。）",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "千雪，辛苦了。招呼打得很不错。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "chiyuki",
+      "text": "谢谢您。听您这么说，我就放心了。",
+      "choices": [
+        {
+          "label": "今天这样就很好。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "你的笑容很管用。",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "下周还有更大的场",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "chiyuki",
+      "text": "呵呵，是吗？那我放心了。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "嗯。第一次能做到这样，已经很够了。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "chiyuki",
+      "text": "那，下次我也照着这样来。"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "chiyuki",
+      "text": "笑容……吗？",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "嗯，主办方第一句就夸了那个笑容。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "chiyuki",
+      "text": "哎呀……那我得好好珍惜它才行呢。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "chiyuki",
+      "text": "更大的场……我，会紧张的吧。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "紧张也没关系。今天的千雪，紧张着也笑出来了。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "chiyuki",
+      "text": "……是。那我，会记得今天的感觉。"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyuki.gyudon",
+  "idolId": "chiyuki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "今天也弄到这么晚，抱歉啊千雪。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "chiyuki",
+      "text": "不会。制作人先生才是，辛苦了。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "马上送你回去。饿了吧？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "chiyuki",
+      "text": "没事。制作人先生才是，肚子不饿吗？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "真敏锐……老实说，我也饿扁了……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "chiyuki",
+      "text": "呵呵，那要不要一起吃晚饭？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "诶？连私人时间都……不太好吧。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "chiyuki",
+      "text": "不会～我也饿扁了嘛。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "是吗？那……千雪想吃什么？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "chiyuki",
+      "text": "制作人先生本来打算吃什么？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "我啊，与其说打算吃……就牛丼吧。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "chiyuki",
+      "text": "哇！牛丼！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……诶？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "chiyuki",
+      "text": "我想去牛丼店！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "诶，不用，难得的机会我请你吃点贵一点的吧。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "chiyuki",
+      "text": "不不，不行。已经决定是牛丼了。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "可、可是……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "chiyuki",
+      "text": "呵呵，您的肚子在叫哦～",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "chiyuki",
+      "text": "制作人先生的肚子也说想吃牛丼呢。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "哈哈，真不好意思……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "chiyuki",
+      "text": "那，请带我去吧♪",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "……好！那，走吧！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "chiyuki",
+      "text": "制作人先生，谢谢招待～",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "不，别在意。难得的机会却是快餐。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "……不过，今天的牛丼，总觉得比平时好吃。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "chiyuki",
+      "text": "哎呀……我也觉得非常好吃哦。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "这样啊，千雪这么说我就放心了。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "chiyuki",
+      "text": "和别人一起吃，就会很开心，觉得很幸福……",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "总觉得比平时放松。也许是托千雪的福。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "chiyuki",
+      "text": "呵呵，哪里……制作人先生，最近很累吧？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "没、没有那种事。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "chiyuki",
+      "text": "真是的……那种程度，我看得出来哦。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "chiyuki",
+      "text": "您总是为了我们跑来跑去……",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "chiyuki",
+      "text": "……如果有什么我能做的，请什么都告诉我哦。",
+      "choices": [
+        {
+          "label": "你什么都不用做。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "能看到你的笑容就够了。",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "帮我治治疲劳吧。",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "chiyuki",
+      "text": "……制作人先生。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "今天也是为了让我早点吃饭，你才费心的吧。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "chiyuki",
+      "text": "不，哪里……说自己能做什么，太自大了呢。",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "chiyuki",
+      "text": "不过……如果您愿意让我待在一旁，我会很高兴的。"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "chiyuki",
+      "text": "笑容……吗？",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "对。今天能一起吃饭，看到那个笑容，就够我撑一阵子了。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "chiyuki",
+      "text": "哎呀……那我得一直笑着才行呢。",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "chiyuki",
+      "text": "不过……一直笑着，会有点累的哦？"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "chiyuki",
+      "text": "治疲劳……？",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "开玩笑的。不过，千雪在的话，感觉真能治好。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "chiyuki",
+      "text": "呵呵，那就让我来当那个药吧。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "chiyuki",
+      "text": "……不过，不准勉强哦。"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyuki.mug",
+  "idolId": "chiyuki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "哈……拖了这么久，千雪，辛苦了。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "chiyuki",
+      "text": "不会，制作人先生才是，辛苦了。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "不，没想到会拖这么久……喏，千雪。虽然是罐装咖啡。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "chiyuki",
+      "text": "哇，谢谢您。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "chiyuki",
+      "text": "……啊，真好喝。有种\"今天努力工作过了\"的味道。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "哈哈，是吗？不过千雪努力了是没错的。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "——啊，",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "chiyuki",
+      "text": "……？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "啊，不是。我在想昨天把马克杯摔了……",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "chiyuki",
+      "text": "哎呀……没事吗？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "嘛，杯子是便宜货所以没关系，不过暂时得用罐装咖啡了……",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "chiyuki",
+      "text": "那也太寂寞了……那，现在就去买好不好？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "诶？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "chiyuki",
+      "text": "新的马克杯。事务所附近新开了一家杂货屋哦。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "哦，我都没注意到！那……能顺路去一下吗？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "chiyuki",
+      "text": "是，当然♪",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "chiyuki",
+      "text": "就是这里，制作人先生——",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "chiyuki",
+      "text": "哇！您看，有好多可爱的小东西～！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "chiyuki",
+      "text": "这条缎带也，超可爱的……！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "千雪真的很喜欢杂货屋啊。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "chiyuki",
+      "text": "啊……对、对不起。一个人就兴奋起来了……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "不，千雪开心就好。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "chiyuki",
+      "text": "不，不由得就看入迷了……得找制作人先生的杯子才行。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "chiyuki",
+      "text": "……哇，茶杯也有好多……！这边，制作人先生！",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "千雪可以去看喜欢的杂货哦？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "chiyuki",
+      "text": "不，今天马克杯才是大事。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "chiyuki",
+      "text": "我们来找适合制作人先生的东西吧！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "谢谢，千雪。托千雪的福，找到好东西了。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "chiyuki",
+      "text": "哪里，不敢当……总觉得那个，我也想要了呢。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "嗯，有那么好吗……？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "那，下次我会小心不摔了。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "chiyuki",
+      "text": "呵呵……请一定小心哦。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "chiyuki",
+      "text": "来，回去之后，马上就用它喝咖啡吧♪"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyuki.sale",
+  "idolId": "chiyuki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "……啊，那家杂货屋好像打半价。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "chiyuki",
+      "text": "哇！真的呢～！",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "chiyuki",
+      "text": "呵呵，制作人先生的马克杯，再等等就好了呢。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "不，那时候马上带我去挺好的。现在大概已经没了吧？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "chiyuki",
+      "text": "啊，那是……也许，真的呢……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "啊，抱歉。千雪也想要来着吧。一起买下来就好了……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "chiyuki",
+      "text": "不、不会！抱歉，突然说这种话。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "chiyuki",
+      "text": "……碰头，我们赶紧去吧？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "哦，是啊。走吧。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "（呼……总觉得，就这么来了……）",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "（马克杯，还在吗……）",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "——千雪！？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "chiyuki",
+      "text": "……制、制作人先生！您还在事务所吗……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "嗯，出来买晚饭……千雪才是，我以为你早回去了。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "chiyuki",
+      "text": "不是……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "那个……是来看半价的？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "chiyuki",
+      "text": "是、是的。制作人先生也是……？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "嗯，不……其实是来看那只马克杯的。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "chiyuki",
+      "text": "诶……！其实，我也是。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "啊，是这样啊。因为千雪看起来特别喜欢。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "我一直在想，会不会已经没有了。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "chiyuki",
+      "text": "制作人先生……！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "所以，如果还在的话我买吧……可以说，我买下来吗？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "chiyuki",
+      "text": "给……我吗？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "是这样没错……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "chiyuki",
+      "text": "哇……！当然。非常……高兴……！",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "chiyuki",
+      "text": "啊，神啊……愿马克杯还在，愿马克杯还在……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "哈哈，千雪，在念咒吗？看来真的很喜欢啊。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "chiyuki",
+      "text": "是……",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "那，我也来祈祷。呃，愿马克杯还在……",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "chiyuki",
+      "text": "呵呵，制作人先生……",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "结果又回到事务所了呢。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "chiyuki",
+      "text": "是啊。想快点用它喝咖啡♪",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "哈哈……买到了就好。"
+    }
+  }
+},
+{
+  "id": "dialogue.chiyuki.second",
+  "idolId": "chiyuki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "chiyuki",
+      "text": "那个……不好意思，我叫桑山千雪……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "啊！我一直在等您，请进！",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "那个……虽然像是催促，关于上次的答复……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "chiyuki",
+      "text": "是。被挖角的事……我接受。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "真、真的吗！？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "chiyuki",
+      "text": "是。对我来说是很意外的事，但\"让很多人笑起来\"这句话，我一直忘不掉。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "chiyuki",
+      "text": "如果可以在继续现在工作的前提下……让我从上课开始试试。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "当然！……我会全力支持您！",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "chiyuki",
+      "text": "哎呀……！谢谢您。请多指教呢，制作人先生。"
     }
   }
 },
@@ -25837,6 +27261,104 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "chiyoko",
   "label": "今天",
   "text": "「今天？今天是……嗯，是甜品巡礼的日子！制作人先生也要一起来吗？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyuki.chat.brother",
+  "actorId": "chiyuki",
+  "label": "弟弟",
+  "text": "「弟弟啊……小时候，我常给他读绘本」「他现在直接叫我千雪哦」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyuki.chat.coffee",
+  "actorId": "chiyuki",
+  "label": "咖啡",
+  "text": "「用喜欢的杯子喝咖啡……」「就觉得这一天才算结束呢♪」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyuki.chat.dorm",
+  "actorId": "chiyuki",
+  "label": "宿舍",
+  "text": "「我的房间……堆满了喜欢的东西」「算是，我的国家吧～」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyuki.chat.flower",
+  "actorId": "chiyuki",
+  "label": "花",
+  "text": "「回家路上买了花……」「今天的颜色，是那种淡淡的橘色……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyuki.chat.hometown",
+  "actorId": "chiyuki",
+  "label": "老家",
+  "text": "「老家在山口……母亲打电话来，总是叫我\"アンタ\"」「她其实，很支持我哦」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyuki.chat.sewing",
+  "actorId": "chiyuki",
+  "label": "缝纫",
+  "text": "「缝东西？从服饰学校的时候就开始学了」「扣子掉了的话，随时说哦♪」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "chiyuki.chat.zakka",
+  "actorId": "chiyuki",
+  "label": "杂货",
+  "text": "「杂货……我喜欢得不行～」「看到可爱的小东西，就想带回家……」",
   "cooldownMinutes": 1440,
   "effects": [
     {

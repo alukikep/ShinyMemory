@@ -2,7 +2,7 @@
   "id": "draft.evt.chiyuki.after_dance",
   "kind": "event",
   "title": "膝盖有点酸",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.chiyuki.after_dance",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:20:00.000Z",
-  "updatedAt": "2026-11-02T11:20:00.000Z",
+  "updatedAt": "2026-11-01T03:52:34.253Z",
+  "reviewedAt": "2026-11-01T03:52:34.253Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:20:00.000Z",
       "note": "千雪舞蹈课后事件（她会照顾人、但不太会照顾自己）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:34.253Z"
     }
   ]
 }

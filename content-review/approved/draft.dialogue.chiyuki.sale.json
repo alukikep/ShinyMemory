@@ -2,7 +2,7 @@
   "id": "draft.dialogue.chiyuki.sale",
   "kind": "dialogue",
   "title": "那家杂货屋打半价了",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.chiyuki.sale",
   "payload": {
@@ -217,12 +217,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:00:00.000Z",
-  "updatedAt": "2026-11-02T11:00:00.000Z",
+  "updatedAt": "2026-11-01T03:52:32.754Z",
+  "reviewedAt": "2026-11-01T03:52:32.754Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:00:00.000Z",
       "note": "对照 201600311（半額セール、两人都回去找同一只马克杯）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:32.754Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.chiyuki.chat.hometown",
   "kind": "topic",
   "title": "聊天 · 老家",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.chiyuki.chat.hometown",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:16:00.000Z",
-  "updatedAt": "2026-11-02T11:16:00.000Z",
+  "updatedAt": "2026-11-01T03:52:36.825Z",
+  "reviewedAt": "2026-11-01T03:52:36.825Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:16:00.000Z",
       "note": "千雪日常话题（山口县出身）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:36.825Z"
     }
   ]
 }

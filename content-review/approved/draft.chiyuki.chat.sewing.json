@@ -2,7 +2,7 @@
   "id": "draft.chiyuki.chat.sewing",
   "kind": "topic",
   "title": "聊天 · 缝纫",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.chiyuki.chat.sewing",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T11:11:00.000Z",
-  "updatedAt": "2026-11-02T11:11:00.000Z",
+  "updatedAt": "2026-11-01T03:52:39.906Z",
+  "reviewedAt": "2026-11-01T03:52:39.906Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T11:11:00.000Z",
       "note": "千雪日常话题（特技：裁縫）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:52:39.906Z"
     }
   ]
 }

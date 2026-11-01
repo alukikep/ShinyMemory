@@ -761,6 +761,30 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     anchors: ['2026004110020', '2026004110040', '2026004110060'],
   },
   {
+    chapterId: 'haruki-flyer',
+    script: '102800503',
+    source: '剧本 102800503',
+    anchors: ['1028005030010', '1028005030020', '1028005030110'],
+  },
+  {
+    chapterId: 'haruki-stage',
+    script: '102800101',
+    source: '剧本 102800101',
+    anchors: ['1028001010150', '1028001010180', '1028001010190'],
+  },
+  {
+    chapterId: 'haruki-training',
+    script: '102800505',
+    source: '剧本 102800505',
+    anchors: ['1028005050070', '1028005050160', '1028005050190'],
+  },
+  {
+    chapterId: 'haruki-answer',
+    script: '102800505',
+    source: '剧本 102800505',
+    anchors: ['1028005050210', '1028005050300', '1028005050310'],
+  },
+  {
     chapterId: 'hana-offshot',
     script: '202700601',
     source: '剧本 202700601',

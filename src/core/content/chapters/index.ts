@@ -3,6 +3,7 @@ import { hioriEncounter, manoEncounter, meguruEncounter, manoSlump, hioriGap, me
 import chiyokoCard from './chiyokoCard';
 import chiyokoEncounter from './chiyokoEncounter';
 import hanaCard from './hanaCard';
+import harukiEncounter from './harukiEncounter';
 import hanaEncounter from './hanaEncounter';
 import hioriSmileCard from './hioriSmileCard';
 import hinanaCard from './hinanaCard';
@@ -119,6 +120,7 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   lucaCard,
   hanaEncounter,
   hanaCard,
+  harukiEncounter,
   manoSlump,
   hioriGap,
   meguruBurden,

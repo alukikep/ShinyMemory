@@ -2,7 +2,7 @@
   "id": "draft.evt.mei.after_dance",
   "kind": "event",
   "title": "自己喊节拍",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.mei.after_dance",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:20:00.000Z",
-  "updatedAt": "2026-11-02T14:20:00.000Z",
+  "updatedAt": "2026-11-01T05:13:01.694Z",
+  "reviewedAt": "2026-11-01T05:13:01.694Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:20:00.000Z",
       "note": "愛依舞蹈课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:01.694Z"
     }
   ]
 }

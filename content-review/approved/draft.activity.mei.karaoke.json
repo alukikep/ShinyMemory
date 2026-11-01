@@ -2,7 +2,7 @@
   "id": "draft.activity.mei.karaoke",
   "kind": "activity",
   "title": "陪她去卡拉 OK",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.mei.karaoke",
   "payload": {
@@ -53,12 +53,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:00:00.000Z",
-  "updatedAt": "2026-11-02T14:00:00.000Z",
+  "updatedAt": "2026-11-01T05:13:08.805Z",
+  "reviewedAt": "2026-11-01T05:13:08.805Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:00:00.000Z",
       "note": "愛依专属行动（卡拉 OK，API 兴趣：友達と遊ぶ）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:08.805Z"
     }
   ]
 }

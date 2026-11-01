@@ -2,7 +2,7 @@
   "id": "draft.mei.chat.school",
   "kind": "topic",
   "title": "聊天 · 学校",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.mei.chat.school",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:13:00.000Z",
-  "updatedAt": "2026-11-02T14:13:00.000Z",
+  "updatedAt": "2026-11-01T05:13:06.177Z",
+  "reviewedAt": "2026-11-01T05:13:06.177Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:13:00.000Z",
       "note": "愛依日常话题（高三）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:06.177Z"
     }
   ]
 }

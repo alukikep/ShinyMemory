@@ -2,7 +2,7 @@
   "id": "draft.dialogue.mei.report",
   "kind": "dialogue",
   "title": "她跑进事务所喊\"听我说\"",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.mei.report",
   "payload": {
@@ -103,12 +103,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:00:00.000Z",
-  "updatedAt": "2026-11-02T14:00:00.000Z",
+  "updatedAt": "2026-11-01T05:13:00.223Z",
+  "reviewedAt": "2026-11-01T05:13:00.223Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:00:00.000Z",
       "note": "对照 201900311（课题通过、跑来报告）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:00.223Z"
     }
   ]
 }

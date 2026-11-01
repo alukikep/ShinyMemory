@@ -2,7 +2,7 @@
   "id": "draft.evt.mei.after_expression",
   "kind": "event",
   "title": "她又僵住了",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.mei.after_expression",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:20:00.000Z",
-  "updatedAt": "2026-11-02T14:20:00.000Z",
+  "updatedAt": "2026-11-01T05:13:02.718Z",
+  "reviewedAt": "2026-11-01T05:13:02.718Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:20:00.000Z",
       "note": "愛依表现课后事件（她怕上台）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:02.718Z"
     }
   ]
 }

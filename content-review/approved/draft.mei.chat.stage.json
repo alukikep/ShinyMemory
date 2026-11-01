@@ -2,7 +2,7 @@
   "id": "draft.mei.chat.stage",
   "kind": "topic",
   "title": "聊天 · 上台",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.mei.chat.stage",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:15:00.000Z",
-  "updatedAt": "2026-11-02T14:15:00.000Z",
+  "updatedAt": "2026-11-01T05:13:04.935Z",
+  "reviewedAt": "2026-11-01T05:13:04.935Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:15:00.000Z",
       "note": "愛依日常话题（クールモード）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:04.935Z"
     }
   ]
 }

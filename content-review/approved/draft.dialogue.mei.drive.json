@@ -2,7 +2,7 @@
   "id": "draft.dialogue.mei.drive",
   "kind": "dialogue",
   "title": "今天的工作要开车去",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.mei.drive",
   "payload": {
@@ -145,12 +145,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:00:00.000Z",
-  "updatedAt": "2026-11-02T14:00:00.000Z",
+  "updatedAt": "2026-11-01T05:13:00.148Z",
+  "reviewedAt": "2026-11-01T05:13:00.148Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:00:00.000Z",
       "note": "对照 201900302（接送、她提议兜风）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:00.148Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.mei.chat.family",
   "kind": "topic",
   "title": "聊天 · 家人",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.mei.chat.family",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:14:00.000Z",
-  "updatedAt": "2026-11-02T14:14:00.000Z",
+  "updatedAt": "2026-11-01T05:13:05.548Z",
+  "reviewedAt": "2026-11-01T05:13:05.548Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:14:00.000Z",
       "note": "愛依日常话题（家里人多）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:05.548Z"
     }
   ]
 }

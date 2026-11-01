@@ -1,78 +1,84 @@
 {
-  "id": "draft.dialogue.mei.second",
+  "id": "draft.dialogue.mei.homework",
   "kind": "dialogue",
-  "title": "第一次基础课",
-  "status": "review",
+  "title": "她在事务所摊开作业",
+  "status": "approved",
   "version": 1,
-  "rootId": "draft.dialogue.mei.second",
+  "rootId": "draft.dialogue.mei.homework",
   "payload": {
-    "id": "dialogue.mei.second",
+    "id": "dialogue.mei.homework",
     "idolId": "mei",
     "startNodeId": "1",
     "nodes": {
       "1": {
         "id": "1",
         "speakerId": "mei",
-        "text": "制作人，早上好～",
+        "text": "呐，制作人，能不能让うち在这里写作业！",
         "nextNodeId": "2"
       },
       "2": {
         "id": "2",
         "speakerId": "producer",
-        "text": "早上好，愛依。先说一下今天的预定，可以吗？",
+        "text": "？　啊，可以啊。",
         "nextNodeId": "3"
       },
       "3": {
         "id": "3",
         "speakerId": "mei",
-        "text": "OK、OK，什么样的感觉～？",
+        "text": "真的！？帮大忙了～……谢啦，制作人。",
         "nextNodeId": "4"
       },
       "4": {
         "id": "4",
-        "speakerId": "producer",
-        "text": "今天打算让你把基础课都体验一遍。",
+        "speakerId": "mei",
+        "text": "……好嘞～！那就，赶紧开始吧！",
         "nextNodeId": "5"
       },
       "5": {
         "id": "5",
-        "speakerId": "producer",
-        "text": "挖你的时候，你对偶像完全不了解吧？先从这儿开始。",
+        "speakerId": "mei",
+        "text": "…………",
         "nextNodeId": "6"
       },
       "6": {
         "id": "6",
-        "speakerId": "mei",
-        "text": "诶～不错嘛制作人！还配合着うち的情况来～♪",
+        "speakerId": "producer",
+        "text": "（她把参考书摊开，然后就不动了。）",
         "nextNodeId": "7"
       },
       "7": {
         "id": "7",
         "speakerId": "producer",
-        "text": "哈哈，这就是制作人的工作。那，去练习场吧。",
+        "text": "愛依？",
         "nextNodeId": "8"
       },
       "8": {
         "id": "8",
         "speakerId": "mei",
-        "text": "……好，怎么样？照你说的，先试了一遍。",
+        "text": "……这题，完全看不懂。",
         "nextNodeId": "9"
       },
       "9": {
         "id": "9",
+        "speakerId": "mei",
+        "text": "うち，英语和阅读理解都不行。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
         "speakerId": "producer",
-        "text": "（她嘴上很轻松，其实一直在等评价。）",
+        "text": "（说得很干脆，一点也不遮掩。）",
         "choices": [
           {
-            "label": "基础打得不错。",
+            "label": "先看题，再读文章。",
             "nextNodeId": "100"
           },
           {
-            "label": "节奏再稳一点。",
+            "label": "从简单的开始。",
             "nextNodeId": "110"
           },
           {
-            "label": "先休息，别急。",
+            "label": "我陪你一起看。",
             "nextNodeId": "120"
           }
         ]
@@ -80,64 +86,69 @@
       "100": {
         "id": "100",
         "speakerId": "mei",
-        "text": "诶，真的？那还好～",
+        "text": "先看题……？",
         "nextNodeId": "101"
       },
       "101": {
         "id": "101",
         "speakerId": "producer",
-        "text": "嗯，第一节课能到这个程度已经很好了。",
+        "text": "嗯。知道要问什么，再读就不会迷路。",
         "nextNodeId": "102"
       },
       "102": {
         "id": "102",
         "speakerId": "mei",
-        "text": "嘿嘿，那うち下次要更好看一点♪"
+        "text": "哦～……原来是这样。那うち试试。"
       },
       "110": {
         "id": "110",
         "speakerId": "mei",
-        "text": "节奏啊～……那个有点难诶。",
+        "text": "简单一点的……有啊，这个。",
         "nextNodeId": "111"
       },
       "111": {
         "id": "111",
         "speakerId": "producer",
-        "text": "所以才要练。不急。",
+        "text": "嗯，从那个开始。",
         "nextNodeId": "112"
       },
       "112": {
         "id": "112",
         "speakerId": "mei",
-        "text": "知道啦知道啦～嗯，那再来一次。"
+        "text": "好～那うち先做这个。"
       },
       "120": {
         "id": "120",
         "speakerId": "mei",
-        "text": "诶，可以休息吗？",
+        "text": "诶，可以吗？",
         "nextNodeId": "121"
       },
       "121": {
         "id": "121",
         "speakerId": "producer",
-        "text": "嗯，一开始别太拼。",
+        "text": "嗯，一起看吧。",
         "nextNodeId": "122"
       },
       "122": {
         "id": "122",
         "speakerId": "mei",
-        "text": "那うち就，稍微歇一下～谢谢制作人♪"
+        "text": "啊哈哈，那うち就不客气了～"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:00:00.000Z",
-  "updatedAt": "2026-11-02T14:00:00.000Z",
+  "updatedAt": "2026-11-01T05:13:00.070Z",
+  "reviewedAt": "2026-11-01T05:13:00.070Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:00:00.000Z",
-      "note": "对照 101900102（三分支：按她的情况排课）"
+      "note": "对照 201900301（在这里写作业、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:00.070Z"
     }
   ]
 }

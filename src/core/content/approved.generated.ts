@@ -814,6 +814,52 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.mei.karaoke",
+  "name": "陪她去卡拉 OK",
+  "description": "她点歌点得飞快，然后把话筒塞给你说下一首是你的。唱完她说\"你唱得比うち好吧\"，笑得很响。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "mei"
+  ],
+  "locations": [
+    "shopping_street",
+    "station"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 900,
+      "toMinute": 1140
+    }
+  ],
+  "cost": {
+    "stamina": 5
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "vocal",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -5
+    }
+  ],
+  "resultTexts": [
+    "她连着唱了三首，说这是\"开嗓\"，然后把歌单推给你。",
+    "唱到一半她突然安静下来听你唱，唱完只说了一句\"哦～\"。",
+    "结账时她抢着付了一部分，说\"这是谢礼\"。"
+  ]
+},
+{
   "id": "activity.natsuha.run",
   "name": "陪她跑步",
   "description": "她按着秒表说\"跟上\"，然后真的按配速跑。第二圈开始你才发现她在放慢。",
@@ -3925,6 +3971,217 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "她愣了一下：「因为我怕停下来啊。」"
+    }
+  ]
+},
+{
+  "id": "evt.mei.after_dance",
+  "title": "自己喊节拍",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "mei"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她还在自己数拍子，数着数着笑了。",
+  "choices": [
+    {
+      "label": "刚才拍子很准。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「哦～被夸了！那再准一点！」"
+    },
+    {
+      "label": "再来一遍。",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好！这次一定要跟上！」"
+    },
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「诶——那，明天再练！」"
+    }
+  ]
+},
+{
+  "id": "evt.mei.after_expression",
+  "title": "她又僵住了",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "mei"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表现课结束了。她说\"刚才中间脑子一片空白\"，说完自己先沉默了一下。",
+  "choices": [
+    {
+      "label": "看得出来，但你没停。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……真的？那，还行吧。」"
+    },
+    {
+      "label": "慢慢来。",
+      "hint": "信任 +3、压力 -3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「嗯……谢谢。」"
+    },
+    {
+      "label": "下次从短的开始。",
+      "hint": "表现 +1、压力 -2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -2
+        }
+      ],
+      "result": "「短一点的……那个，说不定行。」"
+    }
+  ]
+},
+{
+  "id": "evt.mei.after_vocal",
+  "title": "唱完先笑",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "mei"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "声乐课结束了。她唱完先自己笑出来，说\"刚才那个音跑了\"。",
+  "choices": [
+    {
+      "label": "没跑。",
+      "hint": "信任 +3、歌唱 +1",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        }
+      ],
+      "result": "「诶，真的？那うち就信你啦～」"
+    },
+    {
+      "label": "再来一遍。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「好～再来！这次要认真点。」"
+    },
+    {
+      "label": "先喝水。",
+      "hint": "压力 -3",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        }
+      ],
+      "result": "「啊，谢谢～制作人真会照顾人。」"
     }
   ]
 },
@@ -22917,6 +23174,616 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.mei.drive",
+  "idolId": "mei",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "mei",
+      "text": "哟……来接我，谢谢啦制作人。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "今天的目的地坐电车不方便，别在意。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "mei",
+      "text": "啊哈哈，接送什么的超——有偶像的感觉诶～！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "哈哈，也许吧。这种程度的话，随时都行。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "mei",
+      "text": "真的～！？那，下次去兜风吧？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "兜风？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "mei",
+      "text": "嗯！うち家那边有海，天气好的时候超舒服的～",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "（她说到家里那边的时候，语速变快了。）",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "好啊，有机会去。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "mei",
+      "text": "说定了哦！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "（窗外是海。她安静了一会儿，看着窗外。）",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "mei",
+      "text": "……制作人。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "嗯？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "mei",
+      "text": "うち，其实有点怕上台。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "mei",
+      "text": "平时这样说说笑笑的，没关系。可是一站到人前，就会僵住。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "（第一次听她说这个。）",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "mei",
+      "text": "……啊，说了奇怪的话。忘了吧～",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "不，没忘。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "怕的话，就先从小的场子开始。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "mei",
+      "text": "……嗯。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "mei",
+      "text": "谢谢。"
+    }
+  }
+},
+{
+  "id": "dialogue.mei.first",
+  "idolId": "mei",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "……想也没用！总之到处走走——哇！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "抱歉！你受伤了吗？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "mei",
+      "text": "啊，没事没事～うち才是，走神了。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "（好亮的笑……）",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "mei",
+      "text": "诶？你是星探吗？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "诶？为什么这么问？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "mei",
+      "text": "因为你刚才在看人家的脸看了好久嘛～",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "啊、不是，不是那种意思……其实我是做偶像制作人的。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "mei",
+      "text": "哦～！偶像！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "mei",
+      "text": "うち，对偶像不太了解诶。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "那我问一下，你有兴趣试试当偶像吗？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "mei",
+      "text": "うち？当偶像？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "嗯。偶像有可爱的类型，也有帅气的类型……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "像你这样开朗的性格，一定会被粉丝喜欢的。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "mei",
+      "text": "……真的？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "真的。要不要试试？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "mei",
+      "text": "嗯——……那，试试也行吧？反正也挺好玩的。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "谢谢！今后请多指教！对了，能告诉我你的名字吗？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "mei",
+      "text": "うち、和泉愛依～请多指教哦，大哥……不对，是制作人♪"
+    }
+  }
+},
+{
+  "id": "dialogue.mei.homework",
+  "idolId": "mei",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "mei",
+      "text": "呐，制作人，能不能让うち在这里写作业！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "？　啊，可以啊。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "mei",
+      "text": "真的！？帮大忙了～……谢啦，制作人。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "mei",
+      "text": "……好嘞～！那就，赶紧开始吧！",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "mei",
+      "text": "…………",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "（她把参考书摊开，然后就不动了。）",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "愛依？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "mei",
+      "text": "……这题，完全看不懂。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "mei",
+      "text": "うち，英语和阅读理解都不行。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "（说得很干脆，一点也不遮掩。）",
+      "choices": [
+        {
+          "label": "先看题，再读文章。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "从简单的开始。",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "我陪你一起看。",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "mei",
+      "text": "先看题……？",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "嗯。知道要问什么，再读就不会迷路。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "mei",
+      "text": "哦～……原来是这样。那うち试试。"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "mei",
+      "text": "简单一点的……有啊，这个。",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "嗯，从那个开始。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "mei",
+      "text": "好～那うち先做这个。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "mei",
+      "text": "诶，可以吗？",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "嗯，一起看吧。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "mei",
+      "text": "啊哈哈，那うち就不客气了～"
+    }
+  }
+},
+{
+  "id": "dialogue.mei.report",
+  "idolId": "mei",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "mei",
+      "text": "制作人！听我说听我说～！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "愛依？这么高兴，发生什么了？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "mei",
+      "text": "有的有的！之前那个课题，总算过了的感觉！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "太好了！",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "mei",
+      "text": "多亏了制作人嘛！真的谢谢啦！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "（她抓着我袖子晃，完全不掩饰。）",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "mei",
+      "text": "うち，第一次觉得学习好像也没那么糟。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "那是因为你没有放弃。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "mei",
+      "text": "……是那样吗？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "是那样。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "mei",
+      "text": "嘿嘿……那，うち是不是也能把别的事做好。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "当然能。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "mei",
+      "text": "好！那，下次的课うち也要好好做！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "（她跑出去之前，回头补了一句。）",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "mei",
+      "text": "……制作人，谢啦。"
+    }
+  }
+},
+{
+  "id": "dialogue.mei.second",
+  "idolId": "mei",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "mei",
+      "text": "制作人，早上好～",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "早上好，愛依。先说一下今天的预定，可以吗？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "mei",
+      "text": "OK、OK，什么样的感觉～？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "今天打算让你把基础课都体验一遍。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "挖你的时候，你对偶像完全不了解吧？先从这儿开始。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "mei",
+      "text": "诶～不错嘛制作人！还配合着うち的情况来～♪",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "哈哈，这就是制作人的工作。那，去练习场吧。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "mei",
+      "text": "……好，怎么样？照你说的，先试了一遍。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "（她嘴上很轻松，其实一直在等评价。）",
+      "choices": [
+        {
+          "label": "基础打得不错。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "节奏再稳一点。",
+          "nextNodeId": "110"
+        },
+        {
+          "label": "先休息，别急。",
+          "nextNodeId": "120"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "mei",
+      "text": "诶，真的？那还好～",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "嗯，第一节课能到这个程度已经很好了。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "mei",
+      "text": "嘿嘿，那うち下次要更好看一点♪"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "mei",
+      "text": "节奏啊～……那个有点难诶。",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "所以才要练。不急。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "mei",
+      "text": "知道啦知道啦～嗯，那再来一次。"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "mei",
+      "text": "诶，可以休息吗？",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "嗯，一开始别太拼。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "mei",
+      "text": "那うち就，稍微歇一下～谢谢制作人♪"
+    }
+  }
+},
+{
   "id": "dialogue.natsuha.bench",
   "idolId": "natsuha",
   "startNodeId": "1",
@@ -30221,6 +31088,104 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "meguru",
   "label": "被担心的时候",
   "text": "「诶？我没事哦！真的！……制作人，你刚才是不是在担心我？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mei.chat.family",
+  "actorId": "mei",
+  "label": "家人",
+  "text": "「うち家超吵的哦～七口人呢！」「不过，挺开心的。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mei.chat.friends",
+  "actorId": "mei",
+  "label": "朋友",
+  "text": "「うち，朋友超多的哦～」「昨天还打电话打到很晚！」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mei.chat.music",
+  "actorId": "mei",
+  "label": "音乐",
+  "text": "「最近都在听这个！」「超带感的，听一下？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mei.chat.phone",
+  "actorId": "mei",
+  "label": "电话",
+  "text": "「打电话啊～うち可以打好几个小时！」「厉害吧？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mei.chat.school",
+  "actorId": "mei",
+  "label": "学校",
+  "text": "「学校？嗯——不算讨厌啦～」「就是作业有点麻烦。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mei.chat.stage",
+  "actorId": "mei",
+  "label": "上台",
+  "text": "「上台啊……嗯，会紧张。」「……别跟别人说哦。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "mei.chat.today",
+  "actorId": "mei",
+  "label": "今天",
+  "text": "「今天也超——有精神！」「诶，为什么？」",
   "cooldownMinutes": 1440,
   "effects": [
     {

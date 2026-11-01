@@ -2,7 +2,7 @@
   "id": "draft.dialogue.mei.first",
   "kind": "dialogue",
   "title": "有人撞到了你，然后笑了",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.mei.first",
   "payload": {
@@ -127,12 +127,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:00:00.000Z",
-  "updatedAt": "2026-11-02T14:00:00.000Z",
+  "updatedAt": "2026-11-01T05:12:58.676Z",
+  "reviewedAt": "2026-11-01T05:12:58.676Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:00:00.000Z",
       "note": "对照 101900101（撞到、自来熟、\"うち\"、报名字）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:12:58.676Z"
     }
   ]
 }

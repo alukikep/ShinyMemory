@@ -2,7 +2,7 @@
   "id": "draft.mei.chat.music",
   "kind": "topic",
   "title": "聊天 · 音乐",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.mei.chat.music",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:16:00.000Z",
-  "updatedAt": "2026-11-02T14:16:00.000Z",
+  "updatedAt": "2026-11-01T05:13:04.300Z",
+  "reviewedAt": "2026-11-01T05:13:04.300Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:16:00.000Z",
       "note": "愛依日常话题（API 兴趣：最近の曲）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:04.300Z"
     }
   ]
 }

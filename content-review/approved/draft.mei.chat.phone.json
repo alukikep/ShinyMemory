@@ -2,7 +2,7 @@
   "id": "draft.mei.chat.phone",
   "kind": "topic",
   "title": "聊天 · 电话",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.mei.chat.phone",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:12:00.000Z",
-  "updatedAt": "2026-11-02T14:12:00.000Z",
+  "updatedAt": "2026-11-01T05:13:06.822Z",
+  "reviewedAt": "2026-11-01T05:13:06.822Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:12:00.000Z",
       "note": "愛依日常话题（API 特技：何時間でも電話できる）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:06.822Z"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "id": "draft.evt.mei.after_vocal",
   "kind": "event",
   "title": "唱完先笑",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.mei.after_vocal",
   "payload": {
@@ -74,12 +74,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T14:20:00.000Z",
-  "updatedAt": "2026-11-02T14:20:00.000Z",
+  "updatedAt": "2026-11-01T05:13:03.593Z",
+  "reviewedAt": "2026-11-01T05:13:03.593Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T14:20:00.000Z",
       "note": "愛依声乐课后事件"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T05:13:03.593Z"
     }
   ]
 }

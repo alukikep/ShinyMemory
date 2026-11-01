@@ -1,7 +1,7 @@
 # 角色资料包（批量收集）
 
 > 由 `npx tsx tools/collectIdolMaterials.ts` 生成；原始 JSON 在 `.cache/shiny/materials/`（不提交）。
-> 角色资料参考：eidolon-sc `characters/facts/<id>.md`（有其 `.sources.md` 记出处）。
+> 角色资料：见 [facts/](facts/README.md)（28 人的档案/关系/喜好，已复制进本仓库，每份配 `.sources.md` 记出处）。
 > 共 28 人，头像就绪 26，facts 就绪 28。
 
 ## 一览
@@ -162,4 +162,4 @@ WING 首本   10{idolId:02}00101   （已用 4/5/10/20 验证）
 ## 抓取时已知的缺口
 
 - 头像缺失的 2 人（羽那、はるき）在 `public/assets/idols/q/` 没有文件，名册会退回首字。
-- facts 缺的角色，写角色卡前要先读剧本；eidolon-sc 里有的，也要按 `sources.md` 回查剧本再引用。
+- 写角色卡前先读剧本；[facts/](facts/README.md) 里的内容也要按各自的 `.sources.md` 回查剧本再引用。

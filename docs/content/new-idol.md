@@ -30,6 +30,10 @@
 ### 1.2 找资料的固定顺序
 
 ```bash
+# 0. 先读本地资料库（已复制进仓库，不用联网、不用去别的仓库）
+#    docs/content/_materials/facts/<id>.md        人设：档案 / 关系 / 喜好
+#    docs/content/_materials/facts/<id>.sources.md 每条的出处（含剧情「目录 / 卡名 / 话名」）
+
 # 1. 全体偶像：id、日文名、CV
 curl 'https://api.shinycolors.moe/info/idolList'
 
@@ -39,11 +43,12 @@ curl 'https://api.shinycolors.moe/info/idolInfo?idolId=5'
 # 3. 某张卡的每一段：eventId（= 剧本编号）+ 标题
 curl 'https://api.shinycolors.moe/info/pCardInfo?cardId=<cardUuid>'
 
-# 4. 导出剧本（日文 + 结构），产物在 .cache/shiny/
+# 4. 导出剧本（日文 + 行 id + 结构），产物在 .cache/shiny/
 npx tsx tools/scriptExport.ts 200500501 200500511
 ```
 
-- **id 取 `nickName`**（`mano` / `hiori` / `meguru` / `mamimi` / `kiriko` / `kogane`），和现有 6 人一致。
+- **id 取 `nickName`**（`mano` / `hiori` / `meguru` / `mamimi` / `kiriko` / `kogane` / `sakuya` / `yuika` / `kaho` …），
+  和 `_materials/facts/` 的文件名一致。
 - **角色色取 `color1`**（UI 主色），单位色见 `unit.color1`。
 - **剧本编号规律**：`1xxxxxxxx` = W.I.N.G.（相遇 / 主线，语气基准）；`2xxxxxxxx` = 卡面 commu。
 - 每个角色**至少导出 3 本**：相遇那本、第一张卡的每一段、和你接下来要写的场景最接近的一本。
@@ -59,7 +64,7 @@ npx tsx tools/scriptExport.ts 200500501 200500511
 | 授权 | 来源是萌娘共享，原作者保留权利；**内部开发可用，公开分发前需另行确认** |
 | 没头像时 | 名册/侧边栏显示名字首字——能跑，但「看着像没做」 |
 
-### 1.4 资料包（28 人索引，先看这个）
+### 1.4 资料包（28 人索引 + 角色资料库）
 
 ```bash
 npm run content:materials   # 重新抓取/更新索引（有缓存，幂等）
@@ -69,9 +74,33 @@ npm run content:materials   # 重新抓取/更新索引（有缓存，幂等）
 说明见 [`_materials/README.md`](_materials/README.md)。
 
 - 索引里有每位偶像的 **WING 相遇剧本编号**、**首张卡的每一段剧本编号**、头像/facts 是否就绪。
-- 人设细节可先读 eidolon-sc 的 `characters/facts/<id>.md`（带 `.sources.md`），
-  但它记到"话名"级，**不是行 id**——写进角色卡前必须回剧本核对。
+- **角色资料库在本地**：[`_materials/facts/`](_materials/facts/README.md)（28 人，含 `<id>.sources.md`）。
+  2026-11-01 起整份复制进仓库——**不用再去外部整理仓库**，要补就在本地改。
+- facts 记到"话名"级，**不是行 id**：写进角色卡前必须按 `sources.md` 回剧本核对。
 - `_materials` 里的"首张卡"只是最早发售的 P 卡；实际改编可以换卡（`pCardInfo` 查任意卡）。
+
+### 1.5 资料读法：facts → 剧本 → 角色卡
+
+三份东西分工不同，别混：
+
+| 层 | 位置 | 内容 | 能直接写进游戏吗 |
+|---|---|---|---|
+| 资料库 | `_materials/facts/<id>.md` | 档案 / 组合 / 关系 / 喜好（同人整理，带 `.sources.md`） | ❌ 只是线索 |
+| 剧本 | `.cache/shiny/<剧本编号>.json`（导出后） | 日文原文 + 13 位行 id + 分支 | ✅ 唯一事实来源 |
+| 角色卡 | `docs/content/<id>/character.md` | 瘦身后的写作判断，每条带行 id | ✅ 内容就照它写 |
+
+流程：
+
+```text
+1. 读 facts/<id>.md           建立印象：她怎么说话、在意什么、和谁是什么关系
+2. 查 facts/<id>.sources.md   找到对应剧情「目录 / 卡名 / 话名」
+3. scriptExport 导出那几本    拿到 13 位行 id 与原文
+4. 写 character.md            每条事实挂行 id；facts 说的和剧本冲突时，以剧本为准并回改 facts
+5. 写内容草稿                 语气、口癖、称呼都从 character.md 抄，不凭印象
+```
+
+**红线**：`character.md` 里以 `- ` 开头的事实行必须带 13 位行 id（`content:guard` 会红）；
+写不出出处的就标「待核」或干脆不写——事故 #28 / #29 就是这么来的。
 
 ---
 
@@ -82,7 +111,7 @@ npm run content:materials   # 重新抓取/更新索引（有缓存，幂等）
 | # | 步骤 | 产物 | 门禁 | 谁审 |
 |---|---|---|---|---|
 | 0 | 立项 | 接入卡：id / 组合 / 优先级 / 首张卡 / 素材是否齐 | — | 人（决定顺序） |
-| 1 | 资料包 | 3 本以上剧本在 `.cache/shiny/`；记下 cardUuid → eventId | 剧本能打开、行 id 在 | AI 自检 |
+| 1 | 资料 | 先读 `_materials/facts/<id>.md`（+ `.sources.md`）建立印象；再导出 3 本以上剧本到 `.cache/shiny/`，记下 cardUuid → eventId | 剧本能打开、行 id 在；写进内容的事实都能指回行 id | AI 自检 |
 | 2 | 角色卡 | `docs/content/<id>/character.md`（9 节，事实逐条带 13 位行 id） | `npm run content:guard` | 人（看语气） |
 | 3 | 骨架 | `npm run content:new-idol` 生成 idols/actors/角色卡空壳 + 登记两个 index、starting | `npm run build` | 代码评审 |
 

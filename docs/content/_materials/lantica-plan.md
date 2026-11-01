@@ -1,6 +1,6 @@
 # L'Antica 四人接入方案（待审）
 
-> 依据：API 元数据（[index.md](index.md)）、官方剧本（已导出到 `.cache/shiny/`）、eidolon-sc facts（只作阅读参考）。
+> 依据：API 元数据（[index.md](index.md)）、官方剧本（已导出到 `.cache/shiny/`）、角色资料库 [facts/](facts/README.md)（只作阅读参考）。
 > 审法：一段一段看，回复「按这个做」或指出要改的条目即可；不用重看资料。
 > **凡标「待核」的，都来自 facts 而不是已导出的剧本**——写进游戏前必须回剧本换成 13 位行 id。
 

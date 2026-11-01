@@ -124,18 +124,19 @@ npm run content:guard      # 已接进 content:validate，构建时会跑
 
 | # | 步骤 | 产出 | 在哪 |
 |---|---|---|---|
-| 1 | **查剧本** | 先导出该角色的剧本，读一遍，**相遇和关键转折都从原作改** | `npx tsx tools/scriptExport.ts <编号>` |
-| 1.5 | 角色卡 | 语气、称呼、阶段态度、OOC 对照、语料索引（台词要能指回文件） | `docs/content/<id>/character.md` |
+| 0 | **查资料** | 先读本地的 `_materials/facts/<id>.md`（+ `.sources.md`）建立印象：她怎么说话、在意什么、和谁什么关系。**facts 只是线索，不是 canon** | [`_materials/facts/`](_materials/facts/README.md) |
+| 1 | **查剧本** | 按 `sources.md` 找到对应剧情，导出该角色的剧本读一遍，**相遇和关键转折都从原作改** | `npx tsx tools/scriptExport.ts <编号>` |
+| 1.5 | 角色卡 | 一句话、语言习惯、三种语域、关系、OOC、写作三判断；**每条事实带 13 位行 id** | `docs/content/<id>/character.md` |
 | 2 | 偶像定义 | id、名字、组合、颜色、头像、成长曲线 | `src/core/content/idols/<id>.ts` |
 | 3 | 角色日程 | 一周作息（她在哪、什么时候、能不能被工作顶掉） | `src/core/content/actors/<id>.ts` |
 | 3.5 | **名册与日程表** | 招募后名册有她的卡（名字/组合/简介/成长），日程表能切到她、七天有格子 | 见下方说明 |
-| 4 | 招募链 | 2 步剧情链 + 对话。**先定起步方式**（见下） | `storyChains.ts` + `dialogues/<id>.ts` |
+| 4 | 招募链 | 2 步剧情链 + 对话。**先定起步方式**（见下） | `src/core/content/chapters/<id>Encounter.ts` + `chapters/index.ts` |
 | 5 | 训练与自由时间 | 至少 4 条偶像页行动 | 审查台批次 |
 | 6 | 专属行动 | 1–3 条，挂在她作息的空档 | 审查台批次 |
 | 7 | 日常话题 | 6–8 条闲聊，24 小时冷却 | 审查台批次 |
 | 8 | 训练后事件 | 每个训练行动 1 条 | 审查台批次 |
-| 9 | 工作线 | 她的属性对应的 2–3 份工作 | 审查台批次 |
-| 10 | 长线剧情 | 3 步 + 分支，带一次解锁 | 审查台批次 + 结构 |
+| 9 | 工作线 | **目前共用全员的 6 份工作**，新角色不单独写；要加就进 `content-review` 走审查台 | 审查台批次 |
+| 10 | 长线剧情（可选） | 3 步 + 分支，带一次解锁；MVP 不强求，首卡跑通后再做 | 审查台批次 + 结构 |
 | 11 | 验收 | 构建已含覆盖率检查；再在游戏里走一遍 | `npm run acceptance` |
 | 12 | 记录 | 块表 + 一条经验 | `docs/content/README.md` |
 
@@ -444,6 +445,11 @@ ODD_JOB_SCALE_BY_RANK = {
 
 **汉化仓库（SCTranslationData）已删除。** 它的 CSV 是"屏幕上出现过的行按顺序平铺"：
 分支和合流全丢、部分行没翻译、同卡多段混在一个文件夹里。
+
+另外，仓库里还有一份**同人整理的角色资料**：`docs/content/_materials/facts/`（28 人，2026-11 复制进来）。
+它适合**建立印象 + 找线索**（家庭、好恶、关系、口癖），但整理到"话名"级，**没有行 id**，
+而且可能和剧本有出入。定位顺序是「facts → 按 `sources.md` 找剧本 → 导出原文行 → 写中文」，
+**不能直接拿 facts 的措辞当台词**。
 
 **唯一事实来源是游戏自己的剧本 JSON**（镜像 `viewer.shinycolors.moe`）：
 

@@ -6,6 +6,7 @@
 > 数值档位在 [`docs/current/content-standards.md`](../current/content-standards.md)。
 > 审查系统在 [`docs/systems/content-review.md`](../systems/content-review.md)。
 > 角色语气以**游戏原始剧本**为准（`npx tsx tools/scriptExport.ts`），对照各角色卡 §2–§3。
+> 人设线索先看本地资料库 [`_materials/facts/`](_materials/facts/README.md)（28 人）；它是同人整理，**不是 canon**。
 
 ## 1. 目录
 
@@ -14,6 +15,7 @@ docs/content/
   README.md              本文件：规范 + 流程 + 块清单 + 进度
   new-idol.md            新角色接入全流程（资料选择 / 门禁 / 批量顺序）
   _materials/            28 人资料包（API 元数据 + 剧本编号索引）
+    facts/               28 人角色资料（档案/关系/喜好，带 .sources.md；已复制进仓库）
   playbook.md            内容生产手册（交付协议 / 覆盖矩阵 / 写作配方）
   <idol>/
     character.md         角色卡（写作时逐条对照）

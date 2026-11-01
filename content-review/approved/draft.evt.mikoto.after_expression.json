@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.mikoto.after_expression",
+  "kind": "event",
+  "title": "她说不知道自己是什么表情",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.mikoto.after_expression",
+  "payload": {
+    "id": "evt.mikoto.after_expression",
+    "title": "她说不知道自己是什么表情",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mikoto"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。她看着回放，说\"分不出来，这是自然的，还是故意做出来的\"。",
+    "choices": [
+      {
+        "label": "看起来很开心。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……那就，当成真的吧。」"
+      },
+      {
+        "label": "分不出来也没关系。",
+        "hint": "表现 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「……是吗。……我再看看。」"
+      },
+      {
+        "label": "明天再看吧。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「好。……今天先这样。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:32:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.914Z",
+  "reviewedAt": "2026-11-01T07:13:11.914Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:32:00.000Z",
+      "note": "美琴表演课后事件（自然还是演的，她分不清）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.914Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

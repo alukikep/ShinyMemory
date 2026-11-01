@@ -1,0 +1,38 @@
+{
+  "id": "draft.mikoto.chat.music",
+  "kind": "topic",
+  "title": "聊天 · 作曲",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.mikoto.chat.music",
+  "payload": {
+    "id": "mikoto.chat.music",
+    "actorId": "mikoto",
+    "label": "作曲",
+    "text": "「……最近，写了一点曲子。」「能听吗？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:15:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.938Z",
+  "reviewedAt": "2026-11-01T07:13:11.938Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:15:00.000Z",
+      "note": "美琴日常话题（兴趣：作詞作曲 [mikoto facts]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.938Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

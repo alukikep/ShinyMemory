@@ -257,8 +257,8 @@ P6 2026-10-30  系统层 / 无内容
 ## 12. 现在的位置
 
 - 已确立：角色卡、数值档位、审查流程、内容生成链路
-- **已接入 24 人 / 25 张卡 / 90 章**（最后一批：七草にちか，SHHis 开始）
-  - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 4、SHHis 1
+- **已接入 25 人 / 26 张卡 / 95 章**（最后一批：緋田美琴，SHHis 补完）
+  - 组合：illumination 3、L'Antica 5、放クラ 5、ALSTROEMERIA 3、Straylight 3、noctchill 4、SHHis 2
   - 每人的块结构都一样：招募链 2–3 步 + 首张卡一链 N 章 + 专属行动 + 话题 6–8 + 训练后事件 3
   - 进度与逐场地点核对见 [`_materials/<unit>-plan.md`](_materials/README.md)
 - 已有工作（6 份已通过）：摄影棚 ¥1,200 / 电台 ¥900 / 封面 ¥2,000 / 录音小样 ¥600 / 舞蹈节目 ¥1,000 / 初次 Live（剧情解锁）

@@ -1,0 +1,38 @@
+{
+  "id": "draft.mikoto.chat.stage",
+  "kind": "topic",
+  "title": "聊天 · 舞台",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.mikoto.chat.stage",
+  "payload": {
+    "id": "mikoto.chat.stage",
+    "actorId": "mikoto",
+    "label": "舞台",
+    "text": "「……舞台，比练习室好。」「为什么？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:18:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.958Z",
+  "reviewedAt": "2026-11-01T07:13:11.958Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:18:00.000Z",
+      "note": "美琴日常话题（「レッスン室よりステージがいい」[mikoto facts]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.958Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

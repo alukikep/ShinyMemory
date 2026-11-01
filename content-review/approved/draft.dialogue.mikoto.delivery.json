@@ -1,0 +1,324 @@
+{
+  "id": "draft.dialogue.mikoto.delivery",
+  "kind": "dialogue",
+  "title": "事务所门口放着个大纸箱",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.mikoto.delivery",
+  "payload": {
+    "id": "dialogue.mikoto.delivery",
+    "idolId": "mikoto",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "mikoto",
+        "text": "………………",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "──咦，美琴来了啊。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "今天也有课吧？",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "mikoto",
+        "text": "啊……うん。不过今天是一个小时之后。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "这样啊。事务所这边有事吗？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "…………总觉得你有点静不下来。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "mikoto",
+        "text": "──与其说有事……",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "mikoto",
+        "text": "…………！好像来了。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "………………？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "什么啊，点了外卖……？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "……！？那是什么纸箱。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "mikoto",
+        "text": "这个……会自己打扫的，新吸尘器。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "嗯，看箱子大概能明白……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "不过，它为什么寄到这儿来了？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "mikoto",
+        "text": "…………？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "mikoto",
+        "text": "因为前阵子，你说网购的东西可以寄到事务所吧？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "mikoto",
+        "text": "所以我想把坏掉的家电换掉……",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "………………啊……",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "mikoto",
+        "text": "……难道说，在事务所收，还是不行？",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "不是，确实我说了可以在事务所收，没关系。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "只是想说，美琴自己能收的话，寄到家里不就好了。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "mikoto",
+        "text": "啊…………",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "话说，那个挺大挺重的吧。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "从这里拿回去，相当费劲吧……没事吗？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "mikoto",
+        "text": "……………………",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "…………美琴？",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "mikoto",
+        "text": "──其实。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "mikoto",
+        "text": "之后，电视的显示器也要送来……寄到这里。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "诶……！那，难道洗衣机也是……你不会要说吧！？",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "mikoto",
+        "text": "那、那个还没……还没按下订单按钮，所以算安全？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "哈哈……安全吗……这样啊，太好了。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "────好。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "首先，这台吸尘器和之后要来的显示器，装到车上去。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "今天回去的时候，一边送美琴一边搬。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "mikoto",
+        "text": "……！可以吗？",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "嗯。还有洗衣机……在家里收才比较麻烦。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "……日程我来调，让美琴能好好收到。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "同时工作也能好好做、课也能好好上。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "mikoto",
+        "text": "…………！",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "mikoto",
+        "text": "谢谢，制作人。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "不，这种事算不算制作人的工作……虽然可能不算。",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "producer",
+        "text": "不过，能帮上美琴真是太好了！",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "mikoto",
+        "text": "………………啊。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "……美琴？",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "mikoto",
+        "text": "────呼……啊哈哈。对不起，总觉得有点好笑。",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "mikoto",
+        "text": "我自己的冒失也是……连这种事都替我做，也是。",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "producer",
+        "text": "哈哈，是吗？",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "mikoto",
+        "text": "うん。果然 283 制作……",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "mikoto",
+        "text": "……不，也许是制作人比较特别。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:00:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.879Z",
+  "reviewedAt": "2026-11-01T07:13:11.879Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:00:00.000Z",
+      "note": "对照 202500411（家电全寄到事务所、搬回去、她笑了）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.879Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

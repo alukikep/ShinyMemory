@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.mikoto.after_vocal",
+  "kind": "event",
+  "title": "她说今天的声音不对",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.mikoto.after_vocal",
+  "payload": {
+    "id": "evt.mikoto.after_vocal",
+    "title": "她说今天的声音不对",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "mikoto"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "歌唱课结束了。她把手贴在喉咙上，说\"今天的声音，和昨天不一样\"，然后从头开始。",
+    "choices": [
+      {
+        "label": "昨天也很好。",
+        "hint": "歌唱 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……谢谢。不过，我想唱的是今天的声音。」"
+      },
+      {
+        "label": "那就再来一遍。",
+        "hint": "歌唱 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「うん。……再来一遍。」"
+      },
+      {
+        "label": "今天的声音，也留着。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……原来是这样想的啊。……那，今天就到这里。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:30:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.918Z",
+  "reviewedAt": "2026-11-01T07:13:11.918Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:30:00.000Z",
+      "note": "美琴歌唱课后事件（她每天都要重新确认自己的声音）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.918Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

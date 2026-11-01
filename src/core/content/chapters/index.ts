@@ -39,6 +39,8 @@ import mamimiNatural from './mamimiNatural';
 import manoNatural from './manoNatural';
 import manoSmile from './manoSmile';
 import meguruPicarte from './meguruPicarte';
+import mikotoCard from './mikotoCard';
+import mikotoEncounter from './mikotoEncounter';
 import sakuyaCard from './sakuyaCard';
 import sakuyaEncounter from './sakuyaEncounter';
 import toruCard from './toruCard';
@@ -105,6 +107,8 @@ export const PENDING_CHAPTERS: StoryChainDef[] = [
   hinanaCard,
   nichikaEncounter,
   nichikaCard,
+  mikotoEncounter,
+  mikotoCard,
   manoSlump,
   hioriGap,
   meguruBurden,

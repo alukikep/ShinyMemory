@@ -1,0 +1,38 @@
+{
+  "id": "draft.mikoto.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.mikoto.chat.today",
+  "payload": {
+    "id": "mikoto.chat.today",
+    "actorId": "mikoto",
+    "label": "今天",
+    "text": "「……今天也，练了。」「练到几点？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:12:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.964Z",
+  "reviewedAt": "2026-11-01T07:13:11.964Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:12:00.000Z",
+      "note": "美琴日常话题（短句、停顿）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.964Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

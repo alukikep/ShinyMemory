@@ -1,0 +1,38 @@
+{
+  "id": "draft.mikoto.chat.practice",
+  "kind": "topic",
+  "title": "聊天 · 练习",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.mikoto.chat.practice",
+  "payload": {
+    "id": "mikoto.chat.practice",
+    "actorId": "mikoto",
+    "label": "练习",
+    "text": "「昨天能做到的，今天不一定做得到。」「所以每天都练？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:13:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.951Z",
+  "reviewedAt": "2026-11-01T07:13:11.951Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:13:00.000Z",
+      "note": "美琴日常话题（每天同样的练习 [mikoto facts]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.951Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

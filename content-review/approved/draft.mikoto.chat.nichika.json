@@ -1,0 +1,38 @@
+{
+  "id": "draft.mikoto.chat.nichika",
+  "kind": "topic",
+  "title": "聊天 · にちか",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.mikoto.chat.nichika",
+  "payload": {
+    "id": "mikoto.chat.nichika",
+    "actorId": "mikoto",
+    "label": "にちか",
+    "text": "「……にちかちゃん，今天也在练。」「你怎么知道？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:16:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.946Z",
+  "reviewedAt": "2026-11-01T07:13:11.946Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:16:00.000Z",
+      "note": "美琴日常话题（看得到搭档的努力 [mikoto facts 关系]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.946Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

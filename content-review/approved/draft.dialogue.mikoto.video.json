@@ -1,0 +1,425 @@
+{
+  "id": "draft.dialogue.mikoto.video",
+  "kind": "dialogue",
+  "title": "事务所没开灯，里面有人",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.mikoto.video",
+  "payload": {
+    "id": "dialogue.mikoto.video",
+    "idolId": "mikoto",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "（……已经这么晚了啊。）",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "………………",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "（事务所，这个点应该已经关灯了吧。）",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "……咦，玄关的锁开着……！",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "（是はづきさん忘了锁……应该不会吧。）",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "（还有人在吗……？）",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "（可是灯没开吧……？难道说，有谁闯进来了──……）",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "………………！",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "mikoto",
+        "text": "…………啊！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "──哇，美琴……！？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "mikoto",
+        "text": "………………吓、吓了我一跳……！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "不不，那是我的台词吧……！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "怎么了，这个时间还不开灯──",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "……那个，是谁的 live 影像吗？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "mikoto",
+        "text": "诶……？啊……うん，是的。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "mikoto",
+        "text": "前几天买的吧？以前一起当研究生的孩子在里面……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "mikoto",
+        "text": "虽然不是什么有名的组合……不过这场 live 很好。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "…………这样啊。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "mikoto",
+        "text": "はづきさん说，只要走的时候锁好门，看也没关系。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "mikoto",
+        "text": "我是借这里的……不过，灯还是打开比较好呢。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "啊，嗯。我还以为有人闯进事务所了。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "mikoto",
+        "text": "……我也以为制作人今天不会回来了。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "mikoto",
+        "text": "以为是陌生人突然进来，吓了一跳。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "哈哈……抱歉抱歉。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "不过已经很晚了，剩下的回家看怎么样？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "当然，我送你。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "mikoto",
+        "text": "…………那个。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "mikoto",
+        "text": "家里的电视，屏幕点不亮了。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "mikoto",
+        "text": "所以我才在这里看。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "咦，前几天不是说洗衣机也不太好使吗？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "mikoto",
+        "text": "……是的。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "mikoto",
+        "text": "家电这种东西，会一下子全都不好使，是为什么呢。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "确实……不过，挺麻烦的啊。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "mikoto",
+        "text": "……うん。不过，我也觉得那也没办法。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "mikoto",
+        "text": "毕竟是我来东京之后一直在用的东西，已经十年了。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "mikoto",
+        "text": "…………各种各样的。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "mikoto",
+        "text": "坏掉了，也不奇怪了吧。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "………………",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "mikoto",
+        "text": "──呐，制作人。这段影像还有二十分钟左右看完。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "mikoto",
+        "text": "所以，能让我在这里再看一会儿吗？",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "mikoto",
+        "text": "……这是最后一份了，全部看完。",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "producer",
+        "text": "──我知道了…………美琴。",
+        "choices": [
+          {
+            "label": "我也可以一起看吗。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "不过，只能再看一点。",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "明天也有明天的事吧？",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "mikoto",
+        "text": "当然可以……不过是中途……",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "mikoto",
+        "text": "从最后的安可开始，可以吗？",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "producer",
+        "text": "哦，没关系。",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "是什么样的 live、有什么值得参考的，",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "就在送美琴回去的车里跟我说吧。",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "mikoto",
+        "text": "……うん。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "producer",
+        "text": "明天也有工作，还有课──……安排多得是。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "看完那个，把事务所锁好，我送你回去！",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "mikoto",
+        "text": "うん……谢谢。",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "mikoto",
+        "text": "本来想着得赶紧换新家电的。",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "mikoto",
+        "text": "不过，这样无微不至的，暂时就这样也许也不错。",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "producer",
+        "text": "诶……！",
+        "nextNodeId": "126"
+      },
+      "126": {
+        "id": "126",
+        "speakerId": "mikoto",
+        "text": "……骗你的，开玩笑。"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "producer",
+        "text": "明天早上很早……真的只看那个，马上回去哦。",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "mikoto",
+        "text": "没关系，闹钟没坏。",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "不是能不能起来的问题。",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "producer",
+        "text": "我担心的是，你有没有时间好好睡。",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "mikoto",
+        "text": "那个大概没关系……我想。",
+        "nextNodeId": "145"
+      },
+      "145": {
+        "id": "145",
+        "speakerId": "mikoto",
+        "text": "不过，谢谢你担心我。",
+        "nextNodeId": "146"
+      },
+      "146": {
+        "id": "146",
+        "speakerId": "producer",
+        "text": "嗯。我一直说，别勉强自己。",
+        "nextNodeId": "147"
+      },
+      "147": {
+        "id": "147",
+        "speakerId": "mikoto",
+        "text": "是啊，我会注意。",
+        "nextNodeId": "148"
+      },
+      "148": {
+        "id": "148",
+        "speakerId": "mikoto",
+        "text": "……要是连我也坏了，那就麻烦了。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:50:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.902Z",
+  "reviewedAt": "2026-11-01T07:13:11.902Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T00:50:00.000Z",
+      "note": "对照 202500404（深夜的事务所、live 录像、家电坏了、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.902Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

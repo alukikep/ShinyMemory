@@ -1,0 +1,449 @@
+{
+  "id": "draft.dialogue.mikoto.water",
+  "kind": "dialogue",
+  "title": "她练了两个小时没喝水",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.mikoto.water",
+  "payload": {
+    "id": "dialogue.mikoto.water",
+    "idolId": "mikoto",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "（──已经中午了啊。）",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "（美琴今天……也已经在练了吧。）",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "……………………",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "（买点什么过去看看吧。反正她又是连着练。）",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "（之前送过、她挺喜欢的那家果昔店，应该就是这附近……）",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "──好。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "…………美琴。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "mikoto",
+        "text": "────……",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "美琴ー……？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "哈哈……果然完全没注意到啊。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "（她自己好像也带了瓶装饮料来，可完全没动。）",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "（练了都一个多小时了吧……差不多该喊一声了。）",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "…………！",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "…………是电话啊。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "──美琴！慰问品放这儿了──",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "……好像用踏步在回答我。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "啊，是是…………！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "────喂，你好──……",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "────哈啊……",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "（电话打长了……聊了三十分钟左右吧。）",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "（不过，再怎么说美琴也该歇一会儿了吧。）",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "（……慰问品，她注意到了吗。）",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "…………美琴。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "mikoto",
+        "text": "────……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "……别说注意到慰问品了，连水都没喝啊……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "………………",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "──美琴ー！！！",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "mikoto",
+        "text": "……！诶……什么？吓了一跳。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "mikoto",
+        "text": "啊……制作人，你来了？",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "……三十分钟前也来过一次，喊了你，你完全没注意到。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "之后来了个电话，我就先接了一下……",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "mikoto",
+        "text": "这样啊？",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "回来一看你还在继续练，水也完全没喝。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "慰问品我放在那里了……",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "果然……已经温了。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "mikoto",
+        "text": "不知不觉就集中了……谢谢，抱歉。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "最近热起来了，别忘了补水，我不是一直说吗？",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "室内也会中暑的，动这么多的话──",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "mikoto",
+        "text": "うん，知道。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "mikoto",
+        "text": "……不过今天，开始练之后还没过多久吧？",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "mikoto",
+        "text": "大概一个小时──……咦？",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "producer",
+        "text": "……快两个小时了。",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "mikoto",
+        "text": "啊──…………时间过得真快呢。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "mikoto",
+        "text": "比我自己想的快得多。",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "producer",
+        "text": "……好像是。",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "mikoto",
+        "text": "要是有什么能自动补水的机器就好了呢？",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "producer",
+        "text": "诶？",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "mikoto",
+        "text": "那样的话，不管流多少汗，都能一直唱、一直跳了。",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "50"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "producer",
+        "text": "……那个，美琴。",
+        "choices": [
+          {
+            "label": "先自己注意一下吧。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "定个闹钟吧。",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "我来喊你。",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "producer",
+        "text": "补水也是，看时钟也是。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "mikoto",
+        "text": "……うん，我努力。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "producer",
+        "text": "想想有限的练习时间该怎么用，自然就会看时间了吧？",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "mikoto",
+        "text": "………………说得对。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "mikoto",
+        "text": "以前总觉得时间像是无限的。",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "mikoto",
+        "text": "…………其实完全不是那样呢。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "producer",
+        "text": "一小时响一次之类的……别忘记休息。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "mikoto",
+        "text": "……你觉得我能注意到闹钟吗？",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "producer",
+        "text": "………………",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "mikoto",
+        "text": "不过，试试看。用手机的闹钟，不行的话──",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "mikoto",
+        "text": "得找一个能响得像制作人喊我那么大声的计时器。"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "mikoto",
+        "text": "……每次都要喊「美琴ー！」吗？",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "producer",
+        "text": "每次……可能做不到。",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "但是能来的时候，每次都会喊。",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "mikoto",
+        "text": "……可以吗？许这种约定。",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "mikoto",
+        "text": "制作人你自己也很忙吧。",
+        "nextNodeId": "145"
+      },
+      "145": {
+        "id": "145",
+        "speakerId": "producer",
+        "text": "嗯，没关系。",
+        "nextNodeId": "146"
+      },
+      "146": {
+        "id": "146",
+        "speakerId": "producer",
+        "text": "能做的我都想做……作为美琴的制作人。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:20:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.906Z",
+  "reviewedAt": "2026-11-01T07:13:11.906Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T00:20:00.000Z",
+      "note": "对照 202500401（练习室、忘了喝水、时间、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.906Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

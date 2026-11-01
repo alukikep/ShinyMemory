@@ -1,0 +1,443 @@
+{
+  "id": "draft.dialogue.mikoto.magazine",
+  "kind": "dialogue",
+  "title": "她抱着篮子，杂志堆到篮口",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.mikoto.magazine",
+  "payload": {
+    "id": "dialogue.mikoto.magazine",
+    "idolId": "mikoto",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "mikoto",
+        "text": "──啊，对了，制作人。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "嗯？怎么了。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "mikoto",
+        "text": "之后有点时间吗？有地方想让你陪我去。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "可以啊。今天也没有别的安排了。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "mikoto",
+        "text": "太好了。那样的话──……",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "mikoto",
+        "text": "…………",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "美琴，要买什么？篮子我来拎吧？",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "mikoto",
+        "text": "……我打算买挺多的，可能会很重。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "mikoto",
+        "text": "就算这样……也可以吗？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "哦，那更要拎了！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "mikoto",
+        "text": "真的？那，就拜托你了。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "嗯，交给我！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "mikoto",
+        "text": "…………",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "mikoto",
+        "text": "──啊……有了。这本杂志，还有……这个也要。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "mikoto",
+        "text": "…………还有，这个不错。过刊也还在。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "mikoto",
+        "text": "制作人，那边水蓝色和……粉色封面的杂志也帮我拿一下？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "诶？啊……这些吗？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "mikoto",
+        "text": "……嗯。好，杂志差不多就这些。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "……除了杂志，还要买别的吗？",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "mikoto",
+        "text": "……？嗯，还有很多。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "mikoto",
+        "text": "我说了吧？会买挺多的。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "啊，那是听到了……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "mikoto",
+        "text": "CD 那层还没逛，动漫区也还得去。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "mikoto",
+        "text": "…………",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "mikoto",
+        "text": "篮子重的话，还是我来拿？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "不，没关系……不是那个意思。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "买这么多的话，网购送到家不是更轻松吗。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "mikoto",
+        "text": "………………",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "mikoto",
+        "text": "以前试过一次，结果快递箱一下就满了。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "mikoto",
+        "text": "我要练习，在家的时候很少，根本收不到，就不弄了。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "……这样啊。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "那以后在事务所收也没关系哦。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "mikoto",
+        "text": "……诶，可以吗？嗯……这样啊……",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "mikoto",
+        "text": "那很感谢……不过，不用了。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "mikoto",
+        "text": "我想像这样在店里，一个一个找、亲手拿起来。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "mikoto",
+        "text": "这本杂志内页的女孩，还有那部剧里的女演员。",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "mikoto",
+        "text": "以前大家都一起想当偶像……大多数人，都走上了别的路。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "mikoto",
+        "text": "……看到现在的活动变成这样排在那里──……",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "mikoto",
+        "text": "………………",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "……这样啊，原来如此。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "我还想你买的杂志种类真杂……原来是这么回事。",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "mikoto",
+        "text": "…………うん，是这样。",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "mikoto",
+        "text": "────啊……",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "mikoto",
+        "text": "…………『特集、斑鳩ルカ』──……",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "mikoto",
+        "text": "制作人，这个也……放进篮子里？",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "producer",
+        "text": "──啊，美琴。",
+        "choices": [
+          {
+            "label": "随时都可以陪你。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "下次再来吧。",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "下次就轮到美琴了。",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "producer",
+        "text": "美琴有想要的东西时，随时跟我说。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "mikoto",
+        "text": "……谢谢。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "mikoto",
+        "text": "抱歉，让制作人干拎东西这种事。",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "哈哈……没关系。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "而且总觉得，又稍微多了解了美琴一点，挺高兴的。",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "mikoto",
+        "text": "…………！",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "producer",
+        "text": "好了，CD 层和动漫区也要去吧？",
+        "nextNodeId": "107"
+      },
+      "107": {
+        "id": "107",
+        "speakerId": "mikoto",
+        "text": "……うん。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "producer",
+        "text": "在美琴想买的东西装满篮子之前。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "mikoto",
+        "text": "……是啊。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "producer",
+        "text": "杂志也好 CD 也好，现在什么都能用数据弄到手。",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "producer",
+        "text": "像这样来店里、真的用手拿起来，对美琴来说──",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "producer",
+        "text": "不，对我来说也是很好的刺激。",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "mikoto",
+        "text": "…………うん。谢谢，制作人。"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "mikoto",
+        "text": "诶……？",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "producer",
+        "text": "像这样登在杂志上、我们的 CD 摆出来。",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "之后演唱会的影像也会发售，写真集之类的也会出吧。",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "producer",
+        "text": "现在的活动一点点积累……我想早点看到它变成形状排在那里。",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "mikoto",
+        "text": "……うん。到那时候，还能再陪我一起来吗？",
+        "nextNodeId": "145"
+      },
+      "145": {
+        "id": "145",
+        "speakerId": "producer",
+        "text": "哈哈……嗯。",
+        "nextNodeId": "146"
+      },
+      "146": {
+        "id": "146",
+        "speakerId": "producer",
+        "text": "当然，我就是这么打算的。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:30:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.895Z",
+  "reviewedAt": "2026-11-01T07:13:11.895Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T00:30:00.000Z",
+      "note": "对照 202500402（买杂志、快递箱、斑鳩ルカ特集、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.895Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "draft.mikoto.chat.home",
+  "kind": "topic",
+  "title": "聊天 · 老家",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.mikoto.chat.home",
+  "payload": {
+    "id": "mikoto.chat.home",
+    "actorId": "mikoto",
+    "label": "老家",
+    "text": "「北海道，现在应该还在下雪吧。」「想回去吗？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:17:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.926Z",
+  "reviewedAt": "2026-11-01T07:13:11.926Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:17:00.000Z",
+      "note": "美琴日常话题（北海道出身、很少回去 [mikoto facts]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.926Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

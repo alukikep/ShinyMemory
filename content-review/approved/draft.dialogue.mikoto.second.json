@@ -1,0 +1,204 @@
+{
+  "id": "draft.dialogue.mikoto.second",
+  "kind": "dialogue",
+  "title": "她说想看测试",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.mikoto.second",
+  "payload": {
+    "id": "dialogue.mikoto.second",
+    "idolId": "mikoto",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "──这里就是练习室。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "mikoto",
+        "text": "……宽敞。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "mikoto",
+        "text": "镜子也大。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "先让我看看你平时怎么练，可以吗？",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "mikoto",
+        "text": "……嗯。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "（──她一开始动，房间里的空气就变了。）",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "（每一个动作都干净，没有多余的地方。……这不是练过的程度。）",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "mikoto",
+        "text": "…………",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "（歌唱也一样。她不是在展示，是在确认。）",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "mikoto",
+        "text": "……怎么样？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "…………我说实话。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "我没什么能教你的。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "mikoto",
+        "text": "……这样啊。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "mikoto",
+        "text": "那，测试呢？我合格吗？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "────",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "……合格。请多指教，美琴。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "mikoto",
+        "text": "……ありがとう。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "mikoto",
+        "text": "────呐。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "嗯？",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "mikoto",
+        "text": "我，十年了。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "mikoto",
+        "text": "一直，是这样练过来的。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "……嗯。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "mikoto",
+        "text": "所以，如果我在这里也做不到的话──",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "────美琴。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "我不能保证你能变成什么样。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "但是，我会一直看着。看你能不能站上你想站的地方。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "mikoto",
+        "text": "………………",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "mikoto",
+        "text": "……那样的话，好像可以。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "mikoto",
+        "text": "──请多指教。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T00:10:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.898Z",
+  "reviewedAt": "2026-11-01T07:13:11.898Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T00:10:00.000Z",
+      "note": "对照 102500101（练习室、测试、十年）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.898Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "draft.activity.mikoto.magazine",
+  "kind": "activity",
+  "title": "陪她去买要看的杂志",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.activity.mikoto.magazine",
+  "payload": {
+    "id": "activity.mikoto.magazine",
+    "name": "陪她去买要看的杂志",
+    "description": "她在架子前一本一本拿起来看，把认识的人登在上面的那几本单独放在一边。篮子很重，她一次也没让你换手。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "mikoto"
+    ],
+    "locations": [
+      "record_shop",
+      "station"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 840,
+        "toMinute": 1140
+      }
+    ],
+    "cost": {
+      "stamina": 5
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "expression",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
+    ],
+    "resultTexts": [
+      "她把一本放回架子，又拿起来，最后还是买了。",
+      "结账的时候她说\"这本是给にちかちゃん的\"。",
+      "走出店门，她把袋子换到另一只手，说\"不重\"。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:10:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.814Z",
+  "reviewedAt": "2026-11-01T07:13:11.814Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:10:00.000Z",
+      "note": "美琴专属行动（唱片店/店头，买杂志 [202500402]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.814Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

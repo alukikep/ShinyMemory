@@ -1,0 +1,38 @@
+{
+  "id": "draft.mikoto.chat.appliance",
+  "kind": "topic",
+  "title": "聊天 · 家电",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.mikoto.chat.appliance",
+  "payload": {
+    "id": "mikoto.chat.appliance",
+    "actorId": "mikoto",
+    "label": "家电",
+    "text": "「家里的吸尘器也快不行了。」「用了十年？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:19:00.000Z",
+  "updatedAt": "2026-11-01T07:14:21.559Z",
+  "reviewedAt": "2026-11-01T07:14:21.559Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:19:00.000Z",
+      "note": "美琴日常话题（上京时的家电用了十年 [202500404/411]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:14:21.559Z",
+      "note": "人确认通过（2026-11-02，补第 8 条话题，同批）"
+    }
+  ]
+}

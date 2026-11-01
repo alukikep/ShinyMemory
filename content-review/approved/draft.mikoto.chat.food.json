@@ -1,0 +1,38 @@
+{
+  "id": "draft.mikoto.chat.food",
+  "kind": "topic",
+  "title": "聊天 · 吃饭",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.mikoto.chat.food",
+  "payload": {
+    "id": "mikoto.chat.food",
+    "actorId": "mikoto",
+    "label": "吃饭",
+    "text": "「……这么说来，好像有点饿了。」「还没吃？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T01:14:00.000Z",
+  "updatedAt": "2026-11-01T07:13:11.921Z",
+  "reviewedAt": "2026-11-01T07:13:11.921Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T01:14:00.000Z",
+      "note": "美琴日常话题（常常忘了吃饭 [mikoto facts]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T07:13:11.921Z",
+      "note": "人确认通过（2026-11-02，会话内明确指示）"
+    }
+  ]
+}

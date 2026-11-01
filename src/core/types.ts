@@ -62,6 +62,15 @@ export type GrowthProfile = Record<
   { initial: Rank; max: Rank }
 >;
 
+/** 学段。`none` = 没有学籍（社会人／已毕业）。身份不是从年龄推的，必须对 facts。 */
+export type SchoolStage =
+  | 'elementary'
+  | 'junior'
+  | 'high'
+  | 'university'
+  | 'specialised'
+  | 'none';
+
 export type IdolDef = {
   id: string;
   name: string;
@@ -74,6 +83,12 @@ export type IdolDef = {
   isStart?: boolean;
   /** 初始粉丝数；缺省 0。已经出道的偶像可以给一个非零起点。 */
   fans?: number;
+  /** 年龄。和 facts 第一行对得上，identity.test 会核。 */
+  age?: number;
+  /** 学段。identity.test 会核 facts，contentAudit 会核日程。 */
+  school?: SchoolStage;
+  /** facts 没写学籍时的说明（必须有，否则 identity.test 报错）。 */
+  schoolNote?: string;
   growth: GrowthProfile;
 };
 

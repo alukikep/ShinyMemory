@@ -8,6 +8,9 @@ const idol: IdolDef = {
   profile: "L'Antica 的成员。爱操心的食堂女儿，说话带长崎口音。",
   avatar: './assets/idols/q/kogane.png',
   // 定位：Me（API hirameki，メンタル）——表现与信任起步高一点，舞蹈是短板。
+  age: 19,
+  school: 'none',
+  schoolNote: 'facts 未写学籍（19 岁，老家佐世保的食堂）；按无学籍处理',
   growth: {
     vocal: { initial: 'E', max: 'A' },
     dance: { initial: 'E', max: 'B' },

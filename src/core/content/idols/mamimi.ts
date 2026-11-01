@@ -8,6 +8,8 @@ const idol: IdolDef = {
   profile: "L'Antica 的成员。高中生，放学后要练习；说话总带拖长音。",
   avatar: './assets/idols/q/mamimi.png',
   quote: 'ふふー、まぁいいですけどー',
+  age: 18,
+  school: 'high',
   growth: {
     vocal: { initial: 'E', max: 'A' },
     dance: { initial: 'D', max: 'B' },

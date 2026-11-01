@@ -234,6 +234,53 @@ export function auditPack(
     }
   }
 
+  // ---- 身份 ↔ 日程 ----
+  // 事故（2026-11-02）：把 19 岁的冬優子写成"社会人"（facts 写着专门学校），
+  // 而身份直接决定日程——学生平日上午必须是 protected 的学校时段，成人则不该有。
+  const schoolLocation: Record<string, string> = {
+    elementary: 'school',
+    junior: 'school',
+    high: 'school',
+    university: 'university',
+    specialised: 'school',
+  };
+  // 旧日程还没补学校的角色（真技债，见 dev-guide §6）。
+  const schoolSlotDebt = new Set(['mano']);
+  for (const idol of idolIds.values()) {
+    // 夹具包不声明身份；是否声明由 identity.test 对正式包统一检查。
+    if (!idol.school) continue;
+    const actor = index.actors.get(idol.id);
+    if (!actor) continue;
+    const isWeekday = (entry: { weekdays?: number[] }) =>
+      (entry.weekdays ?? []).some((day) => day >= 1 && day <= 5);
+    const protectedSchool = actor.schedule.filter(
+      (entry) =>
+        entry.protected &&
+        (entry.locationId === 'school' || entry.locationId === 'university'),
+    );
+    if (idol.school === 'none') {
+      if (protectedSchool.length > 0) {
+        push(
+          'error',
+          'idol-school-stage',
+          `${idol.id} 声明无学籍，但日程里有 protected 的学校时段`,
+        );
+      }
+      continue;
+    }
+    const expected = schoolLocation[idol.school];
+    const hasSlot = actor.schedule.some(
+      (entry) => isWeekday(entry) && entry.protected && entry.locationId === expected,
+    );
+    if (!hasSlot && !schoolSlotDebt.has(idol.id)) {
+      push(
+        'error',
+        'idol-school-stage',
+        `${idol.id} 声明 ${idol.school}，但日程没有 protected 的 ${expected} 时段`,
+      );
+    }
+  }
+
   // ---- 事件要真的做得到 ----
   // 事故 #30：摩美々的舞蹈课/表演课事件挂在她永远做不到的行动上
   // （她的日程里没有练习室），覆盖率却按"事件写了 3 条"算通过。

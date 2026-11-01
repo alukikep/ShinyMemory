@@ -8,6 +8,8 @@ const idol: IdolDef = {
   profile: "放学后 Climax Girls 的成员。小学六年级，身高像个高中生，满脑子是英雄片。",
   avatar: './assets/idols/q/kaho.png',
   // 定位：Vo（API hirameki）——嗓子是主场；表现其次，舞蹈是短板（小学生身体还没长开）。
+  age: 12,
+  school: 'elementary',
   growth: {
     vocal: { initial: 'D', max: 'S' },
     dance: { initial: 'E', max: 'B' },

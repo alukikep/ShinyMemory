@@ -9,6 +9,8 @@ const idol: IdolDef = {
   portrait: './assets/idols/hiori-portrait.png',
   avatar: './assets/idols/q/hiori.png',
   quote: '……我会认真做的。',
+  age: 15,
+  school: 'high',
   growth: {
     vocal: { initial: 'F', max: 'B' },
     dance: { initial: 'D', max: 'S' },

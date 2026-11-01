@@ -9,6 +9,8 @@ const idol: IdolDef = {
   portrait: './assets/idols/meguru-portrait.png',
   avatar: './assets/idols/q/meguru.png',
   quote: '诶嘿嘿，交给我吧！',
+  age: 16,
+  school: 'high',
   growth: {
     vocal: { initial: 'E', max: 'A' },
     dance: { initial: 'F', max: 'B' },

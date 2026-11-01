@@ -10,6 +10,8 @@ const idol: IdolDef = {
   avatar: './assets/idols/q/mano.png',
   quote: '制作人，今天也请多关照……',
   isStart: true,
+  age: 16,
+  school: 'high',
   growth: {
     vocal: { initial: 'D', max: 'S' },
     dance: { initial: 'F', max: 'B' },

@@ -1,0 +1,179 @@
+{
+  "id": "draft.dialogue.chiyuki.greet",
+  "kind": "dialogue",
+  "title": "第一次工作，挨拶まわり",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.chiyuki.greet",
+  "payload": {
+    "id": "dialogue.chiyuki.greet",
+    "idolId": "chiyuki",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "（差不多到约定的时间了。）",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "chiyuki",
+        "text": "哈……哈……制作人先生，让您久等了～！",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "chiyuki",
+        "text": "对不起，杂货店的工作拖长了一点……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "没关系，是准时。辛苦了。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "那从现在开始集中在这边吧。抱歉，连休息时间都没多少。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "chiyuki",
+        "text": "不会，我会努力的～！今天的工作是……挨个去打招呼吧？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "嗯，是这样。我们事务所有参与一个活动，去跟主办方打个招呼。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "chiyuki",
+        "text": "是……我能做好吗。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "没问题，千雪一定行。别想太复杂，享受活动的气氛就好。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "（对还不太了解偶像的千雪来说，让她看看舞台是最好的。）",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "chiyuki",
+        "text": "明、明白了。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "chiyuki",
+        "text": "我叫桑山千雪，是新人的偶像。请多指教。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "（千雪身上果然有东西啊……虽然紧张，却好好地笑着打了招呼。）",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "千雪，辛苦了。招呼打得很不错。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "chiyuki",
+        "text": "谢谢您。听您这么说，我就放心了。",
+        "choices": [
+          {
+            "label": "今天这样就很好。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "你的笑容很管用。",
+            "nextNodeId": "110"
+          },
+          {
+            "label": "下周还有更大的场",
+            "nextNodeId": "120"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "chiyuki",
+        "text": "呵呵，是吗？那我放心了。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "嗯。第一次能做到这样，已经很够了。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "chiyuki",
+        "text": "那，下次我也照着这样来。"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "chiyuki",
+        "text": "笑容……吗？",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "producer",
+        "text": "嗯，主办方第一句就夸了那个笑容。",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "chiyuki",
+        "text": "哎呀……那我得好好珍惜它才行呢。"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "chiyuki",
+        "text": "更大的场……我，会紧张的吧。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "紧张也没关系。今天的千雪，紧张着也笑出来了。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "chiyuki",
+        "text": "……是。那我，会记得今天的感觉。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:00:00.000Z",
+  "updatedAt": "2026-11-02T11:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:00:00.000Z",
+      "note": "对照 101600102（三分支，保留三个选项）"
+    }
+  ]
+}

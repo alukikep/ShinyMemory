@@ -1,0 +1,228 @@
+{
+  "id": "draft.dialogue.chiyuki.sale",
+  "kind": "dialogue",
+  "title": "那家杂货屋打半价了",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.chiyuki.sale",
+  "payload": {
+    "id": "dialogue.chiyuki.sale",
+    "idolId": "chiyuki",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "……啊，那家杂货屋好像打半价。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "chiyuki",
+        "text": "哇！真的呢～！",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "chiyuki",
+        "text": "呵呵，制作人先生的马克杯，再等等就好了呢。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "不，那时候马上带我去挺好的。现在大概已经没了吧？",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "chiyuki",
+        "text": "啊，那是……也许，真的呢……",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "啊，抱歉。千雪也想要来着吧。一起买下来就好了……",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "chiyuki",
+        "text": "不、不会！抱歉，突然说这种话。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "chiyuki",
+        "text": "……碰头，我们赶紧去吧？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "哦，是啊。走吧。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "（呼……总觉得，就这么来了……）",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "（马克杯，还在吗……）",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "——千雪！？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "chiyuki",
+        "text": "……制、制作人先生！您还在事务所吗……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "嗯，出来买晚饭……千雪才是，我以为你早回去了。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "chiyuki",
+        "text": "不是……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "那个……是来看半价的？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "chiyuki",
+        "text": "是、是的。制作人先生也是……？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "嗯，不……其实是来看那只马克杯的。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "chiyuki",
+        "text": "诶……！其实，我也是。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "啊，是这样啊。因为千雪看起来特别喜欢。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "我一直在想，会不会已经没有了。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "chiyuki",
+        "text": "制作人先生……！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "所以，如果还在的话我买吧……可以说，我买下来吗？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "chiyuki",
+        "text": "给……我吗？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "是这样没错……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "chiyuki",
+        "text": "哇……！当然。非常……高兴……！",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "chiyuki",
+        "text": "啊，神啊……愿马克杯还在，愿马克杯还在……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "哈哈，千雪，在念咒吗？看来真的很喜欢啊。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "chiyuki",
+        "text": "是……",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "那，我也来祈祷。呃，愿马克杯还在……",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "chiyuki",
+        "text": "呵呵，制作人先生……",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "结果又回到事务所了呢。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "chiyuki",
+        "text": "是啊。想快点用它喝咖啡♪",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "哈哈……买到了就好。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:00:00.000Z",
+  "updatedAt": "2026-11-02T11:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:00:00.000Z",
+      "note": "对照 201600311（半額セール、两人都回去找同一只马克杯）"
+    }
+  ]
+}

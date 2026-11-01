@@ -1,0 +1,78 @@
+{
+  "id": "draft.dialogue.chiyuki.second",
+  "kind": "dialogue",
+  "title": "她来给出答复",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.chiyuki.second",
+  "payload": {
+    "id": "dialogue.chiyuki.second",
+    "idolId": "chiyuki",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "chiyuki",
+        "text": "那个……不好意思，我叫桑山千雪……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "啊！我一直在等您，请进！",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "那个……虽然像是催促，关于上次的答复……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "chiyuki",
+        "text": "是。被挖角的事……我接受。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "真、真的吗！？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "chiyuki",
+        "text": "是。对我来说是很意外的事，但\"让很多人笑起来\"这句话，我一直忘不掉。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "chiyuki",
+        "text": "如果可以在继续现在工作的前提下……让我从上课开始试试。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "当然！……我会全力支持您！",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "chiyuki",
+        "text": "哎呀……！谢谢您。请多指教呢，制作人先生。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:00:00.000Z",
+  "updatedAt": "2026-11-02T11:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:00:00.000Z",
+      "note": "对照 101600101 后半（来事务所、答应、从上课开始）"
+    }
+  ]
+}

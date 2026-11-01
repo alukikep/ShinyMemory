@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.chiyuki.after_dance",
+  "kind": "event",
+  "title": "膝盖有点酸",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.chiyuki.after_dance",
+  "payload": {
+    "id": "evt.chiyuki.after_dance",
+    "title": "膝盖有点酸",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "chiyuki"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她说膝盖有点酸，还是先把动作记完了才坐下。",
+    "choices": [
+      {
+        "label": "先休息。",
+        "hint": "压力 -4、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -4
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……那就，稍微坐一下。谢谢您。」"
+      },
+      {
+        "label": "我帮你拉伸。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「呵呵，您还会这个啊……好舒服。」"
+      },
+      {
+        "label": "再来一遍。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好。那我，再来一遍。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:20:00.000Z",
+  "updatedAt": "2026-11-02T11:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:20:00.000Z",
+      "note": "千雪舞蹈课后事件（她会照顾人、但不太会照顾自己）"
+    }
+  ]
+}

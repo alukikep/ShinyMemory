@@ -410,4 +410,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: 'あまやどり', index: 3, total: 3 },
     anchors: ['2015003110010', '2015003110120', '2015003110160'],
   },
+  {
+    chapterId: 'chiyuki-mug-step',
+    script: '201600301',
+    source: '剧本 201600301',
+    card: { title: 'おいしい時間', index: 1, total: 3 },
+    anchors: ['2016003010010', '2016003010100', '2016003010140'],
+  },
+  {
+    chapterId: 'chiyuki-gyudon',
+    script: '201600302',
+    source: '剧本 201600302',
+    card: { title: 'おいしい時間', index: 2, total: 3 },
+    anchors: ['2016003020010', '2016003020070', '2016003020130'],
+  },
+  {
+    chapterId: 'chiyuki-sale',
+    script: '201600311',
+    source: '剧本 201600311',
+    card: { title: 'おいしい時間', index: 3, total: 3 },
+    anchors: ['2016003110010', '2016003110100', '2016003110160'],
+  },
 ];

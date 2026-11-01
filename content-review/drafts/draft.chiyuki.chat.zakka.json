@@ -1,0 +1,32 @@
+{
+  "id": "draft.chiyuki.chat.zakka",
+  "kind": "topic",
+  "title": "聊天 · 杂货",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.chiyuki.chat.zakka",
+  "payload": {
+    "id": "chiyuki.chat.zakka",
+    "actorId": "chiyuki",
+    "label": "杂货",
+    "text": "「杂货……我喜欢得不行～」「看到可爱的小东西，就想带回家……」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:10:00.000Z",
+  "updatedAt": "2026-11-02T11:10:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:10:00.000Z",
+      "note": "千雪日常话题（API 兴趣：雑貨作り）"
+    }
+  ]
+}

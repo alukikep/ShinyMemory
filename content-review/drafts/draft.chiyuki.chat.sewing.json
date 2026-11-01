@@ -1,0 +1,32 @@
+{
+  "id": "draft.chiyuki.chat.sewing",
+  "kind": "topic",
+  "title": "聊天 · 缝纫",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.chiyuki.chat.sewing",
+  "payload": {
+    "id": "chiyuki.chat.sewing",
+    "actorId": "chiyuki",
+    "label": "缝纫",
+    "text": "「缝东西？从服饰学校的时候就开始学了」「扣子掉了的话，随时说哦♪」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:11:00.000Z",
+  "updatedAt": "2026-11-02T11:11:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:11:00.000Z",
+      "note": "千雪日常话题（特技：裁縫）"
+    }
+  ]
+}

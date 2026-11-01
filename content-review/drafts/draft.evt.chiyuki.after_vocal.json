@@ -1,0 +1,85 @@
+{
+  "id": "draft.evt.chiyuki.after_vocal",
+  "kind": "event",
+  "title": "唱完先笑着喘气",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.chiyuki.after_vocal",
+  "payload": {
+    "id": "evt.chiyuki.after_vocal",
+    "title": "唱完先笑着喘气",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "chiyuki"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "声乐课结束了。她唱完先笑了一下，才把气喘匀。",
+    "choices": [
+      {
+        "label": "很好。",
+        "hint": "信任 +3、歌唱 +1",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          }
+        ],
+        "result": "「呵呵……谢谢您。那我，再唱一遍♪」"
+      },
+      {
+        "label": "再稳一点。",
+        "hint": "歌唱 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「稳……是呢。好，再试一次。」"
+      },
+      {
+        "label": "先喝水。",
+        "hint": "压力 -3",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「啊，谢谢……您总是很周到呢。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:20:00.000Z",
+  "updatedAt": "2026-11-02T11:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:20:00.000Z",
+      "note": "千雪声乐课后事件"
+    }
+  ]
+}

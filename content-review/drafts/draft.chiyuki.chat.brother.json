@@ -1,0 +1,32 @@
+{
+  "id": "draft.chiyuki.chat.brother",
+  "kind": "topic",
+  "title": "聊天 · 弟弟",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.chiyuki.chat.brother",
+  "payload": {
+    "id": "chiyuki.chat.brother",
+    "actorId": "chiyuki",
+    "label": "弟弟",
+    "text": "「弟弟啊……小时候，我常给他读绘本」「他现在直接叫我千雪哦」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:15:00.000Z",
+  "updatedAt": "2026-11-02T11:15:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:15:00.000Z",
+      "note": "千雪日常话题（家里有个弟弟）"
+    }
+  ]
+}

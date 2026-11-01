@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.chiyuki.after_expression",
+  "kind": "event",
+  "title": "笑容练到发僵",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.chiyuki.after_expression",
+  "payload": {
+    "id": "evt.chiyuki.after_expression",
+    "title": "笑容练到发僵",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "chiyuki"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表现课结束了。她揉着嘴角说笑太久会僵，然后又笑了一下确认还能笑。",
+    "choices": [
+      {
+        "label": "刚才那样很好。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「呵呵……那，我记住这个感觉。」"
+      },
+      {
+        "label": "不用一直笑。",
+        "hint": "信任 +3、压力 -3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「……是呢。那，就休息一下表情吧。」"
+      },
+      {
+        "label": "再试一次。",
+        "hint": "表现 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好。这次，我想再自然一点。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:20:00.000Z",
+  "updatedAt": "2026-11-02T11:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:20:00.000Z",
+      "note": "千雪表演课后事件"
+    }
+  ]
+}

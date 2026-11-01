@@ -1,0 +1,63 @@
+{
+  "id": "draft.activity.chiyuki.craft",
+  "kind": "activity",
+  "title": "陪她做手工",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.activity.chiyuki.craft",
+  "payload": {
+    "id": "activity.chiyuki.craft",
+    "name": "陪她做手工",
+    "description": "宿舍的房间里摆着她的杂货和布头。她戴着眼镜，问你想做点什么，然后先把你手上的针接过去示范了一遍。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "chiyuki"
+    ],
+    "locations": [
+      "dorm"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 1080,
+        "toMinute": 1260
+      }
+    ],
+    "cost": {
+      "stamina": 4
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "expression",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
+    ],
+    "resultTexts": [
+      "她把你缝歪的那一行拆掉重来，说\"第一次都是这样\"。",
+      "临走时她把手链塞进你手里，说线不够了，下次再做一个更好的。",
+      "她把灯关小，说这样看布的颜色才准，然后给你看她的收藏。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:00:00.000Z",
+  "updatedAt": "2026-11-02T11:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:00:00.000Z",
+      "note": "千雪专属行动（手工，API 兴趣：雑貨作り）"
+    }
+  ]
+}

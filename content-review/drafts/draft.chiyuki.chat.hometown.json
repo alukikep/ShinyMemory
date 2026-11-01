@@ -1,0 +1,32 @@
+{
+  "id": "draft.chiyuki.chat.hometown",
+  "kind": "topic",
+  "title": "聊天 · 老家",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.chiyuki.chat.hometown",
+  "payload": {
+    "id": "chiyuki.chat.hometown",
+    "actorId": "chiyuki",
+    "label": "老家",
+    "text": "「老家在山口……母亲打电话来，总是叫我\"アンタ\"」「她其实，很支持我哦」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:16:00.000Z",
+  "updatedAt": "2026-11-02T11:16:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:16:00.000Z",
+      "note": "千雪日常话题（山口县出身）"
+    }
+  ]
+}

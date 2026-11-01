@@ -1,0 +1,32 @@
+{
+  "id": "draft.chiyuki.chat.coffee",
+  "kind": "topic",
+  "title": "聊天 · 咖啡",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.chiyuki.chat.coffee",
+  "payload": {
+    "id": "chiyuki.chat.coffee",
+    "actorId": "chiyuki",
+    "label": "咖啡",
+    "text": "「用喜欢的杯子喝咖啡……」「就觉得这一天才算结束呢♪」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T11:13:00.000Z",
+  "updatedAt": "2026-11-02T11:13:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T11:13:00.000Z",
+      "note": "千雪日常话题（201600301 马克杯）"
+    }
+  ]
+}

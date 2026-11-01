@@ -1,0 +1,38 @@
+{
+  "id": "draft.nichika.chat.shop",
+  "kind": "topic",
+  "title": "聊天 · 打工",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.nichika.chat.shop",
+  "payload": {
+    "id": "nichika.chat.shop",
+    "actorId": "nichika",
+    "label": "打工",
+    "text": "「今天排班到九点──」「那练习呢？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:22:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.285Z",
+  "reviewedAt": "2026-11-01T06:44:26.285Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:22:00.000Z",
+      "note": "にちか日常话题（唱片店打工排班 [nichika facts]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.285Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

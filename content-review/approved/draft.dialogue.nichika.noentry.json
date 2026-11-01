@@ -1,0 +1,443 @@
+{
+  "id": "draft.dialogue.nichika.noentry",
+  "kind": "dialogue",
+  "title": "她在地板上练步子",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.nichika.noentry",
+  "payload": {
+    "id": "dialogue.nichika.noentry",
+    "idolId": "nichika",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "nichika",
+        "text": "──踏步、踏步、踏步……啊──……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "nichika",
+        "text": "……？啊，不对……反过来了──",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "nichika",
+        "text": "──踏步、踏步、踏步……啊──！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "nichika",
+        "text": "──────踏步、踏步………………啊────不对不对…………",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "nichika",
+        "text": "…………──────好吵。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "nichika",
+        "text": "踏步、踏步、踏──────",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "nichika",
+        "text": "────────………………",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "nichika",
+        "text": "……那个。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "nichika",
+        "text": "────那个！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "…………嗯？哎，你叫我了吗。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "nichika",
+        "text": "哇……这绝对是叫了的情况吧！？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "……对、对不起……！怎么了？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "nichika",
+        "text": "那个，就是觉得好吵。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "nichika",
+        "text": "我现在超级集中，能安静一点吗？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "好、好的……吵到你了吗，我会注意的。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "nichika",
+        "text": "拜托了──。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "嗯。到处走来走去是我不对。我轻一点────",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "nichika",
+        "text": "────────！",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "对、对不起……莫名其妙就紧张起来了────",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "──────…………にちか？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "怎、怎么了……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "…………包……还有伞……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "椅子……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "书……笔袋……矿泉水瓶……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "nichika",
+        "text": "那个──从包那里开始…………到矿泉水瓶那里────",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "nichika",
+        "text": "请当作禁止进入区域！",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "……！好……好的…………",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "…………啊，等等！",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "nichika",
+        "text": "……",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "趁现在，我想喝点什么……只进厨房，可以吗……？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "nichika",
+        "text": "不是有自动贩卖机吗──",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "那个，嗯……不是，其实我中午也没吃，冰箱里有──",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "那个……蘸面。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "nichika",
+        "text": "……哈啊。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "nichika",
+        "text": "……",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "哦哦，谢谢にちか！还有，那个────",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "nichika",
+        "text": "饮料吗？",
+        "choices": [
+          {
+            "label": "……不，不用勉强。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "嗯……",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "……抱歉。",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "nichika",
+        "text": "哇，不勉强的话不说也可以啊──！",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "nichika",
+        "text": "糟了，显得我超级像坏人……！",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "producer",
+        "text": "不是，对不起！是我太吵了，我出去……！",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "nichika",
+        "text": "……啊………………",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "nichika",
+        "text": "……要拿哪个。",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "producer",
+        "text": "诶？",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "nichika",
+        "text": "要拿哪个！水、茶、咖啡！",
+        "nextNodeId": "107"
+      },
+      "107": {
+        "id": "107",
+        "speakerId": "producer",
+        "text": "可、可以吗……！",
+        "nextNodeId": "108"
+      },
+      "108": {
+        "id": "108",
+        "speakerId": "nichika",
+        "text": "啊──嗯────！！超级吵的，我只拿饮料──！！"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "producer",
+        "text": "……那个，蘸面挺辣的，吃完出去可能也吵────",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "nichika",
+        "text": "在意吵不吵的话一开始就注意啊──借口别────哇",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "producer",
+        "text": "──────……",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "nichika",
+        "text": "现在能不能请您安静一下啊啊啊啊！！",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "nichika",
+        "text": "…………",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "producer",
+        "text": "对、对不起……谢谢，にちか……！",
+        "nextNodeId": "126"
+      },
+      "126": {
+        "id": "126",
+        "speakerId": "nichika",
+        "text": "…………",
+        "nextNodeId": "127"
+      },
+      "127": {
+        "id": "127",
+        "speakerId": "producer",
+        "text": "那个……要吃吗，にちか也？"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "nichika",
+        "text": "道歉的意义我不懂，不过──好。",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "producer",
+        "text": "嗯……果然，饮料不用了。",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "にちか也是，中午没吃就在拼吧……！",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "nichika",
+        "text": "……",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "nichika",
+        "text": "30 秒──",
+        "nextNodeId": "145"
+      },
+      "145": {
+        "id": "145",
+        "speakerId": "producer",
+        "text": "…………にちか？",
+        "nextNodeId": "146"
+      },
+      "146": {
+        "id": "146",
+        "speakerId": "nichika",
+        "text": "真的只有 30 秒，没问题吗，结界要开了……25、24、23────",
+        "nextNodeId": "147"
+      },
+      "147": {
+        "id": "147",
+        "speakerId": "producer",
+        "text": "────哦哦！谢谢，我快点────",
+        "nextNodeId": "148"
+      },
+      "148": {
+        "id": "148",
+        "speakerId": "nichika",
+        "text": "啊────！绝对不要碰到放着的那些东西──！！碰了会很不妙的！！！",
+        "nextNodeId": "149"
+      },
+      "149": {
+        "id": "149",
+        "speakerId": "producer",
+        "text": "……好、好的！很不妙是指…………？",
+        "nextNodeId": "150"
+      },
+      "150": {
+        "id": "150",
+        "speakerId": "nichika",
+        "text": "……大概会挨揍吧…………！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T22:20:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.258Z",
+  "reviewedAt": "2026-11-01T06:44:26.258Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T22:20:00.000Z",
+      "note": "对照 202400401（练步子、禁止进入区域、蘸面、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.258Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

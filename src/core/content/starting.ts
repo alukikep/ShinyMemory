@@ -40,6 +40,7 @@ export const STARTING_STATE = {
     madoka: 'unknown',
     koito: 'unknown',
     hinana: 'unknown',
+    nichika: 'unknown',
   } as Record<string, IdolStatus>,
   dialogueId: 'dialogue.prologue.office',
 } as const;

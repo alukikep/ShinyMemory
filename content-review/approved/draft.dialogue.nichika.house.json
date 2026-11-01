@@ -1,0 +1,342 @@
+{
+  "id": "draft.dialogue.nichika.house",
+  "kind": "dialogue",
+  "title": "傍晚，她趴在屋顶的围栏上",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.nichika.house",
+  "payload": {
+    "id": "dialogue.nichika.house",
+    "idolId": "nichika",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "──要回家的话，我开车送你吧？",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "nichika",
+        "text": "────啊，好的……",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "……？にちか？",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "nichika",
+        "text": "……哇，什么啊！很近诶！",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "不是，抱歉，想问问你怎么了。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "nichika",
+        "text": "……好像，有股好闻的味道。花，之类的。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "啊────",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "────嗯，真的。一定是哪种花吧。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "nichika",
+        "text": "说了吧，我……",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "哈哈，原谅我吧。再多的话我说不出来了。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "怎么说呢……像是夏天来之前的那种味道────",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "nichika",
+        "text": "……────",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "nichika",
+        "text": "稍微走回去吗？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "诶诶，那车怎么办？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "nichika",
+        "text": "因为我说了可以嘛──！……我一个人走回去哦。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "啊，等等にちか────！",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "nichika",
+        "text": "──────嗯────！哈啊────……！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "哦哦……好棒的傍晚啊。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "nichika",
+        "text": "这里，超好的吧。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "是啊，感觉像是能把一切看遍。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "nichika",
+        "text": "平时在那一带走的时候，净是房子，什么都没有，真觉得是个超无聊的镇子──",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "nichika",
+        "text": "从这里看，就好像一格一格都有人住着……到了傍晚就回来，那种感觉。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "nichika",
+        "text": "自己平时，也就是回那里去的一个人啊──那种。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "……确实，坐着那班公交，在那家超市买东西────",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "nichika",
+        "text": "完全，没有梦想吧──。即使那种的──",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "nichika",
+        "text": "我是一直想着要盖一栋的哦……等我变成大明星！",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "诶？",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "nichika",
+        "text": "给家里人的家！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "nichika",
+        "text": "姐姐啊，爷爷啊奶奶啊",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "nichika",
+        "text": "在医院里的妈妈啊，现在不住在一起的叔叔们啊……",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "nichika",
+        "text": "还有将来会变多的家人！就是那种，大家都会回来的地方。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "……嘿，这样啊──────",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "────原来にちか，是这样笑的啊。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "──────盖得起来哦。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "能盖起来的。にちか会变成大明星的。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "nichika",
+        "text": "──────……！",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "nichika",
+        "text": "────哇，什么啊，诶──……为什么我会说这种事……",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "nichika",
+        "text": "……姐姐那边，请保密哦──……！",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "producer",
+        "text": "啊……这样啊，是秘密啊。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "nichika",
+        "text": "与其说秘密……又不是一定变得成大明星啊！",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "……诶，是那种事吗？",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "nichika",
+        "text": "……那种事……",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "哈哈，にちか说那种话要怎么办啊。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "────にちか……！要变成大明星的────！",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "nichika",
+        "text": "等……！制作人先生！！！你是笨蛋吗！？这么大声────",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "producer",
+        "text": "────大声喊的，不是にちか吗。",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "producer",
+        "text": "在事务所的屋顶，说『要在这里当偶像』────大声喊出来的，是にちか。",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "producer",
+        "text": "收不回去了吧？",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "nichika",
+        "text": "……────────",
+        "nextNodeId": "50"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "nichika",
+        "text": "──────要……变成大明星────！！！！",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "producer",
+        "text": "……哈哈，嗯。",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "nichika",
+        "text": "────……就是这样！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:00:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.256Z",
+  "reviewedAt": "2026-11-01T06:44:26.256Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:00:00.000Z",
+      "note": "对照 202400411（傍晚看街、要盖一栋家、屋顶大喊）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.256Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

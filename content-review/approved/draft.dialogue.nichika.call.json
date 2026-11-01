@@ -1,0 +1,306 @@
+{
+  "id": "draft.dialogue.nichika.call",
+  "kind": "dialogue",
+  "title": "手机连着三条「来一下」",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.nichika.call",
+  "payload": {
+    "id": "dialogue.nichika.call",
+    "idolId": "nichika",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "（楼层经理在跟人聊店里的事。）",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "……啊，にちか。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "nichika",
+        "text": "────哇。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "nichika",
+        "text": "说了不用来接我的吧──这样会被举报的哦，这种事。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "……你要举报吗。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "nichika",
+        "text": "……要是你觉得我不会，那我就举报！",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "……抱歉。我是来看看你的。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "nichika",
+        "text": "……那个，那的话我超级有精神！没有闲下来的时间。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "nichika",
+        "text": "啊，不过现在这段时间不算工作，所以全都会被当成『闲』也说不定！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "什么叫不算工作……我没说过那种话。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "nichika",
+        "text": "……啊哈哈，这样啊──那，是我不对呢！我走了。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "那个……！等等！我没打算硬送你────",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "にちか要是有精神，那就好了……我只是想确认这一点。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "nichika",
+        "text": "那，现在就可以回去了吧……！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "嗯、嗯……不过，让我再说一句────",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "（楼层经理在旁边插了一句。）",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "nichika",
+        "text": "用那种话让人感动之类的，超级勉强所以不行……！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "……我有点明白。自己知道自己在说什么，也正因为如此才会受伤。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "……不是那样。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "（经理说：她嘴硬，其实对自己没信心。）",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "没关系，嗯……不是想让她感动……",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "……我是真的希望她明白。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "（经理又说：我们给不了免费的『心』。）",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "我今天就回去了……但随时可以联络我。需要的话。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "はづきさん也在，职场的同伴也在。也许我帮不上什么忙，但──",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "我在，是为了にちか。只要にちか还在这里。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "nichika",
+        "text": "……超级火大。",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "……这样啊……",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "nichika",
+        "text": "……没跟制作人先生说。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "nichika",
+        "text": "超级火大，超级火大超级火大──────",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "────还是，我送你吧。不上车吗……？",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "nichika",
+        "text": "────不行呢──",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "nichika",
+        "text": "不过……也许会联络你。毕竟你说了随时，那我就随时。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "哦……！电话也好什么都好……不接的话，打一拳也行。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "────（手机连着响。）",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "nichika",
+        "text": "『店里，请马上过来』『快点』『已经结束了』",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "……正好顺路。不过にちか今天也没有课……会是什么呢。",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "nichika",
+        "text": "────啊哈哈，糟糕──！前辈那样会被人讨厌的，真的──！",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "……にちか……？",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "nichika",
+        "text": "（前辈们笑着，说她也是，然后说该回去了。）",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "nichika",
+        "text": "好──",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "────哦，那个…………",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "nichika",
+        "text": "啊哈哈，真的来了──",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "nichika",
+        "text": "是你自己说什么都可以说的……",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "nichika",
+        "text": "──辛苦了。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T22:40:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.249Z",
+  "reviewedAt": "2026-11-01T06:44:26.249Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T22:40:00.000Z",
+      "note": "对照 202400403（唱片店、经理的话、前辈们、她把他叫来）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.249Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "draft.nichika.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.nichika.chat.today",
+  "payload": {
+    "id": "nichika.chat.today",
+    "actorId": "nichika",
+    "label": "今天",
+    "text": "「今天也超级忙的哦──？」「忙什么？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:20:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.295Z",
+  "reviewedAt": "2026-11-01T06:44:26.295Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:20:00.000Z",
+      "note": "にちか日常话题（句尾拖长、ですます）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.295Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

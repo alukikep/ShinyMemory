@@ -1,0 +1,38 @@
+{
+  "id": "draft.nichika.chat.store",
+  "kind": "topic",
+  "title": "聊天 · 舞台",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.nichika.chat.store",
+  "payload": {
+    "id": "nichika.chat.store",
+    "actorId": "nichika",
+    "label": "舞台",
+    "text": "「下次的舞台，我想多跳一点──」「不是说自己还不行吗？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:27:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.292Z",
+  "reviewedAt": "2026-11-01T06:44:26.292Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:27:00.000Z",
+      "note": "にちか日常话题（嘴上认怂、心里想多跳）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.292Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

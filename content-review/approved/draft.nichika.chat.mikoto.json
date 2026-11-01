@@ -1,0 +1,38 @@
+{
+  "id": "draft.nichika.chat.mikoto",
+  "kind": "topic",
+  "title": "聊天 · 美琴さん",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.nichika.chat.mikoto",
+  "payload": {
+    "id": "nichika.chat.mikoto",
+    "actorId": "nichika",
+    "label": "美琴さん",
+    "text": "「美琴さん今天也是，完全不一样的级别呢──」「你跟她比？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:26:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.281Z",
+  "reviewedAt": "2026-11-01T06:44:26.281Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:26:00.000Z",
+      "note": "にちか日常话题（对美琴的敬语与距离 [nichika facts 关系]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.281Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

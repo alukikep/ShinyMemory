@@ -1,0 +1,38 @@
+{
+  "id": "draft.nichika.chat.home",
+  "kind": "topic",
+  "title": "聊天 · 家里",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.nichika.chat.home",
+  "payload": {
+    "id": "nichika.chat.home",
+    "actorId": "nichika",
+    "label": "家里",
+    "text": "「今晚做筑前煮──，还有姐姐的份。」「你做饭？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:23:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.276Z",
+  "reviewedAt": "2026-11-01T06:44:26.276Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:23:00.000Z",
+      "note": "にちか日常话题（做饭、姐姐的便当 [nichika facts 家庭]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.276Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

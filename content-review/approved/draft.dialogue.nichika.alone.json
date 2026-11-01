@@ -1,0 +1,437 @@
+{
+  "id": "draft.dialogue.nichika.alone",
+  "kind": "dialogue",
+  "title": "课结束了，她一个人收东西",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.nichika.alone",
+  "payload": {
+    "id": "dialogue.nichika.alone",
+    "idolId": "nichika",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "nichika",
+        "text": "────好的好的。非常抱歉……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "（楼层经理在跟她说什么。她低着头。）",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "nichika",
+        "text": "是的…………",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "nichika",
+        "text": "辛苦了──制作人先生────",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "──啊，嗯。我马上过去！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "（跟はづきさん联络一下……）",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "nichika",
+        "text": "──────……",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "────哦，にちか！辛苦了。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "nichika",
+        "text": "辛苦了。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "自主练习吗。要沿着河跑的话小心点──我出去一趟。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "nichika",
+        "text": "啊，好的────",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "啊，喂喂……！……是，是……！嗯，那明天的────",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "nichika",
+        "text": "…………",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "──好，那今天也加油吧！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "nichika",
+        "text": "啊，好的。加油的是我哦……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "nichika",
+        "text": "制作人先生今天不来陪课吧，上课？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "啊……是啊。抱歉。加油啊。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "nichika",
+        "text": "好──完全没有，我一直都很努力哦────",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "──啊，不好。电话……结束的时候我来接你！去吧。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "nichika",
+        "text": "────诶？动作不是这周开始教吗？",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "（……指导老师的声音从门缝里传出来。）",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "nichika",
+        "text": "……啊──啊哈哈，是这样啊──",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "nichika",
+        "text": "辛苦了──咦，制作人先生……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "nichika",
+        "text": "不在啊。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "nichika",
+        "text": "……13 点某某公司，14 点彩排站场，16 点广播碰头，16 点半例会，17 点半顺路去摄影棚",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "nichika",
+        "text": "────…………",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "nichika",
+        "text": "────制──作──人──先──生────！",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "哇，抱歉…………！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "等的时候在听音频资料……！抱歉，上车吧！",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "nichika",
+        "text": "──────…………忙的话，我走路回去哦──",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "诶，にちか！？不行不行，那怎么可能。上车────",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "nichika",
+        "text": "那我走了……！",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "nichika",
+        "text": "能不能别演忙了────！？",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "──────……にちか",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "nichika",
+        "text": "也没什么……又不是只有制作人先生忙──",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "……那个────",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "嗯。",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "nichika",
+        "text": "……我也是──────…………",
+        "choices": [
+          {
+            "label": "……很辛苦吧。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "……我不忙的。",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "……我看上去像那样吗。",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "producer",
+        "text": "比我……要辛苦得多。",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "nichika",
+        "text": "……那不是在骗人吗──！？",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "nichika",
+        "text": "明明超级忙────",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "nichika",
+        "text": "是工作嘛！全都是重要的！和我这种……外行做着梦的不一样！",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "……にちか……？为什么────",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "nichika",
+        "text": "……那，辛苦了！公交要来了，我先走了哦──！",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "producer",
+        "text": "啊……！にちか…………！にちか，等等。",
+        "nextNodeId": "107"
+      },
+      "107": {
+        "id": "107",
+        "speakerId": "nichika",
+        "text": "啊哈哈哈哈，有空的话请来看哦──，外行的舞！",
+        "nextNodeId": "108"
+      },
+      "108": {
+        "id": "108",
+        "speakerId": "producer",
+        "text": "──────为什么。",
+        "nextNodeId": "109"
+      },
+      "109": {
+        "id": "109",
+        "speakerId": "producer",
+        "text": "にちか，等等……等等────"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "nichika",
+        "text": "……────────",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "nichika",
+        "text": "────哇……糟糕，这话好阴阳怪气。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "nichika",
+        "text": "制作人先生要是不忙，那我岂不是超级糟糕的人！超闲的一般人──！",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "nichika",
+        "text": "可以哦！不用把时间花在不成为工作的事情上──",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "nichika",
+        "text": "啊哈哈，移动之类自己来就好了嘛！毕竟在追梦啊！　那我────",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "producer",
+        "text": "……怎、怎么了……？我真的是────",
+        "nextNodeId": "126"
+      },
+      "126": {
+        "id": "126",
+        "speakerId": "producer",
+        "text": "────……我的辛苦，跟にちか的比起来根本不算什么。",
+        "nextNodeId": "127"
+      },
+      "127": {
+        "id": "127",
+        "speakerId": "nichika",
+        "text": "……啊，公交好像要来了，我先走了哦──明天也麻烦你来接──！",
+        "nextNodeId": "128"
+      },
+      "128": {
+        "id": "128",
+        "speakerId": "producer",
+        "text": "啊，にち────────…………"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "nichika",
+        "text": "……不是那样的吗──！好厉害！！",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "nichika",
+        "text": "明明工作超级多、电话也一直打来、完全没时间待在事务所，可是不忙呢──！",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "────……にちか，那个──────",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "producer",
+        "text": "如果我看上去很忙，那也是，全部都是为了にちか。",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "nichika",
+        "text": "……哇，全部之类的话说得超级随便吧。",
+        "nextNodeId": "145"
+      },
+      "145": {
+        "id": "145",
+        "speakerId": "producer",
+        "text": "……不是，不随便啊。该怎么说才好──────",
+        "nextNodeId": "146"
+      },
+      "146": {
+        "id": "146",
+        "speakerId": "nichika",
+        "text": "啊！不用了完全！反正超级忙，别把时间花在这种无所谓的说明上──！",
+        "nextNodeId": "147"
+      },
+      "147": {
+        "id": "147",
+        "speakerId": "nichika",
+        "text": "那，我时间很多的，慢慢去练习室哦──！不打扰你了，资料检查加油──！",
+        "nextNodeId": "148"
+      },
+      "148": {
+        "id": "148",
+        "speakerId": "producer",
+        "text": "……にちか────────────等等…………"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T22:30:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.245Z",
+  "reviewedAt": "2026-11-01T06:44:26.245Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T22:30:00.000Z",
+      "note": "对照 202400402（被经理训、一个人上课、回家路上、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.245Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

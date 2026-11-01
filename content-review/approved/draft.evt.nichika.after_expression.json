@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.nichika.after_expression",
+  "kind": "event",
+  "title": "她说镜头看不出来",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.nichika.after_expression",
+  "payload": {
+    "id": "evt.nichika.after_expression",
+    "title": "她说镜头看不出来",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "nichika"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。她站在镜头前反复看回放，说\"这里我其实在抖，但看不太出来\"。",
+    "choices": [
+      {
+        "label": "看不出来。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……那就好。……不，等等，那算好吗──？」"
+      },
+      {
+        "label": "看得出来也没关系。",
+        "hint": "表现 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「……不行吧，那也太丢人了──」"
+      },
+      {
+        "label": "今天就别看了。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……那，我先回去了。……辛苦了。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:32:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.271Z",
+  "reviewedAt": "2026-11-01T06:44:26.271Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:32:00.000Z",
+      "note": "にちか表演课后事件（她连看不看得出都要算清楚）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.271Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

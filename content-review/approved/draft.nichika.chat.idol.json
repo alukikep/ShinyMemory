@@ -1,0 +1,38 @@
+{
+  "id": "draft.nichika.chat.idol",
+  "kind": "topic",
+  "title": "聊天 · 偶像",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.nichika.chat.idol",
+  "payload": {
+    "id": "nichika.chat.idol",
+    "actorId": "nichika",
+    "label": "偶像",
+    "text": "「那个团的新碟，你听了吗？」「还没。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:21:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.278Z",
+  "reviewedAt": "2026-11-01T06:44:26.278Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:21:00.000Z",
+      "note": "にちか日常话题（偶像宅，会安利 [nichika facts 偶像宅]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.278Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

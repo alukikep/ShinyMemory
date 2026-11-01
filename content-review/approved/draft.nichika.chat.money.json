@@ -1,0 +1,38 @@
+{
+  "id": "draft.nichika.chat.money",
+  "kind": "topic",
+  "title": "聊天 · 省钱",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.nichika.chat.money",
+  "payload": {
+    "id": "nichika.chat.money",
+    "actorId": "nichika",
+    "label": "省钱",
+    "text": "「五盒装 178 日元，这价格太过分了吧──」「你还专门跑一趟？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:25:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.283Z",
+  "reviewedAt": "2026-11-01T06:44:26.283Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:25:00.000Z",
+      "note": "にちか日常话题（特价、算得清清楚楚 [nichika facts 节约]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.283Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

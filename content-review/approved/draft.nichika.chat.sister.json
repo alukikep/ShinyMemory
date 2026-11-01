@@ -1,0 +1,38 @@
+{
+  "id": "draft.nichika.chat.sister",
+  "kind": "topic",
+  "title": "聊天 · 姐姐",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.nichika.chat.sister",
+  "payload": {
+    "id": "nichika.chat.sister",
+    "actorId": "nichika",
+    "label": "姐姐",
+    "text": "「姐姐今天又擅自换台──」「她也在家？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:24:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.288Z",
+  "reviewedAt": "2026-11-01T06:44:26.288Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:24:00.000Z",
+      "note": "にちか日常话题（和姐姐同住 [nichika facts 家庭]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.288Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

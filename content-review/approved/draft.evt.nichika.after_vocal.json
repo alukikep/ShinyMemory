@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.nichika.after_vocal",
+  "kind": "event",
+  "title": "她还在找那个音",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.nichika.after_vocal",
+  "payload": {
+    "id": "evt.nichika.after_vocal",
+    "title": "她还在找那个音",
+    "when": [],
+    "after": {
+      "ids": [
+        "vocal"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "nichika"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "歌唱课结束了。她还站在原地，把刚才那句的最后三个音反复唱，越唱越小。",
+    "choices": [
+      {
+        "label": "刚才那个是对的。",
+        "hint": "歌唱 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……真的吗？那，我再唱一次确认一下──」"
+      },
+      {
+        "label": "别唱了，先听。",
+        "hint": "歌唱 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "vocal",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「……好。……原来是这样啊。」"
+      },
+      {
+        "label": "今天就到这里。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……知道了啦。……谢谢。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:30:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.274Z",
+  "reviewedAt": "2026-11-01T06:44:26.274Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:30:00.000Z",
+      "note": "にちか歌唱课后事件（她一个人抠到最后三个音）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.274Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

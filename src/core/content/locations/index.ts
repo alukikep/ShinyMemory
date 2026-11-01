@@ -13,6 +13,8 @@ import hospital from './hospital.js';
 import ekimae from './ekimae.js';
 import studioDistrict from './studioDistrict.js';
 import seaside from './seaside.js';
+import recordShop from './recordShop.js';
+import officeRoof from './officeRoof.js';
 import universityDistrict from './universityDistrict.js';
 import university from './university.js';
 
@@ -23,6 +25,7 @@ import university from './university.js';
  */
 export const LOCATIONS: LocationDef[] = [
   office,
+  officeRoof,
   home,
   universityDistrict,
   university,
@@ -30,6 +33,7 @@ export const LOCATIONS: LocationDef[] = [
   studioDistrict,
   seaside,
   station,
+  recordShop,
   practiceRoom,
   studio,
   park,

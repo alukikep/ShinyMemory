@@ -1,0 +1,425 @@
+{
+  "id": "draft.dialogue.nichika.rabbit",
+  "kind": "dialogue",
+  "title": "她在冰箱前拿着油性笔",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.nichika.rabbit",
+  "payload": {
+    "id": "dialogue.nichika.rabbit",
+    "idolId": "nichika",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "────啊，にちか。那个放进冰箱的时候，麻烦写上名字。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "nichika",
+        "text": "……诶？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "抱歉啊。吃的东西嘛，会跟别人的撞上……要处理的时候也麻烦。喏，笔。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "nichika",
+        "text": "────哇，油性笔啊。那种的，超级土的吧──！",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "是吗？我觉得挺合理的……はづきさん也提醒过我。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "nichika",
+        "text": "啊──姐姐啊──……",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "nichika",
+        "text": "嘛，我写就是了。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "嗯。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "nichika",
+        "text": "──────……",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "────咦？不写吗。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "nichika",
+        "text": "啊，请别管我。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "nichika",
+        "text": "……油性笔，会紧张！被看着就更写不出来了──！",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "啊，不是……抱歉。不过也不用那么紧张吧，反正都会吃掉────",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "nichika",
+        "text": "──这个，会被看到的哦？被其他人！！？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "nichika",
+        "text": "要是被觉得『哇好土』，那我就死定了啊！！！",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "这、这样啊。就像签名一样的东西啊……！在意别人怎么看，是好事哦……",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "nichika",
+        "text": "……────",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "…………哈哈，还画了图案啊。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "向日葵吗，画得挺好啊。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "nichika",
+        "text": "嘛……兔子啊熊啊……还有郁金香什么的，要是被觉得装可爱也很那个──……",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "nichika",
+        "text": "…………小学入学的时候，各种东西都得写上名字……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "nichika",
+        "text": "姐姐……帮我写了的，我的那些全部。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "────啊，这样啊……",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "nichika",
+        "text": "那可是油性笔哦……那种东西……",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "nichika",
+        "text": "要用一年……说不定要用六年的东西……是绝对不能写错的啊……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "……はづきさん，从以前就是这种地方不会出错的人啊。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "nichika",
+        "text": "啊──，是的。所以名字是没问题……",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "nichika",
+        "text": "──就是，画了个很奇怪的角色，像仓鼠那种！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "哦……！",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "nichika",
+        "text": "好像是觉得我会高兴，可是，据说是我想说兔子更好",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "nichika",
+        "text": "姐姐把那只仓鼠的耳朵拉长了哦──硬是从上面！",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "那、那真是……",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "nichika",
+        "text": "然后接缝很怪，耳朵就全涂黑了……那里只有一片黑很奇怪，就全身涂黑了……",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "nichika",
+        "text": "成了超────恐怖的东西……！",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "────呼、哈哈哈…………",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "nichika",
+        "text": "…………",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "producer",
+        "text": "……啊，抱歉……────呼。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "nichika",
+        "text": "啊哈哈哈哈……！",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "……总觉得，是个好故事。向日葵旁边，把那只兔子也画上去不好吗？",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "nichika",
+        "text": "……哇──，别说随便的话──！",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "不是，可是有点想看──",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "nichika",
+        "text": "手，伸出来。",
+        "choices": [
+          {
+            "label": "小、小一点！",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "谨、谨慎一点！",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "────好、好痒！",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "nichika",
+        "text": "会不会变小我不知道哦──耳朵要拉长的",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "啊，太显眼的话，我的工作也────",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "nichika",
+        "text": "啊哈哈哈哈……！────咕噜咕噜…………！",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "──不是……哈哈，好开心啊────",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "嗯。画只好兔子吧。难得用油性笔画的！"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "nichika",
+        "text": "诶？我超级认真地画着呢，从刚才开始",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "nichika",
+        "text": "说草率话的，不是制作人先生吗──",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "producer",
+        "text": "────是、是啊。抱歉……我以前从没那样想过写名字这件事。",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "producer",
+        "text": "但是，我明白了。油性笔是擦不掉的。",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "producer",
+        "text": "擦不掉的东西，就得小心地写。",
+        "nextNodeId": "125"
+      },
+      "125": {
+        "id": "125",
+        "speakerId": "nichika",
+        "text": "……",
+        "nextNodeId": "126"
+      },
+      "126": {
+        "id": "126",
+        "speakerId": "nichika",
+        "text": "那，我开始了哦",
+        "nextNodeId": "127"
+      },
+      "127": {
+        "id": "127",
+        "speakerId": "nichika",
+        "text": "咕噜咕噜咕噜────！！！"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "nichika",
+        "text": "啊……！动了的话会很糟哦",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "nichika",
+        "text": "出界的话，那里也得涂黑，会变成超──大的兔子呢！",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "────",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "nichika",
+        "text": "啊哈哈！请别动──消不掉的……啊哈哈哈！",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "producer",
+        "text": "好、好的……那，我就不动，你尽管画个好的。",
+        "nextNodeId": "145"
+      },
+      "145": {
+        "id": "145",
+        "speakerId": "producer",
+        "text": "不管是吃的还是我，都带着紧张感，画个好的……！",
+        "nextNodeId": "146"
+      },
+      "146": {
+        "id": "146",
+        "speakerId": "nichika",
+        "text": "那是当然的吧……咕噜咕噜咕噜──……！！！！！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T22:50:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.260Z",
+  "reviewedAt": "2026-11-01T06:44:26.260Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T22:50:00.000Z",
+      "note": "对照 202400404（冰箱贴名字、油性笔、姐姐画的兔子、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.260Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

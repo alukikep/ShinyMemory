@@ -1,0 +1,96 @@
+{
+  "id": "draft.evt.nichika.after_dance",
+  "kind": "event",
+  "title": "她还在数那个八拍",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.nichika.after_dance",
+  "payload": {
+    "id": "evt.nichika.after_dance",
+    "title": "她还在数那个八拍",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "nichika"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她对着镜子把同一段八拍走了一遍又一遍，第三次的时候小声骂了一句。",
+    "choices": [
+      {
+        "label": "手腕，再早半拍。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「……咦，这样吗？……哦哦，真的不一样──！」"
+      },
+      {
+        "label": "先歇十分钟。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「不用了，我再两遍就好──」"
+      },
+      {
+        "label": "今天就到这里。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「……那，明天早点来。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T23:31:00.000Z",
+  "updatedAt": "2026-11-01T06:44:26.267Z",
+  "reviewedAt": "2026-11-01T06:44:26.267Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T23:31:00.000Z",
+      "note": "にちか舞蹈课后事件（自己加练到骂人）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:44:26.267Z",
+      "note": "人确认通过（2026-11-01，会话内明确指示）"
+    }
+  ]
+}

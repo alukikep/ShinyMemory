@@ -13,7 +13,7 @@ const location: LocationDef = {
   description:
     '车站出来就是商店街。白天人声很吵，晚上只剩自动贩卖机的灯和拉下卷帘的橱窗。',
   kind: 'area',
-  members: ['station', 'shopping_street'],
+  members: ['station', 'shopping_street', 'record_shop'],
   mapX: 190,
   mapY: 50,
 };

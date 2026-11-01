@@ -1,0 +1,227 @@
+{
+  "id": "draft.dialogue.hinana.macaron",
+  "kind": "dialogue",
+  "title": "喫茶店的桌子被点心占满",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.hinana.macaron",
+  "payload": {
+    "id": "dialogue.hinana.macaron",
+    "idolId": "hinana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "hinana",
+        "text": "──嗯～……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "hinana",
+        "text": "覆盆子马卡龙，还有～草莓、柠檬，……樱桃也要！",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "hinana",
+        "text": "然后～千层酥和伊斯法罕马卡龙，还有……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "hinana",
+        "text": "红茶两杯！麻烦您～",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "hinana",
+        "text": "呀哈～♡好期待呢～，制作人！",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "……雛菜。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "hinana",
+        "text": "嗯～～～？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "点了挺多量的，吃得完吗……？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "hinana",
+        "text": "诶，制作人不也一起吃吗！？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "诶，原来是这个意思吗！？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "hinana",
+        "text": "诶～！？因为雛菜说了『一起吃甜的吧～』嘛？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "hinana",
+        "text": "说『今天也努力了』嘛！",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "不，确实可能这么说过……",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "hinana",
+        "text": "嗯～……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "hinana",
+        "text": "那个～……是什么来着？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "hinana",
+        "text": "──『多挑战各种事情，拓宽雛菜的可能性吧～！』",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "hinana",
+        "text": "『我也会一起挑战的！』……是这么说的吧～？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "hinana",
+        "text": "前阵子，制作人这么说了吧？",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "诶？啊，说了是说了……",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "hinana",
+        "text": "所以我想，先挑战一下没怎么吃过的点心吧～！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "hinana",
+        "text": "这是那种尝试！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "雛菜…………",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "我说的不是那个意思──……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "hinana",
+        "text": "可是想一点点尝各种各样的吧？",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "hinana",
+        "text": "这样能知道更多味道～",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "hinana",
+        "text": "一点点偷吃，然后决定哪个最幸福",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "hinana",
+        "text": "甜的东西也好，工作也好，什么都一样！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "…………！",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "hinana",
+        "text": "所以呢，制作人会陪着雛菜吧？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "hinana",
+        "text": "今后也一直～直，呐？",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "……哈哈，是啊。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "我会陪着雛菜，陪到最后。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:00:00.000Z",
+  "updatedAt": "2026-11-01T06:31:00.461Z",
+  "reviewedAt": "2026-11-01T06:31:00.461Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:00:00.000Z",
+      "note": "对照 202300411（一口气点一堆点心、『这是尝试』、今后也一直）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:00.461Z"
+    }
+  ]
+}

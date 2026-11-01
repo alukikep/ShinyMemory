@@ -1,0 +1,69 @@
+{
+  "id": "draft.activity.hinana.sweets",
+  "kind": "activity",
+  "title": "陪她吃甜的",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.activity.hinana.sweets",
+  "payload": {
+    "id": "activity.hinana.sweets",
+    "name": "陪她吃甜的",
+    "description": "她在菜单上画来画去，最后点了三种。端上来先拍照，再把叉子递给你：\"第一口给你～\"。",
+    "kind": "bond",
+    "target": "present-idol",
+    "idolIds": [
+      "hinana"
+    ],
+    "locations": [
+      "station",
+      "shopping_street"
+    ],
+    "durationMinutes": 30,
+    "timeWindows": [
+      {
+        "fromMinute": 960,
+        "toMinute": 1230
+      }
+    ],
+    "cost": {
+      "stamina": 5
+    },
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 5
+      },
+      {
+        "kind": "attributeExp",
+        "ref": "expression",
+        "tier": 1
+      },
+      {
+        "kind": "sharedStat",
+        "stat": "stress",
+        "delta": -5
+      }
+    ],
+    "resultTexts": [
+      "她把自己那份吃了一半就推给你，说\"分你一半\"。",
+      "她用叉子比着两块蛋糕看了很久，最后说\"两个都好吃\"。",
+      "走的时候她说\"下次要试那个\"，指的是橱窗最上面那一排。"
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:10:00.000Z",
+  "updatedAt": "2026-11-01T06:31:20.616Z",
+  "reviewedAt": "2026-11-01T06:31:20.616Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:10:00.000Z",
+      "note": "雛菜专属行动（甜食 [202300411]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:20.616Z"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "draft.hinana.chat.work",
+  "kind": "topic",
+  "title": "聊天 · 工作",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hinana.chat.work",
+  "payload": {
+    "id": "hinana.chat.work",
+    "actorId": "hinana",
+    "label": "工作",
+    "text": "「下次的杂志，雛菜想穿那件～」「哪件？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:27:00.000Z",
+  "updatedAt": "2026-11-01T06:31:11.046Z",
+  "reviewedAt": "2026-11-01T06:31:11.046Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:27:00.000Z",
+      "note": "雛菜日常话题（杂志、自己提方案 [202300404]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:11.046Z"
+    }
+  ]
+}

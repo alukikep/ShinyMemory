@@ -1,0 +1,37 @@
+{
+  "id": "draft.hinana.chat.toru",
+  "kind": "topic",
+  "title": "聊天 · 透先輩",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hinana.chat.toru",
+  "payload": {
+    "id": "hinana.chat.toru",
+    "actorId": "hinana",
+    "label": "透先輩",
+    "text": "「透先輩今天又睡过头了～」「你怎么知道？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:24:00.000Z",
+  "updatedAt": "2026-11-01T06:31:15.228Z",
+  "reviewedAt": "2026-11-01T06:31:15.228Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:24:00.000Z",
+      "note": "雛菜日常话题（透先輩、像姐姐一样 [hinana facts 关系]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:15.228Z"
+    }
+  ]
+}

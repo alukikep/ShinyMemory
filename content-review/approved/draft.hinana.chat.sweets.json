@@ -1,0 +1,37 @@
+{
+  "id": "draft.hinana.chat.sweets",
+  "kind": "topic",
+  "title": "聊天 · 甜的",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hinana.chat.sweets",
+  "payload": {
+    "id": "hinana.chat.sweets",
+    "actorId": "hinana",
+    "label": "甜的",
+    "text": "「甜的东西最棒了～♡」「苦的呢？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:21:00.000Z",
+  "updatedAt": "2026-11-01T06:31:18.532Z",
+  "reviewedAt": "2026-11-01T06:31:18.532Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:21:00.000Z",
+      "note": "雛菜日常话题（嗜甜、怕苦 [hinana facts 甜食]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:18.532Z"
+    }
+  ]
+}

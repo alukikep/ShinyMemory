@@ -1,0 +1,37 @@
+{
+  "id": "draft.hinana.chat.yuakuma",
+  "kind": "topic",
+  "title": "聊天 · ユアクマ",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hinana.chat.yuakuma",
+  "payload": {
+    "id": "hinana.chat.yuakuma",
+    "actorId": "hinana",
+    "label": "ユアクマ",
+    "text": "「ユアクマちゃん的新周边出了～♡」「又是新的？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:22:00.000Z",
+  "updatedAt": "2026-11-01T06:31:17.563Z",
+  "reviewedAt": "2026-11-01T06:31:17.563Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:22:00.000Z",
+      "note": "雛菜日常话题（ユアクマちゃん周边 [hinana facts]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:17.563Z"
+    }
+  ]
+}

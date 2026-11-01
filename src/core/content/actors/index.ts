@@ -5,6 +5,7 @@ import chiyoko from './chiyoko';
 import chiyuki from './chiyuki';
 import fuyuko from './fuyuko';
 import hazuki from './hazuki';
+import hinana from './hinana';
 import hiori from './hiori';
 import juri from './juri';
 import kaho from './kaho';
@@ -24,4 +25,4 @@ import toru from './toru';
 import tsutomu from './tsutomu';
 import yuika from './yuika';
 
-export const ACTORS: ActorDef[] = [hazuki, tsutomu, mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze, natsuha, amana, tenka, chiyuki, asahi, fuyuko, mei, toru, madoka, koito];
+export const ACTORS: ActorDef[] = [hazuki, tsutomu, mano, hiori, meguru, mamimi, kiriko, kogane, sakuya, yuika, kaho, chiyoko, juri, rinze, natsuha, amana, tenka, chiyuki, asahi, fuyuko, mei, toru, madoka, koito, hinana];

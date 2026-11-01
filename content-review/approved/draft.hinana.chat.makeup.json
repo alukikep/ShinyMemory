@@ -1,0 +1,37 @@
+{
+  "id": "draft.hinana.chat.makeup",
+  "kind": "topic",
+  "title": "聊天 · 化妆",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hinana.chat.makeup",
+  "payload": {
+    "id": "hinana.chat.makeup",
+    "actorId": "hinana",
+    "label": "化妆",
+    "text": "「今天眼影用了三个颜色～♡」「三个都用？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:23:00.000Z",
+  "updatedAt": "2026-11-01T06:31:16.380Z",
+  "reviewedAt": "2026-11-01T06:31:16.380Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:23:00.000Z",
+      "note": "雛菜日常话题（化妆、三色全买 [hinana facts]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:16.380Z"
+    }
+  ]
+}

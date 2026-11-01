@@ -1,0 +1,346 @@
+{
+  "id": "draft.dialogue.hinana.second",
+  "kind": "dialogue",
+  "title": "第一次去看她的课",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.hinana.second",
+  "payload": {
+    "id": "dialogue.hinana.second",
+    "idolId": "hinana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "hinana",
+        "text": "啊～♡是制作人～～～！",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "诶……啊，雛菜啊。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "hinana",
+        "text": "诶～～～制作人，好冷淡～……？",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "抱歉，刚才一边走路一边想事情，不太好呢。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "hinana",
+        "text": "不好～！不危险吗～？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "hinana",
+        "text": "走路还要想事情，多辛苦啊～～～……",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "hinana",
+        "text": "制作人，有在休息的时候吗～……？",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "哈哈，一不小心就……",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "hinana",
+        "text": "啊不过！雛菜也是，一边想着制作人一边走过来的～♡",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "这样吗？那就是彼此彼此了。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "我在想，今后该怎么制作雛菜。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "hinana",
+        "text": "骗人～～～！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "hinana",
+        "text": "我还在想是不是只有雛菜一个人在想着制作人，好开心～～～",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "那太好了。雛菜今天也很有精神呢。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "hinana",
+        "text": "啊哈，对吧～～～？今天也要一天开开心心～、幸幸福福～♡",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "……今天也要一天，啊……雛菜，今天接下来有课吧？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "我能去看看课的样子吗？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "hinana",
+        "text": "制作人也要来？呀哈～♡那最棒了～～～！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "hinana",
+        "text": "呐，快点走吧～～～？制作人。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "（……那就是今天的课。）",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "hinana",
+        "text": "真的～～～？呀哈～，被夸了～♡",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "hinana",
+        "text": "啊，制作人在看～～～？被夸了哦～～～！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "喂，正在上课吧……！",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "hinana",
+        "text": "可是，因为太开心了～就想跟制作人说～～～",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "别管这边，专心上课……！",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "hinana",
+        "text": "那制作人就专心看着雛菜哦～？",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "好了，快，朝前面……！",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "hinana",
+        "text": "好～♡课的后续就拜托了～～～",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "…………哈哈……",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "（……舞蹈也跳得好，更重要的是这份天真烂漫，正适合当偶像。）",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "（稍微有点任性这一点让人在意……）",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "hinana",
+        "text": "……制作人看～～～？",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "………………",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "hinana",
+        "text": "制作人……？",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "诶……啊，雛菜！辛苦了。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "hinana",
+        "text": "……又在想事情吗～？",
+        "choices": [
+          {
+            "label": "在想怎么制作雛菜。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "在想雛菜跳舞真好。",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "在想雛菜会变成好偶像。",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "hinana",
+        "text": "啊哈，制作人老是这个～～～",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "是啊。就是因为对雛菜有这么多可能性。",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "hinana",
+        "text": "诶～～～？那是在说雛菜很厉害～？",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "嗯，雛菜一定能成为很厉害的偶像。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "为了那个，我一直在想怎么做最好。",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "hinana",
+        "text": "呀哈～♡那雛菜就等着了哦～？"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "hinana",
+        "text": "呀哈～♡被制作人夸了～～～",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "producer",
+        "text": "以后多上课，还能跳得更好。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "hinana",
+        "text": "雛菜，也许有跳舞的才能～",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "producer",
+        "text": "嗯，我期待着。",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "hinana",
+        "text": "嘿嘿～♡那雛菜就多跳一点～～～！"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "hinana",
+        "text": "真的～～～？好开心～！",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "producer",
+        "text": "舞蹈也跳得好，更重要的是总是那么开朗、那么开心。",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "要是能把那样的样子给粉丝看到就好了。",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "hinana",
+        "text": "嗯～♡雛菜，那个大概很擅长～～～！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T20:10:00.000Z",
+  "updatedAt": "2026-11-01T06:30:58.214Z",
+  "reviewedAt": "2026-11-01T06:30:58.214Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T20:10:00.000Z",
+      "note": "对照 102300102（课上回头喊、要制作人集中看、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:30:58.214Z"
+    }
+  ]
+}

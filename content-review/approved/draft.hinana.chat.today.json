@@ -1,0 +1,37 @@
+{
+  "id": "draft.hinana.chat.today",
+  "kind": "topic",
+  "title": "聊天 · 今天",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hinana.chat.today",
+  "payload": {
+    "id": "hinana.chat.today",
+    "actorId": "hinana",
+    "label": "今天",
+    "text": "「今天也开开心心、幸幸福福～♡」「具体是什么？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:20:00.000Z",
+  "updatedAt": "2026-11-01T06:31:19.530Z",
+  "reviewedAt": "2026-11-01T06:31:19.530Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:20:00.000Z",
+      "note": "雛菜日常话题（拖长音、幸福论）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:19.530Z"
+    }
+  ]
+}

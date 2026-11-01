@@ -1,0 +1,95 @@
+{
+  "id": "draft.evt.hinana.after_dance",
+  "kind": "event",
+  "title": "她还想再跳一遍",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.hinana.after_dance",
+  "payload": {
+    "id": "evt.hinana.after_dance",
+    "title": "她还想再跳一遍",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "hinana"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。别人都走了，她还在镜子前面站着，说\"刚才那里雛菜没跳对\"。",
+    "choices": [
+      {
+        "label": "再来一遍，我看。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「呀哈～♡那雛菜跳得更用力一点～！」"
+      },
+      {
+        "label": "哪里没跳对？",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「嗯～……转身之后的那一下，慢了。」"
+      },
+      {
+        "label": "今天就到这里。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「诶～……好嘛，那明天～♡」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:31:00.000Z",
+  "updatedAt": "2026-11-01T06:31:05.747Z",
+  "reviewedAt": "2026-11-01T06:31:05.747Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:31:00.000Z",
+      "note": "雛菜舞蹈课后事件（她其实很在意自己跳错的地方）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:05.747Z"
+    }
+  ]
+}

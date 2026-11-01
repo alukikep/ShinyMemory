@@ -1,0 +1,37 @@
+{
+  "id": "draft.hinana.chat.school",
+  "kind": "topic",
+  "title": "聊天 · 学校",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.hinana.chat.school",
+  "payload": {
+    "id": "hinana.chat.school",
+    "actorId": "hinana",
+    "label": "学校",
+    "text": "「今天第一节课赶上了～」「难得。」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:25:00.000Z",
+  "updatedAt": "2026-11-01T06:31:13.986Z",
+  "reviewedAt": "2026-11-01T06:31:13.986Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:25:00.000Z",
+      "note": "雛菜日常话题（常迟到 [hinana facts 学校]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:13.986Z"
+    }
+  ]
+}

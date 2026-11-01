@@ -1,0 +1,95 @@
+{
+  "id": "draft.evt.hinana.after_expression",
+  "kind": "event",
+  "title": "她对着镜子做表情",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.hinana.after_expression",
+  "payload": {
+    "id": "evt.hinana.after_expression",
+    "title": "她对着镜子做表情",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "hinana"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。她对着镜子把刚才那个表情做了五六遍，每次做完都歪一下头。",
+    "choices": [
+      {
+        "label": "最后一个最好。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「真的～？雛菜也觉得最后那个不错～♡」"
+      },
+      {
+        "label": "你在挑哪一个？",
+        "hint": "表现 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「唔～……在挑哪个最像雛菜。」"
+      },
+      {
+        "label": "今天够了。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「好～♡雛菜已经困了～」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T21:32:00.000Z",
+  "updatedAt": "2026-11-01T06:31:04.272Z",
+  "reviewedAt": "2026-11-01T06:31:04.272Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T21:32:00.000Z",
+      "note": "雛菜表演课后事件（她在挑『哪个最像雛菜』）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:04.272Z"
+    }
+  ]
+}

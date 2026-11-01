@@ -1,0 +1,347 @@
+{
+  "id": "draft.dialogue.hinana.juice",
+  "kind": "dialogue",
+  "title": "站台等电车，她说想喝果汁",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.hinana.juice",
+  "payload": {
+    "id": "dialogue.hinana.juice",
+    "idolId": "hinana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "hinana",
+        "text": "……电车，还不来呢～？",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "好像刚走了一班，要等挺久的。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "hinana",
+        "text": "这样啊～……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "hinana",
+        "text": "…………",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "hinana",
+        "text": "工作日的午后是这种感觉啊～",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "hinana",
+        "text": "总觉得，挺好的～……",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "…………今天抱歉了，雛菜。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "我尽量不把工作安排在学校的时间……",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "hinana",
+        "text": "嗯～？没关系哦～",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "hinana",
+        "text": "今天是体育课的长跑嘛。啊哈～只有雛菜赚到了的感觉♡",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "……像这样请假的事，以后也不能说完全没有。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "所以能去学校的时候，要好好上课啊？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "hinana",
+        "text": "嘿～……？嗯～……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "hinana",
+        "text": "啊！制作人，雛菜想喝果汁～？",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "喂，别岔开话题。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "hinana",
+        "text": "诶～，可是雛菜是请假了来工作的哦？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "hinana",
+        "text": "有点幸福～的事也可以有吧～！",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "…………嘛，这么说也是……",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "hinana",
+        "text": "呀哈～♡决定了！雛菜选哪个好呢～……！",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "hinana",
+        "text": "白桃、草莓……啊，还有樱桃～！",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "hinana",
+        "text": "呐，制作人要哪一个～？",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "不，我──……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "hinana",
+        "text": "那就雛菜桃子～制作人樱桃哦？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "喂，雛菜……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "hinana",
+        "text": "麻烦您～♡桃子和樱桃各一个～",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "hinana",
+        "text": "啊哈～～～",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "hinana",
+        "text": "在大家跑长跑的时候喝的果汁，特别不一样呢～～～♡",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "……雛菜，我们不是来玩的啊？",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "hinana",
+        "text": "嗯～……不过雛菜，果然还是樱桃比较好。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "诶？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "hinana",
+        "text": "桃子也好喝，可是～～～……",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "hinana",
+        "text": "总觉得制作人那份看起来更好喝～",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "……是吗？",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "hinana",
+        "text": "嗯～，所以呢？制作人。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "hinana",
+        "text": "给我一口～～～？",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "hinana",
+        "text": "──啊～已经没有了～……",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "hinana",
+        "text": "………………",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "hinana",
+        "text": "呐，制作人，要是雛菜她们变得超有人气～",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "hinana",
+        "text": "像这样喝果汁～、坐电车～，就做不到了吗～？",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "嗯——，是啊……也许吧。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "hinana",
+        "text": "在学校也会被搭话呢～",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "hinana",
+        "text": "雛菜不太认识学校里的人，会变成『谁～？』那种……",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "…………雛菜。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "以后这样的事也许会变多。",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "producer",
+        "text": "所以那种时候──……",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "hinana",
+        "text": "……话是这么说，说不定雛菜她们根本不会有人气呢。",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "producer",
+        "text": "诶……不，不会那样的──",
+        "nextNodeId": "48"
+      },
+      "48": {
+        "id": "48",
+        "speakerId": "hinana",
+        "text": "啊哈～嘛，算了～",
+        "nextNodeId": "49"
+      },
+      "49": {
+        "id": "49",
+        "speakerId": "hinana",
+        "text": "只是周围自己变了而已，雛菜并不会变成不是雛菜。",
+        "nextNodeId": "50"
+      },
+      "50": {
+        "id": "50",
+        "speakerId": "hinana",
+        "text": "不过制作人，希望你不要变得太多呢～……",
+        "nextNodeId": "51"
+      },
+      "51": {
+        "id": "51",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "52"
+      },
+      "52": {
+        "id": "52",
+        "speakerId": "hinana",
+        "text": "呐，下次再来这里，就喝别的味道吧～？",
+        "nextNodeId": "53"
+      },
+      "53": {
+        "id": "53",
+        "speakerId": "hinana",
+        "text": "嗯～……电车，还不来呢～……"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T20:30:00.000Z",
+  "updatedAt": "2026-11-01T06:31:00.143Z",
+  "reviewedAt": "2026-11-01T06:31:00.143Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T20:30:00.000Z",
+      "note": "对照 202300402（站台、果汁、桃子与樱桃、名气之后）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:31:00.143Z"
+    }
+  ]
+}

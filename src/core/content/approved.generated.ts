@@ -320,6 +320,52 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.hinana.sweets",
+  "name": "陪她吃甜的",
+  "description": "她在菜单上画来画去，最后点了三种。端上来先拍照，再把叉子递给你：\"第一口给你～\"。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "hinana"
+  ],
+  "locations": [
+    "station",
+    "shopping_street"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 960,
+      "toMinute": 1230
+    }
+  ],
+  "cost": {
+    "stamina": 5
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -5
+    }
+  ],
+  "resultTexts": [
+    "她把自己那份吃了一半就推给你，说\"分你一半\"。",
+    "她用叉子比着两块蛋糕看了很久，最后说\"两个都好吃\"。",
+    "走的时候她说\"下次要试那个\"，指的是橱窗最上面那一排。"
+  ]
+},
+{
   "id": "activity.hiori.review",
   "name": "听她复盘",
   "description": "收工之后，她把自己今天做错的地方一条条说出来。",
@@ -2712,6 +2758,222 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「……习惯了。在外面要笑得好看。」"
+    }
+  ]
+},
+{
+  "id": "evt.hinana.after_dance",
+  "title": "她还想再跳一遍",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "hinana"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。别人都走了，她还在镜子前面站着，说\"刚才那里雛菜没跳对\"。",
+  "choices": [
+    {
+      "label": "再来一遍，我看。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「呀哈～♡那雛菜跳得更用力一点～！」"
+    },
+    {
+      "label": "哪里没跳对？",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「嗯～……转身之后的那一下，慢了。」"
+    },
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「诶～……好嘛，那明天～♡」"
+    }
+  ]
+},
+{
+  "id": "evt.hinana.after_expression",
+  "title": "她对着镜子做表情",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "hinana"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。她对着镜子把刚才那个表情做了五六遍，每次做完都歪一下头。",
+  "choices": [
+    {
+      "label": "最后一个最好。",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「真的～？雛菜也觉得最后那个不错～♡」"
+    },
+    {
+      "label": "你在挑哪一个？",
+      "hint": "表现 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「唔～……在挑哪个最像雛菜。」"
+    },
+    {
+      "label": "今天够了。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「好～♡雛菜已经困了～」"
+    }
+  ]
+},
+{
+  "id": "evt.hinana.after_vocal",
+  "title": "她数着拍子唱歌",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "hinana"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "歌唱课结束了。她还坐在钢琴旁边，一边用手指敲拍子一边唱，音准忽上忽下。",
+  "choices": [
+    {
+      "label": "拍子很稳。",
+      "hint": "歌唱 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「对吧～♡跳舞的时候就是这样数的～」"
+    },
+    {
+      "label": "音，再听一次老师的那句。",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「嗯～……好，再听一次。」"
+    },
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「好～！那，明天继续～♡」"
     }
   ]
 },
@@ -14631,6 +14893,2078 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "15",
       "speakerId": "producer",
       "text": "（她别过脸去，耳朵是红的。）"
+    }
+  }
+},
+{
+  "id": "dialogue.hinana.first",
+  "idolId": "hinana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "hinana",
+      "text": "哇～♡今天请多指教～！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "……是，请多指教。那么，先做一下自我介绍……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "hinana",
+      "text": "好～♡市川雛菜，高中一年级～～～",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "谢谢。能告诉我你想当偶像的理由吗？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "hinana",
+      "text": "嗯～那个呢～听说透先辈要当偶像～……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "hinana",
+      "text": "觉得超——好啊～，雛菜也想做啊～所以来了♡",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "原来如此……那接下来，说说你的特长吧。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "hinana",
+      "text": "特长～……？嗯～什么都还凑合～！",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "什么都还凑合……？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "hinana",
+      "text": "运动啊学习啊，都还挺行的！所以当偶像也很期待～～～♡",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "这样啊……那，你印象里的偶像是怎样的？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "hinana",
+      "text": "嗯～偶像啊～是开心又幸福～♡ 那种印象？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "确实，这种印象很强呢。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "不过，偶像不只是开心的事，也有很多辛苦的事哦。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "hinana",
+      "text": "诶～辛苦的不要～……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hinana",
+      "text": "啊！雛菜要当『开心担当』！",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "\"开心担当\"……吗。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "hinana",
+      "text": "不管什么事都开开心心、幸幸福福地做才是最好的吧～？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "是啊。作为偶像，我希望粉丝们总是看到笑容。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "hinana",
+      "text": "对吧～？雛菜可能很擅长这个哦～～～♡",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "hinana",
+      "text": "经常有人～说『雛菜看起来好幸福呢～』哦～～～",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "哈哈，这样啊。现在也确实很开心，笑得很好呢。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "hinana",
+      "text": "啊哈～♡谢谢～～～",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "hinana",
+      "text": "雛菜啊，不管什么时候呢，都要开开心心～、幸幸福福～地过。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "hinana",
+      "text": "……大家也这样就好了呢？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "嗯，能那样的话是最好的了。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "但也有做不到的人……不，做不到的人更多。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "所以，让那些人笑起来，才是偶像的工作吧。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "hinana",
+      "text": "原来～……那雛菜，很适合当偶像呢？",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "hinana",
+      "text": "因为看到雛菜幸福～的样子，大家也会变得幸福～吧～？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "啊哈哈……是啊。也许正是那样。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "──……好，谢谢。面试到此结束。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "hinana",
+      "text": "诶～～～，雛菜还想多聊一会儿～……",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "没关系，以后说话的机会有很多。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "作为 283 制作的偶像……请多指教，雛菜。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "hinana",
+      "text": "呀哈～♡真的～？好开心～～～！",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "嗯，我期待着。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "我会好好当雛菜的制作人的。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "hinana",
+      "text": "嗯！那我就好好被制作～！",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "hinana",
+      "text": "请多指教哦～～♡雛菜，可能有点喜欢制作人～～～！"
+    }
+  }
+},
+{
+  "id": "dialogue.hinana.interview",
+  "idolId": "hinana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "hinana",
+      "text": "呀哈～♡谢谢您～！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（采访开始了。）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "hinana",
+      "text": "──雛菜以前就一直在看这本杂志，所以超开心的～！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "（采访的人问了『今后的展望』。）",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "hinana",
+      "text": "…………今后的展望，吗～……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "（对方笑着说『很难吧』。）",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "hinana",
+      "text": "啊～不是那样……",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "hinana",
+      "text": "学校最近也问了进路的事，雛菜才一年级呢～这么想着",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "（对方说『不用想得太难，想做什么都可以』。）",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "hinana",
+      "text": "………………",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "hinana",
+      "text": "雛菜想开开心心、幸幸福福地当偶像呢。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "hinana",
+      "text": "说是偶像，又不只是那样……开开心心、幸幸福福的，就是雛菜。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "hinana",
+      "text": "所以能让雛菜保持这样的，说不定就是偶像呢～？　我是这么想的。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "hinana",
+      "text": "现在，我是这么想的。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "（对方安静了一下，然后说『这个……很好呢』。）",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hinana",
+      "text": "…………诶……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "（又说：粉丝也一定想看到市川小姐幸福的样子。）",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "hinana",
+      "text": "…………啊哈～，是这样呢～？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "hinana",
+      "text": "雛菜也这么想！所以为了那个，想试试各种各样的事～",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "hinana",
+      "text": "只要是能变得开心、变得幸福的事，……什么都。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "（采访结束了。）",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "hinana",
+      "text": "啊哈～，好开心，一转眼就结束了～……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "hinana",
+      "text": "──啊，对了！最后，我想到了绝对要做的事！",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "（对方问『是什么』。）",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "hinana",
+      "text": "绝对绝对，还想上这本杂志！还要叫我哦～？",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "──雛菜，辛苦了。拍摄和采访都很好哦！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "hinana",
+      "text": "啊哈～，真的～？",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "hinana",
+      "text": "可是雛菜，只是说了想到的事哦～？",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "是吗？那就是说，那非常好吧。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "hinana",
+      "text": "…………",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "hinana",
+      "text": "制作人，前阵子找到进路调查那张纸了吧？",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "诶？啊，嗯……",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "hinana",
+      "text": "那时候我就想，按雛菜自己的想法来就好了呢～",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "hinana",
+      "text": "不过，那也是当然的呢。因为这是雛菜的事嘛。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "……嗯。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "hinana",
+      "text": "就算被骂、被说不行，想做的事还是想做的～",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "hinana",
+      "text": "想开开心心、幸幸福福的嘛？雛菜也是，大家一定也是。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "hinana",
+      "text": "──所以雛菜，果然很适合当偶像吧！",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "……是啊。",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "以后，就多挑战各种事情，把雛菜的可能性拓宽吧。",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "作为偶像，也作为一个人。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "producer",
+      "text": "……我也会一起挑战的。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "hinana",
+      "text": "嗯～……只要不太辛苦的话哦？",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "hinana",
+      "text": "而且，是能开开心心、幸幸福福地做到的事～？",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "producer",
+      "text": "…………哈哈，是啊……！",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "producer",
+      "text": "嗯，雛菜就是这样，哈哈……！",
+      "choices": [
+        {
+          "label": "因为很期待。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "因为很有趣。",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "因为很高兴。",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "hinana",
+      "text": "嘿～……期待～？",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "雛菜以后会变成什么样呢。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "hinana",
+      "text": "这样啊～～～那就要在旁边好好看着呢？",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "……嗯！"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "hinana",
+      "text": "诶～……雛菜被笑了～？",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "不是……哈哈……！抱歉雛菜，不是那样。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "hinana",
+      "text": "骗人～！明明就在笑～！"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "hinana",
+      "text": "啊哈～，这样啊～？嗯～，那样就好～",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "producer",
+      "text": "哈哈，对吧？",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "hinana",
+      "text": "嗯～！开心的时候就会笑出来呢～"
+    }
+  }
+},
+{
+  "id": "dialogue.hinana.juice",
+  "idolId": "hinana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "hinana",
+      "text": "……电车，还不来呢～？",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "好像刚走了一班，要等挺久的。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "hinana",
+      "text": "这样啊～……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "hinana",
+      "text": "…………",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "hinana",
+      "text": "工作日的午后是这种感觉啊～",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "hinana",
+      "text": "总觉得，挺好的～……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "…………今天抱歉了，雛菜。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "我尽量不把工作安排在学校的时间……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "hinana",
+      "text": "嗯～？没关系哦～",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "hinana",
+      "text": "今天是体育课的长跑嘛。啊哈～只有雛菜赚到了的感觉♡",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "……像这样请假的事，以后也不能说完全没有。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "所以能去学校的时候，要好好上课啊？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "hinana",
+      "text": "嘿～……？嗯～……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "hinana",
+      "text": "啊！制作人，雛菜想喝果汁～？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "喂，别岔开话题。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hinana",
+      "text": "诶～，可是雛菜是请假了来工作的哦？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "hinana",
+      "text": "有点幸福～的事也可以有吧～！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "…………嘛，这么说也是……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "hinana",
+      "text": "呀哈～♡决定了！雛菜选哪个好呢～……！",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "hinana",
+      "text": "白桃、草莓……啊，还有樱桃～！",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "hinana",
+      "text": "呐，制作人要哪一个～？",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "不，我──……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "hinana",
+      "text": "那就雛菜桃子～制作人樱桃哦？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "喂，雛菜……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "hinana",
+      "text": "麻烦您～♡桃子和樱桃各一个～",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "hinana",
+      "text": "啊哈～～～",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "hinana",
+      "text": "在大家跑长跑的时候喝的果汁，特别不一样呢～～～♡",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "……雛菜，我们不是来玩的啊？",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "hinana",
+      "text": "嗯～……不过雛菜，果然还是樱桃比较好。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "诶？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "hinana",
+      "text": "桃子也好喝，可是～～～……",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "hinana",
+      "text": "总觉得制作人那份看起来更好喝～",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "……是吗？",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "hinana",
+      "text": "嗯～，所以呢？制作人。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "hinana",
+      "text": "给我一口～～～？",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "hinana",
+      "text": "──啊～已经没有了～……",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "hinana",
+      "text": "………………",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "hinana",
+      "text": "呐，制作人，要是雛菜她们变得超有人气～",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "hinana",
+      "text": "像这样喝果汁～、坐电车～，就做不到了吗～？",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "嗯——，是啊……也许吧。",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "hinana",
+      "text": "在学校也会被搭话呢～",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "hinana",
+      "text": "雛菜不太认识学校里的人，会变成『谁～？』那种……",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "producer",
+      "text": "…………雛菜。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "producer",
+      "text": "以后这样的事也许会变多。",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "producer",
+      "text": "所以那种时候──……",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "hinana",
+      "text": "……话是这么说，说不定雛菜她们根本不会有人气呢。",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "producer",
+      "text": "诶……不，不会那样的──",
+      "nextNodeId": "48"
+    },
+    "48": {
+      "id": "48",
+      "speakerId": "hinana",
+      "text": "啊哈～嘛，算了～",
+      "nextNodeId": "49"
+    },
+    "49": {
+      "id": "49",
+      "speakerId": "hinana",
+      "text": "只是周围自己变了而已，雛菜并不会变成不是雛菜。",
+      "nextNodeId": "50"
+    },
+    "50": {
+      "id": "50",
+      "speakerId": "hinana",
+      "text": "不过制作人，希望你不要变得太多呢～……",
+      "nextNodeId": "51"
+    },
+    "51": {
+      "id": "51",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "52"
+    },
+    "52": {
+      "id": "52",
+      "speakerId": "hinana",
+      "text": "呐，下次再来这里，就喝别的味道吧～？",
+      "nextNodeId": "53"
+    },
+    "53": {
+      "id": "53",
+      "speakerId": "hinana",
+      "text": "嗯～……电车，还不来呢～……"
+    }
+  }
+},
+{
+  "id": "dialogue.hinana.macaron",
+  "idolId": "hinana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "hinana",
+      "text": "──嗯～……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "hinana",
+      "text": "覆盆子马卡龙，还有～草莓、柠檬，……樱桃也要！",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "hinana",
+      "text": "然后～千层酥和伊斯法罕马卡龙，还有……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "hinana",
+      "text": "红茶两杯！麻烦您～",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "hinana",
+      "text": "呀哈～♡好期待呢～，制作人！",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "……雛菜。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "hinana",
+      "text": "嗯～～～？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "点了挺多量的，吃得完吗……？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "hinana",
+      "text": "诶，制作人不也一起吃吗！？",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "诶，原来是这个意思吗！？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "hinana",
+      "text": "诶～！？因为雛菜说了『一起吃甜的吧～』嘛？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "hinana",
+      "text": "说『今天也努力了』嘛！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "不，确实可能这么说过……",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "hinana",
+      "text": "嗯～……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hinana",
+      "text": "那个～……是什么来着？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "hinana",
+      "text": "──『多挑战各种事情，拓宽雛菜的可能性吧～！』",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "hinana",
+      "text": "『我也会一起挑战的！』……是这么说的吧～？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "hinana",
+      "text": "前阵子，制作人这么说了吧？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "诶？啊，说了是说了……",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "hinana",
+      "text": "所以我想，先挑战一下没怎么吃过的点心吧～！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "hinana",
+      "text": "这是那种尝试！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "雛菜…………",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "我说的不是那个意思──……",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "hinana",
+      "text": "可是想一点点尝各种各样的吧？",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "hinana",
+      "text": "这样能知道更多味道～",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "hinana",
+      "text": "一点点偷吃，然后决定哪个最幸福",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "hinana",
+      "text": "甜的东西也好，工作也好，什么都一样！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "…………！",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "hinana",
+      "text": "所以呢，制作人会陪着雛菜吧？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "hinana",
+      "text": "今后也一直～直，呐？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "……哈哈，是啊。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "我会陪着雛菜，陪到最后。"
+    }
+  }
+},
+{
+  "id": "dialogue.hinana.origami",
+  "idolId": "hinana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "hinana",
+      "text": "…………",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "hinana",
+      "text": "…………",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "…………雛菜？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "hinana",
+      "text": "嗯～……？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "在做什么？折纸……？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "hinana",
+      "text": "对～再等一下～……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "hinana",
+      "text": "好～，完成了♡是心形哦～！",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "哦哦，折得真好。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "hinana",
+      "text": "啊哈～雛菜只会折这个哦～？",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "hinana",
+      "text": "不过纸上的字透出来，不太可爱呢～",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "是拿什么东西的背面折的吗？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "hinana",
+      "text": "这个～？学校发的讲义～～～",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "hinana",
+      "text": "像进路调查那种！",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "诶，那个不是要交的吗？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "hinana",
+      "text": "嗯～，是啊？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hinana",
+      "text": "想着写什么好呢～，想着想着就变成心形了～♡",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "不行吧，要交的东西折成这样……！",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "hinana",
+      "text": "啊哈～，对吧～？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "……要好好写，在期限之前交上去哦？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "hinana",
+      "text": "嗯～，尽量会那样做！",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "hinana",
+      "text": "不过是呢～……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "hinana",
+      "text": "雛菜才高一，就要写毕业之后的事～",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "hinana",
+      "text": "……明明还超～远的呢？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "啊……嗯。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "我学生的时候，好像也这么想过。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "hinana",
+      "text": "诶～那现在是不同了？",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "是啊。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "雛菜也许觉得还是以后的事，不过……",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "hinana",
+      "text": "嘿～……",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "那个，写好了的话，可以给我看看吗。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "hinana",
+      "text": "嗯～？可以是可以……",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "hinana",
+      "text": "………………嘛，不过也是。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "hinana",
+      "text": "总有一天会结束的呢。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "诶……？",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "hinana",
+      "text": "雛菜只要能一直开开心心、幸幸福福的，那样就好了～",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "…………雛菜。",
+      "choices": [
+        {
+          "label": "好好想一想吧。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "\"结束\"是指……",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "一转眼就过去了哦。",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "producer",
+      "text": "这是雛菜自己的以后啊。",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "hinana",
+      "text": "啊哈～制作人，好像老师哦。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "producer",
+      "text": "……雛菜。",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "hinana",
+      "text": "好～雛菜会好好想的哦～？",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "hinana",
+      "text": "老师♡"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "hinana",
+      "text": "诶～？",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "hinana",
+      "text": "是说高中啊，三年就结束了呢～",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "hinana",
+      "text": "雛菜也总有一天，会不再是女高中生的呢～……",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "hinana",
+      "text": "啊，不过也有三年结束不了的情况吧～！",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "producer",
+      "text": "诶，不，那可不行……！"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "producer",
+      "text": "现在回头想想就是这样。至少我是。",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "hinana",
+      "text": "嗯～……都说快乐的时间一转眼就过去呢～？",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "hinana",
+      "text": "雛菜基本上一直都很开心，回过神来好多事都已经结束了～",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "producer",
+      "text": "哈哈，这样啊。",
+      "nextNodeId": "144"
+    },
+    "144": {
+      "id": "144",
+      "speakerId": "hinana",
+      "text": "嗯～！啊哈～，今天一天也很开心！"
+    }
+  }
+},
+{
+  "id": "dialogue.hinana.paper",
+  "idolId": "hinana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "（……消息，是雛菜。）",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "hinana",
+      "text": "『制作人现在在做什么？』",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "……出什么事了吗……？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "『我在事务所整理资料，怎么了？』",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "话说，这个时间雛菜应该在上课吧……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "……回得好快……！",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "hinana",
+      "text": "『雛菜前阵子拿着的那张讲义，不在事务所吗？』",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "……前阵子……是说进路调查那个啊！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "雛菜，还没交上去吗……！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "『稍等，我找找看。』",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "──哦，太好了，找到了……！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "啊——……折痕压得可真整齐啊……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "『讲义找到了哦。』",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "hinana",
+      "text": "『真的？太好了。』",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "hinana",
+      "text": "『那今天去拿哦♡被骂了，说要快点交♡』",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "哈啊…………",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "………………还没写啊。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "───雛菜。",
+      "choices": [
+        {
+          "label": "想好写什么了吗？",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "得守住期限啊。",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "下次别再弄丢了。",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "hinana",
+      "text": "嗯～～～……还在想～？",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "这样啊……",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "hinana",
+      "text": "不过总觉得，写什么好像都会挨骂～",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "hinana",
+      "text": "雛菜按自己的想法写的话，一定",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "producer",
+      "text": "……怎么了，雛菜有想写的东西吗？",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "hinana",
+      "text": "嗯～？可是反正会被说重写吧？",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "producer",
+      "text": "就算那样，只要是雛菜好好想过的结果，不就好了。",
+      "nextNodeId": "107"
+    },
+    "107": {
+      "id": "107",
+      "speakerId": "hinana",
+      "text": "……这样～？",
+      "nextNodeId": "108"
+    },
+    "108": {
+      "id": "108",
+      "speakerId": "hinana",
+      "text": "…………这样啊～"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "hinana",
+      "text": "啊～……",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "hinana",
+      "text": "说得也是呢～……",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "producer",
+      "text": "如果雛菜说什么都想不出来，那就写这个交上去也行。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "hinana",
+      "text": "诶～！可以吗～……？",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "producer",
+      "text": "嗯，这种事本来就是为了商量才有的。",
+      "nextNodeId": "125"
+    },
+    "125": {
+      "id": "125",
+      "speakerId": "hinana",
+      "text": "呼～嗯……",
+      "nextNodeId": "126"
+    },
+    "126": {
+      "id": "126",
+      "speakerId": "hinana",
+      "text": "那就是说，雛菜按自己的想法写也可以～",
+      "nextNodeId": "127"
+    },
+    "127": {
+      "id": "127",
+      "speakerId": "producer",
+      "text": "那当然。这是雛菜自己的事。",
+      "nextNodeId": "128"
+    },
+    "128": {
+      "id": "128",
+      "speakerId": "hinana",
+      "text": "……什么嘛，这样啊～"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "hinana",
+      "text": "没有弄丢哦～？只是放在事务所而已！",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "producer",
+      "text": "……是重要的东西，就要好好管理。",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "hinana",
+      "text": "可是，是制作人帮我找到的呀？",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "producer",
+      "text": "……这次是。不能每次都这样……",
+      "nextNodeId": "144"
+    },
+    "144": {
+      "id": "144",
+      "speakerId": "hinana",
+      "text": "可是，要是找不到，每次都会一起帮我找吧？",
+      "nextNodeId": "145"
+    },
+    "145": {
+      "id": "145",
+      "speakerId": "producer",
+      "text": "…………嘛，是啊。",
+      "nextNodeId": "146"
+    },
+    "146": {
+      "id": "146",
+      "speakerId": "hinana",
+      "text": "啊哈～！果然是这样呢～",
+      "nextNodeId": "147"
+    },
+    "147": {
+      "id": "147",
+      "speakerId": "hinana",
+      "text": "和雛菜想的一样～！"
+    }
+  }
+},
+{
+  "id": "dialogue.hinana.second",
+  "idolId": "hinana",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "hinana",
+      "text": "啊～♡是制作人～～～！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "诶……啊，雛菜啊。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "hinana",
+      "text": "诶～～～制作人，好冷淡～……？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "抱歉，刚才一边走路一边想事情，不太好呢。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "hinana",
+      "text": "不好～！不危险吗～？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "hinana",
+      "text": "走路还要想事情，多辛苦啊～～～……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "hinana",
+      "text": "制作人，有在休息的时候吗～……？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "哈哈，一不小心就……",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "hinana",
+      "text": "啊不过！雛菜也是，一边想着制作人一边走过来的～♡",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "这样吗？那就是彼此彼此了。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "我在想，今后该怎么制作雛菜。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "hinana",
+      "text": "骗人～～～！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "hinana",
+      "text": "我还在想是不是只有雛菜一个人在想着制作人，好开心～～～",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "那太好了。雛菜今天也很有精神呢。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "hinana",
+      "text": "啊哈，对吧～～～？今天也要一天开开心心～、幸幸福福～♡",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "……今天也要一天，啊……雛菜，今天接下来有课吧？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "我能去看看课的样子吗？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "hinana",
+      "text": "制作人也要来？呀哈～♡那最棒了～～～！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "hinana",
+      "text": "呐，快点走吧～～～？制作人。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "（……那就是今天的课。）",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "hinana",
+      "text": "真的～～～？呀哈～，被夸了～♡",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "hinana",
+      "text": "啊，制作人在看～～～？被夸了哦～～～！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "喂，正在上课吧……！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "hinana",
+      "text": "可是，因为太开心了～就想跟制作人说～～～",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "别管这边，专心上课……！",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "hinana",
+      "text": "那制作人就专心看着雛菜哦～？",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "好了，快，朝前面……！",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "hinana",
+      "text": "好～♡课的后续就拜托了～～～",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "…………哈哈……",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "（……舞蹈也跳得好，更重要的是这份天真烂漫，正适合当偶像。）",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "（稍微有点任性这一点让人在意……）",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "hinana",
+      "text": "……制作人看～～～？",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "………………",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "hinana",
+      "text": "制作人……？",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "诶……啊，雛菜！辛苦了。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "hinana",
+      "text": "……又在想事情吗～？",
+      "choices": [
+        {
+          "label": "在想怎么制作雛菜。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "在想雛菜跳舞真好。",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "在想雛菜会变成好偶像。",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "hinana",
+      "text": "啊哈，制作人老是这个～～～",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "是啊。就是因为对雛菜有这么多可能性。",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "hinana",
+      "text": "诶～～～？那是在说雛菜很厉害～？",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "嗯，雛菜一定能成为很厉害的偶像。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "producer",
+      "text": "为了那个，我一直在想怎么做最好。",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "hinana",
+      "text": "呀哈～♡那雛菜就等着了哦～？"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "hinana",
+      "text": "呀哈～♡被制作人夸了～～～",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "producer",
+      "text": "以后多上课，还能跳得更好。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "hinana",
+      "text": "雛菜，也许有跳舞的才能～",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "producer",
+      "text": "嗯，我期待着。",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "hinana",
+      "text": "嘿嘿～♡那雛菜就多跳一点～～～！"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "hinana",
+      "text": "真的～～～？好开心～！",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "producer",
+      "text": "舞蹈也跳得好，更重要的是总是那么开朗、那么开心。",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "producer",
+      "text": "要是能把那样的样子给粉丝看到就好了。",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "hinana",
+      "text": "嗯～♡雛菜，那个大概很擅长～～～！"
     }
   }
 },
@@ -37553,6 +39887,118 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "fuyuko",
   "label": "营业",
   "text": "「在外面，ふゆ是可爱的好孩子。」「……那也算真话。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hinana.chat.makeup",
+  "actorId": "hinana",
+  "label": "化妆",
+  "text": "「今天眼影用了三个颜色～♡」「三个都用？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hinana.chat.photo",
+  "actorId": "hinana",
+  "label": "拍照",
+  "text": "「刚才那张拍了哦～♡」「可以发出去吗？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hinana.chat.school",
+  "actorId": "hinana",
+  "label": "学校",
+  "text": "「今天第一节课赶上了～」「难得。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hinana.chat.sweets",
+  "actorId": "hinana",
+  "label": "甜的",
+  "text": "「甜的东西最棒了～♡」「苦的呢？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hinana.chat.today",
+  "actorId": "hinana",
+  "label": "今天",
+  "text": "「今天也开开心心、幸幸福福～♡」「具体是什么？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hinana.chat.toru",
+  "actorId": "hinana",
+  "label": "透先輩",
+  "text": "「透先輩今天又睡过头了～」「你怎么知道？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hinana.chat.work",
+  "actorId": "hinana",
+  "label": "工作",
+  "text": "「下次的杂志，雛菜想穿那件～」「哪件？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "hinana.chat.yuakuma",
+  "actorId": "hinana",
+  "label": "ユアクマ",
+  "text": "「ユアクマちゃん的新周边出了～♡」「又是新的？」",
   "cooldownMinutes": 1440,
   "effects": [
     {

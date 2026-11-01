@@ -12,79 +12,90 @@
     "nodes": {
       "10": {
         "id": "10",
-        "speakerId": "producer",
-        "text": "请多指教，凛世！……那个，先带你看看事务所吧。",
+        "speakerId": "rinze",
+        "text": "是，我叫杜野凛世。虽是不成器之人，请多指教。",
         "nextNodeId": "11"
       },
       "11": {
         "id": "11",
+        "speakerId": "producer",
+        "text": "请多指教，凛世！……那个，先带你看看事务所吧。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
         "speakerId": "rinze",
         "text": "是……那就，麻烦您了。"
       },
       "01": {
         "id": "01",
-        "speakerId": "rinze",
-        "text": "请问……",
+        "speakerId": "producer",
+        "text": "（嗯……果然没有联络啊。那个穿和服的孩子，是不是我太强硬了……）",
         "nextNodeId": "02"
       },
       "02": {
         "id": "02",
-        "speakerId": "producer",
-        "text": "……诶，你是……",
+        "speakerId": "rinze",
+        "text": "请问……",
         "nextNodeId": "03"
       },
       "03": {
         "id": "03",
-        "speakerId": "rinze",
-        "text": "前几天，谢谢您。为了还手帕，我来了。",
+        "speakerId": "producer",
+        "text": "……诶，你是……",
         "nextNodeId": "04"
       },
       "04": {
         "id": "04",
-        "speakerId": "producer",
-        "text": "这个……是吗，你特意送过来。总觉得不好意思。",
+        "speakerId": "rinze",
+        "text": "前几天，谢谢您。为了还手帕，我来了。",
         "nextNodeId": "05"
       },
       "05": {
         "id": "05",
-        "speakerId": "rinze",
-        "text": "不……还有，今天……是来给您答复的。",
+        "speakerId": "producer",
+        "text": "这个……是吗，你特意送过来。总觉得不好意思。",
         "nextNodeId": "06"
       },
       "06": {
         "id": "06",
         "speakerId": "rinze",
-        "text": "凛世，已经下定决心了。",
+        "text": "不……还有，今天……是来给您答复的。",
         "nextNodeId": "07"
       },
       "07": {
         "id": "07",
         "speakerId": "rinze",
-        "text": "从今往后，一生，都跟随您。",
+        "text": "凛世，已经下定决心了。",
         "nextNodeId": "08"
       },
       "08": {
         "id": "08",
-        "speakerId": "producer",
-        "text": "……也就是说，你下定决心了！谢谢！……那个，凛世……小姐？",
+        "speakerId": "rinze",
+        "text": "从今往后，一生，都跟随您。",
         "nextNodeId": "09"
       },
       "09": {
         "id": "09",
-        "speakerId": "rinze",
-        "text": "是，我叫杜野凛世。虽是不成器之人，请多指教。",
+        "speakerId": "producer",
+        "text": "……也就是说，你下定决心了！谢谢！……那个，凛世……小姐？",
         "nextNodeId": "10"
       }
     }
   },
   "annotations": [],
   "createdAt": "2026-11-02T06:10:00.000Z",
-  "updatedAt": "2026-11-02T06:10:00.000Z",
+  "updatedAt": "2026-11-02T07:10:00.000Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T06:10:00.000Z",
       "note": "对照 101200101 后半（几天后来事务所、答\"心已决\"）"
+    },
+    {
+      "status": "review",
+      "at": "2026-11-02T07:10:00.000Z",
+      "note": "开头补上「果然没有联络啊」——从第一步结尾移过来，它发生在几天之后"
     }
   ]
 }

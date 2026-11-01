@@ -1,0 +1,37 @@
+{
+  "id": "draft.madoka.chat.song",
+  "kind": "topic",
+  "title": "聊天 · 歌",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.madoka.chat.song",
+  "payload": {
+    "id": "madoka.chat.song",
+    "actorId": "madoka",
+    "label": "歌",
+    "text": "「唱歌？……那是工作。」「只是工作吗？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T17:27:00.000Z",
+  "updatedAt": "2026-11-01T06:04:18.310Z",
+  "reviewedAt": "2026-11-01T06:04:18.310Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T17:27:00.000Z",
+      "note": "円香日常话题（嘴上说歌是工作、其实最较真 [madoka facts 歌]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:04:18.310Z"
+    }
+  ]
+}

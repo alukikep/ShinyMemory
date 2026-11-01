@@ -1,0 +1,311 @@
+{
+  "id": "draft.dialogue.madoka.exception",
+  "kind": "dialogue",
+  "title": "收工之后，车还停在摄影棚外",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.madoka.exception",
+  "payload": {
+    "id": "dialogue.madoka.exception",
+    "idolId": "madoka",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "──円香，你对别人倒是普通的应对啊。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "madoka",
+        "text": "什么啊，那个。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "刚才你跟工作人员聊得很起劲的样子，比如拿到慰问的蛋糕的时候……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "madoka",
+        "text": "那种没内容的闲聊吗？我只是随便附和而已。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "madoka",
+        "text": "嘛，对第一次见面的人很严厉，那才是没常识吧。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "诶……………………",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "啊，啊啊。是啊，那倒是。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "madoka",
+        "text": "……我猜猜你在想什么吧。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "诶！？不不不……",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "madoka",
+        "text": "…………",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "madoka",
+        "text": "你是例外。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "例外？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "madoka",
+        "text": "因为从第一次见面开始，就有理由。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "唔……这样啊。被讨厌倒也不是我很擅长的……",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "嘛……嗯。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "我在円香身上看到了会发光的东西，所以。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "只要円香愿意留在这里，那就够了。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "madoka",
+        "text": "……",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "不过，我会努力让你信任我的。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "就算一直讨厌着也一样。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "madoka",
+        "text": "…………啊。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "madoka",
+        "text": "你这么做，总得有个理由……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "madoka",
+        "text": "对我──…………",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "…………？",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "madoka",
+        "text": "不。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "madoka",
+        "text": "没什么。别回答。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "我可以回答吗？",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "madoka",
+        "text": "说了别回答。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "producer",
+        "text": "让我说吧。",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "madoka",
+        "text": "不行，忘掉。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "就算你这么说……",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "madoka",
+        "text": "现在正是发挥鸟脑袋真正价值的时候吧。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "鸟、鸟脑袋……",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "madoka",
+        "text": "不行。",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "円香是──",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "madoka",
+        "text": "说了不行的吧……！",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "哈哈哈……！",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "madoka",
+        "text": "…………！",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "madoka",
+        "text": "最差劲。",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "producer",
+        "text": "哈哈……抱歉抱歉，开玩笑的。",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "producer",
+        "text": "今天就先放过你，不过总有一天円香也会明白的。",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "producer",
+        "text": "所以，至少在那之前，希望你能留在这里。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "madoka",
+        "text": "…………我知道了。",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "madoka",
+        "text": "………………",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "madoka",
+        "text": "总之，就到你把这辆车停下来为止。",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "producer",
+        "text": "……嗯。我会开得很稳的。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T17:10:00.000Z",
+  "updatedAt": "2026-11-01T06:04:10.424Z",
+  "reviewedAt": "2026-11-01T06:04:10.424Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T17:10:00.000Z",
+      "note": "对照 202100411（「あなたは例外です」、鸟脑袋、直到你停下这辆车）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:04:10.424Z"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "id": "draft.evt.madoka.after_expression",
+  "kind": "event",
+  "title": "她不肯笑",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.evt.madoka.after_expression",
+  "payload": {
+    "id": "evt.madoka.after_expression",
+    "title": "她不肯笑",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "madoka"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表演课结束了。老师让她试一个\"开心的笑\"，她照做了两秒，然后说\"这个不行\"，自己停了下来。",
+    "choices": [
+      {
+        "label": "为什么不行？",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「因为那个笑，是给镜头看的。」"
+      },
+      {
+        "label": "那就不笑，说台词。",
+        "hint": "表现 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「……你偶尔会说些对的话。」"
+      },
+      {
+        "label": "今天已经很好了。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「是吗。……那就这样吧。」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T17:32:00.000Z",
+  "updatedAt": "2026-11-01T06:04:13.697Z",
+  "reviewedAt": "2026-11-01T06:04:13.697Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T17:32:00.000Z",
+      "note": "円香表演课后事件（她拒绝\"笑给镜头看\"）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:04:13.697Z"
+    }
+  ]
+}

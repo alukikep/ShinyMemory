@@ -1,0 +1,460 @@
+{
+  "id": "draft.dialogue.madoka.walk",
+  "kind": "dialogue",
+  "title": "外景下见，她沿着水边走",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.madoka.walk",
+  "payload": {
+    "id": "dialogue.madoka.walk",
+    "idolId": "madoka",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "madoka",
+        "text": "沿着这里走？",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "嗯，普通地走就好。特别是不用在意镜头……",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "说是想拍自然的样子。",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "madoka",
+        "text": "我知道了。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "小心别摔倒。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "madoka",
+        "text": "……不用你说。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "今天挺暖和的。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "madoka",
+        "text": "……是的。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "绿色晃眼，风也很舒服。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "madoka",
+        "text": "……是吗。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "円香有喜欢的季节吗？",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "madoka",
+        "text": "谁知道呢……怎么样呢。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "……啊，抱歉抱歉。下见的时候聊天，碍事了吧。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "madoka",
+        "text": "请不用在意。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "好，円香按自己的步调走就好。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "madoka",
+        "text": "…………",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "madoka",
+        "text": "──…………",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "（……看起来很舒服的样子。）",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "（虽然嘴上……什么都不说。）",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "（──还是没能抓住真正的円香啊。）",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "madoka",
+        "text": "──啊。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "嗯？──！！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "（糟了，円香要……摔倒了──！）",
+        "choices": [
+          {
+            "label": "（伸出手）",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "（抓住她的手臂）",
+            "nextNodeId": "130"
+          },
+          {
+            "label": "危险！",
+            "nextNodeId": "160"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "madoka",
+        "text": "………！",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "啊…………",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "producer",
+        "text": "……没、没事吧？",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "madoka",
+        "text": "只是湿了一点。凉鞋而已，没什么。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "madoka",
+        "text": "比起这个……你的鞋。",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "producer",
+        "text": "诶？啊……",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "madoka",
+        "text": "为什么连你也湿了。",
+        "nextNodeId": "107"
+      },
+      "107": {
+        "id": "107",
+        "speakerId": "producer",
+        "text": "哈哈，不知不觉就……",
+        "nextNodeId": "108"
+      },
+      "108": {
+        "id": "108",
+        "speakerId": "producer",
+        "text": "嘛，晾干就没事……吧？",
+        "nextNodeId": "109"
+      },
+      "109": {
+        "id": "109",
+        "speakerId": "madoka",
+        "text": "……皮鞋是不行的吧。",
+        "nextNodeId": "110"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "producer",
+        "text": "没事没事……！比起这个，円香你——马上就要开拍了。",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "producer",
+        "text": "我去找毛巾。",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "producer",
+        "text": "在这里稍微等一下……！",
+        "nextNodeId": "113"
+      },
+      "113": {
+        "id": "113",
+        "speakerId": "madoka",
+        "text": "…………",
+        "nextNodeId": "114"
+      },
+      "114": {
+        "id": "114",
+        "speakerId": "madoka",
+        "text": "你也去跟工作人员借双凉鞋怎么样？"
+      },
+      "130": {
+        "id": "130",
+        "speakerId": "producer",
+        "text": "啊，好险……",
+        "nextNodeId": "131"
+      },
+      "131": {
+        "id": "131",
+        "speakerId": "madoka",
+        "text": "……放开。",
+        "nextNodeId": "132"
+      },
+      "132": {
+        "id": "132",
+        "speakerId": "producer",
+        "text": "……没受伤吧？",
+        "nextNodeId": "133"
+      },
+      "133": {
+        "id": "133",
+        "speakerId": "madoka",
+        "text": "怎么可能有……又没摔倒。",
+        "nextNodeId": "134"
+      },
+      "134": {
+        "id": "134",
+        "speakerId": "madoka",
+        "text": "多亏了你。",
+        "nextNodeId": "135"
+      },
+      "135": {
+        "id": "135",
+        "speakerId": "producer",
+        "text": "……等等，円香。",
+        "nextNodeId": "136"
+      },
+      "136": {
+        "id": "136",
+        "speakerId": "producer",
+        "text": "慢慢走比较好。说不定还会摔，一起……",
+        "nextNodeId": "137"
+      },
+      "137": {
+        "id": "137",
+        "speakerId": "madoka",
+        "text": "差点摔倒是我不好。不过，让你帮忙这种事──",
+        "nextNodeId": "138"
+      },
+      "138": {
+        "id": "138",
+        "speakerId": "madoka",
+        "text": "──！",
+        "nextNodeId": "139"
+      },
+      "139": {
+        "id": "139",
+        "speakerId": "producer",
+        "text": "哇……！！",
+        "nextNodeId": "140"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "producer",
+        "text": "──啊，好险啊。",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "madoka",
+        "text": "……放开。",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "producer",
+        "text": "嗯，你站稳了我就放开。注意脚下，慢慢地……",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "madoka",
+        "text": "搂腰什么的……不原谅你。",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "producer",
+        "text": "我也是顺手……抱歉啊。",
+        "nextNodeId": "145"
+      },
+      "145": {
+        "id": "145",
+        "speakerId": "madoka",
+        "text": "……讨厌。不原谅。"
+      },
+      "160": {
+        "id": "160",
+        "speakerId": "madoka",
+        "text": "──！",
+        "nextNodeId": "161"
+      },
+      "161": {
+        "id": "161",
+        "speakerId": "producer",
+        "text": "没、没事吧……！？哪里痛……？来，站起来──",
+        "nextNodeId": "162"
+      },
+      "162": {
+        "id": "162",
+        "speakerId": "madoka",
+        "text": "……我自己能站起来……",
+        "nextNodeId": "163"
+      },
+      "163": {
+        "id": "163",
+        "speakerId": "producer",
+        "text": "──咦，円香，右脚的鞋呢？",
+        "nextNodeId": "164"
+      },
+      "164": {
+        "id": "164",
+        "speakerId": "madoka",
+        "text": "……？嗯……",
+        "nextNodeId": "165"
+      },
+      "165": {
+        "id": "165",
+        "speakerId": "producer",
+        "text": "难道是那双白色凉鞋？──……被冲走了！到水里了！",
+        "nextNodeId": "166"
+      },
+      "166": {
+        "id": "166",
+        "speakerId": "madoka",
+        "text": "诶……",
+        "nextNodeId": "167"
+      },
+      "167": {
+        "id": "167",
+        "speakerId": "producer",
+        "text": "──嘿……哟……！抓到了！",
+        "nextNodeId": "168"
+      },
+      "168": {
+        "id": "168",
+        "speakerId": "madoka",
+        "text": "谢谢，您……",
+        "nextNodeId": "169"
+      },
+      "169": {
+        "id": "169",
+        "speakerId": "producer",
+        "text": "哈哈，太好了！这凉鞋真可爱，要好好珍惜……",
+        "nextNodeId": "170"
+      },
+      "170": {
+        "id": "170",
+        "speakerId": "madoka",
+        "text": "……是啊。",
+        "nextNodeId": "171"
+      },
+      "171": {
+        "id": "171",
+        "speakerId": "madoka",
+        "text": "虽然不是我的。那个是跟工作人员借的。",
+        "nextNodeId": "172"
+      },
+      "172": {
+        "id": "172",
+        "speakerId": "producer",
+        "text": "工作人……",
+        "nextNodeId": "173"
+      },
+      "173": {
+        "id": "173",
+        "speakerId": "madoka",
+        "text": "不过，所以……没有弄丢，太好了。",
+        "nextNodeId": "174"
+      },
+      "174": {
+        "id": "174",
+        "speakerId": "producer",
+        "text": "……嗯！是啊！",
+        "nextNodeId": "175"
+      },
+      "175": {
+        "id": "175",
+        "speakerId": "madoka",
+        "text": "……你要在水里站到什么时候。皮鞋都湿了。裤子也是。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T16:40:00.000Z",
+  "updatedAt": "2026-11-01T06:04:10.092Z",
+  "reviewedAt": "2026-11-01T06:04:10.092Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T16:40:00.000Z",
+      "note": "对照 202100402（水边外景、差点摔倒、三分支：伸手/抓手臂/出声）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:04:10.092Z"
+    }
+  ]
+}

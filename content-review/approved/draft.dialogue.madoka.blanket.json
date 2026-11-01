@@ -1,0 +1,454 @@
+{
+  "id": "draft.dialogue.madoka.blanket",
+  "kind": "dialogue",
+  "title": "练习室的人走光了",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.madoka.blanket",
+  "payload": {
+    "id": "dialogue.madoka.blanket",
+    "idolId": "madoka",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "madoka",
+        "text": "谢谢您。以后也请多指教。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "──円香，辛苦了！",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "madoka",
+        "text": "辛苦了。今天在这里解散可以吗？",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "当然……啊，对了。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "明天安排了课程，没问题吧？快考试了吧？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "madoka",
+        "text": "……从谁那里听说的？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "啊，浅仓写在日志里了。円香和她同校，我想应该一样吧。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "madoka",
+        "text": "这样。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "madoka",
+        "text": "……没有问题，我会去。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "这样啊，谢谢！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "那明天见。回去路上小心。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "madoka",
+        "text": "好，辛苦了。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "madoka",
+        "text": "……──……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "madoka",
+        "text": "……诶。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "打扰了……呃……课程还在进行吗……？",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "madoka",
+        "text": "已经结束了。有什么事吗？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "啊，没什么。只是来看看课的情况。不过好像来晚了一步……",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "madoka",
+        "text": "不是晚一步。很久之前就结束了。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "madoka",
+        "text": "那么，我要回去了，能请你让开吗？",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "啊，辛苦了──声乐老师夸了円香哦。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "说发声的方法非常好。喉咙打开的方式、切换的方式都是……",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "madoka",
+        "text": "……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "……你在努力啊。下次我会好好来看的。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "madoka",
+        "text": "不用了，没什么。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "madoka",
+        "text": "我先走了。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "哈啊，今天的会议拖得太长了。",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "producer",
+        "text": "肚子饿了吧，找个地方吃点──",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "madoka",
+        "text": "浪费经费。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "不不，这里就当是辛苦了，我请──",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "madoka",
+        "text": "不用了。好不容易能和你分开，为什么还要特意？",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "madoka",
+        "text": "您的心意我领了……辛苦了。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "madoka",
+        "text": "……那么。",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "madoka",
+        "text": "……辛苦了。",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "madoka",
+        "text": "──再见。",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "啊……辛苦了！",
+        "nextNodeId": "36"
+      },
+      "36": {
+        "id": "36",
+        "speakerId": "producer",
+        "text": "辛苦……",
+        "nextNodeId": "37"
+      },
+      "37": {
+        "id": "37",
+        "speakerId": "producer",
+        "text": "円香……",
+        "nextNodeId": "38"
+      },
+      "38": {
+        "id": "38",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "39"
+      },
+      "39": {
+        "id": "39",
+        "speakerId": "madoka",
+        "text": "────……呐。",
+        "nextNodeId": "40"
+      },
+      "40": {
+        "id": "40",
+        "speakerId": "producer",
+        "text": "……嗯？",
+        "nextNodeId": "41"
+      },
+      "41": {
+        "id": "41",
+        "speakerId": "madoka",
+        "text": "真的，你真是个不行的人……",
+        "nextNodeId": "42"
+      },
+      "42": {
+        "id": "42",
+        "speakerId": "producer",
+        "text": "円香──？",
+        "nextNodeId": "43"
+      },
+      "43": {
+        "id": "43",
+        "speakerId": "madoka",
+        "text": "──你要睡到什么时候。",
+        "nextNodeId": "44"
+      },
+      "44": {
+        "id": "44",
+        "speakerId": "producer",
+        "text": "…………诶。",
+        "nextNodeId": "45"
+      },
+      "45": {
+        "id": "45",
+        "speakerId": "producer",
+        "text": "……咦……毯子……",
+        "nextNodeId": "46"
+      },
+      "46": {
+        "id": "46",
+        "speakerId": "producer",
+        "text": "我睡着了……什么时候……",
+        "nextNodeId": "47"
+      },
+      "47": {
+        "id": "47",
+        "speakerId": "producer",
+        "text": "（……手机，有通知。）",
+        "choices": [
+          {
+            "label": "……现在几点？",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "喝点水吧",
+            "nextNodeId": "130"
+          },
+          {
+            "label": "今天就回去吧",
+            "nextNodeId": "160"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "通知…………円香发来的……",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "madoka",
+        "text": "『明天集合地点的地图，还没有收到。』『还没好吗？』『请联系我。』",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "……！糟了，说好今天之内发的。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "对、对不起……！她还醒着吗……",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "producer",
+        "text": "啊……",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "madoka",
+        "text": "『你要睡到什么时候。』"
+      },
+      "130": {
+        "id": "130",
+        "speakerId": "producer",
+        "text": "嘿咻……唔，身体好痛……",
+        "nextNodeId": "131"
+      },
+      "131": {
+        "id": "131",
+        "speakerId": "producer",
+        "text": "（做了个奇怪的梦。说是梦是现实的投影……）",
+        "nextNodeId": "132"
+      },
+      "132": {
+        "id": "132",
+        "speakerId": "producer",
+        "text": "（从哪里开始是梦……）",
+        "nextNodeId": "133"
+      },
+      "133": {
+        "id": "133",
+        "speakerId": "producer",
+        "text": "不──……",
+        "nextNodeId": "134"
+      },
+      "134": {
+        "id": "134",
+        "speakerId": "producer",
+        "text": "哇……搞砸了……啊——啊……",
+        "nextNodeId": "135"
+      },
+      "135": {
+        "id": "135",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "136"
+      },
+      "136": {
+        "id": "136",
+        "speakerId": "producer",
+        "text": "哈哈，是啊。",
+        "nextNodeId": "137"
+      },
+      "137": {
+        "id": "137",
+        "speakerId": "producer",
+        "text": "……我真是个不行的人。"
+      },
+      "160": {
+        "id": "160",
+        "speakerId": "producer",
+        "text": "总觉得忘了什么……",
+        "nextNodeId": "161"
+      },
+      "161": {
+        "id": "161",
+        "speakerId": "producer",
+        "text": "──……啊！",
+        "nextNodeId": "162"
+      },
+      "162": {
+        "id": "162",
+        "speakerId": "producer",
+        "text": "要给円香发明天的地图。糟了，她已经睡了吗……！",
+        "nextNodeId": "163"
+      },
+      "163": {
+        "id": "163",
+        "speakerId": "producer",
+        "text": "『明天的集合地点』──『非常抱歉』……",
+        "nextNodeId": "164"
+      },
+      "164": {
+        "id": "164",
+        "speakerId": "producer",
+        "text": "……哦，已读了。",
+        "nextNodeId": "165"
+      },
+      "165": {
+        "id": "165",
+        "speakerId": "madoka",
+        "text": "『知道了。』",
+        "nextNodeId": "166"
+      },
+      "166": {
+        "id": "166",
+        "speakerId": "madoka",
+        "text": "『真的，你真是个不行的人。』"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T16:50:00.000Z",
+  "updatedAt": "2026-11-01T06:04:10.199Z",
+  "reviewedAt": "2026-11-01T06:04:10.199Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T16:50:00.000Z",
+      "note": "对照 202100403（拒绝请客、睡着、毯子、地图消息、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:04:10.199Z"
+    }
+  ]
+}

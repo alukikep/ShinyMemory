@@ -1,0 +1,196 @@
+{
+  "id": "draft.dialogue.madoka.third",
+  "kind": "dialogue",
+  "title": "CD 店门口的小舞台",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.madoka.third",
+  "payload": {
+    "id": "dialogue.madoka.third",
+    "idolId": "madoka",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "……怎么样？",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "madoka",
+        "text": "很美好呢。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "……啊，是吧！？",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "madoka",
+        "text": "是的。和我想的一样。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "madoka",
+        "text": "只要笑着就总会有办法。偶像真是轻松的买卖。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "……不是，円香。那个……",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "madoka",
+        "text": "我没有否定哦？多亏了这样，像我这样的外行也能做。",
+        "choices": [
+          {
+            "label": "『心意』才是重要的。",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "……不对。",
+            "nextNodeId": "120"
+          },
+          {
+            "label": "嗯——……",
+            "nextNodeId": "140"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "producer",
+        "text": "刚才的照片也是。因为円香全力去做了——",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "madoka",
+        "text": "哈？没有那种事。宣材照片需要全力吗？",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "madoka",
+        "text": "我只是普普通通地做了而已。",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "madoka",
+        "text": "不过『用来做宣材照片有点可惜』——是完成得非常好吧？",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "producer",
+        "text": "（一句话都还不上。）"
+      },
+      "120": {
+        "id": "120",
+        "speakerId": "producer",
+        "text": "为了别人笑，没那么简单。",
+        "nextNodeId": "121"
+      },
+      "121": {
+        "id": "121",
+        "speakerId": "madoka",
+        "text": "那真是抱歉。我看起来那笑容就是自我表现欲的集合体。",
+        "nextNodeId": "122"
+      },
+      "122": {
+        "id": "122",
+        "speakerId": "producer",
+        "text": "不是……没关系。以后你明白了就好。",
+        "nextNodeId": "123"
+      },
+      "123": {
+        "id": "123",
+        "speakerId": "madoka",
+        "text": "谢谢。",
+        "nextNodeId": "124"
+      },
+      "124": {
+        "id": "124",
+        "speakerId": "madoka",
+        "text": "那么，在明白的那天到来之前，我就用适可而止的客套好了。"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "producer",
+        "text": "确实舞蹈和歌可能还差得远。但是拼命去努力——",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "madoka",
+        "text": "也就是说，不成熟也能做成生意，对吧。",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "madoka",
+        "text": "我以为社会会更严厉一些。是我误会了，那真是太好了。",
+        "nextNodeId": "143"
+      },
+      "143": {
+        "id": "143",
+        "speakerId": "producer",
+        "text": "……在了解偶像之前，看起来也许是这样吧。",
+        "nextNodeId": "144"
+      },
+      "144": {
+        "id": "144",
+        "speakerId": "madoka",
+        "text": "那么请教教我。偶像是什么？",
+        "nextNodeId": "145"
+      },
+      "145": {
+        "id": "145",
+        "speakerId": "producer",
+        "text": "这个答案有很多……每个人都不一样。",
+        "nextNodeId": "146"
+      },
+      "146": {
+        "id": "146",
+        "speakerId": "madoka",
+        "text": "呼……",
+        "nextNodeId": "147"
+      },
+      "147": {
+        "id": "147",
+        "speakerId": "producer",
+        "text": "円香的答案，我们一起去找吧……！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T16:20:00.000Z",
+  "updatedAt": "2026-11-01T06:04:07.821Z",
+  "reviewedAt": "2026-11-01T06:04:07.821Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T16:20:00.000Z",
+      "note": "对照 102100102（路上 mini live、三分支、「アイドルとは？」）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:04:07.821Z"
+    }
+  ]
+}

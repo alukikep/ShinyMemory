@@ -1,0 +1,185 @@
+{
+  "id": "draft.dialogue.madoka.second",
+  "kind": "dialogue",
+  "title": "第一次宣材写真",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.madoka.second",
+  "payload": {
+    "id": "dialogue.madoka.second",
+    "idolId": "madoka",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "今天请多指教！她是我们的新人——",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "madoka",
+        "text": "樋口円香。请多指教。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "（摄影师说要准备一下布景。那就稍等一会儿。）",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "madoka",
+        "text": "……",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "……不用紧张。放松肩膀，全力以赴就好！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "madoka",
+        "text": "……呼。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "madoka",
+        "text": "真是工作热心的人呢。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "诶？是、是吗……？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "madoka",
+        "text": "是的。热心得让人受不了。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "哈哈……嘛，这算是我的长处吧。不过最近因为加班被骂的时候也很多——",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "madoka",
+        "text": "是吧。ミスター・オールドタイプ。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "madoka",
+        "text": "非要点燃热情，就没法好好工作吗？",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "madoka",
+        "text": "高油耗，辛苦了。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "——円香……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "吓我一跳，表情很好。不像是第一次拍摄……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "madoka",
+        "text": "那真是太好了。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "用来做宣材照片有点可惜……不过我会拿这个好好推销的！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "madoka",
+        "text": "好。适可而止地。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "（好冷啊……有没有什么能打动円香的东西……）",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "啊，对了！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "producer",
+        "text": "円香，过来一下！有偶像的迷你 live！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "madoka",
+        "text": "哈……？在这种路边？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "producer",
+        "text": "CD 店每周都会办的活动。是学习偶像的机会。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "看，正好要开始了！",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "madoka",
+        "text": "………………这样啊。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T16:10:00.000Z",
+  "updatedAt": "2026-11-01T06:04:07.727Z",
+  "reviewedAt": "2026-11-01T06:04:07.727Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T16:10:00.000Z",
+      "note": "对照 102100102（宣材写真、ミスター・オールドタイプ、高燃費）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:04:07.727Z"
+    }
+  ]
+}

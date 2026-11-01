@@ -590,6 +590,51 @@ export const APPROVED_CONTENT: ApprovedContent = {
   ]
 },
 {
+  "id": "activity.madoka.tea",
+  "name": "陪她在喫茶店坐一会儿",
+  "description": "她点柠檬茶，微糖。你说这家的招牌是咖啡，她说\"那种苦的东西你自己喝就好\"，然后把叉子伸向你的蛋糕。",
+  "kind": "bond",
+  "target": "present-idol",
+  "idolIds": [
+    "madoka"
+  ],
+  "locations": [
+    "station"
+  ],
+  "durationMinutes": 30,
+  "timeWindows": [
+    {
+      "fromMinute": 960,
+      "toMinute": 1080
+    }
+  ],
+  "cost": {
+    "stamina": 5
+  },
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 5
+    },
+    {
+      "kind": "attributeExp",
+      "ref": "expression",
+      "tier": 1
+    },
+    {
+      "kind": "sharedStat",
+      "stat": "stress",
+      "delta": -5
+    }
+  ],
+  "resultTexts": [
+    "她把杯子转了半圈才喝，说\"太烫了\"，然后一直没放下。",
+    "你说的每句话她都只回一个字，但她没有先走。",
+    "结账时她把自己那份的钱放在桌上，说\"这样比较轻松\"。"
+  ]
+},
+{
   "id": "activity.mamimi.walk",
   "name": "陪她在街上走",
   "description": "她说随便走走，结果带着你拐进了一条没走过的小巷。",
@@ -3590,6 +3635,222 @@ export const APPROVED_CONTENT: ApprovedContent = {
         }
       ],
       "result": "「谢谢～」她把水瓶递回来，说长崎的水更好喝，然后自己先笑了。"
+    }
+  ]
+},
+{
+  "id": "evt.madoka.after_dance",
+  "title": "她在数拍子",
+  "when": [],
+  "after": {
+    "ids": [
+      "dance"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "madoka"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "舞蹈课结束了。她靠着镜子坐着，手指还在膝盖上敲——一、二、三。",
+  "choices": [
+    {
+      "label": "拍子准了。",
+      "hint": "舞蹈 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「本来就是这样。……不过，谢谢。」"
+    },
+    {
+      "label": "你刚才一直在看谁？",
+      "hint": "舞蹈 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "dance",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「……浅仓。她的节奏，我没有。」"
+    },
+    {
+      "label": "今天就到这里。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「好。……你也早点回去。」"
+    }
+  ]
+},
+{
+  "id": "evt.madoka.after_expression",
+  "title": "她不肯笑",
+  "when": [],
+  "after": {
+    "ids": [
+      "expression"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "madoka"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "表演课结束了。老师让她试一个\"开心的笑\"，她照做了两秒，然后说\"这个不行\"，自己停了下来。",
+  "choices": [
+    {
+      "label": "为什么不行？",
+      "hint": "表现 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「因为那个笑，是给镜头看的。」"
+    },
+    {
+      "label": "那就不笑，说台词。",
+      "hint": "表现 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "expression",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「……你偶尔会说些对的话。」"
+    },
+    {
+      "label": "今天已经很好了。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「是吗。……那就这样吧。」"
+    }
+  ]
+},
+{
+  "id": "evt.madoka.after_vocal",
+  "title": "她又唱了一遍开头",
+  "when": [],
+  "after": {
+    "ids": [
+      "vocal"
+    ]
+  },
+  "afterIdol": {
+    "ids": [
+      "madoka"
+    ]
+  },
+  "chance": 0.4,
+  "priority": 5,
+  "once": true,
+  "text": "歌唱课结束了。别的房间灯都关了，她还站在麦克风前，把同一句的开头又唱了一遍。",
+  "choices": [
+    {
+      "label": "那一句，比刚才好。",
+      "hint": "歌唱 +1、信任 +3",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 3
+        }
+      ],
+      "result": "「……是吗。那，再来一次。」"
+    },
+    {
+      "label": "为什么非要这一句？",
+      "hint": "歌唱 +1、压力 +2",
+      "effects": [
+        {
+          "kind": "attributeExp",
+          "ref": "vocal",
+          "tier": 1
+        },
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": 2
+        }
+      ],
+      "result": "「因为只有这一句，我还没唱对。」"
+    },
+    {
+      "label": "今天到此为止。",
+      "hint": "压力 -3、信任 +1",
+      "effects": [
+        {
+          "kind": "sharedStat",
+          "stat": "stress",
+          "delta": -3
+        },
+        {
+          "kind": "attributeExp",
+          "ref": "trust",
+          "tier": 1
+        }
+      ],
+      "result": "「……好。反正明天也能唱。」"
     }
   ]
 },
@@ -19744,6 +20005,2456 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.madoka.blanket",
+  "idolId": "madoka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "madoka",
+      "text": "谢谢您。以后也请多指教。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "──円香，辛苦了！",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "madoka",
+      "text": "辛苦了。今天在这里解散可以吗？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "当然……啊，对了。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "明天安排了课程，没问题吧？快考试了吧？",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "madoka",
+      "text": "……从谁那里听说的？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "啊，浅仓写在日志里了。円香和她同校，我想应该一样吧。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "madoka",
+      "text": "这样。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "madoka",
+      "text": "……没有问题，我会去。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "这样啊，谢谢！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "那明天见。回去路上小心。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "madoka",
+      "text": "好，辛苦了。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "madoka",
+      "text": "……──……",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "madoka",
+      "text": "……诶。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "打扰了……呃……课程还在进行吗……？",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "madoka",
+      "text": "已经结束了。有什么事吗？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "啊，没什么。只是来看看课的情况。不过好像来晚了一步……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "madoka",
+      "text": "不是晚一步。很久之前就结束了。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "madoka",
+      "text": "那么，我要回去了，能请你让开吗？",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "啊，辛苦了──声乐老师夸了円香哦。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "说发声的方法非常好。喉咙打开的方式、切换的方式都是……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "madoka",
+      "text": "……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "……你在努力啊。下次我会好好来看的。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "madoka",
+      "text": "不用了，没什么。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "madoka",
+      "text": "我先走了。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "哈啊，今天的会议拖得太长了。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "肚子饿了吧，找个地方吃点──",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "madoka",
+      "text": "浪费经费。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "不不，这里就当是辛苦了，我请──",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "madoka",
+      "text": "不用了。好不容易能和你分开，为什么还要特意？",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "madoka",
+      "text": "您的心意我领了……辛苦了。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "madoka",
+      "text": "……那么。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "madoka",
+      "text": "……辛苦了。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "madoka",
+      "text": "──再见。",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "啊……辛苦了！",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "辛苦……",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "円香……",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "madoka",
+      "text": "────……呐。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "……嗯？",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "madoka",
+      "text": "真的，你真是个不行的人……",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "円香──？",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "madoka",
+      "text": "──你要睡到什么时候。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "producer",
+      "text": "…………诶。",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "producer",
+      "text": "……咦……毯子……",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "producer",
+      "text": "我睡着了……什么时候……",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "producer",
+      "text": "（……手机，有通知。）",
+      "choices": [
+        {
+          "label": "……现在几点？",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "喝点水吧",
+          "nextNodeId": "130"
+        },
+        {
+          "label": "今天就回去吧",
+          "nextNodeId": "160"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "通知…………円香发来的……",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "madoka",
+      "text": "『明天集合地点的地图，还没有收到。』『还没好吗？』『请联系我。』",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "……！糟了，说好今天之内发的。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "producer",
+      "text": "对、对不起……！她还醒着吗……",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "producer",
+      "text": "啊……",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "madoka",
+      "text": "『你要睡到什么时候。』"
+    },
+    "130": {
+      "id": "130",
+      "speakerId": "producer",
+      "text": "嘿咻……唔，身体好痛……",
+      "nextNodeId": "131"
+    },
+    "131": {
+      "id": "131",
+      "speakerId": "producer",
+      "text": "（做了个奇怪的梦。说是梦是现实的投影……）",
+      "nextNodeId": "132"
+    },
+    "132": {
+      "id": "132",
+      "speakerId": "producer",
+      "text": "（从哪里开始是梦……）",
+      "nextNodeId": "133"
+    },
+    "133": {
+      "id": "133",
+      "speakerId": "producer",
+      "text": "不──……",
+      "nextNodeId": "134"
+    },
+    "134": {
+      "id": "134",
+      "speakerId": "producer",
+      "text": "哇……搞砸了……啊——啊……",
+      "nextNodeId": "135"
+    },
+    "135": {
+      "id": "135",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "136"
+    },
+    "136": {
+      "id": "136",
+      "speakerId": "producer",
+      "text": "哈哈，是啊。",
+      "nextNodeId": "137"
+    },
+    "137": {
+      "id": "137",
+      "speakerId": "producer",
+      "text": "……我真是个不行的人。"
+    },
+    "160": {
+      "id": "160",
+      "speakerId": "producer",
+      "text": "总觉得忘了什么……",
+      "nextNodeId": "161"
+    },
+    "161": {
+      "id": "161",
+      "speakerId": "producer",
+      "text": "──……啊！",
+      "nextNodeId": "162"
+    },
+    "162": {
+      "id": "162",
+      "speakerId": "producer",
+      "text": "要给円香发明天的地图。糟了，她已经睡了吗……！",
+      "nextNodeId": "163"
+    },
+    "163": {
+      "id": "163",
+      "speakerId": "producer",
+      "text": "『明天的集合地点』──『非常抱歉』……",
+      "nextNodeId": "164"
+    },
+    "164": {
+      "id": "164",
+      "speakerId": "producer",
+      "text": "……哦，已读了。",
+      "nextNodeId": "165"
+    },
+    "165": {
+      "id": "165",
+      "speakerId": "madoka",
+      "text": "『知道了。』",
+      "nextNodeId": "166"
+    },
+    "166": {
+      "id": "166",
+      "speakerId": "madoka",
+      "text": "『真的，你真是个不行的人。』"
+    }
+  }
+},
+{
+  "id": "dialogue.madoka.coffee",
+  "idolId": "madoka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "嗯嗯——……好累……！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "休息一下吧……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "咦，刚才买的咖啡…………放哪儿了……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "（开着的电视在说话。）",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "啊，找到了找到了……",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "……呼……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "哟！早上好，円香！",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "madoka",
+      "text": "……打招呼的话，我来的时候已经打过了。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "咦，抱歉……我没注意到……",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "madoka",
+      "text": "…………",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "madoka",
+      "text": "……厨房里的东西，可以用吧？我想要这个。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "糖浆和牛奶？啊，可以啊。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "madoka",
+      "text": "谢谢。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "madoka",
+      "text": "…………",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "——円香？等等，那杯咖啡是……",
+      "choices": [
+        {
+          "label": "是我的——",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "诶？",
+          "nextNodeId": "130"
+        },
+        {
+          "label": "等、円香！",
+          "nextNodeId": "160"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "madoka",
+      "text": "哈？这是我自己买的。盖子开着的吧？",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "不是，可是我也……",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "madoka",
+      "text": "啊，最近你常喝同一种呢。在哪里买的？",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "producer",
+      "text": "诶……楼下的自动售货机。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "madoka",
+      "text": "是吗。我是在便利店买的……看看条形码那里。",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "producer",
+      "text": "…………………………便利店的标签……",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "madoka",
+      "text": "难道说……你喝了？",
+      "nextNodeId": "107"
+    },
+    "107": {
+      "id": "107",
+      "speakerId": "producer",
+      "text": "对、对不起……",
+      "nextNodeId": "108"
+    },
+    "108": {
+      "id": "108",
+      "speakerId": "madoka",
+      "text": "哈？？这什么节目。",
+      "nextNodeId": "109"
+    },
+    "109": {
+      "id": "109",
+      "speakerId": "producer",
+      "text": "诶！？啊，啊啊！谁打开的……不好好关掉可不行……",
+      "nextNodeId": "110"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "madoka",
+      "text": "……电视是我打开的。",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "哦……这、这样啊…………",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "madoka",
+      "text": "我不是在看这个节目。",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "madoka",
+      "text": "…………",
+      "nextNodeId": "114"
+    },
+    "114": {
+      "id": "114",
+      "speakerId": "producer",
+      "text": "这、这个也不怎么有趣！……关掉吧。",
+      "nextNodeId": "115"
+    },
+    "115": {
+      "id": "115",
+      "speakerId": "producer",
+      "text": "……不，抱歉。真的……",
+      "nextNodeId": "116"
+    },
+    "116": {
+      "id": "116",
+      "speakerId": "madoka",
+      "text": "………………变态。",
+      "nextNodeId": "117"
+    },
+    "117": {
+      "id": "117",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "118"
+    },
+    "118": {
+      "id": "118",
+      "speakerId": "producer",
+      "text": "……怎么办，这杯咖啡。"
+    },
+    "130": {
+      "id": "130",
+      "speakerId": "madoka",
+      "text": "……？",
+      "nextNodeId": "131"
+    },
+    "131": {
+      "id": "131",
+      "speakerId": "producer",
+      "text": "不……那杯咖啡是我的……",
+      "nextNodeId": "132"
+    },
+    "132": {
+      "id": "132",
+      "speakerId": "madoka",
+      "text": "……这是我的。你的在桌上吧，那堆文件那里。",
+      "nextNodeId": "133"
+    },
+    "133": {
+      "id": "133",
+      "speakerId": "producer",
+      "text": "啊咧……！",
+      "nextNodeId": "134"
+    },
+    "134": {
+      "id": "134",
+      "speakerId": "madoka",
+      "text": "…………你没喝吧？",
+      "nextNodeId": "135"
+    },
+    "135": {
+      "id": "135",
+      "speakerId": "producer",
+      "text": "…………喝、喝了……对不起……",
+      "nextNodeId": "136"
+    },
+    "136": {
+      "id": "136",
+      "speakerId": "producer",
+      "text": "真、真的对不起！不过円香是喝之前吧！？所以没事……",
+      "nextNodeId": "137"
+    },
+    "137": {
+      "id": "137",
+      "speakerId": "producer",
+      "text": "等、円香……？",
+      "nextNodeId": "138"
+    },
+    "138": {
+      "id": "138",
+      "speakerId": "madoka",
+      "text": "什么？你在慌张是不是和间接接吻了？",
+      "nextNodeId": "139"
+    },
+    "139": {
+      "id": "139",
+      "speakerId": "madoka",
+      "text": "……和这部电视剧的中学生一个水平？永远这么青涩，挺好的。",
+      "nextNodeId": "140"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "madoka",
+      "text": "青春过家家请去别处。",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "producer",
+      "text": "……果然円香，你还是喝——",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "madoka",
+      "text": "没喝。在你之后。"
+    },
+    "160": {
+      "id": "160",
+      "speakerId": "madoka",
+      "text": "……？",
+      "nextNodeId": "161"
+    },
+    "161": {
+      "id": "161",
+      "speakerId": "producer",
+      "text": "那是円香的吗？抱歉，我以为是我的，喝了一口。",
+      "nextNodeId": "162"
+    },
+    "162": {
+      "id": "162",
+      "speakerId": "madoka",
+      "text": "…………哈？",
+      "nextNodeId": "163"
+    },
+    "163": {
+      "id": "163",
+      "speakerId": "producer",
+      "text": "真的对不起！我马上买一杯一样的……！",
+      "nextNodeId": "164"
+    },
+    "164": {
+      "id": "164",
+      "speakerId": "madoka",
+      "text": "……不要。",
+      "nextNodeId": "165"
+    },
+    "165": {
+      "id": "165",
+      "speakerId": "producer",
+      "text": "可是——……",
+      "nextNodeId": "166"
+    },
+    "166": {
+      "id": "166",
+      "speakerId": "madoka",
+      "text": "不要……我可是买完马上就喝了一口。",
+      "nextNodeId": "167"
+    },
+    "167": {
+      "id": "167",
+      "speakerId": "madoka",
+      "text": "一点都不好喝，所以再来一杯，反而是麻烦。",
+      "nextNodeId": "168"
+    },
+    "168": {
+      "id": "168",
+      "speakerId": "producer",
+      "text": "这、这样啊……？可是我害你浪费了，这一点没变……",
+      "nextNodeId": "169"
+    },
+    "169": {
+      "id": "169",
+      "speakerId": "producer",
+      "text": "我另外赔偿你吧。想喝什么？",
+      "nextNodeId": "170"
+    },
+    "170": {
+      "id": "170",
+      "speakerId": "madoka",
+      "text": "……",
+      "nextNodeId": "171"
+    },
+    "171": {
+      "id": "171",
+      "speakerId": "madoka",
+      "text": "柠檬茶，微糖。",
+      "nextNodeId": "172"
+    },
+    "172": {
+      "id": "172",
+      "speakerId": "producer",
+      "text": "知道了！我马上买来——！",
+      "nextNodeId": "173"
+    },
+    "173": {
+      "id": "173",
+      "speakerId": "madoka",
+      "text": "…………",
+      "nextNodeId": "174"
+    },
+    "174": {
+      "id": "174",
+      "speakerId": "madoka",
+      "text": "为什么这么苦的东西……",
+      "nextNodeId": "175"
+    },
+    "175": {
+      "id": "175",
+      "speakerId": "madoka",
+      "text": "一点都不好喝的，你一直在喝。",
+      "nextNodeId": "176"
+    },
+    "176": {
+      "id": "176",
+      "speakerId": "madoka",
+      "text": "……无法理解。"
+    }
+  }
+},
+{
+  "id": "dialogue.madoka.exception",
+  "idolId": "madoka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "──円香，你对别人倒是普通的应对啊。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "madoka",
+      "text": "什么啊，那个。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "刚才你跟工作人员聊得很起劲的样子，比如拿到慰问的蛋糕的时候……",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "madoka",
+      "text": "那种没内容的闲聊吗？我只是随便附和而已。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "madoka",
+      "text": "嘛，对第一次见面的人很严厉，那才是没常识吧。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "诶……………………",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "啊，啊啊。是啊，那倒是。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "madoka",
+      "text": "……我猜猜你在想什么吧。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "诶！？不不不……",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "madoka",
+      "text": "…………",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "madoka",
+      "text": "你是例外。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "producer",
+      "text": "例外？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "madoka",
+      "text": "因为从第一次见面开始，就有理由。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "唔……这样啊。被讨厌倒也不是我很擅长的……",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "嘛……嗯。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "我在円香身上看到了会发光的东西，所以。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "只要円香愿意留在这里，那就够了。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "madoka",
+      "text": "……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "不过，我会努力让你信任我的。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "就算一直讨厌着也一样。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "madoka",
+      "text": "…………啊。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "madoka",
+      "text": "你这么做，总得有个理由……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "madoka",
+      "text": "对我──…………",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "…………？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "madoka",
+      "text": "不。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "madoka",
+      "text": "没什么。别回答。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "我可以回答吗？",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "madoka",
+      "text": "说了别回答。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "让我说吧。",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "madoka",
+      "text": "不行，忘掉。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "就算你这么说……",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "madoka",
+      "text": "现在正是发挥鸟脑袋真正价值的时候吧。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "鸟、鸟脑袋……",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "madoka",
+      "text": "不行。",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "円香是──",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "madoka",
+      "text": "说了不行的吧……！",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "producer",
+      "text": "哈哈哈……！",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "madoka",
+      "text": "…………！",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "madoka",
+      "text": "最差劲。",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "哈哈……抱歉抱歉，开玩笑的。",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "今天就先放过你，不过总有一天円香也会明白的。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "producer",
+      "text": "所以，至少在那之前，希望你能留在这里。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "madoka",
+      "text": "…………我知道了。",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "madoka",
+      "text": "………………",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "madoka",
+      "text": "总之，就到你把这辆车停下来为止。",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "producer",
+      "text": "……嗯。我会开得很稳的。"
+    }
+  }
+},
+{
+  "id": "dialogue.madoka.first",
+  "idolId": "madoka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "（从今天起就要带偶像了……好——！）",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "……嗯？",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "madoka",
+      "text": "——那个，不好意思。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "madoka",
+      "text": "请问，是 283 制作公司的人吗？",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "是的，没错……失礼，你是——",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "madoka",
+      "text": "突然打扰了。我，对偶像有兴趣。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "madoka",
+      "text": "可以的话，能听你说说吗？",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "（直视着人的、很漂亮的眼睛……）",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "明白了。我带你到事务所——",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "madoka",
+      "text": "事务所里面……有点。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "……？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "madoka",
+      "text": "在这里简单谈谈就够了。附近的喫茶店……怎么样？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "——那么，283 会按照本人的资质和意愿来安排活动——",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "madoka",
+      "text": "资质和意愿？真的吗？不会强迫做不想做的工作之类的？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "我们会提议去挑战，但绝对不会强迫。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "madoka",
+      "text": "那就放心了。要是把事务所的门锁上，就逃不掉了。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "producer",
+      "text": "（……总觉得像在被审问。）",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "madoka",
+      "text": "谢谢。已经够了。最后能给我一张你的名片吗？",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "啊，好……",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "重新自我介绍一下……我是 283 制作公司的制作人——",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "madoka",
+      "text": "……！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "madoka",
+      "text": "你就是……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "如果你想在我们这里当偶像，请务必再联系——",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "madoka",
+      "text": "啊，想当偶像这件事是假的。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "madoka",
+      "text": "我的幼驯染要加入你们那边，我是来确认她有没有被骗的。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "原、原来是这样……",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "madoka",
+      "text": "好像有很多不正经的经纪公司。",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "……是啊……让你担心了，很抱歉。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "为了让你认可，我会作为制作人全力以赴。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "为了让重要的朋友，能飞向她想要的那片天空——",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "madoka",
+      "text": "很棒的座右铭呢。不过只是嘴上说说，怎么说都行。",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "madoka",
+      "text": "差不多该告辞了。以后要是有什么事，我会马上联系你。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "madoka",
+      "text": "打名片上的电话。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "啊……等等。既然你不是想当偶像……",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "现在，就在这里，让我星探你……！",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "madoka",
+      "text": "……哈……？",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "见面的时候我就知道了……你是原石……！",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "madoka",
+      "text": "哈……？别开玩笑了。别靠近我。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "请务必，和浅仓一起！怎么样……！",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "madoka",
+      "text": "…………",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "madoka",
+      "text": "……我明白了。既然是这样的话。",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "谢谢……！那么，名字是……",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "madoka",
+      "text": "……樋口円香。请多指教。"
+    }
+  }
+},
+{
+  "id": "dialogue.madoka.second",
+  "idolId": "madoka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "今天请多指教！她是我们的新人——",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "madoka",
+      "text": "樋口円香。请多指教。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "（摄影师说要准备一下布景。那就稍等一会儿。）",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "madoka",
+      "text": "……",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "……不用紧张。放松肩膀，全力以赴就好！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "madoka",
+      "text": "……呼。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "madoka",
+      "text": "真是工作热心的人呢。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "诶？是、是吗……？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "madoka",
+      "text": "是的。热心得让人受不了。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "哈哈……嘛，这算是我的长处吧。不过最近因为加班被骂的时候也很多——",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "madoka",
+      "text": "是吧。ミスター・オールドタイプ。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "madoka",
+      "text": "非要点燃热情，就没法好好工作吗？",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "madoka",
+      "text": "高油耗，辛苦了。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "…………",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "——円香……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "吓我一跳，表情很好。不像是第一次拍摄……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "madoka",
+      "text": "那真是太好了。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "用来做宣材照片有点可惜……不过我会拿这个好好推销的！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "madoka",
+      "text": "好。适可而止地。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "（好冷啊……有没有什么能打动円香的东西……）",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "啊，对了！",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "円香，过来一下！有偶像的迷你 live！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "madoka",
+      "text": "哈……？在这种路边？",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "CD 店每周都会办的活动。是学习偶像的机会。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "看，正好要开始了！",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "madoka",
+      "text": "………………这样啊。"
+    }
+  }
+},
+{
+  "id": "dialogue.madoka.sign",
+  "idolId": "madoka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "（円香……她还有继续当偶像的意思吧。）",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（不是什么理由很清楚的女孩，但她确实……）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "──好。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "producer",
+      "text": "（发消息问她在哪。）",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "madoka",
+      "text": "…………",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "原来在这里啊，我找了好久……！",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "madoka",
+      "text": "……有什么事吗。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "啊，你把签名的方案放在桌上了吧？设计非常好，OK！",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "madoka",
+      "text": "这样啊。就是为了这个特意过来。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "我想直接跟你道谢。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "老实说，我以为会交上来更随便的东西……所以很高兴。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "madoka",
+      "text": "不是为了让你高兴。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "哈哈，那倒是。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "不过签名是继续当偶像很重要的东西……你想了很多吧？",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "madoka",
+      "text": "没有，只是随便写的。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "难道是一笔写成？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "madoka",
+      "text": "一笔写成。",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "哦！那很厉害，我吓到了……円香有才能啊……",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "madoka",
+      "text": "廉价的话。那种的，我讨厌。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "madoka",
+      "text": "因为能看穿你在想打开我的心。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "啊……不，嗯……！我真的只是那么想而已……",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "……还是说，在円香眼里我像是会打心理战的智性派？",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "madoka",
+      "text": "…………",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "madoka",
+      "text": "──不好对付的男人。",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "哈哈……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "madoka",
+      "text": "总是那样笑着，装得从容。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "我没有那个意思……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "……不，不过从容是想要的。因为我想和円香对等地说话。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "madoka",
+      "text": "……对等？",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "现在不行，但总有一天我也要，和幼驯染的大家一样──",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "madoka",
+      "text": "哈？",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "这种话绝对不会说出口……！你们的距离感，我实在靠近不了。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "madoka",
+      "text": "……你多少开始明白了嘛。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "因为我是智性派！哈哈哈……",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "madoka",
+      "text": "……",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "刚、刚才那句是吐槽点……！……嘛，算了……",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "producer",
+      "text": "円香，是喜欢大家的吧。",
+      "nextNodeId": "38"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "madoka",
+      "text": "……喜欢还是讨厌，我不会特意去想。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "madoka",
+      "text": "因为在一起是理所当然的。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "producer",
+      "text": "嗯……",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "啊，这样啊──",
+      "nextNodeId": "42"
+    },
+    "42": {
+      "id": "42",
+      "speakerId": "producer",
+      "text": "只要继续当偶像，就能一直在一起嘛。",
+      "nextNodeId": "43"
+    },
+    "43": {
+      "id": "43",
+      "speakerId": "madoka",
+      "text": "……谁知道呢。",
+      "nextNodeId": "44"
+    },
+    "44": {
+      "id": "44",
+      "speakerId": "producer",
+      "text": "円香……",
+      "nextNodeId": "45"
+    },
+    "45": {
+      "id": "45",
+      "speakerId": "madoka",
+      "text": "……已经够了吧。",
+      "nextNodeId": "46"
+    },
+    "46": {
+      "id": "46",
+      "speakerId": "madoka",
+      "text": "那么。",
+      "nextNodeId": "47"
+    },
+    "47": {
+      "id": "47",
+      "speakerId": "producer",
+      "text": "………………",
+      "nextNodeId": "48"
+    },
+    "48": {
+      "id": "48",
+      "speakerId": "producer",
+      "text": "……哈啊。"
+    }
+  }
+},
+{
+  "id": "dialogue.madoka.third",
+  "idolId": "madoka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "……怎么样？",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "madoka",
+      "text": "很美好呢。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "……啊，是吧！？",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "madoka",
+      "text": "是的。和我想的一样。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "madoka",
+      "text": "只要笑着就总会有办法。偶像真是轻松的买卖。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "……不是，円香。那个……",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "madoka",
+      "text": "我没有否定哦？多亏了这样，像我这样的外行也能做。",
+      "choices": [
+        {
+          "label": "『心意』才是重要的。",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "……不对。",
+          "nextNodeId": "120"
+        },
+        {
+          "label": "嗯——……",
+          "nextNodeId": "140"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "producer",
+      "text": "刚才的照片也是。因为円香全力去做了——",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "madoka",
+      "text": "哈？没有那种事。宣材照片需要全力吗？",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "madoka",
+      "text": "我只是普普通通地做了而已。",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "madoka",
+      "text": "不过『用来做宣材照片有点可惜』——是完成得非常好吧？",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "producer",
+      "text": "……",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "producer",
+      "text": "（一句话都还不上。）"
+    },
+    "120": {
+      "id": "120",
+      "speakerId": "producer",
+      "text": "为了别人笑，没那么简单。",
+      "nextNodeId": "121"
+    },
+    "121": {
+      "id": "121",
+      "speakerId": "madoka",
+      "text": "那真是抱歉。我看起来那笑容就是自我表现欲的集合体。",
+      "nextNodeId": "122"
+    },
+    "122": {
+      "id": "122",
+      "speakerId": "producer",
+      "text": "不是……没关系。以后你明白了就好。",
+      "nextNodeId": "123"
+    },
+    "123": {
+      "id": "123",
+      "speakerId": "madoka",
+      "text": "谢谢。",
+      "nextNodeId": "124"
+    },
+    "124": {
+      "id": "124",
+      "speakerId": "madoka",
+      "text": "那么，在明白的那天到来之前，我就用适可而止的客套好了。"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "producer",
+      "text": "确实舞蹈和歌可能还差得远。但是拼命去努力——",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "madoka",
+      "text": "也就是说，不成熟也能做成生意，对吧。",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "madoka",
+      "text": "我以为社会会更严厉一些。是我误会了，那真是太好了。",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "producer",
+      "text": "……在了解偶像之前，看起来也许是这样吧。",
+      "nextNodeId": "144"
+    },
+    "144": {
+      "id": "144",
+      "speakerId": "madoka",
+      "text": "那么请教教我。偶像是什么？",
+      "nextNodeId": "145"
+    },
+    "145": {
+      "id": "145",
+      "speakerId": "producer",
+      "text": "这个答案有很多……每个人都不一样。",
+      "nextNodeId": "146"
+    },
+    "146": {
+      "id": "146",
+      "speakerId": "madoka",
+      "text": "呼……",
+      "nextNodeId": "147"
+    },
+    "147": {
+      "id": "147",
+      "speakerId": "producer",
+      "text": "円香的答案，我们一起去找吧……！"
+    }
+  }
+},
+{
+  "id": "dialogue.madoka.walk",
+  "idolId": "madoka",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "madoka",
+      "text": "沿着这里走？",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "嗯，普通地走就好。特别是不用在意镜头……",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "说是想拍自然的样子。",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "madoka",
+      "text": "我知道了。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "小心别摔倒。",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "madoka",
+      "text": "……不用你说。",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "producer",
+      "text": "今天挺暖和的。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "madoka",
+      "text": "……是的。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "绿色晃眼，风也很舒服。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "madoka",
+      "text": "……是吗。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "円香有喜欢的季节吗？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "madoka",
+      "text": "谁知道呢……怎么样呢。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……啊，抱歉抱歉。下见的时候聊天，碍事了吧。",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "madoka",
+      "text": "请不用在意。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "好，円香按自己的步调走就好。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "madoka",
+      "text": "…………",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "madoka",
+      "text": "──…………",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "（……看起来很舒服的样子。）",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "（虽然嘴上……什么都不说。）",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "（──还是没能抓住真正的円香啊。）",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "madoka",
+      "text": "──啊。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "嗯？──！！",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "producer",
+      "text": "（糟了，円香要……摔倒了──！）",
+      "choices": [
+        {
+          "label": "（伸出手）",
+          "nextNodeId": "100"
+        },
+        {
+          "label": "（抓住她的手臂）",
+          "nextNodeId": "130"
+        },
+        {
+          "label": "危险！",
+          "nextNodeId": "160"
+        }
+      ]
+    },
+    "100": {
+      "id": "100",
+      "speakerId": "madoka",
+      "text": "………！",
+      "nextNodeId": "101"
+    },
+    "101": {
+      "id": "101",
+      "speakerId": "producer",
+      "text": "啊…………",
+      "nextNodeId": "102"
+    },
+    "102": {
+      "id": "102",
+      "speakerId": "producer",
+      "text": "……没、没事吧？",
+      "nextNodeId": "103"
+    },
+    "103": {
+      "id": "103",
+      "speakerId": "madoka",
+      "text": "只是湿了一点。凉鞋而已，没什么。",
+      "nextNodeId": "104"
+    },
+    "104": {
+      "id": "104",
+      "speakerId": "madoka",
+      "text": "比起这个……你的鞋。",
+      "nextNodeId": "105"
+    },
+    "105": {
+      "id": "105",
+      "speakerId": "producer",
+      "text": "诶？啊……",
+      "nextNodeId": "106"
+    },
+    "106": {
+      "id": "106",
+      "speakerId": "madoka",
+      "text": "为什么连你也湿了。",
+      "nextNodeId": "107"
+    },
+    "107": {
+      "id": "107",
+      "speakerId": "producer",
+      "text": "哈哈，不知不觉就……",
+      "nextNodeId": "108"
+    },
+    "108": {
+      "id": "108",
+      "speakerId": "producer",
+      "text": "嘛，晾干就没事……吧？",
+      "nextNodeId": "109"
+    },
+    "109": {
+      "id": "109",
+      "speakerId": "madoka",
+      "text": "……皮鞋是不行的吧。",
+      "nextNodeId": "110"
+    },
+    "110": {
+      "id": "110",
+      "speakerId": "producer",
+      "text": "没事没事……！比起这个，円香你——马上就要开拍了。",
+      "nextNodeId": "111"
+    },
+    "111": {
+      "id": "111",
+      "speakerId": "producer",
+      "text": "我去找毛巾。",
+      "nextNodeId": "112"
+    },
+    "112": {
+      "id": "112",
+      "speakerId": "producer",
+      "text": "在这里稍微等一下……！",
+      "nextNodeId": "113"
+    },
+    "113": {
+      "id": "113",
+      "speakerId": "madoka",
+      "text": "…………",
+      "nextNodeId": "114"
+    },
+    "114": {
+      "id": "114",
+      "speakerId": "madoka",
+      "text": "你也去跟工作人员借双凉鞋怎么样？"
+    },
+    "130": {
+      "id": "130",
+      "speakerId": "producer",
+      "text": "啊，好险……",
+      "nextNodeId": "131"
+    },
+    "131": {
+      "id": "131",
+      "speakerId": "madoka",
+      "text": "……放开。",
+      "nextNodeId": "132"
+    },
+    "132": {
+      "id": "132",
+      "speakerId": "producer",
+      "text": "……没受伤吧？",
+      "nextNodeId": "133"
+    },
+    "133": {
+      "id": "133",
+      "speakerId": "madoka",
+      "text": "怎么可能有……又没摔倒。",
+      "nextNodeId": "134"
+    },
+    "134": {
+      "id": "134",
+      "speakerId": "madoka",
+      "text": "多亏了你。",
+      "nextNodeId": "135"
+    },
+    "135": {
+      "id": "135",
+      "speakerId": "producer",
+      "text": "……等等，円香。",
+      "nextNodeId": "136"
+    },
+    "136": {
+      "id": "136",
+      "speakerId": "producer",
+      "text": "慢慢走比较好。说不定还会摔，一起……",
+      "nextNodeId": "137"
+    },
+    "137": {
+      "id": "137",
+      "speakerId": "madoka",
+      "text": "差点摔倒是我不好。不过，让你帮忙这种事──",
+      "nextNodeId": "138"
+    },
+    "138": {
+      "id": "138",
+      "speakerId": "madoka",
+      "text": "──！",
+      "nextNodeId": "139"
+    },
+    "139": {
+      "id": "139",
+      "speakerId": "producer",
+      "text": "哇……！！",
+      "nextNodeId": "140"
+    },
+    "140": {
+      "id": "140",
+      "speakerId": "producer",
+      "text": "──啊，好险啊。",
+      "nextNodeId": "141"
+    },
+    "141": {
+      "id": "141",
+      "speakerId": "madoka",
+      "text": "……放开。",
+      "nextNodeId": "142"
+    },
+    "142": {
+      "id": "142",
+      "speakerId": "producer",
+      "text": "嗯，你站稳了我就放开。注意脚下，慢慢地……",
+      "nextNodeId": "143"
+    },
+    "143": {
+      "id": "143",
+      "speakerId": "madoka",
+      "text": "搂腰什么的……不原谅你。",
+      "nextNodeId": "144"
+    },
+    "144": {
+      "id": "144",
+      "speakerId": "producer",
+      "text": "我也是顺手……抱歉啊。",
+      "nextNodeId": "145"
+    },
+    "145": {
+      "id": "145",
+      "speakerId": "madoka",
+      "text": "……讨厌。不原谅。"
+    },
+    "160": {
+      "id": "160",
+      "speakerId": "madoka",
+      "text": "──！",
+      "nextNodeId": "161"
+    },
+    "161": {
+      "id": "161",
+      "speakerId": "producer",
+      "text": "没、没事吧……！？哪里痛……？来，站起来──",
+      "nextNodeId": "162"
+    },
+    "162": {
+      "id": "162",
+      "speakerId": "madoka",
+      "text": "……我自己能站起来……",
+      "nextNodeId": "163"
+    },
+    "163": {
+      "id": "163",
+      "speakerId": "producer",
+      "text": "──咦，円香，右脚的鞋呢？",
+      "nextNodeId": "164"
+    },
+    "164": {
+      "id": "164",
+      "speakerId": "madoka",
+      "text": "……？嗯……",
+      "nextNodeId": "165"
+    },
+    "165": {
+      "id": "165",
+      "speakerId": "producer",
+      "text": "难道是那双白色凉鞋？──……被冲走了！到水里了！",
+      "nextNodeId": "166"
+    },
+    "166": {
+      "id": "166",
+      "speakerId": "madoka",
+      "text": "诶……",
+      "nextNodeId": "167"
+    },
+    "167": {
+      "id": "167",
+      "speakerId": "producer",
+      "text": "──嘿……哟……！抓到了！",
+      "nextNodeId": "168"
+    },
+    "168": {
+      "id": "168",
+      "speakerId": "madoka",
+      "text": "谢谢，您……",
+      "nextNodeId": "169"
+    },
+    "169": {
+      "id": "169",
+      "speakerId": "producer",
+      "text": "哈哈，太好了！这凉鞋真可爱，要好好珍惜……",
+      "nextNodeId": "170"
+    },
+    "170": {
+      "id": "170",
+      "speakerId": "madoka",
+      "text": "……是啊。",
+      "nextNodeId": "171"
+    },
+    "171": {
+      "id": "171",
+      "speakerId": "madoka",
+      "text": "虽然不是我的。那个是跟工作人员借的。",
+      "nextNodeId": "172"
+    },
+    "172": {
+      "id": "172",
+      "speakerId": "producer",
+      "text": "工作人……",
+      "nextNodeId": "173"
+    },
+    "173": {
+      "id": "173",
+      "speakerId": "madoka",
+      "text": "不过，所以……没有弄丢，太好了。",
+      "nextNodeId": "174"
+    },
+    "174": {
+      "id": "174",
+      "speakerId": "producer",
+      "text": "……嗯！是啊！",
+      "nextNodeId": "175"
+    },
+    "175": {
+      "id": "175",
+      "speakerId": "madoka",
+      "text": "……你要在水里站到什么时候。皮鞋都湿了。裤子也是。"
+    }
+  }
+},
+{
   "id": "dialogue.mano.dream",
   "idolId": "mano",
   "startNodeId": "01",
@@ -33177,6 +35888,118 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "actorId": "kogane",
   "label": "为什么来东京",
   "text": "「因为想当偶像啊！……还有，想让更多人吃到好吃的，露出那种吃饱了的表情」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "madoka.chat.bug",
+  "actorId": "madoka",
+  "label": "虫",
+  "text": "「……那边有东西在飞。」「只是蛾子吧？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "madoka.chat.friends",
+  "actorId": "madoka",
+  "label": "幼驯染",
+  "text": "「浅仓？……又睡过头了吧。」「你为什么知道？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "madoka.chat.home",
+  "actorId": "madoka",
+  "label": "家里",
+  "text": "「今天吃寿喜烧。……我家的。」「自己说出来的？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "madoka.chat.producer",
+  "actorId": "madoka",
+  "label": "制作人",
+  "text": "「你？ミスター・オールドタイプ。」「那是什么外号……」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "madoka.chat.school",
+  "actorId": "madoka",
+  "label": "学校",
+  "text": "「考试快到了。……所以别在这时候加课。」「我会尽量。」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "madoka.chat.song",
+  "actorId": "madoka",
+  "label": "歌",
+  "text": "「唱歌？……那是工作。」「只是工作吗？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "madoka.chat.tea",
+  "actorId": "madoka",
+  "label": "柠檬茶",
+  "text": "「柠檬茶，微糖。」「每次都点一样的？」",
+  "cooldownMinutes": 1440,
+  "effects": [
+    {
+      "kind": "attributeExp",
+      "ref": "trust",
+      "tier": 1
+    }
+  ]
+},
+{
+  "id": "madoka.chat.today",
+  "actorId": "madoka",
+  "label": "今天",
+  "text": "「今天？……普普通通。」「普通就够了吗？」",
   "cooldownMinutes": 1440,
   "effects": [
     {

@@ -1,0 +1,37 @@
+{
+  "id": "draft.madoka.chat.tea",
+  "kind": "topic",
+  "title": "聊天 · 柠檬茶",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.madoka.chat.tea",
+  "payload": {
+    "id": "madoka.chat.tea",
+    "actorId": "madoka",
+    "label": "柠檬茶",
+    "text": "「柠檬茶，微糖。」「每次都点一样的？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T17:22:00.000Z",
+  "updatedAt": "2026-11-01T06:04:22.440Z",
+  "reviewedAt": "2026-11-01T06:04:22.440Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T17:22:00.000Z",
+      "note": "円香日常话题（レモンティー微糖 [202100401]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:04:22.440Z"
+    }
+  ]
+}

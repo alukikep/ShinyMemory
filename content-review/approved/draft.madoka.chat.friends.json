@@ -1,0 +1,37 @@
+{
+  "id": "draft.madoka.chat.friends",
+  "kind": "topic",
+  "title": "聊天 · 幼驯染",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.madoka.chat.friends",
+  "payload": {
+    "id": "madoka.chat.friends",
+    "actorId": "madoka",
+    "label": "幼驯染",
+    "text": "「浅仓？……又睡过头了吧。」「你为什么知道？」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T17:23:00.000Z",
+  "updatedAt": "2026-11-01T06:04:21.687Z",
+  "reviewedAt": "2026-11-01T06:04:21.687Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T17:23:00.000Z",
+      "note": "円香日常话题（总在照看透 [madoka facts 关系]）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:04:21.687Z"
+    }
+  ]
+}

@@ -4,7 +4,7 @@ const idol: IdolDef = {
   id: 'toru',
   name: '浅倉透',
   unit: "noctchill",
-  color: '#50d0d0',
+  color: '#bcf8f8',
   profile: "noctchill 的成员。说话短、常倒装，对什么都不太在意，只有『看见光』这件事会认真。",
   avatar: './assets/idols/q/tooru.png',
   age: 17,

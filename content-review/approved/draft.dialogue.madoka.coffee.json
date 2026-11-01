@@ -1,0 +1,424 @@
+{
+  "id": "draft.dialogue.madoka.coffee",
+  "kind": "dialogue",
+  "title": "她拿起桌上的咖啡",
+  "status": "approved",
+  "version": 1,
+  "rootId": "draft.dialogue.madoka.coffee",
+  "payload": {
+    "id": "dialogue.madoka.coffee",
+    "idolId": "madoka",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "嗯嗯——……好累……！",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "休息一下吧……",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "咦，刚才买的咖啡…………放哪儿了……",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "（开着的电视在说话。）",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "啊，找到了找到了……",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "……呼……",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "哟！早上好，円香！",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "madoka",
+        "text": "……打招呼的话，我来的时候已经打过了。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "咦，抱歉……我没注意到……",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "madoka",
+        "text": "…………",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "madoka",
+        "text": "……厨房里的东西，可以用吧？我想要这个。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "糖浆和牛奶？啊，可以啊。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "madoka",
+        "text": "谢谢。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "madoka",
+        "text": "…………",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "——円香？等等，那杯咖啡是……",
+        "choices": [
+          {
+            "label": "是我的——",
+            "nextNodeId": "100"
+          },
+          {
+            "label": "诶？",
+            "nextNodeId": "130"
+          },
+          {
+            "label": "等、円香！",
+            "nextNodeId": "160"
+          }
+        ]
+      },
+      "100": {
+        "id": "100",
+        "speakerId": "madoka",
+        "text": "哈？这是我自己买的。盖子开着的吧？",
+        "nextNodeId": "101"
+      },
+      "101": {
+        "id": "101",
+        "speakerId": "producer",
+        "text": "不是，可是我也……",
+        "nextNodeId": "102"
+      },
+      "102": {
+        "id": "102",
+        "speakerId": "madoka",
+        "text": "啊，最近你常喝同一种呢。在哪里买的？",
+        "nextNodeId": "103"
+      },
+      "103": {
+        "id": "103",
+        "speakerId": "producer",
+        "text": "诶……楼下的自动售货机。",
+        "nextNodeId": "104"
+      },
+      "104": {
+        "id": "104",
+        "speakerId": "madoka",
+        "text": "是吗。我是在便利店买的……看看条形码那里。",
+        "nextNodeId": "105"
+      },
+      "105": {
+        "id": "105",
+        "speakerId": "producer",
+        "text": "…………………………便利店的标签……",
+        "nextNodeId": "106"
+      },
+      "106": {
+        "id": "106",
+        "speakerId": "madoka",
+        "text": "难道说……你喝了？",
+        "nextNodeId": "107"
+      },
+      "107": {
+        "id": "107",
+        "speakerId": "producer",
+        "text": "对、对不起……",
+        "nextNodeId": "108"
+      },
+      "108": {
+        "id": "108",
+        "speakerId": "madoka",
+        "text": "哈？？这什么节目。",
+        "nextNodeId": "109"
+      },
+      "109": {
+        "id": "109",
+        "speakerId": "producer",
+        "text": "诶！？啊，啊啊！谁打开的……不好好关掉可不行……",
+        "nextNodeId": "110"
+      },
+      "110": {
+        "id": "110",
+        "speakerId": "madoka",
+        "text": "……电视是我打开的。",
+        "nextNodeId": "111"
+      },
+      "111": {
+        "id": "111",
+        "speakerId": "producer",
+        "text": "哦……这、这样啊…………",
+        "nextNodeId": "112"
+      },
+      "112": {
+        "id": "112",
+        "speakerId": "madoka",
+        "text": "我不是在看这个节目。",
+        "nextNodeId": "113"
+      },
+      "113": {
+        "id": "113",
+        "speakerId": "madoka",
+        "text": "…………",
+        "nextNodeId": "114"
+      },
+      "114": {
+        "id": "114",
+        "speakerId": "producer",
+        "text": "这、这个也不怎么有趣！……关掉吧。",
+        "nextNodeId": "115"
+      },
+      "115": {
+        "id": "115",
+        "speakerId": "producer",
+        "text": "……不，抱歉。真的……",
+        "nextNodeId": "116"
+      },
+      "116": {
+        "id": "116",
+        "speakerId": "madoka",
+        "text": "………………变态。",
+        "nextNodeId": "117"
+      },
+      "117": {
+        "id": "117",
+        "speakerId": "producer",
+        "text": "…………",
+        "nextNodeId": "118"
+      },
+      "118": {
+        "id": "118",
+        "speakerId": "producer",
+        "text": "……怎么办，这杯咖啡。"
+      },
+      "130": {
+        "id": "130",
+        "speakerId": "madoka",
+        "text": "……？",
+        "nextNodeId": "131"
+      },
+      "131": {
+        "id": "131",
+        "speakerId": "producer",
+        "text": "不……那杯咖啡是我的……",
+        "nextNodeId": "132"
+      },
+      "132": {
+        "id": "132",
+        "speakerId": "madoka",
+        "text": "……这是我的。你的在桌上吧，那堆文件那里。",
+        "nextNodeId": "133"
+      },
+      "133": {
+        "id": "133",
+        "speakerId": "producer",
+        "text": "啊咧……！",
+        "nextNodeId": "134"
+      },
+      "134": {
+        "id": "134",
+        "speakerId": "madoka",
+        "text": "…………你没喝吧？",
+        "nextNodeId": "135"
+      },
+      "135": {
+        "id": "135",
+        "speakerId": "producer",
+        "text": "…………喝、喝了……对不起……",
+        "nextNodeId": "136"
+      },
+      "136": {
+        "id": "136",
+        "speakerId": "producer",
+        "text": "真、真的对不起！不过円香是喝之前吧！？所以没事……",
+        "nextNodeId": "137"
+      },
+      "137": {
+        "id": "137",
+        "speakerId": "producer",
+        "text": "等、円香……？",
+        "nextNodeId": "138"
+      },
+      "138": {
+        "id": "138",
+        "speakerId": "madoka",
+        "text": "什么？你在慌张是不是和间接接吻了？",
+        "nextNodeId": "139"
+      },
+      "139": {
+        "id": "139",
+        "speakerId": "madoka",
+        "text": "……和这部电视剧的中学生一个水平？永远这么青涩，挺好的。",
+        "nextNodeId": "140"
+      },
+      "140": {
+        "id": "140",
+        "speakerId": "madoka",
+        "text": "青春过家家请去别处。",
+        "nextNodeId": "141"
+      },
+      "141": {
+        "id": "141",
+        "speakerId": "producer",
+        "text": "……果然円香，你还是喝——",
+        "nextNodeId": "142"
+      },
+      "142": {
+        "id": "142",
+        "speakerId": "madoka",
+        "text": "没喝。在你之后。"
+      },
+      "160": {
+        "id": "160",
+        "speakerId": "madoka",
+        "text": "……？",
+        "nextNodeId": "161"
+      },
+      "161": {
+        "id": "161",
+        "speakerId": "producer",
+        "text": "那是円香的吗？抱歉，我以为是我的，喝了一口。",
+        "nextNodeId": "162"
+      },
+      "162": {
+        "id": "162",
+        "speakerId": "madoka",
+        "text": "…………哈？",
+        "nextNodeId": "163"
+      },
+      "163": {
+        "id": "163",
+        "speakerId": "producer",
+        "text": "真的对不起！我马上买一杯一样的……！",
+        "nextNodeId": "164"
+      },
+      "164": {
+        "id": "164",
+        "speakerId": "madoka",
+        "text": "……不要。",
+        "nextNodeId": "165"
+      },
+      "165": {
+        "id": "165",
+        "speakerId": "producer",
+        "text": "可是——……",
+        "nextNodeId": "166"
+      },
+      "166": {
+        "id": "166",
+        "speakerId": "madoka",
+        "text": "不要……我可是买完马上就喝了一口。",
+        "nextNodeId": "167"
+      },
+      "167": {
+        "id": "167",
+        "speakerId": "madoka",
+        "text": "一点都不好喝，所以再来一杯，反而是麻烦。",
+        "nextNodeId": "168"
+      },
+      "168": {
+        "id": "168",
+        "speakerId": "producer",
+        "text": "这、这样啊……？可是我害你浪费了，这一点没变……",
+        "nextNodeId": "169"
+      },
+      "169": {
+        "id": "169",
+        "speakerId": "producer",
+        "text": "我另外赔偿你吧。想喝什么？",
+        "nextNodeId": "170"
+      },
+      "170": {
+        "id": "170",
+        "speakerId": "madoka",
+        "text": "……",
+        "nextNodeId": "171"
+      },
+      "171": {
+        "id": "171",
+        "speakerId": "madoka",
+        "text": "柠檬茶，微糖。",
+        "nextNodeId": "172"
+      },
+      "172": {
+        "id": "172",
+        "speakerId": "producer",
+        "text": "知道了！我马上买来——！",
+        "nextNodeId": "173"
+      },
+      "173": {
+        "id": "173",
+        "speakerId": "madoka",
+        "text": "…………",
+        "nextNodeId": "174"
+      },
+      "174": {
+        "id": "174",
+        "speakerId": "madoka",
+        "text": "为什么这么苦的东西……",
+        "nextNodeId": "175"
+      },
+      "175": {
+        "id": "175",
+        "speakerId": "madoka",
+        "text": "一点都不好喝的，你一直在喝。",
+        "nextNodeId": "176"
+      },
+      "176": {
+        "id": "176",
+        "speakerId": "madoka",
+        "text": "……无法理解。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T16:30:00.000Z",
+  "updatedAt": "2026-11-01T06:04:09.955Z",
+  "reviewedAt": "2026-11-01T06:04:09.955Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T16:30:00.000Z",
+      "note": "对照 202100401（拿错咖啡、电视剧、三分支）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T06:04:09.955Z"
+    }
+  ]
+}

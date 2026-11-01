@@ -1,0 +1,212 @@
+{
+  "id": "draft.dialogue.hana.second",
+  "kind": "dialogue",
+  "title": "给发视频的账号发一条私信",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hana.second",
+  "payload": {
+    "id": "dialogue.hana.second",
+    "idolId": "hana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "三天后，私信有了回复。对方问，可以通个电话吗。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "hana_friend",
+        "text": "您好，突然联系不好意思。……请问，是事务所的人吗？",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "是的。冒昧问一句，那个视频是您拍的吗？",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "hana_friend",
+        "text": "是我拍的。好几个月的份，剪成了三十秒。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "hana_friend",
+        "text": "……其实，已经有好几家发过私信来了。",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "……这样啊。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "hana_friend",
+        "text": "私信写得随随便便的，搜也搜不到事务所的，一看就不靠谱，直接排除了。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "hana_friend",
+        "text": "我挑下来觉得可以的，是这里。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "hana_friend",
+        "text": "────２８３プロ。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "……为什么是我们？",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "hana_friend",
+        "text": "因为查得到。而且私信写得很认真。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "hana_friend",
+        "text": "……还有，我觉得羽那是该站上大舞台的人。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "text": "她把电话交给了本人。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "hana",
+        "text": "啊哈，没关系的。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "hana",
+        "text": "……不过，真的是真人啊──！",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "producer",
+        "text": "哈哈……是的。只靠电话和邮件，确实很难让人相信吧。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "──那么，我重新问一次。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "对偶像这个职业，您有兴趣吗？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "hana",
+        "text": "…………",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "当然，还有高中生活。我知道现在做不到。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "所以，我想等到您高中毕业。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "hana",
+        "text": "……等我？居然愿意做到那个地步啊。",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "是的。……我就是这么希望您能成为偶像。",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "hana",
+        "text": "诶──？　……呵呵。",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "hana",
+        "text": "──偶像，我觉得挺好的。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "……！",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "hana",
+        "text": "不过，我可以先好好跟家里商量一下吗？",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "producer",
+        "text": "当然……！请慢慢考虑。",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "speakerId": "producer",
+        "text": "需要的话，我随时都可以再过去一趟。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "hana",
+        "text": "嗯！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "text": "电话挂了。那一天之后，消息断了一阵子。",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "text": "再收到她的信，是毕业典礼之后的事。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T12:00:00.000Z",
+  "updatedAt": "2026-11-01T12:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T12:00:00.000Z",
+      "note": "对照 102700503/504（朋友筛事务所、选中 283）、102700101（电话、愿意等到毕业、家族商量）"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "draft.dialogue.hana.fourth",
+  "kind": "dialogue",
+  "title": "带她看宿舍",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hana.fourth",
+  "payload": {
+    "id": "dialogue.hana.fourth",
+    "idolId": "hana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "宿舍门口。玄关摆着一排拖鞋，食堂那边飘着味噌汤的味道。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "这里就是宿舍。里面住着好几个偶像。",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "hana",
+        "text": "好厉害──像宿舍剧一样！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "producer",
+        "text": "亲切的咲耶，还有做饭很好吃的恋鐘──",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "hana",
+        "text": "咲耶、恋鐘……",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "hana",
+        "text": "──诶，是名字？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "嗯，大家都叫名字。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "hana",
+        "text": "啊哈，那──",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "hana",
+        "text": "叫我「羽那」就好哦？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "……好。那就，羽那。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "hana",
+        "text": "嗯！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "text": "她把行李箱靠在墙边，深呼吸了一次。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "……进去之前，再说一次。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "────羽那。欢迎来到 283。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "hana",
+        "text": "──！",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "hana",
+        "text": "嗯！",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "hana",
+        "text": "我这个不成器的人，以后请多关照。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "hana",
+        "text": "呵呵──！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "text": "她鞠了一躬。行李箱的轮子在地上转了一圈，停住。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T12:00:00.000Z",
+  "updatedAt": "2026-11-01T12:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T12:00:00.000Z",
+      "note": "对照 102700505（寮案内、介绍咲耶与恋鐘、「羽那」でいいよ、「ようこそ、２８３プロへ」「ふつつか者ですが、よろしくお願いします」）"
+    }
+  ]
+}

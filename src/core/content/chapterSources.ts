@@ -761,6 +761,30 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     anchors: ['2026004110020', '2026004110040', '2026004110060'],
   },
   {
+    chapterId: 'hana-video',
+    script: '102700101',
+    source: '剧本 102700101',
+    anchors: ['1027001010010', '1027001010020', '1027001010040'],
+  },
+  {
+    chapterId: 'hana-dm',
+    script: '102700503',
+    source: '剧本 102700503',
+    anchors: ['1027005030040', '1027005030060', '1027005030150'],
+  },
+  {
+    chapterId: 'hana-arrival',
+    script: '102700505',
+    source: '剧本 102700505',
+    anchors: ['1027005050050', '1027005050060', '1027005050110'],
+  },
+  {
+    chapterId: 'hana-dorm',
+    script: '102700505',
+    source: '剧本 102700505',
+    anchors: ['1027005050140', '1027005050120', '1027005050150'],
+  },
+  {
     chapterId: 'luca-door-1',
     script: '490103908',
     source: '剧本 490103908',

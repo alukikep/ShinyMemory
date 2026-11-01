@@ -41,6 +41,9 @@ function readFactsHead(id: string): string {
 function detectStage(head: string): FactsStage | undefined {
   const sentence = head.split('\n').find((line) => /\d{1,2}\s*岁/.test(line));
   if (!sentence) return undefined;
+  // 「高中时被发掘，高中毕业后上京」这种：写了学段，但同句说已经毕业——不在学籍。
+  // 目前只有羽那命中；命中时仍要求写 schoolNote（不能靠默认）。
+  if (/毕业|卒業/.test(sentence)) return undefined;
   for (const [pattern, stage] of STAGE_TOKENS) {
     if (pattern.test(sentence)) return stage;
   }

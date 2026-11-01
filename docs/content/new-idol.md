@@ -61,8 +61,8 @@ npx tsx tools/scriptExport.ts 200500501 200500511
 
 | 项 | 现状 |
 |---|---|
-| 头像 | `public/assets/idols/q/<id>.png`，**26 人已有**（见 [q-avatar-sources.md](../systems/q-avatar-sources.md)） |
-| 缺 | 铃木羽那、郁田はるき（没有 Q 版文件，名册会退回首字） |
+| 头像 | `public/assets/idols/q/<id>.png`，**28 人齐**（见 [q-avatar-sources.md](../systems/q-avatar-sources.md)） |
+| 差异 | 羽那・はるき 两张由人类提供，**不透明浅蓝底**（其余 26 张透明），画风一致 |
 | 授权 | 来源是萌娘共享，原作者保留权利；**内部开发可用，公开分发前需另行确认** |
 | 没头像时 | 名册/侧边栏显示名字首字——能跑，但「看着像没做」 |
 

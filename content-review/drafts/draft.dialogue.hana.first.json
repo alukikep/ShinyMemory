@@ -1,0 +1,113 @@
+{
+  "id": "draft.dialogue.hana.first",
+  "kind": "dialogue",
+  "title": "SNS 上推来一条视频",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hana.first",
+  "payload": {
+    "id": "dialogue.hana.first",
+    "idolId": "hana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "事务所的会议室。桌上摊着 W.I.N.G. 的资料，手机屏幕上的趋势栏一直在滚。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "（バズりレシピ、カリスマ学生インフルエンサー、田舎暮らし動画……）",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "（现在谁都能发，从哪儿都能发。偶像也不能光等着。）",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "text": "拇指停在一个标签上。『#可愛すぎる友達』。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "……「可爱过头的好朋友」？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "text": "三十秒的剪辑。教室、走廊、图书室，全是同一个女孩。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "……这个视频里的孩子，高中生吧。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "text": "投稿者的名字不是她。评论里写着「我朋友」。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "不是本人发的啊。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "text": "地点标签是——岡山県。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "……岡山。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "text": "视频里她只是坐在那儿。被拍的人叫了一声，她转过头，笑了。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "……",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "（被谁看着就亮起来的人，是这样的啊。）",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "……去问一句吧。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "text": "他点开投稿者的头像，按下「发送私信」。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T12:00:00.000Z",
+  "updatedAt": "2026-11-01T12:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T12:00:00.000Z",
+      "note": "对照 102700101（事务所刷 SNS、#可愛すぎる友達 急上升、投稿者不是本人、地点岡山県、注意到是高中生）"
+    }
+  ]
+}

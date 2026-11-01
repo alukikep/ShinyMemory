@@ -1,0 +1,177 @@
+{
+  "id": "draft.dialogue.hana.third",
+  "kind": "dialogue",
+  "title": "上京那天，去车站接她",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.hana.third",
+  "payload": {
+    "id": "dialogue.hana.third",
+    "idolId": "hana",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "站台。新干线到站，人从检票口涌出来。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "hana",
+        "text": "──啊",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "hana",
+        "text": "有了，制作人先生──！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "text": "她拖着一个不大的行李箱跑过来，头发被风吹得有点乱。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "hana",
+        "text": "那个……今天开始受您照顾了，我是鈴木羽那！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "长途辛苦了。……这么郑重，谢谢。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "还有，敬语不用勉强也可以的。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "hana",
+        "text": "这样啊──那，敬语就不用了。",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "hana",
+        "text": "……彼此都是哦？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "producer",
+        "text": "诶──……这样啊，知道了。谢谢。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "hana",
+        "text": "啊哈……！",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "text": "行李箱比想象中小。她说，够用了。",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "hana",
+        "text": "冈山到东京，比想象中要远呢。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "坐新干线三个多小时吧。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "hana",
+        "text": "嗯……不过，也比想象中快。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "hana",
+        "text": "──我已经决定了。",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "hana",
+        "text": "要当偶像。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "……嗯。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "hana",
+        "text": "朋友说，我不去太可惜了。妈妈也说到时候再说，弟弟在起哄。",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "hana",
+        "text": "大家都这么说，那大概就是对的吧──",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "producer",
+        "text": "……不是\"大家都这么说\"也行。",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "hana",
+        "text": "？",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "你自己怎么想？",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "hana",
+        "text": "……",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "hana",
+        "text": "我自己，也想试试看。",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "……好。那就去试。"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-01T12:00:00.000Z",
+  "updatedAt": "2026-11-01T12:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-01T12:00:00.000Z",
+      "note": "对照 102700505（车站相迎、「今日からお世話になります、鈴木羽那ですっ」「敬語はやめるね」「羽那でいいよ？」）、102700506（「一番は、プロデューサーがいい人だったから」）"
+    }
+  ]
+}

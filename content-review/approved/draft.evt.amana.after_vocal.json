@@ -2,7 +2,7 @@
   "id": "draft.evt.amana.after_vocal",
   "kind": "event",
   "title": "唱完先看手机",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.amana.after_vocal",
   "payload": {
@@ -74,12 +74,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T09:20:00.000Z",
-  "updatedAt": "2026-11-02T09:20:00.000Z",
+  "updatedAt": "2026-11-01T03:15:18.893Z",
+  "reviewedAt": "2026-11-01T03:15:18.893Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T09:20:00.000Z",
       "note": "甘奈声乐课后事件（她每天写日记）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:15:18.893Z"
     }
   ]
 }

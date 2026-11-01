@@ -2,7 +2,7 @@
   "id": "draft.amana.chat.fashion",
   "kind": "topic",
   "title": "聊天 · 时装",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.amana.chat.fashion",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T09:11:00.000Z",
-  "updatedAt": "2026-11-02T09:11:00.000Z",
+  "updatedAt": "2026-11-01T03:15:23.083Z",
+  "reviewedAt": "2026-11-01T03:15:23.083Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T09:11:00.000Z",
       "note": "甘奈日常话题（API 兴趣：ショッピング）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:15:23.083Z"
     }
   ]
 }

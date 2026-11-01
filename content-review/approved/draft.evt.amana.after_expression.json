@@ -2,7 +2,7 @@
   "id": "draft.evt.amana.after_expression",
   "kind": "event",
   "title": "笑容练到脸酸",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.amana.after_expression",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T09:20:00.000Z",
-  "updatedAt": "2026-11-02T09:20:00.000Z",
+  "updatedAt": "2026-11-01T03:15:18.224Z",
+  "reviewedAt": "2026-11-01T03:15:18.224Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T09:20:00.000Z",
       "note": "甘奈表演课后事件（\"大丈夫だよっ☆\"的背面）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:15:18.224Z"
     }
   ]
 }

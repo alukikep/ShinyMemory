@@ -2,7 +2,7 @@
   "id": "draft.evt.amana.after_dance",
   "kind": "event",
   "title": "拍下来了",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.evt.amana.after_dance",
   "payload": {
@@ -79,12 +79,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T09:20:00.000Z",
-  "updatedAt": "2026-11-02T09:20:00.000Z",
+  "updatedAt": "2026-11-01T03:15:16.846Z",
+  "reviewedAt": "2026-11-01T03:15:16.846Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T09:20:00.000Z",
       "note": "甘奈舞蹈课后事件（自拍/记录的习惯）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:15:16.846Z"
     }
   ]
 }

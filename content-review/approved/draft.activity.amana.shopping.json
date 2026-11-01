@@ -2,7 +2,7 @@
   "id": "draft.activity.amana.shopping",
   "kind": "activity",
   "title": "陪她挑衣服",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.activity.amana.shopping",
   "payload": {
@@ -52,12 +52,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T09:00:00.000Z",
-  "updatedAt": "2026-11-02T09:00:00.000Z",
+  "updatedAt": "2026-11-01T03:15:24.310Z",
+  "reviewedAt": "2026-11-01T03:15:24.310Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T09:00:00.000Z",
       "note": "甘奈专属行动（逛街，API 兴趣）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:15:24.310Z"
     }
   ]
 }

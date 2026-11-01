@@ -2,7 +2,7 @@
   "id": "draft.dialogue.amana.first",
   "kind": "dialogue",
   "title": "叫到下一个试镜的人",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.amana.first",
   "payload": {
@@ -211,12 +211,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T09:00:00.000Z",
-  "updatedAt": "2026-11-02T09:00:00.000Z",
+  "updatedAt": "2026-11-01T03:15:13.597Z",
+  "reviewedAt": "2026-11-01T03:15:13.597Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T09:00:00.000Z",
       "note": "对照 101400101（试镜：辣妹的理由、想和甜花一起）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:15:13.597Z"
     }
   ]
 }

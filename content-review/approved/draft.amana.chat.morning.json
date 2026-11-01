@@ -2,7 +2,7 @@
   "id": "draft.amana.chat.morning",
   "kind": "topic",
   "title": "聊天 · 早起",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.amana.chat.morning",
   "payload": {
@@ -21,12 +21,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T09:15:00.000Z",
-  "updatedAt": "2026-11-02T09:15:00.000Z",
+  "updatedAt": "2026-11-01T03:15:20.625Z",
+  "reviewedAt": "2026-11-01T03:15:20.625Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T09:15:00.000Z",
       "note": "甘奈日常话题（API 特技：早起き）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:15:20.625Z"
     }
   ]
 }

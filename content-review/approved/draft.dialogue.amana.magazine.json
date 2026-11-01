@@ -2,7 +2,7 @@
   "id": "draft.dialogue.amana.magazine",
   "kind": "dialogue",
   "title": "她留在事务所翻杂志",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.amana.magazine",
   "payload": {
@@ -277,12 +277,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T09:00:00.000Z",
-  "updatedAt": "2026-11-02T09:00:00.000Z",
+  "updatedAt": "2026-11-01T03:15:14.612Z",
+  "reviewedAt": "2026-11-01T03:15:14.612Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T09:00:00.000Z",
       "note": "对照 201400301（杂志、误以为给她挑、其实是甜花）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:15:14.612Z"
     }
   ]
 }

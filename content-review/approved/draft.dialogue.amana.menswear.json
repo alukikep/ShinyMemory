@@ -2,7 +2,7 @@
   "id": "draft.dialogue.amana.menswear",
   "kind": "dialogue",
   "title": "她拉你去一家男装店",
-  "status": "review",
+  "status": "approved",
   "version": 1,
   "rootId": "draft.dialogue.amana.menswear",
   "payload": {
@@ -253,12 +253,17 @@
   },
   "annotations": [],
   "createdAt": "2026-11-02T09:00:00.000Z",
-  "updatedAt": "2026-11-02T09:00:00.000Z",
+  "updatedAt": "2026-11-01T03:15:14.754Z",
+  "reviewedAt": "2026-11-01T03:15:14.754Z",
   "history": [
     {
       "status": "review",
       "at": "2026-11-02T09:00:00.000Z",
       "note": "对照 201400311（男装店、给制作人挑衣服）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-01T03:15:14.754Z"
     }
   ]
 }

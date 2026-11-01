@@ -1,0 +1,32 @@
+{
+  "id": "draft.asahi.chat.curious",
+  "kind": "topic",
+  "title": "聊天 · 有趣的事",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.asahi.chat.curious",
+  "payload": {
+    "id": "asahi.chat.curious",
+    "actorId": "asahi",
+    "label": "有趣的事",
+    "text": "「有趣的事，要自己去找才好玩！」「等是等不来的！」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T12:11:00.000Z",
+  "updatedAt": "2026-11-02T12:11:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T12:11:00.000Z",
+      "note": "あさひ日常话题（主线动机）"
+    }
+  ]
+}

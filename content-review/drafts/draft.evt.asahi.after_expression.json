@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.asahi.after_expression",
+  "kind": "event",
+  "title": "表情没弄明白",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.asahi.after_expression",
+  "payload": {
+    "id": "evt.asahi.after_expression",
+    "title": "表情没弄明白",
+    "when": [],
+    "after": {
+      "ids": [
+        "expression"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "asahi"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "表现课结束了。她对着镜子做了几个表情，最后皱起眉。",
+    "choices": [
+      {
+        "label": "哪个不明白？",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「这个！这个表情，是什么意思？」"
+      },
+      {
+        "label": "不用想太多。",
+        "hint": "信任 +3、压力 -3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          }
+        ],
+        "result": "「不用想……原来也有这种事啊。」"
+      },
+      {
+        "label": "我来学给你看。",
+        "hint": "表现 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "expression",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「啊哈哈，制作人先生的样子好怪！」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T12:20:00.000Z",
+  "updatedAt": "2026-11-02T12:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T12:20:00.000Z",
+      "note": "あさひ表现课后事件"
+    }
+  ]
+}

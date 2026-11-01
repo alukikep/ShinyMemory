@@ -1,0 +1,144 @@
+{
+  "id": "draft.dialogue.asahi.ambush",
+  "kind": "dialogue",
+  "title": "她从背后冒出来",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.asahi.ambush",
+  "payload": {
+    "id": "dialogue.asahi.ambush",
+    "idolId": "asahi",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "呼……",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "（天气真好啊——）",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "哇！",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "asahi",
+        "text": "啊哈哈！",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "……啊，是あさひ啊……！",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "asahi",
+        "text": "吓到了吧～制作人先生。",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "那是，突然从背后大声喊，当然会吓到。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "asahi",
+        "text": "刚才制作人先生的表情，超好笑的！",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "喂，别拿人取笑。",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "asahi",
+        "text": "啊哈哈。",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "话说你来得真早啊。今天的课是下午吧。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "asahi",
+        "text": "我提早出来了！",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "在事务所也没事做，慢慢来也可以啊。",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "asahi",
+        "text": "在家里待着，也不会有有趣的事发生的！",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "producer",
+        "text": "真像あさひ会说的话。",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "asahi",
+        "text": "……是吗？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "嗯。那，离上课还有时间。",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "asahi",
+        "text": "那，制作人先生，陪我找有趣的事吧！",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "（这个人，真是一刻也停不下来啊……）",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "asahi",
+        "text": "走吧走吧！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T12:00:00.000Z",
+  "updatedAt": "2026-11-02T12:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T12:00:00.000Z",
+      "note": "对照 201700302（提早出门、在家待不住）"
+    }
+  ]
+}

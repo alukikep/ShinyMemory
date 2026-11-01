@@ -1,0 +1,168 @@
+{
+  "id": "draft.dialogue.asahi.first",
+  "kind": "dialogue",
+  "title": "大屏下面有人在跳",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.dialogue.asahi.first",
+  "payload": {
+    "id": "dialogue.asahi.first",
+    "idolId": "asahi",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "speakerId": "producer",
+        "text": "好……差不多该走了——",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "asahi",
+        "text": "——这里……这样？——",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "（那孩子，从刚才一直在跳……嗯？可那个舞……！）",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "speakerId": "asahi",
+        "text": "——好……成了！",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "你，能稍微打扰一下吗？",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "asahi",
+        "text": "？　是我吗？",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "speakerId": "producer",
+        "text": "嗯，刚才那个舞，是屏幕上广告里的吧？你在练？",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "asahi",
+        "text": "不是，只是试着跳了一下。因为看着好像很好玩！",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "producer",
+        "text": "诶？也就是说……你刚看到，就照着跳了？",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "asahi",
+        "text": "是的！",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "（……她说得轻轻松松，可这孩子的厉害之处她自己没意识到吗……）",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "producer",
+        "text": "（说不定……有着不得了的才能。）",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "asahi",
+        "text": "～♪",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "其实我是做这个的。",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "asahi",
+        "text": "……",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "asahi",
+        "text": "『制作人』……吗？",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "producer",
+        "text": "嗯，我负责制作偶像。你，如果愿意的话，要不要试试当偶像？",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "asahi",
+        "text": "偶像，是做什么的？",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "producer",
+        "text": "像刚才你模仿的那个女孩子一样跳舞、唱歌。还有——",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "——大概就是这些。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "asahi",
+        "text": "……！",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "asahi",
+        "text": "好像很有趣！我，想试试当偶像！",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "producer",
+        "text": "这、这样啊！谢谢！今后请多指教！",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "asahi",
+        "text": "是！我是芹沢あさひ！请多指教！"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T12:00:00.000Z",
+  "updatedAt": "2026-11-02T12:00:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T12:00:00.000Z",
+      "note": "对照 101700101（大屏、看一遍就跳、只问\"偶像做什么\"）"
+    }
+  ]
+}

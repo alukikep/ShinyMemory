@@ -1,0 +1,90 @@
+{
+  "id": "draft.evt.asahi.after_dance",
+  "kind": "event",
+  "title": "还在跳",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.evt.asahi.after_dance",
+  "payload": {
+    "id": "evt.asahi.after_dance",
+    "title": "还在跳",
+    "when": [],
+    "after": {
+      "ids": [
+        "dance"
+      ]
+    },
+    "afterIdol": {
+      "ids": [
+        "asahi"
+      ]
+    },
+    "chance": 0.4,
+    "priority": 5,
+    "once": true,
+    "text": "舞蹈课结束了。她还在镜子前，把最后一个动作反复做了三遍。",
+    "choices": [
+      {
+        "label": "已经很好了。",
+        "hint": "舞蹈 +1、信任 +3",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 3
+          }
+        ],
+        "result": "「真的？那，再来一次确认！」"
+      },
+      {
+        "label": "再来一遍。",
+        "hint": "舞蹈 +1、压力 +2",
+        "effects": [
+          {
+            "kind": "attributeExp",
+            "ref": "dance",
+            "tier": 1
+          },
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": 2
+          }
+        ],
+        "result": "「好！这次我想那样跳！」"
+      },
+      {
+        "label": "今天就到这里。",
+        "hint": "压力 -3、信任 +1",
+        "effects": [
+          {
+            "kind": "sharedStat",
+            "stat": "stress",
+            "delta": -3
+          },
+          {
+            "kind": "attributeExp",
+            "ref": "trust",
+            "tier": 1
+          }
+        ],
+        "result": "「诶——……那，明天早点来！」"
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T12:20:00.000Z",
+  "updatedAt": "2026-11-02T12:20:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T12:20:00.000Z",
+      "note": "あさひ舞蹈课后事件（她的专注）"
+    }
+  ]
+}

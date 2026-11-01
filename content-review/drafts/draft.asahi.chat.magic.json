@@ -1,0 +1,32 @@
+{
+  "id": "draft.asahi.chat.magic",
+  "kind": "topic",
+  "title": "聊天 · 魔术",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.asahi.chat.magic",
+  "payload": {
+    "id": "asahi.chat.magic",
+    "actorId": "asahi",
+    "label": "魔术",
+    "text": "「魔术！为什么会那样？」「我想弄清楚！」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T12:14:00.000Z",
+  "updatedAt": "2026-11-02T12:14:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T12:14:00.000Z",
+      "note": "あさひ日常话题（201700301 魔术师）"
+    }
+  ]
+}

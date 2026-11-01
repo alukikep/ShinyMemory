@@ -1,0 +1,32 @@
+{
+  "id": "draft.asahi.chat.unit",
+  "kind": "topic",
+  "title": "聊天 · Straylight",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.asahi.chat.unit",
+  "payload": {
+    "id": "asahi.chat.unit",
+    "actorId": "asahi",
+    "label": "Straylight",
+    "text": "「冬優子ちゃん和愛依ちゃん，都很厉害！」「我也不能输！」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T12:16:00.000Z",
+  "updatedAt": "2026-11-02T12:16:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T12:16:00.000Z",
+      "note": "あさひ日常话题（组合）"
+    }
+  ]
+}

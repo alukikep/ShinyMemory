@@ -431,4 +431,25 @@ export const CHAPTER_SOURCES: ChapterSource[] = [
     card: { title: 'おいしい時間', index: 3, total: 3 },
     anchors: ['2016003110010', '2016003110100', '2016003110160'],
   },
+  {
+    chapterId: 'asahi-magician',
+    script: '201700301',
+    source: '剧本 201700301',
+    card: { title: '見つけたもの', index: 1, total: 3 },
+    anchors: ['2017003010010', '2017003010060', '2017003010080'],
+  },
+  {
+    chapterId: 'asahi-ambush',
+    script: '201700302',
+    source: '剧本 201700302',
+    card: { title: '見つけたもの', index: 2, total: 3 },
+    anchors: ['2017003020010', '2017003020060', '2017003020080'],
+  },
+  {
+    chapterId: 'asahi-morning',
+    script: '201700311',
+    source: '剧本 201700311',
+    card: { title: '見つけたもの', index: 3, total: 3 },
+    anchors: ['2017003110010', '2017003110060', '2017003110100'],
+  },
 ];

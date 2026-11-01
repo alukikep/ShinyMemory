@@ -1,0 +1,32 @@
+{
+  "id": "draft.asahi.chat.school",
+  "kind": "topic",
+  "title": "聊天 · 学校",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.asahi.chat.school",
+  "payload": {
+    "id": "asahi.chat.school",
+    "actorId": "asahi",
+    "label": "学校",
+    "text": "「学校……我常常不在教室。」「因为外面比较有趣！」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T12:15:00.000Z",
+  "updatedAt": "2026-11-02T12:15:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T12:15:00.000Z",
+      "note": "あさひ日常话题（她在学校总是一个人）"
+    }
+  ]
+}

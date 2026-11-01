@@ -1,0 +1,32 @@
+{
+  "id": "draft.asahi.chat.memory",
+  "kind": "topic",
+  "title": "聊天 · 记性",
+  "status": "review",
+  "version": 1,
+  "rootId": "draft.asahi.chat.memory",
+  "payload": {
+    "id": "asahi.chat.memory",
+    "actorId": "asahi",
+    "label": "记性",
+    "text": "「看过的东西，我大概都记得！」「舞也是，看一遍就能跳！」",
+    "cooldownMinutes": 1440,
+    "effects": [
+      {
+        "kind": "attributeExp",
+        "ref": "trust",
+        "tier": 1
+      }
+    ]
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T12:13:00.000Z",
+  "updatedAt": "2026-11-02T12:13:00.000Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T12:13:00.000Z",
+      "note": "あさひ日常话题（API 特技：記憶力）"
+    }
+  ]
+}

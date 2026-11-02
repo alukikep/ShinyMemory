@@ -44,6 +44,7 @@
 | 31 | **新角色接进来，没人验名册/日程表** | 有人问"偶像名册和日程表是不是没做"——面板其实在，但没有任何测试保证"新角色接进来一定看得见"；她名册上的简介还留着没出处的"不登校" | `productionRoster.test` 对正式包每个偶像断言：有 ActorDef、日程非空、名册字段齐、有招募步骤；`mamimi.spec` 真开两个面板断言能看到她；简介改成 101 剧本里有出处的事实 |
 | 32 | **旧存档里没有新偶像的条目** | 摩美々在存档纪元 3 之后加进来、纪元没变 → 旧档照常加载但没有 `idols.mamimi`；招募链的 `complete.status` 被"条目不存在的守卫"静默跳过，剧情演完她也不进名册/日程表 | `migrateSave` 末尾补偶像/角色条目，并按已完成剧情步骤补回状态；`complete.status` 改为缺条目时现场建；`idolBackfill.test`（迁移+状态修复）+ `saveBackfill.spec`（删档→刷新→招募）。**2026-11 扩成全量回归**：单元测试对正式包每个偶像跑一遍、E2E 一次删掉并招回摩美々/霧子/恋鐘/咲耶/結華五人 |
 | 33 | **地点有坐标、没接步行网络** | 泳池有坐标、有卡面剧情要用，但 `WALK_EDGES` 里没有它的边、坐标 (610,300) 还在 `CityMap` 的 viewBox 外——地图上既看不见也走不到，只能靠巴士/出租车；加医院时才发现 | `productionMap.test`：每个可去地点都要有坐标、接进步行网络、从家走得到、坐标不许重叠；viewBox 扩到 560×250 |
+| 45 | **非法值要等到 build 才红** | 保存草稿时不查值，`tier: 7` 一路存到构建，`tsc` 在 `approved.generated.ts` 里报错，看起来像生成器的锅 | 保存即校验（`validateDraftForSave`）：缺字段放行、非法值 422 并指名字段；已用 HTTP 探针验证 `tier: 7 → 422`、`tier: 3 → 200` |
 | 34 | **审查台放过非法属性档位** | 咲耶的表演课事件写了 `tier: 4 / 2`（`ExpTier` 只有 1/3/5/10/20）。审查台不做类型检查，16 条一路"通过"；直到 `build` 的 tsc 才红，而且报错位置在 `approved.generated.ts`，看起来像生成代码的锅 | `tools/approvedFiles.ts` 读 approved 时先查档位，报错**指名 JSON 与字段路径**（`content-review/approved/x.json 的 payload.choices[0]…tier = 4`）；已用"故意改坏→sync 报错→改回"验证过 |
 | 35 | **通过之后没重建就跑 E2E** | 結華 15 条批完后直接 `npm run e2e:one`，Playwright 的 webServer 是 `npm run preview`（服务 `dist/`），跑的是**审批前的旧构建**——剧情链被"对话未批"过滤掉了，测试卡在"按钮不存在"，还白等 3 分钟超时 | 用 `npm run acceptance:prologue`（= `npm run build && playwright`），或至少先 `npm run build`；失败时先看调试面板的"剧情链"表里有没有这条链，能立刻分辨是内容问题还是构建过期 |
 | 37 | **按年龄推身份，把专门学校写成社会人** | 给 STRAYLIGHT 做方案时，看到冬優子 19 岁就写成"社会人"，而 facts 第一行写着"专门学校一年级"。若照此排日程，她平日上午会被排成空闲（专门学校学生其实要上课） | 身份变成**声明字段**：idol 定义加 `age`/`school`/`schoolNote`；`identity.test` 核 facts ↔ 声明（只在写着年龄的那一句里找学段，避免"小时候"误判）；`contentAudit` 新增 `idol-school-stage` 核声明 ↔ 日程（学生必须有 protected 学校时段，无学籍则不许有）。已用"把結華改成 high"验证会红 |
@@ -53,6 +54,8 @@
 | 40 | **文档数值与代码漂移** | 零工文档写 ¥280/¥220/¥150，实际是 ¥56/¥52/¥25；礼物写成"主要钱坑"，但终身限购总额只有 ¥4,400；README 还写着 1 偶像/8 地点 | 数值文档先标代码出处；本轮按 `PRODUCTION_PACK` 校准 numbers / content-standards / README，冲突时以代码为准 |
 | 41 | **内容体检和游戏加载的不是同一个包** | `content:audit` 没拼 `PENDING_CHAPTERS`，误报 `job.first_live` 的解锁 flag 没人设置；`productionPack` 其实是拼了的 | 抽 `attachPendingChapters` 单一实现，`productionPack` / `content:audit` / `content:validate` 共用；复跑 0 错误 0 警告 |
 | 42 | **设施升级差点换掉训练 action id** | 正式包有 82 条事件锚定 `vocal`/`dance`/`expression`；如果中级/高级训练用新 id，这些事件全部静默失效 | `ActivityDef.levels` + `resolveActivity` 保留基础 id；`activityLevels.test` 对每级断言 `resolved.id === 'vocal'` |
+| 44 | **批量通过不处理 supersedes** | 4 份修订批完后 approved 里新旧两份并存，`payload.id` 重复；打包取哪份取决于文件顺序，游戏里会"忽新忽旧" | `moveReviewDraft` 在 store 层统一处理 supersedes（单条/批量都走），`syncApproved` 拒绝重复 `payload.id` 并报出文件名；两者都用"故意造一份重复"验证过会红 |
+| 43 | **E2E 失败把测试草稿留在 approved** | `tests/review` 真的会批草稿，中途失败时 afterEach 没跑到，产物留在 `content-review/approved`；下一次 `build` 把它编进游戏包，`tsc` 还在**生成文件**里报语法错，看起来像生成器的锅 | **构建时**（`strict`）`syncApproved` 拒绝 `title` 以 `E2E` 开头的产物并报文件名；审查台 dev server 走非 strict，否则它自己的用例一批准就被自己拦（真实踩过，表现为"点通过没反应"） |
 
 ---
 
@@ -92,6 +95,9 @@ npm run build             # 上面全部 + 类型 + 打包
 | `content:coverage` | 每个偶像的内容单元是否齐全（`PENDING_IDOLS` 里的标"接入中"） | `content:validate` |
 | `viewContract.test` | 界面读的字段从对象上消失 | `npm test` |
 | `content:anchors` | 卡面改编的锚点句（语料里有 + 游戏里也有） | `content:validate` |
+| `japanese-text` | 整句日文没翻（已上线内容，平假名成串、念出来会卡住） | `content:validate` → `checkJapanese --strict`（阻塞构建）；待审草稿只是提醒 |
+| `draft-save` | 草稿里的**非法值**（`tier: 7`、`kind: 'dance'` 这类），放行"还没写完"，拦住"写错了" | `saveReviewDraft` → `validateDraftForSave`，接口回 422 并指名字段 |
+| `docs-router` | 活跃文档没登记进 [tasks.md](../tasks.md)、或这页的链接指向不存在的文件 | `content:validate` → `checkDocs`（新增/移动文档后必须登记） |
 | E2E（prologue / content / review） | 流程真的能走通 | `npm run acceptance*` |
 
 **新增视图类型时**：把它加进 `viewContract.test.ts` 的字段清单。
@@ -175,12 +181,14 @@ npm run build             # 上面全部 + 类型 + 打包
 - 角色卡的"人审 + 哈希锁定"还没做（现在是"有出处"的机器检查，不是"人看过"的留痕）。
 - **训练课名称不统一**：训练按钮叫「表现课」，但已批的事件正文写着「表演课」
   （甘奈、甜花的 after_expression，以及咲耶的旧事件）。下次统一时走 `revisions`。
-- 已审台词里还有整句日文（kiriko.first / kiriko.second / mano.first 各一两句）。
-  规则见 playbook §1.7（整句必须翻、口癖可留），改的时候走 `supersedes` 修订。
+- ~~已上线的整句日文~~：**2026-11-02 清零**（8 行 / 4 个文件 → 4 份修订通过，
+  出处 102800101 / 100800102 / 102500101 / 102400101）。`content:japanese --strict`
+  已接进 `content:validate`，再出现未翻译的整句日文会直接让构建红。
+  确实要保留的（和歌引用之类）登记到 `content-review/japanese-allowlist.json`，必须写 reason。
 
 | 项 | 影响 | 建议 |
 |---|---|---|
 | 数值回归没有自动化 | `balance.test` 跑夹具，正式包数值没人守 | 写一个"第 7 天粉丝数"模拟脚本 |
 | 每个角色没有独立 E2E | 靠 `tests/prologue/*` 手写 | 按角色生成冒烟 spec |
 | 剧情链的对话写在 TS | 不走审查台（与"内容走审查台"有出入） | 改成 approved 引用 + 审批顺序守卫 |
-| 草稿里的整句日文没有机器检查 | 新内容可能又混进日文 | 在 `content:drafts` 加一条"假名占比过高"的警告 |
+| 日语检查只报不拦（已上线部分） | `content:japanese` 不在构建门里，8 行存量不会自己变少 | 清完存量后加 `--strict` 接进 `content:validate` |

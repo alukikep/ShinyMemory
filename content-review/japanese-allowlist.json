@@ -1,0 +1,4 @@
+{
+  "_doc": "确实要保留的整句日文登记在这里：{ text（正文精确匹配）, file（可选）, reason（必填） }。content:japanese --strict 会跳过这些行；改过句子就不再豁免。",
+  "entries": []
+}

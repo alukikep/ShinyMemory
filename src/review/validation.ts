@@ -2,6 +2,7 @@ import { auditPack } from '../core/contentAudit.js';
 import { buildContentIndex, type ContentPack } from '../core/contentIndexCore.js';
 import { packApprovedFiles } from '../core/content/approvedPacking.js';
 import { mergeApprovedContent } from './approval.js';
+import { describeJapaneseLine, findJapaneseLines } from './japaneseText.js';
 import type { ReviewDraft } from './types.js';
 
 export type ReviewValidation = {
@@ -436,6 +437,57 @@ export function validateDraftShape(draft: ReviewDraft): string[] {
   return errors;
 }
 
+/** 保存草稿时允许"还没写完"，但不允许"写了个非法值"。 */
+const INCOMPLETE_PATTERNS = [/不能为空$/, /至少需要/];
+
+const EXP_TIER_HINT = `${EXP_TIERS.join(' / ')}（ExpTier）`;
+
+function collectBadTiers(value: unknown, base: string, out: string[]): void {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => collectBadTiers(item, `${base}[${index}]`, out));
+    return;
+  }
+  if (!isRecord(value)) return;
+  if (value.kind === 'attributeExp' && 'tier' in value) {
+    const tier = value.tier;
+    if (
+      typeof tier !== 'number' ||
+      !(EXP_TIERS as readonly number[]).includes(tier)
+    ) {
+      out.push(
+        `${base || 'payload'}.tier = ${String(tier)} —— tier 必须是 ${EXP_TIER_HINT}`,
+      );
+    }
+  }
+  for (const [key, item] of Object.entries(value)) {
+    collectBadTiers(item, base === '' ? key : `${base}.${key}`, out);
+  }
+}
+
+/**
+ * 保存草稿时的校验：**缺字段放行，非法值拦住**。
+ *
+ * 为什么不能直接用 `validateDraftShape`：草稿是一步步写出来的，
+ * 刚新建时 id/正文都是空的，硬拦就没法编辑了。
+ * 为什么要把 tier 单拎出来：`tier: 7` 这种值要等 `tsc` 编译生成文件才报，
+ * 报错位置看起来像生成器的锅（事故 #34）。这里用 `ExpTier` 的同一份常量查。
+ */
+export function validateDraftForSave(draft: ReviewDraft): {
+  errors: string[];
+  incomplete: string[];
+} {
+  const errors: string[] = [];
+  const incomplete: string[] = [];
+  for (const message of validateDraftShape(draft)) {
+    const target = INCOMPLETE_PATTERNS.some((pattern) => pattern.test(message))
+      ? incomplete
+      : errors;
+    target.push(message);
+  }
+  if (isRecord(draft.payload)) collectBadTiers(draft.payload, '', errors);
+  return { errors, incomplete };
+}
+
 export function validateReviewDraft(
   draft: ReviewDraft,
   base: ContentPack,
@@ -461,6 +513,13 @@ export function validateReviewDraft(
     errors.push(
       `内容体检无法执行：${error instanceof Error ? error.message : String(error)}`,
     );
+  }
+
+  // 语言检查：整句日文没翻。和体检同一条路：警告不阻塞，等人判断。
+  const japanese = findJapaneseLines(draft.payload);
+  for (const line of japanese.slice(0, 12)) warnings.push(describeJapaneseLine(line));
+  if (japanese.length > 12) {
+    warnings.push(`[警告] japanese-text: 还有 ${japanese.length - 12} 行疑似未翻译，先用 content:drafts 全量看`);
   }
 
   return { ok: errors.length === 0, errors, warnings };

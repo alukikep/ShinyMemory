@@ -300,7 +300,7 @@ export function reviewApiPlugin(): Plugin {
               }
             }
             // approved 目录变了，立刻重新生成给游戏用的模块（dev 下会热更新）。
-            await syncApprovedContent();
+            await syncApprovedContent({ strict: false });
             sendJson(response, 200, { draft });
             return;
           }
@@ -370,6 +370,15 @@ export function reviewApiPlugin(): Plugin {
 
           next();
         } catch (error) {
+          // 保存时的非法值（如 tier: 7）走 422，把具体字段带回界面显示。
+          const issues = (error as { errors?: unknown } | null)?.errors;
+          if (Array.isArray(issues)) {
+            sendJson(response, 422, {
+              error: error instanceof Error ? error.message : '草稿内容有非法值',
+              errors: issues,
+            });
+            return;
+          }
           sendJson(response, 500, {
             error: error instanceof Error ? error.message : 'review API error',
           });

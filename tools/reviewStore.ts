@@ -1,5 +1,6 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import { validateDraftForSave } from '../src/review/validation.js';
 import type {
   ReviewDraft,
   ReviewHistoryEntry,
@@ -340,6 +341,16 @@ export async function saveReviewDraft(
 ): Promise<ReviewDraft> {
   const located = await locateDraft(id);
   if (!located) throw new Error('草稿不存在');
+  // 保存时就查非法值（比如 tier: 7），别等到 build 在生成文件里报错（事故 #34）。
+  // 缺字段不算错：草稿是一步步写出来的。
+  const candidate = {
+    ...located.draft,
+    payload: patch.payload ?? located.draft.payload,
+  };
+  const check = validateDraftForSave(candidate);
+  if (check.errors.length > 0) {
+    throw Object.assign(new Error('草稿内容有非法值'), { errors: check.errors });
+  }
   const now = new Date().toISOString();
   const next: ReviewDraft = {
     ...located.draft,
@@ -398,6 +409,22 @@ export async function moveReviewDraft(
   await fs.mkdir(path.dirname(target), { recursive: true });
   await writeJson(target, next);
   await fs.rm(located.filePath, { force: true });
+
+  // 修订版本通过后，旧版必须一起退场。
+  // 放在 store 层而不是路由层：批量通过（整章/整组）走的是 moveReviewDrafts，
+  // 路由里那段清理只在"单条通过"的分支里，批量就漏了——真实踩过：
+  // 4 份修订批完后 approved 里同时留着新旧两份，payload.id 重复（事故 44）。
+  if (status === 'approved' && next.supersedes) {
+    const previous = await locateDraft(next.supersedes);
+    if (previous && previous.draft.status === 'approved') {
+      await moveReviewDraft(
+        previous.draft.id,
+        'discarded',
+        `已被 ${id}（v${next.version ?? 2}）替换`,
+      );
+    }
+  }
+
   return next;
 }
 

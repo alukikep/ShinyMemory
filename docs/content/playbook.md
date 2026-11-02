@@ -112,8 +112,33 @@ npm run content:guard      # 已接进 content:validate，构建时会跑
 判断方法：**把这一行念出来，如果不懂日语的玩家会卡住，就翻掉**；
 卡不住的只剩语气（口癖、拟声）和专有名词。
 
-> 已审内容里还有几处整句日文（kiriko / mano），属于历史欠账，走 `supersedes` 修订时一并处理；
-> 新内容从这条规则开始执行。
+> 已审内容里还有几处整句日文（实测 8 行：haruki.first / kiriko.second / mikoto.first / nichika.second），
+> 属于历史欠账，走 `supersedes` 修订时一并处理；新内容从这条规则开始执行。
+
+**机器检查（2026-11-02 起）**：
+
+```bash
+npm run content:japanese    # 扫 approved + drafts + revisions，列出疑似整句日文
+```
+
+判定逻辑在 `src/review/japaneseText.ts`：数**平假名**（片假名专有名词不误伤），
+长句 ≥8 个平假名且占比 ≥30%、短句 ≥6 个且占比 ≥55% 才算。
+
+**待审草稿只提醒，已上线内容是硬门**：
+
+```bash
+npm run content:drafts        # 待审草稿：japanese-text 作为警告列出，不阻塞
+npm run content:japanese      # 报告模式：approved + drafts + revisions，只列不改
+npm run content:japanese -- --strict   # 门禁模式：只看 approved，有就退出 1（已接进 content:validate）
+```
+
+草稿不阻塞是有意的——写一半的内容不该把构建卡住。批准后它就成了线上内容，构建会拦。
+
+**确实要保留的**（和歌引用、必须保留的原句）登记到
+`content-review/japanese-allowlist.json`，按正文精确匹配、必须写 reason；
+改了句子就不再豁免，得重新登记。
+
+"念出来会不会卡住"最后还是人判断——机器只负责把可疑行摆到你面前，并且不让你忘了它。
 
 ## 2. 新角色接入：一份清单
 

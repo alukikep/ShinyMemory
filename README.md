@@ -32,6 +32,7 @@ npm run dev      # 本地开发
 npm run build    # 类型检查 + 生产构建
 npm test         # 核心模拟测试 + 平衡烟测
 npm run content:validate # 校验 approved 内容与对话/剧情结构
+npm run content:japanese # 列出还没翻译的整句日文（playbook §1.7）
 npm run acceptance # 浏览器验收（fixture 引擎 + 内容）
 npm run acceptance:prologue # 正式内容 E2E（41 条）
 npm run acceptance:review # 审查流程验收
@@ -65,6 +66,7 @@ src/app/store.ts     Zustand 薄壳 + 自动存档 + 手动存档/读档
 
 文档已按用途集中整理：
 
+- [按任务取用文档](docs/tasks.md)（先看这个）
 - [文档索引](docs/README.md)
 - [当前路线图](docs/current/roadmap.md)
 - [未来需求](docs/current/future-requirements.md)

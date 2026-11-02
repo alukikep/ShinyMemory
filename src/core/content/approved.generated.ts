@@ -11123,6 +11123,771 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
+  "id": "dialogue.haruki.first",
+  "idolId": "haruki",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "text": "创作者集会。展位一间挨一间，空气里混着纸和咖啡的味道。",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "（这么多创作者聚在一起的活动啊……）",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "（在这儿挖角……应该不至于吧。能不能碰上点有意思的东西呢）",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "text": "角落里，一个抱着贝斯的女孩正在发传单。接过去的人不多。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "（嗯……那孩子抱着乐器。参展的……不，是待会儿上台演出的吗）",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "（可要是演出者，也太稚气了些……）",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "text": "目光对上了。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "……请问，您是待会儿要上台演出的人吗？",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "haruki",
+      "text": "是……！　是的……！",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "haruki",
+      "text": "我之后就要上台，请一定来看",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "谢谢……！──传单也做得很好啊。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "haruki",
+      "text": "真的吗？我改了好多遍，听您这么说好开心",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "诶，这是你自己做的？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "厉害啊……！你还要演奏吧。那是──",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "haruki",
+      "text": "是贝斯。虽然还很生疏──",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "haruki",
+      "text": "其实是朋友说少一个人，把我叫去的……",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "haruki",
+      "text": "练了很久，今天是第一次上台",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "producer",
+      "text": "这样啊……！为了朋友，很有胆量啊。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "haruki",
+      "text": "呵呵～",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "我是不是打扰到你上台前的集中了。",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "haruki",
+      "text": "……没有，反而是您跟我说话，让我放松下来了",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "haruki",
+      "text": "────这里的人，哪怕只有一个也好，会不会停下来听一听……",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "haruki",
+      "text": "会不会觉得开心呢……",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "haruki",
+      "text": "能不能打动某个人的心呢────",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "producer",
+      "text": "────能不能打动，大概取决于你吧",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "比起去动那些动不了的心，不如先动你自己的心────把看得见的世界重新涂一遍就好",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "haruki",
+      "text": "──────……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "haruki",
+      "text": "…………！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "text": "广播里在叫下一个出场者。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "haruki",
+      "text": "啊……！不好意思，我差不多该走了……！",
+      "nextNodeId": "31"
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "producer",
+      "text": "嗯，加油……！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "producer",
+      "text": "（有趣的孩子啊……也去看看她的舞台吧）",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "（很神奇的孩子。明明是软软的可爱的样子……）",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "producer",
+      "text": "（却像是在看着别的地方）",
+      "nextNodeId": "35"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "producer",
+      "text": "…………要不要去挖她呢"
+    }
+  }
+},
+{
+  "id": "dialogue.kiriko.second",
+  "idolId": "kiriko",
+  "startNodeId": "01",
+  "nodes": {
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "原来如此……霧子真温柔啊。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "kiriko",
+      "text": "不、不是的……！",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "kiriko",
+      "text": "而且……在灰尘多的地方练习……大家要是得了支气管哮喘就糟了……！",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "哈哈，那是不是有点想太多了？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "kiriko",
+      "text": "是、是这样……吗。",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "kiriko",
+      "text": "……",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "……怎么了？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "kiriko",
+      "text": "我、我没什么自信……",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "kiriko",
+      "text": "一想到可能会拖大家后腿，就想着至少……至少用这种方式帮上一点忙……！",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "……这样啊。我明白了。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "（……嗯？她按着绷带那里……是疼吗。）",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "producer",
+      "text": "总之，你的心情我大概明白了。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "不过，会想到去打扫，我觉得很了不起啊。",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "kiriko",
+      "text": "……！",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "难道你平时也偷偷打扫？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "kiriko",
+      "text": "不、不……那个……我也做不了什么大不了的事……",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "producer",
+      "text": "原来如此……那你一定在很多地方都帮了忙。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "kiriko",
+      "text": "不、不是的……！不过，很少被人这样说……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "kiriko",
+      "text": "非常……很、很高兴……！",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "producer",
+      "text": "哈哈，是吗。那我也很高兴。",
+      "nextNodeId": "30"
+    },
+    "30": {
+      "id": "30",
+      "speakerId": "producer",
+      "text": "（该怎么说呢——）",
+      "choices": [
+        {
+          "label": "我觉得，这正是霧子的魅力。",
+          "nextNodeId": "31"
+        },
+        {
+          "label": "那……也让我一起打扫吧。",
+          "nextNodeId": "35"
+        },
+        {
+          "label": "这对霧子自己也有好处。",
+          "nextNodeId": "38"
+        }
+      ]
+    },
+    "31": {
+      "id": "31",
+      "speakerId": "kiriko",
+      "text": "……诶？那、那种事……！",
+      "nextNodeId": "32"
+    },
+    "32": {
+      "id": "32",
+      "speakerId": "kiriko",
+      "text": "我从来没想过……魅力……吗。我、我身上也会有……吗。",
+      "nextNodeId": "33"
+    },
+    "33": {
+      "id": "33",
+      "speakerId": "producer",
+      "text": "会有的。不过，得由霧子自己发现才行。",
+      "nextNodeId": "34"
+    },
+    "34": {
+      "id": "34",
+      "speakerId": "kiriko",
+      "text": "……由我……自己……",
+      "nextNodeId": "41"
+    },
+    "35": {
+      "id": "35",
+      "speakerId": "kiriko",
+      "text": "那、那样……太不好意思了……！",
+      "nextNodeId": "36"
+    },
+    "36": {
+      "id": "36",
+      "speakerId": "producer",
+      "text": "你在说什么。偶像和制作人是两人三脚。",
+      "nextNodeId": "37"
+    },
+    "37": {
+      "id": "37",
+      "speakerId": "kiriko",
+      "text": "……制作人先生……嗯……！我会努力的……！",
+      "nextNodeId": "41"
+    },
+    "38": {
+      "id": "38",
+      "speakerId": "kiriko",
+      "text": "是、是的……我也……能舒服地练习了。",
+      "nextNodeId": "39"
+    },
+    "39": {
+      "id": "39",
+      "speakerId": "producer",
+      "text": "嗯。不过这里也是霧子的练习室啊。",
+      "nextNodeId": "40"
+    },
+    "40": {
+      "id": "40",
+      "speakerId": "kiriko",
+      "text": "……偶像，幽谷霧子……我也是，偶像呢。",
+      "nextNodeId": "41"
+    },
+    "41": {
+      "id": "41",
+      "speakerId": "producer",
+      "text": "（她小声重复了一遍，然后把抹布重新叠好。）"
+    },
+    "01": {
+      "id": "01",
+      "speakerId": "producer",
+      "text": "（嗯？练习室里好像有人。）",
+      "nextNodeId": "02"
+    },
+    "02": {
+      "id": "02",
+      "speakerId": "kiriko",
+      "text": "……きゅっきゅ♪",
+      "nextNodeId": "03"
+    },
+    "03": {
+      "id": "03",
+      "speakerId": "kiriko",
+      "text": "……ごし、ごし♪",
+      "nextNodeId": "04"
+    },
+    "04": {
+      "id": "04",
+      "speakerId": "producer",
+      "text": "早上好，霧子。怎么这么早？今天应该没有早课。",
+      "nextNodeId": "05"
+    },
+    "05": {
+      "id": "05",
+      "speakerId": "producer",
+      "text": "其他人好像也还没到——",
+      "nextNodeId": "06"
+    },
+    "06": {
+      "id": "06",
+      "speakerId": "kiriko",
+      "text": "……啊，制作人先生。早、早上好……！",
+      "nextNodeId": "07"
+    },
+    "07": {
+      "id": "07",
+      "speakerId": "kiriko",
+      "text": "我、我稍微早到了一点……！",
+      "nextNodeId": "08"
+    },
+    "08": {
+      "id": "08",
+      "speakerId": "producer",
+      "text": "所以……你在打扫？",
+      "nextNodeId": "09"
+    },
+    "09": {
+      "id": "09",
+      "speakerId": "kiriko",
+      "text": "是、是的……我想，大家能舒舒服服地练习就好了……",
+      "nextNodeId": "10"
+    }
+  }
+},
+{
+  "id": "dialogue.mikoto.first",
+  "idolId": "mikoto",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "producer",
+      "text": "──打扰了。社长，说要让我见的人是──……",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "mikoto",
+      "text": "社长的话出去了哦。说有别的事必须处理。",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "producer",
+      "text": "诶…………你是……！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "mikoto",
+      "text": "──緋田美琴。请多指教。",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "请、请多指教……话说回来你……！",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "producer",
+      "text": "你怎么会在这里……？",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "mikoto",
+      "text": "…………我之前组的组合，活动结束了。",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "mikoto",
+      "text": "之后也退出了原来的事务所，正在找新的地方。",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "mikoto",
+      "text": "所以，我想参加 283 制作的甄选。",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "producer",
+      "text": "诶…………！",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "mikoto",
+      "text": "我去问了，事务所就让我过来了。",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "mikoto",
+      "text": "天井社长让我在这里等制作人……",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "mikoto",
+      "text": "你就是那位制作人？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "producer",
+      "text": "是、是的。我是做制作人的……",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "mikoto",
+      "text": "这样。太好了。那么──",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "mikoto",
+      "text": "283 制作在签偶像的时候，要做怎样的测试？",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "mikoto",
+      "text": "舞蹈？唱歌？还是别的什么？",
+      "nextNodeId": "18"
+    },
+    "18": {
+      "id": "18",
+      "speakerId": "mikoto",
+      "text": "反正，我什么都准备好再来的。",
+      "nextNodeId": "19"
+    },
+    "19": {
+      "id": "19",
+      "speakerId": "producer",
+      "text": "……………………我明白了。",
+      "nextNodeId": "20"
+    },
+    "20": {
+      "id": "20",
+      "speakerId": "producer",
+      "text": "那样的话，现在就到练习室，让我看看你的歌和舞，可以吗？",
+      "nextNodeId": "21"
+    },
+    "21": {
+      "id": "21",
+      "speakerId": "mikoto",
+      "text": "当然。今天就是为了这个来的。",
+      "nextNodeId": "22"
+    },
+    "22": {
+      "id": "22",
+      "speakerId": "producer",
+      "text": "好。那么请往这边──",
+      "nextNodeId": "23"
+    },
+    "23": {
+      "id": "23",
+      "speakerId": "mikoto",
+      "text": "──呐，制作人。",
+      "nextNodeId": "24"
+    },
+    "24": {
+      "id": "24",
+      "speakerId": "producer",
+      "text": "嗯？",
+      "nextNodeId": "25"
+    },
+    "25": {
+      "id": "25",
+      "speakerId": "mikoto",
+      "text": "我想当偶像。",
+      "nextNodeId": "26"
+    },
+    "26": {
+      "id": "26",
+      "speakerId": "mikoto",
+      "text": "……想到要死。",
+      "nextNodeId": "27"
+    },
+    "27": {
+      "id": "27",
+      "speakerId": "producer",
+      "text": "────……",
+      "nextNodeId": "28"
+    },
+    "28": {
+      "id": "28",
+      "speakerId": "producer",
+      "text": "……测试，我会认真看的。",
+      "nextNodeId": "29"
+    },
+    "29": {
+      "id": "29",
+      "speakerId": "mikoto",
+      "text": "嗯……谢谢。"
+    }
+  }
+},
+{
+  "id": "dialogue.nichika.second",
+  "idolId": "nichika",
+  "startNodeId": "1",
+  "nodes": {
+    "1": {
+      "id": "1",
+      "speakerId": "nichika",
+      "text": "……好……起…………──！",
+      "nextNodeId": "2"
+    },
+    "2": {
+      "id": "2",
+      "speakerId": "producer",
+      "text": "喂、喂……！",
+      "nextNodeId": "3"
+    },
+    "3": {
+      "id": "3",
+      "speakerId": "nichika",
+      "text": "────────成……了呀…………！",
+      "nextNodeId": "4"
+    },
+    "4": {
+      "id": "4",
+      "speakerId": "nichika",
+      "text": "……呀，成功了……！七草にちか，ごーうーかーくー────！",
+      "nextNodeId": "5"
+    },
+    "5": {
+      "id": "5",
+      "speakerId": "producer",
+      "text": "……に、にちか小姐，邻居会听见的……！而且还不算正式入籍──",
+      "nextNodeId": "6"
+    },
+    "6": {
+      "id": "6",
+      "speakerId": "nichika",
+      "text": "不能收回哦……！为了让姐姐也收不回去，我才这么大声的！",
+      "nextNodeId": "7"
+    },
+    "7": {
+      "id": "7",
+      "speakerId": "nichika",
+      "text": "我……要在 283 制作……实习────！",
+      "nextNodeId": "8"
+    },
+    "8": {
+      "id": "8",
+      "speakerId": "producer",
+      "text": "（除了果断，她就是个再平凡不过的……女孩子。）",
+      "nextNodeId": "9"
+    },
+    "9": {
+      "id": "9",
+      "speakerId": "producer",
+      "text": "（──不过，喊出来的这句话，大概收不回去了。）",
+      "nextNodeId": "10"
+    },
+    "10": {
+      "id": "10",
+      "speakerId": "nichika",
+      "text": "…………那个。",
+      "nextNodeId": "11"
+    },
+    "11": {
+      "id": "11",
+      "speakerId": "producer",
+      "text": "嗯？",
+      "nextNodeId": "12"
+    },
+    "12": {
+      "id": "12",
+      "speakerId": "nichika",
+      "text": "刚才那个，请当作没听见哦。",
+      "nextNodeId": "13"
+    },
+    "13": {
+      "id": "13",
+      "speakerId": "producer",
+      "text": "……啊？",
+      "nextNodeId": "14"
+    },
+    "14": {
+      "id": "14",
+      "speakerId": "nichika",
+      "text": "因为，要是没当成，多丢人啊──！",
+      "nextNodeId": "15"
+    },
+    "15": {
+      "id": "15",
+      "speakerId": "producer",
+      "text": "……哈哈。",
+      "nextNodeId": "16"
+    },
+    "16": {
+      "id": "16",
+      "speakerId": "producer",
+      "text": "那，就当没听见。……明天开始，请多指教。",
+      "nextNodeId": "17"
+    },
+    "17": {
+      "id": "17",
+      "speakerId": "nichika",
+      "text": "…………嗯。……请多指教～。"
+    }
+  }
+},
+{
   "id": "dialogue.amana.first",
   "idolId": "amana",
   "startNodeId": "1",
@@ -18307,218 +19072,6 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "39",
       "speakerId": "producer",
       "text": "这样啊──那就这样吧。天气也不错。"
-    }
-  }
-},
-{
-  "id": "dialogue.haruki.first",
-  "idolId": "haruki",
-  "startNodeId": "1",
-  "nodes": {
-    "1": {
-      "id": "1",
-      "text": "创作者集会。展位一间挨一间，空气里混着纸和咖啡的味道。",
-      "nextNodeId": "2"
-    },
-    "2": {
-      "id": "2",
-      "speakerId": "producer",
-      "text": "（いろんなクリエイターが集まるイベントか……）",
-      "nextNodeId": "3"
-    },
-    "3": {
-      "id": "3",
-      "speakerId": "producer",
-      "text": "（ここでスカウト、ってことはないと思うけど。何か面白いものに出会えるだろうか）",
-      "nextNodeId": "4"
-    },
-    "4": {
-      "id": "4",
-      "text": "角落里，一个抱着贝斯的女孩正在发传单。接过去的人不多。",
-      "nextNodeId": "5"
-    },
-    "5": {
-      "id": "5",
-      "speakerId": "producer",
-      "text": "（ん……あの子、楽器を抱えてるな。出展者……いや、ライブパフォーマンスの出演者かな）",
-      "nextNodeId": "6"
-    },
-    "6": {
-      "id": "6",
-      "speakerId": "producer",
-      "text": "（それにしては、ずいぶんあどけないような……）",
-      "nextNodeId": "7"
-    },
-    "7": {
-      "id": "7",
-      "text": "目光对上了。",
-      "nextNodeId": "8"
-    },
-    "8": {
-      "id": "8",
-      "speakerId": "producer",
-      "text": "……もしかして、ライブパフォーマンスに出演する方ですか？",
-      "nextNodeId": "9"
-    },
-    "9": {
-      "id": "9",
-      "speakerId": "haruki",
-      "text": "是……！　是的……！",
-      "nextNodeId": "10"
-    },
-    "10": {
-      "id": "10",
-      "speakerId": "haruki",
-      "text": "我之后就要上台，请一定来看",
-      "nextNodeId": "11"
-    },
-    "11": {
-      "id": "11",
-      "speakerId": "producer",
-      "text": "谢谢……！──传单也做得很好啊。",
-      "nextNodeId": "12"
-    },
-    "12": {
-      "id": "12",
-      "speakerId": "haruki",
-      "text": "真的吗？我改了好多遍，听您这么说好开心",
-      "nextNodeId": "13"
-    },
-    "13": {
-      "id": "13",
-      "speakerId": "producer",
-      "text": "诶，这是你自己做的？",
-      "nextNodeId": "14"
-    },
-    "14": {
-      "id": "14",
-      "speakerId": "producer",
-      "text": "厉害啊……！你还要演奏吧。那是──",
-      "nextNodeId": "15"
-    },
-    "15": {
-      "id": "15",
-      "speakerId": "haruki",
-      "text": "是贝斯。虽然还很生疏──",
-      "nextNodeId": "16"
-    },
-    "16": {
-      "id": "16",
-      "speakerId": "haruki",
-      "text": "其实是朋友说少一个人，把我叫去的……",
-      "nextNodeId": "17"
-    },
-    "17": {
-      "id": "17",
-      "speakerId": "haruki",
-      "text": "练了很久，今天是第一次上台",
-      "nextNodeId": "18"
-    },
-    "18": {
-      "id": "18",
-      "speakerId": "producer",
-      "text": "这样啊……！为了朋友，很有胆量啊。",
-      "nextNodeId": "19"
-    },
-    "19": {
-      "id": "19",
-      "speakerId": "haruki",
-      "text": "呵呵～",
-      "nextNodeId": "20"
-    },
-    "20": {
-      "id": "20",
-      "speakerId": "producer",
-      "text": "我是不是打扰到你上台前的集中了。",
-      "nextNodeId": "21"
-    },
-    "21": {
-      "id": "21",
-      "speakerId": "haruki",
-      "text": "……没有，反而是您跟我说话，让我放松下来了",
-      "nextNodeId": "22"
-    },
-    "22": {
-      "id": "22",
-      "speakerId": "haruki",
-      "text": "────这里的人，哪怕只有一个也好，会不会停下来听一听……",
-      "nextNodeId": "23"
-    },
-    "23": {
-      "id": "23",
-      "speakerId": "haruki",
-      "text": "会不会觉得开心呢……",
-      "nextNodeId": "24"
-    },
-    "24": {
-      "id": "24",
-      "speakerId": "haruki",
-      "text": "能不能打动某个人的心呢────",
-      "nextNodeId": "25"
-    },
-    "25": {
-      "id": "25",
-      "speakerId": "producer",
-      "text": "────能不能打动，大概取决于你吧",
-      "nextNodeId": "26"
-    },
-    "26": {
-      "id": "26",
-      "speakerId": "producer",
-      "text": "比起去动那些动不了的心，不如先动你自己的心────把看得见的世界重新涂一遍就好",
-      "nextNodeId": "27"
-    },
-    "27": {
-      "id": "27",
-      "speakerId": "haruki",
-      "text": "──────……",
-      "nextNodeId": "28"
-    },
-    "28": {
-      "id": "28",
-      "speakerId": "haruki",
-      "text": "…………！",
-      "nextNodeId": "29"
-    },
-    "29": {
-      "id": "29",
-      "text": "广播里在叫下一个出场者。",
-      "nextNodeId": "30"
-    },
-    "30": {
-      "id": "30",
-      "speakerId": "haruki",
-      "text": "啊……！不好意思，我差不多该走了……！",
-      "nextNodeId": "31"
-    },
-    "31": {
-      "id": "31",
-      "speakerId": "producer",
-      "text": "嗯，加油……！",
-      "nextNodeId": "32"
-    },
-    "32": {
-      "id": "32",
-      "speakerId": "producer",
-      "text": "（有趣的孩子啊……也去看看她的舞台吧）",
-      "nextNodeId": "33"
-    },
-    "33": {
-      "id": "33",
-      "speakerId": "producer",
-      "text": "（很神奇的孩子。明明是软软的可爱的样子……）",
-      "nextNodeId": "34"
-    },
-    "34": {
-      "id": "34",
-      "speakerId": "producer",
-      "text": "（却像是在看着别的地方）",
-      "nextNodeId": "35"
-    },
-    "35": {
-      "id": "35",
-      "speakerId": "producer",
-      "text": "…………要不要去挖她呢"
     }
   }
 },
@@ -25848,271 +26401,6 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "09",
       "speakerId": "kiriko",
       "text": "那个……这些花……要摆在哪里呢……？",
-      "nextNodeId": "10"
-    }
-  }
-},
-{
-  "id": "dialogue.kiriko.second",
-  "idolId": "kiriko",
-  "startNodeId": "01",
-  "nodes": {
-    "10": {
-      "id": "10",
-      "speakerId": "producer",
-      "text": "原来如此……霧子真温柔啊。",
-      "nextNodeId": "11"
-    },
-    "11": {
-      "id": "11",
-      "speakerId": "kiriko",
-      "text": "不、不是的……！",
-      "nextNodeId": "12"
-    },
-    "12": {
-      "id": "12",
-      "speakerId": "kiriko",
-      "text": "而且……在灰尘多的地方练习……大家要是得了支气管哮喘就糟了……！",
-      "nextNodeId": "13"
-    },
-    "13": {
-      "id": "13",
-      "speakerId": "producer",
-      "text": "哈哈，那是不是有点想太多了？",
-      "nextNodeId": "14"
-    },
-    "14": {
-      "id": "14",
-      "speakerId": "kiriko",
-      "text": "是、是这样……吗。",
-      "nextNodeId": "15"
-    },
-    "15": {
-      "id": "15",
-      "speakerId": "kiriko",
-      "text": "……",
-      "nextNodeId": "16"
-    },
-    "16": {
-      "id": "16",
-      "speakerId": "producer",
-      "text": "……怎么了？",
-      "nextNodeId": "17"
-    },
-    "17": {
-      "id": "17",
-      "speakerId": "kiriko",
-      "text": "我、我没什么自信……",
-      "nextNodeId": "18"
-    },
-    "18": {
-      "id": "18",
-      "speakerId": "kiriko",
-      "text": "一想到可能会拖大家后腿，就想着至少……至少用这种方式帮上一点忙……！",
-      "nextNodeId": "19"
-    },
-    "19": {
-      "id": "19",
-      "speakerId": "producer",
-      "text": "……这样啊。我明白了。",
-      "nextNodeId": "20"
-    },
-    "20": {
-      "id": "20",
-      "speakerId": "producer",
-      "text": "（……嗯？她按着绷带那里……是疼吗。）",
-      "nextNodeId": "21"
-    },
-    "21": {
-      "id": "21",
-      "speakerId": "producer",
-      "text": "总之，你的心情我大概明白了。",
-      "nextNodeId": "22"
-    },
-    "22": {
-      "id": "22",
-      "speakerId": "producer",
-      "text": "不过，会想到去打扫，我觉得很了不起啊。",
-      "nextNodeId": "23"
-    },
-    "23": {
-      "id": "23",
-      "speakerId": "kiriko",
-      "text": "……！",
-      "nextNodeId": "24"
-    },
-    "24": {
-      "id": "24",
-      "speakerId": "producer",
-      "text": "难道你平时也偷偷打扫？",
-      "nextNodeId": "25"
-    },
-    "25": {
-      "id": "25",
-      "speakerId": "kiriko",
-      "text": "不、不……那个……我也做不了什么大不了的事……",
-      "nextNodeId": "26"
-    },
-    "26": {
-      "id": "26",
-      "speakerId": "producer",
-      "text": "原来如此……那你一定在很多地方都帮了忙。",
-      "nextNodeId": "27"
-    },
-    "27": {
-      "id": "27",
-      "speakerId": "kiriko",
-      "text": "不、不是的……！不过，很少被人这样说……",
-      "nextNodeId": "28"
-    },
-    "28": {
-      "id": "28",
-      "speakerId": "kiriko",
-      "text": "非常……很、很高兴……！",
-      "nextNodeId": "29"
-    },
-    "29": {
-      "id": "29",
-      "speakerId": "producer",
-      "text": "哈哈，是吗。那我也很高兴。",
-      "nextNodeId": "30"
-    },
-    "30": {
-      "id": "30",
-      "speakerId": "producer",
-      "text": "（该怎么说呢——）",
-      "choices": [
-        {
-          "label": "我觉得，这正是霧子的魅力。",
-          "nextNodeId": "31"
-        },
-        {
-          "label": "那……也让我一起打扫吧。",
-          "nextNodeId": "35"
-        },
-        {
-          "label": "这对霧子自己也有好处。",
-          "nextNodeId": "38"
-        }
-      ]
-    },
-    "31": {
-      "id": "31",
-      "speakerId": "kiriko",
-      "text": "……诶？那、那种事……！",
-      "nextNodeId": "32"
-    },
-    "32": {
-      "id": "32",
-      "speakerId": "kiriko",
-      "text": "我从来没想过……魅力……吗。我、我身上也会有……吗。",
-      "nextNodeId": "33"
-    },
-    "33": {
-      "id": "33",
-      "speakerId": "producer",
-      "text": "会有的。不过，得由霧子自己发现才行。",
-      "nextNodeId": "34"
-    },
-    "34": {
-      "id": "34",
-      "speakerId": "kiriko",
-      "text": "……由我……自己……",
-      "nextNodeId": "41"
-    },
-    "35": {
-      "id": "35",
-      "speakerId": "kiriko",
-      "text": "那、那样……太不好意思了……！",
-      "nextNodeId": "36"
-    },
-    "36": {
-      "id": "36",
-      "speakerId": "producer",
-      "text": "你在说什么。偶像和制作人是两人三脚。",
-      "nextNodeId": "37"
-    },
-    "37": {
-      "id": "37",
-      "speakerId": "kiriko",
-      "text": "……制作人先生……嗯……！我会努力的……！",
-      "nextNodeId": "41"
-    },
-    "38": {
-      "id": "38",
-      "speakerId": "kiriko",
-      "text": "是、是的……我也……能舒服地练习了。",
-      "nextNodeId": "39"
-    },
-    "39": {
-      "id": "39",
-      "speakerId": "producer",
-      "text": "嗯。不过这里也是霧子的练习室啊。",
-      "nextNodeId": "40"
-    },
-    "40": {
-      "id": "40",
-      "speakerId": "kiriko",
-      "text": "……偶像，幽谷霧子……我也是，偶像呢。",
-      "nextNodeId": "41"
-    },
-    "41": {
-      "id": "41",
-      "speakerId": "producer",
-      "text": "（她小声重复了一遍，然后把抹布重新叠好。）"
-    },
-    "01": {
-      "id": "01",
-      "speakerId": "producer",
-      "text": "（嗯？练习室里好像有人。）",
-      "nextNodeId": "02"
-    },
-    "02": {
-      "id": "02",
-      "speakerId": "kiriko",
-      "text": "……きゅっきゅ♪",
-      "nextNodeId": "03"
-    },
-    "03": {
-      "id": "03",
-      "speakerId": "kiriko",
-      "text": "……ごし、ごし♪",
-      "nextNodeId": "04"
-    },
-    "04": {
-      "id": "04",
-      "speakerId": "producer",
-      "text": "早上好，霧子。怎么这么早？今天应该没有早课。",
-      "nextNodeId": "05"
-    },
-    "05": {
-      "id": "05",
-      "speakerId": "producer",
-      "text": "其他人好像也还没到——",
-      "nextNodeId": "06"
-    },
-    "06": {
-      "id": "06",
-      "speakerId": "kiriko",
-      "text": "……あ、制作人先生。お、おはようございます……！",
-      "nextNodeId": "07"
-    },
-    "07": {
-      "id": "07",
-      "speakerId": "kiriko",
-      "text": "我、我稍微早到了一点……！",
-      "nextNodeId": "08"
-    },
-    "08": {
-      "id": "08",
-      "speakerId": "producer",
-      "text": "所以……你在打扫？",
-      "nextNodeId": "09"
-    },
-    "09": {
-      "id": "09",
-      "speakerId": "kiriko",
-      "text": "是、是的……我想，大家能舒舒服服地练习就好了……",
       "nextNodeId": "10"
     }
   }
@@ -37929,186 +38217,6 @@ export const APPROVED_CONTENT: ApprovedContent = {
   }
 },
 {
-  "id": "dialogue.mikoto.first",
-  "idolId": "mikoto",
-  "startNodeId": "1",
-  "nodes": {
-    "1": {
-      "id": "1",
-      "speakerId": "producer",
-      "text": "──打扰了。社长，说要让我见的人是──……",
-      "nextNodeId": "2"
-    },
-    "2": {
-      "id": "2",
-      "speakerId": "mikoto",
-      "text": "社长的话出去了哦。说有别的事必须处理。",
-      "nextNodeId": "3"
-    },
-    "3": {
-      "id": "3",
-      "speakerId": "producer",
-      "text": "诶…………你是……！",
-      "nextNodeId": "4"
-    },
-    "4": {
-      "id": "4",
-      "speakerId": "mikoto",
-      "text": "──緋田美琴。请多指教。",
-      "nextNodeId": "5"
-    },
-    "5": {
-      "id": "5",
-      "speakerId": "producer",
-      "text": "请、请多指教……话说回来你……！",
-      "nextNodeId": "6"
-    },
-    "6": {
-      "id": "6",
-      "speakerId": "producer",
-      "text": "你怎么会在这里……？",
-      "nextNodeId": "7"
-    },
-    "7": {
-      "id": "7",
-      "speakerId": "mikoto",
-      "text": "…………我之前组的组合，活动结束了。",
-      "nextNodeId": "8"
-    },
-    "8": {
-      "id": "8",
-      "speakerId": "mikoto",
-      "text": "之后也退出了原来的事务所，正在找新的地方。",
-      "nextNodeId": "9"
-    },
-    "9": {
-      "id": "9",
-      "speakerId": "mikoto",
-      "text": "所以，我想参加 283 制作的甄选。",
-      "nextNodeId": "10"
-    },
-    "10": {
-      "id": "10",
-      "speakerId": "producer",
-      "text": "诶…………！",
-      "nextNodeId": "11"
-    },
-    "11": {
-      "id": "11",
-      "speakerId": "mikoto",
-      "text": "我去问了，事务所就让我过来了。",
-      "nextNodeId": "12"
-    },
-    "12": {
-      "id": "12",
-      "speakerId": "mikoto",
-      "text": "天井社长让我在这里等制作人……",
-      "nextNodeId": "13"
-    },
-    "13": {
-      "id": "13",
-      "speakerId": "mikoto",
-      "text": "你就是那位制作人？",
-      "nextNodeId": "14"
-    },
-    "14": {
-      "id": "14",
-      "speakerId": "producer",
-      "text": "是、是的。我是做制作人的……",
-      "nextNodeId": "15"
-    },
-    "15": {
-      "id": "15",
-      "speakerId": "mikoto",
-      "text": "这样。太好了。那么──",
-      "nextNodeId": "16"
-    },
-    "16": {
-      "id": "16",
-      "speakerId": "mikoto",
-      "text": "283 制作在签偶像的时候，要做怎样的测试？",
-      "nextNodeId": "17"
-    },
-    "17": {
-      "id": "17",
-      "speakerId": "mikoto",
-      "text": "舞蹈？唱歌？还是别的什么？",
-      "nextNodeId": "18"
-    },
-    "18": {
-      "id": "18",
-      "speakerId": "mikoto",
-      "text": "反正，我什么都准备好再来的。",
-      "nextNodeId": "19"
-    },
-    "19": {
-      "id": "19",
-      "speakerId": "producer",
-      "text": "……………………我明白了。",
-      "nextNodeId": "20"
-    },
-    "20": {
-      "id": "20",
-      "speakerId": "producer",
-      "text": "那样的话，现在就到练习室，让我看看你的歌和舞，可以吗？",
-      "nextNodeId": "21"
-    },
-    "21": {
-      "id": "21",
-      "speakerId": "mikoto",
-      "text": "当然。今天就是为了这个来的。",
-      "nextNodeId": "22"
-    },
-    "22": {
-      "id": "22",
-      "speakerId": "producer",
-      "text": "好。那么请往这边──",
-      "nextNodeId": "23"
-    },
-    "23": {
-      "id": "23",
-      "speakerId": "mikoto",
-      "text": "──呐，制作人。",
-      "nextNodeId": "24"
-    },
-    "24": {
-      "id": "24",
-      "speakerId": "producer",
-      "text": "嗯？",
-      "nextNodeId": "25"
-    },
-    "25": {
-      "id": "25",
-      "speakerId": "mikoto",
-      "text": "我想当偶像。",
-      "nextNodeId": "26"
-    },
-    "26": {
-      "id": "26",
-      "speakerId": "mikoto",
-      "text": "……想到要死。",
-      "nextNodeId": "27"
-    },
-    "27": {
-      "id": "27",
-      "speakerId": "producer",
-      "text": "────……",
-      "nextNodeId": "28"
-    },
-    "28": {
-      "id": "28",
-      "speakerId": "producer",
-      "text": "……测试，我会认真看的。",
-      "nextNodeId": "29"
-    },
-    "29": {
-      "id": "29",
-      "speakerId": "mikoto",
-      "text": "うん……ありがとう。"
-    }
-  }
-},
-{
   "id": "dialogue.mikoto.laundry",
   "idolId": "mikoto",
   "startNodeId": "1",
@@ -42867,114 +42975,6 @@ export const APPROVED_CONTENT: ApprovedContent = {
       "id": "146",
       "speakerId": "nichika",
       "text": "那是当然的吧……咕噜咕噜咕噜──……！！！！！"
-    }
-  }
-},
-{
-  "id": "dialogue.nichika.second",
-  "idolId": "nichika",
-  "startNodeId": "1",
-  "nodes": {
-    "1": {
-      "id": "1",
-      "speakerId": "nichika",
-      "text": "……好……起…………──！",
-      "nextNodeId": "2"
-    },
-    "2": {
-      "id": "2",
-      "speakerId": "producer",
-      "text": "喂、喂……！",
-      "nextNodeId": "3"
-    },
-    "3": {
-      "id": "3",
-      "speakerId": "nichika",
-      "text": "────────成……了呀…………！",
-      "nextNodeId": "4"
-    },
-    "4": {
-      "id": "4",
-      "speakerId": "nichika",
-      "text": "……呀，成功了……！七草にちか，ごーうーかーくー────！",
-      "nextNodeId": "5"
-    },
-    "5": {
-      "id": "5",
-      "speakerId": "producer",
-      "text": "……に、にちか小姐，邻居会听见的……！而且还不算正式入籍──",
-      "nextNodeId": "6"
-    },
-    "6": {
-      "id": "6",
-      "speakerId": "nichika",
-      "text": "不能收回哦……！为了让姐姐也收不回去，我才这么大声的！",
-      "nextNodeId": "7"
-    },
-    "7": {
-      "id": "7",
-      "speakerId": "nichika",
-      "text": "我……要在 283 制作……实习────！",
-      "nextNodeId": "8"
-    },
-    "8": {
-      "id": "8",
-      "speakerId": "producer",
-      "text": "（除了果断，她就是个再平凡不过的……女孩子。）",
-      "nextNodeId": "9"
-    },
-    "9": {
-      "id": "9",
-      "speakerId": "producer",
-      "text": "（──不过，喊出来的这句话，大概收不回去了。）",
-      "nextNodeId": "10"
-    },
-    "10": {
-      "id": "10",
-      "speakerId": "nichika",
-      "text": "…………那个。",
-      "nextNodeId": "11"
-    },
-    "11": {
-      "id": "11",
-      "speakerId": "producer",
-      "text": "嗯？",
-      "nextNodeId": "12"
-    },
-    "12": {
-      "id": "12",
-      "speakerId": "nichika",
-      "text": "刚才那个，请当作没听见哦。",
-      "nextNodeId": "13"
-    },
-    "13": {
-      "id": "13",
-      "speakerId": "producer",
-      "text": "……啊？",
-      "nextNodeId": "14"
-    },
-    "14": {
-      "id": "14",
-      "speakerId": "nichika",
-      "text": "因为，要是没当成，多丢人啊──！",
-      "nextNodeId": "15"
-    },
-    "15": {
-      "id": "15",
-      "speakerId": "producer",
-      "text": "……哈哈。",
-      "nextNodeId": "16"
-    },
-    "16": {
-      "id": "16",
-      "speakerId": "producer",
-      "text": "那，就当没听见。……明天开始，请多指教。",
-      "nextNodeId": "17"
-    },
-    "17": {
-      "id": "17",
-      "speakerId": "nichika",
-      "text": "…………はい。……よろしくお願いしますー。"
     }
   }
 },

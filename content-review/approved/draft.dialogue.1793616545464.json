@@ -1,0 +1,236 @@
+{
+  "id": "draft.dialogue.1793616545464",
+  "kind": "dialogue",
+  "title": "会场里有个抱着贝斯的女孩",
+  "status": "approved",
+  "version": 2,
+  "rootId": "draft.dialogue.haruki.first",
+  "supersedes": "draft.dialogue.haruki.first",
+  "payload": {
+    "id": "dialogue.haruki.first",
+    "idolId": "haruki",
+    "startNodeId": "1",
+    "nodes": {
+      "1": {
+        "id": "1",
+        "text": "创作者集会。展位一间挨一间，空气里混着纸和咖啡的味道。",
+        "nextNodeId": "2"
+      },
+      "2": {
+        "id": "2",
+        "speakerId": "producer",
+        "text": "（这么多创作者聚在一起的活动啊……）",
+        "nextNodeId": "3"
+      },
+      "3": {
+        "id": "3",
+        "speakerId": "producer",
+        "text": "（在这儿挖角……应该不至于吧。能不能碰上点有意思的东西呢）",
+        "nextNodeId": "4"
+      },
+      "4": {
+        "id": "4",
+        "text": "角落里，一个抱着贝斯的女孩正在发传单。接过去的人不多。",
+        "nextNodeId": "5"
+      },
+      "5": {
+        "id": "5",
+        "speakerId": "producer",
+        "text": "（嗯……那孩子抱着乐器。参展的……不，是待会儿上台演出的吗）",
+        "nextNodeId": "6"
+      },
+      "6": {
+        "id": "6",
+        "speakerId": "producer",
+        "text": "（可要是演出者，也太稚气了些……）",
+        "nextNodeId": "7"
+      },
+      "7": {
+        "id": "7",
+        "text": "目光对上了。",
+        "nextNodeId": "8"
+      },
+      "8": {
+        "id": "8",
+        "speakerId": "producer",
+        "text": "……请问，您是待会儿要上台演出的人吗？",
+        "nextNodeId": "9"
+      },
+      "9": {
+        "id": "9",
+        "speakerId": "haruki",
+        "text": "是……！　是的……！",
+        "nextNodeId": "10"
+      },
+      "10": {
+        "id": "10",
+        "speakerId": "haruki",
+        "text": "我之后就要上台，请一定来看",
+        "nextNodeId": "11"
+      },
+      "11": {
+        "id": "11",
+        "speakerId": "producer",
+        "text": "谢谢……！──传单也做得很好啊。",
+        "nextNodeId": "12"
+      },
+      "12": {
+        "id": "12",
+        "speakerId": "haruki",
+        "text": "真的吗？我改了好多遍，听您这么说好开心",
+        "nextNodeId": "13"
+      },
+      "13": {
+        "id": "13",
+        "speakerId": "producer",
+        "text": "诶，这是你自己做的？",
+        "nextNodeId": "14"
+      },
+      "14": {
+        "id": "14",
+        "speakerId": "producer",
+        "text": "厉害啊……！你还要演奏吧。那是──",
+        "nextNodeId": "15"
+      },
+      "15": {
+        "id": "15",
+        "speakerId": "haruki",
+        "text": "是贝斯。虽然还很生疏──",
+        "nextNodeId": "16"
+      },
+      "16": {
+        "id": "16",
+        "speakerId": "haruki",
+        "text": "其实是朋友说少一个人，把我叫去的……",
+        "nextNodeId": "17"
+      },
+      "17": {
+        "id": "17",
+        "speakerId": "haruki",
+        "text": "练了很久，今天是第一次上台",
+        "nextNodeId": "18"
+      },
+      "18": {
+        "id": "18",
+        "speakerId": "producer",
+        "text": "这样啊……！为了朋友，很有胆量啊。",
+        "nextNodeId": "19"
+      },
+      "19": {
+        "id": "19",
+        "speakerId": "haruki",
+        "text": "呵呵～",
+        "nextNodeId": "20"
+      },
+      "20": {
+        "id": "20",
+        "speakerId": "producer",
+        "text": "我是不是打扰到你上台前的集中了。",
+        "nextNodeId": "21"
+      },
+      "21": {
+        "id": "21",
+        "speakerId": "haruki",
+        "text": "……没有，反而是您跟我说话，让我放松下来了",
+        "nextNodeId": "22"
+      },
+      "22": {
+        "id": "22",
+        "speakerId": "haruki",
+        "text": "────这里的人，哪怕只有一个也好，会不会停下来听一听……",
+        "nextNodeId": "23"
+      },
+      "23": {
+        "id": "23",
+        "speakerId": "haruki",
+        "text": "会不会觉得开心呢……",
+        "nextNodeId": "24"
+      },
+      "24": {
+        "id": "24",
+        "speakerId": "haruki",
+        "text": "能不能打动某个人的心呢────",
+        "nextNodeId": "25"
+      },
+      "25": {
+        "id": "25",
+        "speakerId": "producer",
+        "text": "────能不能打动，大概取决于你吧",
+        "nextNodeId": "26"
+      },
+      "26": {
+        "id": "26",
+        "speakerId": "producer",
+        "text": "比起去动那些动不了的心，不如先动你自己的心────把看得见的世界重新涂一遍就好",
+        "nextNodeId": "27"
+      },
+      "27": {
+        "id": "27",
+        "speakerId": "haruki",
+        "text": "──────……",
+        "nextNodeId": "28"
+      },
+      "28": {
+        "id": "28",
+        "speakerId": "haruki",
+        "text": "…………！",
+        "nextNodeId": "29"
+      },
+      "29": {
+        "id": "29",
+        "text": "广播里在叫下一个出场者。",
+        "nextNodeId": "30"
+      },
+      "30": {
+        "id": "30",
+        "speakerId": "haruki",
+        "text": "啊……！不好意思，我差不多该走了……！",
+        "nextNodeId": "31"
+      },
+      "31": {
+        "id": "31",
+        "speakerId": "producer",
+        "text": "嗯，加油……！",
+        "nextNodeId": "32"
+      },
+      "32": {
+        "id": "32",
+        "speakerId": "producer",
+        "text": "（有趣的孩子啊……也去看看她的舞台吧）",
+        "nextNodeId": "33"
+      },
+      "33": {
+        "id": "33",
+        "speakerId": "producer",
+        "text": "（很神奇的孩子。明明是软软的可爱的样子……）",
+        "nextNodeId": "34"
+      },
+      "34": {
+        "id": "34",
+        "speakerId": "producer",
+        "text": "（却像是在看着别的地方）",
+        "nextNodeId": "35"
+      },
+      "35": {
+        "id": "35",
+        "speakerId": "producer",
+        "text": "…………要不要去挖她呢"
+      }
+    }
+  },
+  "annotations": [],
+  "createdAt": "2026-11-02T10:49:05.463Z",
+  "updatedAt": "2026-11-02T10:50:24.832Z",
+  "reviewedAt": "2026-11-02T10:50:24.832Z",
+  "history": [
+    {
+      "status": "review",
+      "at": "2026-11-02T10:49:05.463Z",
+      "note": "日文未翻译，改中文（出处 102800101）"
+    },
+    {
+      "status": "approved",
+      "at": "2026-11-02T10:50:24.832Z"
+    }
+  ]
+}

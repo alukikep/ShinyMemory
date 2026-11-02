@@ -14,7 +14,7 @@ test('buys a gift, stores it, and gives it to an idol', async ({ page }) => {
   await jumpTo(page, 1, 600, 'shopping_street');
 
   await page.getByRole('button', { name: /街角礼品店/ }).click();
-  await expect(page.locator('.shop-item')).toHaveCount(4);
+  await expect(page.locator('.shop-item')).toHaveCount(5);
   await page.getByRole('button', { name: '购买' }).first().click();
   await expect
     .poll(async () => (await getState(page)).inventory['gift.flower'])
@@ -22,6 +22,7 @@ test('buys a gift, stores it, and gives it to an idol', async ({ page }) => {
   await expect
     .poll(async () => (await getState(page)).money)
     .toBe(2500);
+  await expect(page.getByRole('button', { name: /冷却中/ }).first()).toBeVisible();
 
   await page.reload();
   await page.waitForFunction(() => Boolean(window.__SHINY_MEMORY__));

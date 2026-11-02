@@ -381,6 +381,53 @@ export function auditPack(
     }
   }
 
+  for (const facility of index.facilities.values()) {
+    if (!locationIds.has(facility.locationId)) {
+      push(
+        'error',
+        'location-ref',
+        `${facility.id} 指向不存在的地点 ${facility.locationId}`,
+      );
+    }
+    const activity = index.activities.get(facility.activityId);
+    if (!activity) {
+      push(
+        'error',
+        'activity-ref',
+        `${facility.id} 指向不存在的行动 ${facility.activityId}`,
+      );
+    } else if (!activity.levels?.length) {
+      push(
+        'warning',
+        'facility-levels',
+        `${facility.id} 的行动 ${facility.activityId} 没有 levels，升级不会改变训练`,
+      );
+    } else if (activity.levels.length < facility.levels.length) {
+      push(
+        'warning',
+        'facility-levels',
+        `${facility.id} 有 ${facility.levels.length} 级，但行动只有 ${activity.levels.length} 级`,
+      );
+    }
+    if (!facility.varKey.trim()) {
+      push('error', 'facility-var', `${facility.id} 的 varKey 不能为空`);
+    }
+    const seen = new Set<number>();
+    for (const level of facility.levels) {
+      if (seen.has(level.level)) {
+        push('error', 'facility-level', `${facility.id} 等级 ${level.level} 重复`);
+      }
+      seen.add(level.level);
+      if (level.cost <= 0) {
+        push(
+          'error',
+          'facility-cost',
+          `${facility.id} 等级 ${level.level} 的费用必须是正数`,
+        );
+      }
+    }
+  }
+
   for (const chain of index.storyChains.values()) {
     auditChain(chain, push, index);
   }

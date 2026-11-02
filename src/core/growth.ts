@@ -21,7 +21,9 @@ export const RANK_CURVE: Record<Rank, number> = {
 
 export const EXP_TIER_VALUES: Record<ExpTier, number> = {
   1: 1,
+  2: 2,
   3: 3,
+  4: 4,
   5: 5,
   10: 10,
   20: 20,
@@ -74,5 +76,7 @@ export function reduceExpTier(tier: ExpTier): ExpTier {
   if (tier === 20) return 10;
   if (tier === 10) return 5;
   if (tier === 5) return 3;
+  if (tier === 4) return 3;
+  if (tier === 3) return 1;
   return 1;
 }

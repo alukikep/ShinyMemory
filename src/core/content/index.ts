@@ -2,6 +2,7 @@ import type {
   ActivityDef,
   DialogueDef,
   EventDef,
+  FacilityDef,
   ItemDef,
   JobDef,
   ShopDef,
@@ -15,6 +16,7 @@ import { EQUIPS as BASE_EQUIPS } from './equips';
 import { PROLOGUE_DIALOGUES } from './dialogues/prologue';
 import { STORY_CHAINS } from './storyChains';
 import { STARTING_STATE } from './starting';
+import { FACILITIES } from './facilities';
 import vocal from './activities/vocal';
 import dance from './activities/dance';
 import expression from './activities/expression';
@@ -49,6 +51,8 @@ export const JOBS: JobDef[] = [];
 export const ITEMS: ItemDef[] = [];
 
 export const SHOPS: ShopDef[] = [];
+
+export const FACILITY_DEFS: FacilityDef[] = FACILITIES;
 
 export const DIALOGUES: DialogueDef[] = [
   ...PROLOGUE_DIALOGUES,

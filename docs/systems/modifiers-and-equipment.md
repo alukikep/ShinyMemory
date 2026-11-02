@@ -43,7 +43,7 @@ export type ModifierKey =
   | 'duration'       // 行动时长
   | 'travel'         // 移动耗时（0.20 起，见内容状态）
   | 'trainingExp'    // 训练获得的 EXP
-  | 'workMoney';     // 工作报酬
+  | 'workMoney';     // 工作报酬（预留，当前未接入结算）
 
 export type Modifier = {
   key: ModifierKey;
@@ -105,7 +105,7 @@ function modifierSources(state: GameState, ctx): ModifierSource[];
 | `activityDuration` | `Math.max(1, Math.round(base × resolveModifiers(state,'duration')))` |
 | `moveTo` / `takeTransit` | `travelMinutes(state, base)` → `Math.max(1, Math.round(base × resolveModifiers(state,'travel')))`（0.20 起） |
 | `applyAttributeExp` | 增加可选参数 `opts?: { training?: boolean }`；`amount = EXP_TIER_VALUES[tier]`，训练时再 `× resolveModifiers(state,'trainingExp',{idolId})`，**取整后**累加 |
-| 工作报酬结算 | 最终金额 `× resolveModifiers(state,'workMoney')` |
+| 工作报酬结算 | **未接入**。当前 `JobDef.pay` 是固定值，`workReward` 只按属性倍率算；以后要接时在这里加 `× resolveModifiers(state,'workMoney')` |
 
 `applyAttributeExp` 现在没有 context，训练标记只在 `applyEffects` 里算过。所以要把 `training` 透传下来——这正是"需要改造统一数据计算接口"的那部分。
 
@@ -133,16 +133,18 @@ export type EquipDef = {
   slot: EquipSlot;
   description: string;
   modifiers: Modifier[];
-  price?: number;
+  // price?: number;  // 规划中：当前代码没有购买入口
   icon?: string;
 };
 
 // GameState
 equipment?: Partial<Record<EquipSlot, string>>;
+ownedEquips?: string[];
 ```
 
 - 饰品走现有的 `ITEMS` / `SHOPS` / 背包？**不。** 物品是"数量"，饰品是"唯一实例 + 槽位"，混进 `inventory: Record<string, number>` 会立刻别扭（两件同名饰品、装备后从背包移出、卖出时检查是否装备中）。
-- 新增 `EQUIPS: EquipDef[]` 与 `ContentIndex.equips`，商店加一个 `sells: 'items' | 'equips'` 或独立 `equipShop` 列表。
+- 代码现状：`EQUIPS`、`ContentIndex.equips`、装备命令、`ownedEquips`、背包饰品区都已存在；**正式 `EQUIPS` 为空，也没有购买入口**。
+- 以后要卖饰品时：给 `EquipDef` 加 `price`，商店加 `sells: 'items' | 'equips'` 或独立 `equipShop` 列表，不要复用 `ItemDef`。
 - 装备/卸下是命令：`{ type: 'equip'; equipId: string }` / `{ type: 'unequip'; slot: EquipSlot }`。不消耗时间（和购买/赠送一致）。
 
 ## 3. 落地记录
@@ -153,7 +155,7 @@ equipment?: Partial<Record<EquipSlot, string>>;
 | M1 | 四个接入点改走管线，**行为不变**（无装备时总和为 1） | 全量测试通过，数值逐条与改造前一致 |
 | M2 | `EquipDef` / `EQUIPS` / 装备命令 / 存档字段 | fixture 装一件加成分，体力消耗与训练 EXP 按预期变化 |
 | M3 | 背包里的饰品区 + 装备栏 + `explainModifiers` 分解显示 | 浏览器里装备 → 行动消耗数字变化 → 分解能对上 |
-| M4 | 正式内容 1 件饰品 + 商店条目 | 内容体检 0 错误，production 包能买到并装上 |
+| M4 | 正式内容 1 件饰品 + 商店条目 | **未完成**：正式 `EQUIPS` 仍为空，商店不卖饰品 |
 
 M1 是纯重构，必须单独一个提交，且验收标准是"数值零变化"。
 

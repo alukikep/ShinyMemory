@@ -50760,7 +50760,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "category": "gift",
   "price": 600,
   "icon": "sparkle",
-  "maxPurchases": 2,
+  "cooldownMinutes": 4320,
   "gift": {
     "defaultTrustTier": 1,
     "preferences": [
@@ -50779,7 +50779,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "category": "gift",
   "price": 500,
   "icon": "sparkle",
-  "maxPurchases": 3,
+  "cooldownMinutes": 1440,
   "gift": {
     "defaultTrustTier": 1,
     "preferences": [
@@ -50803,7 +50803,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "category": "gift",
   "price": 800,
   "icon": "star",
-  "maxPurchases": 1,
+  "cooldownMinutes": 4320,
   "gift": {
     "defaultTrustTier": 1,
     "preferences": [
@@ -50827,7 +50827,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "category": "gift",
   "price": 200,
   "icon": "book",
-  "maxPurchases": 3,
+  "cooldownMinutes": 1440,
   "gift": {
     "defaultTrustTier": 1,
     "preferences": [
@@ -50851,7 +50851,7 @@ export const APPROVED_CONTENT: ApprovedContent = {
   "category": "keepsake",
   "price": 300,
   "icon": "star",
-  "maxPurchases": 1
+  "cooldownMinutes": 1440
 }
 ],
   shops: [

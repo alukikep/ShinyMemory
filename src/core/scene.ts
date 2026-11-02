@@ -21,6 +21,7 @@ import {
   jobCheckChance,
   activityCost,
   activityDuration,
+  resolveActivity,
   activeJobFor,
   checkCondition,
   effectSummary,
@@ -171,6 +172,7 @@ function activityActionView(
   activity: ActivityDef,
   idolId?: string,
 ): ActionView {
+  activity = resolveActivity(state, activity, idolId);
   const availability = activityAvailability(state, activity, idolId);
   const duration =
     activity.kind === 'sleep'
@@ -564,8 +566,11 @@ function buildPlan(state: GameState): SceneView {
 }
 
 function buildActivityResult(state: GameState): SceneView {
-  const activity = state.pendingActivityId
+  const baseActivity = state.pendingActivityId
     ? getActivity(state.pendingActivityId)
+    : undefined;
+  const activity = baseActivity
+    ? resolveActivity(state, baseActivity)
     : undefined;
   const blocks: TextBlock[] = [];
   if (state.pendingResults?.length) {

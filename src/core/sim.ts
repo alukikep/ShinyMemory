@@ -207,16 +207,52 @@ export function explainModifiers(
   );
 }
 
+/**
+ * 把带等级的行动解析成当前实际生效的一条。
+ *
+ * 关键：返回值的 `id` 始终是基础 id，事件锚点、`pendingActivityId`、
+ * `lastActivityId` 都继续用基础 id；只有名称/时长/消耗/效果被覆盖。
+ */
+export function resolveActivity(
+  state: GameState,
+  activity: ActivityDef,
+  idolId?: string,
+): ActivityDef {
+  if (!activity.levels?.length) return activity;
+  const eligible = activity.levels.filter((level) =>
+    (level.requires ?? []).every((condition) =>
+      checkCondition(condition, state, { idolId }),
+    ),
+  );
+  if (eligible.length === 0) return activity;
+  const level = eligible.reduce((best, current) =>
+    current.level >= best.level ? current : best,
+  );
+  return {
+    ...activity,
+    name: level.name ?? activity.name,
+    description: level.description ?? activity.description,
+    durationMinutes: level.durationMinutes ?? activity.durationMinutes,
+    cost: level.cost ?? activity.cost,
+    effects: level.effects ?? activity.effects,
+    failureEffects: level.failureEffects ?? activity.failureEffects,
+    failureTexts: level.failureTexts ?? activity.failureTexts,
+    resultTexts: level.resultTexts ?? activity.resultTexts,
+    levels: undefined,
+  };
+}
+
 /** 行动实际消耗的体力：基础值 × 全部加成，向上取整且至少 1。 */
 export function activityStaminaCost(
   state: GameState,
   activity: ActivityDef,
   idolId?: string,
 ): number {
-  const base = activity.cost.stamina ?? 0;
+  const resolved = resolveActivity(state, activity, idolId);
+  const base = resolved.cost.stamina ?? 0;
   if (base <= 0) return 0;
   // 零工按制作人对应属性的熟练度再缩放一次（越熟练越省力）。
-  const oddJob = oddJobScale(state, activity)?.stamina ?? 1;
+  const oddJob = oddJobScale(state, resolved)?.stamina ?? 1;
   return Math.max(
     1,
     Math.ceil(base * oddJob * resolveModifiers(state, 'staminaCost', { idolId })),
@@ -229,9 +265,10 @@ export function activityCost(
   activity: ActivityDef,
   idolId?: string,
 ): Cost {
+  const resolved = resolveActivity(state, activity, idolId);
   return {
-    money: activity.cost.money,
-    stamina: activityStaminaCost(state, activity, idolId),
+    money: resolved.cost.money,
+    stamina: activityStaminaCost(state, resolved, idolId),
   };
 }
 
@@ -243,11 +280,12 @@ export function activityDuration(
   state: GameState,
   activity: ActivityDef,
 ): number {
-  const oddJob = oddJobScale(state, activity)?.duration ?? 1;
+  const resolved = resolveActivity(state, activity);
+  const oddJob = oddJobScale(state, resolved)?.duration ?? 1;
   return Math.max(
     1,
     Math.round(
-      activity.durationMinutes * oddJob * resolveModifiers(state, 'duration'),
+      resolved.durationMinutes * oddJob * resolveModifiers(state, 'duration'),
     ),
   );
 }
@@ -641,6 +679,7 @@ export function newGame(seed: number = Date.now()): GameState {
     money: 3000,
     inventory: {},
     shopPurchases: {},
+    shopCooldowns: {},
     storyChains: {},
     flags: {},
     jobs: [],
@@ -785,20 +824,12 @@ export function acceptJob(
   return afterAssign;
 }
 
-/** 未到场：经验降一档，粉丝归零。 */
-function previousExpTier(tier: ExpTier): ExpTier {
-  if (tier >= 20) return 10;
-  if (tier >= 10) return 5;
-  if (tier >= 5) return 3;
-  return 1;
-}
-
 function discountEffects(effects: Effect[]): Effect[] {
   return effects
     .filter((effect) => effect.kind !== 'fans')
     .map((effect) =>
       effect.kind === 'attributeExp'
-        ? { ...effect, tier: previousExpTier(effect.tier) }
+        ? { ...effect, tier: reduceExpTier(effect.tier) }
         : effect,
     );
 }
@@ -956,6 +987,61 @@ export function noteNoEffect(state: GameState, reason = '现在做不了这个�
   addLog(next, reason, 'bad');
   return next;
 }
+/** 商品还在冷却时返回剩余分钟；不在冷却返回 0。 */
+export function shopItemCooldownRemaining(
+  state: GameState,
+  itemId: string,
+): number {
+  const item = CONTENT_INDEX.items.get(itemId);
+  if (!item?.cooldownMinutes) return 0;
+  const last = state.shopCooldowns?.[itemId];
+  if (last === undefined) return 0;
+  return Math.max(0, last + item.cooldownMinutes - state.clock.absoluteMinutes);
+}
+
+export function getFacilityLevel(
+  state: GameState,
+  facilityId: string,
+): number {
+  const facility = CONTENT_INDEX.facilities.get(facilityId);
+  if (!facility) return 0;
+  return getVar(state, facility.varKey);
+}
+
+export function upgradeFacility(
+  state: GameState,
+  facilityId: string,
+): GameState {
+  if (state.phase !== 'plan') return state;
+  const facility = CONTENT_INDEX.facilities.get(facilityId);
+  if (!facility) return state;
+  if (facility.locationId !== state.locationId) return state;
+
+  const current = getVar(state, facility.varKey);
+  const nextLevel = facility.levels.find((level) => level.level === current + 1);
+  if (!nextLevel) return state;
+  if (state.money < nextLevel.cost) return state;
+  if (
+    nextLevel.requires &&
+    !nextLevel.requires.every((condition) => checkCondition(condition, state))
+  ) {
+    return state;
+  }
+
+  const next = clone(state);
+  next.money -= nextLevel.cost;
+  next.vars = {
+    ...(next.vars ?? {}),
+    [facility.varKey]: nextLevel.level,
+  };
+  addLog(
+    next,
+    `${facility.name}升级了：${nextLevel.description}`,
+    'good',
+  );
+  return next;
+}
+
 export function buyItem(state: GameState, itemId: string): GameState {
   if (state.phase !== 'plan') return state;
   const item = CONTENT_INDEX.items.get(itemId);
@@ -970,12 +1056,19 @@ export function buyItem(state: GameState, itemId: string): GameState {
   if (item.maxPurchases !== undefined && purchased >= item.maxPurchases) {
     return state;
   }
+  if (shopItemCooldownRemaining(state, itemId) > 0) return state;
   if (state.money < item.price) return state;
 
   const next = clone(state);
   next.money -= item.price;
   next.inventory[itemId] = (next.inventory[itemId] ?? 0) + 1;
   next.shopPurchases[itemId] = purchased + 1;
+  if (item.cooldownMinutes) {
+    next.shopCooldowns = {
+      ...(next.shopCooldowns ?? {}),
+      [itemId]: next.clock.absoluteMinutes,
+    };
+  }
   addLog(next, `你在${shop.name}买了${item.name}。`, 'info');
   return next;
 }
@@ -1977,6 +2070,7 @@ export function activityAvailability(
   activity: ActivityDef,
   idolId?: string,
 ): Availability {
+  activity = resolveActivity(state, activity, idolId);
   if (
     state.flags.forced_rest &&
     activity.kind !== 'rest' &&
@@ -2490,6 +2584,7 @@ export function applyActivityDef(
   activity: ActivityDef,
   idolId?: string,
 ): GameState {
+  activity = resolveActivity(state, activity, idolId);
   if (!activityAvailability(state, activity, idolId).ok) return state;
 
   const next = clone(state);
@@ -3223,6 +3318,9 @@ export function handleCommand(
       }
       if (command.type === 'buyItem') {
         return buyItem(state, command.itemId);
+      }
+      if (command.type === 'upgradeFacility') {
+        return upgradeFacility(state, command.facilityId);
       }
       if (command.type === 'giveGift') {
         return giveGift(state, command.itemId, command.idolId);

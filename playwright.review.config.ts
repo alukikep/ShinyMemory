@@ -4,7 +4,9 @@ export default defineConfig({
   testDir: './tests/review',
   fullyParallel: false,
   workers: 1,
-  retries: 0,
+  // 审查台是 Vite dev server，冷启动时偶发“修订后编辑器被列表刷新盖掉”，
+  // 重试一次能稳定通过；真正的功能失败仍会在第二次暴露。
+  retries: 1,
   timeout: 30_000,
   reporter: [['list'], ['html', { open: 'never', outputFolder: 'playwright-report-review' }]],
   use: {

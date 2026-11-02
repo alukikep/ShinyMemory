@@ -269,8 +269,14 @@ function ItemPreview({ payload }: { payload: Record<string, unknown> }) {
           <strong>¥{String(payload.price ?? '—')}</strong>
         </div>
         <div>
-          <span>限购</span>
-          <strong>{String(payload.maxPurchases ?? '不限')}</strong>
+          <span>限购 / 冷却</span>
+          <strong>
+            {payload.maxPurchases !== undefined
+              ? `限购 ${String(payload.maxPurchases)}`
+              : payload.cooldownMinutes !== undefined
+                ? `冷却 ${String(payload.cooldownMinutes)} 分钟`
+                : '不限'}
+          </strong>
         </div>
       </div>
       {gift ? (

@@ -50,6 +50,9 @@
 | 39 | **说话人没有 ActorDef，名字静默变空** | ルカ 的门口戏里加了"前事务所的经纪人"，她不是偶像也不排班；`speakerId` 解析顺序是 idol → actor → `SPEAKER_NAMES` → **空**，台词照常显示、署名空白，`tsc` 与校验都不报 | 不排班的说话人登记进 `SPEAKER_NAMES`（`src/core/labels.ts`，已有 `producer` 先例）；新写对话时若 `speakerId` 不是偶像 id，先去那里加一条 |
 | 38 | **"待审"名单把已上线的章节也列进去** | `content:anchors` 用 `storyChains.has(chapterId)` 判"有没有接进剧情链"，而多步卡的 `chapterId` 是**步骤 id**（`nichika-house`），链 id 是 `nichika-kuro`——于是 95 个已上线章节全部被打成"对话待审，过审后再加"，每次构建刷 95 行假警报，真正的待审反而被埋掉 | 改成按**对话实际在不在包里**判（`stepFor(chapter)` → `index.dialogues.has(dialogueId)`）；`stepIndex` 扩到 arc 链（活动剧情的 chapterId 就是步骤 id）。修完输出 0 行 |
 | 36 | **一段对话里跨了两天两地点** | 果穗的招募剧情（原作 `100900101` 是"公园当天 → 第二天事务所"）被写成一段 34 节点的对话，而链的第 1 步挂在公园、第 2 步才到事务所：玩家在公园点开对话，演到一半人已经在事务所、还过了一天；更糟的是她在这段里就说完了"想当偶像"，下一步却又演第一次参观 | 规则「一段对话 = 一个地点、一段连续时间」写进 playbook §4.6（含拆分配方和 3 问清单）；`new-idol.md` 验收清单加"每一步只有一场戏"；审查台的链预览显示每步的时间窗。**机器查不出"你有没有把两天的戏写成一段"**，这条靠人审前自查 |
+| 40 | **文档数值与代码漂移** | 零工文档写 ¥280/¥220/¥150，实际是 ¥56/¥52/¥25；礼物写成"主要钱坑"，但终身限购总额只有 ¥4,400；README 还写着 1 偶像/8 地点 | 数值文档先标代码出处；本轮按 `PRODUCTION_PACK` 校准 numbers / content-standards / README，冲突时以代码为准 |
+| 41 | **内容体检和游戏加载的不是同一个包** | `content:audit` 没拼 `PENDING_CHAPTERS`，误报 `job.first_live` 的解锁 flag 没人设置；`productionPack` 其实是拼了的 | 抽 `attachPendingChapters` 单一实现，`productionPack` / `content:audit` / `content:validate` 共用；复跑 0 错误 0 警告 |
+| 42 | **设施升级差点换掉训练 action id** | 正式包有 82 条事件锚定 `vocal`/`dance`/`expression`；如果中级/高级训练用新 id，这些事件全部静默失效 | `ActivityDef.levels` + `resolveActivity` 保留基础 id；`activityLevels.test` 对每级断言 `resolved.id === 'vocal'` |
 
 ---
 
@@ -116,7 +119,7 @@ npm run build             # 上面全部 + 类型 + 打包
 | 冒烟 | `npm run e2e:smoke` | 日常小改（approved / job / mamimi 三条，覆盖构建载入、派活、完整一日流） |
 | 全量 | `npm run e2e` | **提交前、改引擎/地图/存档时** |
 
-全量 14 条在 2 worker 下约 1 分钟；单条通常 3–6 秒。判断标准：
+`npm run e2e` 是正式内容配置的 41 条，2 worker 下约 1–2 分钟；四种配置合计 66 条（41 + 20 + 3 + 2）。单条通常 3–6 秒。判断标准：
 
 - 改了 `sim.ts` / `scene.ts` / `CityMap` / 地点 / 存档 → 全量；
 - 只改文案或某一条内容 → 单条；

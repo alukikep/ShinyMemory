@@ -292,7 +292,7 @@ function validateStory(payload: Record<string, unknown>, errors: string[]): void
 }
 
 const ITEM_CATEGORIES = ['gift', 'keepsake', 'consumable'] as const;
-const EXP_TIERS = [1, 3, 5, 10, 20] as const;
+const EXP_TIERS = [1, 2, 3, 4, 5, 10, 20] as const;
 
 function validateItem(payload: Record<string, unknown>, errors: string[]): void {
   requireString(payload.id, 'payload.id', errors);
@@ -320,6 +320,14 @@ function validateItem(payload: Record<string, unknown>, errors: string[]): void 
       errors.push('payload.maxPurchases 必须是正数');
     }
   }
+  if (payload.cooldownMinutes !== undefined) {
+    if (
+      typeof payload.cooldownMinutes !== 'number' ||
+      payload.cooldownMinutes <= 0
+    ) {
+      errors.push('payload.cooldownMinutes 必须是正数');
+    }
+  }
   if (payload.gift !== undefined) {
     if (!isRecord(payload.gift)) {
       errors.push('payload.gift 必须是对象');
@@ -330,7 +338,7 @@ function validateItem(payload: Record<string, unknown>, errors: string[]): void 
       typeof gift.defaultTrustTier !== 'number' ||
       !(EXP_TIERS as readonly number[]).includes(gift.defaultTrustTier)
     ) {
-      errors.push('gift.defaultTrustTier 必须是 1 / 3 / 5 / 10 / 20');
+      errors.push('gift.defaultTrustTier 必须是 1 / 2 / 3 / 4 / 5 / 10 / 20');
     }
     if (gift.preferences !== undefined) {
       if (!Array.isArray(gift.preferences)) {

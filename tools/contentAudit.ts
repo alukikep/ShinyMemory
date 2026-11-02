@@ -2,6 +2,7 @@ import { auditPack } from '../src/core/contentAudit.js';
 import { buildContentIndex } from '../src/core/contentIndexCore.js';
 import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
 import { BASE_PACK } from '../src/core/content/basePack.js';
+import { attachPendingChapters } from '../src/core/content/assemblePack.js';
 import { mergeApprovedContent } from '../src/review/approval.js';
 import { readApprovedDrafts } from './approvedFiles.js';
 
@@ -10,13 +11,18 @@ const approved = packApprovedFiles(
   Object.fromEntries(drafts.map(({ file, draft }) => [file, draft])),
 );
 const { pack, duplicates } = mergeApprovedContent(BASE_PACK, approved);
+
+// 与 productionPack 共用同一拼装：卡面/长线结构要算进来，
+// 否则会误报「工作解锁 flag 没人设置」——真实踩过。
+const fullPack = attachPendingChapters(pack);
+
 const issues = [
   ...duplicates.map((duplicate) => ({
     level: 'error' as const,
     code: 'duplicate-id',
     message: `approved 内容 ID 重复：${duplicate}`,
   })),
-  ...auditPack(buildContentIndex(pack)),
+  ...auditPack(buildContentIndex(fullPack)),
 ];
 
 const errors = issues.filter((issue) => issue.level === 'error');

@@ -12,7 +12,7 @@
     "category": "gift",
     "price": 500,
     "icon": "sparkle",
-    "maxPurchases": 3,
+    "cooldownMinutes": 1440,
     "gift": {
       "defaultTrustTier": 1,
       "preferences": [

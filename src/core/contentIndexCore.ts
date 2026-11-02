@@ -5,6 +5,7 @@ import type {
   DialogueDef,
   EventDef,
   EquipDef,
+  FacilityDef,
   IdolDef,
   IdolStatus,
   ItemDef,
@@ -26,6 +27,7 @@ export type ContentIndex = {
   items: Map<string, ItemDef>;
   shops: Map<string, ShopDef>;
   shopsByLocation: Map<string, ShopDef[]>;
+  facilities: Map<string, FacilityDef>;
   dialogues: Map<string, DialogueDef>;
   storyChains: Map<string, StoryChainDef>;
   locations: Map<string, LocationDef>;
@@ -54,6 +56,7 @@ export type ContentPack = {
   jobs: JobDef[];
   items: ItemDef[];
   shops: ShopDef[];
+  facilities?: FacilityDef[];
   dialogues: DialogueDef[];
   storyChains: StoryChainDef[];
   locations: LocationDef[];
@@ -75,6 +78,7 @@ export function buildContentIndex({
   jobs: JOBS,
   items: ITEMS,
   shops: SHOPS,
+  facilities: FACILITIES = [],
   dialogues: DIALOGUES,
   storyChains: STORY_CHAIN_DEFS,
   locations: LOCATIONS,
@@ -90,6 +94,9 @@ export function buildContentIndex({
   const jobs = new Map(JOBS.map((job) => [job.id, job]));
   const items = new Map(ITEMS.map((item) => [item.id, item]));
   const shops = new Map(SHOPS.map((shop) => [shop.id, shop]));
+  const facilities = new Map(
+    FACILITIES.map((facility) => [facility.id, facility]),
+  );
   const dialogues = new Map(DIALOGUES.map((dialogue) => [dialogue.id, dialogue]));
   const storyChains = new Map(
     STORY_CHAIN_DEFS.map((chain) => [chain.id, chain]),
@@ -204,6 +211,7 @@ export function buildContentIndex({
     items,
     shops,
     shopsByLocation,
+    facilities,
     dialogues,
     storyChains,
     locations,

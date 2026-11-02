@@ -9,7 +9,7 @@ export type ProducerStatKey =
 export type StatKey = SharedStatKey | IdolStatKey;
 
 export type Rank = 'F' | 'E' | 'D' | 'C' | 'B' | 'A' | 'S';
-export type ExpTier = 1 | 3 | 5 | 10 | 20;
+export type ExpTier = 1 | 2 | 3 | 4 | 5 | 10 | 20;
 
 export type SharedStats = Record<SharedStatKey, number>;
 
@@ -238,6 +238,8 @@ export type GameState = {
   money: number;
   inventory: Record<string, number>;
   shopPurchases: Record<string, number>;
+  /** 商品 id → 上次购买的绝对分钟；用于购买冷却。 */
+  shopCooldowns?: Record<string, number>;
   storyChains: Record<string, StoryChainState>;
   pendingDialogueId?: string;
   dialogueChainId?: string;
@@ -483,6 +485,20 @@ export type ActivityCheck = {
   shift?: number;
 };
 
+export type ActivityLevel = {
+  /** 1 起；0 是基础行动本身。 */
+  level: number;
+  requires?: Condition[];
+  name?: string;
+  description?: string;
+  durationMinutes?: number;
+  cost?: Cost;
+  effects?: Effect[];
+  failureEffects?: Effect[];
+  resultTexts?: string[];
+  failureTexts?: string[];
+};
+
 export type ActivityDef = {
   id: string;
   name: string;
@@ -508,6 +524,8 @@ export type ActivityDef = {
   requires?: Condition[];
   resultTexts: string[];
   resultVariants?: { when: Condition[]; text: string }[];
+  /** 设施等级等覆盖项；resolveActivity 选最高满足项。 */
+  levels?: ActivityLevel[];
 };
 
 export type JobCheck = {
@@ -608,6 +626,8 @@ export type ItemDef = {
   icon?: string;
   shopId?: string;
   maxPurchases?: number;
+  /** 购买后到下次可买的游戏内分钟数；与 maxPurchases 可并存。 */
+  cooldownMinutes?: number;
   gift?: {
     defaultTrustTier: ExpTier;
     preferences?: GiftPreference[];
@@ -620,6 +640,28 @@ export type ShopDef = {
   description: string;
   locationId: string;
   itemIds: string[];
+};
+
+export type FacilityLevel = {
+  level: number;
+  cost: number;
+  requires?: Condition[];
+  description: string;
+};
+
+/**
+ * 练习室设施：一间房一条等级线，等级存 `vars[varKey]`。
+ * `activityId` 指向被替换的训练行动；升级只改面板和 vars，
+ * 训练数值由该行动的 `levels` 负责。
+ */
+export type FacilityDef = {
+  id: string;
+  name: string;
+  description: string;
+  locationId: string;
+  activityId: string;
+  varKey: string;
+  levels: FacilityLevel[];
 };
 
 export type EventChoice = {
@@ -784,6 +826,7 @@ export type ActionCommand =
   | { type: 'openJobBoard' }
   | { type: 'attendJob'; jobId: string }
   | { type: 'buyItem'; itemId: string }
+  | { type: 'upgradeFacility'; facilityId: string }
   | { type: 'equip'; equipId: string }
   | { type: 'unequip'; slotKey: string }
   | { type: 'giveGift'; itemId: string; idolId: string }

@@ -2,6 +2,7 @@ import { auditPack } from '../src/core/contentAudit.js';
 import { buildContentIndex } from '../src/core/contentIndexCore.js';
 import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
 import { BASE_PACK } from '../src/core/content/basePack.js';
+import { attachPendingChapters } from '../src/core/content/assemblePack.js';
 import { mergeApprovedContent } from '../src/review/approval.js';
 import { validateDraftShape } from '../src/review/validation.js';
 import { readApprovedDrafts } from './approvedFiles.js';
@@ -24,8 +25,9 @@ const { pack, duplicates } = mergeApprovedContent(BASE_PACK, approved);
 for (const duplicate of duplicates) {
   errors.push(`ID 与现有内容重复：${duplicate}`);
 }
+const fullPack = attachPendingChapters(pack);
 const warnings: string[] = [];
-for (const issue of auditPack(buildContentIndex(pack))) {
+for (const issue of auditPack(buildContentIndex(fullPack))) {
   const text = `${issue.code}: ${issue.message}`;
   if (issue.level === 'error') errors.push(`[错误] ${text}`);
   else warnings.push(`[警告] ${text}`);

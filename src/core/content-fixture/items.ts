@@ -9,7 +9,7 @@ export const ITEMS: ItemDef[] = [
     price: 500,
     icon: 'sparkle',
     shopId: 'shopping_street_gift',
-    maxPurchases: 3,
+    cooldownMinutes: 1440,
     gift: {
       defaultTrustTier: 1,
       preferences: [
@@ -34,7 +34,7 @@ export const ITEMS: ItemDef[] = [
     price: 800,
     icon: 'star',
     shopId: 'shopping_street_gift',
-    maxPurchases: 1,
+    cooldownMinutes: 4320,
     gift: {
       defaultTrustTier: 1,
       preferences: [
@@ -59,7 +59,7 @@ export const ITEMS: ItemDef[] = [
     price: 200,
     icon: 'book',
     shopId: 'shopping_street_gift',
-    maxPurchases: 3,
+    cooldownMinutes: 1440,
     gift: {
       defaultTrustTier: 1,
       preferences: [
@@ -82,6 +82,16 @@ export const ITEMS: ItemDef[] = [
     description: '一张从街角照相馆买到的照片，边角有点翘。',
     category: 'keepsake',
     price: 300,
+    icon: 'star',
+    shopId: 'shopping_street_gift',
+    cooldownMinutes: 1440,
+  },
+  {
+    id: 'keepsake.pass',
+    name: '月票夹',
+    description: '买一次就归你的小东西，用来测试永久限购。',
+    category: 'keepsake',
+    price: 100,
     icon: 'star',
     shopId: 'shopping_street_gift',
     maxPurchases: 1,

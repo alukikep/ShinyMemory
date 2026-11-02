@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { CONTENT_INDEX } from '../../core/contentIndex';
+import { shopItemCooldownRemaining } from '../../core/sim';
+import { formatDuration } from '../../core/time';
 import type { GameState, ItemDef } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 import { GameIcon } from './GameIcon';
@@ -77,12 +79,15 @@ export function ShopModal({
             const owned = state.inventory[item.id] ?? 0;
             const soldOut =
               item.maxPurchases !== undefined && purchased >= item.maxPurchases;
+            const cooldown = shopItemCooldownRemaining(state, item.id);
             const unaffordable = state.money < item.price;
             const reason = soldOut
-              ? '售罄'
-              : unaffordable
-                ? '金钱不足'
-                : null;
+              ? '已售罄'
+              : cooldown > 0
+                ? `冷却中 · ${formatDuration(cooldown)}`
+                : unaffordable
+                  ? '金钱不足'
+                  : null;
 
             return (
               <article
@@ -104,6 +109,8 @@ export function ShopModal({
                       <span>
                         已购 {purchased}/{item.maxPurchases}
                       </span>
+                    ) : item.cooldownMinutes ? (
+                      <span>购买冷却 {formatDuration(item.cooldownMinutes)}</span>
                     ) : null}
                   </div>
                 </div>

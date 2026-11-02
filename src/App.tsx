@@ -18,6 +18,7 @@ import { ProducerPanel } from './ui/components/ProducerPanel';
 import { SavePanel } from './ui/components/SavePanel';
 import { ScenePanel } from './ui/components/ScenePanel';
 import { ShopModal } from './ui/components/ShopModal';
+import { FacilityModal } from './ui/components/FacilityModal';
 import { JobBoard } from './ui/components/JobBoard';
 import { StatsPanel } from './ui/components/StatsPanel';
 
@@ -59,6 +60,7 @@ export default function App() {
   const [producerOpen, setProducerOpen] = useState(false);
   const [handbookOpen, setHandbookOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
+  const [facilityOpen, setFacilityOpen] = useState(false);
   const [jobBoardOpen, setJobBoardOpen] = useState(false);
   const [savePanel, setSavePanel] = useState<'save' | 'load' | null>(null);
   const [saveNotice, setSaveNotice] = useState<string | undefined>();
@@ -75,6 +77,16 @@ export default function App() {
           name: shop.name,
           description: shop.description,
           onOpen: () => setShopOpen(true),
+        }
+      : undefined;
+  const sceneFacility =
+    state.locationId === 'practice_room' &&
+    scene.phase === 'plan' &&
+    CONTENT_INDEX.facilities.size > 0
+      ? {
+          name: '设施管理室',
+          description: '三间训练房。花钱升级，换更紧凑的课程。',
+          onOpen: () => setFacilityOpen(true),
         }
       : undefined;
 
@@ -121,6 +133,7 @@ export default function App() {
       setScheduleOpen(false);
       setBackpackOpen(false);
       setShopOpen(false);
+      setFacilityOpen(false);
       setSavePanel(null);
       setSaveNotice('已读取存档。');
     } else {
@@ -317,6 +330,7 @@ export default function App() {
                 }}
                 onMove={(locationId) => act({ type: 'move', locationId })}
                 shopEntry={sceneShop}
+                facilityEntry={sceneFacility}
               />
               {scene.phase === 'plan' ? (
                 <CityMap
@@ -405,6 +419,16 @@ export default function App() {
           state={state}
           onClose={() => setJobBoardOpen(false)}
           onAccept={(command) => act(command)}
+        />
+      ) : null}
+
+      {facilityOpen ? (
+        <FacilityModal
+          state={state}
+          onClose={() => setFacilityOpen(false)}
+          onUpgrade={(facilityId) =>
+            act({ type: 'upgradeFacility', facilityId })
+          }
         />
       ) : null}
 

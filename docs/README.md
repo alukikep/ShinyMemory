@@ -9,6 +9,9 @@
 | [当前路线图](current/roadmap.md) | 当前进度、下一步计划、优先级和开放问题 |
 | [未来需求](current/future-requirements.md) | 已确认但暂不实现的功能需求 |
 | [内容数值标准](current/content-standards.md) | 时长、体力、金钱、经验、粉丝的档位表 |
+| [金钱出口与两项系统改动](current/money-sinks.md) | 商店冷却/永久限购、设施替换、经济评估（已实现） |
+| [实施计划 · 金钱出口与设施](current/impl-money-sinks.md) | Phase 0–4、文件、测试、验收 |
+| [点子与灵感](current/ideas.md) | 未确认的设想：汽车、永久道具、办公室真房间等 |
 | [自动验收](current/acceptance.md) | 命令、测试文件、状态桥与编写约定 |
 | [给 AI 的工作约定](../AGENTS.md) | 每次任务先读：三段式、经验回流、六条硬性禁止 |
 | [开发约定](current/dev-guide.md) | 本轮踩过的坑、机器约束、测试/截图成本分工、未清的技术债 |

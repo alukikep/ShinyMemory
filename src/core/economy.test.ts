@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { newGame, applyActivity, buyItem, giveGift } from './sim';
+import {
+  newGame,
+  applyActivity,
+  buyItem,
+  giveGift,
+  shopItemCooldownRemaining,
+} from './sim';
 import type { GameState } from './types';
 
 function atShop(seed = 1): GameState {
@@ -18,7 +24,7 @@ describe('item economy', () => {
     expect(next.shopPurchases['gift.flower']).toBe(1);
   });
 
-  it('does not buy outside the shop, without money, or past the limit', () => {
+  it('does not buy outside the shop, without money, or during cooldown', () => {
     const outside = atShop();
     outside.locationId = 'home';
     expect(buyItem(outside, 'gift.flower')).toBe(outside);
@@ -27,14 +33,24 @@ describe('item economy', () => {
     poor.money = 100;
     expect(buyItem(poor, 'gift.flower')).toBe(poor);
 
-    let state = atShop();
-    for (let index = 0; index < 3; index += 1) {
-      state = buyItem(state, 'gift.flower');
-    }
-    const capped = buyItem(state, 'gift.flower');
-    expect(capped.shopPurchases['gift.flower']).toBe(3);
-    expect(capped.inventory['gift.flower']).toBe(3);
-    expect(capped.money).toBe(1500);
+    const first = buyItem(atShop(), 'gift.flower');
+    expect(shopItemCooldownRemaining(first, 'gift.flower')).toBe(1440);
+    expect(buyItem(first, 'gift.flower')).toBe(first);
+
+    const later = {
+      ...first,
+      clock: { absoluteMinutes: first.clock.absoluteMinutes + 1440 },
+    };
+    const second = buyItem(later, 'gift.flower');
+    expect(second.shopPurchases['gift.flower']).toBe(2);
+    expect(second.inventory['gift.flower']).toBe(2);
+    expect(second.money).toBe(2000);
+  });
+
+  it('keeps maxPurchases as a permanent sold-out gate', () => {
+    const first = buyItem(atShop(), 'keepsake.pass');
+    expect(first.shopPurchases['keepsake.pass']).toBe(1);
+    expect(buyItem(first, 'keepsake.pass')).toBe(first);
   });
 
   it('gives a gift to the selected idol and consumes it', () => {

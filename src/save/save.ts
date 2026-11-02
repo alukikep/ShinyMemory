@@ -319,6 +319,15 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     next.gameVersion = GAME_VERSION;
   }
 
+  if (next.schemaVersion === 18) {
+    const state = next.state as GameState & {
+      shopCooldowns?: Record<string, number>;
+    };
+    state.shopCooldowns = state.shopCooldowns ?? {};
+    next.schemaVersion = 19;
+    next.gameVersion = GAME_VERSION;
+  }
+
   // 兜底：当前内容里新加的偶像/角色，旧存档里没有条目。
   // 事故 #32：摩美々是在存档纪元 3 之后加进来的，纪元没变 → 旧档照常加载，
   // 但 `state.idols` 里没有她；招募链的 `complete.status` 被守卫静默跳过，

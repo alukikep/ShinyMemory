@@ -135,23 +135,32 @@ test('Mamimi: recruit, card, bond action, topic and a post-lesson event', async 
   await page.getByRole('button', { name: '继续' }).click();
   await expect.poll(() => phase(page)).toBe('idol');
 
-  // ---- 课后事件：周二 17:00 练习室，舞蹈课后 ----
-  // 事件是 40% 概率，最多练 4 节（17:00–19:00 的课时）。
-  await jumpTo(page, 9, 17 * 60, 'practice_room');
-  await page.getByRole('button', { name: /田中摩美々/ }).first().click();
-  await expect(page.getByRole('button', { name: '舞蹈课' })).toBeVisible();
-
+  // ---- 课后事件：舞蹈课后 ----
+  // 初级课 60 分钟，练习时段只够 2 节；事件 40% 概率，
+  // 跨几个练习日重试，避免把“当天 4 节”的旧节奏写死。
   let fired = false;
-  for (let attempt = 0; attempt < 4 && !fired; attempt += 1) {
-    await page.getByRole('button', { name: '舞蹈课' }).click();
-    await expect.poll(() => phase(page)).toBe('activityResult');
-    await page.getByRole('button', { name: '继续' }).click();
-    await expect
-      .poll(async () =>
-        ['event', 'idol', 'plan'].includes((await getState(page)).phase),
-      )
-      .toBe(true);
-    fired = (await getState(page)).phase === 'event';
+  for (const [day, minute] of [
+    [9, 17 * 60],
+    [11, 17 * 60],
+    [13, 15 * 60],
+    [16, 17 * 60],
+  ] as const) {
+    if (fired) break;
+    await jumpTo(page, day, minute, 'practice_room');
+    await page.getByRole('button', { name: /田中摩美々/ }).first().click();
+    await expect(page.getByRole('button', { name: '舞蹈课' })).toBeVisible();
+
+    for (let attempt = 0; attempt < 2 && !fired; attempt += 1) {
+      await page.getByRole('button', { name: '舞蹈课' }).click();
+      await expect.poll(() => phase(page)).toBe('activityResult');
+      await page.getByRole('button', { name: '继续' }).click();
+      await expect
+        .poll(async () =>
+          ['event', 'idol', 'plan'].includes((await getState(page)).phase),
+        )
+        .toBe(true);
+      fired = (await getState(page)).phase === 'event';
+    }
   }
 
   expect(fired).toBe(true);

@@ -118,21 +118,26 @@ test('Kiriko: recruit, card, bond action, topic and a post-lesson event', async 
   await expect.poll(() => phase(page)).toBe('idol');
 
   // ---- 课后事件：声乐课之后 ----
-  await jumpTo(page, 11, 16 * 60, 'practice_room');
-  await page.getByRole('button', { name: /幽谷霧子/ }).first().click();
-  await expect(page.getByRole('button', { name: '声乐课' })).toBeVisible();
-
+  // 初级课 60 分钟，她的练习时段只够 2–3 节；事件 40% 概率，
+  // 所以跨几个练习日重试，而不是在同一天硬塞 4 节。
   let fired = false;
-  for (let attempt = 0; attempt < 4 && !fired; attempt += 1) {
-    await page.getByRole('button', { name: '声乐课' }).click();
-    await expect.poll(() => phase(page)).toBe('activityResult');
-    await page.getByRole('button', { name: '继续' }).click();
-    await expect
-      .poll(async () =>
-        ['event', 'idol', 'plan'].includes((await getState(page)).phase),
-      )
-      .toBe(true);
-    fired = (await getState(page)).phase === 'event';
+  for (const day of [11, 15, 17, 18]) {
+    if (fired) break;
+    await jumpTo(page, day, 16 * 60, 'practice_room');
+    await page.getByRole('button', { name: /幽谷霧子/ }).first().click();
+    await expect(page.getByRole('button', { name: '声乐课' })).toBeVisible();
+
+    for (let attempt = 0; attempt < 2 && !fired; attempt += 1) {
+      await page.getByRole('button', { name: '声乐课' }).click();
+      await expect.poll(() => phase(page)).toBe('activityResult');
+      await page.getByRole('button', { name: '继续' }).click();
+      await expect
+        .poll(async () =>
+          ['event', 'idol', 'plan'].includes((await getState(page)).phase),
+        )
+        .toBe(true);
+      fired = (await getState(page)).phase === 'event';
+    }
   }
 
   expect(fired).toBe(true);

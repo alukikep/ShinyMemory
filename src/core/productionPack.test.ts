@@ -63,4 +63,21 @@ describe('production pack', () => {
       ).toBe(true);
     }
   });
+
+  it('keeps facility levels aligned with their training actions', () => {
+    expect(PRODUCTION_PACK.facilities?.map((facility) => facility.id)).toEqual([
+      'vocal',
+      'dance',
+      'expression',
+    ]);
+    for (const facility of PRODUCTION_PACK.facilities ?? []) {
+      const activity = PRODUCTION_PACK.activities.find(
+        (entry) => entry.id === facility.activityId,
+      );
+      expect(activity, `设施 ${facility.id} 的行动不存在`).toBeDefined();
+      expect(activity?.levels?.map((level) => level.level)).toEqual(
+        facility.levels.map((level) => level.level),
+      );
+    }
+  });
 });

@@ -1,6 +1,6 @@
 # 自动验收
 
-> 当前有效 · 2026-10-28
+> 当前有效 · 2026-11-02
 
 ## 命令
 
@@ -10,23 +10,24 @@
 | `npm run content:validate` | 内容结构校验 + 内容体检 + 剧情引用校验 | 无 |
 | `npm run content:audit` | 只跑内容体检 | 无 |
 | `npm run acceptance` | `npm test` + fixture 构建 + 引擎 E2E + 内容 E2E | fixture |
-| `npm run acceptance:prologue` | 正式序章 E2E | production |
+| `npm run acceptance:prologue` | 正式内容 E2E | production |
 | `npm run acceptance:review` | 内容审查页 E2E | production |
 | `npm run build` / `build:fixture` | 类型检查 + 内容校验 + 打包 | — |
 
-当前通过量：
+当前通过量（2026-11-02）：
 
 ```text
-Vitest            283 passed
-内容结构/体检      4 passed
-引擎 E2E          19 passed
-内容 E2E           3 passed
-正式序章 E2E        1 passed
-审查 E2E            2 passed
+Vitest            445 passed / 63 files
 内容体检            0 错误 0 警告
+正式 E2E           41 passed（prologue）
+引擎 E2E           20 passed
+内容 E2E            3 passed
+审查 E2E            2 passed（配置 retries=1；Vite 冷启动偶发编辑器被列表刷新盖掉）
 ```
 
-## 测试文件
+E2E 的 66 条按配置分开跑：`playwright.prologue.config.ts` 41 条、`playwright.config.ts` 20 条、`playwright.content.config.ts` 3 条、`playwright.review.config.ts` 2 条。
+
+## 测试文件（代表性）
 
 ```text
 tests/acceptance/
@@ -38,6 +39,7 @@ tests/acceptance/
   producer.spec.ts     制作人面板
   equipment.spec.ts    发放饰品 → 装备 → 卸下
   handbook.spec.ts     手册空状态、相遇后的进行中条目
+  idolActivity.spec.ts 偶像专属行动
   debug.spec.ts        剧情链调试表（地点不对 / 可以触发）
   responsive.spec.ts   四档视口布局
 tests/content/
@@ -45,6 +47,9 @@ tests/content/
   meguru.spec.ts       第二条链的解锁流程
 tests/prologue/
   mano.spec.ts         事务所序章 → 两次公园相遇 → 招募
+  facility.spec.ts     练习室 → 设施管理室面板
+  <idol>.spec.ts       28 人招募/卡面/日程冒烟（每个角色一条）
+  saveBackfill.spec.ts 删档 → 刷新 → 招募回填
 tests/review/
   review.spec.ts       草稿 → 批注 → 审批
 ```
@@ -54,7 +59,7 @@ tests/review/
 E2E 跑在**构建产物**上（`vite preview`），不是 dev server，所以改完代码必须重新构建：
 
 - 引擎与内容验收用 **fixture 内容包**（真乃 / 灯织 / 巡 + 测试用事件），`build:fixture`。
-- 正式序章与审查验收用 **production 内容包**（只有真乃），`build`。
+- 正式内容验收用 **production 内容包**（28 位偶像 + approved 内容 + 卡面章节），`build`。
 
 `npm run acceptance` 已经包含构建；单独跑某个 spec 时要注意先构建对应模式。
 

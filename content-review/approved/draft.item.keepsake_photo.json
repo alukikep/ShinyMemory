@@ -12,7 +12,7 @@
     "category": "keepsake",
     "price": 300,
     "icon": "star",
-    "maxPurchases": 1
+    "cooldownMinutes": 1440
   },
   "annotations": [],
   "createdAt": "2026-10-29T12:54:55.285Z",

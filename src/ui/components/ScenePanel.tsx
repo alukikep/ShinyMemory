@@ -31,6 +31,11 @@ type ScenePanelProps = {
     description: string;
     onOpen: () => void;
   };
+  facilityEntry?: {
+    name: string;
+    description: string;
+    onOpen: () => void;
+  };
 };
 
 export function ScenePanel({
@@ -38,6 +43,7 @@ export function ScenePanel({
   onAction,
   onMove,
   shopEntry,
+  facilityEntry,
 }: ScenePanelProps) {
   return (
     <section className="panel scene-panel" id="scene-panel">
@@ -186,6 +192,23 @@ export function ScenePanel({
           </button>
         ))}
       </div>
+
+      {facilityEntry ? (
+        <button
+          type="button"
+          className="scene-shop-entry"
+          onClick={facilityEntry.onOpen}
+        >
+          <span className="scene-shop-icon">
+            <GameIcon name="building" size={20} />
+          </span>
+          <span className="scene-shop-copy">
+            <strong>{facilityEntry.name}</strong>
+            <small>{facilityEntry.description}</small>
+          </span>
+          <span className="scene-shop-action">进入管理室 →</span>
+        </button>
+      ) : null}
 
       {shopEntry ? (
         <button

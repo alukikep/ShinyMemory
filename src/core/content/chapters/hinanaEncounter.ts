@@ -16,6 +16,7 @@ export const hinanaEncounter: StoryChainDef = {
   idolId: 'hinana',
   priority: 10,
   title: '楽しい担当',
+  revealWhen: [{ kind: 'idolStatus', idolId: 'toru', status: 'recruited' }],
   steps: [
     {
       id: 'hinana-interview-1',
@@ -24,6 +25,7 @@ export const hinanaEncounter: StoryChainDef = {
       dialogueId: 'dialogue.hinana.first',
       actionLabel: '面试室的门被很响地推开',
       source: '102300101',
+      when: [{ kind: 'idolStatus', idolId: 'toru', status: 'recruited' }],
       complete: { status: 'known', nextStepDelayDays: 2 },
     },
     {
@@ -33,6 +35,7 @@ export const hinanaEncounter: StoryChainDef = {
       dialogueId: 'dialogue.hinana.second',
       actionLabel: '第一次去看她的课',
       source: '102300102',
+      when: [{ kind: 'idolStatus', idolId: 'toru', status: 'recruited' }],
       complete: { status: 'recruited' },
     },
   ],

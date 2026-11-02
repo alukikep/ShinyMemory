@@ -37,13 +37,20 @@ test('Koito: interview, papers; five card chapters, study and an event', async (
   await reset(page, 1);
   await finishDialogue(page);
 
+  // 前置：ノクチル 的另外三人要等透先进事务所
+  await jumpTo(page, 1, 16 * 60 + 30, 'station');
+  await pick(page, '站前，一个女生看着公交站牌');
+  await jumpTo(page, 3, 17 * 60 + 30, 'office');
+  await pick(page, '契约书摊在事务所的桌上');
+  expect((await getState(page)).idols.toru?.status).toBe('recruited');
+
   // ---- 第 1 步：面试 ----
-  await jumpTo(page, 1, 15 * 60, 'office');
+  await jumpTo(page, 8, 15 * 60, 'office');
   await pick(page, '面试室的椅子上坐得笔直');
   expect((await getState(page)).idols[KOITO]?.status).toBe('known');
 
   // ---- 第 2 步：交文件（三分支） ----
-  await jumpTo(page, 3, 16 * 60, 'office');
+  await jumpTo(page, 10, 16 * 60, 'office');
   await pick(page, '她抱着一叠文件站在门口');
   expect((await getState(page)).idols[KOITO]?.status).toBe('recruited');
 
@@ -59,32 +66,32 @@ test('Koito: interview, papers; five card chapters, study and an event', async (
   await page.getByRole('button', { name: '关闭日程表' }).click();
 
   // ---- 卡面第一章：写作业（三分支） ----
-  await jumpTo(page, 4, 17 * 60, 'office');
+  await jumpTo(page, 11, 17 * 60, 'office');
   await pick(page, '她趴在桌上写作业');
   expect((await getState(page)).flags['completed.koito.homework']).toBe(true);
 
   // ---- 卡面第二章：清早送她上学（三分支） ----
-  await jumpTo(page, 7, 7 * 60, 'office');
+  await jumpTo(page, 14, 7 * 60, 'office');
   await pick(page, '清早，事务所的门还没开');
   expect((await getState(page)).flags['completed.koito.notebook']).toBe(true);
 
   // ---- 卡面第三章：落选（三分支） ----
-  await jumpTo(page, 10, 16 * 60, 'office');
+  await jumpTo(page, 17, 16 * 60, 'office');
   await pick(page, '她低着头走进事务所');
   expect((await getState(page)).flags['completed.koito.fail']).toBe(true);
 
   // ---- 卡面第四章：公园（线性） ----
-  await jumpTo(page, 13, 17 * 60, 'park');
+  await jumpTo(page, 20, 17 * 60, 'park');
   await pick(page, '傍晚的公园，她站在游乐设施前');
   expect((await getState(page)).flags['completed.koito.park']).toBe(true);
 
   // ---- 卡面第五章：摄影棚（线性） ----
-  await jumpTo(page, 16, 10 * 60, 'studio');
+  await jumpTo(page, 23, 10 * 60, 'studio');
   await pick(page, '第一次进摄影棚');
   expect((await getState(page)).flags['completed.koito.studio']).toBe(true);
 
   // ---- 专属行动：咖啡店复习（周二傍晚，商店街） ----
-  await jumpTo(page, 23, 17 * 60, 'shopping_street');
+  await jumpTo(page, 30, 17 * 60, 'shopping_street');
   await page.getByRole('button', { name: /福丸小糸/ }).first().click();
   const beforeStudy = await getState(page);
   const study = page.getByRole('button', { name: '陪她在咖啡店复习' });

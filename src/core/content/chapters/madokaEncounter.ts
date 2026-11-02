@@ -17,6 +17,7 @@ export const madokaEncounter: StoryChainDef = {
   idolId: 'madoka',
   priority: 10,
   title: '確かめに来たんです',
+  revealWhen: [{ kind: 'idolStatus', idolId: 'toru', status: 'recruited' }],
   steps: [
     {
       id: 'madoka-cafe-1',
@@ -25,6 +26,7 @@ export const madokaEncounter: StoryChainDef = {
       dialogueId: 'dialogue.madoka.first',
       actionLabel: '站前的喫茶店，有人一直看着你',
       source: '102100101',
+      when: [{ kind: 'idolStatus', idolId: 'toru', status: 'recruited' }],
       complete: { status: 'known', nextStepDelayDays: 2 },
     },
     {
@@ -34,6 +36,7 @@ export const madokaEncounter: StoryChainDef = {
       dialogueId: 'dialogue.madoka.second',
       actionLabel: '第一次宣材写真',
       source: '102100102',
+      when: [{ kind: 'idolStatus', idolId: 'toru', status: 'recruited' }],
       complete: { nextStepDelayDays: 1 },
     },
     {
@@ -43,6 +46,7 @@ export const madokaEncounter: StoryChainDef = {
       dialogueId: 'dialogue.madoka.third',
       actionLabel: 'CD 店门口的小舞台',
       source: '102100102',
+      when: [{ kind: 'idolStatus', idolId: 'toru', status: 'recruited' }],
       complete: { status: 'recruited' },
     },
   ],

@@ -16,6 +16,7 @@ export const koitoEncounter: StoryChainDef = {
   idolId: 'koito',
   priority: 10,
   title: '最初の課題',
+  revealWhen: [{ kind: 'idolStatus', idolId: 'toru', status: 'recruited' }],
   steps: [
     {
       id: 'koito-interview-1',
@@ -24,6 +25,7 @@ export const koitoEncounter: StoryChainDef = {
       dialogueId: 'dialogue.koito.first',
       actionLabel: '面试室的椅子上坐得笔直',
       source: '102200101',
+      when: [{ kind: 'idolStatus', idolId: 'toru', status: 'recruited' }],
       complete: { status: 'known', nextStepDelayDays: 2 },
     },
     {
@@ -33,6 +35,7 @@ export const koitoEncounter: StoryChainDef = {
       dialogueId: 'dialogue.koito.second',
       actionLabel: '她抱着一叠文件站在门口',
       source: '102200102',
+      when: [{ kind: 'idolStatus', idolId: 'toru', status: 'recruited' }],
       complete: { status: 'recruited' },
     },
   ],

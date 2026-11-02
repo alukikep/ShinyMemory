@@ -37,17 +37,24 @@ test('Madoka: cafe, shoot, street; five card chapters, tea and an event', async 
   await reset(page, 1);
   await finishDialogue(page);
 
-  // ---- 第 1 步：站前的喫茶店 ----
+  // 前置：ノクチル 的另外三人要等透先进事务所
   await jumpTo(page, 1, 16 * 60 + 30, 'station');
+  await pick(page, '站前，一个女生看着公交站牌');
+  await jumpTo(page, 3, 17 * 60 + 30, 'office');
+  await pick(page, '契约书摊在事务所的桌上');
+  expect((await getState(page)).idols.toru?.status).toBe('recruited');
+
+  // ---- 第 1 步：站前的喫茶店 ----
+  await jumpTo(page, 8, 16 * 60 + 30, 'station');
   await pick(page, '站前的喫茶店，有人一直看着你');
   expect((await getState(page)).idols[MADOKA]?.status).toBe('known');
 
   // ---- 第 2 步：第一次宣材写真 ----
-  await jumpTo(page, 3, 14 * 60, 'studio');
+  await jumpTo(page, 10, 14 * 60, 'studio');
   await pick(page, '第一次宣材写真');
 
   // ---- 第 3 步：CD 店门口的小舞台（三分支） ----
-  await jumpTo(page, 4, 17 * 60, 'shopping_street');
+  await jumpTo(page, 11, 17 * 60, 'shopping_street');
   await pick(page, 'CD 店门口的小舞台');
   expect((await getState(page)).idols[MADOKA]?.status).toBe('recruited');
 
@@ -63,32 +70,32 @@ test('Madoka: cafe, shoot, street; five card chapters, tea and an event', async 
   await page.getByRole('button', { name: '关闭日程表' }).click();
 
   // ---- 卡面第一章：拿错的咖啡（三分支） ----
-  await jumpTo(page, 4, 19 * 60, 'office');
+  await jumpTo(page, 11, 19 * 60, 'office');
   await pick(page, '她拿起桌上的咖啡');
   expect((await getState(page)).flags['completed.madoka.coffee']).toBe(true);
 
   // ---- 卡面第二章：水边外景（三分支） ----
-  await jumpTo(page, 7, 15 * 60, 'seaside');
+  await jumpTo(page, 14, 15 * 60, 'seaside');
   await pick(page, '外景下见，她沿着水边走');
   expect((await getState(page)).flags['completed.madoka.walk']).toBe(true);
 
   // ---- 卡面第三章：练习室的人走光了（三分支） ----
-  await jumpTo(page, 10, 19 * 60, 'practice_room');
+  await jumpTo(page, 17, 19 * 60, 'practice_room');
   await pick(page, '练习室的人走光了');
   expect((await getState(page)).flags['completed.madoka.blanket']).toBe(true);
 
   // ---- 卡面第四章：桌上的签名草稿 ----
-  await jumpTo(page, 13, 19 * 60, 'office');
+  await jumpTo(page, 20, 19 * 60, 'office');
   await pick(page, '桌上放着一张签名的草稿');
   expect((await getState(page)).flags['completed.madoka.sign']).toBe(true);
 
   // ---- 卡面第五章：收工后的车 ----
-  await jumpTo(page, 16, 18 * 60, 'studio');
+  await jumpTo(page, 23, 18 * 60, 'studio');
   await pick(page, '收工之后，车还停在摄影棚外');
   expect((await getState(page)).flags['completed.madoka.exception']).toBe(true);
 
   // ---- 专属行动：陪她在喫茶店（周五傍晚，站前） ----
-  await jumpTo(page, 19, 16 * 60 + 45, 'station');
+  await jumpTo(page, 26, 16 * 60 + 45, 'station');
   await page.getByRole('button', { name: /樋口円香/ }).first().click();
   const beforeTea = await getState(page);
   const tea = page.getByRole('button', { name: '陪她在喫茶店坐一会儿' });

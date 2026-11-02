@@ -37,13 +37,20 @@ test('Hinana: interview, lesson; five card chapters, sweets and an event', async
   await reset(page, 1);
   await finishDialogue(page);
 
+  // 前置：ノクチル 的另外三人要等透先进事务所
+  await jumpTo(page, 1, 16 * 60 + 30, 'station');
+  await pick(page, '站前，一个女生看着公交站牌');
+  await jumpTo(page, 3, 17 * 60 + 30, 'office');
+  await pick(page, '契约书摊在事务所的桌上');
+  expect((await getState(page)).idols.toru?.status).toBe('recruited');
+
   // ---- 第 1 步：面试 ----
-  await jumpTo(page, 1, 15 * 60, 'office');
+  await jumpTo(page, 8, 15 * 60, 'office');
   await pick(page, '面试室的门被很响地推开');
   expect((await getState(page)).idols[HINANA]?.status).toBe('known');
 
   // ---- 第 2 步：第一次去看她的课（三分支） ----
-  await jumpTo(page, 3, 17 * 60, 'practice_room');
+  await jumpTo(page, 10, 17 * 60, 'practice_room');
   await pick(page, '第一次去看她的课');
   expect((await getState(page)).idols[HINANA]?.status).toBe('recruited');
 
@@ -59,32 +66,32 @@ test('Hinana: interview, lesson; five card chapters, sweets and an event', async
   await page.getByRole('button', { name: '关闭日程表' }).click();
 
   // ---- 卡面第一章：折纸（三分支） ----
-  await jumpTo(page, 4, 17 * 60, 'office');
+  await jumpTo(page, 11, 17 * 60, 'office');
   await pick(page, '她低着头折着什么');
   expect((await getState(page)).flags['completed.hinana.origami']).toBe(true);
 
   // ---- 卡面第二章：站台的果汁（线性） ----
-  await jumpTo(page, 7, 15 * 60, 'station');
+  await jumpTo(page, 14, 15 * 60, 'station');
   await pick(page, '站台等电车，她说想喝果汁');
   expect((await getState(page)).flags['completed.hinana.juice']).toBe(true);
 
   // ---- 卡面第三章：三条消息（三分支） ----
-  await jumpTo(page, 10, 17 * 60, 'office');
+  await jumpTo(page, 17, 17 * 60, 'office');
   await pick(page, '手机上连着三条消息');
   expect((await getState(page)).flags['completed.hinana.paper']).toBe(true);
 
   // ---- 卡面第四章：杂志采访（三分支） ----
-  await jumpTo(page, 13, 15 * 60, 'studio');
+  await jumpTo(page, 20, 15 * 60, 'studio');
   await pick(page, '杂志拍摄之后的采访');
   expect((await getState(page)).flags['completed.hinana.interview']).toBe(true);
 
   // ---- 卡面第五章：马卡龙（线性） ----
-  await jumpTo(page, 16, 16 * 60, 'station');
+  await jumpTo(page, 23, 16 * 60, 'station');
   await pick(page, '喫茶店的桌子被点心占满');
   expect((await getState(page)).flags['completed.hinana.macaron']).toBe(true);
 
   // ---- 专属行动：陪她吃甜的（周二傍晚，商店街） ----
-  await jumpTo(page, 23, 17 * 60, 'shopping_street');
+  await jumpTo(page, 30, 17 * 60, 'shopping_street');
   await page.getByRole('button', { name: /市川雛菜/ }).first().click();
   const beforeSweets = await getState(page);
   const sweets = page.getByRole('button', { name: '陪她吃甜的' });

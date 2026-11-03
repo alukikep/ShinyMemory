@@ -156,6 +156,11 @@ export type StoryChainStep = {
   minDaysAfterPrevious?: number;
   dialogueId: string;
   actionLabel: string;
+  /**
+   * 剧情顶栏显示的地点名；只影响显示，不改变玩家实际位置。
+   * 用于借 home 演“某个角色的家”这类一次性场景。
+   */
+  sceneLocationName?: string;
   /** 这一步的额外前置条件；不满足时地点页不出现行动，手册显示原因。 */
   when?: Condition[];
   /** 这一步完成时结算一次。 */
@@ -336,6 +341,7 @@ export type Effect =
   | { kind: 'scheduleEvent'; eventId: string; inDays: number }
   | { kind: 'unlockSlot'; slot: EquipSlot; amount?: number }
   | { kind: 'grantEquip'; equipId: string }
+  | { kind: 'grantItem'; itemId: string; count?: number }
   | {
       /** 改写某个角色接下来几天的日程；不给 locationId 就是"这几天不在任何地方"。 */
       kind: 'scheduleOverride';
@@ -557,8 +563,17 @@ export type JobDef = {
   requires?: Condition[];
   /** 工作完成后的冷却天数，缺省 0（次日即可再接）。 */
   cooldownDays?: number;
+  /** 接取后至少提前几天才能排到工作；缺省 1（明天）。 */
+  leadDays?: number;
   /** 未解锁时整条从面板消失（剧情解锁用，避免剧透）。 */
   hiddenUntilUnlocked?: boolean;
+};
+
+export type JobDateOption = {
+  day: number;
+  dayLabel: string;
+  available: boolean;
+  reason?: string;
 };
 
 export type JobBoardOffer = {
@@ -570,6 +585,10 @@ export type JobBoardOffer = {
   checkLabel?: string;
   command?: ActionCommand;
   disabledReason?: string;
+  /** 这位偶像可选的日期（含占用/冲突原因）。 */
+  dates: JobDateOption[];
+  /** 她当前被哪份工作占用；有值时日期全部不可用。 */
+  occupiedBy?: string;
   /** 她的属性没达到这项工作的门槛 */
   locked?: boolean;
   /** 为什么不能派她（未达标 / 没有空档） */
@@ -597,6 +616,12 @@ export type JobBoardEntry = {
 export type JobBoardView = {
   entries: JobBoardEntry[];
   focusIdolId: string;
+  /** 事务所工作上限：所有未完成工作共用一个总数。 */
+  slots: {
+    used: number;
+    cap: number;
+    full: boolean;
+  };
 };
 
 export type JobAssignment = {
@@ -628,6 +653,8 @@ export type ItemDef = {
   maxPurchases?: number;
   /** 购买后到下次可买的游戏内分钟数；与 maxPurchases 可并存。 */
   cooldownMinutes?: number;
+  /** 消耗品使用时应用的效果。 */
+  useEffects?: Effect[];
   gift?: {
     defaultTrustTier: ExpTier;
     preferences?: GiftPreference[];
@@ -659,7 +686,8 @@ export type FacilityDef = {
   name: string;
   description: string;
   locationId: string;
-  activityId: string;
+  /** 训练设施指向被替换的行动；事务所设施可以为空。 */
+  activityId?: string;
   varKey: string;
   levels: FacilityLevel[];
 };
@@ -734,7 +762,7 @@ export type LocationDef = {
   description: string;
   isStart?: boolean;
   kind?: LocationKind;
-  /** 入口（kind: 'area'）里的地点 id；进入是 0 分钟移动。 */
+  /** 入口（kind: 'area'）里的地点 id；进入按步行边 0–15 分钟移动。 */
   members?: string[];
   mapX?: number;
   mapY?: number;
@@ -824,8 +852,10 @@ export type ActionCommand =
   | { type: 'acceptJob'; jobId: string; day: number; idolId?: string }
   | { type: 'setFocusIdol'; idolId: string }
   | { type: 'openJobBoard' }
+  | { type: 'cancelJob'; assignmentId: string }
   | { type: 'attendJob'; jobId: string }
   | { type: 'buyItem'; itemId: string }
+  | { type: 'useItem'; itemId: string; count?: number }
   | { type: 'upgradeFacility'; facilityId: string }
   | { type: 'equip'; equipId: string }
   | { type: 'unequip'; slotKey: string }

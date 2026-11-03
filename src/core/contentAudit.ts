@@ -389,20 +389,26 @@ export function auditPack(
         `${facility.id} 指向不存在的地点 ${facility.locationId}`,
       );
     }
-    const activity = index.activities.get(facility.activityId);
-    if (!activity) {
+    const activity = facility.activityId
+      ? index.activities.get(facility.activityId)
+      : undefined;
+    if (facility.activityId && !activity) {
       push(
         'error',
         'activity-ref',
         `${facility.id} 指向不存在的行动 ${facility.activityId}`,
       );
-    } else if (!activity.levels?.length) {
+    } else if (activity && !activity.levels?.length) {
       push(
         'warning',
         'facility-levels',
         `${facility.id} 的行动 ${facility.activityId} 没有 levels，升级不会改变训练`,
       );
-    } else if (activity.levels.length < facility.levels.length) {
+    } else if (
+      activity &&
+      activity.levels &&
+      activity.levels.length < facility.levels.length
+    ) {
       push(
         'warning',
         'facility-levels',
@@ -457,6 +463,13 @@ export function auditPack(
           `${owner} 的 fans 效果指向不存在的偶像 ${effect.idolId}`,
         );
       }
+      if (effect.kind === 'grantItem' && !index.items.has(effect.itemId)) {
+        push(
+          'error',
+          'item-ref',
+          `${owner} 的 grantItem 指向不存在的物品 ${effect.itemId}`,
+        );
+      }
       if (effect.kind !== 'scheduleOverride') continue;
       if (!actorIds.has(effect.actorId)) {
         push(
@@ -501,6 +514,9 @@ export function auditPack(
         checkEffects(choice.effects, `${dialogue.id}/${node.id} 的选项`);
       }
     }
+  }
+  for (const item of index.items.values()) {
+    checkEffects(item.useEffects, `${item.id} 的使用效果`);
   }
 
   // ---- 饰品与检定 ----

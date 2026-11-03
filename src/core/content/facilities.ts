@@ -82,4 +82,54 @@ export const FACILITIES: FacilityDef[] = [
       },
     ],
   },
+  {
+    id: 'office_jobs',
+    name: '工作区',
+    description:
+      '白板、电话和排期表挤在一张桌上。把桌面清开，就能多排一条线。',
+    locationId: 'office',
+    varKey: 'office.jobSlotLevel',
+    levels: [
+      {
+        level: 1,
+        cost: 5000,
+        description: '添一张折叠桌：同时负责 2 份工作。',
+      },
+      {
+        level: 2,
+        cost: 15000,
+        description: '加一部内线电话：同时负责 3 份工作。',
+      },
+      {
+        level: 3,
+        cost: 30000,
+        description: '隔出独立工位：同时负责 4 份工作。',
+      },
+    ],
+  },
+  {
+    id: 'sofa',
+    name: '沙发',
+    description: '事务所角落里的旧沙发。躺下去会陷一点，但还算舒服。',
+    locationId: 'office',
+    activityId: 'rest',
+    varKey: 'facility.sofa',
+    levels: [
+      {
+        level: 1,
+        cost: 3000,
+        description: '换一张能躺下的沙发：休息恢复 20 体力，压力 -6。',
+      },
+      {
+        level: 2,
+        cost: 6000,
+        description: '加靠垫和毯子：休息恢复 25 体力，压力 -8。',
+      },
+      {
+        level: 3,
+        cost: 9000,
+        description: '把角落改成休息区：休息恢复 30 体力，压力 -10。',
+      },
+    ],
+  },
 ];

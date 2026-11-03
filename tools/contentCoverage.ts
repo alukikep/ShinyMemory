@@ -22,6 +22,8 @@ type Row = {
 };
 
 const approved = await readApprovedDrafts();
+const quiet = process.argv.includes('--quiet');
+const failures: string[] = [];
 const merged = mergeApprovedContent(
   BASE_PACK,
   packApprovedFiles(
@@ -96,25 +98,47 @@ for (const idol of [...index.idols.values()]) {
     { unit: '工作（全角色共享）', count: index.jobs.size, min: 2 },
   ];
 
-  console.log(`\n${idol.name}（${idol.id}）${pending ? ' · 接入中' : ''}`);
+  if (!quiet) {
+    console.log(`\n${idol.name}（${idol.id}）${pending ? ' · 接入中' : ''}`);
+  }
   for (const row of rows) {
     const short = row.count < row.min;
-    if (short && !pending) ok = false;
-    console.log(
-      `  ${short ? '×' : '✓'} ${row.unit}：${row.count} / ${row.min}${short && pending ? '（接入中，不算失败）' : ''}`,
-    );
+    if (short && !pending) {
+      ok = false;
+      failures.push(
+        `${idol.name}（${idol.id}）${row.unit}：${row.count} / ${row.min}`,
+      );
+    }
+    if (!quiet) {
+      console.log(
+        `  ${short ? '×' : '✓'} ${row.unit}：${row.count} / ${row.min}${short && pending ? '（接入中，不算失败）' : ''}`,
+      );
+    }
   }
 }
 
 if (merged.duplicates.length > 0) {
   console.log(`\n重复 id：${merged.duplicates.join('，')}`);
+  failures.push(`重复 id：${merged.duplicates.join('，')}`);
   ok = false;
 }
 
-console.log('');
-if (ok) {
-  console.log('覆盖度检查通过。');
+if (quiet) {
+  if (ok) {
+    console.log(`覆盖度：${index.idols.size} 个偶像，全部达标`);
+  } else {
+    console.log(`覆盖度：${index.idols.size} 个偶像，${failures.length} 项未达标`);
+    for (const failure of failures) console.log(`  - ${failure}`);
+  }
 } else {
-  console.log('有缺的内容（见上），按生产手册第 3 节补。');
+  console.log('');
+  if (ok) {
+    console.log('覆盖度检查通过。');
+  } else {
+    console.log('有缺的内容（见上），按生产手册第 3 节补。');
+  }
+}
+
+if (!ok) {
   process.exitCode = 1;
 }

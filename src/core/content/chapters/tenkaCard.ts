@@ -22,6 +22,7 @@ const tenkaCard: StoryChainDef = {
       timeWindow: { fromMinute: 780, toMinute: 1140 },
       dialogueId: 'dialogue.tenka.oversleep',
       actionLabel: '她的电话打不通',
+      sceneLocationName: '甜花的家',
       endLocationId: 'practice_room',
       when: [
         { kind: 'idolStatus', idolId: 'tenka', status: 'recruited' },

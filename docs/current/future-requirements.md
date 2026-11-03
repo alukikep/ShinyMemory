@@ -102,16 +102,17 @@ type WorkReward = {
 | Rank | 体力上限 | 消耗倍率 |
 |---|---:|---:|
 | F | 100 | 1.00 |
-| E | 125 | 1.00 |
-| D | 150 | 0.95 |
-| C | 175 | 0.95 |
-| B | 200 | 0.90 |
-| A | 225 | 0.85 |
-| S | 250 | 0.80 |
+| E | 110 | 0.98 |
+| D | 120 | 0.97 |
+| C | 130 | 0.95 |
+| B | 140 | 0.93 |
+| A | 150 | 0.92 |
+| S | 160 | 0.90 |
 
 规则：
 
 - 体力上限由体能 rank 推导（`maxStamina(state)`），不进存档。
+- 信赖 A 的「信赖的证明」可永久 +2 上限，存入 `vars['stamina.trustBonus']`；28 人最多 +56。
 - 行动消耗 = `max(1, ceil(基础消耗 × 倍率))`。
 - 判定、扣除、结果页预告都走 `activityCost(state, activity)`，不允许各处直接读 `activity.cost.stamina`。
 - 倍率只作用于 `cost.stamina`，不修改 `effect` 里 `sharedStat` 的数值。

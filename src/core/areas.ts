@@ -4,7 +4,8 @@ import type { LocationDef } from './types';
 /**
  * 入口（kind: 'area'）与成员地点的查询。
  *
- * 入口只是导航层：地图画入口，行动/事件/日程仍然认成员地点。
+ * 入口主要是导航层：地图画入口，行动/事件/日程通常认成员地点。
+ * 例外：事务所（office）本身也是办公室，行动仍挂在它上面。
  */
 export function areaMembers(locationId: string): string[] {
   return CONTENT_INDEX.locations.get(locationId)?.members ?? [];

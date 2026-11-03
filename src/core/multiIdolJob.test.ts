@@ -26,6 +26,8 @@ function setup(): GameState {
   state.phase = 'plan';
   state.idols.mano!.status = 'recruited';
   state.idols.hiori!.status = 'recruited';
+  // 这个测试验证“同日两个偶像各接一份”，需要先把工作上限升到 2 份。
+  state.vars = { ...(state.vars ?? {}), 'office.jobSlotLevel': 1 };
   return state;
 }
 

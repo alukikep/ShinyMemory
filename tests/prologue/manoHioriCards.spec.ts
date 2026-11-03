@@ -25,7 +25,7 @@ const chapters = [
   { idol: 'hiori', day: 8, minute: 21 * 60, place: 'practice_room', action: '练习室的灯还亮着', flag: 'completed.hiori.support' },
   { idol: 'mano', day: 9, minute: 19 * 60, place: 'office', action: '灯还亮着，她还在看照片', flag: 'completed.mano.growth' },
   { idol: 'hiori', day: 10, minute: 14 * 60, place: 'shopping_street', action: '她说要找和小饰物', flag: 'completed.hiori.gift' },
-  { idol: 'mano', day: 12, minute: 16 * 60, place: 'home', action: '收工了，她还想再待一会儿', flag: 'completed.mano.afterglow' },
+  { idol: 'mano', day: 12, minute: 16 * 60, place: 'studio', action: '收工了，她还想再待一会儿', flag: 'completed.mano.afterglow' },
   { idol: 'hiori', day: 13, minute: 17 * 60, place: 'office', action: '采访结束了', flag: 'completed.hiori.answer' },
   { idol: 'mano', day: 15, minute: 18 * 60, place: 'park', action: '她在长椅上睡着了', flag: 'completed.mano.dream' },
   { idol: 'hiori', day: 16, minute: 18 * 60, place: 'studio', action: '演出结束了，她在喝水', flag: 'completed.hiori.ideal' },

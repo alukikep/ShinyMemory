@@ -22,23 +22,23 @@ const PRODUCER_GROWTH: Record<
 /** 制作人体能属性决定体力上限。 */
 export const STAMINA_CAP_BY_RANK: Record<Rank, number> = {
   F: 100,
-  E: 125,
-  D: 150,
-  C: 175,
-  B: 200,
-  A: 225,
-  S: 250,
+  E: 110,
+  D: 120,
+  C: 130,
+  B: 140,
+  A: 150,
+  S: 160,
 };
 
 /** 制作人体能属性决定行动体力消耗倍率。 */
 export const STAMINA_COST_MULTIPLIER_BY_RANK: Record<Rank, number> = {
   F: 1,
-  E: 1,
-  D: 0.95,
+  E: 0.98,
+  D: 0.97,
   C: 0.95,
-  B: 0.9,
-  A: 0.85,
-  S: 0.8,
+  B: 0.93,
+  A: 0.92,
+  S: 0.9,
 };
 
 export function staminaCapForRank(rank: Rank): number {

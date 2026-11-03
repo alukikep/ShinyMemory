@@ -1,9 +1,9 @@
 # 金钱出口与设施升级 · 实施计划
 
-> 状态：**已实施（Phase 0–4，2026-11-02）**  
-> 日期：2026-11-02  
-> 设计依据：[money-sinks](money-sinks.md)  
-> 本轮范围：`ExpTier` 放宽、商店冷却/永久限购、行动等级解析、三个练习室设施。  
+> 状态：**已实施（Phase 0–6，2026-11-02）**
+> 日期：2026-11-02
+> 设计依据：[money-sinks](money-sinks.md)
+> 本轮范围：`ExpTier` 放宽、商店冷却/永久限购、行动等级解析、三个练习室设施、事务所工作区与取消。
 > 不在本轮：汽车、永久成长道具、约会/Live/收藏内容。
 
 ## 0. 已定参数
@@ -134,6 +134,44 @@ npm run build
 相关 E2E：shop / facility / training / event anchor
 ```
 
+## 5.5 Phase 5：事务所工作区与取消（2026-11-02）
+
+**目标**：把“工作分派数”变成事务所的第二个金钱出口，并给 B 方案（未完成工作总数）补上取消。
+
+改动：
+
+- `FacilityDef.activityId` 改为可选；`office_jobs` 没有对应训练行动。
+- `src/core/content/facilities.ts` 新增 `office_jobs`：
+  - 地点 `office`，`varKey: office.jobSlotLevel`；
+  - Lv1/2/3 = ¥5,000 / ¥15,000 / ¥30,000，对应 2/3/4 席。
+- `src/core/sim.ts`：
+  - `jobSlotCap(state) = 1 + getVar('office.jobSlotLevel')`；
+  - `acceptJob` 在创建实例前检查 `state.jobs.length >= cap`；
+  - `cancelJob(state, assignmentId)`：仅 `plan` + `office` + 开场前；同时删 `jobs` 与 `scheduleOverrides`；不退钱、不耗时间、不写冷却。
+- `src/core/scene.ts`：`JobBoardView.slots = { used, cap, full }`。
+- `src/ui/components/JobBoard.tsx`：显示已排工作、工作上限、取消按钮；排满时禁用接取。
+- `src/ui/components/FacilityModal.tsx`：按 `locationId` 过滤，事务所标题为“事务所管理”；工作区显示“可同时负责 1 份 → 2 份”。
+- `src/App.tsx`：事务所场景也显示设施入口。
+- 存档：只写 `vars`，旧档默认 0，不需要升 `SAVE_VERSION`。
+
+测试：
+
+- 1 席时第二份（同日或不同日）被拒；
+- 升到 2 席后可接第二份；
+- 取消后 `jobs` 和 `scheduleOverrides` 都为空，周日程恢复，同一天可重新接；
+- 开场后取消被拒；
+- 工作板 `slots.full` 正确；
+- E2E：事务所管理面板、满席提示、取消、重新接取。
+
+## 5.6 Phase 6：沙发、体力上限与信赖道具（2026-11-02）
+
+- 体能上限：F100/E110/D120/C130/B140/A150/S160；消耗倍率 1.00/0.98/0.97/0.95/0.93/0.92/0.90。
+- 沙发：固定 120 分钟；15/20/25/30 体力，−4/−6/−8/−10 压力；升级 3k/6k/9k。
+- 信赖 A：A 级剧情完成时 `grantItem` 统一道具「信赖的证明」；使用后 `vars['stamina.trustBonus'] += 2`，体力上限永久 +2。
+- 背包新增消耗品使用；制作人面板显示 `基础 + 信赖` 拆分。
+- 测试剧情放在 fixture（`trustReward.test`），不写入正式内容；正式 A 级剧情后续补。
+- 旧存档补发以 `trust >= A` + `flags['trustReward.<idol>.A']` 为准，待正式剧情接入时实现。
+
 ## 6. 风险与回滚
 
 | 风险 | 缓解 |
@@ -152,6 +190,8 @@ Phase 1  商店冷却/永久限购      （1–2 天）
 Phase 2  行动等级解析           （2–3 天）
 Phase 3  设施面板 + 三房间      （2 天）
 Phase 4  平衡 + 内容            （2–3 天，需先定早期资金/体力）
+Phase 5  事务所工作区 + 取消     （1–2 天）
+Phase 6  沙发 + 上限 + 信赖道具  （2 天）
 ```
 
 每个 Phase 单独提交，单独跑测试；Phase 2 之前不写设施内容。
@@ -159,10 +199,10 @@ Phase 4  平衡 + 内容            （2–3 天，需先定早期资金/体力�
 ## 8. 实施结果（2026-11-02）
 
 ```text
-npm test                  445 passed / 63 files
+npm test                  474 passed / 68 files
 npm run content:validate  0 错误 0 警告
 npm run build             production 通过
-Playwright prologue       41 passed（含 facility.spec）
+Playwright prologue       41 passed（含 job / facility）
 Playwright acceptance     20 passed
 Playwright content        3 passed
 Playwright review         2 passed（配置 retries=1；Vite 冷启动偶发）
@@ -173,5 +213,8 @@ Playwright review         2 passed（配置 retries=1；Vite 冷启动偶发）
 - `activityLevels.test`：每级 `resolved.id === 'vocal'`，事件锚点不破；
 - `facility.test`：三房间独立、满级/钱不足/地点不符拒绝；
 - `facilityContent.test`：四档 60/50/40/30、2/3/4/5、¥150、90k 总价；
+- `officeJobs.test`：1 席拒绝第二份、升级后 2 席、取消恢复日程、开场后拒绝、`slots.full`；
+- `staminaSofa.test`：沙发四档、3k/6k/9k、F100→S160、S 消耗 0.90、信赖 +56；
+- `trustReward.test`：剧情 `grantItem`、背包使用、体力上限 +2/全部使用；
 - `economy.test`：冷却/永久限购；
 - `shopMigration.test`：v18 → v19。

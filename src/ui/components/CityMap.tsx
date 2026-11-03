@@ -17,6 +17,7 @@ const LOCATION_ICONS: Record<string, string> = {
   park: 'tree',
   shopping_street: 'bag',
   ekimae: 'train',
+  south_town: 'building',
   studio_district: 'music',
   seaside: 'tree',
   university_district: 'book',

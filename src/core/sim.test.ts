@@ -984,7 +984,7 @@ describe('raising sim core', () => {
 
     expect(next.producer.stamina.rank).toBe('E');
     expect(next.producer.stamina.exp).toBe(0);
-    expect(maxStamina(next)).toBe(125);
+    expect(maxStamina(next)).toBe(110);
     expect(maxStamina(state)).toBe(100);
   });
 

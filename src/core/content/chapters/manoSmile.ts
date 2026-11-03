@@ -67,7 +67,7 @@ const manoSmile: StoryChainDef = {
     },
     {
       id: 'mano-afterglow',
-      locationId: 'home',
+      locationId: 'studio',
       timeWindow: { fromMinute: 840, toMinute: 1140 },
       dialogueId: 'dialogue.mano.afterglow',
       actionLabel: '收工了，她还想再待一会儿',

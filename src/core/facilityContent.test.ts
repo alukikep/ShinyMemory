@@ -53,12 +53,23 @@ describe('facility content', () => {
     expect(3000 - money).toBe(1500);
   });
 
-  it('totals 90k for all three rooms', () => {
-    const total = FACILITIES.reduce(
+  it('totals 90k for all three practice rooms', () => {
+    const total = FACILITIES.filter(
+      (facility) => facility.locationId === 'practice_room',
+    ).reduce(
       (sum, facility) =>
         sum + facility.levels.reduce((roomSum, level) => roomSum + level.cost, 0),
       0,
     );
     expect(total).toBe(90000);
+  });
+
+  it('totals 50k for the office workroom', () => {
+    const office = FACILITIES.find((facility) => facility.id === 'office_jobs');
+    expect(office).toBeDefined();
+    expect(office?.locationId).toBe('office');
+    expect(office?.levels.map((level) => level.cost)).toEqual([
+      5000, 15000, 30000,
+    ]);
   });
 });

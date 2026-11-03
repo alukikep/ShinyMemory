@@ -56,8 +56,16 @@
 | 42 | **设施升级差点换掉训练 action id** | 正式包有 82 条事件锚定 `vocal`/`dance`/`expression`；如果中级/高级训练用新 id，这些事件全部静默失效 | `ActivityDef.levels` + `resolveActivity` 保留基础 id；`activityLevels.test` 对每级断言 `resolved.id === 'vocal'` |
 | 44 | **批量通过不处理 supersedes** | 4 份修订批完后 approved 里新旧两份并存，`payload.id` 重复；打包取哪份取决于文件顺序，游戏里会"忽新忽旧" | `moveReviewDraft` 在 store 层统一处理 supersedes（单条/批量都走），`syncApproved` 拒绝重复 `payload.id` 并报出文件名；两者都用"故意造一份重复"验证过会红 |
 | 43 | **E2E 失败把测试草稿留在 approved** | `tests/review` 真的会批草稿，中途失败时 afterEach 没跑到，产物留在 `content-review/approved`；下一次 `build` 把它编进游戏包，`tsc` 还在**生成文件**里报语法错，看起来像生成器的锅 | **构建时**（`strict`）`syncApproved` 拒绝 `title` 以 `E2E` 开头的产物并报文件名；审查台 dev server 走非 strict，否则它自己的用例一批准就被自己拦（真实踩过，表现为"点通过没反应"） |
+| 46 | **取消工作只删 `state.jobs`** | 名额释放了，但日程表还显示工作，`canReplaceDay` 仍拒绝同一天；玩家以为取消没生效 | `cancelJob` 同时删 `state.jobs` 和对应 `scheduleOverrides`；`officeJobs.test` 断言两处都清空、周日程恢复、同一天可重接 |
+| 47 | **偶像日程的 `home` 被当成制作人的家** | 偶像傍晚排 `locationId: 'home'`，制作人回家时名册显示“在这里”、场景出现她，还能互动；日程表也显示“家” | `getActorLocation` 把 `home` 当私有地点不返回；`IdolSchedule` 隐藏 `home`；`actorHome.test` 断言不在场；特殊“去她家”剧情用 `sceneLocationName` 只改顶栏显示 |
 
 ---
+
+### 入口文档同步事故（2026-11-03）
+
+| 序号 | 事故（一句话，具体） | 现在的防线（命令/规则/测试） |
+|---|---|---|
+| 48 | README 沿用旧版出租车、平铺地点及 F100–S250 体能数值，原因是入口重复保存易变状态却未随实现更新 | README 引用地点手册、`producer.ts`、存档版本定义及实时统计命令；AGENTS 要求更新入口时核对代码与 `package.json`，跑 `docs:check` 并检查改动文档本地链接；路由检查不核对数值语义 |
 
 ## 1.5 内容包分两层（别搞混）
 
@@ -82,7 +90,7 @@ base 里没有 → 每个草稿的预检都会报 `dialogue-ref`（真实踩过�
 
 ```bash
 npm test                  # 单元测试（跑夹具包）
-npm run content:validate  # 内容门禁：sync → 校验 → 资料门禁 → 体检 → 剧情校验
+npm run content:validate  # 内容门禁：sync → 校验 → 资料门禁 → 体检 → 覆盖率（quiet）→ 剧情校验
 npm run content:coverage  # 覆盖率：每个偶像按单元数一遍
 npm run build             # 上面全部 + 类型 + 打包
 ```
@@ -91,8 +99,9 @@ npm run build             # 上面全部 + 类型 + 打包
 |---|---|---|
 | `tsc --noEmit` | 类型 | `build` |
 | `content:guard` | 角色卡存在、语料路径真实、≥3 条逐字引文、回查记录 | `content:validate` |
-| `content:audit` | 结构/数值/引用完整性 | `content:validate` |
-| `content:coverage` | 每个偶像的内容单元是否齐全（`PENDING_IDOLS` 里的标"接入中"） | `content:validate` |
+| `content:audit` | 结构/数值/引用完整性（含 ItemDef.useEffects） | `content:validate` |
+| `content:balance` | 训练/沙发/工作上限/体力与信赖曲线的数值报告；目前不进构建，手动跑 | `npm run content:balance` |
+| `content:coverage` | 每个偶像的内容单元是否齐全（`PENDING_IDOLS` 里的标"接入中"）；构建门用 `--quiet`，`npm run content:coverage` 看明细 | `content:validate` |
 | `viewContract.test` | 界面读的字段从对象上消失 | `npm test` |
 | `content:anchors` | 卡面改编的锚点句（语料里有 + 游戏里也有） | `content:validate` |
 | `japanese-text` | 整句日文没翻（已上线内容，平假名成串、念出来会卡住） | `content:validate` → `checkJapanese --strict`（阻塞构建）；待审草稿只是提醒 |
@@ -140,7 +149,7 @@ npm run build             # 上面全部 + 类型 + 打包
 1. **改源码用 `edit` / `write`，不要用 PowerShell/cat 做字符串替换**——CRLF、转义、编码都会咬人。
 2. **改共享对象字面量后，立刻跑 `npm test`**（视图契约就在里面）。
 3. **新增/修改剧情链、事件、工作后跑 `content:audit`**。
-4. **动了多偶像相关逻辑，跑 `multiIdolJob.test`**（同一天多人接活）。
+4. **动了多偶像相关逻辑，跑 `multiIdolJob.test` + `officeJobs.test`**（同日接活、工作上限、取消）。
 5. **写作内容前先读语料**，写进角色卡，再动内容（见 playbook §1.5）。
 6. **提交前跑一遍**：`npm test` + `npm run build` + 相关 E2E。
 7. **不要自批内容**：通过/打回是人的动作。
@@ -153,7 +162,7 @@ npm run build             # 上面全部 + 类型 + 打包
 |---|---|---|
 | 工作面板两级（列表 → 详情） | 单偶像零摩擦，多偶像不膨胀 | `job-board-list/detail` 截图 |
 | 面板默认只排重点偶像 | 28 个偶像也不会变成按钮墙 | `buildJobBoard` 只取 focus 的 offer |
-| 同一天多人各接一份工作 | 成立，且制作人要跑两场 | `multiIdolJob.test` 三条 |
+| 同一天多人各接一份工作 | 需要事务所工作区升到 2 席；默认 1 席 | `multiIdolJob.test` + `officeJobs.test` |
 | 剧情解锁工作的 `hiddenUntilUnlocked` | 属性/粉丝门槛显示，剧情门槛隐藏 | `jobUnlock.test` |
 | 两种起步方式（档案型 known / 偶遇型 unknown） | 手册第一天就有指引 | `productionPack.test` + 开局截图 |
 | 话题合并成一个「聊两句」+ 每天 3 次 | 界面不再臃肿 | 截图 + `topics.test` |

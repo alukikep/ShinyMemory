@@ -32,7 +32,14 @@ export function FacilityModal({
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [onClose]);
 
-  const facilities = [...CONTENT_INDEX.facilities.values()];
+  const facilities = [...CONTENT_INDEX.facilities.values()].filter(
+    (facility) => facility.locationId === state.locationId,
+  );
+  const isOffice = state.locationId === 'office';
+  const title = isOffice ? '事务所管理' : '设施管理室';
+  const description = isOffice
+    ? '事务所的设施。工作区增加同时安排的工作数，沙发改善休息恢复。'
+    : '练习室的三间训练房。升级后旧课程会被新课程替换。';
 
   return (
     <div
@@ -46,17 +53,15 @@ export function FacilityModal({
         className="roster-panel shop-panel"
         role="dialog"
         aria-modal="true"
-        aria-label="设施管理室"
+        aria-label={title}
         ref={dialogRef}
         tabIndex={-1}
       >
         <header className="roster-head">
           <div>
             <p className="eyebrow">FACILITY</p>
-            <h2>设施管理室</h2>
-            <p className="shop-description">
-              练习室的三间训练房。升级后旧课程会被新课程替换。
-            </p>
+            <h2>{title}</h2>
+            <p className="shop-description">{description}</p>
           </div>
           <div className="inventory-head-meta">
             <span>
@@ -66,7 +71,7 @@ export function FacilityModal({
               type="button"
               className="roster-close"
               onClick={onClose}
-              aria-label="关闭设施管理室"
+              aria-label={`关闭${title}`}
             >
               关闭
             </button>
@@ -86,6 +91,14 @@ export function FacilityModal({
               : unaffordable
                 ? '金钱不足'
                 : null;
+            const currentLabel = facility.activityId
+              ? levelName(current)
+              : `可同时负责 ${1 + current} 份`;
+            const nextLabel = next
+              ? facility.activityId
+                ? levelName(next.level)
+                : `可同时负责 ${1 + next.level} 份`
+              : '';
 
             return (
               <article className="shop-item" key={facility.id}>
@@ -96,8 +109,8 @@ export function FacilityModal({
                   <div className="shop-name-row">
                     <h3>{facility.name}</h3>
                     <span className="shop-price">
-                      {levelName(current)}
-                      {next ? ` → ${levelName(next.level)}` : ''}
+                      {currentLabel}
+                      {next ? ` → ${nextLabel}` : ''}
                     </span>
                   </div>
                   <p>{facility.description}</p>

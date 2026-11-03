@@ -17,6 +17,7 @@ import { PROLOGUE_DIALOGUES } from './dialogues/prologue';
 import { STORY_CHAINS } from './storyChains';
 import { STARTING_STATE } from './starting';
 import { FACILITIES } from './facilities';
+import { TRUST_TOKEN } from './trustToken';
 import vocal from './activities/vocal';
 import dance from './activities/dance';
 import expression from './activities/expression';
@@ -48,7 +49,7 @@ export const EVENTS: EventDef[] = [];
 
 export const JOBS: JobDef[] = [];
 
-export const ITEMS: ItemDef[] = [];
+export const ITEMS: ItemDef[] = [TRUST_TOKEN];
 
 export const SHOPS: ShopDef[] = [];
 

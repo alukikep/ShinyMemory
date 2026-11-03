@@ -1442,19 +1442,19 @@ export const APPROVED_CONTENT: ApprovedContent = {
 {
   "id": "activity.tenka.game",
   "name": "陪她打游戏",
-  "description": "送她回家，被留下来打一局。她把两个手柄都擦了一遍才递给你，说输了也不许生气；第一局她赢得很快，第二局开始明显放慢。",
+  "description": "练习结束后，她在练习室拉着你打一局。她把两个手柄都擦了一遍才递给你，说输了也不许生气；第一局她赢得很快，第二局开始明显放慢。",
   "kind": "bond",
   "target": "present-idol",
   "idolIds": [
     "tenka"
   ],
   "locations": [
-    "home"
+    "practice_room"
   ],
   "durationMinutes": 30,
   "timeWindows": [
     {
-      "fromMinute": 1020,
+      "fromMinute": 1050,
       "toMinute": 1200
     }
   ],

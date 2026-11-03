@@ -6,6 +6,7 @@ import {
   staminaCapForRank,
   staminaCostMultiplierForRank,
 } from '../../core/producer';
+import { maxStamina } from '../../core/sim';
 import type { GameState } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 import { GameIcon } from './GameIcon';
@@ -93,7 +94,7 @@ export function ProducerPanel({ state, onClose }: ProducerPanelProps) {
                 </div>
                 <p className="producer-detail-line">
                   {key === 'stamina'
-                    ? `体力上限 ${staminaCapForRank(attribute.rank)} · 行动消耗 ×${staminaCostMultiplierForRank(attribute.rank).toFixed(2)}`
+                    ? `体力上限 ${maxStamina(state)}（基础 ${staminaCapForRank(attribute.rank)} + 信赖 ${state.vars?.['stamina.trustBonus'] ?? 0}） · 行动消耗 ×${staminaCostMultiplierForRank(attribute.rank).toFixed(2)}`
                     : '工作收入倍率 ×1.0 – ×1.5'}
                 </p>
               </article>

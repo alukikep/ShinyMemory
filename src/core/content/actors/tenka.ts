@@ -35,9 +35,17 @@ const actor: ActorDef = {
       label: '练习',
       protected: false,
     },
-    // 周一：练习 → 回家
+    // 周一：练习 → 练习室（陪她打游戏）→ 回家
     {
       fromMinute: 17 * 60 + 30,
+      toMinute: 20 * 60,
+      locationId: 'practice_room',
+      weekdays: [1],
+      label: '练习室',
+      protected: false,
+    },
+    {
+      fromMinute: 20 * 60,
       toMinute: 22 * 60,
       locationId: 'home',
       weekdays: [1],

@@ -403,7 +403,8 @@ anchors: ['苦手だって言ってたステップ', '休むことだってア�
 | 项 | 规则 | 错了会怎样 |
 |---|---|---|
 | `locationId` | 地点必须存在 | 行动不出现 |
-| `endLocationId`（可选） | 收尾搬家：必须是真实地点、**不能是一带（area）**、**0 分钟** | `content:anchors` 报错 |
+| `endLocationId`（可选） | 收尾搬家：必须是真实地点、**不能是一带（area）**、**0 分钟**。`office` 现在是 area，不能写；写 `office_roof` / `dorm` 等成员 | `content:anchors` 报错 |
+| `sceneLocationName`（可选） | 只改剧情顶栏的地点显示，不改变玩家实际位置；用于借 `home` 演“某个角色的家”这类一次性场景 | 玩家地点不变，只是显示不同 |
 | `timeWindow` | from < to，且在她能到的时间 | 永远碰不到 |
 | `when` 的 flag | **只能是上一章的完成 flag**（第一章不能有） | 自引用 = 这章永不出现 |
 | `when` 的 dayAtLeast | 严格大于上一章 | 顺序会乱 |

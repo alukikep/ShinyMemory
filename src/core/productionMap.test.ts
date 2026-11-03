@@ -4,7 +4,9 @@ import { WALK_EDGES, walkPath } from './content/map';
 
 /**
  * 地图完整性：入口与独立地点要有坐标、接进步行网络、走得到；
- * 入口里的成员必须是 0 分钟可达，而且不能跑到地图上冒充独立节点。
+ * 入口里的成员必须从父入口 0–15 分钟可达，而且不能跑到地图上冒充独立节点。
+ *
+ * 事务所现在是 area：办公室本身仍有行动，屋顶 0 分钟、宿舍 5 分钟。
  *
  * 事故 #33：泳池有坐标、有卡面剧情要用，但没有一条步行边——
  * 地图上是一座孤岛，只能靠巴士/出租车；后来加医院才发现这个问题。
@@ -48,7 +50,7 @@ describe('production map', () => {
     }
   });
 
-  it('every member is entered from its parent area in 0 minutes', () => {
+  it('every member is entered from its parent area in 0–15 minutes', () => {
     for (const location of PRODUCTION_PACK.locations) {
       if (!memberIds.has(location.id)) continue;
       const parent = PRODUCTION_PACK.locations.find((entry) =>
@@ -62,8 +64,60 @@ describe('production map', () => {
           (entry.from === location.id && entry.to === parent!.id),
       );
       expect(edge, `${location.id} 和入口之间没有边`).toBeTruthy();
-      expect(edge!.minutes, `进入 ${location.id} 应该 0 分钟`).toBe(0);
+      expect(
+        edge!.minutes,
+        `进入 ${location.id} 应该不超过 15 分钟`,
+      ).toBeGreaterThanOrEqual(0);
+      expect(
+        edge!.minutes,
+        `进入 ${location.id} 应该不超过 15 分钟`,
+      ).toBeLessThanOrEqual(15);
     }
+  });
+
+  it('keeps the office as an area with the roof at 0 and the dorm at 5', () => {
+    const office = byId.get('office');
+    expect(office?.kind).toBe('area');
+    expect(office?.members).toEqual(['office_roof', 'dorm']);
+
+    for (const [to, minutes] of [
+      ['office_roof', 0],
+      ['dorm', 5],
+    ] as const) {
+      const edge = WALK_EDGES.find(
+        (entry) => entry.from === 'office' && entry.to === to,
+      );
+      expect(edge, `office → ${to} 没有边`).toBeTruthy();
+      expect(edge!.minutes, `office → ${to} 的分钟数`).toBe(minutes);
+    }
+  });
+
+  it('keeps south town as an area with both members at 0 minutes', () => {
+    const southTown = byId.get('south_town');
+    expect(southTown?.kind).toBe('area');
+    expect(southTown?.members).toEqual(['apartment', 'theme_park']);
+
+    for (const [to, minutes] of [
+      ['apartment', 0],
+      ['theme_park', 0],
+      ['home', 10],
+      ['ekimae', 15],
+    ] as const) {
+      const edge = WALK_EDGES.find(
+        (entry) =>
+          (entry.from === 'south_town' && entry.to === to) ||
+          (entry.from === to && entry.to === 'south_town'),
+      );
+      expect(edge, `south_town ↔ ${to} 没有边`).toBeTruthy();
+      expect(edge!.minutes, `south_town ↔ ${to} 的分钟数`).toBe(minutes);
+    }
+  });
+
+  it('draws south town instead of apartment and theme park', () => {
+    const visibleIds = visible.map((location) => location.id);
+    expect(visibleIds).toContain('south_town');
+    expect(visibleIds).not.toContain('apartment');
+    expect(visibleIds).not.toContain('theme_park');
   });
 
   it('walk edges reference real locations with non-negative minutes', () => {

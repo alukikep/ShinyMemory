@@ -162,7 +162,7 @@ docs/content/<id>/character.md
 **地点现在分两层**（见 [location-portals.md](../systems/location-portals.md)）：
 行动、事件、日程、章节**一律写成员地点 id**（`practice_room`、`park`…），
 入口（`studio_district`、`seaside`）只负责地图导航和"进入"。
-新增一带时，要同时建入口 + 成员 + 0 分钟边，别直接把孤立节点塞进地图。
+新增一带时，要同时建入口 + 成员 + 0–15 分钟边（同一栋 0，同一片街区 5–10），别直接把孤立节点塞进地图。事务所是例外：它自己既是 area 又承载办公室行动。
 
 **日程别写成一礼拜全一样**（`idolScheduleVariety.test.ts` 会红）：
 

@@ -1,6 +1,8 @@
 import type { ItemDef, ShopDef } from '../types';
+import { TRUST_TOKEN } from '../content/trustToken';
 
 export const ITEMS: ItemDef[] = [
+  TRUST_TOKEN,
   {
     id: 'gift.flower',
     name: '花束',

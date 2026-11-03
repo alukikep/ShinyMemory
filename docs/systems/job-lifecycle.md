@@ -8,7 +8,7 @@
 
 ```text
 事务所邀约
-→ canReplaceDay
+→ 工作上限 / canReplaceDay
 → JobAssignment + scheduleOverrides
 → 工作当天到点自动完成
 → 玩家到场可参与并领奖
@@ -17,7 +17,6 @@
 
 明确不做的：
 
-- 取消工作；
 - 未参与日志；
 - 失败/缺席状态；
 - 工作历史页面；
@@ -52,6 +51,10 @@ type JobDef = {
   toMinute: number;
   pay: number;
   label?: string;
+  /** 接取后至少提前几天才能排到工作；缺省 1（明天）。 */
+  leadDays?: number;
+  /** 完成后冷却天数。 */
+  cooldownDays?: number;
   effects?: Effect[];
 };
 ```
@@ -70,13 +73,23 @@ type JobAssignment = {
 };
 ```
 
-`GameState.jobs?: JobAssignment[]` 只保存尚未完成的工作。
+`GameState.jobs: JobAssignment[]` 只保存尚未完成的工作。
 
 没有 `completed` 状态，也没有历史数组：
 
 ```text
 完成 → 从 jobs 移除
 ```
+
+工作上限：
+
+```text
+初始 1 份
+工作区 Lv1 / Lv2 / Lv3 → 2 / 3 / 4 份
+```
+
+上限统计的是 `state.jobs.length`，也就是**所有偶像、所有日期**的未完成工作总数。
+完成或取消一份工作后，名额立即释放。
 
 日程覆盖仍在当天保留，次日由 `pruneScheduleOverrides` 清理。
 
@@ -95,6 +108,8 @@ type JobAssignment = {
 | 名称 / 报酬 / 地点 / 时段 | 基本盘 |
 | 检定要求 | 例如「需要表现 E」，按**每个偶像各自的等级**算成功率 |
 | 派谁去 | 每个已出道偶像一个按钮，写明最早可排的日期与她的成功率 |
+| 日期 | 自动选择最早可排日期；不额外弹日期选择，减少操作 |
+| 占用 | 已排工作显示「占用至 X 月 X 日」，让玩家看到哪个名额会被锁到什么时候 |
 | 未解锁 | `requires` 不满足时显示「未解锁」（不写条件） |
 | 隐藏 | `hiddenUntilUnlocked: true` 且未解锁时，整条从面板消失（剧情解锁用） |
 
@@ -113,17 +128,58 @@ flag 没有文案时会被当成已满足，工作直接可接。`content:audit`
 
 - 接工作默认派给**重点偶像**（`focusIdolId`，名册里可切换、写进存档）；
 - 面板里也可以直接点别的偶像派去（`acceptJob(..., idolId)`）；
-- 同一天可以让两个偶像各接一份工作——`JobAssignment` 本来就带 `idolId`，
-  `canReplaceDay` 也是按单个偶像判断的。
+- 同一天可以让两个偶像各接一份工作——前提是工作区已升到 2 席；`JobAssignment` 本来就带 `idolId`，`canReplaceDay` 也是按单个偶像判断的。
 
 `acceptJob` 的校验：
 
 1. 校验事务所、目标偶像**已出道**、未来日期；
-2. 同一偶像同一工作已有未完成实例 → 拒绝；
-3. `canReplaceDay` 校验档期；
-4. 创建 `JobAssignment`；
-5. 写入 `ActorState.scheduleOverrides`，`mode: 'replace-day'`；
-6. 写一条“接下了”日志。
+2. 日期必须 ≥ `currentDay + max(1, job.leadDays ?? 1)`；
+3. `state.jobs.length` 是否已到工作上限（见下节）；
+4. 同一偶像同一工作已有未完成实例 → 拒绝；
+5. `canReplaceDay` 校验档期；
+6. 创建 `JobAssignment`；
+7. 写入 `ActorState.scheduleOverrides`，`mode: 'replace-day'`；
+8. 写一条“接下了”日志。
+
+## 工作上限与取消
+
+### 同时负责上限
+
+- 初始 **1 份**，所有日期、所有偶像共用；
+- 工作区升级 **¥5,000 / ¥15,000 / ¥30,000**，对应 **2 / 3 / 4 份**；
+- 上限在 `acceptJob` 命令层检查，界面只负责显示和禁用；
+- `buildJobBoard` 返回 `slots: { used, cap, full }`，工作板显示“已排工作 N/M”。
+
+### 日期与占用
+
+- `jobDatesFor` 返回未来 7 天的候选日期；工作板自动取**最早可用日**。
+- 不额外弹日期选择；玩家只需要选“派谁去”。
+- `JobDef.leadDays` 是**前置期**：例如 `leadDays: 7` 时，接取后最早第 7 天才能排到。
+- 从接取到工作完成，这份工作一直占一个名额；大工作需要 7 天前置期，就相当于锁住一个名额 7 天。
+- `JobDef.cooldownDays` 是完成后的冷却，和前置期分开计算。
+- 工作板的活动列表显示「占用至 X 月 X 日」。
+- **首次接取不受冷却影响**：只有 `jobCooldowns` 有记录（即完成过）时才应用冷却。大工作的长冷却不会在开局把工作锁住。
+
+### 取消
+
+取消是“排期阶段的撤销”，不是完成工作：
+
+```text
+只允许：工作还没开场（now < day + fromMinute）
+不允许：已经开场 / 已经结算
+代价：不退钱、不耗时间、不写冷却
+```
+
+`cancelJob` 必须同时删两处：
+
+```text
+state.jobs 里的 JobAssignment
+actor.scheduleOverrides 里同 id 的 replace-day 覆盖
+```
+
+只删第一处会出现“名额空了，但日程表还占着那一天”；只删第二处会出现“日程空了，但工作还会结算”。
+
+日程表不需要恢复备份：覆盖被删后，`getSchedulesForDay` 会重新从 `actor.schedule` 生成当天模板。
 
 工作当天：
 
@@ -241,7 +297,6 @@ completeDueJobs(state)
 - 工作失败/成功判定；
 - 工作报酬浮动；
 - 工作历史；
-- 取消工作；
 - 多日工作；
 - 工作地点外的远程参与。
 
@@ -251,6 +306,9 @@ completeDueJobs(state)
 
 - 接取创建 `JobAssignment`；
 - 接取写入 `replace-day`；
+- 工作上限 1/2/3/4 份的拒绝；
+- 取消释放名额、删除覆盖、恢复周日程；
+- 开场后取消被拒绝；
 - 同一工作不重复邀约；
 - 工作到点自动移除；
 - 自动完成不发奖励、不写日志；

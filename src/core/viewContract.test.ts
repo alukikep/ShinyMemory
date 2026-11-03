@@ -31,6 +31,12 @@ describe('view contracts', () => {
   it('keeps every field the job board UI reads', () => {
     const board = buildJobBoard(setup());
     expect(board.entries.length).toBeGreaterThan(0);
+    expect(Object.keys(board)).toEqual(
+      expect.arrayContaining(['entries', 'focusIdolId', 'slots']),
+    );
+    expect(Object.keys(board.slots)).toEqual(
+      expect.arrayContaining(['used', 'cap', 'full']),
+    );
 
     for (const entry of board.entries) {
       expect(Object.keys(entry)).toEqual(
@@ -61,6 +67,8 @@ describe('view contracts', () => {
           'chance',
           'checkLabel',
           'command',
+          'dates',
+          'occupiedBy',
         ]),
       );
     }

@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { auditPack } from './contentAudit';
 import { CONTENT_INDEX } from './contentIndex';
-import type { ActivityDef, EquipDef, EventDef } from './types';
+import type { ActivityDef, EquipDef, EventDef, ItemDef } from './types';
 
 const registered: string[] = [];
 
@@ -10,6 +10,7 @@ afterEach(() => {
     CONTENT_INDEX.equips.delete(id);
     CONTENT_INDEX.activities.delete(id);
     CONTENT_INDEX.events.delete(id);
+    CONTENT_INDEX.items.delete(id);
   }
 });
 
@@ -139,5 +140,28 @@ describe('content audit', () => {
 
     const issues = auditPack(CONTENT_INDEX);
     expect(issues.some((issue) => issue.code === 'event-shape')).toBe(true);
+  });
+
+  it('checks item use effects for missing references', () => {
+    const item: ItemDef = {
+      id: 'audit.bad.item',
+      name: '坏道具',
+      description: '',
+      category: 'consumable',
+      price: 0,
+      useEffects: [{ kind: 'grantItem', itemId: 'missing.item' }],
+    };
+    CONTENT_INDEX.items.set(item.id, item);
+    registered.push(item.id);
+
+    const issues = auditPack(CONTENT_INDEX);
+    expect(
+      issues.some(
+        (issue) =>
+          issue.code === 'item-ref' &&
+          issue.message.includes('audit.bad.item') &&
+          issue.message.includes('missing.item'),
+      ),
+    ).toBe(true);
   });
 });

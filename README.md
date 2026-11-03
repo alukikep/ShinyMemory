@@ -1,165 +1,88 @@
 # ShinyMemory
 
-《偶像大师 闪耀色彩》同人生活模拟游戏（开发中）。
+《偶像大师 闪耀色彩》同人生活模拟游戏（开发中）。玩家以制作人视角，通过选择、行动耗时、结算与事件推进偶像养成和日常生活。游戏以文本和数据驱动，采用开放时间循环，天数持续增加，不设固定通关日。
 
-一个以“制作人”为视角、文本为主、数据驱动的养成 / 生活模拟游戏。
-当前采用开放时间循环：天数持续增加，不设固定通关日。
+## 从哪里开始
 
-## 当前原型
-
-- 开放日历 × 24 小时时间系统：第 1 天为 2026 年 4 月 6 日（星期一），行动按小时推进
-- 21 个地点：事务所、事务所屋顶、家、公寓走廊、游乐园、望丘台、望丘大学、朝雾站前、青叶练习街区、滨风海岸、车站、唱片店、会场、练习室、录音棚、公园、商业街、泳池、事务所宿舍、医院、学校；地点永久开放，相邻节点步行移动，车站提供公交，任意地点提供出租车
-- 选项面板下方直接显示同宽 SVG 城市地图：仅在地点菜单（plan）显示；当前节点、相邻节点、步行分钟数；点击相邻节点直接移动
-- 桌面端固定左侧栏：品牌、地点场景、状态、当前偶像和主导航；移动端改为顶部状态 + 底部导航
-- 正式内容已接入 **28 位偶像**：招募链按档案型（known）或偶遇型（unknown）展开；开局自动播放事务所序章
-- 正式内容含 29 张卡 · 110 章、32 条招募/长线链、87 个事件、6 份工作、5 件物品、1 家商店；`content-fixture` 只用于引擎回归
-- 2 个非偶像 NPC：七草叶月（09:00–18:00）和天井努（10:00–17:00）都在事务所；各有独立 topic 和好感
-- 核心活动 7 个：声乐、舞蹈、表现、休息、自由时间、环顾四周、睡觉；正式包共 43 个行动（含零工与专属行动）
-- 属性等级 F–S；训练使用 Rank + EXP；练习室三间训练房可独立升级，训练四档替换（60/50/40/30 分钟 · 15 体力 · 2/3/4/5 EXP · ¥150）
-- 对话/剧情链：节点、选项、文本变体、信任奖励、known/recruited 状态、两天后开启且不设截止日
-- 事件、工作、商店和物品均已进入正式内容；物品是“购买冷却 + 永久限购”并存（5 件商品当前都是冷却）
-- 审查台支持事件、工作、对话、剧情链、物品、商店的新建、编辑、批注、通过、打回、废弃和版本化
-- 自动存档（localStorage），侧边栏另提供独立手动存档槽；当前 `SAVE_VERSION 19` + 内容纪元 3，内容纪元不一致时旧存档直接失效
-- 调试面板：`?debug=1`，可看触发判定、强制事件、跳天
-- 自动验收：`npm run acceptance` 跑单元测试、fixture build、20 条引擎 E2E 和 3 条内容 E2E；`npm run acceptance:prologue` 跑 41 条正式内容 E2E；`npm run acceptance:review` 跑 2 条审查 E2E
-- 无 AI；先验证“选择 → 耗时 → 结算 → 事件”的开放循环
+- **AI 工作入口：[AGENTS.md](AGENTS.md)**。每次任务先读工作约定，再按 [docs/tasks.md](docs/tasks.md) 选择必读文档。
+- 项目进度与优先级：[当前路线图](docs/current/roadmap.md)。历史统计需与当前代码和命令输出核对。
+- 设计与系统手册：[文档索引](docs/README.md)。详细规则集中在对应手册。
 
 ## 运行
 
 ```bash
 npm install
-npm run dev      # 本地开发
-npm run build    # 类型检查 + 生产构建
-npm test         # 核心模拟测试 + 平衡烟测
-npm run content:validate # 校验 approved 内容与对话/剧情结构
-npm run content:japanese # 列出还没翻译的整句日文（playbook §1.7）
-npm run acceptance # 浏览器验收（fixture 引擎 + 内容）
-npm run acceptance:prologue # 正式内容 E2E（41 条）
-npm run acceptance:review # 审查流程验收
-npm run review     # 本地内容审查台（http://127.0.0.1:5174/review.html）
+npm run dev       # 游戏开发服务
+npm run review    # 内容审查台：http://localhost:5174/review.html
+npm run build     # 类型检查 → 内容校验 → 生产构建
+npm run preview   # 预览最近一次构建
 ```
 
-## 结构
+技术栈：TypeScript、Vite、React、Zustand、手写 CSS、localStorage。当前运行不接入 AI 服务。
 
+## 当前玩法与系统
+
+- **日历与行动**：第 1 天为 2026 年 4 月 6 日（星期一），按分钟结算行动与移动；包含训练、工作、休息、自由时间、环顾和睡觉。
+- **偶像与剧情**：正式接入 28 位偶像；开局自动播放事务所序章，角色按档案型 `known` 或偶遇型 `unknown` 起步，经招募进入名册、日程、训练、工作与礼物系统。制作人手册追踪剧情链及受阻原因。
+- **地图与交通**：采用「地区入口 → 成员地点」两层结构。地图显示入口和独立地点，进入成员后显示该地点行动；事务所入口同时承载办公室内容。步行按边耗时，公共交通从任意地点出发，5 分钟、¥100，到入口或独立地点；学校不可达。详见 [地点入口](docs/systems/location-portals.md)。
+- **训练与设施**：声乐、舞蹈、表现三间训练房独立升级，课程按等级替换，保留基础行动 id，已有训练事件继续生效。事务所可升级工作区与沙发。
+- **工作与经济**：工作支持邀约、接取、执行、报酬和冷却；默认可排 1 份工作，工作区升级后增加，开场前可取消并恢复日程。商店支持购买冷却与永久限购，物品可作礼物或使用。
+- **属性与体力**：偶像和制作人属性采用 Rank + EXP；制作人体能基础上限为 F100–S160，体力消耗倍率为 1.00–0.90（[代码](src/core/producer.ts)）。「信赖的证明」使用后永久增加 2 点上限（[道具定义](src/core/content/trustToken.ts)）。
+- **事件与状态**：支持行动检定、周期与延迟触发、到达事件、粉丝数、数值变量及统一倍率计算。
+- **界面与存档**：桌面侧栏与移动端导航、名册、日程、手册、背包；localStorage 自动存档和独立手动存档槽，支持导入导出。版本与内容纪元以 [version.ts](src/save/version.ts) 为准；内容纪元不一致的旧档失效。
+- **审查与调试**：审查台提供草稿、批注、通过、打回、废弃与版本管理；审批由人完成。游戏加 `?debug=1` 可查看触发和剧情链判定、跳天。
+
+当前没有 WING 竞赛、周付款、事务所考核或多结局系统。未来需求见 [future-requirements.md](docs/current/future-requirements.md)。
+
+内容量会随审批和结构调整变化，使用下列命令查看当前结果，不把历史测试数量当作本次验证结论：
+
+```bash
+npm run content:board      # 卡面、章节与剧情链接入状态
+npm run content:coverage   # 各偶像内容覆盖情况
+npm run content:where -- seaside  # 地区、成员地点与内容分布
+npm run content:balance    # 当前训练、工作与体力数值报告
 ```
-src/core/            纯 TypeScript 模拟，不依赖 React
-  content/           基础结构：活动、地点、NPC、对话、剧情链、初始状态
-  content/chapters/  卡面章节结构（依赖 approved 对话，在生产包里拼）
-  content/approved.generated.ts  审查台通过内容的生成物，不要手改
-  contentIndex.ts    静态内容索引（Map 查询 / after 分桶 / 地点活动 / NPC）
-  config.ts          天数、分钟数、行动耗时、时间常量
-  types.ts           GameState / Effect / Condition / ActorDef / LocationDef / EventDef / SaveEnvelope
-  sim.ts             纯函数：时间推进、活动、移动、睡觉、NPC 对话、事件、相遇剧情
-  scene.ts           把 GameState 派生为 SceneView / ActionView
-  time.ts            日期 / 星期 / 几点 / 时长格式化
-src/save/            SaveRepository + localStorage 实现（自动 + 手动槽）
-src/ui/              React 视图，只渲染 SceneView 和状态
-src/app/store.ts     Zustand 薄壳 + 自动存档 + 手动存档/读档
-```
 
-**节点不写死：** UI 不知道“声乐课”“深夜的练习室”这些内容，它只渲染
-`SceneView` 和 `ActionView`。活动、事件、选项、对话、剧情链全部来自数据。
+## 验证
 
-**内容分两层：** `BASE_PACK` 是 TS 写死的结构；`PRODUCTION_PACK = BASE_PACK + approved + 卡面章节结构`。游戏加载的是后者。
+| 命令 | 用途 |
+|---|---|
+| `npm run docs:check` | 文档阅读路由的链接与活跃文档登记检查 |
+| `npm test` | Vitest 单元、集成与内容结构测试 |
+| `npm run content:validate` | 同步 approved，检查结构、资料、锚点、体检、覆盖率、看板、日文、文档路由和剧情校验 |
+| `npm run build` | 类型检查、完整内容门禁和正式包构建 |
+| `npm run acceptance:prologue` | 先构建正式包，再跑正式内容 E2E |
+| `npm run acceptance` | 单元测试、fixture 构建、引擎 E2E 和内容 E2E |
+| `npm run acceptance:review` | 先构建正式包，再跑审查流程 E2E |
 
-## 文档
+仅改文档时按 [AGENTS.md](AGENTS.md) 检查文档。代码和内容的提交前检查也见该文件；分层验收详见 [开发约定](docs/current/dev-guide.md) 与 [自动验收](docs/current/acceptance.md)。命令定义以 [package.json](package.json) 为准。
 
-文档已按用途集中整理：
+E2E 使用 `vite preview` 服务构建产物。单独执行 `npm run e2e:one -- tests/prologue/<file>.spec.ts` 或 `npm run e2e:smoke` 前，先运行 `npm run build`；引擎与 fixture 内容测试先运行 `npm run build:fixture`。构建失败须先解决，避免测试旧产物。
 
-- [按任务取用文档](docs/tasks.md)（先看这个）
-- [文档索引](docs/README.md)
-- [当前路线图](docs/current/roadmap.md)
-- [未来需求](docs/current/future-requirements.md)
-- [内容数值标准](docs/current/content-standards.md)
-- [自动验收](docs/current/acceptance.md)
-- [系统说明](docs/systems/)
-- [历史归档](docs/archive/)
-- [内容候选区](workshop/README.md)
-
-## 技术栈
-
-当前使用：
+## 代码与内容结构
 
 ```text
-TypeScript · Vite · React · Zustand · 手写 CSS · localStorage
+src/core/             纯 TypeScript 模拟、条件、效果、场景派生与校验
+  content/            基础结构：偶像、地点、日程、地图、设施等
+  content/chapters/   依赖 approved 对话的卡面章节结构
+  content/approved.generated.ts  审批内容生成物，不手改
+  productionPack.ts  正式内容合并与章节拼装
+  content-fixture/   引擎回归用内容
+src/save/             存档版本、迁移、存储与导入导出
+src/ui/               React 界面，渲染 SceneView / ActionView
+src/app/store.ts      Zustand 状态与存档入口
+src/review/           内容审查与审批逻辑
+content-review/       草稿、已批准内容和修订记录
+tests/                Playwright 分层验收
+tools/                内容生产、语料检索和校验工具
+docs/                 当前手册、阅读路由与归档
+workshop/             内容候选区，不进入游戏构建
 ```
 
-Zod、Dexie、Tailwind CSS 仍是未来选项，尚未接入。
+正式游戏加载 `PRODUCTION_PACK`：`BASE_PACK` 经 `mergeApprovedContent` 合并审批内容，再由 `attachPendingChapters` 拼装章节结构。依赖 approved 对话的结构应在生产包拼装，避免放入基础包造成草稿预检缺引用。实现以 [productionPack.ts](src/core/productionPack.ts) 为准。
 
-## 状态
+写作前先按任务路线读角色卡和原始剧本，用 `script_find` / `script_window` 定位原句，不整篇读取大型语料。工具见 [tooling.md](docs/current/tooling.md)，内容流程见 [内容生产](docs/content/README.md)。历史方案在 [docs/archive/](docs/archive/)，仅供明确考古时查阅。
 
-当前正式内容：
-
-```text
-正式偶像：28 人（illumination / L'Antica / 放クラ / ALSTROEMERIA / Straylight / noctchill / SHHis / CoMETIK）
-开局：事务所序章；档案型 known、偶遇型 unknown
-地点：21 个
-NPC：2 个（非偶像）
-核心活动：7 个；正式包 43 个行动
-事件：87；工作：6；物品：5；商店：1；饰品：0
-卡面：29 张 / 110 章；招募与长线链：32 条
-存档：SAVE_VERSION 19 / CONTENT_EPOCH 3
-```
-
-保留的系统：
-
-```text
-时间/日历/行动
-地图/移动/公交/出租车
-训练/工作/休息/自由时间/环顾/睡觉
-对话/剧情链
-事件引擎
-制作人手册（剧情链追踪）
-倍率管线 + 饰品槽
-行动检定（掷骰 + 成败分支）
-周期触发 + 延迟触发
-到达触发（走到某地时的事）
-偶像粉丝数（每人一份，可做判定）
-数值变量 vars
-审查系统（编辑台 + approved 载入）
-自动存档 + 手动存档
-内容纪元
-内容校验
-Vitest + Playwright
-```
-
-当前规则：
-
-- 开局按角色分两类：档案型（书面审查，`known`）和偶遇型（`unknown`）。
-- 事务所序章自动播放，没有任务提示。
-- 招募链按角色卡面推进；招募后进入名册、日程、训练、工作、礼物。
-- 自由时间只在偶像互动页出现，要求偶像在场。
-- 需要偶像对象的行动不会出现在地点页。
-- 行动可以作用于所有在场偶像，体力/时间只结算一次。
-- 多对象行动可以挂双人剧情：专属组合或通用模板，按概率触发，同一对有冷却。
-- 事件选项可以接一段对话，对话结束回到事件结果；多人对话按参与者分配效果。
-- 制作人属性（摄影 / 交涉 / 企划 / 洞察 / 体能）与偶像属性同一套 rank 结算，工作结果可以只吃一边、相加或相乘。
-- 制作人体能决定体力上限（100–250）与行动消耗倍率（1.00–0.80）。
-- 制作人属性详情收在侧栏「制作人」按钮里。
-- 手册常驻侧栏，条目由剧情链投影；受阻时写明差什么（钱、物品、天数、时段、条件）。
-- 所有派生数字走 `resolveModifiers`：同类相加、跨类相乘、只取整一次；饰品只存 id，倍率不入档。
-- 行动可以带检定：同等级 50%，每差一级 ±15%，失败照扣时间/体力/钱。
-- 事件可以按周/按 N 天到点触发，也可以用 `scheduleEvent` 排一个 N 天后的待办。
-- 事件可以在走到某个地点时触发（`entry.kind = 'arrival'`），和行动后的随机池互不干扰。
-- 内容可以用 `vars` 存数值（进度条、阶段、销量、累计工时），未写过读作 0。
-- 每个偶像有独立的粉丝数，可用 `fansAtLeast` 判定；侧栏、偶像页、名册都能看到。
-- 旧内容纪元存档会直接失效。
-- 没有结局、周付款、事务所考核或 WING 竞赛系统。
-
-当前验收：
-
-```text
-445 个 Vitest 测试
-41 条正式 E2E
-20 条引擎 E2E
-3 条内容 E2E
-2 条审查 E2E
-内容体检 0 错误 0 警告
-production build
-fixture build
-```
-
-下一步计划见 [当前路线图](docs/current/roadmap.md)。
 ## 仓库
 
 私有仓库。`workshop/` 中的 AI 草稿不要提交到公开仓库。

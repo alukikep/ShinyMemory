@@ -18,6 +18,7 @@ export const EFFECT_KINDS = [
   'scheduleEvent',
   'unlockSlot',
   'grantEquip',
+  'grantItem',
   'scheduleOverride',
   'actorAffinity',
   'log',

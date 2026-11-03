@@ -10,6 +10,7 @@ type BackpackModalProps = {
   state: GameState;
   onClose: () => void;
   onGift: (itemId: string, idolId: string) => void;
+  onUse: (itemId: string, count?: number) => void;
   onEquip: (equipId: string) => void;
   onUnequip: (slotKey: string) => void;
 };
@@ -91,6 +92,7 @@ export function BackpackModal({
   state,
   onClose,
   onGift,
+  onUse,
   onEquip,
   onUnequip,
 }: BackpackModalProps) {
@@ -231,6 +233,27 @@ export function BackpackModal({
                         ? `赠送给${giftTargetName}`
                         : '仅安排阶段'}
                     </button>
+                  ) : item.useEffects?.length ? (
+                    <div className="inventory-use-actions">
+                      <button
+                        type="button"
+                        className="inventory-gift-button"
+                        onClick={() => onUse(item.id, 1)}
+                        disabled={state.phase !== 'plan'}
+                      >
+                        {state.phase === 'plan' ? '使用 1 个' : '仅安排阶段'}
+                      </button>
+                      {quantity > 1 ? (
+                        <button
+                          type="button"
+                          className="inventory-gift-button"
+                          onClick={() => onUse(item.id, quantity)}
+                          disabled={state.phase !== 'plan'}
+                        >
+                          全部使用
+                        </button>
+                      ) : null}
+                    </div>
                   ) : (
                     <span className="inventory-locked">收藏品</span>
                   )}

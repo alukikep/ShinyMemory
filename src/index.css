@@ -3032,6 +3032,14 @@ button:focus-visible,
   font-size: 9px;
 }
 
+.inventory-use-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
 .shop-description {
   margin: 4px 0 0;
   color: var(--muted);
@@ -3467,6 +3475,80 @@ button:focus-visible,
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
+}
+
+.job-slot-banner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f7fbfd;
+  padding: 8px 11px;
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+
+.job-slot-banner strong {
+  font-size: 11px;
+  color: var(--ink);
+}
+
+.job-active-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.job-active-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 8px 11px;
+}
+
+.job-active-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.job-active-copy strong {
+  font-size: 12px;
+}
+
+.job-active-copy span {
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+
+.job-cancel-button {
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 4px 9px;
+  font-size: 10px;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.job-cancel-button:hover {
+  border-color: var(--pink);
+  color: var(--ink);
+}
+
+.job-active-status {
+  flex: none;
+  font-size: 10px;
+  color: var(--ink-soft);
 }
 
 .job-board-card {

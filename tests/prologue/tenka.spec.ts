@@ -63,7 +63,7 @@ test('Tenka: audition, CD hand-to-hand, card, games, topic and an event', async 
   await jumpTo(page, 4, 15 * 60, 'home');
   await expect(page.locator('.dialogue-scene-location')).toHaveCount(0);
   await page.getByRole('button', { name: '她的电话打不通' }).first().click();
-  await expect(page.locator('.dialogue-scene-location')).toContainText('家');
+  await expect(page.locator('.dialogue-scene-location')).toContainText('甜花的家');
   await finishDialogue(page);
   const afterOversleep = await getState(page);
   expect(afterOversleep.flags['completed.tenka.oversleep']).toBe(true);
@@ -75,8 +75,8 @@ test('Tenka: audition, CD hand-to-hand, card, games, topic and an event', async 
   await pick(page, '课后她说想去个地方');
   expect((await getState(page)).flags['completed.tenka.cafe']).toBe(true);
 
-  // ---- 专属行动：陪她打游戏（周一傍晚在她家） ----
-  await jumpTo(page, 8, 18 * 60, 'home');
+  // ---- 专属行动：陪她打游戏（周一傍晚在练习室） ----
+  await jumpTo(page, 8, 18 * 60, 'practice_room');
   await page.getByRole('button', { name: /大崎甜花/ }).first().click();
   const beforeGame = await getState(page);
   const game = page.getByRole('button', { name: '陪她打游戏' });

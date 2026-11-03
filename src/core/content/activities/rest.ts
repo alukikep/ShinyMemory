@@ -13,17 +13,49 @@ const card: ActivityDef = {
     {
         "kind": "sharedStat",
         "stat": "stamina",
-        "delta": 30
+        "delta": 15
       },
     {
         "kind": "sharedStat",
         "stat": "stress",
-        "delta": -20
+        "delta": -4
       },
     {
       "kind": "flag",
       "key": "forced_rest",
       "value": false
+    }
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "requires": [{ "kind": "varAtLeast", "key": "facility.sofa", "value": 1 }],
+      "description": "换一张能躺下的沙发：休息恢复 20 体力，压力 -6。",
+      "effects": [
+        { "kind": "sharedStat", "stat": "stamina", "delta": 20 },
+        { "kind": "sharedStat", "stat": "stress", "delta": -6 },
+        { "kind": "flag", "key": "forced_rest", "value": false }
+      ]
+    },
+    {
+      "level": 2,
+      "requires": [{ "kind": "varAtLeast", "key": "facility.sofa", "value": 2 }],
+      "description": "加一张靠垫和一条毯子：休息恢复 25 体力，压力 -8。",
+      "effects": [
+        { "kind": "sharedStat", "stat": "stamina", "delta": 25 },
+        { "kind": "sharedStat", "stat": "stress", "delta": -8 },
+        { "kind": "flag", "key": "forced_rest", "value": false }
+      ]
+    },
+    {
+      "level": 3,
+      "requires": [{ "kind": "varAtLeast", "key": "facility.sofa", "value": 3 }],
+      "description": "把角落改成真正的休息区：休息恢复 30 体力，压力 -10。",
+      "effects": [
+        { "kind": "sharedStat", "stat": "stamina", "delta": 30 },
+        { "kind": "sharedStat", "stat": "stress", "delta": -10 },
+        { "kind": "flag", "key": "forced_rest", "value": false }
+      ]
     }
   ],
   "resultTexts": [

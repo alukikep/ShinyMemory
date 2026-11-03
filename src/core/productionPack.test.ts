@@ -69,8 +69,11 @@ describe('production pack', () => {
       'vocal',
       'dance',
       'expression',
+      'office_jobs',
+      'sofa',
     ]);
     for (const facility of PRODUCTION_PACK.facilities ?? []) {
+      if (!facility.activityId) continue;
       const activity = PRODUCTION_PACK.activities.find(
         (entry) => entry.id === facility.activityId,
       );

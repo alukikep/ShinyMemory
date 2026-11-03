@@ -79,13 +79,20 @@ export default function App() {
           onOpen: () => setShopOpen(true),
         }
       : undefined;
+  const localFacilities = [...CONTENT_INDEX.facilities.values()].filter(
+    (facility) => facility.locationId === state.locationId,
+  );
   const sceneFacility =
-    state.locationId === 'practice_room' &&
-    scene.phase === 'plan' &&
-    CONTENT_INDEX.facilities.size > 0
+    scene.phase === 'plan' && localFacilities.length > 0
       ? {
-          name: '设施管理室',
-          description: '三间训练房。花钱升级，换更紧凑的课程。',
+          name:
+            state.locationId === 'office' ? '事务所管理' : '设施管理室',
+          description:
+            state.locationId === 'office'
+              ? '升级工作区与沙发，提高工作上限和休息恢复。'
+              : '三间训练房。花钱升级，换更紧凑的课程。',
+          actionLabel:
+            state.locationId === 'office' ? '进入事务所管理' : '进入管理室',
           onOpen: () => setFacilityOpen(true),
         }
       : undefined;
@@ -385,6 +392,7 @@ export default function App() {
           onGift={(itemId, idolId) =>
             act({ type: 'giveGift', itemId, idolId })
           }
+          onUse={(itemId, count) => act({ type: 'useItem', itemId, count })}
           onEquip={(equipId) => act({ type: 'equip', equipId })}
           onUnequip={(slotKey) => act({ type: 'unequip', slotKey })}
         />
@@ -419,6 +427,9 @@ export default function App() {
           state={state}
           onClose={() => setJobBoardOpen(false)}
           onAccept={(command) => act(command)}
+          onCancel={(assignmentId) =>
+            act({ type: 'cancelJob', assignmentId })
+          }
         />
       ) : null}
 

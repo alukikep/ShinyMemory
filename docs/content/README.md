@@ -269,7 +269,7 @@ P6 2026-10-30  系统层 / 无内容
   - 顺带新增地点 `hall`（会场，`ekimae` 的成员）。
   - 依赖图、原文出处与三个人的入场顺序见
     [`_materials/cometik-plan.md`](_materials/cometik-plan.md)。
-- **斑鳩ルカ**（`luca`，已上线）：招募链 3 步全在门口（新地点 `apartment` 公寓走廊），
+- **斑鳩ルカ**（`luca`，已上线）：招募链 3 步全在门口（`apartment` 南町公寓，南町的成员），
   卡面「【broken shout】」5 章。她没有独立排班表之外的东西——几乎不来事务所，
   一个人练到关灯。
   - 羽那・はるき 的招募链要挂 `luca recruited`；三人的「黑色彗星」结成排在最后。

@@ -34,6 +34,7 @@ type ScenePanelProps = {
   facilityEntry?: {
     name: string;
     description: string;
+    actionLabel?: string;
     onOpen: () => void;
   };
 };
@@ -206,7 +207,9 @@ export function ScenePanel({
             <strong>{facilityEntry.name}</strong>
             <small>{facilityEntry.description}</small>
           </span>
-          <span className="scene-shop-action">进入管理室 →</span>
+          <span className="scene-shop-action">
+            {facilityEntry.actionLabel ?? '进入管理室'} →
+          </span>
         </button>
       ) : null}
 

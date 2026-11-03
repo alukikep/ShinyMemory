@@ -12,10 +12,9 @@ import type { MapEdgeDef } from '../types';
 export const WALK_EDGES: MapEdgeDef[] = [
   // 地区之间统一 15 分钟（不然公交 5 分钟就没意义了）。
   { from: 'home', to: 'ekimae', minutes: 15 },
-  // 公寓走廊：她住的那栋楼，从家走过去 10 分钟。
-  { from: 'home', to: 'apartment', minutes: 10 },
-  // 游乐园：站前再坐一段车。
-  { from: 'ekimae', to: 'theme_park', minutes: 15 },
+  // 南町：家与站前之间往南的一带，旧公寓和游乐园都在里面。
+  { from: 'home', to: 'south_town', minutes: 10 },
+  { from: 'ekimae', to: 'south_town', minutes: 15 },
   { from: 'ekimae', to: 'office', minutes: 15 },
   { from: 'office', to: 'university_district', minutes: 15 },
   { from: 'ekimae', to: 'studio_district', minutes: 15 },
@@ -23,9 +22,11 @@ export const WALK_EDGES: MapEdgeDef[] = [
   { from: 'office', to: 'seaside', minutes: 15 },
   { from: 'university_district', to: 'seaside', minutes: 15 },
   { from: 'office', to: 'dorm', minutes: 5 },
-  // 事务所楼顶：走楼梯 5 分钟（喊一声有回声）。
-  { from: 'office', to: 'office_roof', minutes: 5 },
+  // 事务所楼顶：同一栋楼，从办公室上去 0 分钟（喊一声有回声）。
+  { from: 'office', to: 'office_roof', minutes: 0 },
   // 进楼：0 分钟
+  { from: 'south_town', to: 'apartment', minutes: 0 },
+  { from: 'south_town', to: 'theme_park', minutes: 0 },
   { from: 'ekimae', to: 'station', minutes: 0 },
   { from: 'ekimae', to: 'shopping_street', minutes: 0 },
   { from: 'ekimae', to: 'record_shop', minutes: 0 },

@@ -329,6 +329,13 @@ function validateItem(payload: Record<string, unknown>, errors: string[]): void 
       errors.push('payload.cooldownMinutes 必须是正数');
     }
   }
+  if (payload.useEffects !== undefined) {
+    if (!Array.isArray(payload.useEffects)) {
+      errors.push('payload.useEffects 必须是数组');
+    } else {
+      checkEffectsShape(payload.useEffects, 'payload.useEffects', errors);
+    }
+  }
   if (payload.gift !== undefined) {
     if (!isRecord(payload.gift)) {
       errors.push('payload.gift 必须是对象');

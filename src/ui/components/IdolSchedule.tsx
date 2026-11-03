@@ -141,7 +141,9 @@ export function IdolSchedule({ state, onClose }: IdolScheduleProps) {
                         ? CONTENT_INDEX.locations.get(slot.locationId)
                         : undefined;
                       const hidden =
-                        slot.visibility === 'private' || !slot.locationId;
+                        slot.visibility === 'private' ||
+                        !slot.locationId ||
+                        slot.locationId === 'home';
                       const name = hidden
                         ? '自由活动'
                         : location?.name ?? slot.locationId ?? '自由活动';

@@ -37,6 +37,13 @@ test('a job needs an idol and ends on a result page', async ({ page }) => {
   await reset(page, 1);
   await finishDialogue(page);
 
+  // 事务所也有自己的设施面板；工作区第一级 5,000，开局买不起。
+  await page.getByRole('button', { name: /事务所管理/ }).click();
+  await expect(page.getByRole('dialog', { name: '事务所管理' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '工作区' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '沙发' })).toBeVisible();
+  await page.getByRole('button', { name: '关闭事务所管理' }).click();
+
   // 还没出道：工作面板里没有人能去。
   await page.getByRole('button', { name: '查看可以接的工作' }).click();
   await expect(page.getByRole('dialog', { name: '可以接的工作' })).toBeVisible();
@@ -59,6 +66,28 @@ test('a job needs an idol and ends on a result page', async ({ page }) => {
   await page.getByRole('button', { name: /派 樱木真乃 去/ }).click();
   const accepted = await getState(page);
   expect(accepted.jobs).toHaveLength(1);
+
+  // 工作上限是“所有未完成工作”的总数：1/1 时不能再接，
+  // 取消后同一天恢复可排。
+  await page.getByRole('button', { name: '查看可以接的工作' }).click();
+  await expect(page.getByText('已排工作 1/1')).toBeVisible();
+  await expect(page.getByText(/占用至/)).toBeVisible();
+  await page
+    .locator('.job-board-list')
+    .getByRole('button', { name: /录音小样/ })
+    .click();
+  await expect(
+    page.getByText('已排满。先完成或取消一份已排工作，或升级事务所工作区。'),
+  ).toBeVisible();
+  await page.getByRole('button', { name: '取消' }).click();
+  await expect(page.getByText('已排工作 0/1')).toBeVisible();
+  await page.getByRole('button', { name: '返回' }).click();
+  await page
+    .locator('.job-board-list')
+    .getByRole('button', { name: /摄影棚拍摄/ })
+    .click();
+  await page.getByRole('button', { name: /派 樱木真乃 去/ }).click();
+  expect((await getState(page)).jobs).toHaveLength(1);
 
   await jumpTo(page, 5, 10 * 60 + 30, 'studio');
   const before = await getState(page);

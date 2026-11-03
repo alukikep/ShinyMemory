@@ -38,9 +38,17 @@ export function DialogueOverlay({
   const speakerAvatar = idol?.avatar;
   const choices = node?.choices ?? [];
   const text = node ? getDialogueText(state, node) : '';
-  const chapterTitle = state.dialogueChainId
-    ? CONTENT_INDEX.storyChains.get(state.dialogueChainId)?.title
+  const dialogueChain = state.dialogueChainId
+    ? CONTENT_INDEX.storyChains.get(state.dialogueChainId)
     : undefined;
+  const chapterTitle = dialogueChain?.title;
+  const dialogueStep = dialogueChain
+    ? dialogueChain.steps[
+        state.storyChains[dialogueChain.id]?.stepIndex ?? 0
+      ]
+    : undefined;
+  const locationLabel =
+    dialogueStep?.sceneLocationName ?? sceneLocationLabel(state.locationId);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -78,7 +86,7 @@ export function DialogueOverlay({
           </span>
           <span className="dialogue-scene-location">
             <GameIcon name="map" size={11} />
-            {sceneLocationLabel(state.locationId)}
+            {locationLabel}
           </span>
         </div>
 

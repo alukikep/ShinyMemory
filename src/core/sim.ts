@@ -76,10 +76,11 @@ function clone(state: GameState): GameState {
 
 /** 体力上限由制作人体能属性推导，不进存档。 */
 export function maxStamina(state: GameState): number {
-  return Math.round(
+  const base = Math.round(
     staminaCapForRank(state.producer.stamina.rank) *
       resolveModifiers(state, 'staminaCap'),
   );
+  return base + getVar(state, 'stamina.trustBonus');
 }
 
 export function staminaCostMultiplier(state: GameState): number {
@@ -714,12 +715,22 @@ export function getActor(id: string): ActorDef | undefined {
   return CONTENT_INDEX.actors.get(id);
 }
 
+/**
+ * 偶像“公开”的位置。
+ *
+ * `home` 在日程里表示她自己的家，不是制作人的家——没有具体门牌，
+ * 所以不返回地点。这样名册显示“自由活动”，也不会在制作人的家里生成她。
+ * `visibility: 'private'` 仍按原设计保留：日程表隐藏，但名册可以显示
+ * 学校这类 off-map 的实际位置。
+ */
 export function getActorLocation(
   actor: ActorDef,
   absoluteMinutes: number,
   overrides: ActorScheduleOverride[] = [],
 ): string | undefined {
-  return getScheduleSlot(actor, absoluteMinutes, overrides)?.locationId;
+  const slot = getScheduleSlot(actor, absoluteMinutes, overrides);
+  if (!slot || slot.locationId === 'home') return undefined;
+  return slot.locationId;
 }
 
 export function isActorPresent(state: GameState, actor: ActorDef): boolean {
@@ -743,6 +754,8 @@ export function acceptJob(
   }
   // 她已经到极限了，这时候接工作只会砸掉。
   if (state.flags.forced_rest) return state;
+  // 所有已排、未完成的工作共用一个总数。
+  if ((state.jobs?.length ?? 0) >= jobSlotCap(state)) return state;
 
   const targetId = idolId ?? getFocusIdolId(state);
   const job = CONTENT_INDEX.jobs.get(jobId);
@@ -761,13 +774,18 @@ export function acceptJob(
   }
 
   const currentDay = getDay(state.clock.absoluteMinutes);
-  if (!Number.isInteger(day) || day <= currentDay) return state;
+  const earliestDay = currentDay + Math.max(1, job.leadDays ?? 1);
+  if (!Number.isInteger(day) || day < earliestDay) return state;
 
   // 一份工作同时只能派一个人；完成后进入冷却。
   if (state.jobs?.some((entry) => entry.jobId === job.id)) return state;
-  const cooldownUntil =
-    (state.jobCooldowns?.[job.id] ?? 0) + (job.cooldownDays ?? 0);
-  if (currentDay < cooldownUntil) return state;
+  const lastCompletedDay = state.jobCooldowns?.[job.id];
+  if (
+    lastCompletedDay !== undefined &&
+    currentDay < lastCompletedDay + (job.cooldownDays ?? 0)
+  ) {
+    return state;
+  }
 
   // 门槛按"要派的人"判：UI 会禁用不合格的人，但命令层也要守一遍。
   const idolScopedKinds = new Set(['attributeAtLeast', 'attributeAtMost', 'castPresent']);
@@ -822,6 +840,39 @@ export function acceptJob(
   );
 
   return afterAssign;
+}
+
+/**
+ * 取消一份还没开场的工作。
+ *
+ * 工作同时存在于 `state.jobs` 和偶像的 `scheduleOverrides`；
+ * 两处必须一起删，否则名额空了但日程表还占着那一天。
+ */
+export function cancelJob(
+  state: GameState,
+  assignmentId: string,
+): GameState {
+  if (state.phase !== 'plan') return state;
+  if (state.locationId !== 'office') return state;
+  const assignment = state.jobs.find((job) => job.id === assignmentId);
+  if (!assignment) return state;
+
+  const start =
+    (assignment.day - 1) * MINUTES_PER_DAY + assignment.fromMinute;
+  if (state.clock.absoluteMinutes >= start) return state;
+
+  const next = clone(state);
+  next.jobs = next.jobs.filter((job) => job.id !== assignmentId);
+  const actor = next.actors[assignment.idolId];
+  if (actor) {
+    actor.scheduleOverrides = (actor.scheduleOverrides ?? []).filter(
+      (override) => override.id !== assignmentId,
+    );
+  }
+
+  const jobName = CONTENT_INDEX.jobs.get(assignment.jobId)?.name ?? '工作';
+  addLog(next, `取消了《${jobName}》。`, 'info');
+  return next;
 }
 
 function discountEffects(effects: Effect[]): Effect[] {
@@ -1008,6 +1059,14 @@ export function getFacilityLevel(
   return getVar(state, facility.varKey);
 }
 
+/** 事务所工作上限：初始 1 份，工作区每升一级 +1。 */
+export function jobSlotCap(state: GameState): number {
+  const varKey =
+    CONTENT_INDEX.facilities.get('office_jobs')?.varKey ??
+    'office.jobSlotLevel';
+  return 1 + getVar(state, varKey);
+}
+
 export function upgradeFacility(
   state: GameState,
   facilityId: string,
@@ -1070,6 +1129,32 @@ export function buyItem(state: GameState, itemId: string): GameState {
     };
   }
   addLog(next, `你在${shop.name}买了${item.name}。`, 'info');
+  return next;
+}
+
+export function useItem(
+  state: GameState,
+  itemId: string,
+  count: number = 1,
+): GameState {
+  if (state.phase !== 'plan') return state;
+  const item = CONTENT_INDEX.items.get(itemId);
+  if (!item?.useEffects?.length) return state;
+  const owned = state.inventory[itemId] ?? 0;
+  const used = Math.min(Math.max(1, Math.floor(count)), owned);
+  if (used <= 0) return state;
+
+  const next = clone(state);
+  const remaining = owned - used;
+  if (remaining <= 0) {
+    delete next.inventory[itemId];
+  } else {
+    next.inventory[itemId] = remaining;
+  }
+  for (let index = 0; index < used; index += 1) {
+    applyEffects(next, item.useEffects);
+  }
+  addLog(next, `使用了${item.name} ×${used}。`, 'good');
   return next;
 }
 
@@ -1937,6 +2022,13 @@ function applyEffects(
         const owned = state.ownedEquips ?? [];
         if (owned.includes(effect.equipId)) break;
         state.ownedEquips = [...owned, effect.equipId];
+        break;
+      }
+      case 'grantItem': {
+        if (!CONTENT_INDEX.items.has(effect.itemId)) break;
+        const count = Math.max(1, effect.count ?? 1);
+        state.inventory[effect.itemId] =
+          (state.inventory[effect.itemId] ?? 0) + count;
         break;
       }
       case 'actorAffinity': {
@@ -3310,6 +3402,9 @@ export function handleCommand(
       if (command.type === 'acceptJob') {
         return acceptJob(state, command.jobId, command.day, command.idolId);
       }
+      if (command.type === 'cancelJob') {
+        return cancelJob(state, command.assignmentId);
+      }
       if (command.type === 'setFocusIdol') {
         return setFocusIdol(state, command.idolId);
       }
@@ -3318,6 +3413,9 @@ export function handleCommand(
       }
       if (command.type === 'buyItem') {
         return buyItem(state, command.itemId);
+      }
+      if (command.type === 'useItem') {
+        return useItem(state, command.itemId, command.count);
       }
       if (command.type === 'upgradeFacility') {
         return upgradeFacility(state, command.facilityId);

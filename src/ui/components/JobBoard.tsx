@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
+import { CONTENT_INDEX } from '../../core/contentIndex';
 import { buildJobBoard } from '../../core/scene';
 import { STAT_ABBR } from '../../core/labels';
+import {
+  formatCalendarDateFromDay,
+  formatClock,
+  getDay,
+} from '../../core/time';
 import type { ActionCommand, GameState, JobBoardEntry } from '../../core/types';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 import { GameIcon } from './GameIcon';
@@ -9,6 +15,7 @@ type JobBoardProps = {
   state: GameState;
   onClose: () => void;
   onAccept: (command: ActionCommand) => void;
+  onCancel: (assignmentId: string) => void;
 };
 
 /**
@@ -17,7 +24,12 @@ type JobBoardProps = {
  * 列表只看「名字 / 门槛 / 报酬」，工作再多也不会挤；
  * 点进一条才看详情和派谁去。默认只排重点偶像。
  */
-export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
+export function JobBoard({
+  state,
+  onClose,
+  onAccept,
+  onCancel,
+}: JobBoardProps) {
   const dialogRef = useDialogFocus<HTMLElement>();
   const board = buildJobBoard(state);
   const [detailId, setDetailId] = useState<string | undefined>();
@@ -42,9 +54,37 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
     detail?.offers.find((offer) => offer.idolId === pickedIdolId) ??
     detail?.offers.find((offer) => offer.idolId === board.focusIdolId) ??
     detail?.offers[0];
+  const selectedDate = picked?.dates.find((date) => date.available);
+  const canAccept =
+    Boolean(selectedDate) &&
+    !board.slots.full &&
+    !detail?.busyReason &&
+    !picked?.locked;
 
   const statusOf = (entry: JobBoardEntry) =>
-    entry.locked ? '未解锁' : entry.busyReason;
+    entry.locked
+      ? '未解锁'
+      : (entry.busyReason ??
+        (board.slots.full ? '已排满' : undefined));
+
+  const activeJobs = state.jobs.map((assignment) => {
+    const job = CONTENT_INDEX.jobs.get(assignment.jobId);
+    const idol = CONTENT_INDEX.idols.get(assignment.idolId);
+    const start =
+      (assignment.day - 1) * 24 * 60 + assignment.fromMinute;
+    const today = getDay(state.clock.absoluteMinutes);
+    return {
+      assignment,
+      jobName: job?.name ?? assignment.jobId,
+      idolName: idol?.name ?? assignment.idolId,
+      dateLabel: `${formatCalendarDateFromDay(assignment.day, false)} · ${formatClock(assignment.fromMinute)}–${formatClock(assignment.toMinute)}`,
+      occupiedLabel:
+        assignment.day === today
+          ? '占用至今天'
+          : `占用至 ${formatCalendarDateFromDay(assignment.day, false)}`,
+      cancellable: state.clock.absoluteMinutes < start,
+    };
+  });
 
   return (
     <div
@@ -69,7 +109,7 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
             <p className="shop-description">
               {detail
                 ? `${detail.locationName} · ${detail.timeLabel}`
-                : '接下来会占掉她那一整天的行程；带检定的工作可能达不到要求。'}
+                : `可同时负责 ${board.slots.cap} 份工作。接下来会占掉她那一整天的行程；带检定的工作可能达不到要求。`}
             </p>
           </div>
           <div className="inventory-head-meta">
@@ -97,6 +137,49 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
           </div>
         </header>
 
+        {activeJobs.length > 0 ? (
+          <section className="job-active-list" aria-label="已排工作">
+            <div className="job-slot-banner">
+              <strong>
+                已排工作 {board.slots.used}/{board.slots.cap}
+              </strong>
+              <span>
+                {board.slots.full
+                  ? '已排满，先完成或取消一份工作。'
+                  : '完成或取消后释放名额。'}
+              </span>
+            </div>
+            {activeJobs.map((entry) => (
+              <div className="job-active-row" key={entry.assignment.id}>
+                <div className="job-active-copy">
+                  <strong>{entry.jobName}</strong>
+                  <span>
+                    {entry.idolName} · {entry.dateLabel} · {entry.occupiedLabel}
+                  </span>
+                </div>
+                {entry.cancellable ? (
+                  <button
+                    type="button"
+                    className="job-cancel-button"
+                    onClick={() => onCancel(entry.assignment.id)}
+                  >
+                    取消
+                  </button>
+                ) : (
+                  <span className="job-active-status">进行中</span>
+                )}
+              </div>
+            ))}
+          </section>
+        ) : (
+          <div className="job-slot-banner">
+            <strong>
+              已排工作 0/{board.slots.cap}
+            </strong>
+            <span>升级事务所工作区可以提高这个上限。</span>
+          </div>
+        )}
+
         {detail ? (
           <div className="job-detail">
             <p className="job-detail-description">{detail.description}</p>
@@ -109,6 +192,10 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
               <p className="job-board-locked-note">未解锁</p>
             ) : detail.busyReason ? (
               <p className="job-board-locked-note">{detail.busyReason}</p>
+            ) : board.slots.full ? (
+              <p className="job-board-locked-note">
+                已排满。先完成或取消一份已排工作，或升级事务所工作区。
+              </p>
             ) : detail.offers.length === 0 ? (
               <p className="job-board-locked-note">还没有能去的偶像</p>
             ) : (
@@ -138,21 +225,37 @@ export function JobBoard({ state, onClose, onAccept }: JobBoardProps) {
                   <button
                     type="button"
                     className="job-board-accept"
-                    disabled={!picked.command}
+                    disabled={!canAccept}
                     onClick={() => {
-                      if (!picked.command) return;
-                      onAccept(picked.command);
+                      if (!selectedDate) return;
+                      onAccept({
+                        type: 'acceptJob',
+                        jobId: detail.jobId,
+                        day: selectedDate.day,
+                        idolId: picked.idolId,
+                      });
                       onClose();
                     }}
                   >
                     <strong>派 {picked.idolName} 去</strong>
-                    <span>{picked.dayLabel}</span>
+                    <span>
+                      {selectedDate
+                        ? `${selectedDate.dayLabel} · ${detail.timeLabel}`
+                        : '没有可排日期'}
+                    </span>
+                    {selectedDate ? <span>占用至 {selectedDate.dayLabel}</span> : null}
                     {picked.checkLabel ? <span>{picked.checkLabel}</span> : null}
                   </button>
                 ) : null}
-                {picked && !picked.command ? (
+                {picked?.locked ? (
                   <p className="job-board-locked-note">
-                    {picked.lockedReason ?? '她这次去不了'}
+                    {picked.lockedReason ?? '属性还没到门槛'}
+                  </p>
+                ) : picked && !selectedDate ? (
+                  <p className="job-board-locked-note">
+                    {picked.lockedReason ??
+                      picked.dates[0]?.reason ??
+                      '未来七天没有可改期的空档'}
                   </p>
                 ) : null}
               </>

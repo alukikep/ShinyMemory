@@ -1,4 +1,4 @@
-import { neighborsOf } from './content/map';
+import { neighborsOf, walkEdge } from './content/map';
 import { CONTENT_INDEX } from './contentIndex';
 import { areaMembers, parentArea } from './areas';
 import {
@@ -35,6 +35,7 @@ import {
   getEvent,
   isActorPresent,
   isIdolRecruited,
+  jobSlotCap,
   presentActors,
   storyDayFor,
   storyWorkBlock,
@@ -50,6 +51,7 @@ import type {
   JobBoardEntry,
   JobBoardOffer,
   JobBoardView,
+  JobDateOption,
   JobDef,
   SceneView,
   StatKey,
@@ -219,36 +221,68 @@ function activityActionView(
   };
 }
 
-/** 某个偶像接这份工作最早能被排进哪一天。 */
-function jobOfferFor(
+/** 一个偶像未来可排的日期数量。 */
+const JOB_DATE_HORIZON = 7;
+
+/**
+ * 某个偶像接这份工作可选的未来日期。
+ *
+ * `leadDays` 是工作本身的前置期：接取后最早只能排到第 N 天。
+ * 普通工作缺省 1（明天）；大工作可以写成 7 天，占住一个名额更久。
+ */
+export function jobDatesFor(
   state: GameState,
   job: JobDef,
   idolId: string,
-): { day: number; chance?: number } | undefined {
+): JobDateOption[] {
   const actor = CONTENT_INDEX.actors.get(idolId);
-  if (!actor || actor.role !== 'idol') return undefined;
-  if (!isIdolRecruited(state, idolId)) return undefined;
-  if (
-    state.jobs.some(
-      (entry) => entry.jobId === job.id && entry.idolId === actor.id,
-    )
-  ) {
-    return undefined;
-  }
+  if (!actor || actor.role !== 'idol') return [];
+  if (!isIdolRecruited(state, idolId)) return [];
 
-  // 剧情占用：整个章封锁（workPolicy 'blocked'）或只挡剧情日那一天。
-  if (storyWorkBlock(state, idolId).blocked) return undefined;
+  const overrides = state.actors[idolId]?.scheduleOverrides;
+  const assigned = state.jobs.find((entry) => entry.idolId === idolId);
+  const blocked = storyWorkBlock(state, idolId).blocked;
+  const leadDays = Math.max(1, job.leadDays ?? 1);
+  const startDay = getDay(state.clock.absoluteMinutes) + leadDays;
+  const dates: JobDateOption[] = [];
 
-  const overrides = state.actors[actor.id]?.scheduleOverrides;
-  const startDay = getDay(state.clock.absoluteMinutes) + 1;
-  for (let offset = 0; offset < 7; offset += 1) {
+  for (let offset = 0; offset < JOB_DATE_HORIZON; offset += 1) {
     const day = startDay + offset;
-    if (!canReplaceDay(actor, day, overrides).ok) continue;
-    if (storyWorkBlock(state, idolId, day).blocked) continue;
-    return { day, chance: jobCheckChance(state, job, idolId) };
+    const dayLabel = formatCalendarDateFromDay(day, false);
+    if (assigned) {
+      dates.push({
+        day,
+        dayLabel,
+        available: false,
+        reason: `已有工作：${CONTENT_INDEX.jobs.get(assigned.jobId)?.name ?? '工作'}`,
+      });
+      continue;
+    }
+    if (blocked) {
+      dates.push({ day, dayLabel, available: false, reason: '剧情进行中' });
+      continue;
+    }
+    const replace = canReplaceDay(actor, day, overrides);
+    if (!replace.ok) {
+      dates.push({
+        day,
+        dayLabel,
+        available: false,
+        reason: replace.reason === 'protected' ? '受保护日程' : '已有日程',
+      });
+      continue;
+    }
+    if (storyWorkBlock(state, idolId, day).blocked) {
+      dates.push({ day, dayLabel, available: false, reason: '剧情日占用' });
+      continue;
+    }
+    dates.push({ day, dayLabel, available: true });
   }
-  return undefined;
+
+  return dates;
 }
+
+/** 兼容旧调用：取最早可排的一天。 */
 
 /**
  * 该偶像的派生日程：剧情日显示成一条「剧情」时段。
@@ -313,8 +347,11 @@ export function buildJobBoard(state: GameState): JobBoardView {
 
     // 一份工作同时只能派一个人；完成后按 cooldownDays 冷却。
     const assigned = state.jobs?.some((entry) => entry.jobId === job.id);
+    const lastCompletedDay = state.jobCooldowns?.[job.id];
     const cooldownUntil =
-      (state.jobCooldowns?.[job.id] ?? 0) + (job.cooldownDays ?? 0);
+      lastCompletedDay === undefined
+        ? 0
+        : lastCompletedDay + (job.cooldownDays ?? 0);
     const coolingDays =
       cooldownUntil - getDay(state.clock.absoluteMinutes);
     const busyReason = assigned
@@ -337,10 +374,9 @@ export function buildJobBoard(state: GameState): JobBoardView {
         )
         .filter(Boolean)
         .join('；');
-      const offer =
-        busyReason || locked || idolLocked
-          ? undefined
-          : jobOfferFor(state, job, idol.id);
+      const dates = jobDatesFor(state, job, idol.id);
+      const first = dates.find((date) => date.available);
+      const occupied = state.jobs.find((entry) => entry.idolId === idol.id);
       const chance = jobCheckChance(state, job, idol.id);
       const checkLabel =
         job.check && chance !== undefined
@@ -349,21 +385,26 @@ export function buildJobBoard(state: GameState): JobBoardView {
       return {
         idolId: idol.id,
         idolName: CONTENT_INDEX.idols.get(idol.id)?.name ?? idol.id,
-        day: offer?.day ?? 0,
-        dayLabel: offer
-          ? `${formatCalendarDateFromDay(offer.day, false)} · ${formatClock(job.fromMinute)}–${formatClock(job.toMinute)}`
+        day: first?.day ?? 0,
+        dayLabel: first
+          ? `${first.dayLabel} · ${formatClock(job.fromMinute)}–${formatClock(job.toMinute)}`
           : '未来七天没有可改期的空档',
         chance,
         checkLabel,
+        dates,
+        occupiedBy: occupied
+          ? (CONTENT_INDEX.jobs.get(occupied.jobId)?.name ?? '已有工作')
+          : undefined,
         locked: idolLocked,
         lockedReason: idolLocked
           ? idolLockedReason || '属性还没到门槛'
-          : offer
+          : first
             ? undefined
-            : '未来七天没有可改期的空档',
-        command: offer
-          ? { type: 'acceptJob', jobId: job.id, day: offer.day, idolId: idol.id }
-          : undefined,
+            : dates[0]?.reason ?? '未来七天没有可改期的空档',
+        command:
+          !busyReason && !locked && !idolLocked && first
+            ? { type: 'acceptJob', jobId: job.id, day: first.day, idolId: idol.id }
+            : undefined,
       };
     });
 
@@ -401,7 +442,14 @@ export function buildJobBoard(state: GameState): JobBoardView {
     .filter((row) => !row.hidden)
     .map((row) => row.entry);
 
-  return { entries, focusIdolId };
+  const used = state.jobs?.length ?? 0;
+  const cap = jobSlotCap(state);
+
+  return {
+    entries,
+    focusIdolId,
+    slots: { used, cap, full: used >= cap },
+  };
 }
 
 function buildJobActions(state: GameState): ActionView[] {
@@ -503,11 +551,14 @@ function buildPlan(state: GameState): SceneView {
     for (const memberId of areaMembers(state.locationId)) {
       const member = CONTENT_INDEX.locations.get(memberId);
       if (!member) continue;
+      const minutes =
+        walkEdge(CONTENT_INDEX.walkEdges, state.locationId, memberId)?.minutes ??
+        0;
       actions.push({
         id: `enter:${memberId}`,
         command: { type: 'move', locationId: memberId },
         label: `进入 ${member.name}`,
-        hint: '0 分钟',
+        hint: `${minutes} 分钟`,
         icon: 'map',
         tone: 'secondary',
       });
@@ -517,11 +568,14 @@ function buildPlan(state: GameState): SceneView {
   // 成员页：回到所在的入口。
   const parent = parentArea(state.locationId);
   if (parent) {
+    const minutes =
+      walkEdge(CONTENT_INDEX.walkEdges, state.locationId, parent.id)?.minutes ??
+      0;
     actions.push({
       id: `leave:${parent.id}`,
       command: { type: 'move', locationId: parent.id },
       label: `回到${parent.name}`,
-      hint: '0 分钟',
+      hint: `${minutes} 分钟`,
       icon: 'map',
       tone: 'secondary',
     });

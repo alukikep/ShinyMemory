@@ -381,7 +381,7 @@ npm run content:japanese -- --strict   # 门禁模式：只看 approved，有就
 | 只出现在台词里 | 不建、不搬 | "我老家在福岛" |
 
 一次性场景不要造实体——空地点会让地图变成无人区（望丘大学就这么空过一次）。
-收尾搬家用 `endLocationId`：**0 分钟、只搬玩家、不搬偶像**，目标必须是真实地点。
+收尾搬家用 `endLocationId`：**0 分钟、只搬玩家、不搬偶像**，目标必须是真实地点，不能是 area（`office` 现在是 area，写 `office_roof` / `dorm` 等成员）。
 
 ### 4.7 物品与商店
 

@@ -1,6 +1,7 @@
 import { describeCondition } from './conditionText';
 import { CONTENT_INDEX } from './contentIndex';
 import { evaluateStorySteps } from './sim';
+import { occupyingStoryChains, STORY_CHAIN_LIMIT } from './storyCapacity';
 import type { StoryStepEvaluation } from './sim';
 import { formatClock, getDay, getMinuteOfDay } from './time';
 import type { GameState, StoryChainStep } from './types';
@@ -38,6 +39,9 @@ export type HandbookEntryView = {
 
 export type HandbookView = {
   active: HandbookEntryView[];
+  leads: HandbookEntryView[];
+  recruitment: HandbookEntryView[];
+  slots: { used: number; limit: number };
   archive: HandbookEntryView[];
 };
 
@@ -87,6 +91,7 @@ function statusOf(
   if (has('idol-busy')) {
     return { status: 'blocked', reason: '她正在经历另一段剧情' };
   }
+  if (has('story-capacity')) return { status: 'blocked', reason: '先完成一条进行中的剧情，再开启新剧情' };
   if (has('waiting')) return { status: 'waiting' };
   if (has('conditions')) {
     return { status: 'blocked', reason: gapText(evaluation, state) };
@@ -143,6 +148,9 @@ function buildEntry(
 export function buildHandbook(state: GameState): HandbookView {
   const day = getDay(state.clock.absoluteMinutes);
   const active: HandbookEntryView[] = [];
+  const leads: HandbookEntryView[] = [];
+  const recruitment: HandbookEntryView[] = [];
+  const occupying = occupyingStoryChains(state);
   const archive: HandbookEntryView[] = [];
 
   for (const evaluation of evaluateStorySteps(state)) {
@@ -150,6 +158,10 @@ export function buildHandbook(state: GameState): HandbookView {
     const entry = buildEntry(evaluation, state, day);
     if (entry.status === 'done') {
       archive.push(entry);
+    } else if (evaluation.chain.lockScope === 'none') {
+      recruitment.push(entry);
+    } else if (!occupying.some((chain) => chain.id === evaluation.chain.id)) {
+      leads.push(entry);
     } else {
       active.push(entry);
     }
@@ -169,5 +181,5 @@ export function buildHandbook(state: GameState): HandbookView {
       a.title.localeCompare(b.title, 'zh-CN'),
   );
 
-  return { active, archive };
+  return { active, leads, recruitment, archive, slots: { used: occupying.length, limit: STORY_CHAIN_LIMIT } };
 }

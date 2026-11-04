@@ -124,6 +124,8 @@ type ReviewDraft = {
 
 ## 6. 接口
 
+内容档案入口位于审查台顶栏。`GET /api/review/inventory` 每次从磁盘读取最新审批与修订内容，复用 `tools/contentInventory.ts` 的只读统计，响应不缓存。页面支持偶像/范围/类型筛选、版本与出处明细、刷新及错误重试；统计口径见 [内容档案说明](../current/content-inventory-plan.md)。
+
 ```text
 GET    /api/review/drafts                 列表
 GET    /api/review/drafts/:id             单条

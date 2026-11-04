@@ -13,6 +13,7 @@ import { SPEAKER_NAMES } from '../core/labels';
 import type { DialogueNode } from '../core/types';
 import { LocalReviewRepository, ReviewApiError } from './repository';
 import { ReviewEditor } from './ReviewEditor';
+import { ContentInventoryPanel } from './ContentInventoryPanel';
 
 const STATUS_LABELS: Record<ReviewStatus, string> = {
   review: '待审查',
@@ -679,6 +680,7 @@ function Annotations({
 }
 
 export function ReviewApp() {
+  const [inventoryOpen, setInventoryOpen] = useState(false);
   const [drafts, setDrafts] = useState<ReviewDraft[]>([]);
   const [status, setStatus] = useState<ReviewStatus | 'all'>('review');
   const [selectedId, setSelectedId] = useState<string | undefined>();
@@ -981,6 +983,8 @@ export function ReviewApp() {
   const locked =
     selected?.status === 'approved' || selected?.status === 'discarded';
 
+  if (inventoryOpen) return <div className="review-shell"><ContentInventoryPanel onClose={() => setInventoryOpen(false)} /></div>;
+
   return (
     <div className="review-shell">
       <header className="review-topbar">
@@ -992,6 +996,7 @@ export function ReviewApp() {
           </p>
         </div>
         <div className="review-topbar-actions">
+          <button type="button" onClick={() => setInventoryOpen(true)}>内容档案</button>
           <button
             type="button"
             className="review-button primary"

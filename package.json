@@ -11,6 +11,7 @@
     "docs:check": "tsx tools/checkDocs.ts",
     "content:coverage": "tsx tools/contentCoverage.ts",
     "content:where": "tsx tools/contentWhere.ts",
+    "content:inventory": "tsx tools/contentInventory.ts",
     "content:drafts": "tsx tools/checkDrafts.ts",
     "content:japanese": "tsx tools/checkJapanese.ts",
     "content:new-idol": "tsx tools/newIdol.ts",

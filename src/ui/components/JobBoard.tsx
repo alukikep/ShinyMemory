@@ -16,6 +16,7 @@ type JobBoardProps = {
   onClose: () => void;
   onAccept: (command: ActionCommand) => void;
   onCancel: (assignmentId: string) => void;
+  onRefresh: () => void;
 };
 
 /**
@@ -29,6 +30,7 @@ export function JobBoard({
   onClose,
   onAccept,
   onCancel,
+  onRefresh,
 }: JobBoardProps) {
   const dialogRef = useDialogFocus<HTMLElement>();
   const board = buildJobBoard(state);
@@ -136,6 +138,16 @@ export function JobBoard({
             </button>
           </div>
         </header>
+
+        <div className="job-slot-banner" aria-label="今日工作邀约">
+          <strong>今日邀约 {board.invitations.count}/{board.invitations.limit}</strong>
+          <button type="button" className="job-cancel-button"
+            disabled={!board.invitations.canRefresh}
+            onClick={() => { setDetailId(undefined); onRefresh(); }}>
+            {board.invitations.refreshed ? '今日已刷新' : '刷新邀约（每日一次）'}
+          </button>
+          <span>{board.invitations.refreshed ? '明天恢复刷新次数' : board.invitations.canRefresh ? '免费，不消耗时间' : '暂无可替换邀约'}</span>
+        </div>
 
         {activeJobs.length > 0 ? (
           <section className="job-active-list" aria-label="已排工作">

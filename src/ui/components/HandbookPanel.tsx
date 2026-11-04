@@ -123,7 +123,14 @@ export function HandbookPanel({ view, onClose }: HandbookPanelProps) {
           </button>
         </header>
 
-        {view.active.length === 0 && view.archive.length === 0 ? (
+        <p className="handbook-meta" aria-label="剧情名额">
+          剧情进行中 {view.slots.used}/{view.slots.limit} · 招募不占位
+        </p>
+        {view.slots.used >= view.slots.limit ? (
+          <p className="handbook-meta">先完成一条进行中的剧情，再开启新剧情；已有剧情可以继续。</p>
+        ) : null}
+
+        {view.active.length === 0 && view.archive.length === 0 && view.leads.length === 0 && view.recruitment.length === 0 ? (
           <p className="handbook-empty">还没有值得记下的事。</p>
         ) : null}
 
@@ -142,6 +149,30 @@ export function HandbookPanel({ view, onClose }: HandbookPanelProps) {
               </details>
             ))}
           </section>
+        ) : null}
+
+        {view.recruitment.length > 0 ? (
+          <section className="handbook-section" aria-label="招募引导">
+            <h3 className="handbook-section-title">招募引导 · 不占剧情名额</h3>
+            {groupByIdol(view.recruitment).map(([name, entries]) => (
+              <details className="handbook-archive-group" key={name}>
+                <summary>{name}<small>{entries.length}</small></summary>
+                {entries.map((entry) => <EntryCard entry={entry} key={entry.id} />)}
+              </details>
+            ))}
+          </section>
+        ) : null}
+
+        {view.leads.length > 0 ? (
+          <details className="handbook-section" aria-label="待开启线索">
+            <summary className="handbook-section-title">待开启线索 · {view.leads.length}</summary>
+            {groupByIdol(view.leads).map(([name, entries]) => (
+              <details className="handbook-archive-group" key={name}>
+                <summary>{name}<small>{entries.length}</small></summary>
+                {entries.map((entry) => <EntryCard entry={entry} key={entry.id} />)}
+              </details>
+            ))}
+          </details>
         ) : null}
 
         {view.archive.length > 0 ? (

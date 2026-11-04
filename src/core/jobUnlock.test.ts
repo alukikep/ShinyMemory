@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { CONTENT_INDEX } from './contentIndex';
 import { buildJobBoard } from './scene';
 import { newGame } from './sim';
+import { refreshJobInvitations } from './jobInvitations';
 import type { GameState, JobDef } from './types';
 
 const JOB_ID = 'test.job.story_gated';
@@ -45,6 +46,9 @@ describe('story-gated jobs', () => {
     state.flags[FLAG] = true;
     expect(
       buildJobBoard(state).entries.some((entry) => entry.jobId === JOB_ID),
+    ).toBe(false);
+    expect(
+      buildJobBoard(refreshJobInvitations(state)).entries.some((entry) => entry.jobId === JOB_ID),
     ).toBe(true);
   });
 

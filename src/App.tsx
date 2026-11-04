@@ -251,8 +251,8 @@ export default function App() {
           >
             <GameIcon name="book" size={17} />
             <span>手册</span>
-            {handbook.active.length > 0 ? (
-              <small className="sidebar-nav-count">{handbook.active.length}</small>
+            {handbook.slots.used > 0 ? (
+              <small className="sidebar-nav-count">{handbook.slots.used}</small>
             ) : null}
           </button>
           {scene.phase === 'plan' ? (
@@ -328,8 +328,9 @@ export default function App() {
               <ScenePanel
                 scene={scene}
                 onAction={(command) => {
-                  // 工作面板是界面，不动游戏状态。
+                  // Opening snapshots today's invitations without advancing time.
                   if (command.type === 'openJobBoard') {
+                    act(command);
                     setJobBoardOpen(true);
                     return;
                   }
@@ -427,6 +428,7 @@ export default function App() {
           state={state}
           onClose={() => setJobBoardOpen(false)}
           onAccept={(command) => act(command)}
+          onRefresh={() => act({ type: 'refreshJobInvitations' })}
           onCancel={(assignmentId) =>
             act({ type: 'cancelJob', assignmentId })
           }

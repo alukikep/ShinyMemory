@@ -35,12 +35,13 @@ export function storyHints(state: GameState): StoryHint[] {
     const { chain, step } = evaluation;
     if (!step || chain.revealMode !== 'triggered' || !chain.hint) continue;
     // 已经触发过（进过手册）就不再提示
-    if (state.storyChains[chain.id]) continue;
+    if (state.storyChains[chain.id] || (state.pendingDialogueId && state.dialogueChainId === chain.id)) continue;
 
     const kinds = new Set(evaluation.blocks.map((block) => block.kind));
     if (kinds.has('completed')) continue;
     // 她正在别的剧情里 —— 这时候指路没意义
     if (kinds.has('idol-busy')) continue;
+    if (kinds.has('story-capacity')) continue;
     // 前置条件没满足（还没招募 / 上一章没做完）也不提示
     if (kinds.has('conditions')) continue;
     // 地点和时段不对是我们要提示的，不算失败

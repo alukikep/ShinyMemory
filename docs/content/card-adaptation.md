@@ -145,6 +145,8 @@ curl 'https://api.shinycolors.moe/info/pCardInfo?cardId=<cardUuid>'
 - 手册里是 5 行并列，玩家看不出属于同一张卡（真实踩过，已改回）
 - "一个偶像同时只走一条链"的锁要靠额外字段才能表达
 
+当前占用规则：同一偶像一条、全局两条普通剧情，整卡完成才释放；招募引导 `lockScope: 'none'` 豁免。不要靠拆链或加豁免绕过上限；完整口径见 [制作人手册](../systems/producer-handbook.md)「当前剧情占用规则」。
+
 **每步仍然自带**：地点、时间窗、对话、奖励、完成 flag、`nextStepDelayDays`。
 所以触发方式和以前完全一样，变的只是"它们属于同一条链"。
 

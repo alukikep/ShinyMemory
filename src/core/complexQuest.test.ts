@@ -172,7 +172,7 @@ describe('complex quest: a fall-out with Mano', () => {
 
   it('puts the thread in the handbook as soon as the flag is set', () => {
     const state = startQuarrel(newGame(1));
-    const entry = buildHandbook(at(state, 1, 12 * 60, 'office')).active[0];
+    const entry = buildHandbook(at(state, 1, 12 * 60, 'office')).leads[0];
 
     expect(entry.title).toBe('闹别扭的真乃');
     expect(entry.status).toBe('available');

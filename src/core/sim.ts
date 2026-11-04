@@ -24,6 +24,8 @@ import { STAT_LABELS, STAT_MAX, attributeLabel, formatFans } from './labels';
 import { createInitialProducerStats, staminaCapForRank, staminaCostMultiplierForRank, PRODUCER_STAT_KEYS } from './producer';
 import { oddJobScale } from './oddJob';
 import { Rng } from './rng';
+import { occupyingStoryChains, STORY_CHAIN_LIMIT } from './storyCapacity';
+import { dailyJobInvitations, visibleJobInvitationIds, refreshJobInvitations } from './jobInvitations';
 import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, getWeekdayFromDay, isMinuteInWindow } from './time';
 import { describeCondition } from './conditionText';
 import { emitGameEvent } from './gameEvents';
@@ -700,6 +702,7 @@ export function newGame(seed: number = Date.now()): GameState {
     state.pendingDialogueId = opening.id;
     state.dialogueNodeId = opening.startNodeId;
   }
+  state.jobInvitations = dailyJobInvitations(state);
   return state;
 }
 
@@ -762,6 +765,7 @@ export function acceptJob(
   const actor = getActor(targetId);
   const actorState = state.actors[targetId];
   if (!job || !actor || !actorState) return state;
+  if (!visibleJobInvitationIds(state).includes(jobId)) return state;
   // 没招募的偶像不能接工作——工作是她去做的。
   if (!isIdolRecruited(state, actor.id)) return state;
   if (actor.role !== 'idol') return state;
@@ -788,10 +792,8 @@ export function acceptJob(
   }
 
   // 门槛按"要派的人"判：UI 会禁用不合格的人，但命令层也要守一遍。
-  const idolScopedKinds = new Set(['attributeAtLeast', 'attributeAtMost', 'castPresent']);
   const unmet = (job.requires ?? []).filter(
     (condition) =>
-      (idolScopedKinds.has(condition.kind) || 'idolId' in condition) &&
       !checkCondition(condition, state, { idolId: actor.id }),
   );
   if (unmet.length > 0) return state;
@@ -801,6 +803,7 @@ export function acceptJob(
 
   const assignmentId = `job:${job.id}:${actor.id}:${day}`;
   const next = clone(state);
+  next.jobInvitations = dailyJobInvitations(state);
   const nextActor = next.actors[actor.id];
   if (!nextActor) return state;
 
@@ -1393,6 +1396,7 @@ export type StoryStepBlock =
   | { kind: 'completed' }
   | { kind: 'busy' }
   | { kind: 'idol-busy'; chainId: string }
+  | { kind: 'story-capacity'; used: number; limit: number }
   | { kind: 'not-revealed' }
   | { kind: 'waiting'; earliestDay: number }
   | { kind: 'location'; expected: string; actual: string }
@@ -1426,7 +1430,8 @@ export function evaluateStoryChain(
 
   // revealWhen 只决定"手册里说不说"，不决定能不能触发。
   // revealMode='triggered' 的链（卡的开头）只能靠"已经触发过"揭示。
-  const triggered = Boolean(state.storyChains[chain.id]);
+  const triggered = Boolean(state.storyChains[chain.id] ||
+    (state.pendingDialogueId && state.dialogueChainId === chain.id));
   const revealed =
     triggered ||
     (chain.revealMode !== 'triggered' &&
@@ -1440,20 +1445,15 @@ export function evaluateStoryChain(
   if (!step || chainState.completed) {
     blocks.push({ kind: 'completed' });
   }
-  // 一个偶像同时只进一条链：她自己有别的链没走完，这条就不能开。
-  const busyChain = Object.values(state.storyChains ?? {}).find((entry) => {
-    if (entry.completed || entry.chainId === chain.id) return false;
-    const other = CONTENT_INDEX.storyChains.get(entry.chainId);
-    // 招募链这类引导不占位：否则她只要不把尾声做完，就永远锁着后续剧情。
-    return (other?.lockScope ?? 'idol') !== 'none';
-  });
-  const busyForThisIdol = busyChain
-    ? (CONTENT_INDEX.storyChains.get(busyChain.chainId)?.idolId ?? '') === chain.idolId
-    : false;
-  if (chain.lockScope === 'none') {
-    // 自己也不受锁影响
-  } else if (busyForThisIdol && !chainState.completed) {
-    blocks.push({ kind: 'idol-busy', chainId: busyChain!.chainId });
+  const occupying = occupyingStoryChains(state);
+  const ongoing = occupying.some((other) => other.id === chain.id);
+  // Limits only block new starts. Legacy over-capacity chains may all finish.
+  if (chain.lockScope !== 'none' && !ongoing && !chainState.completed && step) {
+    const sameIdol = occupying.find((other) => other.idolId === chain.idolId);
+    if (sameIdol) blocks.push({ kind: 'idol-busy', chainId: sameIdol.id });
+    if (occupying.length >= STORY_CHAIN_LIMIT) {
+      blocks.push({ kind: 'story-capacity', used: occupying.length, limit: STORY_CHAIN_LIMIT });
+    }
   }
   if (state.pendingDialogueId || state.flags.forced_rest) {
     blocks.push({ kind: 'busy' });
@@ -1554,6 +1554,8 @@ export type StoryTriggerReport = {
 const STORY_BLOCK_ORDER: StoryStepBlock['kind'][] = [
   'completed',
   'busy',
+  'idol-busy',
+  'story-capacity',
   'waiting',
   'conditions',
   'location',
@@ -1571,6 +1573,10 @@ function storyBlockText(
       return '已完成';
     case 'busy':
       return '当前有对话或强制休息';
+    case 'idol-busy':
+      return '她正在经历另一段剧情';
+    case 'story-capacity':
+      return `剧情进行中 ${block.used}/${block.limit}，先完成一条再开启新剧情`;
     case 'waiting': {
       const day = getDay(state.clock.absoluteMinutes);
       return `还有 ${Math.max(0, block.earliestDay - day)} 天（最早第 ${block.earliestDay} 天）`;
@@ -2530,6 +2536,7 @@ export function advanceTime(state: GameState, minutes: number): GameState {
   completeDueJobs(next);
   const afterDay = getDay(next.clock.absoluteMinutes);
   if (afterDay !== beforeDay) {
+    next.jobInvitations = dailyJobInvitations(next);
     emitGameEvent({ kind: 'dayStarted', day: afterDay }, next);
   }
   return next;
@@ -3395,8 +3402,15 @@ export function handleCommand(
       if (command.type === 'transit') {
         return takeTransit(state, command.routeId);
       }
-      // 打开工作面板是纯 UI 动作，不改变游戏状态。
-      if (command.type === 'openJobBoard') return state;
+      // 打开面板时保存今日邀约；不推进时间。
+      if (command.type === 'openJobBoard') {
+        if (state.locationId !== 'office') return state;
+        const invitations = dailyJobInvitations(state);
+        // Return a new envelope even for an existing snapshot: the store treats
+        // identity returns as failed actions and would log a misleading warning.
+        return { ...state, jobInvitations: invitations };
+      }
+      if (command.type === 'refreshJobInvitations') return refreshJobInvitations(state);
       if (command.type === 'enterNpc') return enterNpc(state, command.actorId);
       if (command.type === 'enterIdol') return enterIdol(state, command.idolId);
       if (command.type === 'acceptJob') {

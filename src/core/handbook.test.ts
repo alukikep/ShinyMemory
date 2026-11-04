@@ -195,7 +195,7 @@ describe('buildHandbook', () => {
     withChain(chain, () => {
       const state = newGame(1);
       state.money = 3800;
-      const entry = buildHandbook(state).active[0];
+      const entry = buildHandbook(state).leads.find((entry) => entry.id === 'chain:fixture-blocked');
 
       expect(entry).toMatchObject({ status: 'blocked', reason: '还差 ¥1,200' });
     });

@@ -32,8 +32,9 @@ describe('view contracts', () => {
     const board = buildJobBoard(setup());
     expect(board.entries.length).toBeGreaterThan(0);
     expect(Object.keys(board)).toEqual(
-      expect.arrayContaining(['entries', 'focusIdolId', 'slots']),
+      expect.arrayContaining(['entries', 'focusIdolId', 'slots', 'invitations']),
     );
+    expect(Object.keys(board.invitations)).toEqual(expect.arrayContaining(['count', 'limit', 'refreshed', 'canRefresh']));
     expect(Object.keys(board.slots)).toEqual(
       expect.arrayContaining(['used', 'cap', 'full']),
     );
@@ -81,7 +82,9 @@ describe('view contracts', () => {
     if (!chainId) throw new Error('夹具里没有剧情链');
     state.storyChains[chainId] = { chainId, stepIndex: 0 };
     const view = buildHandbook(state);
-    const entries = [...view.active, ...view.archive];
+    expect(Object.keys(view)).toEqual(expect.arrayContaining(['active', 'leads', 'recruitment', 'archive', 'slots']));
+    expect(Object.keys(view.slots)).toEqual(expect.arrayContaining(['used', 'limit']));
+    const entries = [...view.active, ...view.leads, ...view.recruitment, ...view.archive];
     expect(entries.length).toBeGreaterThan(0);
 
     for (const entry of entries) {

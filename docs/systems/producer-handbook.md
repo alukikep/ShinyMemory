@@ -5,6 +5,18 @@
 > 内容纪元：`CONTENT_EPOCH 3`
 > 参考：塞尔达传说 梅祖拉的假面 · 炸弹小队手册（只取机制，不取它的循环前提）
 
+## 当前剧情占用规则（2026-11-03）
+
+- 普通剧情链全局最多同时进行 **2 条**，同一偶像最多 **1 条**。`lockScope: 'none'` 的招募引导不占位，也不受这两项限制。
+- 首段对话开启即算进行中，后续等天数、时段或条件时持续占位；整条完成才释放。已揭示但未开启的线索不占位。
+- 满额只阻止新链；已有链始终可继续（仍须满足自己的时间、地点和步骤条件）。旧档超过上限时保留全部进度，不强制暂停或删除，降到不足 2 条前不能再开普通新链。
+- 同偶像阻塞检查所有活跃链，不能只取第一条再比较偶像。不存在、已完成或已无下一步的链不计数。
+- `src/core/storyCapacity.ts` 统一派生占用，`evaluateStoryChain` 返回 `idol-busy` / `story-capacity`；地点动作、地图新链提示、手册与调试面板共用判定。满额时其他普通新链不显示动作及地图亮点。
+- 手册分「进行中」「招募引导」「待开启线索」「归档」；待开启线索默认折叠，招募单列且不占名额。顶部显示「剧情进行中 N/2」，侧栏角标只计普通剧情占用。
+- 不新增存档字段或计数器，从现有剧情进度派生。工作占用继续按各链自己的 `workPolicy` 与剧情日判断，不因为另一个偶像占剧情名额就锁工作。
+
+验证入口：`chainLock.test.ts`（全局/同偶像/招募/旧档/提示/手册）、`storyCapacity.spec.ts`（满额、招募豁免、完成释放并开启下一条）。下文的设计示例以本节和实际代码为准。
+
 ## 0. 设计决策
 
 | 编号 | 决策点 | 结论 | 来源 |
@@ -84,6 +96,9 @@ export function buildHandbook(state: GameState): HandbookView;
 
 export type HandbookView = {
   active: HandbookEntryView[];
+  leads: HandbookEntryView[];
+  recruitment: HandbookEntryView[];
+  slots: { used: number; limit: number };
   archive: HandbookEntryView[];
 };
 ```
@@ -93,11 +108,11 @@ export type HandbookView = {
 **可见性规则（唯一一条）**：
 
 ```text
-可见 = state.storyChains[chain.id] 存在
-     ∨ chain.revealWhen 全部满足
+可见 = state.storyChains[chain.id] 存在或正在播放该链首段
+     ∨ 非 triggered 模式且 chain.revealWhen 全部满足
 ```
 
-`getEligibleStory` 只读不建，`finishDialogue` 才写入，所以有记录等价于“第一步已经走过”。未相遇的偶像天然没有记录，手册是空的，不需要额外判 `idol.status`。
+`getEligibleStory` 只读不建，`finishDialogue` 才写入步骤进度；首段播放中的占位由 `dialogueChainId` 派生。只满足揭示条件的条目进入待开启线索，不算已接取。
 
 判定统一走 `evaluateStoryChain(state, chain)`：它返回一组 `blocks`（已完成 / 忙 / 未到天数 / 条件 / 时段 / 地点），地点页、手册、调试面板读同一份。手册只决定“怎么显示”，不再自己判断一遍——两套判断迟早会对不上。
 
@@ -108,13 +123,14 @@ export type HandbookView = {
 ```text
 1. chainState.completed                    → done
 2. pendingDialogueId ∨ flags.forced_rest   → blocked（"现在不行。"）
-3. day < nextEligibleDay                   → waiting（"还有 N 天"）
-4. step.when 不满足                        → blocked（派生原因，见 2.5）
-5. 不在 step.timeWindow                    → off-hours（"明天 10:00 之后"）
-6. 否则                                     → available（"现在可以去"）
+3. 同偶像占用 / 全局满额（仅新普通链）       → blocked（先完成已有剧情）
+4. day < nextEligibleDay                   → waiting（"还有 N 天"）
+5. step.when 不满足                        → blocked（派生原因，见 2.5）
+6. 不在 step.timeWindow                    → off-hours（"明天 10:00 之后"）
+7. 否则                                     → available（"现在可以去"）
 ```
 
-第 2 步是把 `getEligibleStory` 里的短路（`sim.ts:837`）镜像过来，否则会出现“手册说可以去、地点页没有行动”。第 4 步是 `blocked` 而不是藏起来：链已经存在，藏起来玩家会以为它消失了。
+第 2 步对应引擎的当前忙碌判定，否则会出现“手册说可以去、地点页没有行动”。第 5 步是 `blocked` 而不是藏起来：链已经存在，藏起来玩家会以为它消失了。
 
 `waiting` 压过 `blocked`：时间没到时先告诉玩家“还有几天”，到了再暴露真正的门槛。一次只给一个“当前最近的阻碍”，不给清单。
 
@@ -126,7 +142,7 @@ export type HandbookView = {
 
 ### 2.3 界面
 
-侧栏第 7 项「手册」，右侧显示进行中条数（`2`），该数字由 `buildHandbook` 派生，不存状态。面板分两段：
+侧栏「手册」角标显示普通剧情占用条数，由 `buildHandbook` 派生、不存状态。面板顶部显示 N/2，分进行中、招募引导、待开启线索、归档四区；下面仅展示进行中和归档的简化样式：
 
 ```text
 进行中

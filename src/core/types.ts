@@ -203,8 +203,8 @@ export type StoryChainDef = {
   hint?: string;
   /**
    * 这条链会不会占住偶像（同一偶像同时只进一条链）。
-   * - 'idol'（默认）：进行中时，她的其他链不能开
-   * - 'none'：不占位（招募链这种"主线引导"不该锁死后续内容）
+   * - 'idol'（默认）：占全局两条名额之一，同时阻止同偶像开启另一条
+   * - 'none'：不占位且不受上述限制（招募引导豁免）
    */
   lockScope?: 'idol' | 'none';
   steps: StoryChainStep[];
@@ -269,6 +269,8 @@ export type GameState = {
   jobs: JobAssignment[];
   /** 每份工作最后一次完成的日期，冷却从这天算起。 */
   jobCooldowns: Record<string, number>;
+  /** Today's saved invitations. Missing on legacy states until initialized. */
+  jobInvitations?: { day: number; jobIds: string[]; refreshed: boolean };
   /** 每天和谁聊过几次，key 是 `<day>:<actorId>`。 */
   chatCounts: Record<string, number>;
   eventCooldowns: Record<string, number>;
@@ -614,6 +616,7 @@ export type JobBoardEntry = {
 };
 
 export type JobBoardView = {
+  invitations: { count: number; limit: number; refreshed: boolean; canRefresh: boolean };
   entries: JobBoardEntry[];
   focusIdolId: string;
   /** 事务所工作上限：所有未完成工作共用一个总数。 */
@@ -853,6 +856,7 @@ export type ActionCommand =
   | { type: 'setFocusIdol'; idolId: string }
   | { type: 'openJobBoard' }
   | { type: 'cancelJob'; assignmentId: string }
+  | { type: 'refreshJobInvitations' }
   | { type: 'attendJob'; jobId: string }
   | { type: 'buyItem'; itemId: string }
   | { type: 'useItem'; itemId: string; count?: number }

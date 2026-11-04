@@ -1,6 +1,7 @@
 import { neighborsOf, walkEdge } from './content/map';
 import { CONTENT_INDEX } from './contentIndex';
 import { areaMembers, parentArea } from './areas';
+import { dailyJobInvitations, visibleJobInvitationIds, canRefreshJobInvitations, jobConditionIsIdolScoped, DAILY_JOB_LIMIT } from './jobInvitations';
 import {
   formatCalendarDateFromDay,
   formatClock,
@@ -325,12 +326,10 @@ export function buildJobBoard(state: GameState): JobBoardView {
   );
 
   // 门槛分两种：和"派谁"无关的（flag / 粉丝 / 天数），以及看人下菜的（属性）。
-  const isIdolScoped = (condition: { kind: string }) =>
-    condition.kind === 'attributeAtLeast' ||
-    condition.kind === 'attributeAtMost' ||
-    condition.kind === 'castPresent';
+  const isIdolScoped = jobConditionIsIdolScoped;
+  const invitationIds = visibleJobInvitationIds(state);
 
-  const rows = [...CONTENT_INDEX.jobs.values()].map((job) => {
+  const rows = invitationIds.map((id) => CONTENT_INDEX.jobs.get(id)!).map((job) => {
     // 工作级门槛：谁都不满足就不能接。
     const unmet = (job.requires ?? []).filter(
       (condition) =>
@@ -364,7 +363,6 @@ export function buildJobBoard(state: GameState): JobBoardView {
     const offers: JobBoardOffer[] = idols.map((idol) => {
       const idolUnmet = (job.requires ?? []).filter(
         (condition) =>
-          isIdolScoped(condition) &&
           !checkCondition(condition, state, { idolId: idol.id }),
       );
       const idolLocked = idolUnmet.length > 0;
@@ -447,6 +445,7 @@ export function buildJobBoard(state: GameState): JobBoardView {
 
   return {
     entries,
+    invitations: { count: entries.length, limit: DAILY_JOB_LIMIT, refreshed: dailyJobInvitations(state).refreshed, canRefresh: canRefreshJobInvitations(state) },
     focusIdolId,
     slots: { used, cap, full: used >= cap },
   };

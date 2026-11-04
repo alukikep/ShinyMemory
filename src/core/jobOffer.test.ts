@@ -10,7 +10,7 @@ const LEAD_JOB_ID = 'test.lead.job';
 
 let original: typeof CONTENT_INDEX;
 beforeEach(() => {
-  original = CONTENT_INDEX;
+  original = { ...CONTENT_INDEX };
   Object.assign(CONTENT_INDEX, buildContentIndex(PRODUCTION_PACK));
 });
 afterEach(() => {
@@ -75,6 +75,7 @@ describe('job offers per idol', () => {
       cooldownDays: 7,
     };
     CONTENT_INDEX.jobs.set(leadJob.id, leadJob);
+    state.jobInvitations = { day: 5, jobIds: [leadJob.id], refreshed: false };
 
     const dates = jobDatesFor(state, leadJob, 'mano');
     expect(dates).toHaveLength(7);

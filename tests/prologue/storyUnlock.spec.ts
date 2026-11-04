@@ -54,11 +54,11 @@ test('a story step unlocks a job that was hidden before', async ({ page }) => {
   await finishDialogue(page);
   expect((await getState(page)).flags['unlocked.first_live']).toBe(true);
 
-  // 解锁后工作应该出现在面板里；草稿还没通过审查时自动跳过这段。
+  // 解锁的工作进入候选池；主动刷新后可出现在当日邀约中。
   await page.getByRole('button', { name: '查看可以接的工作' }).click();
   const live = page.getByRole('button', { name: /初次 Live/ });
   if ((await live.count()) === 0) {
-    test.skip(true, 'draft.job.first_live 还没通过审查');
+    await page.getByRole('button', { name: '刷新邀约（每日一次）' }).click();
   }
   await expect(live).toBeVisible();
   expect(errors).toEqual([]);

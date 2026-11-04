@@ -15,6 +15,7 @@ import type {
   StatKey,
 } from '../core/types';
 import { CONTENT_EPOCH, GAME_VERSION, SAVE_VERSION } from './version';
+import { dailyJobInvitations } from '../core/jobInvitations';
 
 
 
@@ -325,6 +326,12 @@ export function migrateSave(envelope: SaveEnvelope): SaveEnvelope {
     };
     state.shopCooldowns = state.shopCooldowns ?? {};
     next.schemaVersion = 19;
+    next.gameVersion = GAME_VERSION;
+  }
+
+  if (next.schemaVersion === 19) {
+    next.state.jobInvitations = dailyJobInvitations(next.state);
+    next.schemaVersion = 20;
     next.gameVersion = GAME_VERSION;
   }
 

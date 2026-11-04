@@ -10,6 +10,7 @@ import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
 import { BASE_PACK } from '../src/core/content/basePack.js';
 import { readApprovedDrafts } from './approvedFiles.js';
 import { syncApprovedContent } from './syncApproved.js';
+import { loadInventory } from './contentInventory.js';
 import {
   createReviewDraft,
   getReviewDraft,
@@ -87,6 +88,10 @@ export function reviewApiPlugin(): Plugin {
           const parts = pathname.split('/').filter(Boolean);
 
           if (request.method === 'GET') {
+            if (parts.length === 1 && parts[0] === 'inventory') {
+              sendJson(response, 200, await loadInventory());
+              return;
+            }
             if (parts.length === 0 || (parts.length === 1 && parts[0] === 'drafts')) {
               sendJson(response, 200, { drafts: await listReviewDrafts() });
               return;

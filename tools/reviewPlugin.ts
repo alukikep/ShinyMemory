@@ -10,7 +10,7 @@ import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
 import { BASE_PACK } from '../src/core/content/basePack.js';
 import { readApprovedDrafts } from './approvedFiles.js';
 import { syncApprovedContent } from './syncApproved.js';
-import { loadInventory } from './contentInventory.js';
+import { loadInventory } from './contentInventoryService.js';
 import {
   createReviewDraft,
   getReviewDraft,

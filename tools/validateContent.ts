@@ -2,8 +2,8 @@ import { auditPack } from '../src/core/contentAudit.js';
 import { buildContentIndex } from '../src/core/contentIndexCore.js';
 import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
 import { BASE_PACK } from '../src/core/content/basePack.js';
-import { attachPendingChapters } from '../src/core/content/assemblePack.js';
-import { mergeApprovedContent } from '../src/review/approval.js';
+import { assembleContent } from '../src/core/contentAssembly.js';
+import { PENDING_CHAPTERS } from '../src/core/content/chapters/index.js';
 import { validateDraftShape } from '../src/review/validation.js';
 import { readApprovedDrafts } from './approvedFiles.js';
 
@@ -21,11 +21,13 @@ for (const { file, draft } of drafts) {
 const approved = packApprovedFiles(
   Object.fromEntries(drafts.map(({ file, draft }) => [file, draft])),
 );
-const { pack, duplicates } = mergeApprovedContent(BASE_PACK, approved);
+const assembly = assembleContent(BASE_PACK, approved, PENDING_CHAPTERS);
+const { duplicates } = assembly;
 for (const duplicate of duplicates) {
   errors.push(`ID 与现有内容重复：${duplicate}`);
 }
-const fullPack = attachPendingChapters(pack);
+const fullPack = assembly.pack;
+for (const diagnostic of assembly.diagnostics.filter(d => d.kind !== 'merge-conflict')) console.warn(`装配诊断：${diagnostic.message}`);
 const warnings: string[] = [];
 for (const issue of auditPack(buildContentIndex(fullPack))) {
   const text = `${issue.code}: ${issue.message}`;

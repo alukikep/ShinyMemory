@@ -3,8 +3,9 @@ import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
 import { buildContentIndex } from '../src/core/contentIndexCore.js';
 import { PENDING_CHAPTERS } from '../src/core/content/chapters/index.js';
 import { PENDING_IDOLS } from '../src/core/content/pending.js';
-import { mergeApprovedContent } from '../src/review/approval.js';
+import { assembleContent } from '../src/core/contentAssembly.js';
 import { readApprovedDrafts } from './approvedFiles.js';
+import { buildCoverageComparison } from '../src/core/coverageComparison.js';
 
 /**
  * 角色覆盖度报告。
@@ -24,79 +25,25 @@ type Row = {
 const approved = await readApprovedDrafts();
 const quiet = process.argv.includes('--quiet');
 const failures: string[] = [];
-const merged = mergeApprovedContent(
+const assembly = assembleContent(
   BASE_PACK,
   packApprovedFiles(
     Object.fromEntries(approved.map(({ file, draft }) => [file, draft])),
   ),
+  PENDING_CHAPTERS,
 );
-// 卡面/长线的链只在生产包里拼（对话是 approved 内容），
-// 覆盖率也得算上它们，否则"剧情链"永远是 0。
-const approvedDialogueIds = new Set(merged.pack.dialogues.map((d) => d.id));
-const pack = {
-  ...merged.pack,
-  storyChains: [
-    ...merged.pack.storyChains,
-    ...PENDING_CHAPTERS.filter((chain) =>
-      chain.steps.every((step) => approvedDialogueIds.has(step.dialogueId)),
-    ),
-  ],
-};
-const index = buildContentIndex(pack);
+for (const diagnostic of assembly.diagnostics) console.warn(`装配诊断：${diagnostic.message}`);
+const index = buildContentIndex(assembly.pack);
 
-function countFor(idolId: string): Map<string, number> {
-  const counts = new Map<string, number>();
-  const bump = (key: string) => counts.set(key, (counts.get(key) ?? 0) + 1);
-
-  for (const activity of index.activities.values()) {
-    // 没有 idolIds = 全员通用（训练课就是这种）。
-    const own = activity.idolIds?.includes(idolId) ?? false;
-    // 训练课是全员通用的（没有 idolIds）；专属行动必须点名到她。
-    if (activity.kind === 'training' && (!activity.idolIds || own)) {
-      bump('训练行动');
-    } else if (activity.kind === 'bond' && own) {
-      bump('专属行动');
-    }
-  }
-
-  const actor = index.actors.get(idolId);
-  for (const topic of actor?.topics ?? []) {
-    if (topic.id.startsWith(`${idolId}.chat.`)) bump('日常话题');
-  }
-
-  for (const event of index.events.values()) {
-    const anchored =
-      event.afterIdol?.ids?.includes(idolId) ||
-      event.after?.ids?.includes(idolId) ||
-      event.entry?.kind === 'arrival';
-    if (anchored) bump('事件');
-  }
-
-  for (const chain of index.storyChains.values()) {
-    if (chain.idolId === idolId) bump('剧情链');
-  }
-
-  for (const dialogue of index.dialogues.values()) {
-    if (dialogue.idolId === idolId) bump('对话');
-  }
-
-  return counts;
-}
+const comparison = buildCoverageComparison(assembly.pack, PENDING_CHAPTERS, PENDING_IDOLS);
+for (const warning of comparison.warnings) console.warn(`归属诊断：${warning}`);
 
 let ok = true;
 
 for (const idol of [...index.idols.values()]) {
-  const counts = countFor(idol.id);
+  const metrics = comparison.idols.find(row => row.id === idol.id)!.metrics;
   const pending = PENDING_IDOLS.includes(idol.id);
-  const rows: Row[] = [
-    { unit: '训练行动', count: counts.get('训练行动') ?? 0, min: 3 },
-    { unit: '专属行动', count: counts.get('专属行动') ?? 0, min: 1 },
-    { unit: '日常话题', count: counts.get('日常话题') ?? 0, min: 6 },
-    { unit: '事件', count: counts.get('事件') ?? 0, min: 3 },
-    { unit: '剧情链', count: counts.get('剧情链') ?? 0, min: 2 },
-    { unit: '对话', count: counts.get('对话') ?? 0, min: 2 },
-    { unit: '工作（全角色共享）', count: index.jobs.size, min: 2 },
-  ];
+  const rows: Row[] = metrics.map(metric => ({ unit: metric.label, count: metric.proposedCount, min: metric.minimum }));
 
   if (!quiet) {
     console.log(`\n${idol.name}（${idol.id}）${pending ? ' · 接入中' : ''}`);
@@ -117,9 +64,9 @@ for (const idol of [...index.idols.values()]) {
   }
 }
 
-if (merged.duplicates.length > 0) {
-  console.log(`\n重复 id：${merged.duplicates.join('，')}`);
-  failures.push(`重复 id：${merged.duplicates.join('，')}`);
+if (assembly.duplicates.length > 0) {
+  console.log(`\n重复 id：${assembly.duplicates.join('，')}`);
+  failures.push(`重复 id：${assembly.duplicates.join('，')}`);
   ok = false;
 }
 

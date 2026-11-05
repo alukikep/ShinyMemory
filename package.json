@@ -10,6 +10,7 @@
     "content:sync": "tsx tools/syncApproved.ts",
     "docs:check": "tsx tools/checkDocs.ts",
     "content:coverage": "tsx tools/contentCoverage.ts",
+    "content:coverage:compare": "tsx tools/coverageComparison.ts",
     "content:where": "tsx tools/contentWhere.ts",
     "content:inventory": "tsx tools/contentInventory.ts",
     "content:drafts": "tsx tools/checkDrafts.ts",

@@ -4,7 +4,8 @@ import { promises as fs } from 'node:fs';
 import { createHash } from 'node:crypto';
 import os from 'node:os';
 import path from 'node:path';
-import { formatInventory, loadInventory, parseInventoryArgs, readInventorySnapshots, selectInventory } from '../../tools/contentInventory';
+import { formatInventory, parseInventoryArgs, selectInventory } from '../../tools/contentInventory';
+import { loadInventory, readInventorySnapshots } from '../../tools/contentInventoryService';
 
 describe('inventory CLI', () => {
   it('rejects missing, duplicate and unknown arguments', () => {
@@ -33,12 +34,13 @@ describe('inventory CLI', () => {
     expect(execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' })).toBe(before);
     expect(await hashFiles()).toEqual(hashes);
   });
-  it('emits parseable JSON and nonzero exit codes for invalid CLI requests', () => {
+  it('emits the complete service report as JSON and nonzero exit codes for invalid CLI requests', async () => {
     const invoke = (args: string[]) => spawnSync(process.execPath, ['--import', 'tsx', 'tools/contentInventory.ts', ...args], { encoding: 'utf8' });
     const result = invoke(['--idol', 'mano', '--json']);
     expect(result.status).toBe(0);
     expect(result.stderr).toBe('');
     expect(JSON.parse(result.stdout).idols[0].id).toBe('mano');
+    expect(JSON.parse(result.stdout)).toEqual(JSON.parse(JSON.stringify(selectInventory(await loadInventory(), 'mano'))));
     for (const args of [['--idol', 'missing'], ['--bad'], ['--idol']]) {
       const failed = invoke(args);
       expect(failed.status).toBe(1);

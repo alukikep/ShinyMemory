@@ -41,6 +41,7 @@ npm run content:board      # 卡面、章节与剧情链接入状态
 npm run content:coverage   # 各偶像内容覆盖情况
 npm run content:where -- seaside  # 地区、成员地点与内容分布
 npm run content:inventory -- --idol mano  # 偶像内容数量、审批与源包接入；加 --details 看明细
+npm run content:coverage:compare -- --idol mano --details  # 覆盖率新旧口径、内容名单与归属依据
 npm run content:balance    # 当前训练、工作与体力数值报告
 ```
 

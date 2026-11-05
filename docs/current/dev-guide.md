@@ -71,9 +71,17 @@
 | 51 | 工作接取命令只检查偶像类或显式 idolId 的 requires，普通 flag 与总粉丝门槛可能被直接命令绕过 | `acceptJob` 校验完整 requires 并验证今日邀约；`jobInvitations.test.ts` 断言未受邀和 flag 未解锁时状态不变，日邀约规则由 `jobInvitations.ts` 统一处理 |
 | 52 | 同偶像剧情锁只找到第一条活跃链再比较偶像，前面若是另一人就漏拦；手册又把未开启线索混进进行中 | `storyCapacity.ts` 派生全部有效占用，统一执行同偶像一条/全局两条、招募豁免与旧档续推；`chainLock.test` 覆盖其他偶像先入档的漏拦、上限、线索分区及地图提示；`storyCapacity.spec` 验证实际完成释放 |
 | 53 | 小改各自跑全量且启动前未集中检查接线，途中发现状态仓库问题后又重建重跑 | AGENTS 将全量集中到批次最终版本；§3.3 要求先复查状态、命令、迁移及界面接线，局部验证通过后再启动全量，交付区分局部通过与批次通过 |
-| 54 | 内容进度散在覆盖率、卡面看板和手工块表；覆盖率还把所有到达事件计入每人，不能直接当专属产量 | `content:inventory` 与审查台「内容档案」共用只读统计；`contentInventory.test.ts` 固定归属、卡章与修订口径，CLI 测试核对真实基线与错误退出，`tests/review/inventory.spec.ts` 检查筛选、状态、刷新及错误恢复。旧覆盖率门禁另批迁移，见 [档案说明](content-inventory-plan.md) |
+| 54 | 内容进度散在覆盖率、卡面看板和手工块表；旧覆盖率算法把到达入口当偶像归属，不能直接当专属产量 | 档案与覆盖率共用 `contentRelations.ts`，`contentRelations.test.ts` / `coverageComparison.test.ts` 验证到达、行动选择器、主属/参与/条件与去重；`content:coverage:compare` 展示新旧名单与字段依据，门槛未降低。卡章/修订和审查台验证见 [档案说明](content-inventory-plan.md) |
 
 ## 1.5 内容包分两层（别搞混）
+
+| 序号 | 事故（一句话，具体） | 现在的防线（命令/规则/测试） |
+|---|---|---|
+| 55 | 装配入口迁移漏掉覆盖率脚本尾部的旧变量；普通 tsc 未检查该工具脚本，执行时才出现 ReferenceError | `contentAssembly.test.ts` 实际运行覆盖率与卡面看板，断言退出码和具体人数/卡章数量；构建仍执行全部内容门禁 |
+
+装配入口统一为 `src/core/contentAssembly.ts` 的 `assembleContent(base, approved, chapters)`，返回合并包、挂载包、诊断与逐步可用性。正式包导出 `PRODUCTION_ASSEMBLY`；`attachPendingChapters` 只是兼容包装。`contentAssembly.test.ts` 覆盖部分获批、重复与未知宿主、fixture 注入及工具命令接线，详见 [B1 记录](architecture-improvement-plan.md#b1-实施结果2026-11-04)。
+
+内容档案的层次约束：共享报告类型在 `src/shared/contentInventoryTypes.ts`，纯统计在 core，读盘在 `tools/contentInventoryService.ts`，CLI 只管参数/展示/进程出口。审查页面不得直接导入工具模块（包括 type-only 导入）；`contentInventoryBoundary.test.ts` 会检查此边界，详细迁移记录见 [架构完善计划](architecture-improvement-plan.md)。
 
 ```text
 BASE_PACK        只有 TS 写死的内容（不含 approved）
@@ -133,6 +141,8 @@ npm run build             # 上面全部 + 类型 + 打包
 一句话：**"看一眼"是抽样，不是走流程。** 能断言的写断言，审美和文案才截图。
 
 ### 3.1 按影响范围选择验证
+
+多个 Playwright 配置默认共用 `test-results`，不得同时运行；需要并行时先为每个进程指定独立 `--output`，并核对 HTML 报告等其他产物也不冲突。否则某进程清理目录会导致另一个在收尾时出现 trace 文件 ENOENT。曾在 B1 的正式包单条与审查台单条并行时触发，独立顺序运行可避免。
 
 | 级别 | 命令 | 什么时候用 |
 |---|---|---|

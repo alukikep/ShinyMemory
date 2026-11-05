@@ -11,7 +11,7 @@
 |---|---|
 | [按任务取用文档](tasks.md) | **开工先看这页**：任务 → 必读 2–3 篇 + 验收命令 |
 | [偶像内容档案](current/content-inventory-plan.md) | 已实现只读查询：按角色统计数量、明细、审批与接入状态；含后续计划 |
-| [架构完善实施计划](current/architecture-improvement-plan.md) | 待实施：共享报告契约、内容装配与归属统一、业务规则整理及生产计划登记 |
+| [架构完善实施计划](current/architecture-improvement-plan.md) | A/B1/B2 批次验证通过：共享契约、装配及关联事实；后续为业务规则整理及生产计划登记 |
 | [当前路线图](current/roadmap.md) | 当前进度、下一步计划、优先级和开放问题 |
 | [未来需求](current/future-requirements.md) | 已确认但暂不实现的功能需求 |
 | [内容数值标准](current/content-standards.md) | 时长、体力、金钱、经验、粉丝的档位表 |

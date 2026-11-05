@@ -3,26 +3,29 @@ import path from 'node:path';
 import { PENDING_CHAPTERS } from '../src/core/content/chapters/index.js';
 import { CHAPTER_SOURCES } from '../src/core/content/chapterSources.js';
 import { readApprovedDrafts } from './approvedFiles.js';
-import { mergeApprovedContent } from '../src/review/approval.js';
+import { assembleContent } from '../src/core/contentAssembly.js';
 import { packApprovedFiles } from '../src/core/content/approvedPacking.js';
 import { BASE_PACK } from '../src/core/content/basePack.js';
 
 /**
  * 卡面剧情生产看板。
  *
- * 一条命令看清：哪些章已经进游戏、哪些在等审、配置对不对。
+ * 一条命令看清：哪些对话可用、哪些整链已接入、哪些在等审、配置对不对。
  * 不是校验器（那是 content:anchors 的活），是"我现在做到哪了"。
  *
  *   npm run content:board
  */
 
 const approved = await readApprovedDrafts();
-const merged = mergeApprovedContent(
+const assembly = assembleContent(
   BASE_PACK,
   packApprovedFiles(
     Object.fromEntries(approved.map(({ file, draft }) => [file, draft])),
   ),
-).pack;
+  PENDING_CHAPTERS,
+);
+const merged = assembly.mergedPack;
+for (const diagnostic of assembly.diagnostics) console.warn(`装配诊断：${diagnostic.message}`);
 
 const approvedDialogueIds = new Set(merged.dialogues.map((dialogue) => dialogue.id));
 const dialogueById = new Map(merged.dialogues.map((d) => [d.id, d]));
@@ -55,6 +58,7 @@ type Row = {
   day: string;
   needs: string;
   state: string;
+  integrated: boolean;
   nodes: number;
   branches: number;
 };
@@ -101,7 +105,8 @@ for (const chain of cardChains) {
       .filter((c) => c.kind === 'flag')
       .map((c) => String((c as { key?: string }).key ?? ''))
       .join(', ') || '（无）',
-    state: isApproved ? '已上线' : draft ? '待审' : '缺对话',
+    state: isApproved ? '对话可用' : draft ? '待审' : '缺对话',
+    integrated: assembly.chapters.find(c => c.chainId === chain.id)?.attached ?? false,
     nodes,
     branches,
   });
@@ -155,7 +160,7 @@ const pad = (text: string, width: number) => {
 
 console.log('');
 console.log(
-  ['偶像', '节', '标题', '剧本', '地点', '时间', '最早', '节点', '分支', '状态']
+  ['偶像', '节', '标题', '剧本', '地点', '时间', '最早', '节点', '分支', '对话状态 / 链状态']
     .map((header, index) =>
       pad(header, [6, 6, 24, 12, 14, 13, 9, 6, 6, 8][index]!),
     )
@@ -174,12 +179,12 @@ for (const row of rows.sort((a, b) => a.idol.localeCompare(b.idol) || dayOf(a) -
       pad(row.day, 9) +
       pad(String(row.nodes), 6) +
       pad(String(row.branches), 6) +
-      pad(row.state, 8),
+      pad(row.state, 8) + (row.integrated ? '链已接入' : '链未接入'),
   );
 }
 console.log('');
 
-const live = rows.filter((row) => row.state === '已上线').length;
+const live = rows.filter((row) => row.state === '对话可用').length;
 const waiting = rows.filter((row) => row.state === '待审').length;
 // 每一步都要有出处：step.source 或有 chapterSources 条目。
 // 旧的三条长线和招募链是在这条规则之前写的，先豁免（记为技术债）。
@@ -232,7 +237,7 @@ for (const chain of cardChains) {
 // 按卡汇总：玩家/策划关心的是"几张卡"，章只是细分
 const byCard = new Map<
   string,
-  { idol: string; title: string; total: number; live: number }
+  { idol: string; title: string; total: number; live: number; integrated: number }
 >();
 for (const row of rows) {
   const entry = byCard.get(row.chainId) ?? {
@@ -240,20 +245,22 @@ for (const row of rows) {
     title: row.title,
     total: 0,
     live: 0,
+    integrated: 0,
   };
   entry.total += 1;
-  if (row.state === '已上线') entry.live += 1;
+  if (row.state === '对话可用') entry.live += 1;
+  if (row.integrated) entry.integrated += 1;
   byCard.set(row.chainId, entry);
 }
 
 console.log(
-  `\n卡面剧情：${byCard.size} 张卡 · ${rows.length} 章（已上线 ${live}，待审 ${waiting}）`,
+  `\n卡面剧情：${byCard.size} 张卡 · ${rows.length} 章（对话可用 ${live}，整链接入章节 ${rows.filter(r => r.integrated).length}，待审 ${waiting}）`,
 );
 for (const [, card] of [...byCard.entries()].sort((a, b) =>
   a[1].idol.localeCompare(b[1].idol),
 )) {
   console.log(
-    `  ${card.idol.padEnd(7)}${card.title.padEnd(22)}${card.live}/${card.total} 章`,
+    `  ${card.idol.padEnd(7)}${card.title.padEnd(22)}对话可用 ${card.live}/${card.total} 章 · 链接入 ${card.integrated}/${card.total} 章`,
   );
 }
 console.log(`\n另有长线/招募链 ${arcChains.length} 条（不在本表里，见 content:coverage）`);

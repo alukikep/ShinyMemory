@@ -2,28 +2,11 @@ import type { ContentPack } from './contentIndexCore';
 import type { ChapterSource } from './chapterAnchors';
 import type { StoryChainDef } from './types';
 import type { ReviewKind } from '../review/types';
+import { contentKey, packGroups, createContentRelationAnalyzer } from './contentRelations';
 
-export type InventorySnapshot = {
-  file: string;
-  status: 'approved' | 'review' | 'revision';
-  draft: { id: string; kind: ReviewKind; title: string; payload: unknown;
-    version?: number; rootId?: string; supersedes?: string };
-};
-type Relation = { idolId: string; role: 'exclusive' | 'participant' | 'condition' | 'reference'; path: string };
+import type { InventorySnapshot, InventoryRelation as Relation, InventoryVersion, InventoryEntry, InventoryProjection } from '../shared/contentInventoryTypes';
+export type { InventorySnapshot, InventoryVersion, InventoryEntry } from '../shared/contentInventoryTypes';
 type RecordValue = Record<string, unknown>;
-export type InventoryVersion = {
-  file: string; approval: InventorySnapshot['status'] | 'structure';
-  integration: 'integrated' | 'not-integrated'; reason?: string;
-  draftId?: string; version?: number; rootId?: string; supersedes?: string;
-  relations: Relation[];
-};
-export type InventoryEntry = {
-  key: string; id: string; kind: ReviewKind; title: string;
-  relations: Relation[]; scope: 'associated' | 'shared' | 'unresolved';
-  integrated: boolean; versions: InventoryVersion[];
-  storyType?: 'card' | 'recruitment' | 'arc' | 'unclassified';
-  chapters?: { id: string; dialogueId: string; available: boolean; integrated: boolean; source?: ChapterSource; script?: string }[];
-};
 export type InventoryInput = {
   pack: ContentPack; registeredChains: StoryChainDef[]; sources: ChapterSource[];
   snapshots: InventorySnapshot[]; warnings?: string[]; basePack?: ContentPack;
@@ -31,60 +14,21 @@ export type InventoryInput = {
 const record = (value: unknown): RecordValue => value && typeof value === 'object' && !Array.isArray(value) ? value as RecordValue : {};
 const strings = (value: unknown): string[] => Array.isArray(value) ? value.filter((v): v is string => typeof v === 'string') : [];
 const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
-const contentKey = (kind: string, payload: RecordValue) => kind === 'topic'
-  ? `topic:${String(payload.actorId ?? '?')}/${String(payload.id)}` : `${kind}:${String(payload.id)}`;
-const packGroups = (pack: ContentPack) => ({ activity: pack.activities, event: pack.events, job: pack.jobs, dialogue: pack.dialogues,
-  story: pack.storyChains, item: pack.items, shop: pack.shops,
-  topic: pack.actors.flatMap(actor => actor.topics.map(topic => ({ ...topic, actorId: actor.id }))) });
 
 /** Pure projection: ownership comes from fields and registrations, never prose or id prefixes. */
-export function buildContentInventory(input: InventoryInput) {
+export function buildContentInventory(input: InventoryInput): InventoryProjection {
   const { pack, snapshots, sources } = input;
   const warnings = [...(input.warnings ?? [])];
   const idolIds = new Set(pack.idols.map(i => i.id));
-  const chainMap = new Map(input.registeredChains.map(c => [c.id, c]));
-  for (const chain of pack.storyChains) chainMap.set(chain.id, chain);
-  const dialogueHosts = new Map<string, Relation[]>();
-  for (const chain of chainMap.values()) for (const step of chain.steps) {
-    const hosts = dialogueHosts.get(step.dialogueId) ?? [];
-    hosts.push({ idolId: chain.idolId, role: 'exclusive', path: `story:${chain.id}.steps.${step.id}.dialogueId` });
-    dialogueHosts.set(step.dialogueId, hosts);
-  }
-  function relations(kind: ReviewKind, payload: RecordValue): Relation[] {
-    const found: Relation[] = [];
-    const add = (value: unknown, role: Relation['role'], path: string) => {
-      if (typeof value !== 'string') return;
-      if (idolIds.has(value)) found.push({ idolId: value, role, path });
-      else if (path === 'idolId' || path.startsWith('idolIds') || path.startsWith('afterIdol')) warnings.push(`${kind}:${String(payload.id)} 未知偶像 ${value} (${path})`);
-    };
-    add(payload.idolId, 'exclusive', 'idolId');
-    const ids = strings(payload.idolIds);
-    ids.forEach((id, n) => add(id, ids.length === 1 ? 'exclusive' : 'participant', `idolIds[${n}]`));
-    if (kind === 'topic') add(payload.actorId, 'exclusive', 'actorId');
-    for (const field of ['cast', 'participantIds']) strings(payload[field]).forEach((id, n) => add(id, 'participant', `${field}[${n}]`));
-    const afterIds = strings(record(payload.afterIdol).ids);
-    afterIds.forEach((id, n) => add(id, afterIds.length === 1 ? 'exclusive' : 'participant', `afterIdol.ids[${n}]`));
-    function walk(value: unknown, path: string, conditional = false) {
-      if (Array.isArray(value)) { value.forEach((v, n) => walk(v, `${path}[${n}]`, conditional)); return; }
-      for (const [key, v] of Object.entries(record(value))) {
-        const next = path ? `${path}.${key}` : key;
-        const condition = conditional || ['when', 'requires', 'revealWhen'].includes(key);
-        if (path && ['idolId', 'actorId', 'speakerId'].includes(key)) add(v, key === 'speakerId' ? 'participant' : condition ? 'condition' : 'reference', next);
-        if (path && key === 'idolIds') strings(v).forEach((id, n) => add(id, condition ? 'condition' : 'reference', `${next}[${n}]`));
-        walk(v, next, condition);
-      }
-    }
-    walk(payload, '');
-    if (kind === 'dialogue') found.push(...(dialogueHosts.get(String(payload.id)) ?? []));
-    return [...new Map(found.map(r => [`${r.idolId}/${r.role}/${r.path}`, r])).values()]
-      .sort((a, b) => compare(JSON.stringify(a), JSON.stringify(b)));
-  }
+  const analyze = createContentRelationAnalyzer(pack, input.registeredChains);
   const entries = new Map<string, InventoryEntry>();
   function add(kind: ReviewKind, raw: unknown, version: Omit<InventoryVersion, 'relations'>) {
     const payload = record(raw);
     if (typeof payload.id !== 'string' || !payload.id) { warnings.push(`${version.file}: 缺少 payload.id`); return; }
     const key = contentKey(kind, payload);
-    const refs = relations(kind, payload);
+    const analysis = analyze(kind, payload);
+    const refs = analysis.relations;
+    warnings.push(...analysis.warnings);
     let entry = entries.get(key);
     if (!entry) {
       entry = { key, id: payload.id, kind, title: String(payload.title ?? payload.name ?? payload.label ?? payload.id),

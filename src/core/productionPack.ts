@@ -1,8 +1,8 @@
 import type { ContentPack } from './contentIndexCore';
-import { mergeApprovedContent } from '../review/approval';
+import { assembleContent } from './contentAssembly';
 import { BASE_PACK } from './content/basePack';
 import { APPROVED_CONTENT } from './content/approved.generated';
-import { attachPendingChapters } from './content/assemblePack';
+import { PENDING_CHAPTERS } from './content/chapters';
 
 export { BASE_PACK } from './content/basePack';
 
@@ -13,16 +13,16 @@ export { BASE_PACK } from './content/basePack';
  * 曾经手写过一次：加 `topics` 时只改了 mergeApprovedContent，
  * 结果通过的话题进不了游戏——两份合并逻辑各写各的，必然漂移。
  */
-const merged = mergeApprovedContent(BASE_PACK, APPROVED_CONTENT).pack;
+export const PRODUCTION_ASSEMBLY = assembleContent(BASE_PACK, APPROVED_CONTENT, PENDING_CHAPTERS);
 
 /**
  * 卡面章节的**结构**在这里拼，而不是放进 `BASE_PACK`：
  * 它们的对话是审查台通过的内容，`BASE_PACK` 里没有，放进去会让
  * 每个草稿的预检都报 `dialogue-ref`（真实踩过）。
  *
- * 拼装逻辑与 `content:audit` / `content:validate` 共用
- * `attachPendingChapters`，避免“体检和游戏加载的不是同一个包”。
+ * 拼装逻辑与档案、覆盖率、看板、`content:audit` / `content:validate`
+ * 共用 `assembleContent`；诊断可通过 PRODUCTION_ASSEMBLY 查看。
  */
-export const PRODUCTION_PACK: ContentPack = attachPendingChapters(merged);
+export const PRODUCTION_PACK: ContentPack = PRODUCTION_ASSEMBLY.pack;
 
 export const ACTIVE_CONTENT_PACK = PRODUCTION_PACK;

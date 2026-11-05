@@ -1,5 +1,6 @@
 import type { ContentPack } from '../contentIndexCore';
 import { PENDING_CHAPTERS } from './chapters';
+import { attachRegisteredChapters } from '../contentAssembly';
 
 /**
  * 把卡面/长线的结构拼到内容包上。
@@ -11,16 +12,5 @@ import { PENDING_CHAPTERS } from './chapters';
  * 曾经各写各的，导致 `content:audit` 误报 `job.first_live` 的解锁 flag 不存在。
  */
 export function attachPendingChapters(pack: ContentPack): ContentPack {
-  const approvedDialogueIds = new Set(
-    pack.dialogues.map((dialogue) => dialogue.id),
-  );
-  return {
-    ...pack,
-    storyChains: [
-      ...pack.storyChains,
-      ...PENDING_CHAPTERS.filter((chain) =>
-        chain.steps.every((step) => approvedDialogueIds.has(step.dialogueId)),
-      ),
-    ],
-  };
+  return attachRegisteredChapters(pack, PENDING_CHAPTERS).pack;
 }

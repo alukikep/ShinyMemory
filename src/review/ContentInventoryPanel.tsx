@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import type { loadInventory } from '../../tools/contentInventory';
+import type { InventoryReport } from '../shared/contentInventoryTypes';
 
-type Report = Awaited<ReturnType<typeof loadInventory>>;
+type Report = InventoryReport;
 const approval = { approved: '已批准', review: '待审查', revision: '待修改', structure: '结构内容' };
 const kinds = { activity: '行动', dialogue: '对话', story: '剧情链', topic: '话题', event: '事件', job: '工作', item: '物品', shop: '商店' };
 const roles = { exclusive: '专属/主属', participant: '参与', condition: '条件关联', reference: '引用' };

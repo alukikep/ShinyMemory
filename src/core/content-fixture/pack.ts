@@ -1,4 +1,5 @@
 import type { ContentPack } from '../contentIndex';
+import { DATE_TEST_DIALOGUE, DATE_TEST_SCENARIO } from './dateScenarios';
 import {
   ACTIVITIES,
   ACTORS,
@@ -19,6 +20,7 @@ import {
 // Frozen test content. It is intentionally independent from src/core/content,
 // so production content can be replaced or deleted without changing tests.
 export const FIXTURE_CONTENT_PACK: ContentPack = {
+  dateScenarios: [DATE_TEST_SCENARIO],
   activities: ACTIVITIES,
   actors: ACTORS,
   idols: IDOLS,
@@ -27,7 +29,7 @@ export const FIXTURE_CONTENT_PACK: ContentPack = {
   jobs: JOBS,
   items: ITEMS,
   shops: SHOPS,
-  dialogues: DIALOGUES,
+  dialogues: [...DIALOGUES, DATE_TEST_DIALOGUE],
   storyChains: STORY_CHAIN_DEFS,
   locations: LOCATIONS,
   transitRoutes: TRANSIT_ROUTES,

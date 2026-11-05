@@ -44,6 +44,7 @@
 | 架构与内容分工 / 批次交接 / 模型初审 | [playbook](content/playbook.md) §1.1–§1.4；实际生产再选对应写作路线 | 约 70 行 |
 | 查询或维护偶像内容档案 | [内容档案说明与后续计划](current/content-inventory-plan.md)；涉及审批状态再查 [content-review](systems/content-review.md) 对应章节 | 按阶段 |
 | 完善架构边界 / 统一内容装配与归属 | [架构完善实施计划](current/architecture-improvement-plan.md) 对应阶段；实施再按引擎/审查任务路线补读 | 按阶段 |
+| 实现或维护电话约会预约 | [约会说明与实施记录](current/date-feature-plan.md)；[日程手册](systems/idol-schedule.md) 的动态覆盖/冲突/清理章节；涉及地点再核对 [地点入口](systems/location-portals.md) | 按阶段 |
 
 ---
 

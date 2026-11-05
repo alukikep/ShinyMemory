@@ -1,5 +1,6 @@
 import { neighborsOf, walkEdge } from './content/map';
 import { CONTENT_INDEX } from './contentIndex';
+import { canStartDate } from './dateAppointments';
 import { areaMembers, parentArea } from './areas';
 import { dailyJobInvitations, visibleJobInvitationIds, canRefreshJobInvitations, jobConditionIsIdolScoped, DAILY_JOB_LIMIT } from './jobInvitations';
 import {
@@ -296,6 +297,7 @@ export function storyScheduleSlots(
   const slots: ResolvedSchedule[] = [];
   for (const chain of CONTENT_INDEX.storyChains.values()) {
     if (chain.idolId !== actorId) continue;
+    if (state.dateAppointment?.idolId === actorId && state.dateAppointment.day === storyDayFor(state, chain)) continue;
     const day = storyDayFor(state, chain);
     if (day === undefined) continue;
     const step = chain.steps[state.storyChains[chain.id]?.stepIndex ?? 0];
@@ -496,6 +498,10 @@ function buildJobOpportunity(state: GameState): ActionView | undefined {
 function buildPlan(state: GameState): SceneView {
   const location = CONTENT_INDEX.locations.get(state.locationId);
   const blocks: TextBlock[] = [];
+  const date = state.dateAppointment;
+  if (date) blocks.push({ kind: 'system', text: date.status === 'scheduled'
+    ? `今日约会：${CONTENT_INDEX.idols.get(date.idolId)?.name ?? date.idolId} · ${CONTENT_INDEX.locations.get(date.locationId)?.name ?? date.locationId} · 请在 ${formatClock(date.fromMinute)}–${formatClock(date.arrivalUntilMinute)} 内开始，约会耗时 ${date.durationMinutes} 分钟。`
+    : date.status === 'completed' ? '今日约会已完成。' : date.status === 'missed' ? '今日约会已失约，费用不退；当天不能再次预约。' : '约会进行中。' });
   if (location?.description) {
     blocks.push({ kind: 'p', text: location.description });
   }
@@ -529,6 +535,8 @@ function buildPlan(state: GameState): SceneView {
     .map(({ activity }) => activityActionView(state, activity));
 
   if (!state.flags.forced_rest) {
+    if (state.locationId === 'home') actions.push({ id: 'date-phone', command: { type: 'openDatePhone' }, label: '电话：约会预约', hint: '选择偶像、地点和时间', icon: 'book', tone: 'secondary' });
+    if (canStartDate(state)) actions.push({ id: 'start-date', command: { type: 'startDate', appointmentId: state.dateAppointment!.id }, label: '开始约会', hint: '按预约赴约', icon: 'sparkle', tone: 'primary' });
     actions.push(...buildJobActions(state));
     const jobOpportunity = buildJobOpportunity(state);
     if (jobOpportunity) actions.push(jobOpportunity);

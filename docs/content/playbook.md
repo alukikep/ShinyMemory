@@ -352,6 +352,10 @@ npm run content:japanese -- --strict   # 门禁模式：只看 approved，有就
 
 ### 4.6 对话与剧情链
 
+约会剧情使用普通 dialogue 审批，方案结构由架构侧在人批准后登记；不做成占两条剧情容量的长链。生产字段、信任奖励预算与第一版效果限制见 [约会内容交接](../current/date-feature-plan.md#8-实施与内容交接)，fixture 的“机制测试”不是可直接批准的角色台词。
+
+**约会属于原创剧情，不要求 `source` 或剧本编号**，也不走卡面改编的 `content:board` 出处检查；但必须依据角色卡写，引用具体原作场景/设定时仍要核对语料，不得编造原作事实。豁免的是“出处”，不是人设审查。
+
 - 对话节点可以有 `textVariants`（按条件换台词）
 - 剧情链每一步：`locationId` + `timeWindow` + `dialogueId` + `actionLabel`
 - 解锁用 `effects: [{ kind: 'flag', key: 'unlocked.xxx', value: true }]`

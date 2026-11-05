@@ -20,6 +20,9 @@ import { ScenePanel } from './ui/components/ScenePanel';
 import { ShopModal } from './ui/components/ShopModal';
 import { FacilityModal } from './ui/components/FacilityModal';
 import { JobBoard } from './ui/components/JobBoard';
+import { DatePhone } from './ui/components/DatePhone';
+import { buildDatePhone } from './core/dateAppointments';
+import { storyWorkBlock } from './core/sim';
 import { StatsPanel } from './ui/components/StatsPanel';
 
 type AcceptanceBridge = {
@@ -62,6 +65,7 @@ export default function App() {
   const [shopOpen, setShopOpen] = useState(false);
   const [facilityOpen, setFacilityOpen] = useState(false);
   const [jobBoardOpen, setJobBoardOpen] = useState(false);
+  const [datePhoneOpen, setDatePhoneOpen] = useState(false);
   const [savePanel, setSavePanel] = useState<'save' | 'load' | null>(null);
   const [saveNotice, setSaveNotice] = useState<string | undefined>();
   const debug =
@@ -328,6 +332,7 @@ export default function App() {
               <ScenePanel
                 scene={scene}
                 onAction={(command) => {
+                  if (command.type === 'openDatePhone') { setDatePhoneOpen(true); return; }
                   // Opening snapshots today's invitations without advancing time.
                   if (command.type === 'openJobBoard') {
                     act(command);
@@ -422,6 +427,9 @@ export default function App() {
           onClose={() => setHandbookOpen(false)}
         />
       ) : null}
+
+      {datePhoneOpen ? <DatePhone view={buildDatePhone(state, CONTENT_INDEX, (idol, day) => storyWorkBlock(state, idol, day).blocked)} appointment={state.dateAppointment}
+        onClose={() => setDatePhoneOpen(false)} onBook={(scenarioId, fromMinute) => act({ type: 'bookDate', scenarioId, fromMinute })} /> : null}
 
       {jobBoardOpen ? (
         <JobBoard

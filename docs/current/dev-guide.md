@@ -77,6 +77,11 @@
 
 | 序号 | 事故（一句话，具体） | 现在的防线（命令/规则/测试） |
 |---|---|---|
+| 56 | 约会冲突测试初稿只验证不存在/本来就不能触发的链被拒绝，不能证明预约保护起作用 | `dateAppointments.test.ts` 先断言无预约时同一条链可以启动，再断言预约后被拒绝；失约、奖励和跨日结算均断言具体数值及执行次数 |
+| 57 | 约会预约初稿直接替换 scheduleOverrides 列表，会删掉未来已排的工作覆盖 | 预约仅追加自身覆盖；`dateAppointments.test.ts` 断言未来工作、覆盖和次日工作地点均保留 |
+
+| 序号 | 事故（一句话，具体） | 现在的防线（命令/规则/测试） |
+|---|---|---|
 | 55 | 装配入口迁移漏掉覆盖率脚本尾部的旧变量；普通 tsc 未检查该工具脚本，执行时才出现 ReferenceError | `contentAssembly.test.ts` 实际运行覆盖率与卡面看板，断言退出码和具体人数/卡章数量；构建仍执行全部内容门禁 |
 
 装配入口统一为 `src/core/contentAssembly.ts` 的 `assembleContent(base, approved, chapters)`，返回合并包、挂载包、诊断与逐步可用性。正式包导出 `PRODUCTION_ASSEMBLY`；`attachPendingChapters` 只是兼容包装。`contentAssembly.test.ts` 覆盖部分获批、重复与未知宿主、fixture 注入及工具命令接线，详见 [B1 记录](architecture-improvement-plan.md#b1-实施结果2026-11-04)。

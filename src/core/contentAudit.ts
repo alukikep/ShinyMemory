@@ -1,4 +1,5 @@
 import type { ContentIndex } from './contentIndexCore';
+import { validateDateScenario } from './dateValidation';
 import { isKnownConditionKind, isKnownEffectKind } from './contentSchema';
 import { RANK_ORDER } from './growth';
 import { getSchedulesForDay } from './schedule';
@@ -146,6 +147,8 @@ export function auditPack(
   options: AuditOptions = {},
 ): ContentIssue[] {
   const issues: ContentIssue[] = [];
+  for (const id of index.dateScenarioDuplicates ?? []) issues.push({ level: 'error', code: 'date-duplicate', message: `重复约会方案 ${id}` });
+  for (const scenario of index.dateScenarios.values()) for (const message of validateDateScenario(scenario, index)) issues.push({ level: 'error', code: 'date-scenario', message });
   const push = (
     level: ContentIssue['level'],
     code: string,

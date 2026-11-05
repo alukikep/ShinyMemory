@@ -3,6 +3,8 @@ import type { ChapterSource } from './chapterAnchors';
 import type { StoryChainDef } from './types';
 import type { ReviewKind } from '../review/types';
 import { contentKey, packGroups, createContentRelationAnalyzer } from './contentRelations';
+import { validateDateScenario } from './dateValidation';
+import { buildContentIndex } from './contentIndexCore';
 
 import type { InventorySnapshot, InventoryRelation as Relation, InventoryVersion, InventoryEntry, InventoryProjection } from '../shared/contentInventoryTypes';
 export type { InventorySnapshot, InventoryVersion, InventoryEntry } from '../shared/contentInventoryTypes';
@@ -19,6 +21,13 @@ const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
 export function buildContentInventory(input: InventoryInput): InventoryProjection {
   const { pack, snapshots, sources } = input;
   const warnings = [...(input.warnings ?? [])];
+  const index = buildContentIndex(pack);
+  const dateScenarios = (pack.dateScenarios ?? []).map(s => {
+    const problems = validateDateScenario(s, index);
+    warnings.push(...problems.map(p => `约会方案：${p}`));
+    return { id: s.id, title: s.title, idolId: s.idolId, locationId: s.locationId, dialogueId: s.dialogueId,
+      file: 'src/core/content/dateScenarios.ts', integrated: problems.length === 0, problems };
+  }).sort((a, b) => compare(a.id, b.id));
   const idolIds = new Set(pack.idols.map(i => i.id));
   const analyze = createContentRelationAnalyzer(pack, input.registeredChains);
   const entries = new Map<string, InventoryEntry>();
@@ -124,7 +133,7 @@ export function buildContentInventory(input: InventoryInput): InventoryProjectio
     const count = (kind: ReviewKind, role?: Relation['role']) => live.filter(e => e.kind === kind && (!role || e.relations.some(r => r.idolId === idol.id && r.role === role))).length;
     const ownCards = cards.filter(c => c.idolId === idol.id);
     return { id: idol.id, name: idol.name,
-      counts: { cards: ownCards.length, integratedCards: ownCards.filter(e => e.integrated).length,
+      counts: { dateScenarios: dateScenarios.filter(s => s.idolId === idol.id && s.integrated).length, cards: ownCards.length, integratedCards: ownCards.filter(e => e.integrated).length,
         cardChapters: ownCards.reduce((sum, c) => sum + c.expected, 0),
         registeredCardChapters: ownCards.flatMap(e => e.chapters).length,
         availableCardChapters: ownCards.flatMap(e => e.chapters).filter(c => c.available).length,
@@ -137,7 +146,7 @@ export function buildContentInventory(input: InventoryInput): InventoryProjectio
       keys: related.map(e => e.key),
       pendingKeys: items.filter(e => e.versions.some(v => ['review', 'revision'].includes(v.approval) && v.relations.some(r => r.idolId === idol.id))).map(e => e.key) };
   });
-  return { schemaVersion: 1, basis: '已接入（源包），不代表已部署或可触发', idols, cards, entries: items,
+  return { schemaVersion: 1, basis: '已接入（源包），不代表已部署或可触发', idols, cards, dateScenarios, entries: items,
     sharedKeys: items.filter(e => e.scope === 'shared').map(e => e.key),
     unresolvedKeys: items.filter(e => e.scope === 'unresolved').map(e => e.key), warnings: [...new Set(warnings)].sort(compare) };
 }

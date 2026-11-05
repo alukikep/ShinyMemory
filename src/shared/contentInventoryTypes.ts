@@ -28,6 +28,7 @@ export type InventoryCard = {
   integrated: boolean;
 };
 export type InventoryCounts = {
+  dateScenarios: number;
   cards: number; integratedCards: number; cardChapters: number; registeredCardChapters: number;
   availableCardChapters: number; integratedCardChapters: number;
   recruitment: number; arcs: number; exclusiveActions: number; participantActions: number;
@@ -36,6 +37,7 @@ export type InventoryCounts = {
 };
 export type InventoryIdol = { id: string; name: string; counts: InventoryCounts; keys: string[]; pendingKeys: string[] };
 export type InventoryProjection = {
+  dateScenarios: { id: string; title: string; idolId: string; locationId: string; dialogueId: string; file: string; integrated: boolean; problems: string[] }[];
   schemaVersion: 1; basis: string; idols: InventoryIdol[]; cards: InventoryCard[];
   entries: InventoryEntry[]; sharedKeys: string[]; unresolvedKeys: string[]; warnings: string[];
 };

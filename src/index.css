@@ -3764,3 +3764,7 @@ button:focus-visible,
 .stat-badge.stat-trust {
   background: var(--ink-soft);
 }
+.date-phone { width: min(600px, 94vw); padding: 24px; overflow-y: auto; }
+.date-phone > label { display: grid; gap: 8px; margin: 18px 0; }
+.date-phone select { width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: white; color: inherit; }
+.date-phone > p { line-height: 1.7; }

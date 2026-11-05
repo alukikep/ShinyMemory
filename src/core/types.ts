@@ -229,7 +229,40 @@ export type Phase =
   | 'npcResult'
   | 'idol';
 
+/** Appointment structure; narrative is an independently approved dialogue. */
+export type DateScenarioDef = {
+  id: string;
+  title: string;
+  idolId: string;
+  locationId: string;
+  dialogueId: string;
+  fee: number;
+  durationMinutes: number;
+  arrivalWindowMinutes: number;
+  penaltyTier: ExpTier;
+  rewardBudget: number;
+};
+
+export type DateAppointment = {
+  id: string;
+  scenarioId: string;
+  idolId: string;
+  locationId: string;
+  dialogueId: string;
+  day: number;
+  fromMinute: number;
+  arrivalUntilMinute: number;
+  toMinute: number;
+  durationMinutes: number;
+  paidFee: number;
+  penaltyTier: ExpTier;
+  status: 'scheduled' | 'inProgress' | 'completed' | 'missed';
+};
+
 export type GameState = {
+  dateAppointment?: DateAppointment;
+  dateBookedDay?: number;
+  pendingDateId?: string;
   clock: { absoluteMinutes: number };
   locationId: string;
   actors: Record<string, ActorState>;
@@ -843,6 +876,9 @@ export type ActionTone =
   | 'sleep';
 
 export type ActionCommand =
+  | { type: 'openDatePhone' }
+  | { type: 'bookDate'; scenarioId: string; fromMinute: number }
+  | { type: 'startDate'; appointmentId: string }
   | { type: 'move'; locationId: string }
   | { type: 'transit'; routeId: string }
   | { type: 'activity'; activityId: string; idolId?: string }

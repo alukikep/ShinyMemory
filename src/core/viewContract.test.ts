@@ -3,6 +3,7 @@ import { CONTENT_INDEX } from './contentIndex';
 import { buildJobBoard } from './scene';
 import { buildHandbook } from './handbook';
 import { newGame } from './sim';
+import { buildDatePhone } from './dateAppointments';
 import type { GameState } from './types';
 
 /**
@@ -28,6 +29,13 @@ function setup(): GameState {
 }
 
 describe('view contracts', () => {
+  it('keeps every field the date phone reads, including disabled-time reasons', () => {
+    const view = buildDatePhone(setup(), CONTENT_INDEX, () => false);
+    expect(Object.keys(view)).toEqual(['entries']);
+    expect(view.entries.length).toBeGreaterThan(0);
+    expect(Object.keys(view.entries[0])).toEqual(expect.arrayContaining(['scenarioId', 'idolId', 'idolName', 'locationName', 'title', 'fee', 'durationMinutes', 'arrivalWindowMinutes', 'penaltyTier', 'times']));
+    expect(Object.keys(view.entries[0].times[0])).toEqual(expect.arrayContaining(['fromMinute', 'available', 'reason']));
+  });
   it('keeps every field the job board UI reads', () => {
     const board = buildJobBoard(setup());
     expect(board.entries.length).toBeGreaterThan(0);

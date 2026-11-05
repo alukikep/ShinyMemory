@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { MAX_DEBUG_DAY, MINUTES_PER_DAY, START_MINUTE } from '../core/config';
 import {
   completeDueJobs,
+  completeDueDates,
   getEvent,
   handleCommand,
   newGame,
@@ -55,6 +56,7 @@ function initialState(): GameState {
     };
     pruneScheduleOverrides(saved.state);
     completeDueJobs(saved.state);
+    if (completeDueDates(saved.state)) repository.save(createSaveEnvelope(saved.state));
     return saved.state;
   }
   return newGame(makeSeed());
@@ -87,6 +89,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     if (!saved) return false;
     pruneScheduleOverrides(saved.state);
     completeDueJobs(saved.state);
+    completeDueDates(saved.state);
     repository.save(createSaveEnvelope(saved.state));
     set({ state: saved.state, slots: repository.listSlots() });
     return true;
@@ -129,6 +132,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
       next.clock.absoluteMinutes = (safeDay - 1) * MINUTES_PER_DAY + START_MINUTE;
       pruneScheduleOverrides(next);
       completeDueJobs(next);
+      completeDueDates(next);
       next.phase = 'plan';
       next.pendingActivityId = undefined;
       next.pendingEventId = undefined;
@@ -148,6 +152,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
       if (locationId) next.locationId = locationId;
       pruneScheduleOverrides(next);
       completeDueJobs(next);
+      completeDueDates(next);
       next.phase = 'plan';
       next.pendingActivityId = undefined;
       next.pendingEventId = undefined;

@@ -3,6 +3,7 @@ import type {
   ActivityKind,
   ActorDef,
   DialogueDef,
+  DateScenarioDef,
   EventDef,
   EquipDef,
   FacilityDef,
@@ -18,6 +19,8 @@ import type {
 } from './types';
 
 export type ContentIndex = {
+  dateScenarios: Map<string, DateScenarioDef>;
+  dateScenarioDuplicates?: string[];
   activities: Map<string, ActivityDef>;
   actors: Map<string, ActorDef>;
   idols: Map<string, IdolDef>;
@@ -48,6 +51,7 @@ export type ContentIndex = {
 };
 
 export type ContentPack = {
+  dateScenarios?: DateScenarioDef[];
   activities: ActivityDef[];
   actors: ActorDef[];
   idols: IdolDef[];
@@ -70,6 +74,7 @@ export type ContentPack = {
 };
 
 export function buildContentIndex({
+  dateScenarios: DATE_SCENARIOS = [],
   activities: ACTIVITIES,
   actors: ACTORS,
   idols: IDOLS,
@@ -202,6 +207,8 @@ export function buildContentIndex({
   }
 
   return {
+    dateScenarios: new Map(DATE_SCENARIOS.map(d => [d.id, d])),
+    dateScenarioDuplicates: DATE_SCENARIOS.filter((d, i) => DATE_SCENARIOS.findIndex(other => other.id === d.id) !== i).map(d => d.id),
     activities,
     actors,
     idols,

@@ -27,18 +27,19 @@ export function selectInventory(report: InventoryReport, idol?: string): Invento
   const keys = new Set([...row.keys, ...row.pendingKeys]);
   // Shared/unresolved records remain inspectable; otherwise an idol query can conceal unassigned drafts.
   for (const key of [...report.sharedKeys, ...report.unresolvedKeys]) keys.add(key);
-  return { ...report, idols: [row], cards: report.cards.filter(c => c.idolId === idol), entries: report.entries.filter(e => keys.has(e.key)) };
+  return { ...report, idols: [row], cards: report.cards.filter(c => c.idolId === idol), dateScenarios: report.dateScenarios.filter(s => s.idolId === idol), entries: report.entries.filter(e => keys.has(e.key)) };
 }
 
 export function formatInventory(report: InventoryReport, details: boolean) {
   const lines = [report.basis, '卡=完整接入/登记；章=链已接入/对话可用/原卡总章数；其余产量仅统计已接入。分类有重叠，不可相加。',
-    '偶像\t卡\t章\t招募/长线\t专属/多人行动\t话题\t主属/参与对话\t专属/参与/条件事件\t待处理'];
+    '偶像\t卡\t章\t招募/长线\t专属/多人行动\t话题\t主属/参与对话\t专属/参与/条件事件\t待处理\t约会方案'];
   for (const row of report.idols) {
     const c = row.counts;
-    lines.push(`${row.name} (${row.id})\t${c.integratedCards}/${c.cards}\t${c.integratedCardChapters}/${c.availableCardChapters}/${c.cardChapters}\t${c.recruitment}/${c.arcs}\t${c.exclusiveActions}/${c.participantActions}\t${c.topics}\t${c.dialogues}/${c.participantDialogues}\t${c.exclusiveEvents}/${c.participantEvents}/${c.conditionEvents}\t${c.pending}`);
+    lines.push(`${row.name} (${row.id})\t${c.integratedCards}/${c.cards}\t${c.integratedCardChapters}/${c.availableCardChapters}/${c.cardChapters}\t${c.recruitment}/${c.arcs}\t${c.exclusiveActions}/${c.participantActions}\t${c.topics}\t${c.dialogues}/${c.participantDialogues}\t${c.exclusiveEvents}/${c.participantEvents}/${c.conditionEvents}\t${c.pending}\t${c.dateScenarios}`);
   }
   lines.push(`通用/动态 ${report.sharedKeys.length}；待确认归属 ${report.unresolvedKeys.length}；警告 ${report.warnings.length}；历史 ${JSON.stringify(report.history)}`);
   if (details) {
+    for (const s of report.dateScenarios) lines.push(`约会方案 ${s.id} · ${s.title} · ${s.idolId} / ${s.locationId} → ${s.dialogueId} · ${s.integrated ? '已接入' : '未接入'} · ${s.file} ${s.problems.join('; ')}`);
     for (const card of report.cards) lines.push(`卡面 ${card.key}：链已接入 ${card.chapters.filter(c => c.integrated).length}/${card.expected}，对话可用 ${card.chapters.filter(c => c.available).length}/${card.expected}，已登记 ${card.chapters.length}/${card.expected}；链 ${card.chainIds.join(', ')}`);
     for (const entry of report.entries) {
       lines.push(`\n${entry.key} · ${entry.title} · ${entry.scope}${entry.storyType ? ` · ${entry.storyType}` : ''}`);

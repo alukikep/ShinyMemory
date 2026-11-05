@@ -1,4 +1,5 @@
 import type { ContentPack } from '../contentIndexCore';
+import { DATE_SCENARIOS } from './dateScenarios';
 import {
   ACTORS,
   ACTIVITIES,
@@ -25,6 +26,7 @@ import {
  * 而 vite 配置的依赖图里只要有它，开发服务器就会整机重启。
  */
 export const BASE_PACK: ContentPack = {
+  dateScenarios: DATE_SCENARIOS,
   activities: ACTIVITIES,
   actors: ACTORS,
   idols: IDOLS,

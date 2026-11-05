@@ -25,6 +25,7 @@ import { createInitialProducerStats, staminaCapForRank, staminaCostMultiplierFor
 import { oddJobScale } from './oddJob';
 import { Rng } from './rng';
 import { occupyingStoryChains, STORY_CHAIN_LIMIT } from './storyCapacity';
+import { canStartDate, dateOccupiesDay, dateScheduleWasOverwritten, evaluateDateBooking } from './dateAppointments';
 import { dailyJobInvitations, visibleJobInvitationIds, refreshJobInvitations } from './jobInvitations';
 import { getDay, formatCalendarDateFromDay, formatClock, getMinuteOfDay, getWeekdayFromDay, isMinuteInWindow } from './time';
 import { describeCondition } from './conditionText';
@@ -1285,6 +1286,17 @@ function clearDialogueState(next: GameState): void {
 
 function finishDialogue(state: GameState): GameState {
   const next = clone(state);
+  const date = next.dateAppointment;
+  if (date?.status === 'inProgress' && next.pendingDateId === date.id && next.pendingDialogueId === date.dialogueId) {
+    date.status = 'completed';
+    next.pendingDateId = undefined;
+    clearDialogueState(next);
+    next.dialogueReturnPhase = undefined;
+    next.dialogueReturnResult = undefined;
+    next.phase = 'plan';
+    addLog(next, '约会结束，结果已经结算。', 'good');
+    return advanceTime(next, date.durationMinutes);
+  }
   const chainId = next.dialogueChainId;
   const chain = chainId ? CONTENT_INDEX.storyChains.get(chainId) : undefined;
   if (!chain) {
@@ -1397,6 +1409,7 @@ export type StoryStepBlock =
   | { kind: 'busy' }
   | { kind: 'idol-busy'; chainId: string }
   | { kind: 'story-capacity'; used: number; limit: number }
+  | { kind: 'date-booked' }
   | { kind: 'not-revealed' }
   | { kind: 'waiting'; earliestDay: number }
   | { kind: 'location'; expected: string; actual: string }
@@ -1442,6 +1455,7 @@ export function evaluateStoryChain(
       ));
 
   const blocks: StoryStepBlock[] = [];
+  if (step && !chainState.completed && dateOccupiesDay(state, chain.idolId, getDay(state.clock.absoluteMinutes))) blocks.push({ kind: 'date-booked' });
   if (!step || chainState.completed) {
     blocks.push({ kind: 'completed' });
   }
@@ -1556,6 +1570,7 @@ const STORY_BLOCK_ORDER: StoryStepBlock['kind'][] = [
   'busy',
   'idol-busy',
   'story-capacity',
+  'date-booked',
   'waiting',
   'conditions',
   'location',
@@ -1577,6 +1592,8 @@ function storyBlockText(
       return '她正在经历另一段剧情';
     case 'story-capacity':
       return `剧情进行中 ${block.used}/${block.limit}，先完成一条再开启新剧情`;
+    case 'date-booked':
+      return '当天已有约会预约';
     case 'waiting': {
       const day = getDay(state.clock.absoluteMinutes);
       return `还有 ${Math.max(0, block.earliestDay - day)} 天（最早第 ${block.earliestDay} 天）`;
@@ -2534,6 +2551,7 @@ export function advanceTime(state: GameState, minutes: number): GameState {
   next.clock.absoluteMinutes += Math.max(0, minutes);
   pruneScheduleOverrides(next);
   completeDueJobs(next);
+  completeDueDates(next);
   const afterDay = getDay(next.clock.absoluteMinutes);
   if (afterDay !== beforeDay) {
     next.jobInvitations = dailyJobInvitations(next);
@@ -3377,7 +3395,62 @@ function continueFromNpc(state: GameState): GameState {
   return next;
 }
 
-export function handleCommand(
+/** Every public command is atomic with respect to an already paid date reservation. */
+export function handleCommand(state: GameState, command: ActionCommand): GameState {
+  const next = handleCommandUnchecked(state, command);
+  return dateScheduleWasOverwritten(state, next) ? state : next;
+}
+
+export function bookDate(state: GameState, scenarioId: string, fromMinute: number): GameState {
+  const scenario = CONTENT_INDEX.dateScenarios.get(scenarioId);
+  const check = evaluateDateBooking(state, scenario, fromMinute, CONTENT_INDEX, (idol, day) => storyWorkBlock(state, idol, day).blocked);
+  if (!check.ok || !scenario) return state;
+  const next = clone(state);
+  const day = getDay(state.clock.absoluteMinutes);
+  const id = `date:${day}:${scenario.id}`;
+  next.money -= scenario.fee;
+  next.dateBookedDay = day;
+  next.dateAppointment = { id, scenarioId, idolId: scenario.idolId, locationId: scenario.locationId,
+    dialogueId: scenario.dialogueId, day, fromMinute, arrivalUntilMinute: fromMinute + scenario.arrivalWindowMinutes,
+    toMinute: fromMinute + scenario.arrivalWindowMinutes + scenario.durationMinutes, durationMinutes: scenario.durationMinutes,
+    paidFee: scenario.fee, penaltyTier: scenario.penaltyTier, status: 'scheduled' };
+  next.actors[scenario.idolId].scheduleOverrides = [...(next.actors[scenario.idolId].scheduleOverrides ?? []), { id, day, fromMinute, toMinute: next.dateAppointment.toMinute,
+    locationId: scenario.locationId, label: '约会预约', visibility: 'public', mode: 'replace-day' }];
+  addLog(next, `${CONTENT_INDEX.idols.get(scenario.idolId)?.name ?? scenario.idolId}的约会已预约：${CONTENT_INDEX.locations.get(scenario.locationId)?.name ?? scenario.locationId}，${formatClock(fromMinute)}–${formatClock(next.dateAppointment.arrivalUntilMinute)} 前赴约，支付 ¥${scenario.fee}；确认后不可取消。`, 'info');
+  return next;
+}
+
+export function startDate(state: GameState, appointmentId: string): GameState {
+  const date = state.dateAppointment;
+  if (!date || date.id !== appointmentId || !canStartDate(state) || !CONTENT_INDEX.dialogues.has(date.dialogueId)) return state;
+  const next = clone(state);
+  next.dateAppointment!.status = 'inProgress';
+  next.pendingDateId = date.id;
+  next.dialogueChainId = undefined;
+  return openDialogue(next, { dialogueId: date.dialogueId, idolId: date.idolId, cast: [date.idolId] });
+}
+
+/** Must be idempotent: advanceTime, load and debug jumps all call this. */
+export function completeDueDates(state: GameState): boolean {
+  const date = state.dateAppointment;
+  if (!date) return false;
+  let changed = false;
+  if (date.status === 'scheduled' && state.clock.absoluteMinutes >= (date.day - 1) * MINUTES_PER_DAY + date.arrivalUntilMinute) {
+    date.status = 'missed';
+    changed = true;
+    const previousExp = state.idols[date.idolId]?.stats.trust.exp ?? 0;
+    applyAttributeExp(state, 'trust', date.penaltyTier, 'loss', date.idolId);
+    const lost = previousExp - (state.idols[date.idolId]?.stats.trust.exp ?? previousExp);
+    addLog(state, `${CONTENT_INDEX.idols.get(date.idolId)?.name ?? date.idolId}：你错过了约会，信任经验 -${lost}，不降级，费用不退。`, 'bad');
+  }
+  if (date.day < getDay(state.clock.absoluteMinutes) && (date.status === 'missed' || date.status === 'completed')) {
+    state.dateAppointment = undefined;
+    changed = true;
+  }
+  return changed;
+}
+
+function handleCommandUnchecked(
   state: GameState,
   command: ActionCommand,
 ): GameState {
@@ -3395,6 +3468,9 @@ export function handleCommand(
 
   switch (state.phase) {
     case 'plan':
+      if (command.type === 'openDatePhone') return state.locationId === 'home' && !state.flags.forced_rest ? { ...state } : state;
+      if (command.type === 'bookDate') return bookDate(state, command.scenarioId, command.fromMinute);
+      if (command.type === 'startDate') return startDate(state, command.appointmentId);
       if (command.type === 'startStory') {
         return startStory(state, command.chainId);
       }

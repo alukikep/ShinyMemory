@@ -47,6 +47,8 @@ npm run content:balance    # 当前训练、工作与体力数值报告
 
 ## 验证
 
+电话约会机制：在家打开「电话：约会预约」。正式约会剧情尚未批准时显示无内容空态；可玩机制样例仅在 fixture 构建，规则和内容交接见 [约会说明](docs/current/date-feature-plan.md)。
+
 | 命令 | 用途 |
 |---|---|
 | `npm run docs:check` | 文档阅读路由的链接与活跃文档登记检查 |

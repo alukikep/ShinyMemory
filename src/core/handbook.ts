@@ -88,6 +88,7 @@ function statusOf(
 
   if (has('completed')) return { status: 'done' };
   if (has('busy')) return { status: 'blocked', reason: BUSY_REASON };
+  if (has('date-booked')) return { status: 'blocked', reason: '当天已有约会预约' };
   if (has('idol-busy')) {
     return { status: 'blocked', reason: '她正在经历另一段剧情' };
   }
